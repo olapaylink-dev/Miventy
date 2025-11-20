@@ -13,7 +13,7 @@ const CancelBooking = props =>{
     const {
        setShowCancelBooking,
        isProvider=false,
-       isOwn=false
+       isOwn=false,
     }=props;
 
     const [currOption,setCurrOption] = useState("");

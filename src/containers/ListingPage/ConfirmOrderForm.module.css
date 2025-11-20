@@ -312,3 +312,47 @@
 .full_w{
     padding-left: 0px;
 }
+
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+
+    .modal{
+        width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
+   
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   
+}
+
+  
+

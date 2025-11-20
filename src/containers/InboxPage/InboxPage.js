@@ -57,6 +57,9 @@ import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView'
 import QuoteAcceptedView from '../../components/CustomComponent/QuoteAcceptedView';
 import BookingsPage from '../../components/CustomComponent/BookingsPage';
 import CancelBooking from '../../components/CustomComponent/CancelBooking';
+import MarkOrderAsComplete from '../../components/CustomComponent/MarkOrderAsComplete';
+import CompleteOrder from '../../components/CustomComponent/CompleteOrder';
+import RatingForm from '../../components/CustomComponent/RatingForm';
 
 // Check if the transaction line-items use booking-related units
 const getUnitLineItem = lineItems => {
@@ -266,7 +269,12 @@ export const InboxPageComponent = props => {
   const [showQuoteAccepted,setShowQuoteAccepted] = useState(false);
   const [currentOfferInView,setCurrentOfferInView] = useState("");
   const [showCancelBooking,setShowCancelBooking] = useState(false);
+  const [showMarkOrder,setShowMarkOrder] = useState(false);
+  const [showCompleteOrder,setShowCompleteOrder] = useState(false);
+  const [showRatingForm,setShowRatingForm] = useState(false);
 
+  
+  
   const pickType = lt => conf => conf.listingType === lt;
   const findListingTypeConfig = publicData => {
     const listingTypeConfigs = config.listing?.listingTypes;
@@ -356,6 +364,7 @@ export const InboxPageComponent = props => {
        <BookingsPage
         transactions={transactions}
         setShowCancelBooking={setShowCancelBooking}
+        setShowMarkOrder={setShowMarkOrder} 
        />
       :
       <InboxView 
@@ -437,6 +446,33 @@ export const InboxPageComponent = props => {
         <div  className={css.overlay}>
             <CancelBooking
               setShowCancelBooking={setShowCancelBooking}
+              setShowMarkOrder={setShowMarkOrder} 
+            />
+        </div>
+      :""}
+
+       {showMarkOrder?
+        <div  className={css.overlay}>
+            <MarkOrderAsComplete
+              setShowMarkOrder={setShowMarkOrder} 
+              setShowCompleteOrder={setShowCompleteOrder} 
+            />
+        </div>
+      :""}
+
+      {showCompleteOrder?
+        <div  className={css.overlay}>
+            <CompleteOrder
+              setShowCompleteOrder={setShowCompleteOrder} 
+              setShowRatingForm={setShowRatingForm}
+            />
+        </div>
+      :""}
+
+      {showRatingForm?
+        <div  className={css.overlay}>
+            <RatingForm
+              setShowRatingForm={setShowRatingForm} 
             />
         </div>
       :""}

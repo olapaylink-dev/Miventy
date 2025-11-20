@@ -361,3 +361,47 @@
     font-weight: 600;
     line-height: 145%; /* 23.2px */
 }
+
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+
+    .modal{
+        width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
+   
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   
+}
+
+  
+
