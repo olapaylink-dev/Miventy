@@ -1,0 +1,18 @@
+import css from './BookingsList.module.css';
+import BookingsCard from "./BookingsCard";
+
+const BookingsList = props =>{
+    const {transactions,setShowCancelBooking} = props;
+    return (
+        <div className={css.container}>
+            {transactions.length > 0 && transactions.map((itm,key)=>{
+                console.log(itm,"    ccccccccccccccccccccccccccccccccc")
+                return(
+                    <BookingsCard data={itm} setShowCancelBooking={setShowCancelBooking}/>
+                )
+            })}
+        </div>
+    )
+}
+
+export default BookingsList;

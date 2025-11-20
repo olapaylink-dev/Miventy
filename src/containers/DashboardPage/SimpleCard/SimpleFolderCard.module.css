@@ -1,0 +1,104 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.container img{
+    width: 100%;
+    height: 250px;
+}
+.flex_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card_title{
+    color: #000;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+
+    /* Body small/Semibold */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+     overflow: hidden;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.price{
+    color: #475367;
+
+    /* Body small/Medium */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 20.3px */
+}
+.per_item{
+    color: #475367;
+    font-feature-settings: 'cv03' on, 'cv04' on;
+
+    /* Body small/Regular */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 20.3px */
+}
+
+.description{
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    width: 100%;
+      max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+.resize{
+    width: 100%;
+    max-height: 157px;
+    height: 100%;
+    border-radius: 10px;
+}
+.delete_btn{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    border-radius: 6px;
+    border: none;
+    background: var(--Shade-White, #FFF);
+    color: var(--Grey-900, #101928);
+    font-feature-settings: 'cv03' on, 'cv04' on;
+
+    /* Paragraph/Small/Regular */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 20.3px */
+    padding: 0px;
+    margin: 0px;
+}
+.delete_txt{
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 145%;
+    letter-spacing: -2%;
+    vertical-align: middle;
+    color: #475367;
+}

@@ -1,0 +1,244 @@
+.desktop{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile_con{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.mobile{
+    display: none;
+}
+.popular_title{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+}
+.title_con{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 20px;
+}
+.title_p{
+    margin: 0;
+    padding: 0;
+    color: #475367;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 23.2px */
+}
+.flex_grids{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 40px;
+    justify-content: space-between;
+    margin: 40px 0px;
+    padding: 0px 50px;
+}
+
+.flex_grids .items{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: 0 0 2px rgb(190, 190, 190);
+    padding: 10px;
+    border-radius: 15px;
+}
+.flex_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex_row{
+    padding-top: 20px;
+}
+.title{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 23.2px */
+}
+
+.browse_cat_con{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.browse_cat{
+    background-color: #EB5017;
+    margin: 0 auto;
+    padding: 15px 25px;
+    border-radius: 10px;
+
+    color: white;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    /* Paragraph/Small/Semibold */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+}
+.browse_cat:hover{
+    color: white;
+}
+
+.img_con{
+    overflow: hidden;
+}
+
+.zoom{
+    width: 100%;
+    transition: .5s;
+}
+
+.zoom:hover{
+    transform: scale(1.2);
+    transition: .5s;
+}
+
+
+.main_desktop{
+    display: block;
+}
+.mobile{
+    display: none;
+}
+.mag_top{
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+    
+@media only screen and (max-width: 1074px) {
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+    
+    .flex_grids{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap:10px;
+        justify-content: space-between;
+        margin:40px 0px;
+        padding:0px;
+    }
+    
+
+    .mobile_con {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .popular_title {
+        font-size: 24px;
+      }
+
+      .title {
+        color: #000;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 145%;
+      }
+      .flex_row img{
+        width: 14.4px;
+        height: 14.4px;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .flex_grids .items{
+        border-radius: 5px;
+    }
+    
+   
+}
+
+@media only screen and (max-width: 412px) {
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+
+@media only screen and (max-width: 360px) {
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+
+.a{
+    cursor: pointer;
+}
+    
+      
+      

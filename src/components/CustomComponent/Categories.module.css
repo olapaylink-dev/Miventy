@@ -1,0 +1,167 @@
+.category{
+    display: flex;
+    padding: 50px 170px;
+    gap: 250px;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+
+
+.category div{
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+}
+.flex_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.cate_itm_1{
+    background-color: #F0FEFF;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cate_itm_2{
+    background-color: #FCFBE8;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.browse_cat_con{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.browse_cat{
+    background-color: #EB5017;
+    margin: 0 auto;
+    padding: 15px 25px;
+    border-radius: 10px;
+
+    color: white;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    /* Paragraph/Small/Semibold */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+}
+
+.browse_cat:hover{
+    color: white;
+}
+p{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 23.2px */
+    padding: 15px 10px;
+}
+
+
+
+.desktop{
+    display: block;
+}
+.mobile{
+    display: none;
+}
+
+.pad_1{
+    margin: 24px 0px 40px 0px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+    
+@media only screen and (max-width: 1074px) {
+    .desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    
+    .desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+    .category_mobile{
+        display: flex;
+        flex-direction: column;
+        padding: 0px 0px;
+        gap: 50px;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .cate_itm_1{
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .cate_itm_2{
+        width: 100%;
+        padding: 10px;
+    }
+
+    .resize{
+        width: 60px;
+        height: 60px;
+    }
+   
+}
+
+@media only screen and (max-width: 412px) {
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+
+@media only screen and (max-width: 360px) {
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+    
+      
+      

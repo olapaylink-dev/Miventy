@@ -1,0 +1,119 @@
+.main_container{
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    
+}
+.container{
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 20px;
+    gap: 8px;
+    opacity: 1;
+    border: 1px solid #EDEDED;
+    display: flex;
+}
+
+.container_active{
+    border-radius: 8px;
+    border-width: 1px;
+    padding: 20px;
+    gap: 8px;
+    opacity: 1;
+    border: 1px solid #EDEDED;
+    display: flex;
+    background-color: #f7f7f7;
+}
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 4px;
+}
+.profile_img{
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+.msg_short{
+    overflow: hidden;
+    color: #475367;
+    font-feature-settings: 'cv03' on, 'cv04' on;
+    text-overflow: ellipsis;
+
+    /* Body small/Regular */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 20.3px */
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    width: 100%;
+      max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.flex_row{
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flex_row_2{
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    align-items: center;
+}
+.title{
+   font-family: Inter;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 145%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #475367;
+}
+.service_desc{
+    font-family: Inter;
+    font-weight: 600;
+    font-style: Semi Bold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 145%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+
+}
+.msg{
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 145%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #475367;
+}
+
+.paid{
+    background-color: green;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}

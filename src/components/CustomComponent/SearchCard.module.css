@@ -1,0 +1,164 @@
+
+.flex_grid{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 31% 31% 31%;
+  justify-content: space-between;
+  gap: 50px;
+  padding:  0px 0px 50px 0px;
+}
+
+
+
+.card_container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 16px;
+    border-width: 2px;
+    padding: 12px;
+    border-style: solid;
+    border-color: #EAEAEA;
+    width: 100%;
+}
+
+
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+}
+
+.abs_icon{
+    margin-top: 20px;
+    margin-right: 20px;
+    z-index: 4444;
+    position: absolute;
+    display: flex;
+    align-self: flex-end;
+
+}
+.flex_row{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    align-items: center;
+    
+}
+
+.flex_row_sm_gap{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.flex_row_btw{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 10px 0px;
+}
+.flex_p{
+    margin: 0px;
+    padding: 0px;
+   
+}
+
+.short_txt{
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bold_txt{
+    color: #000;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.no_padding{
+    padding: 0px;
+}
+
+.flex_full{
+  width: 100%;
+}
+
+.gap_sm{
+    gap:10px;
+}
+
+
+.card_container:hover{
+    box-shadow: 0 5px 15px rgb(197, 197, 197);
+    transition: .1s;
+}
+
+.card_img{
+    height:300px;
+}
+.locatn{
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.profileImgIcon{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+ 
+}
+
+@media only screen and (max-width: 1024px) {
+   
+}
+
+@media only screen and (max-width: 768px) {
+
+            
+    .flex_grid{
+        grid-template-columns: 100%;
+    }
+
+  
+}
+
+@media only screen and (max-width: 412px) {
+  
+   
+}
+
+@media only screen and (max-width: 360px) {
+   
+   
+}
+    
+      
+      

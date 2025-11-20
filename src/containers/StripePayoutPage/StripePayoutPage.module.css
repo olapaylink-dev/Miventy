@@ -1,0 +1,85 @@
+@import '../../styles/customMediaQueries.css';
+
+.content {
+  @media (--viewportMedium) {
+    margin: 32px auto 0 auto;
+    width: 100%;
+    max-width: 564px;
+  }
+
+  @media (--viewportLarge) {
+    margin: 0;
+  }
+}
+
+.desktopTopbar,
+.mobileTopbar {
+  box-shadow: none;
+}
+
+.heading {
+  hyphens: auto;
+}
+
+.stripeConnectAccountForm {
+  margin-top: 0;
+}
+
+.main_con{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 20px;
+    align-items: center;
+    gap: 80px;
+    border-radius: 8px;
+    border: 1px solid #EDEDED;
+    background: #FFF;
+    width: 100%;
+}
+
+.flex_row{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-end;
+    align-items: flex-end;
+    padding: 10px;
+    gap: 10px;
+}
+
+.flex_row:hover{
+  background-color: #FFECE5;
+}
+
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.header{
+    color: #000;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+
+    /* Body large/Medium */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 26.1px */
+    margin: 0px;
+}
+.sub_header{
+    color: #000;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+
+    /* Body medium/Regular */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 23.2px */
+    padding: 0px;
+    margin: 0px;
+    margin-top: 20px;
+    width: 100%;
+}

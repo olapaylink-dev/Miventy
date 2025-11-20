@@ -1,0 +1,235 @@
+
+.desktop{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.mobile{
+    display: none;
+}
+.flex_row{
+    display: flex;
+    overflow: hidden;
+    gap: 50px;
+    padding: 10px;
+    height: 300px;
+}
+
+
+.flex_row .item{
+    min-width: 30%;
+    box-shadow: 0 0 3px rgb(211, 211, 211);
+    border-radius: 12px;
+}
+
+.item p{
+    color: #000;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 23.2px */
+    margin: 0;
+}
+
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: space-between;
+    padding: 10px;
+    box-shadow: 0 0 3px rgb(211, 211, 211);
+    border-radius: 12px;
+    margin: 0px 20px;
+}
+.flex_col_sub{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.flex_row_center{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    margin-left: 10px;
+    margin-bottom: 0px;
+}
+.title{
+    color: #000;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    /* Body large/Semibold */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 26.1px */
+}
+
+.title_con{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 40px;
+    margin-bottom: 30px;
+    width: 40%;
+    align-items: center;
+    margin: 0 auto;
+}
+.title_p{
+    margin: 0;
+    padding: 0;
+    color: #475367;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 23.2px */
+}
+.popular_title{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #000;
+    text-align: center;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+
+.flex_row_slider{
+    display: flex;
+    padding: 20px 0px;
+    justify-content: space-between;
+}
+
+
+.item{
+   width: 100%;
+}
+.slide{
+    padding: 0px 10%;
+    
+}
+
+.slide_con{
+    padding: 0px 2%;
+    overflow: hidden;
+}
+
+
+.main_desktop{
+    display: block;
+}
+.mobile{
+    display: none;
+}
+
+.user_name{
+    color: #1A1A1A;
+    text-align: right;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 20.3px */
+}
+.user_title{
+    color: #595959;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 20.3px */
+}
+
+@media only screen and (max-width: 1440px) {
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+    
+@media only screen and (max-width: 1074px) {
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    
+    .main_desktop{
+        display: block;
+    }
+    .mobile{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+
+    
+    .flex_row_slider{
+        display: flex;
+        flex-direction: column;
+        padding:20px 0px;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .flex_col {
+        display: flex;
+        flex-direction: column;
+        gap:50px;
+        justify-content: space-between;
+        padding:10px;
+        box-shadow: 0 0 3px rgb(211, 211, 211);
+        border-radius:12px;
+        margin: 0px;
+      }
+   
+}
+
+@media only screen and (max-width: 412px) {
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+
+@media only screen and (max-width: 360px) {
+    .main_desktop{
+        display: none;
+    }
+    .mobile{
+        display: block;
+    }
+   
+}
+    
+      
+      

@@ -1,0 +1,80 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.container img{
+    width: 100%;
+}
+.flex_row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card_title{
+    color: #000;
+    font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+
+    /* Body small/Semibold */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+}
+.price{
+    color: #475367;
+
+    /* Body small/Medium */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 20.3px */
+}
+.per_item{
+    color: #475367;
+    font-feature-settings: 'cv03' on, 'cv04' on;
+
+    /* Body small/Regular */
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 145%; /* 20.3px */
+}
+
+.description{
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    width: 100%;
+      max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+}
+.resize{
+    width: 100%;
+    max-height: 100px;
+    height: 100%;
+    
+}
+.folder{
+    display: flex;
+    padding: 8px;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+    border-radius: 2px 2px 0px 0px;
+    background: linear-gradient(90deg, #FF8E42 0%, #FFCFAF 100%);
+    color: #FFF;
+    font-feature-settings: 'cv03' on, 'cv04' on;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 145%; /* 20.3px */
+}

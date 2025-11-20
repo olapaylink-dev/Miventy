@@ -1,0 +1,34 @@
+.container{
+ height: 56px;
+ border: 1px solid #b8bfd1;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ padding: 5px;
+overflow: visible;
+}
+
+.options_con{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    margin-top: 150px;
+    z-index: 9999;
+    border-radius: 5px;
+    overflow:hidden;
+    height: fit-content;
+    border: 1px solid #b8bfd1;
+    background-color: white;
+}
+
+.option_item{
+    width: 100%;
+    padding: 5px;
+}
+
+.option_item:hover{
+    background-color: #EB5017;
+    color: white;
+}

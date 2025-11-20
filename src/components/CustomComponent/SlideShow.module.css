@@ -1,0 +1,191 @@
+@import '../../styles/customMediaQueries.css';
+
+
+.slideMainCon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slideShowCon{
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-end;
+  align-items:center;
+  border-radius: 10px;
+  width: 100%;
+  padding: 20px;
+}
+
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 500px;
+  width: 100%;
+  padding: 2px;
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+  
+}
+
+.slide {
+  display: inline-block;
+  height: 120px;
+  width: 98%;
+  border-radius: 10px;
+  box-shadow: 0 0 2px gray;
+  margin: 0px 1%;
+}
+
+.flexRow{
+  display: flex;
+  height: 120px;
+}
+
+.flexCol{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 10px;
+  width: 100%;
+}
+.flexRow3{
+  display: flex;
+  gap: 10px;
+}
+.flexRow2{
+  display: flex;
+  height: 120px;
+  justify-content: space-between;
+}
+
+/* Buttons */
+.slideshowDots {
+  text-align: center;
+ 
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 10px;
+  width: 10px;
+  border: solid;
+  border-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #ffffff;
+
+}
+
+.active {
+  background-color: #f1e5fa;
+  border-style: solid;
+  border-width: 2px;
+  border-color: rgb(255, 140, 159);
+  padding: 5px;
+}
+.dots_con{
+  position: relative;
+  margin: 0 auto;
+  margin-top: 3px;
+
+}
+
+.imgs{
+  width: auto;
+  height: 100%;
+  border-radius: 10px;
+}
+.price_con{
+  position: absolute;
+  background-color: white;
+  color: #183980;
+  top: 350px;
+  right: 20px;
+  border-style: none;
+  padding: 5px 10px;
+}
+
+.text_left{
+  text-align: left;
+  width: fit-content;
+
+}
+
+.slideImageBtnsCon{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 100px;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.slideImageBtn{
+  width: 150px;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  
+}
+
+.slideTitle{
+  font-family: 'Montserrat';
+  color: black;
+  word-wrap: break-word;
+  width: 100%;
+  line-height: 13px;
+}
+
+
+.listingLogo{
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.cardTitle{
+  font-size: 10px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+
+
+}
+
+@media only screen and (max-width: 768px) {
+  .slideMainCon{
+    margin-left: 0%;
+    flex-direction: column-reverse;
+  }
+
+  .slideImageBtnsCon {
+    flex-direction: row;
+   }
+
+   .slideImageBtn {
+    width: 23%;
+  }
+
+
+
+
+
+}
+
+@media only screen and (max-width: 412px) {
+
+
+}
+
+
+@media only screen and (max-width: 360px) {
+
+
+}
