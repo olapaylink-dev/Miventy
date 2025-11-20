@@ -450,7 +450,6 @@ const mapStateToProps = state => {
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
   const { currentUser, currentUserNotificationCount: providerNotificationCount } = state.user;
   const {messages,totalMessages} = state.TransactionPage;
-  console.log(totalMessages,"   bbbbbbbbbb1111111111111bnnnnnnnnnn");
   return {
     currentUser,
     fetchInProgress,

@@ -10,14 +10,10 @@ const {
 module.exports = (req, res) => {
   const { isSpeculative, orderData, bodyParams, queryParams } = req.body;
 
-  console.log("ooooooooooooooooooooooooooooooooooooooooooooooooooooo")
-  console.log(req.body,"     123 vvvvvvvvvvvvvvvvvvvvvvvvvvv")
 
   const sdk = getSdk(req, res);
   let lineItems = null;
-console.log("oooooooooooooooooooooooooooooo22222222ooooooooooooooooooooooo")
   const listingPromise = () => sdk.listings.show({ id: bodyParams?.params?.listingId });
-console.log("oooooooooooooooooooooooooooo3333333ooooooooooooooooooooooooo")
   Promise.all([listingPromise(), fetchCommission(sdk)])
     .then(([showListingResponse, fetchAssetsResponse]) => {
       const listing = showListingResponse.data.data;
@@ -25,14 +21,12 @@ console.log("oooooooooooooooooooooooooooo3333333ooooooooooooooooooooooooo")
 
       const { providerCommission, customerCommission } =
         commissionAsset?.type === 'jsonAsset' ? commissionAsset.attributes.data : {};
-console.log("ooooooooooooooooooooooooooo44444444444oooooooooooooooooooooooooo")
       lineItems = transactionLineItems(
         listing,
         { ...orderData, ...bodyParams.params },
         providerCommission,
         customerCommission
       );
-console.log("ooooooooooooooooooooooooo44444444AAAAAAAAAAAAoooooooooooooooooooooooooooo")
       return getTrustedSdk(req);
     })
     .then(trustedSdk => {
