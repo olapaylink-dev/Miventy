@@ -709,6 +709,7 @@ const updateStockOfListingMaybe = (listingId, stockTotals, dispatch) => {
   return Promise.resolve();
 };
 
+
 // Create listing in draft state
 // NOTE: we want to keep it possible to include stock management field to the first wizard form.
 // this means that there needs to be a sequence of calls:
@@ -748,7 +749,7 @@ export function requestCreateListingDraft(data,action, config) {
         const listingId = response.data.data.id;
         // If stockUpdate info is passed through, update stock
         console.log(stockUpdate)
-        return updateStockOfListingMaybe(listingId, stockUpdate, dispatch);
+        updateStockOfListingMaybe(listingId, stockUpdate, dispatch);
       })
       .then(() => {
         // Modify store to understand that we have created listing and can redirect away

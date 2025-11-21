@@ -352,7 +352,9 @@ const [currentListing,setCurrentListing] = useState({});
         console.log("Updating profile ------222222222222222-----");
       }
 
-      if(listingDraft !== null && isDraft){
+      console.log(listingDraft,"    bbbbbbbbbbbbbnnnnnnnnnnnnnnnnn")
+
+      if(listingDraft !== null && isDraft){ 
         setCurrentListing(listingDraft);
       }
 
@@ -1185,7 +1187,7 @@ const [currentListing,setCurrentListing] = useState({});
                     :""}
 
                     {currentTab === "listings"?
-                        <div >
+                        <div className={css.list_con}>
                             
                             <div className={css2.flex_title}>
 
@@ -1518,6 +1520,7 @@ const [currentListing,setCurrentListing] = useState({});
             availabilitySettingIsOn={availability}
             onCreateListingDraft={onCreateListingDraft}
             currentListing={currentListing}
+            listingDraft={listingDraft}
             onUpdateListing={onUpdateListing}
             image={image}
             uploadImageError={uploadImageError}
@@ -1535,7 +1538,6 @@ const [currentListing,setCurrentListing] = useState({});
             updatedListing={updatedListing}
             updateInProgress={updateInProgress}
             setIsDraft={setIsDraft}
-            listingDraft={listingDraft}
             forceUpdate={forceUpdate}
             updateListingSuccess={updateListingSuccess}
             onfetchCurrentData={onFetctCurrentUser}
@@ -1768,10 +1770,6 @@ const {
 };
 
 const mapDispatchToProps = dispatch => ({
-
-
-
-
 
 onUpdateProfile: data => dispatch(updateProfile(data)),
   onImageUpload: data => dispatch(uploadImage(data)),

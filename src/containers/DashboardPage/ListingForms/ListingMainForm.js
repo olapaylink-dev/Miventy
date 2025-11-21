@@ -15,6 +15,9 @@ import Publish from "./Publish";
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
+import { types as sdkTypes } from '../../../util/sdkLoader';
+const { UUID } = sdkTypes;
+
 const ListingMainForm = props =>{
 
     const {setShowCreateListing,
@@ -77,8 +80,9 @@ const ListingMainForm = props =>{
            
         },[currentTab]);
 
+
+    //Important for setting the selected category when the tabs change
      useEffect(()=>{
-            console.log(selectedCategory + "    ccccccccccccccccccccccccccccccccc   "+currentTab);
             if(JSON.stringify(currentListing) !== "{}" && currentListing !== undefined && currentListing.hasOwnProperty("attributes")){
                 const {listingType,category} = currentListing?.attributes?.publicData;
                 setSelectedCategory(listingType);
@@ -88,12 +92,26 @@ const ListingMainForm = props =>{
     );
 
     useEffect(()=>{
+            console.log("lastaction",lastAction,"      99999999999999999999999999")
             console.log(selectedCategory + "    ccccccccccccccccccccccccccccccccc   "+currentTab);
-            if((lastAction === "createDraft" || lastAction === "updateDraft") && JSON.stringify(currentListing) !== "{}"){
+            if((lastAction === "createDraft" || lastAction === "updateDraft") && (JSON.stringify(currentListing) !== "{}" || JSON.stringify(listingDraft) !== "{}")){
+                setCurrentListing(listingDraft);
+                const listingId = JSON.stringify(currentListing) !== "{}"?currentListing.id.uuid:listingDraft.id.uuid;
+                localStorage.setItem("currentListing",listingId);
                 setCurrentTab("about");
             }
+            
         },[lastAction,listingDraft]
     );
+
+
+useEffect(()=>{
+      const currentListingId = localStorage.getItem("currentListing");
+      if(currentListingId !== null){
+        onFetchCurrentListing(new UUID(currentListingId),"");
+      }
+      
+  },[]);
 
 const handleMoveToStart = (e,currListing)=>{
     console.log(currentListing);
@@ -198,20 +216,25 @@ const categories = {
 
 
     const handleCreateDraftOrUpdateExisting = e =>{
+      console.log("ccccccccccccccccccc");
+      if(lastAction === "updateDraft"){
+            handleMoveToAboutService();
+      }
+
       setIsDraft(true);
-      
       if(JSON.stringify(currentListing) !== "{}"){
-        localStorage.setItem("currentListing",currentListing.id.uuid);
-        const data = {
-          id:currentListing.id,
-          title:currentListing?.attributes?.title,
-          description:currentListing?.attributes?.description,
-          publicData:{
-            category:currRadioBtnCategory,
-            listingType:selectedCategory,
-          },
-        }
-        onUpdateListing(data,"updateDraft");
+        handleMoveToAboutService();
+        // localStorage.setItem("currentListing",currentListing.id.uuid);
+        // const data = {
+        //   id:currentListing.id,
+        //   title:currentListing?.attributes?.title,
+        //   description:currentListing?.attributes?.description,
+        //   publicData:{
+        //     category:currRadioBtnCategory,
+        //     listingType:selectedCategory,
+        //   },
+        // }
+        // onUpdateListing(data,"updateDraft");
 
       }else{
         const data = {
@@ -225,11 +248,10 @@ const categories = {
         }
         onCreateListingDraft(data, "createDraft")
       }
-      if(lastAction === "updateDraft"){
-            handleMoveToAboutService();
-      }
+      
       
     }
+
 
     return (
 

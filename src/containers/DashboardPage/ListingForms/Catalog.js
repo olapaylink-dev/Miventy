@@ -323,11 +323,8 @@ let img = "";
 
 
   useEffect(()=>{
-
       const currentListingId = localStorage.getItem("currentListing");
       onFetchCurrentListing(new UUID(currentListingId),"");
-      
-      
   },[currentCatalog]);
 
   useEffect(()=>{

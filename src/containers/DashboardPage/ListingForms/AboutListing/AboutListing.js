@@ -32,7 +32,7 @@ const AboutListing = props =>{
             updateListingSuccess
     } = props;
 
-    console.log(selectedSubCategory);
+    console.log(selectedSubCategory, "selectedSubCategory");
 
     const [currentTab,setCurrentTab] = useState("start");
     const serviceTypes = [
