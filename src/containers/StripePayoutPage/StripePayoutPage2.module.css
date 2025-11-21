@@ -297,6 +297,7 @@ text-transform: uppercase;
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
+    max-width: 900px;
 }
 
 .mylisting_card{
@@ -1231,6 +1232,7 @@ text-transform: uppercase;
     line-height: 36px; /* 120% */
     margin: 0px;
     padding: 0px;
+    margin-bottom: 5px;
 }
 
 .image_con{
