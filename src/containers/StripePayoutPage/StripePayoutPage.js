@@ -1664,6 +1664,8 @@ const {
     updateListingInProgress,
   } = state.EditListingPage;
 
+  console.log(updatedListing,"   aaaaaaaqqqqqqqq")
+
 
   const userMatches = getMarketplaceEntities(state, [{ type: 'user', id: userId }]);
   const user = userMatches.length === 1 ? userMatches[0] : null;

@@ -90,6 +90,7 @@
     line-height: 145%; /* 20.3px */
     padding: 0px;
     margin: 0px;
+    cursor: pointer;
 }
 .delete_txt{
     font-family: Inter;

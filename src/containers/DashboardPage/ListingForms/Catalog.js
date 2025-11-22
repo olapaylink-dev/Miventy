@@ -197,13 +197,21 @@ const getFolder = data=>{
   }
 
 let img = "";
- if(JSON.stringify(currentListing) !== "{}" && JSON.stringify(ownEntities) !== "{}"){
-    const {coverPhoto="",catalog=[],coverImages=[]} = currentListing?.attributes?.publicData?currentListing?.attributes?.publicData:{};
+ 
+const [imageSrc,setImageSrc] = useState(img);
+ useEffect(()=>{
+  console.log("Changing");
+  const {data} = updatedListing;
+  if(JSON.stringify(data) !== "{}" && JSON.stringify(ownEntities) !== "{}"){
+    const {coverPhoto="",catalog=[],coverImages=[]} = data?.attributes?.publicData?data?.attributes?.publicData:{};
     const folderName = localStorage.getItem("folderName");
-    img = getCurrentCatalogCoverPhoto(coverImages,folderName);
- }
+    const image = getCurrentCatalogCoverPhoto(coverImages,folderName);
+    setImageSrc(image);
+  }
 
-  const [imageSrc,setImageSrc] = useState(img);
+ },[updatedListing])
+
+  
   
   const durationPriceIsReady = durationPrice.length > 0 && durationPrice[0].price !== 0;
   const isReady = !(itemName && (!pricee || !durationPriceIsReady) && description && (imageSrc1 || imageSrc2 || imageSrc3 || imageSrc4 || imageSrc5));
@@ -859,14 +867,8 @@ const handleDeletePriceDuration = (priceDurationData,itmToDelete,catalogDetails)
   const remainingDurationPrice = priceDurationData.filter(itm=>itm.id !== itmToDelete.id);
   const {publicData} = updatedListing?.data?.attributes;
   let catalogSaved = publicData?.catalog === undefined?[]:publicData?.catalog;
-  let remainingCatalog = [];
-  catalogSaved.map((itm,key)=>{
-    if(itm.folder !== catalogDetails.folder && itm.itemName !== catalogDetails.itemName){
-      remainingCatalog.push(itm);
-    }
-  })
-  //let remainingCatalog = catalogSaved.filter(itm=>itm.folder !== catalogDetails.folder && itm.itemName !== catalogDetails.itemName);
-
+  let remainingCatalog = catalogSaved.filter(itm=>itm.itemName !== catalogDetails.itemName);
+ 
   //Edit the current catalog data
   let currentCatalogdata = catalogDetails;
   currentCatalogdata.durationPrice = remainingDurationPrice;
@@ -906,6 +908,58 @@ const handleSaveCatalogName = e =>{
     onUpdateListing(data,"update_and_goto_existing_listing_3");
 }
 
+const handleDeleteCatalogItem = item =>{
+
+  //Get the listing
+  //Get the catalog in the listing
+  //Remove the item from the catalog
+
+  console.log("Deleting",item)
+  let catalogSaved = publicData?.catalog === undefined?[]:publicData?.catalog;
+  const remaining = catalogSaved.filter(itm=>itm.itemName !== item.itemName);
+  let data = {};
+        data = {
+                  id:item.listingId,
+                  publicData:{
+                                catalog:[
+                                          ...remaining
+                                        ]
+                              }
+                  };
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    onUpdateListing(data,"update_and_goto_existing_listing_3");
+}
+
+const handleDeleteCatalog = catalog =>{
+  let catalogSaved = publicData?.catalog === undefined?[]:publicData?.catalog;
+  const remaining = catalogSaved.filter(itm=>itm.folder !== catalog);
+  let data = {};
+        data = {
+                  id:updatedListing.data.id.uuid,
+                  publicData:{
+                                catalog:[
+                                          ...remaining
+                                        ]
+                              }
+                  };
+    onUpdateListing(data,"update_and_goto_existing_listing_3");
+}
+
+const handleRemoveCatalogImage = name =>{
+  const folderName = localStorage.getItem("folderName");
+  let coverImages = publicData?.coverImages;
+  const remaining = coverImages.filter(itm=>itm.folderName !== folderName);
+  let data = {};
+        data = {
+                  id:updatedListing.data.id.uuid,
+                  publicData:{
+                                coverImages:remaining
+                              }
+                  };
+    onUpdateListing(data,"update_and_goto_existing_listing_3");
+}
+
+
     return (
         <>
         <CatalogEdit
@@ -929,6 +983,7 @@ const handleSaveCatalogName = e =>{
           durationPrice={durationPrice}
           handleCreateNewInput={handleCreateNewInput}
           imageSrc={imageSrc}
+          setImageSrc={setImageSrc}
           imageSrc1={imageSrc1}
           imageSrc2={imageSrc2}
           imageSrc3={imageSrc3}
@@ -973,6 +1028,9 @@ const handleSaveCatalogName = e =>{
           enableCatalogName={enableCatalogName}
           updateInProgress={updateInProgress}
           uploadInProgress={uploadInProgress}
+          handleDeleteCatalogItem={handleDeleteCatalogItem}
+          setShowCreateListing={setShowCreateListing}
+          handleRemoveCatalogImage={handleRemoveCatalogImage}
         />
             
           {showExistingCat?
@@ -1006,7 +1064,14 @@ const handleSaveCatalogName = e =>{
 
                         const cover = img;
                         return(
-                                <SimpleFormCard key={`catalog_card ${key}`} numberOfItems={numberOfItems} coverPhoto={cover} folderName={folder} handleEditCatalog={handleEditFolder} />
+                                <SimpleFormCard 
+                                  key={`catalog_card ${key}`} 
+                                  numberOfItems={numberOfItems} 
+                                  coverPhoto={cover} 
+                                  folderName={folder} 
+                                  handleEditCatalog={handleEditFolder}
+                                  handleDeleteCatalog={handleDeleteCatalog}
+                                 />
                             )
                       })}
                   </div>
@@ -1069,6 +1134,7 @@ const handleSaveCatalogName = e =>{
                 durationPrice={durationPrice}
                 handleCreateNewInput={handleCreateNewInput}
                 imageSrc={imageSrc}
+                setImageSrc={setImageSrc}
                 imageSrc1={imageSrc1}
                 imageSrc2={imageSrc2}
                 imageSrc3={imageSrc3}
@@ -1113,6 +1179,9 @@ const handleSaveCatalogName = e =>{
                 enableCatalogName={enableCatalogName}
                 updateInProgress={updateInProgress}
                 uploadInProgress={uploadInProgress}
+                handleDeleteCatalogItem={handleDeleteCatalogItem}
+                setShowCreateListing={setShowCreateListing}
+                handleRemoveCatalogImage={handleRemoveCatalogImage}
               />
             
         </>

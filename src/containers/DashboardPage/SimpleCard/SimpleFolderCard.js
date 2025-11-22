@@ -2,7 +2,7 @@ import React from "react";
 import placeholder from '../../../assets/placeholder.png';
 import css from './SimpleFolderCard.module.css';
 const SimpleFormCard = props=>{
-    const {numberOfItems,coverPhoto,folderName,handleEditCatalog} = props;
+    const {numberOfItems,coverPhoto,folderName,handleEditCatalog,handleDeleteCatalog} = props;
    
     return (
         <div className={css.container} onClick={e=>{handleEditCatalog(e,folderName)}}>
@@ -16,7 +16,7 @@ const SimpleFormCard = props=>{
                 <span className={css.card_title}>{folderName}</span>
                 <div className={css.per_item}><span className={css.price}>{numberOfItems} items</span></div>
             </div>
-            <div className={css.delete_btn}>
+            <div className={css.delete_btn} onClick={e=>{e.preventDefault(); e.stopPropagation(); handleDeleteCatalog(folderName)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
                 <path d="M8.41708 1.45898C8.07069 1.45898 7.76043 1.67326 7.63775 1.99719L7.44643 2.50243C7.03628 2.46144 6.65838 2.42054 6.35247 2.38619C6.1238 2.36052 5.93582 2.33856 5.80524 2.32305L5.65462 2.30497L5.60346 2.29871C5.14672 2.24216 4.72996 2.56649 4.6734 3.02324C4.61683 3.47999 4.94125 3.89611 5.398 3.95267L5.45366 3.95947L5.60864 3.97808C5.74226 3.99395 5.93382 4.01632 6.16651 4.04245C6.63148 4.09466 7.26256 4.16206 7.92467 4.22248C8.81782 4.30399 9.79685 4.37565 10.5004 4.37565C11.204 4.37565 12.183 4.30399 13.0761 4.22248C13.7383 4.16206 14.3694 4.09466 14.8343 4.04245C15.067 4.01632 15.2586 3.99395 15.3922 3.97808L15.5472 3.95947L15.6027 3.95268C16.0595 3.89612 16.384 3.47999 16.3274 3.02324C16.2709 2.56649 15.8548 2.24208 15.398 2.29863L15.3462 2.30497L15.1956 2.32305C15.065 2.33856 14.877 2.36052 14.6484 2.38619C14.3424 2.42054 13.9645 2.46144 13.5544 2.50243L13.3631 1.99719C13.2404 1.67326 12.9301 1.45898 12.5837 1.45898H8.41708Z" fill="#667185"/>
                 <path d="M9.66708 9.79232C9.66708 9.33208 9.29398 8.95898 8.83375 8.95898C8.37351 8.95898 8.00041 9.33208 8.00041 9.79232V13.959C8.00041 14.4192 8.37351 14.7923 8.83375 14.7923C9.29398 14.7923 9.66708 14.4192 9.66708 13.959V9.79232Z" fill="#667185"/>
