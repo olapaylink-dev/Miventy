@@ -2360,6 +2360,8 @@ const BusinessProfileForm = props=>{
   const [date,setDate] = useState("");
   const [showOptions,setShowOptions] = useState(false);
 
+  const isReady = businessName && yearsOfExperience && languages && dateOfBirth;
+
   const handleFileClick = ()=>{
     fileInput.current.click();
   }
@@ -2662,7 +2664,7 @@ function onChange(timestamp) {
                   <div className={css2.base_btns}>
                     <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
                     <div>
-                      <button onClick={handleSubmit} className={css2.btn_next}>Next</button>
+                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>Next</button>
                     </div>
                   </div>
                 </div>
@@ -2691,6 +2693,8 @@ const SaveProfileForm = props=>{
   const fileInput = useRef(null);
   const {userType} = publicData;
   const [showMap,setShowMap] = useState(false);
+
+  const isReady = address && city && serviceAreas;
 
   console.log(userType +"    uuuuuuuuuuuuuuuuuu");
 
@@ -2826,7 +2830,7 @@ const handleSubmit = async e=>{
                     <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
                     <div>
                       <button onClick={moveBack} className={css2.btn_1}>Previous</button>
-                      <button onClick={handleSubmit} className={css2.btn_next}>Save</button>
+                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>Save</button>
                     </div>
                   </div>
 

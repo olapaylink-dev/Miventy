@@ -499,6 +499,8 @@ text-transform: uppercase;
     height: fit-content;
     justify-self: center;
     margin: 0 auto;
+    align-self: center;
+    max-width: 650px;
 }
 
 .header_2{
