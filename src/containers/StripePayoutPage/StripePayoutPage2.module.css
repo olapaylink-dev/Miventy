@@ -1313,6 +1313,10 @@ text-transform: uppercase;
     position: absolute;
 }
 
+.error_msg{
+    color: red;
+    font-size: 14px;
+}
 
 @media only screen and (max-width: 1440px) {
 
