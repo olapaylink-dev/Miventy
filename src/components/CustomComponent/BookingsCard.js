@@ -7,10 +7,10 @@ const BookingsCard = props=>{
     const displayName = provider?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
     const {protectedData} = attributes;
-    const item = protectedData?.cartData?.cartData.items[0];
+    const item = protectedData?.cartData?.cartData?.items[0];
     const {eventDate,eventLocation} = protectedData?.cartData;
     const location = eventLocation[0]?.result?.place_name;
-    const {ItemPrice,durationPrice} = item;
+    const {ItemPrice=0,durationPrice=[]} = item;
     const price = ItemPrice?ItemPrice:durationPrice[0]?.price;
 
     const listingType = listing?.attributes?.publicData?.listingType;

@@ -73,7 +73,7 @@ const handleSubmitValues = e=>{
    if(JSON.stringify(currentListing) !== "{}"){
       const data = {
           id:currentListing.id,
-          price: new Money(parseInt(pricee),"EUR"),
+          price: new Money(parseInt(pricee*100),"EUR"),
           title:description,
           description,
           publicData:{

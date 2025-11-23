@@ -455,7 +455,7 @@ const getNewCatalogData = ()=>{
                                         folder:folderName,
                                         itemName,
                                         minQuantity,
-                                        ItemPrice:pricee,
+                                        ItemPrice:pricee*100,
                                         durationPrice:durationPrice,
                                         description,
                                         unitQuantity,
@@ -727,11 +727,11 @@ const handleEditFolder = (e,folderName) =>{
 
 }
 
-const handleRemoveImage = (e,imgId,imgToRemove)=>{
+const handleRemoveImage = (e,imgToRemove)=>{
   e.preventDefault();
   e.stopPropagation();
 
-  if(imgId === undefined || imgId === ""){
+  if(imgToRemove === undefined || imgToRemove === ""){
     if(imgToRemove === "1"){
       setImageSrc1("");
     }else if(imgToRemove === "2"){
@@ -820,7 +820,7 @@ const handleFormatChange = (itm,val)=>{
 const handlePriceChange = (itm,val)=>{
  durationPrice !== undefined && durationPrice !== null && durationPrice.length>0 && durationPrice.map((item,key)=>{
     if(item.id === itm.id){
-      item.price = val;
+      item.price = parseInt(val);
     }
   })
 
