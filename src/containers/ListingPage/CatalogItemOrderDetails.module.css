@@ -283,19 +283,31 @@
 
 @media only screen and (max-width: 1440px) {
 
-
+ .modal{
+        width: 60%;
+        padding: 20px;
+        margin: 20px;
+    }
 
 }
 
 
 @media only screen and (max-width: 1074px) {
   
-    
+     .modal{
+        width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
 }
 
 @media only screen and (max-width: 1024px) {
    
-   
+    .modal{
+        width: 90%;
+        padding: 20px;
+        margin: 20px;
+    }
    
 }
 
@@ -303,9 +315,31 @@
 @media only screen and (max-width: 768px) {
 
     .modal{
-        width: 90%;
-        padding: 20px;
+        width: 100%;
+        padding: 0px;
         margin: 20px;
+        margin-top: 200%;
+    }
+
+    .container{
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        margin: 0px;
+    }
+
+    .flex_1{
+        width: 100%;
+    }
+    .flex_2{
+        width: 100%;
+    }
+
+    .container_header{
+        height: fit-content;
+        display: flex;
+        flex-direction: row;
+        padding: 0px 20px;
     }
    
 
