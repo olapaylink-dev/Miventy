@@ -82,7 +82,8 @@ const CatalogEdit = props=>{
         updateInProgress,
         uploadInProgress,
         handleDeleteCatalogItem,
-        handleRemoveCatalogImage
+        handleRemoveCatalogImage,
+        hamdleReset
     } = props;
 
     const currentAction = localStorage.getItem("action");
@@ -350,7 +351,7 @@ const saveCatalogName = e =>{
 
 
                                   <div className={css.reset_con} >
-                                    <button className={css.reset_btn}>Reset</button>
+                                    <button className={css.reset_btn} onClick={hamdleReset}>Reset</button>
                                     <button className={css.add_item_btn} onClick={e=>{handleAddListing(e,"add")}} disabled={uploadInProgress}> 
                                         {uploadInProgress?
                                           <CircularProgress size={20} sx={{ color: 'white'}}/>

@@ -185,7 +185,7 @@ export function uploadImage(actionPayload) {
             }).then(res => {
               // res.data
               //const newCatDat = insertNewCatalogImage(catalog,{imgNum,imgUrl: uploadedImage.attributes.variants['default'].url});
-              const newCatDatCreated = newCatData && insertNewCatalogImage(newCatData.publicData.catalog,{imgNum,imgUrl: uploadedImage.attributes.variants['default'].url});
+              const newCatDatCreated = newCatData && insertNewCatalogImage(newCatData.publicData.catalog,{imgNum,imgUrl: uploadedImage.attributes.variants['default'].url,imageId:uploadedImage.id.uuid});
                 if( isCoverPhoto !== undefined && isCoverPhoto){
                   if(folderName !== undefined && folderName !== null && folderName !== ""){
                     const listing = res.data.data;

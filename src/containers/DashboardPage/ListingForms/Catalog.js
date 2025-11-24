@@ -92,6 +92,8 @@ useEffect(()=>{
   let img3 = "";
   let img4 = "";
   let img5 = "";
+
+  
   const ownListing = ownEntities!== undefined? ownEntities?.ownListing:[];
   const [currentTab,setCurrentTab] = useState("start");
   // const [img1,setImg1] = useState("start");
@@ -157,13 +159,32 @@ const getFolder = data=>{
     return url;
   }
 
+  const getImageId = (data,imgNum) =>{
+    let id = "";
+    if(data !== undefined){
+       data.map((itm,key)=>{
+        if(itm.imgNum === imgNum){
+          id = itm.imageId;
+        }
+      });
+    }
+    return id;
+  }
+
+  let catalogImagesData = "";
   if(JSON.stringify(currentCatalogdata) !== "{}"){
-      const catalogImages = currentCatalogdata?.catalogImages;
-      img1 = getImageUrl(catalogImages,"1");
-      img2 = getImageUrl(catalogImages,"2");
-      img3 = getImageUrl(catalogImages,"3");
-      img4 = getImageUrl(catalogImages,"4");
-      img5 = getImageUrl(catalogImages,"5");
+      catalogImagesData = currentCatalogdata?.catalogImages;
+      img1 = getImageUrl(catalogImagesData,"1");
+      img2 = getImageUrl(catalogImagesData,"2");
+      img3 = getImageUrl(catalogImagesData,"3");
+      img4 = getImageUrl(catalogImagesData,"4");
+      img5 = getImageUrl(catalogImagesData,"5");
+
+      img1Id = getImageId(catalogImagesData,"1");
+      img2Id = getImageId(catalogImagesData,"2");
+      img3Id = getImageId(catalogImagesData,"3");
+      img4Id = getImageId(catalogImagesData,"4");
+      img5Id = getImageId(catalogImagesData,"5");
     }
 
    //const [selectedFolderName, setSelectedFolderName] = useState("");
@@ -174,6 +195,7 @@ const getFolder = data=>{
   const [imageSrc3,setImageSrc3] = useState(img3);
   const [imageSrc4,setImageSrc4] = useState(img4);
   const [imageSrc5,setImageSrc5] = useState(img5);
+  
   const fileInput = useRef(null);
   const fileInput1 = useRef(null);
   const fileInput2 = useRef(null);
@@ -337,6 +359,18 @@ const [imageSrc,setImageSrc] = useState(img);
 
   useEffect(()=>{
     console.log("Listing updated  " , lastAction);
+    if(JSON.stringify(updatedListing) !== "{}"){
+      setCurrentListing(updatedListing.data);
+    }
+    
+  },[updatedListing]);
+
+  useEffect(()=>{
+    console.log("Listing updated  " , lastAction);
+    if(lastAction === "delete_image"){
+      //setShowEditCat(true);
+    }
+    
   },[updatedListing]);
 
   const getImagesIncluded = included=>{
@@ -455,7 +489,7 @@ const getNewCatalogData = ()=>{
                                         folder:folderName,
                                         itemName,
                                         minQuantity,
-                                        ItemPrice:pricee*100,
+                                        ItemPrice:pricee,
                                         durationPrice:durationPrice,
                                         description,
                                         unitQuantity,
@@ -576,7 +610,7 @@ const handleChange4 = (event)=>{
       //   itemNam = document.getElementById("itemName")?.value;
       // }
      
-      onImageUpload({ id: tempId, file,listingId:lstingId,imgNum:"1",catalogId:"",catalog,newCatData,itemName:itemName});
+      onImageUpload({ id: tempId, file,listingId:lstingId,imgNum:"4",catalogId:"",catalog,newCatData,itemName:itemName});
     }
     onSetSelectedFile(event.target.files[0]);
   }
@@ -599,7 +633,7 @@ const handleChange5 = (event)=>{
       //   itemNam = document.getElementById("itemName")?.value;
       // }
       
-      onImageUpload({ id: tempId, file,listingId:lstingId,imgNum:"1",catalogId:"",catalog,newCatData,itemName:itemName});
+      onImageUpload({ id: tempId, file,listingId:lstingId,imgNum:"5",catalogId:"",catalog,newCatData,itemName:itemName});
     }
     onSetSelectedFile(event.target.files[0]);
   }
@@ -727,11 +761,28 @@ const handleEditFolder = (e,folderName) =>{
 
 }
 
+const getUpdatedCatalogItem = (catalog,itemName)=>{
+  let data = {};
+  catalog.map((itm,key)=>{
+    if(itm.itemName === itemName){
+      data = itm;
+   }
+  })
+  return data;
+}
+
 const handleRemoveImage = (e,imgToRemove)=>{
   e.preventDefault();
   e.stopPropagation();
 
+   if(JSON.stringify(updatedListing) !== "{}"){
+      setCurrentListing(updatedListing.data);
+    }
+
+  let  imageId = "";
+
   if(imgToRemove === undefined || imgToRemove === ""){
+
     if(imgToRemove === "1"){
       setImageSrc1("");
     }else if(imgToRemove === "2"){
@@ -746,6 +797,24 @@ const handleRemoveImage = (e,imgToRemove)=>{
     return;
   }
 
+  if(imgToRemove === "1"){
+    imageId = getImageId(catalogImagesData,"1");
+    setImageSrc1("");
+  }else if(imgToRemove === "2"){
+    imageId = getImageId(catalogImagesData,"2");
+    setImageSrc2("");
+  }else if(imgToRemove === "3"){
+    imageId = getImageId(catalogImagesData,"3");
+    setImageSrc3("");
+  }else if(imgToRemove === "4"){
+    imageId = getImageId(catalogImagesData,"4");
+    setImageSrc4("");
+  }else if(imgToRemove === "5"){
+    imageId = getImageId(catalogImagesData,"5");
+    setImageSrc5("");
+  }
+    
+
   const getUUID = data =>{
     let result = [];
     data.map((itm,k)=>{
@@ -756,18 +825,23 @@ const handleRemoveImage = (e,imgToRemove)=>{
 
   //Remove needed image from the list of uploaded images
   const existingUploadedImage = currentListing?.relationships?.images.data;
-  let existingUploadedImageRemain = existingUploadedImage.filter(itm=>itm.id.uuid !== imgId);
+  let existingUploadedImageRemain = existingUploadedImage.filter(itm=>itm.id.uuid !== imageId);
   existingUploadedImageRemain = getUUID(existingUploadedImageRemain);
 
   //Remove the need image fromthe list of existing catalog images
-  const {images} = currentCatalogdata;
-  const remainingImageIds = images.filter(itm=>itm !== imgId);
+  //const {image} = ownEntities;
+  //const remainingImageIds = Object.keys(image).filter(itm=>itm !== imageId);
 
   //Update the list of images in current catalog
-  currentCatalogdata.images = [...remainingImageIds];
+  const catalog = currentListing.attributes.publicData.catalog;
+  const updatedCatalogItem = getUpdatedCatalogItem(catalog,itemName);
+
+  const remainingCatalogImages = currentCatalogdata.catalogImages.filter(itm=>itm.imageId !== imageId);
+  const remainingUpdatedCatalogImages = updatedCatalogItem.catalogImages.filter(itm=>itm.imageId !== imageId);
+  currentCatalogdata.catalogImages = [...remainingCatalogImages,...remainingUpdatedCatalogImages];
   let catalogSaved = publicData?.catalog === undefined?[]:publicData?.catalog;
 
-  catalogSaved = catalogSaved.filter(itm=>itm.categoryId !== imgId);
+  catalogSaved = catalogSaved.filter(itm=>itm.categoryId !== currentCatalogdata.categoryId);
 
     let data = {};
         data = {
@@ -781,7 +855,7 @@ const handleRemoveImage = (e,imgToRemove)=>{
                               images:existingUploadedImageRemain
                   };
   
-    onUpdateListing(data,"update_and_goto_existing_listing_2");
+    onUpdateListing(data,"delete_image");
 }
 
 const handleCreateNewInput = ()=>{
@@ -959,6 +1033,12 @@ const handleRemoveCatalogImage = name =>{
     onUpdateListing(data,"update_and_goto_existing_listing_3");
 }
 
+const hamdleReset = e =>{
+  setItemName("");
+  setDescription("");
+  setPrice("");
+  setDurationPrice([]);
+}
 
     return (
         <>
@@ -1031,6 +1111,7 @@ const handleRemoveCatalogImage = name =>{
           handleDeleteCatalogItem={handleDeleteCatalogItem}
           setShowCreateListing={setShowCreateListing}
           handleRemoveCatalogImage={handleRemoveCatalogImage}
+          hamdleReset={hamdleReset}
         />
             
           {showExistingCat?
@@ -1182,6 +1263,7 @@ const handleRemoveCatalogImage = name =>{
                 handleDeleteCatalogItem={handleDeleteCatalogItem}
                 setShowCreateListing={setShowCreateListing}
                 handleRemoveCatalogImage={handleRemoveCatalogImage}
+                hamdleReset={hamdleReset}
               />
             
         </>
