@@ -69,6 +69,7 @@ const initialState = {
   currentUserHasOrdersError: null,
   sendVerificationEmailInProgress: false,
   sendVerificationEmailError: null,
+  transactions:null,
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -117,7 +118,7 @@ export default function reducer(state = initialState, action = {}) {
     case FETCH_CURRENT_USER_HAS_ORDERS_REQUEST:
       return { ...state, currentUserHasOrdersError: null };
     case FETCH_CURRENT_USER_HAS_ORDERS_SUCCESS:
-      return { ...state, currentUserHasOrders: payload.hasOrders };
+      return { ...state, currentUserHasOrders: payload.hasOrders,transactions:payload.data };
     case FETCH_CURRENT_USER_HAS_ORDERS_ERROR:
       console.error(payload); // eslint-disable-line
       return { ...state, currentUserHasOrdersError: payload };
@@ -212,9 +213,9 @@ const fetchCurrentUserHasOrdersRequest = () => ({
   type: FETCH_CURRENT_USER_HAS_ORDERS_REQUEST,
 });
 
-export const fetchCurrentUserHasOrdersSuccess = hasOrders => ({
+export const fetchCurrentUserHasOrdersSuccess = (hasOrders,data) => ({
   type: FETCH_CURRENT_USER_HAS_ORDERS_SUCCESS,
-  payload: { hasOrders },
+  payload: { hasOrders,data },
 });
 
 const fetchCurrentUserHasOrdersError = e => ({
@@ -241,6 +242,9 @@ export const sendVerificationEmailError = e => ({
 
 export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
   dispatch(fetchCurrentUserHasListingsRequest());
+
+ 
+
   const { currentUser } = getState().user;
 
   if (!currentUser) {
@@ -278,16 +282,41 @@ export const fetchCurrentUserHasOrders = () => (dispatch, getState, sdk) => {
   }
 
   const params = {
-    only: 'order',
+    //only: 'order',
+    include: [
+      'listing',
+      'provider',
+      'provider.profileImage',
+      'customer',
+      'customer.profileImage',
+      'booking',
+      'metaData.offer'
+    ],
+    'fields.transaction': [
+      'processName',
+      'lastTransition',
+      'lastTransitionedAt',
+      'transitions',
+      'payinTotal',
+      'payoutTotal',
+      'lineItems',
+      'protectedData',
+      'publicData',
+      'metaData.offer'
+    ],
+    'fields.listing': ['title', 'availabilityPlan', 'publicData.listingType'],
+    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned'],
+    'fields.image': ['variants.square-small', 'variants.square-small2x'],
     page: 1,
-    perPage: 1,
+    perPage: 5,
   };
 
   return sdk.transactions
     .query(params)
     .then(response => {
       const hasOrders = response.data.data && response.data.data.length > 0;
-      dispatch(fetchCurrentUserHasOrdersSuccess(!!hasOrders));
+      console.log(response);
+      dispatch(fetchCurrentUserHasOrdersSuccess(!!hasOrders,response.data));
     })
     .catch(e => dispatch(fetchCurrentUserHasOrdersError(storableError(e))));
 };

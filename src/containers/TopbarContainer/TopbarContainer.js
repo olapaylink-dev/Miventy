@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -6,7 +6,7 @@ import loadable from '@loadable/component';
 
 import { propTypes } from '../../util/types';
 
-import { sendVerificationEmail, hasCurrentUserErrors } from '../../ducks/user.duck';
+import { sendVerificationEmail, hasCurrentUserErrors, fetchCurrentUserHasListings, fetchCurrentUserHasOrders } from '../../ducks/user.duck';
 import { logout, authenticationInProgress } from '../../ducks/auth.duck';
 import { manageDisableScrolling } from '../../ducks/ui.duck';
 
@@ -19,9 +19,13 @@ const Topbar = loadable(() => import(/* webpackChunkName: "Topbar" */ './Topbar/
  * @returns {JSX.Element}
  */
 export const TopbarContainerComponent = props => {
-  const { notificationCount = 0, ...rest } = props;
+  const {onFetchCurrentTransaction, notificationCount = 0, ...rest } = props;
   const {showPopups} = props;
   console.log(showPopups);
+
+  useEffect(()=>{
+    onFetchCurrentTransaction();
+  },[])
   
   return <Topbar notificationCount={notificationCount} {...rest} />;
 };
@@ -38,6 +42,7 @@ const mapStateToProps = state => {
     currentUserNotificationCount: notificationCount,
     sendVerificationEmailInProgress,
     sendVerificationEmailError,
+    transactions
   } = state.user;
   const hasGenericError = !!(logoutError || hasCurrentUserErrors(state));
   return {
@@ -52,14 +57,16 @@ const mapStateToProps = state => {
     sendVerificationEmailInProgress,
     sendVerificationEmailError,
     hasGenericError,
+    transactions
   };
 };
 
 const mapDispatchToProps = dispatch => ({
   onLogout: historyPush => dispatch(logout(historyPush)),
-  onManageDisableScrolling: (componentId, disableScrolling) =>
-    dispatch(manageDisableScrolling(componentId, disableScrolling)),
+  onManageDisableScrolling: (componentId, disableScrolling) => dispatch(manageDisableScrolling(componentId, disableScrolling)),
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
+  onFetchCurrentTransaction: () => dispatch(fetchCurrentUserHasOrders())
+
 });
 
 // Note: it is important that the withRouter HOC is **outside** the

@@ -177,10 +177,10 @@ const TopbarComponent = props => {
     showList2,
     setShowList1,
     setShowList2,
-
+    transactions
   } = props;
 
-console.log(parentClicked,"   zzx2222222xcc");
+console.log(transactions,"   zzx2222222xcc");
   //const [showExpandedSearchBar, setShowExpandedSearchBar] = useState(false);
   //const [showList1, setShowList1] = useState(false);
   //const [showList2, setShowList2] = useState(false);
@@ -257,6 +257,7 @@ console.log(parentClicked,"   zzx2222222xcc");
       notificationCount={notificationCount}
       currentPage={resolvedCurrentPage}
       customLinks={customLinks}
+      transactions={transactions}
     />
   );
 
@@ -387,6 +388,7 @@ const handleClick = e =>{
           pageRef={pageRef}
           parentClicked={parentClicked}
           setParentClicked={setParentClicked}
+          transactions={transactions}
         />
       </div>
       <Modal

@@ -36,7 +36,7 @@ const RatingForm = props =>{
     const [reviewText,setReviewText] = useState("");
     const [rating,setRating] = useState();
 
-    const isReady = option !== false && reviewText !== "" && rating !== undefined;
+    const isReady = reviewText !== "" && rating !== undefined;
 
     console.log(rating);
     return (
