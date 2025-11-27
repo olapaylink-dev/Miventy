@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { types as sdkTypes, createImageVariantConfig } from '../../util/sdkLoader';
 import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
 import { isTransactionsTransitionInvalidTransition, storableError } from '../../util/errors';
-import { transactionLineItems, updateTransaction } from '../../util/api';
+import { changePrice, transactionLineItems, updateTransaction } from '../../util/api';
 import * as log from '../../util/log';
 import {
   updatedEntities,
@@ -755,6 +755,18 @@ export const createProposal = (txId, offer) => (dispatch, getState, sdk) => {
           }) 
           .catch(e => {
             dispatch(fetchTransactionError(storableError(e)));
+          });
+};
+
+export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk) => {
+ 
+  return changePrice({listingId,price})
+          .then(response=>{
+            
+            console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng ",response)
+          }) 
+          .catch(e => {
+            console.log(e)
           });
 };
 

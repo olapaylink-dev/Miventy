@@ -16,6 +16,7 @@ const { Money } = types;
  * @param {*} currency should point to the currency of listing's price.
  */
 const getItemQuantityAndLineItems = (orderData, publicData, currency) => {
+
   // Check delivery method and shipping prices
   const quantity = orderData ? orderData.stockReservationQuantity : null;
   const deliveryMethod = orderData && orderData.deliveryMethod;
@@ -197,6 +198,7 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
    * By default OrderBreakdown prints line items inside LineItemUnknownItemsMaybe if the lineItem code is not recognized. */
 
   const quantityOrSeats = !!units && !!seats ? { units, seats } : { quantity };
+  //unitPrice.amount = parseInt(orderData?.protectedData?.offer?.price);
   const order = {
     code,
     unitPrice,
@@ -249,6 +251,11 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     ...providerCommissionMaybe,
     ...customerCommissionMaybe,
   ];
+
+  console.log(order,"  aaaaaaaaaaaa")
+  console.log(extraLineItems,"  yyyyyyyyyyyyy")
+  console.log(customerCommissionMaybe,"  yyyyyyyyyyyyy")
+  
 
   return lineItems;
 };

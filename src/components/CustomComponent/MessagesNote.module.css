@@ -41,6 +41,7 @@
     font-weight: 500;
     line-height: 145%; /* 23.2px */
     margin: 0px;
+    padding: 0px;
 }
 
 .p{
@@ -51,6 +52,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin: 0px;
 }
 .resize{
     width: 30px;

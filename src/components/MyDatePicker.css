@@ -1,6 +1,7 @@
 .MyDatePicker {
     float: left;
     position: relative;
+    width: 100%;
 }
 .MyDatePicker * {
     -webkit-touch-callout: none; /* iOS Safari */

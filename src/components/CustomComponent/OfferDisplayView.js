@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from './OfferDisplayView.module.css';
 import itm_img from '../../assets/itm_img.jpg';
 import classNames from "classnames";
@@ -25,8 +25,11 @@ const OfferDisplayView = props =>{
         currentUser,
         isProvider,
         setShowQuoteAccepted,
-        currentOfferInView
+        currentOfferInView,
+        setTotal
     }=props;
+
+    console.log("Here ======")
 
     const{offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
 
@@ -36,6 +39,16 @@ const OfferDisplayView = props =>{
     const {cartData,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
+
+    const platformFee = price * 0.3;
+    const processingFee = 10;
+    const total = parseFloat(price) + processingFee + platformFee;
+
+    useEffect(()=>{
+        setTotal(total);
+    },[])
+
+    console.log("Here ===2222===")
 
 const handleBack = e =>{
     setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
@@ -57,8 +70,12 @@ const handleBack = e =>{
 
                       <div className={css.flex_col}>
                         <div>
+                            <h4 className={css.description}>Title</h4>
+                            <p className={css.desc_text}>{offerTitle}</p>
+                        </div>
+                        <div>
                             <h4 className={css.description}>Description</h4>
-                            <p className={css.desc_text}></p>{offerTitle}
+                            <p className={css.desc_text}>{description}</p>
                         </div>
                         <div className={css.grid_con}>
                             <div>
@@ -85,23 +102,23 @@ const handleBack = e =>{
                         <div className={css.flex_col_2}>
                             <div className={css.flex_row_btw}>
                                 <span className={css.val}>Pricing details</span>
-                                <span className={css.val}>Amount ($)</span>
+                                <span className={css.val}>Amount (€)</span>
                             </div>
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Service Fee (Fixed)</span>
-                                <span className={css.val}>${price}</span>
+                                <span className={css.val}>€{price}</span>
                             </div>
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Platform Fee (30%)</span>
-                                <span className={css.val}>$100</span>
+                                <span className={css.val}>€{platformFee}</span>
                             </div>
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Processing Fee</span>
-                                <span className={css.val}>$10</span>
+                                <span className={css.val}>€{processingFee}</span>
                             </div>
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Total</span>
-                                <span className={css.val}>$300</span>
+                                <span className={css.val}>€{total}</span>
                             </div>
                         </div>
                         <div>

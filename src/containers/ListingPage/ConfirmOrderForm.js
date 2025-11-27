@@ -4,6 +4,7 @@ import itm_img from '../../assets/itm_img.jpg';
 import CartOptions_2 from "./CartOptions_2";
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import MyDatePicker from "../../components/MyDatePicker";
 
 const ConfirmOrderForm = props =>{
 
@@ -15,7 +16,9 @@ const ConfirmOrderForm = props =>{
         currentListing,
         setShowSuccessView,
         setSuccessMessage,
-        setShowSuccessBadge
+        setShowSuccessBadge,
+        showDatePicker,
+        setShowDatePicker
     }=props;
 
     const [eventDate, setEventDate] = useState("");
@@ -123,6 +126,14 @@ const handleSendOrderMessage = ()=>{
     setShowSuccessBadge(true);
 }
 
+const handleDateChange = value=>{
+    const date = new Date(value).toLocaleDateString();
+    const dateArr = date.split("/");
+    const year = dateArr[2];
+    const month = dateArr[0];
+    const day = dateArr[1];
+    setEventDate(`${year}-${month}-${day}`);//YYYY-MM-DD
+  }
 
     return (
             <div className={css.modal}>
@@ -186,11 +197,8 @@ const handleSendOrderMessage = ()=>{
 
                     <div className={css.form_input}>
                         <label className={css.labels}>Event date</label>
-                        <input className={css.calendar} value={eventDate} type='date' name='eventDate' onChange={
-                            event=>{
-                                setEventDate(event.target.value);
-                            }
-                        }/>
+                        
+                        <MyDatePicker currentDate={eventDate} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
                     </div>
                     
                     <div className={css.form_input}>

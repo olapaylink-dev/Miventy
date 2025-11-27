@@ -20,7 +20,7 @@ export default function MessageListItemComponent(props){
                 const listingDescription = itm?.listing?.attributes?.title;
                 const lastTransitione = itm?.attributes?.lastTransition;
 
-                console.log(itm)
+                console.log(itm,"   oooppp")
                 
                 return(
                     <div key={`messageList_${key+1}`} className={itm?.id?.uuid === currentTransaction?.id?.uuid?css.container_active: css.container} onClick={e=>handleShowTransactionDetails(itm,displayName,imgUrl,isProvider)}>

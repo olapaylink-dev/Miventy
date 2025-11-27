@@ -41,8 +41,9 @@ module.exports = (req, res) => {
           lineItems,
         },
       };
-console.log("ooooooooooooooooooooooooo555555555555oooooooooooooooooooooooooooo")
-console.log("eeeeeeeeeeeeeeeeeeeeeeee",JSON.stringify(body))
+console.log("ooooooooooooooooooooooooo555555555555oooooooooooooooooooooooooooo",bodyParams)
+console.log("ooooooooooooooooooo6666666666oooooooooooooooooooooooooooo",restParams)
+console.log("eeeeeeeeeeeeeeeeeeeeeeee",lineItems)
       if (isSpeculative) {
         return trustedSdk.transactions.transitionSpeculative(body, queryParams);
       }

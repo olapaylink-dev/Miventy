@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import css from './CreateQuoteForm.module.css';
+import MyDatePicker from "../MyDatePicker";
 
 const CreateQuoteForm = props =>{
 
@@ -20,7 +21,9 @@ const CreateQuoteForm = props =>{
         showQuotationForm,
         onCreateProposal,
         currentTransaction,
-        onSendMessage
+        onSendMessage,
+        showDatePicker,
+        setShowDatePicker
     }=props;
 
     const [offerTitle, setOfferTitle] = useState("");
@@ -60,10 +63,19 @@ const getListingCart = (cartData)=>{
     return res;
 }
 
+const handleDateChange = value=>{
+    const date = new Date(value).toLocaleDateString();
+    const dateArr = date.split("/");
+    const year = dateArr[2];
+    const month = dateArr[0];
+    const day = dateArr[1];
+    setEventDate(`${year}-${month}-${day}`);//YYYY-MM-DD
+  }
+
 const listingCart = getListingCart(cartData);
 
     return (
-            <div className={css.modal}>
+            <div className={css.modal} onClick={e=>setShowDatePicker(false)}>
                 <div className={css.container_header}>
                     <h3 className={css.header}>Create quote</h3>
                     <svg onClick={e=>setShowQuotationForm(false)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -121,11 +133,7 @@ const listingCart = getListingCart(cartData);
                         <div className={css.form_input}>
                             <label className={css.labels}>Event date</label>
                             <div className={css.flex_input}>
-                                <input value={eventDate} type='date' name='eventDate'  onChange={
-                                    event=>{
-                                        setEventDate(event.target.value);
-                                    }
-                                }/>
+                                <MyDatePicker currentDate={eventDate} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
                             </div>
                         </div>
                     </div>

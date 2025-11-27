@@ -2225,6 +2225,7 @@ const handleSubmit = e=>{
                         <option value="ZW">Zimbabwe</option>
                       </select>
 
+
                     <label className={css.labels} for={"outlined-controlled"}>Date of birth</label>
                     <input value={dateOfBirth} type='date' name='dateOfBirth' onChange={
                       event=>{

@@ -573,6 +573,8 @@ const serviceTypesRentalSpace = [
   const { formattedPrice } = priceData(price, config.currency, intl);
 
   const commonParams = { params, history, routes: routeConfiguration };
+  const [showDatePicker,setShowDatePicker] = useState(false);
+  
   const onContactUser = handleContactUser({
     ...commonParams,
     currentUser,
@@ -756,7 +758,7 @@ const handleParentClicked = (e,val)=>{
 }
 
   return (
-    <div onClick={e=>{handleParentClicked(e,true)}}>
+    <div onClick={e=>{handleParentClicked(e,true); setShowDatePicker(false)}}>
       <Page
       title={schemaTitle}
       scrollingDisabled={scrollingDisabled}
@@ -1313,6 +1315,8 @@ const handleParentClicked = (e,val)=>{
                   setShowSuccessView={setShowSuccessView}
                   setSuccessMessage={setSuccessMessage}
                   setShowSuccessBadge={setShowSuccessBadge}
+                  showDatePicker={showDatePicker}
+                  setShowDatePicker={setShowDatePicker}
                />
             </div>
           :""
@@ -1383,6 +1387,8 @@ const handleParentClicked = (e,val)=>{
               setEventLocation={setEventLocation}
               eventLocation={eventLocation}
               handleSendOrderMessage={handleSendOrderMessage}
+              showDatePicker={showDatePicker}
+              setShowDatePicker={setShowDatePicker}
             />
           </div>
         :""}

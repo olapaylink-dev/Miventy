@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { createProposal, fetchTrxMessages, sendTxMessage } from '../TransactionPage/TransactionPage.duck';
+import { changeListingPrice, createProposal, fetchTrxMessages, sendTxMessage } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -243,7 +243,8 @@ export const InboxPageComponent = props => {
     totalMessages,
     onfetchMessage,
     onCreateProposal,
-    location
+    location,
+    onChangeListingPrice
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -272,7 +273,8 @@ export const InboxPageComponent = props => {
   const [showMarkOrder,setShowMarkOrder] = useState(false);
   const [showCompleteOrder,setShowCompleteOrder] = useState(false);
   const [showRatingForm,setShowRatingForm] = useState(false);
-
+  const [showDatePicker,setShowDatePicker] = useState();
+  const [total,setTotal] = useState("");
   
   
   const pickType = lt => conf => conf.listingType === lt;
@@ -354,130 +356,138 @@ export const InboxPageComponent = props => {
   ];
 
   return (
-    <Page title={title} scrollingDisabled={scrollingDisabled}>
-      <TopbarContainer
-        mobileRootClassName={css.mobileTopbar}
-        desktopClassName={css.desktopTopbar}
-      />
+    <div onClick={e=>setShowDatePicker(false)}>
+        <Page title={title} scrollingDisabled={scrollingDisabled}>
+        <TopbarContainer
+          mobileRootClassName={css.mobileTopbar}
+          desktopClassName={css.desktopTopbar}
+        />
 
-      {isShowBookings?
-       <BookingsPage
-        transactions={transactions}
-        setShowCancelBooking={setShowCancelBooking}
-        setShowMarkOrder={setShowMarkOrder} 
-       />
-      :
-      <InboxView 
-        transactions={transactions} 
-        currentUser={currentUser} 
-        setShowQuotationForm={setShowQuotationForm} 
-        history={history}
-        onSendMessage={onSendMessage}
-        messages={messages}
-        totalMessages={totalMessages}
-        onfetchMessage={onfetchMessage}
-        setShowOrder={setShowOrder}
-        setShowOffer={setShowOffer}
-        currentOfferInView={currentOfferInView}
-        setCurrentOfferInView={setCurrentOfferInView}
-        currentTransaction={currentTransaction}
-        setCurrentTransaction={setCurrentTransaction}
-        isProvider={isProvider}
-        setIsProvider={setIsProvider}
-        setShowQuoteAccepted={setShowQuoteAccepted}
-      />
-      }
-      
-      {showQuotationForm?
-        <div  className={css.overlay}>
-            <CreateQuoteForm 
-              setShowQuotationForm={setShowQuotationForm}
-              onCreateProposal={onCreateProposal}
-              currentTransaction={currentTransaction}
-              onSendMessage={onSendMessage}
-            />
-        </div>
-      :""}
+        {isShowBookings?
+        <BookingsPage
+          transactions={transactions}
+          setShowCancelBooking={setShowCancelBooking}
+          setShowMarkOrder={setShowMarkOrder} 
+        />
+        :
+        <InboxView 
+          transactions={transactions} 
+          currentUser={currentUser} 
+          setShowQuotationForm={setShowQuotationForm} 
+          history={history}
+          onSendMessage={onSendMessage}
+          messages={messages}
+          totalMessages={totalMessages}
+          onfetchMessage={onfetchMessage}
+          setShowOrder={setShowOrder}
+          setShowOffer={setShowOffer}
+          currentOfferInView={currentOfferInView}
+          setCurrentOfferInView={setCurrentOfferInView}
+          currentTransaction={currentTransaction}
+          setCurrentTransaction={setCurrentTransaction}
+          isProvider={isProvider}
+          setIsProvider={setIsProvider}
+          setShowQuoteAccepted={setShowQuoteAccepted}
+        />
+        }
+        
+        {showQuotationForm?
+          <div  className={css.overlay}>
+              <CreateQuoteForm 
+                setShowQuotationForm={setShowQuotationForm}
+                onCreateProposal={onCreateProposal}
+                currentTransaction={currentTransaction}
+                onSendMessage={onSendMessage}
+                showDatePicker={showDatePicker}
+                setShowDatePicker={setShowDatePicker}
+              />
+          </div>
+        :""}
 
-      {showOrder?
-        <div  className={css.overlay}>
-            <OrderDisplayView 
-              setShowOrder={setShowOrder} 
-              currentTransaction={currentTransaction}
-              setShowQuotationForm={setShowQuotationForm}
-              onCreateProposal={onCreateProposal}
-              currentUser={currentUser} 
-              isProvider={isProvider}
-            />
-        </div>
-      :""}
+        {showOrder?
+          <div  className={css.overlay}>
+              <OrderDisplayView 
+                setShowOrder={setShowOrder} 
+                currentTransaction={currentTransaction}
+                setShowQuotationForm={setShowQuotationForm}
+                onCreateProposal={onCreateProposal}
+                currentUser={currentUser} 
+                isProvider={isProvider}
+              />
+          </div>
+        :""}
 
-      {showOffer?
-        <div  className={css.overlay}>
-            <OfferDisplayView
-              setShowOffer={setShowOffer} 
-              currentTransaction={currentTransaction}
-              setShowQuotationForm={setShowQuotationForm}
-              onCreateProposal={onCreateProposal}
-              currentUser={currentUser} 
-              isProvider={isProvider}
-              setShowQuoteAccepted={setShowQuoteAccepted}
-              currentOfferInView={currentOfferInView}
-            />
-        </div>
-      :""}
+        {showOffer?
+          <div  className={css.overlay}>
+              <OfferDisplayView
+                setShowOffer={setShowOffer} 
+                currentTransaction={currentTransaction}
+                setShowQuotationForm={setShowQuotationForm}
+                onCreateProposal={onCreateProposal}
+                currentUser={currentUser} 
+                isProvider={isProvider}
+                setShowQuoteAccepted={setShowQuoteAccepted}
+                currentOfferInView={currentOfferInView}
+                setTotal={setTotal}
+              />
+          </div>
+        :""}
 
-        {showQuoteAccepted?
-        <div  className={css.overlay}>
-            <QuoteAcceptedView
-              setShowQuoteAccepted={setShowQuoteAccepted} 
-              currentTransaction={currentTransaction}
-              setShowQuotationForm={setShowQuotationForm}
-              onCreateProposal={onCreateProposal}
-              currentUser={currentUser} 
-              isProvider={isProvider}
-              history={history}
-              currentOfferInView={currentOfferInView}
-            />
-        </div>
-      :""}
+          {showQuoteAccepted?
+          <div  className={css.overlay}>
+              <QuoteAcceptedView
+                setShowQuoteAccepted={setShowQuoteAccepted} 
+                currentTransaction={currentTransaction}
+                setShowQuotationForm={setShowQuotationForm}
+                onCreateProposal={onCreateProposal}
+                currentUser={currentUser} 
+                isProvider={isProvider}
+                history={history}
+                currentOfferInView={currentOfferInView}
+                onChangeListingPrice={onChangeListingPrice}
+                total={total}
+              />
+          </div>
+        :""}
 
-      {showCancelBooking?
-        <div  className={css.overlay}>
-            <CancelBooking
-              setShowCancelBooking={setShowCancelBooking}
-              setShowMarkOrder={setShowMarkOrder} 
-            />
-        </div>
-      :""}
+        {showCancelBooking?
+          <div  className={css.overlay}>
+              <CancelBooking
+                setShowCancelBooking={setShowCancelBooking}
+                setShowMarkOrder={setShowMarkOrder} 
+              />
+          </div>
+        :""}
 
-       {showMarkOrder?
-        <div  className={css.overlay}>
-            <MarkOrderAsComplete
-              setShowMarkOrder={setShowMarkOrder} 
-              setShowCompleteOrder={setShowCompleteOrder} 
-            />
-        </div>
-      :""}
+        {showMarkOrder?
+          <div  className={css.overlay}>
+              <MarkOrderAsComplete
+                setShowMarkOrder={setShowMarkOrder} 
+                setShowCompleteOrder={setShowCompleteOrder} 
+              />
+          </div>
+        :""}
 
-      {showCompleteOrder?
-        <div  className={css.overlay}>
-            <CompleteOrder
-              setShowCompleteOrder={setShowCompleteOrder} 
-              setShowRatingForm={setShowRatingForm}
-            />
-        </div>
-      :""}
+        {showCompleteOrder?
+          <div  className={css.overlay}>
+              <CompleteOrder
+                setShowCompleteOrder={setShowCompleteOrder} 
+                setShowRatingForm={setShowRatingForm}
+              />
+          </div>
+        :""}
 
-      {showRatingForm?
-        <div  className={css.overlay}>
-            <RatingForm
-              setShowRatingForm={setShowRatingForm} 
-            />
-        </div>
-      :""}
+        {showRatingForm?
+          <div  className={css.overlay}>
+              <RatingForm
+                setShowRatingForm={setShowRatingForm} 
+              />
+          </div>
+        :""}
 
-    </Page>
+      </Page>
+    </div>
+    
   );
 };
 
@@ -503,7 +513,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onSendMessage:(txId,msg) => dispatch(sendTxMessage(txId,msg)),
   onfetchMessage:(txId) => dispatch(fetchTrxMessages(txId,1)),
-  onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer))
+  onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer)),
+  onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price))
 });
 
 

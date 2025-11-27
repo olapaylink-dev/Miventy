@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from './QuoteAcceptedView.module.css';
 import itm_img from '../../assets/itm_img.jpg';
 import classNames from "classnames";
@@ -7,6 +7,9 @@ import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
 import NamedLink from "../NamedLink/NamedLink";
 import { WithProfileImageAndBioCurrentUser } from "../../containers/ListingPage/UserCard/UserCard.example";
+
+import { types as sdkTypes } from '../../util/sdkLoader';
+const { Money } = sdkTypes;
 
 
 const REQUEST_QUOTE_TABS = [
@@ -27,7 +30,9 @@ const QuoteAcceptedView = props =>{
         currentUser,
         isProvider,
         history,
-        currentOfferInView
+        currentOfferInView,
+        onChangeListingPrice,
+        total
     }=props;
 
     
@@ -47,6 +52,10 @@ const QuoteAcceptedView = props =>{
         setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
     }
 
+    useEffect(()=>{
+        onChangeListingPrice(listingId, new Money(total,"EUR"));
+        console.log(currentTransaction,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
+    },[])
 
     return (
             <div className={css.modal}>

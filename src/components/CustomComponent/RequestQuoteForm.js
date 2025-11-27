@@ -140,9 +140,7 @@ const handleSendOrderMessage = ()=>{
                 </div>
                 <h2 className={css.form_header}>Select the service type you need</h2>
                 <div className={css.container}>
-                    <div className={css.container_item}>
-                         
-                    </div>
+                   
                     <div className={css.flex_row_btw}>
                         <div>
                             {serviceType !== undefined && serviceType.length > 0?

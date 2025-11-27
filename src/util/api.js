@@ -164,3 +164,7 @@ export const sendEmail = body => {
 export const sendSms = body => {
   return post('/api/send-sms', body);
 };
+
+export const changePrice = body => {
+  return post('/api/change-price', body);
+};

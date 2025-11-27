@@ -2657,6 +2657,7 @@ function onChange(timestamp) {
                           {languages !== undefined && languages.length > 0 ?"":<span className={css2.error_msg}>Language spoken is required</span>}
                       </div>
                       
+                      
                       <div className={css.flex_col}>
                         <label className={css2.labels} for={"outlined-controlled"}>Date of birth</label>
                         <MyDatePicker currentDate={dateOfBirth} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>

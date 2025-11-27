@@ -37,6 +37,7 @@ const MessagesNote = props =>{
     return (
         <div className={css.container_main}>
             {data.data.map((itm,key)=>{
+                if(key > 3){return ""}
                 const providerId = itm.relationships.provider.data.id.uuid;
                 const isOwnListing = currentUser.id.uuid === providerId;
                 const message = itm?.attributes?.protectedData?.cartData?.message;

@@ -167,7 +167,6 @@ const EnhancedCheckoutPage = props => {
       setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
     }
     
-
   },[speculatedTransaction])
 
   const {
@@ -237,13 +236,18 @@ const EnhancedCheckoutPage = props => {
               </div>
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>
+                <span className={css.thead}>Platform fee (30%)</span>
+                <span className={css.tvalue}>${serviceFee}</span>
+              </div>
+              <div className={css.flex_row_btw}>
+                <span className={css.thead}>Processing fee</span>
+                <span className={css.tvalue}>${serviceFee}</span>
+              </div>
+              <div className={css.flex_row_btw}>
                 <span className={css.thead}>Sub total</span>
                 <span className={css.tvalue}>${subTotal}</span>
               </div>
-              <div className={css.flex_row_btw}>
-                <span className={css.thead}>Service fee</span>
-                <span className={css.tvalue}>${serviceFee}</span>
-              </div>
+              
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>
                 <span className={css.total_label}>Total</span>
