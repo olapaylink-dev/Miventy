@@ -45,7 +45,7 @@ const MarkOrderAsComplete = props =>{
                             <button className={css.btn_outline} onClick={e=>setShowMarkOrder(false)}>
                                 Cancel
                             </button>
-                            <button className={css.btn_fill} onClick={e=>{setShowCompleteOrder(true); setShowMarkOrder(false); onHandleOrderDelivered(transaction.id)}}>
+                            <button className={css.btn_fill} onClick={e=>{setShowCompleteOrder(true); setShowMarkOrder(false); onHandleOrderReceived(transaction.id)}}>
                                 Yes, Complete Order
                             </button>
                         </div>

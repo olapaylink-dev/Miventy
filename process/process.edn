@@ -81,7 +81,8 @@
 
   {:name :transition/mark-received,
    :actor :actor.role/customer,
-   :actions [{:name :action/stripe-create-payout}],
+  ;;  :actions [{:name :action/stripe-create-payout}],
+   :actions [],
    :from :state/delivered,
    :to :state/received}
   {:name :transition/auto-mark-received,

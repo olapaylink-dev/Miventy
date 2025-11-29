@@ -871,7 +871,7 @@ export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {
   dispatch(updateTransitionRequest());
   sdk.transactions.transition({
     id: trxId,
-    transition: "transition/mark-delivered",
+    transition: "transition/mark-received",
     params:{
 
     }
