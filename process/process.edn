@@ -4,6 +4,23 @@
    :actor :actor.role/customer,
    :actions [{:name :action/update-protected-data}],
    :to :state/inquiry}
+
+  {:name :transition/provider-accept
+   :actor :actor.role/provider
+   :actions [
+    {:name :action/update-protected-data}
+   ]
+   :from :state/inquiry
+   :to :state/accept} 
+
+   {:name :transition/provider-decline
+   :actor :actor.role/provider
+   :actions [
+    {:name :action/update-protected-data}
+   ]
+   :from :state/inquiry
+   :to :state/canceled} 
+
   {:name :transition/request-payment,
    :actor :actor.role/customer,
    :privileged? true,
@@ -21,7 +38,7 @@
     {:name :action/create-pending-stock-reservation}
     {:name :action/privileged-set-line-items}
     ],
-   :from :state/inquiry,
+   :from :state/accept,
    :to :state/pending-payment}
   {:name :transition/confirm-payment,
    :actor :actor.role/customer,

@@ -255,7 +255,8 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
   console.log(order,"  aaaaaaaaaaaa")
   console.log(extraLineItems,"  yyyyyyyyyyyyy")
   console.log(customerCommissionMaybe,"  yyyyyyyyyyyyy")
-  
+  console.log(customerCommissionMaybe,"  yyyyyyyyyyyyy")
+
 
   return lineItems;
 };

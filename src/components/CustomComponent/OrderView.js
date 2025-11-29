@@ -39,7 +39,7 @@ const OrderView = (props)=>{
                 </div>
                 <div className={css.time}>12:15 AM</div>
             </div>
-            {isProvider?
+            {/* {isProvider?
                 <div className={css.action_con}>
                     <button className={css.btn_fill} onClick={e=>setShowQuotationForm(true)}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +57,7 @@ const OrderView = (props)=>{
                         Decline
                     </button>
                 </div>
-            :""}
+            :""} */}
             
         </div>
     )

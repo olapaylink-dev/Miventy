@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import css from './OrderDisplayView.module.css';
 import itm_img from '../../assets/itm_img.jpg';
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
+import NamedLink from "../NamedLink/NamedLink";
+
+import { types as sdkTypes } from '../../util/sdkLoader';
+const { Money } = sdkTypes;
 
 
 const REQUEST_QUOTE_TABS = [
@@ -23,21 +27,57 @@ const OrderDisplayView = props =>{
         setShowQuotationForm,
         onCreateProposal,
         currentUser,
-        isProvider
+        isProvider,
+        onAcceptOfferFromCustomer,
+        onDeclineOfferFromCustomer,
+        acceptOfferInProgress,
+        acceptOfferError,
+        acceptOfferSuccess,
+        declineOfferInProgress,
+        declineOfferError,
+        declineOfferSuccess,
+        setShowQuoteAccepted,
+        onChangeListingPrice
     }=props;
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider,listing} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
+    const {transactionState=""} = protectedData;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
+    const {items=[]} = cartData;
+    const {ItemPrice} = items[0];
     const isOwn = provider.id.uuid === currentUser.id.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
+    const listingId = currentTransaction?.listing?.id?.uuid;
+    const slug = currentTransaction?.listing?.attributes?.title;
+    localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
 
-    console.log("vvvvvvv2222")
+    //Change the price of the listing
+    useEffect(()=>{
+        console.log("changing price eeeeee  ",ItemPrice)
+        onChangeListingPrice(listingId, new Money(ItemPrice,"EUR"));
+        console.log("changing price")
+    },[])
 
-const handleBack = e =>{
-    setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
-}
+    useEffect(()=>{
+        if(acceptOfferSuccess){
+            console.log("Offer accepted")
+            console.log(currentTransaction)
+            setShowOrder(false);
+        }
+    },[acceptOfferSuccess])
+
+    useEffect(()=>{
+        if(declineOfferSuccess){
+            console.log("Offer declined")
+            setShowOrder(false);
+        }
+    },[declineOfferSuccess])
+
+    const handleBack = e =>{
+        setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
+    }
 
     return (
             <div className={css.modal}>
@@ -52,12 +92,15 @@ const handleBack = e =>{
                 
                 
                 <div className={css.container}>
-                    {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
+                    
                         <>
                             <div className={css.flex_col}> 
                                 
                                 <h3 className={css.sub_header_2}>Catalog order</h3>
-                                <CatalogItems cartData={cartData}/>
+                                {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
+                                    <CatalogItems cartData={cartData}/>
+                                :""}
+                                
                                 <div className={css.grid_con}>
                                     <div>
                                         <div className={css.flex_row_2}>
@@ -103,20 +146,44 @@ const handleBack = e =>{
                             </div>
                             
                             {isProvider && isOwn?
-                                <div className={css.flex_row}>
-                                    <button className={css.btn_outline} onClick={handleBack}>
-                                        Decline
-                                    </button>
-                                    <button className={css.btn_fill} onClick={e=>{setShowQuotationForm(true); setShowOrder(false)}}>
-                                        Create a proposal
-                                    </button>
-                                </div>
-                            :""}
+                                <>
+                                    {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
+                                    (
+                                        transactionState === "accepted"?
+                                            "You have accepted this offer"
+                                        :
+                                        <div className={css.flex_row}>
+                                            <button className={css.btn_outline} onClick={e=>onDeclineOfferFromCustomer(currentTransaction.id)}>
+                                                Decline
+                                            </button>
+                                            <button className={css.btn_fill} onClick={e=>{onAcceptOfferFromCustomer(currentTransaction.id);}}>
+                                                Accept
+                                            </button>
+                                        </div>
+                                    )
+                                        
+                                        :
+                                        <div className={css.flex_row}>
+                                            <button className={css.btn_outline} onClick={e=>{onDeclineOfferFromCustomer(currentTransaction.id)}}>
+                                                Decline
+                                            </button>
+                                            <button className={css.btn_fill} onClick={e=>{setShowQuotationForm(true); setShowOrder(false)}}>
+                                                Create a quote
+                                            </button>
+                                        </div>
+                                    }
+                                </>
+                                
+                            :
+                            <div className={css.flex_row}>
+                                <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
+                                    Proceed to payment
+                                </NamedLink>
+                            </div>
+                            }
                         </>
                         
-                        :
-                        <p>There is no order yet.</p>
-                        }
+                       
                     
                     
                     

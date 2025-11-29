@@ -117,3 +117,17 @@
     justify-content: flex-start;
     align-items: center;
 }
+
+.accepted{
+    background-color: #ea8b1f;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    border: none;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}

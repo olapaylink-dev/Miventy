@@ -21,7 +21,7 @@ module.exports = (req, res) => {
 
     integrationSdk.listings.update({
     id: listingId,
-    price: price,
+    price: { amount: parseInt(price.amount), currency: price.currency },
     
     }, {
     expand: true,

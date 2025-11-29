@@ -100,6 +100,12 @@ const EnhancedCheckoutPage = props => {
       const [subTotal,setSubTotal] = useState(0);
       const [serviceFee,setServiceFee] = useState(0);
 
+      const {protectedData={}} = trx?.attributes;
+      const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
+      const {cartData} = cartDat !== undefined?cartDat:{};
+      const {items=[]} = cartData;
+      const {ItemPrice} = items[0];
+
 
   useEffect(() => {
     
@@ -136,7 +142,16 @@ const EnhancedCheckoutPage = props => {
         //localStorage.setItem("pageData",JSON.stringify(pageData));
         console.log(price)
         onLoadOtherPaymentMethodUrl(data);
-
+    }else if(ItemPrice !== undefined && ItemPrice !== null){
+        console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
+        const data = {};
+        data.price = ItemPrice;
+        data.title = listing?.attributes?.title;
+        data.txId = currentUser.id.uuid;
+        console.log(data);
+        //localStorage.setItem("pageData",JSON.stringify(pageData));
+        console.log(ItemPrice)
+        onLoadOtherPaymentMethodUrl(data);
     }
   }, []);
 
@@ -159,9 +174,9 @@ const EnhancedCheckoutPage = props => {
       const {attributes} = speculatedTransaction;
       const {lineItems} = attributes;
       const feePercent = getCommission(lineItems);
-      const fee = parseInt(feePercent) * parseInt(price) * 0.01;
+      const fee = parseInt(feePercent) * parseInt(price || ItemPrice) * 0.01;
       setServiceFee(fee);
-      setSubTotal((parseInt(price)+parseInt(fee)).toFixed(2));
+      setSubTotal((parseInt(price || ItemPrice)+parseInt(fee)).toFixed(2));
       //create OfferListing
       //Pass as pageData listing
       setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
@@ -208,6 +223,7 @@ const EnhancedCheckoutPage = props => {
         </div>
         <div className={css.main_section}>
           <div className={css.total}>
+
 
             <div className={css.top_con}>
                 <h6 className={css.amt_header}>Total amount</h6>
@@ -273,7 +289,6 @@ const EnhancedCheckoutPage = props => {
           </div>
           
         </div>
-        
       </div>
      
      {/* <FooterComponent/> */}

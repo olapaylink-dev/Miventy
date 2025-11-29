@@ -63,6 +63,14 @@ export const FETCH_LINE_ITEMS_REQUEST = 'app/TransactionPage/FETCH_LINE_ITEMS_RE
 export const FETCH_LINE_ITEMS_SUCCESS = 'app/TransactionPage/FETCH_LINE_ITEMS_SUCCESS';
 export const FETCH_LINE_ITEMS_ERROR = 'app/TransactionPage/FETCH_LINE_ITEMS_ERROR';
 
+export const DECLINE_OFFER_REQUEST = 'app/TransactionPage/DECLINE_OFFER_REQUEST';
+export const DECLINE_OFFER_SUCCESS = 'app/TransactionPage/DECLINE_OFFER_SUCCESS';
+export const DECLINE_OFFER_ERROR = 'app/TransactionPage/DECLINE_OFFER_ERROR';
+
+export const ACCEPT_OFFER_REQUEST = 'app/TransactionPage/ACCEPT_OFFER_REQUEST';
+export const ACCEPT_OFFER_SUCCESS = 'app/TransactionPage/ACCEPT_OFFER_SUCCESS';
+export const ACCEPT_OFFER_ERROR = 'app/TransactionPage/ACCEPT_OFFER_ERROR';
+
 // ================ Reducer ================ //
 
 const initialState = {
@@ -96,6 +104,13 @@ const initialState = {
   lineItems: null,
   fetchLineItemsInProgress: false,
   fetchLineItemsError: null,
+  acceptOfferInProgress:false,
+  acceptOfferError:null,
+  acceptOfferSuccess:false,
+  declineOfferInProgress:false,
+  declineOfferError:null,
+  declineOfferSuccess:false,
+
 };
 
 // Merge entity arrays using ids, so that conflicting items in newer array (b) overwrite old values (a).
@@ -229,6 +244,20 @@ export default function transactionPageReducer(state = initialState, action = {}
     case FETCH_LINE_ITEMS_ERROR:
       return { ...state, fetchLineItemsInProgress: false, fetchLineItemsError: payload };
 
+    case ACCEPT_OFFER_REQUEST:
+      return { ...state, acceptOfferInProgress: true, acceptOfferError: null ,acceptOfferSuccess: false };
+    case ACCEPT_OFFER_SUCCESS:
+      return { ...state, acceptOfferInProgress: false, acceptOfferSuccess: true };
+    case ACCEPT_OFFER_ERROR:
+      return { ...state, acceptOfferInProgress: false, acceptOfferError: payload ,acceptOfferSuccess: false  };
+
+    case DECLINE_OFFER_REQUEST:
+      return { ...state, declineOfferInProgress: true, declineOfferError: null };
+    case DECLINE_OFFER_SUCCESS:
+      return { ...state, declineOfferInProgress: false, lineItems: payload };
+    case DECLINE_OFFER_ERROR:
+      return { ...state, declineOfferInProgress: false, declineOfferError: payload };
+
     default:
       return state;
   }
@@ -304,6 +333,18 @@ export const fetchLineItemsError = error => ({
   error: true,
   payload: error,
 });
+
+const acceptOfferRequest = () => ({ type: ACCEPT_OFFER_REQUEST });
+const acceptOfferSuccess = response => ({
+  type: ACCEPT_OFFER_SUCCESS,
+});
+const acceptOfferError = e => ({ type: ACCEPT_OFFER_ERROR, error: true, payload: e });
+
+const declineOfferRequest = () => ({ type: DECLINE_OFFER_REQUEST });
+const declineOfferSuccess = response => ({
+  type: DECLINE_OFFER_SUCCESS,
+});
+const declineOfferError = e => ({ type: DECLINE_OFFER_ERROR, error: true, payload: e });
 
 // ================ Thunks ================ //
 
@@ -455,6 +496,7 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
       { expand: true }
     )
     .then(response => {
+      console.Console.log(response,"    aaaasss")
       const listingId = listingRelationship(response).id;
       const entities = updatedEntities({}, response.data);
       const listingRef = { id: listingId, type: 'listing' };
@@ -769,6 +811,42 @@ export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk)
             console.log(e)
           });
 };
+
+export const acceptOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
+ 
+  dispatch(acceptOfferRequest());
+  sdk.transactions.transition({
+    id: trxId,
+    transition: "transition/provider-accept",
+    params: {
+      protectedData:{transactionState:"accepted"}
+    }
+  }, {
+    expand: true
+  }).then(res => {
+    // res.data contains the response data
+    dispatch(acceptOfferSuccess())
+    dispatch(fetchTransactionSuccess(res));
+  });
+};
+
+export const declineOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
+  dispatch(declineOfferRequest());
+  sdk.transactions.transition({
+    id: trxId,
+    transition: "transition/provider-decline",
+    params: {
+      protectedData:{transactionState:"declined"}
+    }
+  }, {
+    expand: true
+  }).then(res => {
+    // res.data contains the response data
+    dispatch(declineOfferSuccess());
+  });
+};
+
+
 
 // If other party has already sent a review, we need to make transition to
 // transitions.REVIEW_2_BY_<CUSTOMER/PROVIDER>

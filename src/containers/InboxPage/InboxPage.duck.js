@@ -92,7 +92,7 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
 
   const apiQueryParams = {
     //only: onlyFilter,
-    lastTransitions: getAllTransitionsForEveryProcess(),
+    //lastTransitions: getAllTransitionsForEveryProcess(),
     include: [
       'listing',
       'provider',

@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { changeListingPrice, createProposal, fetchTrxMessages, sendTxMessage } from '../TransactionPage/TransactionPage.duck';
+import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendTxMessage } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -244,7 +244,15 @@ export const InboxPageComponent = props => {
     onfetchMessage,
     onCreateProposal,
     location,
-    onChangeListingPrice
+    onChangeListingPrice,
+    onAcceptOfferFromCustomer,
+    onDeclineOfferFromCustomer,
+    acceptOfferInProgress,
+    acceptOfferError,
+    acceptOfferSuccess,
+    declineOfferInProgress,
+    declineOfferError,
+    declineOfferSuccess,
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -413,6 +421,16 @@ export const InboxPageComponent = props => {
                 onCreateProposal={onCreateProposal}
                 currentUser={currentUser} 
                 isProvider={isProvider}
+                onAcceptOfferFromCustomer={onAcceptOfferFromCustomer}
+                onDeclineOfferFromCustomer={onDeclineOfferFromCustomer}
+                acceptOfferInProgress={acceptOfferInProgress}
+                acceptOfferError={acceptOfferError}
+                acceptOfferSuccess={acceptOfferSuccess}
+                declineOfferInProgress={declineOfferInProgress}
+                declineOfferError={declineOfferError}
+                declineOfferSuccess={declineOfferSuccess}
+                setShowQuoteAccepted={setShowQuoteAccepted}
+                onChangeListingPrice={onChangeListingPrice}
               />
           </div>
         :""}
@@ -495,7 +513,16 @@ export const InboxPageComponent = props => {
 const mapStateToProps = state => {
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
   const { currentUser, currentUserNotificationCount: providerNotificationCount } = state.user;
-  const {messages,totalMessages} = state.TransactionPage;
+  const {
+    messages,
+    totalMessages,
+    acceptOfferInProgress,
+    acceptOfferError,
+    acceptOfferSuccess,
+    declineOfferInProgress,
+    declineOfferError,
+    declineOfferSuccess,
+  } = state.TransactionPage;
   return {
     currentUser,
     fetchInProgress,
@@ -505,7 +532,13 @@ const mapStateToProps = state => {
     scrollingDisabled: isScrollingDisabled(state),
     transactions: getMarketplaceEntities(state, transactionRefs),
     messages,
-    totalMessages
+    totalMessages,
+    acceptOfferInProgress,
+    acceptOfferError,
+    acceptOfferSuccess,
+    declineOfferInProgress,
+    declineOfferError,
+    declineOfferSuccess,
   };
 };
 
@@ -514,7 +547,9 @@ const mapDispatchToProps = dispatch => ({
   onSendMessage:(txId,msg) => dispatch(sendTxMessage(txId,msg)),
   onfetchMessage:(txId) => dispatch(fetchTrxMessages(txId,1)),
   onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer)),
-  onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price))
+  onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price)),
+  onAcceptOfferFromCustomer:(trxId) =>dispatch(acceptOfferFromCustomer(trxId)),
+  onDeclineOfferFromCustomer:(trxId) =>dispatch(declineOfferFromCustomer(trxId)),
 });
 
 

@@ -293,6 +293,7 @@ const [currentListing,setCurrentListing] = useState({});
   const [listingStateToClose,setListingStateToClose] = useState("");
   const [listingAvailable,setListingAvailable] = useState(false);
   const [selectedFolderName,setSelectedFolderName] = useState("");
+  const [counter,setCounter] = useState(0);
 
   const fileInputProfile = useRef(null);
 
@@ -734,13 +735,6 @@ const [currentListing,setCurrentListing] = useState({});
         footer={<FooterContainer />}
       >
 
-
-
-
-
-
-
-
         <div className={css2.main_con}>
 
                 <div className={css2.container}>
@@ -928,6 +922,7 @@ const [currentListing,setCurrentListing] = useState({});
 
                               <div className={css2.flex_grid}>
                                 {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).map((listing,key)=>{
+                                  
                                   const {id}=listing;
                                   const {publicData,state}=listing.attributes;
                                   const {listingType,coverPhoto="",catalog=[],category} = publicData;
@@ -946,11 +941,11 @@ const [currentListing,setCurrentListing] = useState({});
                                       img = ownEntities?.image[firstImageInCatId]?.attributes?.variants["scaled-medium"]?.url;
                                     }
 
-                                    if(state === "closed"){
-                                      return "";
-                                    }else{
+                                    // if(state === "closed"){
+                                    //   return "";
+                                    // }else{
                                       
-                                    }
+                                    // }
 
                                     if(key > 2){
                                       return "";

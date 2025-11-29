@@ -569,11 +569,12 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
   const {
     listing,attributes
   }=tx;
+  console.log(tx,"       xxxxxxxxxxxxxx11111111111111111")
   const {protectedData} = attributes;
   const {offer} = protectedData;
-//isSpeculative: true, orderData, bodyParams, queryParams
-console.log(tx)
- return transitionPrivileged(
+  
+
+  return transitionPrivileged(
    {
                         isSpeculative: true,
                         orderData: {
@@ -605,7 +606,7 @@ console.log(tx)
                           "expand": true
                         }
                       }
- )
+      )
       .then(res=>{
         console.log(res)
         dispatch(speculateTransactionSuccess(res.data.data));
