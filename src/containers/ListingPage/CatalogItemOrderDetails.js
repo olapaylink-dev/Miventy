@@ -96,7 +96,7 @@ const CatalogItemOrderDetails = props =>{
 
     const handleAddItemToCart = ()=>{
 
-         //Check if there is a cart with cartId === listingId
+        //Check if there is a cart with cartId === listingId
         //Get cart with cartId === listingId
         let cartData = [];
         const dat = currentUser?.attributes?.profile?.publicData?.cartData;
@@ -131,7 +131,8 @@ const CatalogItemOrderDetails = props =>{
                     cartData:[...remainingCarts,existingCart]
                 }};
             onUpdateProfile(data);
-             console.log("Item added to existing cart")
+            setShowCartCatalogOrderDetails(false);
+            console.log("Item added to existing cart")
         }else{
             //Cart does not exist
             //Create a new cart with the listingId

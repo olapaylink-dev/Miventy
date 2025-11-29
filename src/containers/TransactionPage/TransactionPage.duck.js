@@ -71,6 +71,10 @@ export const ACCEPT_OFFER_REQUEST = 'app/TransactionPage/ACCEPT_OFFER_REQUEST';
 export const ACCEPT_OFFER_SUCCESS = 'app/TransactionPage/ACCEPT_OFFER_SUCCESS';
 export const ACCEPT_OFFER_ERROR = 'app/TransactionPage/ACCEPT_OFFER_ERROR';
 
+export const UPDATE_TRANSITION_REQUEST = 'app/TransactionPage/UPDATE_TRANSITION_REQUEST';
+export const UPDATE_TRANSITION_SUCCESS = 'app/TransactionPage/UPDATE_TRANSITION_SUCCESS';
+export const UPDATE_TRANSITION_ERROR = 'app/TransactionPage/UPDATE_TRANSITION_ERROR';
+
 // ================ Reducer ================ //
 
 const initialState = {
@@ -110,6 +114,9 @@ const initialState = {
   declineOfferInProgress:false,
   declineOfferError:null,
   declineOfferSuccess:false,
+  updateTransitionInProgress:false,
+  updateTransitionError:null,
+  updateTransitionSuccess:false,
 
 };
 
@@ -258,6 +265,13 @@ export default function transactionPageReducer(state = initialState, action = {}
     case DECLINE_OFFER_ERROR:
       return { ...state, declineOfferInProgress: false, declineOfferError: payload };
 
+    case UPDATE_TRANSITION_REQUEST:
+      return { ...state, updateTransitionInProgress: true, updateTransitionError: null,updateTransitionSuccess:false };
+    case UPDATE_TRANSITION_SUCCESS:
+      return { ...state, updateTransitionInProgress: false, updateTransitionSuccess: true };
+    case UPDATE_TRANSITION_ERROR:
+      return { ...state, updateTransitionInProgress: false, updateTransitionError: payload,updateTransitionSuccess:false };
+
     default:
       return state;
   }
@@ -345,6 +359,12 @@ const declineOfferSuccess = response => ({
   type: DECLINE_OFFER_SUCCESS,
 });
 const declineOfferError = e => ({ type: DECLINE_OFFER_ERROR, error: true, payload: e });
+
+const updateTransitionRequest = () => ({ type: DECLINE_OFFER_REQUEST });
+const updateTransitionSuccess = response => ({
+  type: DECLINE_OFFER_SUCCESS,
+});
+const updateTransitionError = e => ({ type: DECLINE_OFFER_ERROR, error: true, payload: e });
 
 // ================ Thunks ================ //
 
@@ -846,7 +866,40 @@ export const declineOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => 
   });
 };
 
+export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {
+  console.log(trxId)
+  dispatch(updateTransitionRequest());
+  sdk.transactions.transition({
+    id: trxId,
+    transition: "transition/mark-delivered",
+    params:{
 
+    }
+  }, {
+    expand: true
+  }).then(res => {
+    // res.data contains the response data
+    dispatch(updateTransitionSuccess());
+  });
+};
+
+
+export const setOrderReceived = (trxId) => (dispatch, getState, sdk) => {
+  console.log(trxId)
+  dispatch(updateTransitionRequest());
+  sdk.transactions.transition({
+    id: trxId,
+    transition: "transition/mark-received",
+    params:{
+      
+    }
+  }, {
+    expand: true
+  }).then(res => {
+    // res.data contains the response data
+    dispatch(updateTransitionSuccess());
+  });
+};
 
 // If other party has already sent a review, we need to make transition to
 // transitions.REVIEW_2_BY_<CUSTOMER/PROVIDER>

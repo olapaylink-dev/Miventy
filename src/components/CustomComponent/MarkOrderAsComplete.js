@@ -14,9 +14,13 @@ const MarkOrderAsComplete = props =>{
         setShowMarkOrder,
         isProvider=false,
         isOwn=false,
-        setShowCompleteOrder
+        setShowCompleteOrder,
+        transaction,
+        onHandleOrderDelivered,
+        onHandleOrderReceived
     }=props;
 
+    console.log(transaction)
     
     return (
             <div className={css.modal}>
@@ -41,7 +45,7 @@ const MarkOrderAsComplete = props =>{
                             <button className={css.btn_outline} onClick={e=>setShowMarkOrder(false)}>
                                 Cancel
                             </button>
-                            <button className={css.btn_fill} onClick={e=>{setShowCompleteOrder(true); setShowMarkOrder(false)}}>
+                            <button className={css.btn_fill} onClick={e=>{setShowCompleteOrder(true); setShowMarkOrder(false); onHandleOrderDelivered(transaction.id)}}>
                                 Yes, Complete Order
                             </button>
                         </div>

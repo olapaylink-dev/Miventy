@@ -2,7 +2,7 @@ import css from './BookingsCard.module.css';
 import icon1 from '../../assets/images/AlexJohnson.png';
 
 const BookingsCard = props=>{
-    const {data,setShowCancelBooking,setShowMarkOrder} = props;
+    const {data,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction} = props;
     const {provider,listing,attributes} = data;
     const displayName = provider?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
@@ -39,7 +39,7 @@ const BookingsCard = props=>{
             
             <div className={css.flex_btw}>
                 <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
-                <button onClick={e=>setShowMarkOrder(true)} className={css.fill_btn}>Mark as completed</button>
+                <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
             </div>
         </div>
     )

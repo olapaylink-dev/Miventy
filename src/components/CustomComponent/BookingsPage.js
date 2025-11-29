@@ -8,7 +8,8 @@ import BookingsList from './BookingsList';
 const BookingsPage = props =>{
   const {transactions,
     setShowCancelBooking,
-    setShowMarkOrder
+    setShowMarkOrder,
+    setCurrentTransaction
   } = props;
   console.log(transactions,"    ssssdddddmmmm")
     return (
@@ -28,7 +29,12 @@ const BookingsPage = props =>{
                       &nbsp; / <span className={css.item_list}>My Bookings</span></span>
                   </div>
             </div>
-            <BookingsList transactions={transactions} setShowCancelBooking={setShowCancelBooking} setShowMarkOrder={setShowMarkOrder} />
+            <BookingsList 
+              transactions={transactions} 
+              setShowCancelBooking={setShowCancelBooking} 
+              setShowMarkOrder={setShowMarkOrder} 
+              setCurrentTransaction={setCurrentTransaction}
+             />
         </div>
          
     )

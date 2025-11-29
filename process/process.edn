@@ -63,8 +63,11 @@
    :actions [{:name :action/stripe-create-payout}],
    :from :state/purchased,
    :to :state/received}
+
+
+   
   {:name :transition/mark-delivered,
-   :actor :actor.role/provider,
+   :at {:fn/timepoint [:time/first-entered-state :state/purchased]},
    :actions [],
    :from :state/purchased,
    :to :state/delivered}
@@ -73,6 +76,9 @@
    :actions [],
    :from :state/purchased,
    :to :state/delivered}
+
+
+
   {:name :transition/mark-received,
    :actor :actor.role/customer,
    :actions [{:name :action/stripe-create-payout}],
@@ -82,7 +88,7 @@
    :at
    {:fn/plus
     [{:fn/timepoint [:time/first-entered-state :state/delivered]}
-     {:fn/period ["P14D"]}]},
+     {:fn/period ["PT15M"]}]},
    :actions [{:name :action/stripe-create-payout}],
    :from :state/delivered,
    :to :state/received}
@@ -113,7 +119,7 @@
    :at
    {:fn/plus
     [{:fn/timepoint [:time/first-entered-state :state/purchased]}
-     {:fn/period ["P14D"]}]},
+     {:fn/period ["PT15M"]}]},
    :actions
    [{:name :action/calculate-full-refund}
     {:name :action/stripe-refund-payment}

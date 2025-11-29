@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendTxMessage } from '../TransactionPage/TransactionPage.duck';
+import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -253,6 +253,8 @@ export const InboxPageComponent = props => {
     declineOfferInProgress,
     declineOfferError,
     declineOfferSuccess,
+    onHandleOrderDelivered,
+    onHandleOrderReceived
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -363,6 +365,8 @@ export const InboxPageComponent = props => {
     },
   ];
 
+  console.log("hereeeeeeeeeeeeeeeeeeeeeee")
+
   return (
     <div onClick={e=>setShowDatePicker(false)}>
         <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -376,6 +380,7 @@ export const InboxPageComponent = props => {
           transactions={transactions}
           setShowCancelBooking={setShowCancelBooking}
           setShowMarkOrder={setShowMarkOrder} 
+          setCurrentTransaction={setCurrentTransaction}
         />
         :
         <InboxView 
@@ -477,11 +482,15 @@ export const InboxPageComponent = props => {
           </div>
         :""}
 
+
         {showMarkOrder?
           <div  className={css.overlay}>
               <MarkOrderAsComplete
                 setShowMarkOrder={setShowMarkOrder} 
                 setShowCompleteOrder={setShowCompleteOrder} 
+                transaction={currentTransaction}
+                onHandleOrderDelivered={onHandleOrderDelivered}
+                onHandleOrderReceived={onHandleOrderReceived}
               />
           </div>
         :""}
@@ -550,6 +559,8 @@ const mapDispatchToProps = dispatch => ({
   onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price)),
   onAcceptOfferFromCustomer:(trxId) =>dispatch(acceptOfferFromCustomer(trxId)),
   onDeclineOfferFromCustomer:(trxId) =>dispatch(declineOfferFromCustomer(trxId)),
+  onHandleOrderDelivered:(trxId) =>dispatch(setOrderDelivered(trxId)),
+  onHandleOrderReceived:(trxId) =>dispatch(setOrderReceived(trxId)),
 });
 
 

@@ -49,3 +49,43 @@
   min-width: 600px;
   max-width: 1000px;
 }
+
+
+
+@media only screen and (max-width: 1440px) {
+   .main_con{
+      margin: 50px 2%;
+  }
+}
+    
+@media only screen and (max-width: 1074px) {
+
+  .main_con{
+      margin: 50px 5%;
+  }
+  
+}
+
+@media only screen and (max-width: 1024px) {
+    .main_con{
+        margin: 50px 5%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  .main_con{
+      margin: 50px 5%;
+  }
+
+}
+
+@media only screen and (max-width: 412px) {
+  
+}
+
+@media only screen and (max-width: 360px) {
+   
+}
+    
+      
+      
