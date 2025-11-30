@@ -175,11 +175,16 @@ const OrderDisplayView = props =>{
                                 </>
                                 
                             :
-                            <div className={css.flex_row}>
-                                <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
-                                    Proceed to payment
-                                </NamedLink>
-                            </div>
+                                (
+                                    transactionState === "accepted"?
+                                    <div className={css.flex_row}>
+                                        <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
+                                            Proceed to payment
+                                        </NamedLink>
+                                    </div>:
+                                    <p>Waiting for Provider to accept your Order, before you can proceed to payment.</p>
+                                )
+                            
                             }
                         </>
                         
