@@ -9,7 +9,9 @@ const BookingsPage = props =>{
   const {transactions,
     setShowCancelBooking,
     setShowMarkOrder,
-    setCurrentTransaction
+    setCurrentTransaction,
+    currentUser,
+    setShowRatingForm
   } = props;
   console.log(transactions,"    ssssdddddmmmm")
     return (
@@ -34,6 +36,8 @@ const BookingsPage = props =>{
               setShowCancelBooking={setShowCancelBooking} 
               setShowMarkOrder={setShowMarkOrder} 
               setCurrentTransaction={setCurrentTransaction}
+              currentUser={currentUser}
+              setShowRatingForm={setShowRatingForm}
              />
         </div>
          

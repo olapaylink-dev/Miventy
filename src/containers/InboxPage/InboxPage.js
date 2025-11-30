@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
+import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendReview, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -60,6 +60,7 @@ import CancelBooking from '../../components/CustomComponent/CancelBooking';
 import MarkOrderAsComplete from '../../components/CustomComponent/MarkOrderAsComplete';
 import CompleteOrder from '../../components/CustomComponent/CompleteOrder';
 import RatingForm from '../../components/CustomComponent/RatingForm';
+import SuccessView from '../../components/SuccessView/SuccessView';
 
 // Check if the transaction line-items use booking-related units
 const getUnitLineItem = lineItems => {
@@ -254,7 +255,10 @@ export const InboxPageComponent = props => {
     declineOfferError,
     declineOfferSuccess,
     onHandleOrderDelivered,
-    onHandleOrderReceived
+    onHandleOrderReceived,
+    onSendProviderReview,
+    onSendCustomerReview,
+    onSendReview
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -285,87 +289,51 @@ export const InboxPageComponent = props => {
   const [showRatingForm,setShowRatingForm] = useState(false);
   const [showDatePicker,setShowDatePicker] = useState();
   const [total,setTotal] = useState("");
-  
-  
-  const pickType = lt => conf => conf.listingType === lt;
-  const findListingTypeConfig = publicData => {
-    const listingTypeConfigs = config.listing?.listingTypes;
-    const { listingType } = publicData || {};
-    const foundConfig = listingTypeConfigs?.find(pickType(listingType));
-    return foundConfig;
-  };
-  const toTxItem = tx => {
-    const transactionRole = isOrders ? TX_TRANSITION_ACTOR_CUSTOMER : TX_TRANSITION_ACTOR_PROVIDER;
-    let stateData = null;
+  const [showSuccessView,setShowSuccessView] = useState(false);
+  const [successMessage,setSuccessMessage] = useState("Your review was successfully added");
+
+  const processName = resolveLatestProcessName(currentTransaction?.attributes?.processName);
+    let process = null;
     try {
-      stateData = getStateData({ transaction: tx, transactionRole, intl });
+      process = processName ? getProcess(processName) : null;
     } catch (error) {
-      // If stateData is missing, omit the transaction from InboxItem list.
+      // Process was not recognized!
     }
+  
 
-    const publicData = tx?.listing?.attributes?.publicData || {};
-    const foundListingTypeConfig = findListingTypeConfig(publicData);
-    const { transactionType, stockType, availabilityType } = foundListingTypeConfig || {};
-    const process = tx?.attributes?.processName || transactionType?.transactionType;
-    const transactionProcess = resolveLatestProcessName(process);
-    const isBooking = isBookingProcess(transactionProcess);
+const onSubmitReview = values => {
+    const { reviewRating, reviewContent,isProvider} = values;
+    const rating = Number.parseInt(reviewRating, 10);
+    const { states, transitions } = process;
+    const transitionOptions =
+      !isProvider
+        ? {
+            reviewAsFirst: transitions.REVIEW_1_BY_CUSTOMER,
+            reviewAsSecond: transitions.REVIEW_2_BY_CUSTOMER,
+            hasOtherPartyReviewedFirst: process
+              .getTransitionsToStates([states.REVIEWED_BY_PROVIDER])
+              .includes(currentTransaction.attributes.lastTransition),
+          }
+        : {
+            reviewAsFirst: transitions.REVIEW_1_BY_PROVIDER,
+            reviewAsSecond: transitions.REVIEW_2_BY_PROVIDER,
+            hasOtherPartyReviewedFirst: process
+              .getTransitionsToStates([states.REVIEWED_BY_CUSTOMER])
+              .includes(currentTransaction.attributes.lastTransition),
+          };
+    const params = { reviewRating: rating, reviewContent };
 
-    // Render InboxItem only if the latest transition of the transaction is handled in the `txState` function.
-    return stateData ? (
-      <li key={tx.id.uuid} className={css.listItem}>
-        <InboxItem
-          transactionRole={transactionRole}
-          tx={tx}
-          intl={intl}
-          stateData={stateData}
-          stockType={stockType}
-          availabilityType={availabilityType}
-          isBooking={isBooking}
-          history={history}
-        />
-      </li>
-    ) : null;
+    onSendReview(currentTransaction, transitionOptions, params, config)
+      .then(r => {
+        setReviewModalOpen(false);
+        setReviewSubmitted(true);
+      })
+      .catch(e => {
+        // Do nothing.
+      });
   };
 
-  const hasOrderOrSaleTransactions = (tx, isOrdersTab, user) => {
-    return isOrdersTab
-      ? user?.id && tx && tx.length > 0 && tx[0].customer.id.uuid === user?.id?.uuid
-      : user?.id && tx && tx.length > 0 && tx[0].provider.id.uuid === user?.id?.uuid;
-  };
-  const hasTransactions =
-    !fetchInProgress && hasOrderOrSaleTransactions(transactions, isOrders, currentUser);
 
-  const tabs = [
-    {
-      text: (
-        <span>
-          <FormattedMessage id="InboxPage.ordersTabTitle" />
-        </span>
-      ),
-      selected: isOrders,
-      linkProps: {
-        name: 'InboxPage',
-        params: { tab: 'orders' },
-      },
-    },
-    {
-      text: (
-        <span>
-          <FormattedMessage id="InboxPage.salesTabTitle" />
-          {providerNotificationCount > 0 ? (
-            <NotificationBadge count={providerNotificationCount} />
-          ) : null}
-        </span>
-      ),
-      selected: !isOrders,
-      linkProps: {
-        name: 'InboxPage',
-        params: { tab: 'sales' },
-      },
-    },
-  ];
-
-  console.log("hereeeeeeeeeeeeeeeeeeeeeee")
 
   return (
     <div onClick={e=>setShowDatePicker(false)}>
@@ -381,6 +349,8 @@ export const InboxPageComponent = props => {
           setShowCancelBooking={setShowCancelBooking}
           setShowMarkOrder={setShowMarkOrder} 
           setCurrentTransaction={setCurrentTransaction}
+          currentUser={currentUser}
+          setShowRatingForm={setShowRatingForm}
         />
         :
         <InboxView 
@@ -508,9 +478,23 @@ export const InboxPageComponent = props => {
           <div  className={css.overlay}>
               <RatingForm
                 setShowRatingForm={setShowRatingForm} 
+                currentUser={currentUser}
+                currentTransaction={currentTransaction}
+                onSendProviderReview={onSubmitReview}
+                onSendCustomerReview={onSubmitReview}
+                setShowSuccessView={setShowSuccessView}
               />
           </div>
         :""}
+
+         {showSuccessView?
+                <div className={css.overlay}>
+                  <SuccessView
+                    setShowSuccessView={setShowSuccessView} message={successMessage}
+                   />
+                </div>
+                  
+                :""}
 
       </Page>
     </div>
@@ -561,6 +545,9 @@ const mapDispatchToProps = dispatch => ({
   onDeclineOfferFromCustomer:(trxId) =>dispatch(declineOfferFromCustomer(trxId)),
   onHandleOrderDelivered:(trxId) =>dispatch(setOrderDelivered(trxId)),
   onHandleOrderReceived:(trxId) =>dispatch(setOrderReceived(trxId)),
+  onSendProviderReview:(trxId) =>dispatch(sendReview(trxId)),
+  onSendCustomerReview:(trxId) =>dispatch(sendReview(trxId)),
+  onSendReview: (tx, transitionOptions, params, config) => dispatch(sendReview(tx, transitionOptions, params, config)),
 });
 
 

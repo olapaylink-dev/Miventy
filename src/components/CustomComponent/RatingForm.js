@@ -28,9 +28,17 @@ const StyledRating = styled(Rating)({
 const RatingForm = props =>{
     const {
         setShowRatingForm,
-        isProvider=false,
-        isOwn=false
+        isOwn=false,
+        currentUser,
+        currentTransaction,
+        onSendProviderReview,
+        onSendCustomerReview,
+        setShowSuccessView
     }=props;
+
+    const {provider,listing,attributes} = currentTransaction;
+    const isProvider = provider.id.uuid === currentUser.id.uuid;
+
 
     const [option,setOption] = useState(false);
     const [reviewText,setReviewText] = useState("");
@@ -116,13 +124,21 @@ const RatingForm = props =>{
                 
                 <div className={css.container}>
                     
-                    {!isProvider && !isOwn?
+                    {isProvider?
                         <div className={css.flex_row}>
-                            <button className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} disabled={!isReady}>
+                            <button className={css.btn_fill} 
+                            onClick={e=>{onSendProviderReview({reviewRating:rating,reviewContent:reviewText,isProvider:true});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
                                 Publish review
                             </button>
                         </div>
-                    :""}
+                    :
+                        <div className={css.flex_row}>
+                            <button className={css.btn_fill} 
+                            onClick={e=>{onSendCustomerReview({reviewRating:rating,reviewContent:reviewText,isProvider:false});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
+                                Publish review
+                            </button>
+                        </div>
+                    }
                     
                 </div>
             </div>

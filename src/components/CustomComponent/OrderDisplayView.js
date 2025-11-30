@@ -45,8 +45,8 @@ const OrderDisplayView = props =>{
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const {transactionState=""} = protectedData;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
-    const {items=[]} = cartData;
-    const {ItemPrice} = items[0];
+    const {items=[]} = cartData  ||  {};
+    const {ItemPrice} = items[0] || {};
     const isOwn = provider.id.uuid === currentUser.id.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
     const listingId = currentTransaction?.listing?.id?.uuid;

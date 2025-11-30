@@ -357,7 +357,11 @@ const TopbarDesktop = props => {
           <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
             My Bookings
           </NamedLink>
-        :""}
+        :
+          <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
+            Bookings
+          </NamedLink>
+        }
         
         
         <div className={css.trans_text}>

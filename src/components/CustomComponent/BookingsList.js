@@ -2,7 +2,7 @@ import css from './BookingsList.module.css';
 import BookingsCard from "./BookingsCard";
 
 const BookingsList = props =>{
-    const {transactions,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction} = props;
+    const {transactions,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction,currentUser,setShowRatingForm} = props;
     return (
         <div className={css.container}>
             {transactions.length > 0 && transactions.map((itm,key)=>{
@@ -13,6 +13,8 @@ const BookingsList = props =>{
                         setShowCancelBooking={setShowCancelBooking} 
                         setShowMarkOrder={setShowMarkOrder}
                         setCurrentTransaction={setCurrentTransaction}
+                        currentUser={currentUser}
+                        setShowRatingForm={setShowRatingForm}
                     />
                 )
             })}
