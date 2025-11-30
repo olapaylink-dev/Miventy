@@ -651,6 +651,7 @@ export function compareAndSetStock(listingId, oldTotal, newTotal) {
 export function getCurrentListing(listingId,lastAction) {
   return (dispatch, getState, sdk) => {
   dispatch(updateListingRequest())
+  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
         return sdk.ownListings.show(
           {
             id:listingId,
@@ -688,6 +689,7 @@ export function getCurrentListing(listingId,lastAction) {
         .then(res => {
           
           res.lastAction = lastAction;
+          console.log(res,"   oooopppppaaaa")
            dispatch(updateListingSuccess(res));
            dispatch(addMarketplaceEntities(res));
            

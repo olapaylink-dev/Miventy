@@ -288,6 +288,8 @@ export const queryOwnListings = queryParams => (dispatch, getState, sdk) => {
   return sdk.ownListings
     .query(params)
     .then(response => {
+      const remaining = response.data.data.filter(itm=>itm.attributes.state !== "closed");
+      response.data.data = remaining;
       dispatch(addOwnEntities(response));
       dispatch(queryListingsSuccess(response));
       return response;
@@ -378,6 +380,7 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
     .then(response => {
       // const currentUser = response[0]?.data?.data;
       const ownListings = response[1]?.data?.data;
+      console.log(ownListings,"  cccccccccccc")
       return ownListings;
     })
     .catch(e => {
