@@ -7,6 +7,7 @@ const BookingsCard = props=>{
     const displayName = provider?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
     const {protectedData} = attributes;
+    const {transactionState=""} = protectedData;
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
     const {eventDate="",eventLocation=[]} = protectedData?.cartData;
     const location = eventLocation[0]?.result?.place_name;
@@ -43,10 +44,17 @@ const BookingsCard = props=>{
                     <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Add a review</button>
                 </div>
             :
+            (transactionState === "reviewed"?
+                <div className={css.flex_btw}>
+                    <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Edit review</button>
+                </div>
+                :
                 <div className={css.flex_btw}>
                     <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
                     <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
                 </div>
+            )
+                
             }
             
         </div>
