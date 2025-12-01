@@ -794,6 +794,7 @@ export const sendTxMessage = (txId, message) => (dispatch, getState, sdk) => {
         .then((res) => {
           console.log(res);
           dispatch(sendMessageSuccess());
+          dispatch(acceptOfferFromCustomer(txId))
           return messageId;
         })
         .catch(() => dispatch(sendMessageSuccess()));
@@ -821,6 +822,8 @@ export const createProposal = (txId, offer) => (dispatch, getState, sdk) => {
 };
 
 export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk) => {
+
+  console.log(price, "  bbbbbbbbbbb")
  
   return changePrice({listingId,price})
           .then(response=>{

@@ -11,6 +11,9 @@ module.exports = (req, res) => {
   const { isSpeculative, orderData, bodyParams, queryParams } = req.body;
 
 
+  console.log(req.body)
+
+
   const sdk = getSdk(req, res);
   let lineItems = null;
   const listingPromise = () => sdk.listings.show({ id: bodyParams?.params?.listingId });
@@ -41,9 +44,9 @@ module.exports = (req, res) => {
           lineItems,
         },
       };
-console.log("ooooooooooooooooooooooooo5555New55555555oooooooooooooooooooooooooooo",bodyParams)
-console.log("ooooooooooooooooooo66666New66666oooooooooooooooooooooooooooo",restParams)
-console.log("eeeeeeeeeNeweeeeeeeeeeeeeee",lineItems)
+// console.log("ooooooooooooooooooooooooo5555New55555555oooooooooooooooooooooooooooo",bodyParams)
+// console.log("ooooooooooooooooooo66666New66666oooooooooooooooooooooooooooo",restParams)
+// console.log("eeeeeeeeeNeweeeeeeeeeeeeeee",lineItems)
       if (isSpeculative) {
         return trustedSdk.transactions.transitionSpeculative(body, queryParams);
       }

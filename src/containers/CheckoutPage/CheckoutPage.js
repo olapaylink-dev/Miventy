@@ -107,7 +107,7 @@ const EnhancedCheckoutPage = props => {
       const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
       const {cartData} = cartDat !== undefined?cartDat:{};
       const {items=[]} = cartData;
-      const {ItemPrice} = items[0];
+      const {ItemPrice=""} = items.length > 0 ? items[0] : {};
 
       const getPrice = lineItem =>{
         let val = 0;
@@ -317,7 +317,7 @@ const EnhancedCheckoutPage = props => {
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Quantity</span>
-                <span className={css.tvalue}>£{quantity}</span>
+                <span className={css.tvalue}>{quantity}</span>
               </div>
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>

@@ -586,7 +586,7 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
                           id:tx.id,
                           transition: "transition/request-payment-after-inquiry",
                           params: {
-                            stockReservationQuantity: quantity,
+                            stockReservationQuantity: quantity || 1,
                             listingId: {
                               "_sdkType": "UUID",
                               "uuid": listing.id.uuid

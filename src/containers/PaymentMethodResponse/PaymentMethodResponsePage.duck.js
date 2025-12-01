@@ -205,6 +205,7 @@ export const confirmPaymment = (speculatedTx,listingId)=>async(dispatch,getState
             .then(response => {
               const order = response.data.data;
               dispatch(confirmPaymentSuccess(order.id));
+              localStorage.removeItem("Transaction");
               return order;
             })
             .catch(e => {
