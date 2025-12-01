@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendReview, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
+import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendReview, sendReviewByProvider, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -480,7 +480,7 @@ const onSubmitReview = values => {
                 setShowRatingForm={setShowRatingForm} 
                 currentUser={currentUser}
                 currentTransaction={currentTransaction}
-                onSendProviderReview={onSubmitReview}
+                onSendProviderReview={onSendProviderReview}
                 onSendCustomerReview={onSubmitReview}
                 setShowSuccessView={setShowSuccessView}
               />
@@ -545,7 +545,7 @@ const mapDispatchToProps = dispatch => ({
   onDeclineOfferFromCustomer:(trxId) =>dispatch(declineOfferFromCustomer(trxId)),
   onHandleOrderDelivered:(trxId) =>dispatch(setOrderDelivered(trxId)),
   onHandleOrderReceived:(trxId) =>dispatch(setOrderReceived(trxId)),
-  onSendProviderReview:(trxId) =>dispatch(sendReview(trxId)),
+  onSendProviderReview:(data) =>dispatch(sendReviewByProvider(data)),
   onSendCustomerReview:(trxId) =>dispatch(sendReview(trxId)),
   onSendReview: (tx, transitionOptions, params, config) => dispatch(sendReview(tx, transitionOptions, params, config)),
 });

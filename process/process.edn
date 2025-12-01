@@ -157,7 +157,7 @@
    :from :state/completed,
    :to :state/reviewed-by-provider}
   {:name :transition/review-2-by-provider,
-   :at {:fn/timepoint [:time/first-entered-state :state/reviewed]},
+   :actor :actor.role/provider,
    :actions
    [{:name :action/post-review-by-provider}
     {:name :action/publish-reviews}],
@@ -169,7 +169,7 @@
    :from :state/completed,
    :to :state/reviewed-by-customer}
   {:name :transition/review-2-by-customer,
-   :at {:fn/timepoint [:time/first-entered-state :state/reviewed]},
+   :actor :actor.role/customer,
    :actions
    [{:name :action/post-review-by-customer}
     {:name :action/publish-reviews}],

@@ -905,7 +905,7 @@ export const setOrderReceived = (trxId) => (dispatch, getState, sdk) => {
 // transitions.REVIEW_2_BY_<CUSTOMER/PROVIDER>
 const sendReviewAsSecond = (txId, transition, params, dispatch, sdk, config) => {
   const include = REVIEW_TX_INCLUDES;
-
+console.log("Sending review --22222222222--")
   return sdk.transactions
     .transition(
       { id: txId, transition, params },
@@ -932,7 +932,7 @@ const sendReviewAsSecond = (txId, transition, params, dispatch, sdk, config) => 
 // by calling sendReviewAsSecond().
 const sendReviewAsFirst = (txId, transition, params, dispatch, sdk, config) => {
   const include = REVIEW_TX_INCLUDES;
-
+console.log("Sending review --111111111111--")
   return sdk.transactions
     .transition(
       { id: txId, transition, params },
@@ -962,6 +962,7 @@ export const sendReview = (tx, transitionOptionsInfo, params, config) => (
   getState,
   sdk
 ) => {
+  console.log("Sending review ----")
   const { reviewAsFirst, reviewAsSecond, hasOtherPartyReviewedFirst } = transitionOptionsInfo;
   dispatch(sendReviewRequest());
 
@@ -1001,6 +1002,22 @@ export const fetchTransactionLineItems = ({ orderData, listingId, isOwnListing }
         orderData,
       });
     });
+};
+
+export const sendReviewByProvider = ({txId,reviewRating,reviewContent}) => (dispatch, getState, sdk) => {
+  sdk.transactions
+    .transition(
+      { id: txId, transition:"transition/review-2-by-provider",params:{reviewRating:parseInt(reviewRating),reviewContent} }
+    )
+    .then(response => {
+      console.log("Sending transitions   ---------")
+      dispatch(addMarketplaceEntities(response));
+      dispatch(sendReviewSuccess());
+      return response;
+    })
+    .catch(e => {
+      console.log(e,"   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+    })
 };
 
 // loadData is a collection of async calls that need to be made
