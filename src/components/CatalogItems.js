@@ -8,14 +8,14 @@ const CatalogItems = props =>{
     return (
             <div className={css.container}>
                 {items !== undefined && items.map((itm,key)=>{
-                    const {quantity,message,catalogImages,ItemPrice} = itm;
+                    const {quantity,message,catalogImages,ItemPrice,total} = itm;
                     const {imgUrl} = catalogImages[0];
                     return (
                         <div className={css.items}>
                             <img  src={imgUrl} className={css.card_img}/>
                             <p>{message}</p>
                             <p>Quantity: {quantity}</p>
-                            <p className={css.price}>€{ItemPrice}</p>
+                            <p className={css.price}>€{total}</p>
                         </div>
                     )
                 })}

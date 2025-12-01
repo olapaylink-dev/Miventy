@@ -571,8 +571,9 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
   }=tx;
   console.log(tx,"       xxxxxxxxxxxxxx11111111111111111")
   const {protectedData} = attributes;
-  const {offer} = protectedData;
-  
+  const {offer,cartData} = protectedData;
+  const {items=[]} = cartData?.cartData  ||  {};
+  const {ItemPrice,quantity} = items[0] || {};
 
   return transitionPrivileged(
    {
@@ -585,7 +586,7 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
                           id:tx.id,
                           transition: "transition/request-payment-after-inquiry",
                           params: {
-                            stockReservationQuantity: 2,
+                            stockReservationQuantity: quantity,
                             listingId: {
                               "_sdkType": "UUID",
                               "uuid": listing.id.uuid

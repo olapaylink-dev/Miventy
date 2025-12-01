@@ -243,6 +243,30 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
       ]
     : [];
 
+  const resolveProcessingFeePrice = (listing) => {
+    const publicData = listing.attributes.publicData;
+    const processingFee = publicData && publicData.processingFee;
+    const { amount, currency } = processingFee;
+  
+    if (amount && currency) {
+      return new Money(amount, currency);
+    }
+  
+    return null;
+  };
+
+  const processingFeePrice = resolveProcessingFeePrice(listing);
+  const processingFee = processingFeePrice
+    ? [
+        {
+          code: 'line-item/processing-fee',
+          unitPrice: processingFeePrice,
+          quantity: 1,
+          includeFor: ['customer', 'provider'],
+        },
+      ]
+    : [];
+
   // Let's keep the base price (order) as first line item and provider and customer commissions as last.
   // Note: the order matters only if OrderBreakdown component doesn't recognize line-item.
   const lineItems = [
@@ -250,12 +274,10 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     ...extraLineItems,
     ...providerCommissionMaybe,
     ...customerCommissionMaybe,
+    ...processingFee
   ];
 
-  console.log(order,"  aaaaaaaaaaaa")
-  console.log(extraLineItems,"  yyyyyyyyyyyyy")
-  console.log(customerCommissionMaybe,"  yyyyyyyyyyyyy")
-  console.log(customerCommissionMaybe,"  yyyyyyyyyyyyy")
+  console.log(lineItems,"  yyyyyyyyyyyyy")
 
 
   return lineItems;

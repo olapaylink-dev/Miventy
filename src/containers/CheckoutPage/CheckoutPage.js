@@ -99,12 +99,45 @@ const EnhancedCheckoutPage = props => {
       const {listingType=""} = listing?.attributes?.publicData;
       const [subTotal,setSubTotal] = useState(0);
       const [serviceFee,setServiceFee] = useState(0);
+      const [processingFee,setProcessingFee] = useState(0);
+      const [quantity,setQuantity] = useState(0);
+      const [itemPrice,setPrice] = useState(0);
 
       const {protectedData={}} = trx?.attributes;
       const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
       const {cartData} = cartDat !== undefined?cartDat:{};
       const {items=[]} = cartData;
       const {ItemPrice} = items[0];
+
+      const getPrice = lineItem =>{
+        let val = 0;
+        lineItem.map((itm,key)=>{
+          if(itm.code === "line-item/item"){
+            val = itm.unitPrice.amount;
+          }
+        })
+        return val;
+      }
+
+      const getQuantity = lineItem =>{
+        let val = 0;
+        lineItem.map((itm,key)=>{
+          if(itm.code === "line-item/item"){
+            val = itm.quantity.d[0];
+          }
+        })
+        return val;
+      }
+
+      const getProcessingFee = lineItem =>{
+        let val = 0;
+        lineItem.map((itm,key)=>{
+          if(itm.code === "line-item/processing-fee"){
+            val = itm.lineTotal.amount;
+          }
+        })
+        return val;
+      }
 
 
   useEffect(() => {
@@ -132,27 +165,27 @@ const EnhancedCheckoutPage = props => {
     // }
     setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
 
-    if(price !== undefined && price !== null){
-        console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
-        const data = {};
-        data.price = price;
-        data.title = listing?.attributes?.title;
-        data.txId = currentUser.id.uuid;
-        console.log(data);
-        //localStorage.setItem("pageData",JSON.stringify(pageData));
-        console.log(price)
-        onLoadOtherPaymentMethodUrl(data);
-    }else if(ItemPrice !== undefined && ItemPrice !== null){
-        console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
-        const data = {};
-        data.price = ItemPrice;
-        data.title = listing?.attributes?.title;
-        data.txId = currentUser.id.uuid;
-        console.log(data);
-        //localStorage.setItem("pageData",JSON.stringify(pageData));
-        console.log(ItemPrice)
-        onLoadOtherPaymentMethodUrl(data);
-    }
+    // if(price !== undefined && price !== null){
+    //     console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+    //     const data = {};
+    //     data.price = price;
+    //     data.title = listing?.attributes?.title;
+    //     data.txId = currentUser.id.uuid;
+    //     console.log(data);
+    //     //localStorage.setItem("pageData",JSON.stringify(pageData));
+    //     console.log(price)
+    //     onLoadOtherPaymentMethodUrl(data);
+    // }else if(ItemPrice !== undefined && ItemPrice !== null){
+    //     console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
+    //     const data = {};
+    //     data.price = ItemPrice;
+    //     data.title = listing?.attributes?.title;
+    //     data.txId = currentUser.id.uuid;
+    //     console.log(data);
+    //     //localStorage.setItem("pageData",JSON.stringify(pageData));
+    //     console.log(ItemPrice)
+    //     onLoadOtherPaymentMethodUrl(data);
+    // }
   }, []);
 
   useEffect(()=>{
@@ -173,13 +206,45 @@ const EnhancedCheckoutPage = props => {
 
       const {attributes} = speculatedTransaction;
       const {lineItems} = attributes;
+      console.log(lineItems,"   bbboooppp")
       const feePercent = getCommission(lineItems);
-      const fee = parseInt(feePercent) * parseInt(price || ItemPrice) * 0.01;
+      
+      const total = lineItems[1].unitPrice.amount;
+      const fee = parseInt(feePercent) * parseInt(total) * 0.01;
       setServiceFee(fee);
-      setSubTotal((parseInt(price || ItemPrice)+parseInt(fee)).toFixed(2));
+      const processingFee = getProcessingFee(lineItems);
+      setProcessingFee(processingFee);
+      setPrice(getPrice(lineItems));
+      setQuantity(getQuantity(lineItems));
+
+      const totalAmount = total + fee + processingFee;
+      
+      setSubTotal((parseInt(totalAmount).toFixed(2)));
       //create OfferListing
       //Pass as pageData listing
       setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
+
+      if(price !== undefined && price !== null){
+          console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+          const data = {};
+          data.price = totalAmount*100;
+          data.title = listing?.attributes?.title;
+          data.txId = currentUser.id.uuid;
+          console.log(data);
+          //localStorage.setItem("pageData",JSON.stringify(pageData));
+          console.log(price)
+          onLoadOtherPaymentMethodUrl(data);
+      }else if(ItemPrice !== undefined && ItemPrice !== null){
+          console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
+          const data = {};
+          data.price = totalAmount*100;
+          data.title = listing?.attributes?.title;
+          data.txId = currentUser.id.uuid;
+          console.log(data);
+          //localStorage.setItem("pageData",JSON.stringify(pageData));
+          console.log(ItemPrice)
+          onLoadOtherPaymentMethodUrl(data);
+      }
     }
     
   },[speculatedTransaction])
@@ -200,7 +265,7 @@ const EnhancedCheckoutPage = props => {
   const authorDisplayName = userDisplayNameAsString(listing?.author, '');
   const title = processName
     ? intl.formatMessage(
-        { id: `CheckoutPage.${processName}.title` },
+        { id: `CheckoutPage.£{processName}.title` },
         { listingTitle, authorDisplayName }
       )
     : 'Checkout page is loading data';
@@ -227,7 +292,7 @@ const EnhancedCheckoutPage = props => {
 
             <div className={css.top_con}>
                 <h6 className={css.amt_header}>Total amount</h6>
-                <h2 className={css.amount}>${subTotal}</h2>
+                <h2 className={css.amount}>£{subTotal}</h2>
                 <div className={css.flex_row_center}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5C6.5 7.22386 6.27614 7 6 7C5.72386 7 5.5 7.22386 5.5 7.5V8.5C5.5 8.77614 5.72386 9 6 9C6.27614 9 6.5 8.77614 6.5 8.5V7.5Z" fill="#008000"/>
@@ -248,26 +313,30 @@ const EnhancedCheckoutPage = props => {
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Price</span>
-                <span className={css.tvalue}>${price}</span>
+                <span className={css.tvalue}>£{itemPrice}</span>
+              </div>
+              <div className={css.flex_row_btw}>
+                <span className={css.thead}>Quantity</span>
+                <span className={css.tvalue}>£{quantity}</span>
               </div>
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Platform fee (30%)</span>
-                <span className={css.tvalue}>${serviceFee}</span>
+                <span className={css.tvalue}>£{serviceFee}</span>
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Processing fee</span>
-                <span className={css.tvalue}>${serviceFee}</span>
+                <span className={css.tvalue}>£{processingFee}</span>
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Sub total</span>
-                <span className={css.tvalue}>${subTotal}</span>
+                <span className={css.tvalue}>£{subTotal}</span>
               </div>
               
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>
                 <span className={css.total_label}>Total</span>
-                <span className={css.total_val}>${subTotal}</span>
+                <span className={css.total_val}>£{subTotal}</span>
               </div>
             </div>
             {paymentMethodUrl !== undefined && paymentMethodUrl !== null?

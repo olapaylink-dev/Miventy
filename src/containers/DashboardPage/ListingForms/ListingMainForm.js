@@ -14,9 +14,8 @@ import Catalog from "./Catalog";
 import Publish from "./Publish";
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
-
 import { types as sdkTypes } from '../../../util/sdkLoader';
-const { UUID } = sdkTypes;
+const { UUID,Money } = sdkTypes;
 
 const ListingMainForm = props =>{
 
@@ -221,6 +220,8 @@ const categories = {
             handleMoveToAboutService();
       }
 
+      const processingFee =  { amount: 10, currency: "EUR" };
+
       setIsDraft(true);
       if(JSON.stringify(currentListing) !== "{}"){
         handleMoveToAboutService();
@@ -238,12 +239,13 @@ const categories = {
 
       }else{
         const data = {
-          title:"Title",
+          title:"Not yet set",
           publicData:{
             category:currRadioBtnCategory,
             listingType:selectedCategory,
             transactionProcessAlias:"default-purchase/release-1",
-            unitType:"item"
+            unitType:"item",
+            processingFee
           },
         }
         onCreateListingDraft(data, "createDraft")
