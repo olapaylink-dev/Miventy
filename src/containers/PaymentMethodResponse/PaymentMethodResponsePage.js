@@ -64,7 +64,7 @@ const PaymentMethodResponsePageCom = (props) => {
     const listingId = trx.listing.id.uuid;
     const speculatedTrx = JSON.parse(localStorage.getItem("SpeculatedTransaction"));
     if(speculatedTrx !== null && speculatedTrx !== undefined){
-      onConfirmPayment(speculatedTrx,listingId);
+      onConfirmPayment(speculatedTrx,listingId,currentUser);
     }
   },[]);
 
@@ -202,7 +202,7 @@ const mapStateToProps = state => {
     onSendReview: (tx, transitionOptions, params, config) =>
       dispatch(sendReviewNew(tx, transitionOptions, params, config)),
     //onInitiateOrder:(data)=>dispatch(initiateOrder(data)),
-    onConfirmPayment:(specTrx,listingId)=>dispatch(confirmPaymment(specTrx,listingId)),
+    onConfirmPayment:(specTrx,listingId,currentUser)=>dispatch(confirmPaymment(specTrx,listingId,currentUser)),
   });
   
   const PaymentMethodResponsePage = compose(

@@ -102,8 +102,26 @@ export const confirmPaymentError = (error)=>({
   error:true,
 });
 
+const removeCartData = (currentUser,cartId)=>{
+  const {attributes={}} = currentUser;
+  const {profile={}} = attributes;
+  const {publicData={}} = profile;
+  const {cartData=[]} = publicData;
 
-export const confirmPaymment = (speculatedTx,listingId)=>async(dispatch,getState,sdk)=>{
+  const remainingCart = cartData.filter(itm=>itm.id !== cartId);
+  const data = 
+                  {publicData: {
+                    cartData:remainingCart
+                  }}
+
+              //Remove cartData
+              dispatch(updateProfile(data))
+              console.log("Remove cart data +++++++++++++++++++++++++++++++++++++++")
+
+}
+
+
+export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispatch,getState,sdk)=>{
 
   console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
   
@@ -116,7 +134,7 @@ export const confirmPaymment = (speculatedTx,listingId)=>async(dispatch,getState
     listing,attributes
   }=speculatedTrx;
   const {protectedData} = attributes;
-  const {offer} = protectedData;
+  const {offer,cartData} = protectedData;
 
   return transitionPrivileged(
    {
@@ -206,6 +224,8 @@ export const confirmPaymment = (speculatedTx,listingId)=>async(dispatch,getState
               const order = response.data.data;
               dispatch(confirmPaymentSuccess(order.id));
               localStorage.removeItem("Transaction");
+
+              removeCartData(currentUser,listingId);
               return order;
             })
             .catch(e => {
