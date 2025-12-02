@@ -102,7 +102,7 @@ export const confirmPaymentError = (error)=>({
   error:true,
 });
 
-const removeCartData = (currentUser,cartId)=>{
+const removeCartData = (currentUser,cartId,dispatch)=>{
   const {attributes={}} = currentUser;
   const {profile={}} = attributes;
   const {publicData={}} = profile;
@@ -225,7 +225,7 @@ export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispa
               dispatch(confirmPaymentSuccess(order.id));
               localStorage.removeItem("Transaction");
 
-              removeCartData(currentUser,listingId);
+              removeCartData(currentUser,listingId,dispatch);
               return order;
             })
             .catch(e => {
