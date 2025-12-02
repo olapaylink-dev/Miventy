@@ -3,6 +3,7 @@ import { initiatePrivileged, transitionPrivileged } from "../../util/api";
 import { types as sdkTypes } from '../../util/sdkLoader';
 import { storableError } from "../../util/errors";
 const { UUID } = sdkTypes;
+import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 
 export const ONBOARD_REQUEST =
