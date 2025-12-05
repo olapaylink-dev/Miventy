@@ -24,7 +24,7 @@ const SearchCard = props =>{
                 const displayName = author?.attributes?.profile?.displayName;
                 const profileImgUrl = profileImage?.attributes?.variants?.default?.url;
 
-                console.log(id + "  cccccccccccccccccccc");
+                //console.log(id + "  cccccccccccccccccccc");
                 return(
                     <NamedLink name='ListingPage' params={{slug:`${title}`,id:`${uuid}`}}>
                         <div className={css.card_container}>

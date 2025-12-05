@@ -99,7 +99,7 @@ const CateringForm = props =>{
     ];
     
 const handleSubmit = e=>{
-  console.log("submiting");
+  ////console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const data = {
           id:currentListing.id,
@@ -125,7 +125,7 @@ const handleSubmit = e=>{
           },
         }
         onUpdateListing(data);
-        console.log("Form submitted");
+        //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }

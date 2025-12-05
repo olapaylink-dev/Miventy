@@ -406,6 +406,8 @@ const onSubmitReview = values => {
                 declineOfferSuccess={declineOfferSuccess}
                 setShowQuoteAccepted={setShowQuoteAccepted}
                 onChangeListingPrice={onChangeListingPrice}
+                setShowSuccessView={setShowSuccessView}
+                setSuccessMessage={setSuccessMessage}
               />
           </div>
         :""}

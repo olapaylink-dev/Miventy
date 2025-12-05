@@ -27,7 +27,7 @@ const MessageGen =(props)=>{
     return(
         <div className={css.container}>
           {messages.length > 0 && messages.map((itm,key)=>{
-            console.log(itm,"   oooopppppp")
+            //console.log(itm,"   oooopppppp")
             const isOwnMessage = currentUser.id.uuid === itm.sender.id.uuid;
             const {content,createdAt} = itm?.attributes;
             const {description="",price=0} = content.includes("offerTitle")? JSON.parse(content):{};

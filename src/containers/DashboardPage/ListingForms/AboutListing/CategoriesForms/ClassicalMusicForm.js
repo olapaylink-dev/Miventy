@@ -78,7 +78,7 @@ const ClassicalMusicForm = props =>{
 
 
 const handleSubmit = e=>{
-  console.log("submiting");
+  ////console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const data = {
           id:currentListing.id,
@@ -101,7 +101,7 @@ const handleSubmit = e=>{
           },
         }
         onUpdateListing(data);
-        console.log("Form submitted");
+        //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }
@@ -112,7 +112,7 @@ const subHeader = "Add more details about the service for the clients to know";
 const instruction = "The Q&A section will be visible to clients. This will help answer any questions, clients may have, before proceeding with a booking. Please, answer all the questions below.";
 
 // const handleSelectChange = val =>{
-//   console.log(val);
+//   //console.log(val);
 //   setTimeFormatMin(val);
 // }
 

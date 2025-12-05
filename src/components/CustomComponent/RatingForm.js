@@ -46,7 +46,7 @@ const RatingForm = props =>{
 
     const isReady = reviewText !== "" && rating !== undefined;
 
-    console.log(rating);
+    //console.log(rating);
     return (
             <div className={css.modal}>
                 <div className={css.container_header}>

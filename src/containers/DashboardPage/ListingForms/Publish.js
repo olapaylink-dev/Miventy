@@ -34,7 +34,7 @@ const Publish = props =>{
     handleChangeTab
   } = props;
 
-  console.log(uploadInProgress,"    oooooo");
+  //console.log(uploadInProgress,"    oooooo");
 
 const [currentTab,setCurrentTab] = useState("start");
 const fileInput = useRef(null);
@@ -55,7 +55,7 @@ const [imageSrc,setImageSrc] = useState(img);
 
 
 useEffect(()=>{
-  console.log(lastAction+"  ============== " + updatedListing);
+  //console.log(lastAction+"  ============== " + updatedListing);
   if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" && lastAction === "done"){
    // handleMoveToDone();
     window.location.reload();
@@ -121,7 +121,7 @@ const handlePublish = async e=> {
 
 const handleFileClick = (e)=>{
     fileInput.current.click();
-    console.log("5 clicked");
+    //console.log("5 clicked");
 }
 
 const handleChange = (event)=>{

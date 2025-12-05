@@ -39,7 +39,7 @@ export default function RadioSelect(props){
         setShow(false);
     }
 
-    console.log("rendering")
+    //console.log("rendering")
 
     return             (
         <div onClick={e=>{e.preventDefault(); e.stopPropagation(); setShow(!show);}} className={css.container}>

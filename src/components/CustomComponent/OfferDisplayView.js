@@ -29,7 +29,7 @@ const OfferDisplayView = props =>{
         setTotal
     }=props;
 
-    console.log("Here ======")
+    //console.log("Here ======")
 
     const{offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
 
@@ -48,7 +48,7 @@ const OfferDisplayView = props =>{
         setTotal(total);
     },[])
 
-    console.log("Here ===2222===")
+    //console.log("Here ===2222===")
 
 const handleBack = e =>{
     setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);

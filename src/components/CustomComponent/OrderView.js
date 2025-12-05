@@ -9,9 +9,9 @@ const OrderView = (props)=>{
     const [title,setTitle] = useState("");
     useEffect(()=>{
         setTitle(listing?.attributes?.title);
-        console.log("Changingggggggg11111111111111111111111gggggggggggggg")
+        //console.log("Changingggggggg11111111111111111111111gggggggggggggg")
     },[listing])
-    //console.log(currentTransaction,"    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+    ////console.log(currentTransaction,"    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
     return(
         <div className={css.main_com}>
             <div className={css.container}>

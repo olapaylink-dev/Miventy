@@ -5,7 +5,7 @@ import css from './MessageCardOwn.module.css';
 export default function MessageCardOwn(props){
     const {content,createdAt,currentUser} = props;
     const profileImage = currentUser?.profileImage?.attributes?.variants['square-small']?.url;
-    console.log(profileImage,"    zzzxxxxccccvvv")
+    //console.log(profileImage,"    zzzxxxxccccvvv")
     return(
         <div className={css.main_com}>
                     <div className={css.container}>

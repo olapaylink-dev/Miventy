@@ -33,7 +33,7 @@ const RequestQuoteForm = props =>{
     const {publicData} = currentListing.attributes;
     const {serviceType,listingType} = publicData;
 
-    console.log(currentListing,"      zzzzzzzzzzzzxxxxxxxxxxxxxxxxxxx");
+    //console.log(currentListing,"      zzzzzzzzzzzzxxxxxxxxxxxxxxxxxxx");
 
     const handleChange = e =>{
         setSelectedServiceType(e.target.value);

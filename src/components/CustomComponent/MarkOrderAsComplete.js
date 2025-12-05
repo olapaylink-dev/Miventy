@@ -20,7 +20,7 @@ const MarkOrderAsComplete = props =>{
         onHandleOrderReceived
     }=props;
 
-    console.log(transaction)
+    //console.log(transaction)
     
     return (
             <div className={css.modal}>

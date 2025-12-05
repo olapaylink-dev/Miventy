@@ -92,7 +92,7 @@ const EnhancedCheckoutPage = props => {
       } = props;
 
       const trx = JSON.parse(localStorage.getItem("Transaction"));
-      console.log(trx,"=================================");
+      //console.log(trx,"=================================");
       const {offer={}} = trx?.attributes?.protectedData;
       const {description,duration,eventDate,price} = offer;
       const {listing={}} = trx;
@@ -144,7 +144,7 @@ const EnhancedCheckoutPage = props => {
     
     onInitiateTransaction(trx);
 
-    // console.log("55555555555555555555555555")
+    // //console.log("55555555555555555555555555")
     // const initialData = { orderData, listing, transaction };
     // const data = handlePageData(initialData, STORAGE_KEY, history);
     // setPageData(data || {});
@@ -166,24 +166,24 @@ const EnhancedCheckoutPage = props => {
     setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
 
     // if(price !== undefined && price !== null){
-    //     console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+    //     //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
     //     const data = {};
     //     data.price = price;
     //     data.title = listing?.attributes?.title;
     //     data.txId = currentUser.id.uuid;
-    //     console.log(data);
+    //     //console.log(data);
     //     //localStorage.setItem("pageData",JSON.stringify(pageData));
-    //     console.log(price)
+    //     //console.log(price)
     //     onLoadOtherPaymentMethodUrl(data);
     // }else if(ItemPrice !== undefined && ItemPrice !== null){
-    //     console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
+    //     //console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
     //     const data = {};
     //     data.price = ItemPrice;
     //     data.title = listing?.attributes?.title;
     //     data.txId = currentUser.id.uuid;
-    //     console.log(data);
+    //     //console.log(data);
     //     //localStorage.setItem("pageData",JSON.stringify(pageData));
-    //     console.log(ItemPrice)
+    //     //console.log(ItemPrice)
     //     onLoadOtherPaymentMethodUrl(data);
     // }
   }, []);
@@ -202,11 +202,11 @@ const EnhancedCheckoutPage = props => {
     if(speculatedTransaction !== null){
       
       localStorage.setItem("SpeculatedTransaction",JSON.stringify(speculatedTransaction));// used on PaymentMethodResponsePage
-      console.log("speculatedTransaction",speculatedTransaction);
+      //console.log("speculatedTransaction",speculatedTransaction);
 
       const {attributes} = speculatedTransaction;
       const {lineItems} = attributes;
-      console.log(lineItems,"   bbboooppp")
+      //console.log(lineItems,"   bbboooppp")
       const feePercent = getCommission(lineItems);
       
       const total = lineItems[1].unitPrice.amount;
@@ -225,24 +225,24 @@ const EnhancedCheckoutPage = props => {
       setPageData({listing,orderData:{deliveryMethod:"none",quantity:1},transaction:null});
 
       if(price !== undefined && price !== null){
-          console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+          //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
           const data = {};
           data.price = totalAmount*100;
           data.title = listing?.attributes?.title;
           data.txId = currentUser.id.uuid;
-          console.log(data);
+          //console.log(data);
           //localStorage.setItem("pageData",JSON.stringify(pageData));
-          console.log(price)
+          //console.log(price)
           onLoadOtherPaymentMethodUrl(data);
       }else if(ItemPrice !== undefined && ItemPrice !== null){
-          console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
+          //console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
           const data = {};
           data.price = totalAmount*100;
           data.title = listing?.attributes?.title;
           data.txId = currentUser.id.uuid;
-          console.log(data);
+          //console.log(data);
           //localStorage.setItem("pageData",JSON.stringify(pageData));
-          console.log(ItemPrice)
+          //console.log(ItemPrice)
           onLoadOtherPaymentMethodUrl(data);
       }
     }

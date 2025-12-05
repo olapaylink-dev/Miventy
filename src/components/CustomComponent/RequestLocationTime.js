@@ -51,7 +51,7 @@ const handleBack = e =>{
 }
 
 const handleSaveLocation = val =>{
-    console.log(val);
+    //console.log(val);
     setEventLocation([val]);
 }
 

@@ -259,11 +259,11 @@ export default function transactionPageReducer(state = initialState, action = {}
       return { ...state, acceptOfferInProgress: false, acceptOfferError: payload ,acceptOfferSuccess: false  };
 
     case DECLINE_OFFER_REQUEST:
-      return { ...state, declineOfferInProgress: true, declineOfferError: null };
+      return { ...state, declineOfferInProgress: true, declineOfferError: null ,declineOfferSuccess: false};
     case DECLINE_OFFER_SUCCESS:
-      return { ...state, declineOfferInProgress: false, lineItems: payload };
+      return { ...state, declineOfferInProgress: false, declineOfferSuccess: true, declineOfferError:null };
     case DECLINE_OFFER_ERROR:
-      return { ...state, declineOfferInProgress: false, declineOfferError: payload };
+      return { ...state, declineOfferInProgress: false, declineOfferError: payload , declineOfferSuccess: false};
 
     case UPDATE_TRANSITION_REQUEST:
       return { ...state, updateTransitionInProgress: true, updateTransitionError: null,updateTransitionSuccess:false };
@@ -865,7 +865,9 @@ export const declineOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => 
     expand: true
   }).then(res => {
     // res.data contains the response data
+    console.log("Offer declined ")
     dispatch(declineOfferSuccess());
+    
   });
 };
 

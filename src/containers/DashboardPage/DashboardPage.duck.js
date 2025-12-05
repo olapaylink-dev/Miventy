@@ -200,8 +200,8 @@ export const showUser = (userId, config) => (dispatch, getState, sdk) => {
       const sanitizeConfig = { userFields };
       dispatch(addMarketplaceEntities(response, sanitizeConfig));
       dispatch(showUserSuccess());
-      console.log("000000000000000000000000000000000");
-      console.log(response);
+      //console.log("000000000000000000000000000000000");
+      //console.log(response);
       return response;
     })
     .catch(e => dispatch(showUserError(storableError(e))));
@@ -220,8 +220,8 @@ export const saveCurrentUserType = (params) => (dispatch, getState, sdk) => {
       const sanitizeConfig = { userFields };
       dispatch(addMarketplaceEntities(response, sanitizeConfig));
       dispatch(showUserSuccess());
-      console.log("000000000000000000000000000000000");
-      console.log(response);
+      //console.log("000000000000000000000000000000000");
+      //console.log(response);
       return response;
     })
     .catch(e => dispatch(showUserError(storableError(e))));
@@ -230,7 +230,7 @@ export const saveCurrentUserType = (params) => (dispatch, getState, sdk) => {
 const isCurrentUser = (userId, cu) => userId?.uuid === cu?.id?.uuid;
 
 export const loadData = (params, search, config) => (dispatch, getState, sdk) => {
-    console.log("1111111111111111111111111111111111111");
+    //console.log("1111111111111111111111111111111111111");
   const userId = new UUID(params.id);
   const isPreviewForCurrentUser = params.variant === PROFILE_PAGE_PENDING_APPROVAL_VARIANT;
   const currentUser = getState()?.user?.currentUser;
@@ -298,7 +298,7 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
 };
 
 export const loadDataDash = (params, search, config) => (dispatch, getState, sdk) => {
-    console.log("1111111111111111111111111111111111111");
+    //console.log("1111111111111111111111111111111111111");
   const userId = new UUID(params.id);
   const isPreviewForCurrentUser = params.variant === PROFILE_PAGE_PENDING_APPROVAL_VARIANT;
   const currentUser = getState()?.user?.currentUser;
@@ -367,7 +367,7 @@ export const loadDataDash = (params, search, config) => (dispatch, getState, sdk
 
 
 export const loadDataListing = (params, search, config) => (dispatch, getState, sdk) => {
-  console.log("444444444444444444444444444444444444444");
+  //console.log("444444444444444444444444444444444444444");
   const queryParams = parse(search);
   const page = queryParams.page || 1;
   dispatch(clearOpenListingError());

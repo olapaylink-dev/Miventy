@@ -85,7 +85,7 @@ useEffect(()=>{
     
 
 const handleSubmit = e=>{
-  console.log("submiting");
+  //console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const data = {
           id:currentListing.id,

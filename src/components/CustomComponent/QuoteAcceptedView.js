@@ -44,7 +44,7 @@ const QuoteAcceptedView = props =>{
     const listingId = currentTransaction?.listing?.id?.uuid;
     const slug = currentTransaction?.listing?.attributes?.title;
     let trxToBeSaved = currentTransaction;
-    console.log("oooooooooooooooooooooooooooooooo")
+    //console.log("oooooooooooooooooooooooooooooooo")
     trxToBeSaved.attributes.protectedData.offer = JSON.parse(currentOfferInView);
     localStorage.setItem("Transaction",JSON.stringify(trxToBeSaved));
     
@@ -54,7 +54,7 @@ const QuoteAcceptedView = props =>{
 
     useEffect(()=>{
         onChangeListingPrice(listingId, new Money(total,"EUR"));
-        console.log(currentTransaction,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        //console.log(currentTransaction,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
     },[])
 
     return (

@@ -64,12 +64,12 @@ const ServiceDescription = props=>{
         }
         onCreateListingDraft(data, {})
       }
-      console.log("switching");
+      //console.log("switching");
       handleMoveToAboutService();
     }
 
     const subCategories = allCategories[selectedCategory];
-    console.log(subCategories);
+    //console.log(subCategories);
 
     return (
       <div className={css.formContent}>

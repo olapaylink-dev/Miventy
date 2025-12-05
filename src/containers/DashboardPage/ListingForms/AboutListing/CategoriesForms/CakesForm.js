@@ -44,10 +44,11 @@ const CakesForm = props =>{
     useEffect(()=>{
       if(JSON.stringify(updatedListing)!=="{}" && updateListingSuccess) {
        
-        console.log(currentListing);
-        console.log(updatedListing);
+        ////console.log(currentListing);
+        ////console.log(updatedListing);
         setCurrentListing(updatedListing.data);
-        console.log("ooooooooooooooooo11111111111111ooooooooooooooo");      }
+        ////console.log("ooooooooooooooooo11111111111111ooooooooooooooo");      
+        }
     },[updatedListing])
     
     const ServiceTypes = [
@@ -69,7 +70,7 @@ const CakesForm = props =>{
     
 const handleSubmitValues = e=>{
   e.preventDefault();
-  console.log("submiting");
+  ////console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const data = {
           id:currentListing.id,
@@ -89,7 +90,7 @@ const handleSubmitValues = e=>{
           },
         }
         onUpdateListing(data);
-        console.log("Form submitted");
+        //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }

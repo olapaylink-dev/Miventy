@@ -8,7 +8,7 @@ const SelectComponent = props=>{
     const handleSelect = itemSelected =>{
         setShowOptions(false);
         handleSelectChange(itemSelected);
-        console.log(itemSelected,"   ==============")
+        //console.log(itemSelected,"   ==============")
     }
     return (
         <div className={css.container} onClick={e=>setShowOptions(true)}>

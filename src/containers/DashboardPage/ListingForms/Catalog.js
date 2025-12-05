@@ -222,7 +222,7 @@ let img = "";
  
 const [imageSrc,setImageSrc] = useState(img);
  useEffect(()=>{
-  console.log("Changing");
+  //console.log("Changing");
   const {data} = updatedListing;
   if(JSON.stringify(data) !== "{}" && JSON.stringify(ownEntities) !== "{}"){
     const {coverPhoto="",catalog=[],coverImages=[]} = data?.attributes?.publicData?data?.attributes?.publicData:{};
@@ -240,7 +240,7 @@ const [imageSrc,setImageSrc] = useState(img);
  
   useEffect(()=>{
     if(currentCatDropdownOption !== undefined){
-      console.log("Changing dropdownlist");
+      //console.log("Changing dropdownlist");
       //setSelectedFolderName(currentCatDropdownOption);
     }
 
@@ -257,13 +257,13 @@ const [imageSrc,setImageSrc] = useState(img);
   },[image,uploadInProgress,currentListing,currentCatalogdata,lastAction,isUpdateItem]);
 
   useEffect(()=>{
-    console.log(lastAction);
+    //console.log(lastAction);
     if(lastAction === "update_and_goto_existing_listing_1" || lastAction === "update_and_goto_existing_listing_2"){
 
       if(updatedListing){
         setCurrentListing(updatedListing.data);
       }
-      console.log(currentListing);
+      //console.log(currentListing);
       let catalog = updatedListing?.data?.attributes?.publicData?.catalog;
       let listingTyp = updatedListing?.data?.attributes?.publicData?.listingType;
       const folder = getFolder(catalog);
@@ -272,10 +272,10 @@ const [imageSrc,setImageSrc] = useState(img);
         setCatalog(catalog);
         setFolders(folder);
         setListingType(listingTyp);
-        console.log(ownEntities);
-        console.log(updatedListing);
+        //console.log(ownEntities);
+        //console.log(updatedListing);
         setShowItemDetailsForm(false);
-        console.log(showEditCat,"    lllllllllllllllllllllllllll")
+        //console.log(showEditCat,"    lllllllllllllllllllllllllll")
         //setCurrentCatalog("create_new_catalog");
       }
 
@@ -284,7 +284,7 @@ const [imageSrc,setImageSrc] = useState(img);
       if(updatedListing){
         setCurrentListing(updatedListing.data);
       }
-      console.log(currentListing);
+      //console.log(currentListing);
       let catalog = updatedListing?.data?.attributes?.publicData?.catalog;
       let listingTyp = updatedListing?.data?.attributes?.publicData?.listingType;
       const folder = getFolder(catalog);
@@ -293,10 +293,10 @@ const [imageSrc,setImageSrc] = useState(img);
         setCatalog(catalog);
         setFolders(folder);
         setListingType(listingTyp);
-        console.log(ownEntities);
-        console.log(updatedListing);
+        //console.log(ownEntities);
+        //console.log(updatedListing);
         setShowItemDetailsForm(false);
-         console.log(showEditCat,"    lllll2222222222lllll")
+         //console.log(showEditCat,"    lllll2222222222lllll")
         //setCurrentCatalog("create_new_catalog");
       }
 
@@ -358,7 +358,7 @@ const [imageSrc,setImageSrc] = useState(img);
   },[currentCatalog]);
 
   useEffect(()=>{
-    console.log("Listing updated  " , lastAction);
+    //console.log("Listing updated  " , lastAction);
     if(JSON.stringify(updatedListing) !== "{}"){
       setCurrentListing(updatedListing.data);
     }
@@ -366,7 +366,7 @@ const [imageSrc,setImageSrc] = useState(img);
   },[updatedListing]);
 
   useEffect(()=>{
-    console.log("Listing updated  " , lastAction);
+    //console.log("Listing updated  " , lastAction);
     if(lastAction === "delete_image"){
       //setShowEditCat(true);
     }
@@ -398,7 +398,7 @@ const [imageSrc,setImageSrc] = useState(img);
   }
 
   // useEffect(()=>{
-  //   console.log("Changes detected");
+  //   //console.log("Changes detected");
   //   if(currentListing !== undefined){
   //     const temp = currentListing;
   //     let {publicData={},price}= currentListing?.hasOwnProperty("attributes")?currentListing?.attributes:{};
@@ -430,7 +430,7 @@ const handleHideForm = e=>{
 const handleAddItem = e=>{
   localStorage.removeItem("folderName");
   localStorage.setItem("action",ACTIONS[1]);//"create_catalog_details",
-  console.log("clicked");
+  //console.log("clicked");
   setCurrentCatalog("create_new_catalog");
 }
 
@@ -464,7 +464,7 @@ const subHeader = "Create a catalog";
 const instruction = "Create a catalog to showcase the different service options you offer, making it easier for customers to explore and choose what suits them best. You can add multiple service packages, pricing tiers, and special offers.";
 
 const handleSelectChange = e=>{
-  console.log(e.target.value);
+  //console.log(e.target.value);
 }
 
 const getNewCatalogData = ()=>{
@@ -656,7 +656,7 @@ const handleFileClick4 = ()=>{
   }
 const handleFileClick5 = ()=>{
     fileInput5.current.click();
-    console.log("5 clicked");
+    //console.log("5 clicked");
   }
 
 const getImageIdsArray = images =>{
@@ -679,12 +679,12 @@ const getImageIdArrays = images=>{
 }
 
 const handleAddListing = (e,action)=>{
-  console.log("Fetching listing")
+  //console.log("Fetching listing")
   e.preventDefault();
   e.stopPropagation();
   //Save CatalogName and coverPhoto
   const currentListingId = localStorage.getItem("currentListing");
-  console.log("Fetching listing");
+  //console.log("Fetching listing");
   const data = getNewCatalogData();
   onUpdateListing(data,"update_and_goto_existing_listing_2") && onFetchCurrentListing(new UUID(currentListingId),"update_and_goto_existing_listing_1");
 }
@@ -716,7 +716,7 @@ const handleEditCatalog = catalogData =>{
   const {durationPrice =[]} = catalogData;
   
   const isDurationPrice = durationPrice !== undefined && durationPrice.length > 0 && durationPrice[0].price !== undefined && durationPrice[0].price !== 0;
-  console.log("============11111111111")
+  //console.log("============11111111111")
   setSelectedFolderName(catalogData.folder);
   setCurrentCatalogData(catalogData);
   setCategoryId(catalogData.categoryId);
@@ -754,7 +754,7 @@ const handleEditFolder = (e,folderName) =>{
     setImageSrc(img);
   }
 
-  console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzz")
+  //console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzz")
   setShowItemDetailsForm(false);
   setCurrentCatalog("edit_catalog");
   setEnableCatalogName(false);
@@ -861,7 +861,7 @@ const handleRemoveImage = (e,imgToRemove)=>{
 const handleCreateNewInput = ()=>{
   const id = durationPrice.length + 1;
   const isOk = parseInt(durationPrice[durationPrice.length-1].price) !== 0;
-  console.log(isOk);
+  //console.log(isOk);
   if(isOk){
     setDurationPrice([...durationPrice,{id:id}])
   }
@@ -879,7 +879,7 @@ const handleDurationChange = (itm,val)=>{
       }
     }
   })
-  console.log(durationPrice);
+  //console.log(durationPrice);
 }
 
 const handleFormatChange = (itm,val)=>{
@@ -888,7 +888,7 @@ const handleFormatChange = (itm,val)=>{
       item.format = val;
     }
   })
-  console.log(durationPrice);
+  //console.log(durationPrice);
 }
 
 const handlePriceChange = (itm,val)=>{
@@ -898,7 +898,7 @@ const handlePriceChange = (itm,val)=>{
     }
   })
 
-  console.log(durationPrice);
+  //console.log(durationPrice);
 }
 
 const handleUsePriceChecked = ()=>{
@@ -988,7 +988,7 @@ const handleDeleteCatalogItem = item =>{
   //Get the catalog in the listing
   //Remove the item from the catalog
 
-  console.log("Deleting",item)
+  //console.log("Deleting",item)
   let catalogSaved = publicData?.catalog === undefined?[]:publicData?.catalog;
   const remaining = catalogSaved.filter(itm=>itm.itemName !== item.itemName);
   let data = {};
@@ -1000,7 +1000,7 @@ const handleDeleteCatalogItem = item =>{
                                         ]
                               }
                   };
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
+    //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaa")
     onUpdateListing(data,"update_and_goto_existing_listing_3");
 }
 

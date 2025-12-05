@@ -274,7 +274,7 @@ exports.transactionLineItems = (listing, orderData, providerCommission, customer
     ...extraLineItems,
     ...providerCommissionMaybe,
     ...customerCommissionMaybe,
-    ...processingFee
+    //...processingFee
   ];
 
   //console.log(lineItems,"  yyyyyyyyyyyyy")

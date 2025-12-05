@@ -37,7 +37,9 @@ const OrderDisplayView = props =>{
         declineOfferError,
         declineOfferSuccess,
         setShowQuoteAccepted,
-        onChangeListingPrice
+        onChangeListingPrice,
+        setShowSuccessView,
+        setSuccessMessage
     }=props;
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
@@ -55,23 +57,27 @@ const OrderDisplayView = props =>{
 
     //Change the price of the listing
     useEffect(()=>{
-        console.log("changing price eeeeee  ",ItemPrice)
+        //console.log("changing price eeeeee  ",ItemPrice)
         onChangeListingPrice(listingId, new Money(ItemPrice,"EUR"));
-        console.log("changing price")
+        //console.log("changing price")
     },[])
 
     useEffect(()=>{
         if(acceptOfferSuccess){
-            console.log("Offer accepted")
-            console.log(currentTransaction)
+            //console.log("Offer accepted")
+            //console.log(currentTransaction)
             setShowOrder(false);
+            setSuccessMessage("You have accepted this order!");
+            setShowSuccessView(true);
         }
     },[acceptOfferSuccess])
 
     useEffect(()=>{
         if(declineOfferSuccess){
-            console.log("Offer declined")
+            console.log("Offer declined  =====")
             setShowOrder(false);
+            setSuccessMessage("You have declined this order!");
+            setShowSuccessView(true);
         }
     },[declineOfferSuccess])
 
@@ -89,7 +95,6 @@ const OrderDisplayView = props =>{
                 </div>
 
                 <h3 className={css.sub_header}>{listingType} service</h3>
-                
                 
                 <div className={css.container}>
                     
@@ -151,6 +156,8 @@ const OrderDisplayView = props =>{
                                     (
                                         transactionState === "accepted"?
                                             "You have accepted this offer"
+                                        :transactionState === "declined"?
+                                            <span className={css.declined_txt}>You have declined this order</span>
                                         :
                                         <div className={css.flex_row}>
                                             <button className={css.btn_outline} onClick={e=>onDeclineOfferFromCustomer(currentTransaction.id)}>

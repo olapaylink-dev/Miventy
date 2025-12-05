@@ -340,7 +340,7 @@ export const DashboardPageComponent = props => {
     ...rest
   } = props;
   const{match}=props;
-  console.log("oooppppllll")
+  //console.log("oooppppllll")
   const isVariant = pathParams.variant?.length > 0;
   const isPreview = isVariant && pathParams.variant === PROFILE_PAGE_PENDING_APPROVAL_VARIANT;
 
@@ -441,22 +441,22 @@ export const DashboardPageComponent = props => {
   useEffect(()=>{
 
     // if(window.location.pathname === "/profile-settings/catalog"){
-    //   console.log("setShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogs");
+    //   //console.log("setShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogs");
     //   setShowCatalogs(true);
     // }
 
 
 
-    console.log("Updating profile -----------");
+    //console.log("Updating profile -----------");
       if(image !== undefined && image !== null && image.file !== undefined && image.imageId !== undefined && (image.listingId === undefined || image.listingId === null)){
-        console.log("Updating profile ------111111111111111-----");
-        console.log(image);
+        //console.log("Updating profile ------111111111111111-----");
+        //console.log(image);
         const uploadedImage = image;
         // Update profileImage only if file system has been accessed
         const updatedValues = uploadedImage && uploadedImage.imageId && uploadedImage.file && {profileImageId: uploadedImage.imageId };
-        console.log(updatedValues);
+        //console.log(updatedValues);
         onUpdateProfile(updatedValues);
-        console.log("Updating profile ------222222222222222-----");
+        //console.log("Updating profile ------222222222222222-----");
       }
 
       if(listingDraft !== null && isDraft){
@@ -481,8 +481,8 @@ export const DashboardPageComponent = props => {
   useEffect(()=>{
     setServiceAreas(serviceAreasSave);
     forceUpdate();
-    //console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-    //console.log(serviceAreasSave);
+    ////console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+    ////console.log(serviceAreasSave);
   },[currentUser])
 
   useEffect(()=>{
@@ -493,7 +493,7 @@ export const DashboardPageComponent = props => {
 
   useEffect(()=>{
      setListingAvailable(checkIfListingsAvailable(ownEntities));
-     //console.log("Responseeeuuuuuuuu0000000000000");
+     ////console.log("Responseeeuuuuuuuu0000000000000");
   },[ownEntities]);
 
   useEffect(()=>{
@@ -505,7 +505,7 @@ export const DashboardPageComponent = props => {
 
   const handleProfileClick = ()=>{
     fileInputProfile.current.click();
-    console.log("5 clicked");
+    //console.log("5 clicked");
   }
 
   const handleChangeProfile = event =>{
@@ -586,7 +586,7 @@ export const DashboardPageComponent = props => {
 
     // //Save previous state
     // const userType = currentSelectedUserType;
-    // console.log(userType);
+    // //console.log(userType);
     // const data = 
     // {publicData: {
     //       userType
@@ -596,7 +596,7 @@ export const DashboardPageComponent = props => {
 
 
   const handleMoveBack = val =>{
-    console.log(val);
+    //console.log(val);
     setCurrentPage(val);
   }
 
@@ -610,9 +610,9 @@ export const DashboardPageComponent = props => {
     setCurrentListing({});
     setSelectedCategory("");
     forceUpdate();
-    console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-    console.log(selectedCategory);
-    console.log(currentListing);
+    //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+    //console.log(selectedCategory);
+    //console.log(currentListing);
     setShowCreateListing(true);
   }
 
@@ -625,7 +625,7 @@ export const DashboardPageComponent = props => {
     const rem = serviceAreas !== undefined && serviceAreas.hasOwnProperty("length") && serviceAreas.length > 0? serviceAreas.filter(itm=>itm?.result?.id !== id):[];
     //setServiceAreas(rem);
 
-    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+    //console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 
     const data = 
     {publicData: {
@@ -633,7 +633,7 @@ export const DashboardPageComponent = props => {
         }}
     onUpdateProfile(data);
 
-    ///console.log(id);
+    /////console.log(id);
     forceUpdate();
   }
 
@@ -654,7 +654,7 @@ export const DashboardPageComponent = props => {
         }}
     onUpdateProfile(data);
 
-    console.log("Calling  1111111111111111111111111111111111111");
+    //console.log("Calling  1111111111111111111111111111111111111");
     forceUpdate();
   }
 
@@ -699,8 +699,8 @@ export const DashboardPageComponent = props => {
   }
 
   const handleContinue = (e,val) =>{
-    console.log(val);
-    console.log(activePayoutOption === "VerificationCodeApplePay");
+    //console.log(val);
+    //console.log(activePayoutOption === "VerificationCodeApplePay");
     setActivePayoutOption(val);
   }
 
@@ -740,14 +740,14 @@ export const DashboardPageComponent = props => {
       availability:e.target.checked
     }}
     onUpdateProfile(data);
-    console.log(availability);
+    //console.log(availability);
 
   }
 
   const handleSaveCurrentSelectedUserType = e =>{
     setCurrentSelectedUserType(e);
     const userType = e;
-    console.log(userType);
+    //console.log(userType);
     const data = 
     {publicData: {
           userType
@@ -1748,7 +1748,7 @@ const handleSubmit = e=>{
 }
 
 useEffect(()=>{
-  console.log(userTypeSaved);
+  //console.log(userTypeSaved);
   setUserType(userTypeSaved);
   handleSubmit();
 },[]);
@@ -1876,7 +1876,7 @@ const handleSubmit = e=>{
     //       //language:null,
     //       //dateOfBirth:null
     // }});
-    console.log("--------------------------------------------");
+    //console.log("--------------------------------------------");
   
     //Add new data
     const profile = 
@@ -2584,7 +2584,7 @@ const SaveProfileForm = props=>{
   const {userType} = publicData;
   const [showMap,setShowMap] = useState(false);
 
-  console.log(userType +"    uuuuuuuuuuuuuuuuuu");
+  //console.log(userType +"    uuuuuuuuuuuuuuuuuu");
 
   const handleFileClick = ()=>{
     fileInput.current.click();
@@ -2612,7 +2612,7 @@ if(currentSelectedUserType === "businessOwner"){
   }
 
   useEffect(()=>{
-    console.log(serviceAreas);
+    //console.log(serviceAreas);
   },[serviceAreas]);
  
 

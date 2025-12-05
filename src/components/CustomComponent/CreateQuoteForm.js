@@ -52,7 +52,7 @@ const handleSendOrderMessage = ()=>{
 }
 
 const getListingCart = (cartData)=>{
-    console.log("==========++++++=============")
+    //console.log("==========++++++=============")
     let res = [];
     cartData !== undefined && cartData.length > 0 && cartData.map((itm,key)=>{
         const listingId = currentListing?.id?.uuid;

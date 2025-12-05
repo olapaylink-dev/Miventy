@@ -54,7 +54,7 @@ const SearchBar = props =>{
         setShowExpandedSearchBar
     } = props;
 
-    console.log(parentClicked,"  vvvvvv33333333333vvvvv")
+    //console.log(parentClicked,"  vvvvvv33333333333vvvvv")
     const [isService, setIsService] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [addr1, setAddr1] = useState("");
@@ -101,7 +101,7 @@ const SearchBar = props =>{
         
         if(parentClicked){
             setShowExpandedSearchBar(false);
-            console.log(parentClicked,"     aaaaaaaaaaaaaaaaaaaaaaaa")
+            //console.log(parentClicked,"     aaaaaaaaaaaaaaaaaaaaaaaa")
             setParentClicked(false);
         }
         
@@ -134,7 +134,7 @@ const SearchBar = props =>{
         //handleShowPopUps();
     }
 
-    console.log(showPopups);
+    //console.log(showPopups);
 
     const handleSearch = e=>{
 
@@ -192,41 +192,41 @@ const SearchBar = props =>{
     }
 
     const handleCloseList1 = e =>{
-        console.log("close 1");
+        //console.log("close 1");
         e.preventDefault();
         e.stopPropagation();
         setShowList1(false);
     }
 
     const handleCloseList2 = e =>{
-        console.log("Close 2");
+        //console.log("Close 2");
         e.preventDefault();
         e.stopPropagation();
         setShowList2(false);
     }
 
     const addressChange1 = val=>{
-        console.log(val.target.value);
+        //console.log(val.target.value);
         setAddr1(val.target.value);
     }
 
     const addressChange2 = val=>{
-        console.log(val.target.value);
+        //console.log(val.target.value);
         setAddr2(val.target.value);
     }
 
     const addressChange3 = val=>{
-        console.log(val.target.value);
+        //console.log(val.target.value);
         setAddr3(val.target.value);
     }
 
     const addressChange4 = val=>{
-        console.log(val.target.value);
+        //console.log(val.target.value);
         setAddr4(val.target.value);
     }
 
     const addressChange5 = val=>{
-        console.log(val.target.value);
+        //console.log(val.target.value);
         setAddr5(val.target.value);
     }
 
@@ -235,7 +235,7 @@ const SearchBar = props =>{
     }
 
     const handleSetSelectedService = val =>{
-        console.log(val);
+        //console.log(val);
         setSelectedService(val);
         setShowValue(!showValue);
     }
@@ -256,7 +256,7 @@ const handleBack = e =>{
 }
 
 const handleSaveLocation = val =>{
-    console.log(val);
+    //console.log(val);
     setEventLocation([val]);
 }
 

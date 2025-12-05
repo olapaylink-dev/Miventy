@@ -491,7 +491,7 @@ const saveCatalogName = e =>{
                                                 <>
                                                   {data !== undefined && data.map((itm,key)=>{
                                                     if(itm.folder === selectedFolderName){
-                                                      console.log(itm.folder === folder,"   ttttttttttttttttttttttttt")
+                                                      //console.log(itm.folder === folder,"   ttttttttttttttttttttttttt")
                                                       return (
                                                         <SimpleItemCard key={`catalog_item_card_${key+1}`} 
                                                           catalogDetails={itm} 

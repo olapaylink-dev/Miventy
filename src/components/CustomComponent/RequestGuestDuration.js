@@ -34,7 +34,7 @@ const RequestGuestDuration = props =>{
     const {publicData} = currentListing.attributes;
     const {listingType} = publicData;
    
-    console.log(currentListing);
+    //console.log(currentListing);
 
     const handleChange = e =>{
     }

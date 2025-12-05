@@ -4,7 +4,7 @@ import css from './PaymentSettings.module.css';
 const PaymentSetting = props=>{
     const {setShowRemoveAccount}= props;
     const handleRemoveAccount = values =>{
-        console.log(values);
+        //console.log(values);
         setShowRemoveAccount(true);
     }
     return (

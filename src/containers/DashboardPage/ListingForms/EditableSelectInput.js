@@ -14,7 +14,7 @@ const EditableSelectInput = props =>{
     const handleCreateFolder = e =>{
         e.preventDefault();
         e.stopPropagation();
-        console.log("Clicked");
+        //console.log("Clicked");
         setShowAddOptions(true);
     }
 

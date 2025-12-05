@@ -59,7 +59,7 @@ const initialState = {
 
 export default function checkoutPageReducer(state = initialState, action = {}) {
   const { type, payload } = action;
-  //console.log(action,"  mmmmmmmmmccccccccccc")
+  ////console.log(action,"  mmmmmmmmmccccccccccc")
   switch (type) {
     case SET_INITIAL_VALUES:
       return { ...initialState, ...payload };
@@ -569,7 +569,7 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
   const {
     listing,attributes
   }=tx;
-  console.log(tx,"       xxxxxxxxxxxxxx11111111111111111")
+  //console.log(tx,"       xxxxxxxxxxxxxx11111111111111111")
   const {protectedData} = attributes;
   const {offer,cartData} = protectedData;
   const {items=[]} = cartData?.cartData  ||  {};
@@ -609,11 +609,11 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
                       }
       )
       .then(res=>{
-        console.log(res)
+        //console.log(res)
         dispatch(speculateTransactionSuccess(res.data.data));
       })
       .catch(e=>{
-        console.log(e)
+        //console.log(e)
         dispatch(speculateTransactionError(storableError(e)));
       });
  
@@ -623,7 +623,7 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
 export const loadOtherPaymentMethodUrl = (data) => (dispatch, getState, sdk) => {
   dispatch(loadOtherPaymentRequest());
 
-  console.log("Calling");
+  //console.log("Calling");
 
   fetch('/api/payment-method', {
     method: 'POST',
@@ -635,7 +635,7 @@ export const loadOtherPaymentMethodUrl = (data) => (dispatch, getState, sdk) => 
   }).then(response => response.json())
     .then(async (dat) => {
       
-      console.log(JSON.stringify(dat));
+      //console.log(JSON.stringify(dat));
       dispatch(loadOtherPaymentSuccess(dat));
 
   }).catch(function (error) {

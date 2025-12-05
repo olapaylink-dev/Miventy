@@ -91,8 +91,8 @@ const ListingMainForm = props =>{
     );
 
     useEffect(()=>{
-            console.log("lastaction",lastAction,"      99999999999999999999999999")
-            console.log(selectedCategory + "    ccccccccccccccccccccccccccccccccc   "+currentTab);
+            //console.log("lastaction",lastAction,"      99999999999999999999999999")
+            //console.log(selectedCategory + "    ccccccccccccccccccccccccccccccccc   "+currentTab);
             if((lastAction === "createDraft" || lastAction === "updateDraft") && (JSON.stringify(currentListing) !== "{}" || JSON.stringify(listingDraft) !== "{}")){
                 setCurrentListing(listingDraft);
                 const listingId = JSON.stringify(currentListing) !== "{}"?currentListing.id.uuid:listingDraft.id.uuid;
@@ -113,8 +113,8 @@ useEffect(()=>{
   },[]);
 
 const handleMoveToStart = (e,currListing)=>{
-    console.log(currentListing);
-    console.log(currListing);
+    //console.log(currentListing);
+    //console.log(currListing);
   setCurrentTab("start");
   
 }
@@ -127,9 +127,9 @@ const handleMoveToServiceDescription = (e)=>{
 const handleMoveToAboutService = (e,currListing)=>{
   forceUpdate();
   setIsDraft(true);
-  console.log(currentListing);
-  console.log(currListing);
-  console.log("dddddddddddddddddddddddddddddddddddddddddd");
+  //console.log(currentListing);
+  //console.log(currListing);
+  //console.log("dddddddddddddddddddddddddddddddddddddddddd");
   setCurrentTab("about");
 }
 const handleMoveToCatalog = e=>{
@@ -215,7 +215,7 @@ const categories = {
 
 
     const handleCreateDraftOrUpdateExisting = e =>{
-      console.log("ccccccccccccccccccc");
+      //console.log("ccccccccccccccccccc");
       if(lastAction === "updateDraft"){
             handleMoveToAboutService();
       }

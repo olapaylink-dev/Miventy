@@ -32,11 +32,11 @@ const Hero = (props)=>{
       });
   
       if(inView){
-          console.log("In view");
+          //console.log("In view");
           setShowTopBoxMenu(false);
           
       }else{
-          console.log("Not view");
+          //console.log("Not view");
           setShowTopBoxMenu(true);
       
       }

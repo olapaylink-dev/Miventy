@@ -5,7 +5,7 @@ const Earnings = props=>{
     const {showManagePayoutOptions,setShowManagePayoutOptions} = props;
     const handleManagePayout = e =>{
         setShowManagePayoutOptions(true);
-        console.log("show form");
+        //console.log("show form");
     }
 
     return (

@@ -17,7 +17,7 @@ const integrationSdk = sharetribeIntegrationSdk.createInstance({
 module.exports = (req, res) => {
     const {listingId,price}  = req.body;
 
-    console.log(req.body,"  price")
+    //console.log(req.body,"  price")
 
     integrationSdk.listings.update({
     id: listingId,
@@ -27,7 +27,7 @@ module.exports = (req, res) => {
     expand: true,
     }).then(apiResponse => {
 
-                console.log("Price changed")
+                //console.log("Price changed")
                 const { status, statusText, data } = apiResponse;
                 res
                 .status(status)

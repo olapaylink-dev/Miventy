@@ -13,7 +13,7 @@ const InputIncrementDecrement = props=>{
         }else{
             setWorkExperience(parseInt(workExperience) + 1);
         }
-        console.log(workExperience);
+        //console.log(workExperience);
     }
     const decrement = e=>{
         if(isNaN(workExperience)){
@@ -21,7 +21,7 @@ const InputIncrementDecrement = props=>{
         }else{
             setWorkExperience(parseInt(workExperience) - 1);
         }
-        console.log(workExperience);
+        //console.log(workExperience);
     }
     return(
         <div className={css.flex_row_btw_con}>
