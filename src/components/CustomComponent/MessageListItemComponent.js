@@ -23,14 +23,14 @@ export default function MessageListItemComponent(props){
                 const checkIfPaid = (trx)=>{
                     let paid = false;
                     trx.attributes.transitions.map((i,k)=>{
-                        if(i.transaction === "transition/confirm-payment"){
+                        if(i.transition === "transition/confirm-payment"){
                             paid = true;
                         }
                     })
                     return paid;
                 }
 
-                //console.log(itm,"   oooppp")
+                console.log(itm,"   ooop00000000000000000000000pp")
                 
                 return(
                     <div key={`messageList_${key+1}`} className={itm?.id?.uuid === currentTransaction?.id?.uuid?css.container_active: css.container} onClick={e=>handleShowTransactionDetails(itm,displayName,imgUrl,isProvider)}>
