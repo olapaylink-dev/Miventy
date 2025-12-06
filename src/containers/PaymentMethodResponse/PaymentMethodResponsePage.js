@@ -64,7 +64,7 @@ const PaymentMethodResponsePageCom = (props) => {
     const listingId = trx.listing.id.uuid;
     const speculatedTrx = JSON.parse(localStorage.getItem("SpeculatedTransaction"));
     if(speculatedTrx !== null && speculatedTrx !== undefined){
-      onConfirmPayment(speculatedTrx,listing,currentUser);
+      onConfirmPayment(speculatedTrx,trx.listing,currentUser);
     }
   },[]);
 
