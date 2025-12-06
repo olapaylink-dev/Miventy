@@ -228,7 +228,7 @@ const EnhancedCheckoutPage = props => {
       if(price !== undefined && price !== null){
           //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
           const data = {};
-          data.price = totalAmount;
+          data.price = totalAmount*100;
           data.title = listing?.attributes?.title;
           data.txId = currentUser.id.uuid;
           //console.log(data);
@@ -238,7 +238,7 @@ const EnhancedCheckoutPage = props => {
       }else if(ItemPrice !== undefined && ItemPrice !== null){
           //console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
           const data = {};
-          data.price = totalAmount;
+          data.price = totalAmount*100;
           data.title = listing?.attributes?.title;
           data.txId = currentUser.id.uuid;
           //console.log(data);
