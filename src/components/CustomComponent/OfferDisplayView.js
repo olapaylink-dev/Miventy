@@ -42,7 +42,8 @@ const OfferDisplayView = props =>{
 
     const platformFee = price * 0.3;
     const processingFee = 10;
-    const total = parseFloat(price) + processingFee + platformFee;
+    //const total = parseFloat(price) + processingFee + platformFee;
+    const total = parseFloat(price);
 
     useEffect(()=>{
         setTotal(total);
@@ -108,14 +109,14 @@ const handleBack = e =>{
                                 <span className={css.label}>Service Fee (Fixed)</span>
                                 <span className={css.val}>€{price}</span>
                             </div>
-                            <div className={css.flex_row_btw}>
+                            {/* <div className={css.flex_row_btw}>
                                 <span className={css.label}>Platform Fee (30%)</span>
                                 <span className={css.val}>€{platformFee}</span>
                             </div>
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Processing Fee</span>
                                 <span className={css.val}>€{processingFee}</span>
-                            </div>
+                            </div> */}
                             <div className={css.flex_row_btw}>
                                 <span className={css.label}>Total</span>
                                 <span className={css.val}>€{total}</span>
