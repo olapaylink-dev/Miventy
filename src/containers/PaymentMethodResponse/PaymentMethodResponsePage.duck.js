@@ -123,7 +123,7 @@ const removeCartData = (currentUser,cartId,dispatch)=>{
 }
 
 
-export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispatch,getState,sdk)=>{
+export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatch,getState,sdk)=>{
 
   console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
   
@@ -133,8 +133,9 @@ export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispa
   speculatedTrx.isSpeculative = false;
 
   const {
-    listing,attributes
+    attributes
   }=speculatedTrx;
+  const listingId = listing?.id?.uuid;
   const {publicData={}} = listing?.attributes;
   const {originalPrice} = publicData;
   const {protectedData} = attributes;
