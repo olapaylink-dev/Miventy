@@ -217,7 +217,8 @@ const EnhancedCheckoutPage = props => {
       setPrice(getPrice(lineItems));
       setQuantity(getQuantity(lineItems));
 
-      const totalAmount = total + fee + processingFee;
+      //const totalAmount = total + fee + processingFee;
+      const totalAmount = total;
       
       setSubTotal((parseInt(totalAmount).toFixed(2)));
       //create OfferListing
@@ -320,14 +321,14 @@ const EnhancedCheckoutPage = props => {
                 <span className={css.tvalue}>{quantity}</span>
               </div>
               <div className={css.rule}></div>
-              <div className={css.flex_row_btw}>
+              {/* <div className={css.flex_row_btw}>
                 <span className={css.thead}>Platform fee (30%)</span>
                 <span className={css.tvalue}>£{serviceFee}</span>
-              </div>
-              <div className={css.flex_row_btw}>
+              </div> */}
+              {/* <div className={css.flex_row_btw}>
                 <span className={css.thead}>Processing fee</span>
                 <span className={css.tvalue}>£{processingFee}</span>
-              </div>
+              </div> */}
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Sub total</span>
                 <span className={css.tvalue}>£{subTotal}</span>

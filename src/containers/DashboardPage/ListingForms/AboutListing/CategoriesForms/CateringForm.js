@@ -107,6 +107,7 @@ const handleSubmit = e=>{
            title:description,
            description,
           publicData:{
+            originalPrice: {amount:parseInt(pricee),currency:"EUR"},
             description,
             serviceMenuType,
             serviceType,

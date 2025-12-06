@@ -4,6 +4,7 @@ import { types as sdkTypes } from '../../util/sdkLoader';
 import { storableError } from "../../util/errors";
 const { UUID } = sdkTypes;
 import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { changeListingPrice } from "../TransactionPage/TransactionPage.duck";
 
 
 export const ONBOARD_REQUEST =
@@ -134,6 +135,8 @@ export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispa
   const {
     listing,attributes
   }=speculatedTrx;
+  const {publicData={}} = listing?.attributes;
+  const {originalPrice} = publicData;
   const {protectedData} = attributes;
   const {offer,cartData} = protectedData;
 
@@ -227,6 +230,9 @@ export const confirmPaymment = (speculatedTx,listingId,currentUser)=>async(dispa
               localStorage.removeItem("Transaction");
 
               removeCartData(currentUser,listingId,dispatch);
+
+              //Reset listing price back to original price
+              dispatch(changeListingPrice(listingId,originalPrice))
               return order;
             })
             .catch(e => {

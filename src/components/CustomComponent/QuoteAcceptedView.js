@@ -53,7 +53,10 @@ const QuoteAcceptedView = props =>{
     }
 
     useEffect(()=>{
-        onChangeListingPrice(listingId, new Money(total,"EUR"));
+        //Save original price
+        //Listing price should be reset back to original price after successfull paymment
+        localStorage.setItem("OriginalListingPrice")
+        onChangeListingPrice(listingId, new Money(total*100,"EUR"));
         //console.log(currentTransaction,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
     },[])
 

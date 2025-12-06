@@ -250,8 +250,6 @@ const categories = {
         }
         onCreateListingDraft(data, "createDraft")
       }
-      
-      
     }
 
 

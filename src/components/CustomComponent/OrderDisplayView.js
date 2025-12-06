@@ -58,7 +58,7 @@ const OrderDisplayView = props =>{
     //Change the price of the listing
     useEffect(()=>{
         //console.log("changing price eeeeee  ",ItemPrice)
-        onChangeListingPrice(listingId, new Money(ItemPrice,"EUR"));
+        onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
         //console.log("changing price")
     },[])
 
