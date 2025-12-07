@@ -85,6 +85,18 @@ const OrderDisplayView = props =>{
         setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
     }
 
+    const checkIfPaid = (trx)=>{
+        let paid = false;
+        trx.attributes.transitions.map((i,k)=>{
+            if(i.transition === "transition/confirm-payment"){
+                paid = true;
+            }
+        })
+        return paid;
+    }
+
+    const isPaid = checkIfPaid(currentTransaction);
+
     return (
             <div className={css.modal}>
                 <div className={css.container_header}>
@@ -183,12 +195,17 @@ const OrderDisplayView = props =>{
                                 
                             :
                                 (
-                                    transactionState === "accepted"?
+                                    isPaid?
+                                        <div className={css.flex_row}>
+                                            Payment Completed
+                                        </div>
+                                    :transactionState === "accepted"?
                                     <div className={css.flex_row}>
                                         <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
                                             Proceed to payment
                                         </NamedLink>
-                                    </div>:
+                                    </div>
+                                    :
                                     <p>Waiting for Provider to accept your Order, before you can proceed to payment.</p>
                                 )
                             

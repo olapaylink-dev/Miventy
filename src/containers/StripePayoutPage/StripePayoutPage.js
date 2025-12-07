@@ -1558,7 +1558,7 @@ const [currentListing,setCurrentListing] = useState({});
     {showCompletedOrders?
       <div  className={css2.overlay}>
         
-          <CompletedOrders setShowCompletedOrders={setShowCompletedOrders}/>
+          <CompletedOrders setShowCompletedOrders={setShowCompletedOrders} currentT/>
         
       </div>
     :""}
