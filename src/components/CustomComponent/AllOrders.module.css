@@ -1,0 +1,160 @@
+.container{
+    display: flex;
+    padding: 25px 25px 25px 28px;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid #EDEDED;
+    background: #FFF;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.flex_row_1{
+    display: flex;
+    gap: 16px;
+}
+.profile_txt{
+    display: flex;
+    width: 47px;
+    height: 47px;
+    padding: 0 16px;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 9999px;
+    background: #F1F5F9;
+    color: #020817;
+    text-align: center;
+    font-family: "Segoe UI Symbol";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+.title{
+    color: #020817;
+    font-family: "Segoe UI Symbol";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    margin: 0px;
+    padding: 0px;
+}
+.badge{
+    display: flex;
+    width: 80px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
+    background: #008000;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 17.4px */
+    height: fit-content;
+}
+.badge_ongoing{
+    display: flex;
+    width: 80px;
+    padding: 4px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
+    background: #008CFF;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 145%; /* 17.4px */
+    height: fit-content;
+}
+.services{
+    display: flex;
+    padding: 3px 11px;
+    align-items: center;
+    color: #0F172A;
+    font-family: "Segoe UI Symbol";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 133.333% */
+    border-radius: 9999px;
+    background: #F1F5F9;
+    width: fit-content;
+}
+.flex_col{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.flex_col_2{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+
+    .container{
+        flex-direction: column;
+        width: 95%;
+    }
+
+    .mobile{
+        display: flex;
+    }
+    .flex_row_1{
+        width: 100%;
+        justify-content: space-between;
+    }
+    .badge_ongoing{
+        align-self: flex-end;
+    }
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   
+}
+
+  
+

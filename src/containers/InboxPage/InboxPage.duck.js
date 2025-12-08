@@ -135,6 +135,70 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
     });
 };
 
+
+export const loadTransactions = (params, search) => (dispatch, getState, sdk) => {
+  const { tab='orders' } = params;
+
+  const onlyFilterValues = {
+    orders: 'order',
+    sales: 'sale',
+  };
+
+  const onlyFilter = onlyFilterValues[tab];
+  if (!onlyFilter) {
+    return Promise.reject(new Error(`Invalid tab for InboxPage: ${tab}`));
+  }
+
+  dispatch(fetchOrdersOrSalesRequest());
+
+  const { page = 1 } = parse(search);
+
+  const apiQueryParams = {
+    //only: onlyFilter,
+    //lastTransitions: getAllTransitionsForEveryProcess(),
+    include: [
+      'listing',
+      'provider',
+      'provider.profileImage',
+      'customer',
+      'customer.profileImage',
+      'booking',
+      'metaData.offer'
+    ],
+    'fields.transaction': [
+      'processName',
+      'lastTransition',
+      'lastTransitionedAt',
+      'transitions',
+      'payinTotal',
+      'payoutTotal',
+      'lineItems',
+      'protectedData',
+      'publicData',
+      'metaData.offer'
+    ],
+    'fields.listing': ['title', 'availabilityPlan', 'publicData.listingType'],
+    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned'],
+    'fields.image': ['variants.square-small', 'variants.square-small2x'],
+    page,
+    perPage: INBOX_PAGE_SIZE,
+  };
+
+  return sdk.transactions
+    .query(apiQueryParams)
+    .then(response => {
+      dispatch(addMarketplaceEntities(response));
+      dispatch(fetchOrdersOrSalesSuccess(response));
+      console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");
+      return response;
+    })
+    .catch(e => {
+      dispatch(fetchOrdersOrSalesError(storableError(e)));
+      throw e;
+    });
+};
+
+
 export const sendMessage = (txId, message) => (dispatch, getState, sdk) => {
   //dispatch(sendMessageRequest());
 

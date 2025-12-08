@@ -35,6 +35,18 @@
     align-items: flex-start;
     gap: 25px;
 }
+.content_detail{
+    display: flex;
+    padding: 17px 25px 25px 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    background: #FFF;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    gap: 32px;
+}
 .main_con{
     background-color: #FAFAFA;
 
@@ -1318,6 +1330,53 @@ text-transform: uppercase;
     font-size: 14px;
 }
 
+.order_tab{
+    display: flex;
+    background: #F1F5F9;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.tab_btn{
+    display: flex;
+    padding: 2px 4px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 6px;
+    background: #F1F5F9;
+    color: #64748B;
+    text-align: center;
+    font-family: "Segoe UI Symbol";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+    display: flex;
+    padding: 6px 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tab_btn_active{
+    display: flex;
+    padding: 6px 24px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    background: #FFF;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: #020817;
+    text-align: center;
+    font-family: "Segoe UI Symbol";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
+}
+
+
 @media only screen and (max-width: 1440px) {
 
 .modal_complete_profile_busi{
@@ -1344,6 +1403,11 @@ text-transform: uppercase;
 
   
 @media only screen and (max-width: 768px) {
+
+    .container{
+        flex-direction: column;
+        width: 95%;
+    }
 
   .modal_complete_profile_busi{
     width: 90%;

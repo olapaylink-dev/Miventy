@@ -58,6 +58,10 @@ import { loadDataDash } from '../DashboardPage/DashboardPage.duck';
 import camera from '../../assets/avater2.png';
 import SingleDatePicker from '../../components/DatePicker/DatePickers/SingleDatePicker';
 import MyDatePicker from '../../components/MyDatePicker';
+import OnGoingOrders from '../../components/CustomComponent/OnGoingOders';
+import CompletedOrder from '../../components/CustomComponent/CompletedOrders';
+import ALLOrders from '../../components/CustomComponent/AllOrders';
+import { loadTransactions } from '../InboxPage/InboxPage.duck';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -188,7 +192,9 @@ export const StripePayoutPageComponent = props => {
     payoutDetailsSaveInProgress,
     payoutDetailsSaved,
     params,
-    onLoadDashboard
+    onLoadDashboard,
+    onFetchTransaction,
+    transactions
   } = props;
    const{match}=props;
 
@@ -270,6 +276,7 @@ const [currentListing,setCurrentListing] = useState({});
   const [serviceAreas,setServiceAreas] = useState(serviceAreasSave);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [currentTab,setCurrentTab] = useState("dashboard");
+  const [orderTab,setOrderTab] = useState("allOrders");
   const [showManagePayoutOptions, setShowManagePayoutOptions ] = useState(false);
   const [activePayoutOption,setActivePayoutOption] = useState("");
   const [showSettingsMenu,setShowSettingsMenu] = useState(false);
@@ -315,6 +322,10 @@ const [currentListing,setCurrentListing] = useState({});
        
       },[path]
     );
+
+    useEffect(()=>{
+      onFetchTransaction();
+    },[])
 
   
   // const checkIfListingsAvailable = (data)=>{
@@ -555,7 +566,10 @@ const [currentListing,setCurrentListing] = useState({});
     forceUpdate();
   }
 
-  const showDashboard = val =>{
+  const showDashboard = e =>{
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("===")
     setCurrentTab("dashboard");
   }
 
@@ -623,11 +637,13 @@ const [currentListing,setCurrentListing] = useState({});
   }
 
   const handleShowCompletedOrders = e=>{
-    setShowCompletedOrders(true);
+    setOrderTab("completedOrders");
+    setCurrentTab("orders");
   }
 
   const handleShowOngoingOrders = e=>{
-    setShowOngoingOrders(true);
+    setOrderTab("onGoingOrders");
+    setCurrentTab("orders");
   }
 
   const handleAvailability =  e=>{
@@ -717,7 +733,29 @@ const [currentListing,setCurrentListing] = useState({});
     useEffect(()=>{
       onLoadDashboard();
     },[currentTab])
- 
+
+
+  const getOngoingTransactions = (trx)=>{
+        let result = [];
+        trx.map((itm,k)=>{
+          const state = itm?.attributes?.protectedData?.transactionState;
+          if(state !== "reviewed"){
+            result.push(itm)
+          }
+        })
+        return result;
+    }
+
+    const getCompletedTransactions = (trx)=>{
+        let result = [];
+        trx.map((itm,k)=>{
+          const state = itm?.attributes?.protectedData?.transactionState;
+          if(state === "reviewed"){
+            result.push(itm)
+          }
+        })
+        return result;
+    }
 
   return (
     <Page title={title} scrollingDisabled={scrollingDisabled}>
@@ -1003,7 +1041,6 @@ const [currentListing,setCurrentListing] = useState({});
                                     </div>
                                   )
                                 })}
-
                                   {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).length>2?
                                   <div className={css2.mylisting_card_2}>
                                     <button onClick={handleShowListings} className={css2.view_more}>
@@ -1083,7 +1120,7 @@ const [currentListing,setCurrentListing] = useState({});
                                   </div>
                               </div>
                               <p className={classNames(css2.no_spacing_main,css2.cust_p)}>Current rating: --</p>
-                              <div className={css2.flex_row_center}>
+                              <div className={css2.flex_row_center} onClick={e=>{setCurrentTab("reviews"); e.preventDefault(); e.stopPropagation();}}>
                                   <div>
                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                       <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1543 5.83729C26.7749 2.05424 21.2235 2.05424 18.8441 5.83729L14.9864 11.9708C14.7042 12.4194 14.2516 12.7475 13.7203 12.8772L6.62721 14.6087C2.27171 15.672 0.510317 20.9235 3.43995 24.3592L8.1488 29.8814C8.49442 30.2867 8.66306 30.805 8.62505 31.3256L8.09903 38.5292C7.77091 43.0228 12.3074 46.2157 16.4415 44.5539L23.2095 41.8333C23.7154 41.6299 24.283 41.6299 24.7889 41.8333L31.5569 44.5539C35.691 46.2157 40.2275 43.0228 39.8994 38.5292L39.3734 31.3256C39.3354 30.805 39.504 30.2867 39.8496 29.8814L44.5585 24.3592C47.4881 20.9235 45.7267 15.672 41.3712 14.6087L34.2781 12.8772C33.7468 12.7475 33.2942 12.4194 33.0121 11.9708L29.1543 5.83729ZM22.2301 7.96693C23.0409 6.67769 24.9575 6.67769 25.7684 7.96693L29.6261 14.1004C30.4664 15.4364 31.7971 16.389 33.3295 16.7631L40.4226 18.4946C41.933 18.8633 42.4793 20.6327 41.5148 21.7638L36.8059 27.2861C35.7814 28.4875 35.269 30.0415 35.384 31.6169L35.91 38.8205C36.0169 40.2842 34.5117 41.4305 33.0488 40.8425L26.2808 38.1219C24.8175 37.5337 23.1809 37.5337 21.7176 38.1219L14.9496 40.8425C13.4867 41.4306 11.9815 40.2842 12.0884 38.8205L12.6144 31.6169C12.7295 30.0415 12.217 28.4875 11.1925 27.2861L6.48363 21.7638C5.51913 20.6327 6.06546 18.8633 7.5758 18.4946L14.6689 16.7631C16.2014 16.389 17.532 15.4364 18.3723 14.1004L22.2301 7.96693Z" fill="#475367"/>
@@ -1286,12 +1323,74 @@ const [currentListing,setCurrentListing] = useState({});
 
                           </div>
                     :""}
-                  
+
+                    {currentTab === "reviews"?
+                      <div className={css.list_con}>
+                         <div className={css2.flex_title}>
+                              <div className={css2.mylisting_card_2}>
+                                <button onClick={showDashboard} className={css2.back_to_dashboard}>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                <span>Back to Dashboard</span>
+                                </button>
+                              </div>
+
+                              <h1 className={css2.header_2}>Reviews</h1>
+                                <p className={css2.sub_header_2}>
+                                  View and respond to customer feedback
+                                </p>
+                          </div>
+                          <div className={css2.content_detail}>
+                            3
+                          </div>
+                      </div>
+                    :""}
+                    {currentTab === "orders"?
+                      <div className={css.list_con}>
+                         <div className={css2.flex_title}>
+                              <div className={css2.mylisting_card_2}>
+                                <button onClick={showDashboard} className={css2.back_to_dashboard}>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                    <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                <span>Back to Dashboard</span>
+                                </button>
+                              </div>
+
+                              <h1 className={css2.header_2}>Orders</h1>
+                                <p className={css2.sub_header_2}>
+                                  Manage and track all your service orders
+                                </p>
+                          </div>
+                          <div className={css2.content_detail}>
+                            <div className={css2.order_tab}>
+                              <button onClick={e=>{setOrderTab("allOrders")}} className={orderTab === "allOrders"?css2.tab_btn:css2.tab_btn_active}>
+                                All Orders <span>(10)</span>
+                              </button>
+                              <button onClick={e=>{setOrderTab("onGoingOrders")}} className={orderTab === "onGoingOrders"?css2.tab_btn:css2.tab_btn_active}>
+                                Ongoing Orders <span>(4)</span>
+                              </button>
+                              <button onClick={e=>{setOrderTab("completedOrders")}} className={orderTab === "completedOrders"?css2.tab_btn:css2.tab_btn_active}>
+                                Completed Orders <span>(6)</span>
+                              </button>
+                            </div>
+
+                            {orderTab === "allOrders"?
+                                <ALLOrders orders={transactions} />
+                            :orderTab === "onGoingOrders"?
+                                <OnGoingOrders orders={getOngoingTransactions(transactions)} />
+                            :orderTab === "completedOrders"?
+                                <CompletedOrder orders={getCompletedTransactions(transactions)} />
+                            :
+                               ""
+                            }
+                            
+                          </div>
+                      </div>
+                    :""}
                 </div>
               </div>
-
-
-
 
       </LayoutSingleColumn>
       {curentPage === "userType"?
@@ -1611,23 +1710,6 @@ const [currentListing,setCurrentListing] = useState({});
 
 const mapStateToProps = state => {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const { currentUser } = state.user;
   const {
     userId,
@@ -1661,6 +1743,18 @@ const {
 
   console.log(updatedListing,"   aaaaaaaqqqqqqqq")
 
+  const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
+
+  const {
+    messages,
+    totalMessages,
+    acceptOfferInProgress,
+    acceptOfferError,
+    acceptOfferSuccess,
+    declineOfferInProgress,
+    declineOfferError,
+    declineOfferSuccess,
+  } = state.TransactionPage;
 
   const userMatches = getMarketplaceEntities(state, [{ type: 'user', id: userId }]);
   const user = userMatches.length === 1 ? userMatches[0] : null;
@@ -1679,25 +1773,6 @@ const {
     ownEntities
   } = state.ManageListingsPage;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   const {
     getAccountLinkInProgress,
     getAccountLinkError,
@@ -1710,12 +1785,6 @@ const {
   //const { currentUser } = state.user;
   const { payoutDetailsSaveInProgress, payoutDetailsSaved } = state.StripePayoutPage;
   return {
-
-
-
-
-
-
 
     scrollingDisabled: isScrollingDisabled(state),
     currentUser,
@@ -1743,15 +1812,6 @@ const {
     closeListingInProgress,
     closeListingSuccess,
     updateListingInProgress,
-
-
-
-
-
-
-
-
-
     currentUser,
     getAccountLinkInProgress,
     getAccountLinkError,
@@ -1763,6 +1823,7 @@ const {
     payoutDetailsSaveInProgress,
     payoutDetailsSaved,
     scrollingDisabled: isScrollingDisabled(state),
+    transactions: getMarketplaceEntities(state, transactionRefs),
   };
 };
 
@@ -1781,6 +1842,7 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
   onPayoutDetailsSubmit: (values, isUpdateCall) =>
     dispatch(savePayoutDetails(values, isUpdateCall)),
   onGetStripeConnectAccountLink: params => dispatch(getStripeConnectAccountLink(params)),
+  onFetchTransaction: () => dispatch(loadTransactions({},"")),
 });
 
 const StripePayoutPage = compose(
