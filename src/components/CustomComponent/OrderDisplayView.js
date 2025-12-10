@@ -45,7 +45,7 @@ const OrderDisplayView = props =>{
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider,listing} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    const {transactionState=""} = protectedData;
+    const transactionState = itm?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const {items=[]} = cartData  ||  {};
     const {ItemPrice} = items[0] || {};
@@ -166,9 +166,9 @@ const OrderDisplayView = props =>{
                                 <>
                                     {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
                                     (
-                                        transactionState === "accepted"?
+                                        transactionState === "state/accepted"?
                                             "You have accepted this offer"
-                                        :transactionState === "declined"?
+                                        :transactionState === "state/declined"?
                                             <span className={css.declined_txt}>You have declined this order</span>
                                         :
                                         <div className={css.flex_row}>
@@ -199,7 +199,7 @@ const OrderDisplayView = props =>{
                                         <div className={css.flex_row}>
                                             Payment Completed
                                         </div>
-                                    :transactionState === "accepted"?
+                                    :transactionState === "state/accepted"?
                                     <div className={css.flex_row}>
                                         <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
                                             Proceed to payment

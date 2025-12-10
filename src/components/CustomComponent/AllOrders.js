@@ -18,7 +18,7 @@ const ALLOrders = props =>{
     // const {protectedData={}} = orders !== undefined && JSON.stringify(orders) !== "{}"?orders?.attributes:{};
     // const {provider,listing} = orders;
     // const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    // const {transactionState=""} = protectedData;
+    // const transactionState = itm?.attributes?.state;
     // const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     // const {items=[]} = cartData  ||  {};
     // const {ItemPrice} = items[0] || {};
@@ -81,7 +81,7 @@ const ALLOrders = props =>{
                        const {profile} = attributes;
                        const {displayName,abbreviatedName} = profile;
                        const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-                       const {transactionState=""} = protectedData;
+                       const transactionState = itm?.attributes?.state;
                        const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
                        const {items=[]} = cartData  ||  {};
                        const {ItemPrice} = items[0] || {};
@@ -89,7 +89,6 @@ const ALLOrders = props =>{
                        const listingType = listing?.attributes?.publicData?.listingType;
                        const listingId = itm?.listing?.id?.uuid;
                        const slug = itm?.listing?.attributes?.title;
-                       console.log(transactionState,"  ssddffgg")
                        return(
                             <div className={css.container}>
                                <div className={css.flex_col}>
@@ -108,7 +107,7 @@ const ALLOrders = props =>{
                                    
                                </div>
                                <div className={css.flex_row_1}>
-                                   {transactionState === "reviewed"?
+                                   {transactionState === "state/reviewed"?
                                        <div className={classNames(css.badge)}>Completed</div>
                                    :
                                        <div className={classNames(css.badge_ongoing)}>Ongonig</div>

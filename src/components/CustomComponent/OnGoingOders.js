@@ -18,7 +18,7 @@ const OnGoingOrders = props =>{
     // const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     // const {provider,listing} = currentTransaction;
     // const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    // const {transactionState=""} = protectedData;
+    // const transactionState = itm?.attributes?.state;
     // const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     // const {items=[]} = cartData  ||  {};
     // const {ItemPrice} = items[0] || {};
@@ -81,7 +81,7 @@ const OnGoingOrders = props =>{
                 const {profile} = attributes;
                 const {displayName,abbreviatedName} = profile;
                 const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-                const {transactionState=""} = protectedData;
+                const transactionState = itm?.attributes?.state;
                 const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
                 const {items=[]} = cartData  ||  {};
                 const {ItemPrice} = items[0] || {};
@@ -108,7 +108,7 @@ const OnGoingOrders = props =>{
                             
                         </div>
                         <div className={css.flex_row_1}>
-                            {transactionState === "reviewed"?
+                            {transactionState === "state/reviewed"?
                                 <div className={classNames(css.badge)}>Completed</div>
                             :
                                 <div className={classNames(css.badge_ongoing)}>Ongonig</div>

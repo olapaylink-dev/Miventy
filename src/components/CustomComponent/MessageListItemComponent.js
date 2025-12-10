@@ -23,10 +23,12 @@ export default function MessageListItemComponent(props){
                 const checkIfPaid = (trx)=>{
                     let paid = false;
                     trx.attributes.transitions.map((i,k)=>{
+                        console.log(i.transition,"    vvvvvvvvvvv111111")
                         if(i.transition === "transition/confirm-payment"){
                             paid = true;
                         }
                     })
+                    console.log(trx?.attributes?.state,"  bbbnnnnnnmmmmmm2222222222222");
                     return paid;
                 }
 

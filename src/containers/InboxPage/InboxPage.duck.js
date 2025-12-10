@@ -71,7 +71,7 @@ const fetchOrdersOrSalesError = e => ({
 
 // ================ Thunks ================ //
 
-const INBOX_PAGE_SIZE = 10;
+const INBOX_PAGE_SIZE = 50;
 
 export const loadData = (params, search) => (dispatch, getState, sdk) => {
   const { tab='orders' } = params;
@@ -103,6 +103,7 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
       'metaData.offer'
     ],
     'fields.transaction': [
+      'state',
       'processName',
       'lastTransition',
       'lastTransitionedAt',

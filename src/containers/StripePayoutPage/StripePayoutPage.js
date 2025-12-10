@@ -739,8 +739,8 @@ const [currentListing,setCurrentListing] = useState({});
   const getOngoingTransactions = (trx)=>{
         let result = [];
         trx.map((itm,k)=>{
-          const state = itm?.attributes?.protectedData?.transactionState;
-          if(state !== "reviewed"){
+          const state = itm?.attributes?.state;
+          if(state !== "state/reviewed"){
             result.push(itm)
           }
         })
@@ -750,8 +750,8 @@ const [currentListing,setCurrentListing] = useState({});
     const getCompletedTransactions = (trx)=>{
         let result = [];
         trx.map((itm,k)=>{
-          const state = itm?.attributes?.protectedData?.transactionState;
-          if(state === "reviewed"){
+          const state = itm?.attributes?.state;
+          if(state === "state/reviewed"){
             result.push(itm)
           }
         })
