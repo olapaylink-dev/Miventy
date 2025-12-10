@@ -167,6 +167,7 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
       'metaData.offer'
     ],
     'fields.transaction': [
+      'state',
       'processName',
       'lastTransition',
       'lastTransitionedAt',

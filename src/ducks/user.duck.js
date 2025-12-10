@@ -296,6 +296,7 @@ export const fetchCurrentUserHasOrders = () => (dispatch, getState, sdk) => {
       'metaData.offer'
     ],
     'fields.transaction': [
+      'state',
       'processName',
       'lastTransition',
       'lastTransitionedAt',
