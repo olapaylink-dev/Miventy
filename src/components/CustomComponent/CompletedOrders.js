@@ -30,15 +30,15 @@ const CompletedOrder = props =>{
 
     // //Change the price of the listing
     // useEffect(()=>{
-    //     //console.log("changing price eeeeee  ",ItemPrice)
+    //     ////console.log("changing price eeeeee  ",ItemPrice)
     //     onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
-    //     //console.log("changing price")
+    //     ////console.log("changing price")
     // },[])
 
     // useEffect(()=>{
     //     if(acceptOfferSuccess){
-    //         //console.log("Offer accepted")
-    //         //console.log(currentTransaction)
+    //         ////console.log("Offer accepted")
+    //         ////console.log(currentTransaction)
     //         setShowOrder(false);
     //         setSuccessMessage("You have accepted this order!");
     //         setShowSuccessView(true);
@@ -47,7 +47,7 @@ const CompletedOrder = props =>{
 
     // useEffect(()=>{
     //     if(declineOfferSuccess){
-    //         console.log("Offer declined  =====")
+    //         //console.log("Offer declined  =====")
     //         setShowOrder(false);
     //         setSuccessMessage("You have declined this order!");
     //         setShowSuccessView(true);
@@ -69,7 +69,7 @@ const CompletedOrder = props =>{
     return (
              <>
                {orders.length > 0? orders.map((itm,key)=>{
-                console.log(itm,"     aaaaaaaaaaaaa");
+                //console.log(itm,"     aaaaaaaaaaaaa");
                 const {protectedData={}} = itm !== undefined && JSON.stringify(itm) !== "{}"?itm?.attributes:{};
                 const payinTotal = itm?.attributes?.payinTotal?.amount;
                 const lastTransitionedAt = itm?.attributes?.lastTransitionedAt;
@@ -89,7 +89,7 @@ const CompletedOrder = props =>{
                 const listingType = listing?.attributes?.publicData?.listingType;
                 const listingId = itm?.listing?.id?.uuid;
                 const slug = itm?.listing?.attributes?.title;
-                console.log(transactionState,"  ssddffgg")
+                //console.log(transactionState,"  ssddffgg")
                 return(
                      <div className={css.container}>
                         <div className={css.flex_col}>

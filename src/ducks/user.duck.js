@@ -265,7 +265,7 @@ export const fetchCurrentUserHasListings = () => (dispatch, getState, sdk) => {
     .then(response => {
       const hasListings = response.data.data && response.data.data.length > 0;
 
-      console.log("Here oooooooooo")
+      //console.log("Here oooooooooo")
 
       const hasPublishedListings =
         hasListings &&
@@ -319,7 +319,7 @@ export const fetchCurrentUserHasOrders = () => (dispatch, getState, sdk) => {
     .query(params)
     .then(response => {
       const hasOrders = response.data.data && response.data.data.length > 0;
-      console.log(response);
+      //console.log(response);
       dispatch(fetchCurrentUserHasOrdersSuccess(!!hasOrders,response.data));
     })
     .catch(e => dispatch(fetchCurrentUserHasOrdersError(storableError(e))));
@@ -363,7 +363,7 @@ export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => 
  * @param {boolean} [options.enforce]             Enforce the call even if the currentUser entity is freshly fetched.
  */
 export const fetchCurrentUser = options => (dispatch, getState, sdk) => {
-  console.log("000000000000000000");
+  //console.log("000000000000000000");
   const state = getState();
   const { currentUserHasListings, currentUserShowTimestamp } = state.user || {};
   const { isAuthenticated } = state.auth;

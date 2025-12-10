@@ -6,6 +6,7 @@ import {
 } from '../../ducks/stripeConnectAccount.duck';
 import { fetchCurrentUser } from '../../ducks/user.duck';
 import { loadDataDash } from '../DashboardPage/DashboardPage.duck';
+import { queryUserReviews } from '../ProfilePage/ProfilePage.duck';
 
 // ================ Action types ================ //
 
@@ -84,6 +85,7 @@ export const loadData = () => (dispatch, getState, sdk) => {
     const currentUser = getState().user.currentUser;
     if (currentUser && currentUser.stripeAccount) {
       dispatch(fetchStripeAccount());
+      dispatch(queryUserReviews(currentUser.id.uuid));
     }
     return response;
   });

@@ -7,7 +7,7 @@ const BookingsCard = props=>{
     const displayName = provider?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
     const {protectedData} = attributes;
-    const transactionState = itm?.attributes?.state;
+    const transactionState = data?.attributes?.state;
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
     const {eventDate="",eventLocation=[]} = protectedData?.cartData;
     const location = eventLocation[0]?.result?.place_name;

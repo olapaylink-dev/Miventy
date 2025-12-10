@@ -232,7 +232,7 @@ export const ListingPageComponent = props => {
   const [inProgress, setInProgress] = useState(false);
   const [showOwnListingMessage, setShowOwnListingMessage] = useState(false);
 
-  //console.log(reviews,"   nnnnnnnnnnnnnnnncccccccccccccccccccc")
+  ////console.log(reviews,"   nnnnnnnnnnnnnnnncccccccccccccccccccc")
 
   useEffect(() => {
     setMounted(true);
@@ -709,7 +709,7 @@ const serviceTypesRentalSpace = [
   
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
-     //console.log("==========++++++=============")
+     ////console.log("==========++++++=============")
     const listingCart = getListingCart(cartData);
     const orderData = {
         cartData:listingCart,
@@ -769,7 +769,7 @@ const StyledRating = styled(Rating)({
   },
 });
 
-console.log(reviews,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+//console.log(reviews,"   vvvvvvvvvvvvvvvvccccccccccccccc")
 
   return (
     <div onClick={e=>{handleParentClicked(e,true); setShowDatePicker(false)}}>
@@ -1143,7 +1143,7 @@ console.log(reviews,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                 <div className={css.category_item}>
 
                  {folders !== undefined && folders.length > 0 && folders.map((folder,key)=>{
-                    //console.log(folder);
+                    ////console.log(folder);
                     return(
                             <SimpleCard_2 
                                             description={description} 
@@ -1201,7 +1201,7 @@ console.log(reviews,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                 </div>
                 
                 {reviews.length > 0 && reviews.map((itm,key)=>{
-                  console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                  //console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                   const {attributes,author} = itm;
                   const {content,rating} = attributes;
                   const displayName = author?.attributes?.profile?.displayName;

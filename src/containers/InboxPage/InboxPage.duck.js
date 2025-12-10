@@ -127,7 +127,7 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
     .then(response => {
       dispatch(addMarketplaceEntities(response));
       dispatch(fetchOrdersOrSalesSuccess(response));
-      console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");
+      //console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");
       return response;
     })
     .catch(e => {
@@ -191,7 +191,7 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
     .then(response => {
       dispatch(addMarketplaceEntities(response));
       dispatch(fetchOrdersOrSalesSuccess(response));
-      console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");
+      //console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");
       return response;
     })
     .catch(e => {
@@ -208,7 +208,7 @@ export const sendMessage = (txId, message) => (dispatch, getState, sdk) => {
     .send({ transactionId: txId, content: message })
     .then(response => {
       const messageId = response.data.data.id;
-      console.log(messageId,"    ccccccccccccccc");
+      //console.log(messageId,"    ccccccccccccccc");
       // We fetch the first page again to add sent message to the page data
       // and update possible incoming messages too.
       // TODO if there're more than 100 incoming messages,
@@ -221,7 +221,7 @@ export const sendMessage = (txId, message) => (dispatch, getState, sdk) => {
       //   .catch(() => dispatch(sendMessageSuccess()));
     })
     .catch(e => {
-      console.log(e)
+      //console.log(e)
       //dispatch(sendMessageError(storableError(e)));
       // Rethrow so the page can track whether the sending failed, and
       // keep the message in the form for a retry.

@@ -50,7 +50,7 @@ export default function InboxView(props){
 
      const handleSendMessage = e=>{
         const txId = currentTransaction.id.uuid;
-        console.log("Sending")
+        //console.log("Sending")
         onSendMessage(txId,message);
      }
 

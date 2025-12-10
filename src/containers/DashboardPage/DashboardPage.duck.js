@@ -243,6 +243,7 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
   // in case this page load fails.
   dispatch(setInitialState());
 
+  
   if (isPreviewForCurrentUser) {
     return dispatch(fetchCurrentUser(fetchCurrentUserOptions)).then(() => {
       if (isCurrentUser(userId, currentUser) && isUserAuthorized(currentUser)) {

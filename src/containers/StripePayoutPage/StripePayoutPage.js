@@ -176,8 +176,6 @@ export const StripePayoutPageComponent = props => {
     onFetctCurrentUser,
     onFetchCurrentListing,
     updateListingInProgress,
-
-
     currentUser,
     scrollingDisabled,
     getAccountLinkInProgress,
@@ -195,13 +193,16 @@ export const StripePayoutPageComponent = props => {
     params,
     onLoadDashboard,
     onFetchTransaction,
-    transactions
+    transactions,
+    reviews,
   } = props;
    const{match}=props;
 
   const {
    params: pathParams,
   }=props;
+
+  console.log(reviews,"   xxxxxxxxxxxxxxxxxx")
 
   const { returnURLType } = params || {};
   const ensuredCurrentUser = ensureCurrentUser(currentUser);
@@ -347,25 +348,25 @@ const [currentListing,setCurrentListing] = useState({});
   useEffect(()=>{
 
     // if(window.location.pathname === "/profile-settings/catalog"){
-    //   console.log("setShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogs");
+    //   //console.log("setShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogssetShowCatalogs");
     //   setShowCatalogs(true);
     // }
 
 
 
-    console.log("Updating profile -----------");
+    //console.log("Updating profile -----------");
       if(image !== undefined && image !== null && image.file !== undefined && image.imageId !== undefined && (image.listingId === undefined || image.listingId === null)){
-        console.log("Updating profile ------111111111111111-----");
-        console.log(image);
+        //console.log("Updating profile ------111111111111111-----");
+        //console.log(image);
         const uploadedImage = image;
         // Update profileImage only if file system has been accessed
         const updatedValues = uploadedImage && uploadedImage.imageId && uploadedImage.file && {profileImageId: uploadedImage.imageId };
-        console.log(updatedValues);
+        //console.log(updatedValues);
         onUpdateProfile(updatedValues);
-        console.log("Updating profile ------222222222222222-----");
+        //console.log("Updating profile ------222222222222222-----");
       }
 
-      console.log(listingDraft,"    bbbbbbbbbbbbbnnnnnnnnnnnnnnnnn")
+      //console.log(listingDraft,"    bbbbbbbbbbbbbnnnnnnnnnnnnnnnnn")
 
       if(listingDraft !== null && isDraft){ 
         setCurrentListing(listingDraft);
@@ -389,8 +390,8 @@ const [currentListing,setCurrentListing] = useState({});
   useEffect(()=>{
     setServiceAreas(serviceAreasSave);
     forceUpdate();
-    //console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
-    //console.log(serviceAreasSave);
+    ////console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
+    ////console.log(serviceAreasSave);
   },[currentUser])
 
   useEffect(()=>{
@@ -401,7 +402,7 @@ const [currentListing,setCurrentListing] = useState({});
 
   // useEffect(()=>{
   //    setListingAvailable(checkIfListingsAvailable(ownEntities));
-  //    //console.log("Responseeeuuuuuuuu0000000000000");
+  //    ////console.log("Responseeeuuuuuuuu0000000000000");
   // },[ownEntities]);
 
   // useEffect(()=>{
@@ -413,7 +414,7 @@ const [currentListing,setCurrentListing] = useState({});
 
   const handleProfileClick = ()=>{
     fileInputProfile.current.click();
-    console.log("5 clicked");
+    //console.log("5 clicked");
   }
 
   const handleChangeProfile = event =>{
@@ -495,7 +496,7 @@ const [currentListing,setCurrentListing] = useState({});
 
     // //Save previous state
     // const userType = currentSelectedUserType;
-    // console.log(userType);
+    // //console.log(userType);
     // const data = 
     // {publicData: {
     //       userType
@@ -505,7 +506,7 @@ const [currentListing,setCurrentListing] = useState({});
 
 
   const handleMoveBack = val =>{
-    console.log(val);
+    //console.log(val);
     setCurrentPage(val);
   }
 
@@ -519,9 +520,9 @@ const [currentListing,setCurrentListing] = useState({});
     setCurrentListing({});
     setSelectedCategory("");
     forceUpdate();
-    console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-    console.log(selectedCategory);
-    console.log(currentListing);
+    //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+    //console.log(selectedCategory);
+    //console.log(currentListing);
     setShowCreateListing(true);
   }
 
@@ -534,7 +535,7 @@ const [currentListing,setCurrentListing] = useState({});
     const rem = serviceAreas !== undefined && serviceAreas.hasOwnProperty("length") && serviceAreas.length > 0? serviceAreas.filter(itm=>itm?.result?.id !== id):[];
     //setServiceAreas(rem);
 
-    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+    //console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
 
     const data = 
     {publicData: {
@@ -542,7 +543,7 @@ const [currentListing,setCurrentListing] = useState({});
         }}
     onUpdateProfile(data);
 
-    ///console.log(id);
+    /////console.log(id);
     forceUpdate();
   }
 
@@ -563,14 +564,14 @@ const [currentListing,setCurrentListing] = useState({});
         }}
     onUpdateProfile(data);
 
-    console.log("Calling  1111111111111111111111111111111111111");
+    //console.log("Calling  1111111111111111111111111111111111111");
     forceUpdate();
   }
 
   const showDashboard = e =>{
     e.preventDefault();
     e.stopPropagation();
-    console.log("===")
+    //console.log("===")
     setCurrentTab("dashboard");
   }
 
@@ -611,8 +612,8 @@ const [currentListing,setCurrentListing] = useState({});
   }
 
   const handleContinue = (e,val) =>{
-    console.log(val);
-    console.log(activePayoutOption === "VerificationCodeApplePay");
+    //console.log(val);
+    //console.log(activePayoutOption === "VerificationCodeApplePay");
     setActivePayoutOption(val);
   }
 
@@ -654,14 +655,14 @@ const [currentListing,setCurrentListing] = useState({});
       availability:e.target.checked
     }}
     onUpdateProfile(data);
-    console.log(availability);
+    //console.log(availability);
 
   }
 
   const handleSaveCurrentSelectedUserType = e =>{
     setCurrentSelectedUserType(e);
     const userType = e;
-    console.log(userType);
+    //console.log(userType);
     const data = 
     {publicData: {
           userType
@@ -2005,7 +2006,7 @@ const {
     updateListingInProgress,
   } = state.EditListingPage;
 
-  console.log(updatedListing,"   aaaaaaaqqqqqqqq")
+  ////console.log(updatedListing,"   aaaaaaaqqqqqqqq")
 
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
 
@@ -2158,7 +2159,7 @@ const handleSubmit = e=>{
 }
 
 useEffect(()=>{
-  console.log(userTypeSaved);
+  //console.log(userTypeSaved);
   setUserType(userTypeSaved);
   handleSubmit();
 },[]);
@@ -2286,7 +2287,7 @@ const handleSubmit = e=>{
     //       //language:null,
     //       //dateOfBirth:null
     // }});
-    console.log("--------------------------------------------");
+    //console.log("--------------------------------------------");
   
     //Add new data
     const profile = 
@@ -2722,7 +2723,7 @@ const handleSubmit = async e=>{
           dateOfBirth,
         }}
 
-    console.log(profile,"   xxxxxxxxxxxxxmmmmmmmmmmmmmmmmmm")
+    //console.log(profile,"   xxxxxxxxxxxxxmmmmmmmmmmmmmmmmmm")
 
     const uploadedImage = image;
   
@@ -2737,7 +2738,7 @@ const handleSubmit = async e=>{
 }
 
 function onChange(timestamp) {
-    console.log(timestamp);
+    //console.log(timestamp);
     setDate(timestamp);
   }
 
@@ -3033,7 +3034,7 @@ const SaveProfileForm = props=>{
 
   const isReady = address && city && serviceAreas;
 
-  console.log(userType +"    uuuuuuuuuuuuuuuuuu");
+  //console.log(userType +"    uuuuuuuuuuuuuuuuuu");
 
   const handleFileClick = ()=>{
     fileInput.current.click();
@@ -3061,7 +3062,7 @@ if(currentSelectedUserType === "businessOwner"){
   }
 
   useEffect(()=>{
-    console.log(serviceAreas);
+    //console.log(serviceAreas);
   },[serviceAreas]);
  
 

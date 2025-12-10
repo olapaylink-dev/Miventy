@@ -30,15 +30,15 @@ const ALLOrders = props =>{
 
     // //Change the price of the listing
     // useEffect(()=>{
-    //     //console.log("changing price eeeeee  ",ItemPrice)
+    //     ////console.log("changing price eeeeee  ",ItemPrice)
     //     onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
-    //     //console.log("changing price")
+    //     ////console.log("changing price")
     // },[])
 
     // useEffect(()=>{
     //     if(acceptOfferSuccess){
-    //         //console.log("Offer accepted")
-    //         //console.log(orders)
+    //         ////console.log("Offer accepted")
+    //         ////console.log(orders)
     //         setShowOrder(false);
     //         setSuccessMessage("You have accepted this order!");
     //         setShowSuccessView(true);
@@ -47,7 +47,7 @@ const ALLOrders = props =>{
 
     // useEffect(()=>{
     //     if(declineOfferSuccess){
-    //         console.log("Offer declined  =====")
+    //         //console.log("Offer declined  =====")
     //         setShowOrder(false);
     //         setSuccessMessage("You have declined this order!");
     //         setShowSuccessView(true);
@@ -69,7 +69,7 @@ const ALLOrders = props =>{
     return (
        <>
                       {orders.length > 0? orders.map((itm,key)=>{
-                       console.log(itm,"     aaaaaaaaaaaaa");
+                       //console.log(itm,"     aaaaaaaaaaaaa");
                        const {protectedData={}} = itm !== undefined && JSON.stringify(itm) !== "{}"?itm?.attributes:{};
                        const payinTotal = itm?.attributes?.payinTotal?.amount;
                        const lastTransitionedAt = itm?.attributes?.lastTransitionedAt;

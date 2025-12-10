@@ -45,7 +45,7 @@ const OrderDisplayView = props =>{
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider,listing} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    const transactionState = itm?.attributes?.state;
+    const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const {items=[]} = cartData  ||  {};
     const {ItemPrice} = items[0] || {};
@@ -74,7 +74,7 @@ const OrderDisplayView = props =>{
 
     useEffect(()=>{
         if(declineOfferSuccess){
-            console.log("Offer declined  =====")
+           // console.log("Offer declined  =====")
             setShowOrder(false);
             setSuccessMessage("You have declined this order!");
             setShowSuccessView(true);
