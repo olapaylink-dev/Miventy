@@ -54,13 +54,12 @@ const OrderDisplayView = props =>{
     const listingId = currentTransaction?.listing?.id?.uuid;
     const slug = currentTransaction?.listing?.attributes?.title;
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
-
-    console.log("transactionState",transactionState)
+    console.log("transactionState",transactionState);
 
     //Change the price of the listing
     useEffect(()=>{
-        console.log("changing price eeeeee  ",ItemPrice)
-        onChangeListingPrice(listingId, new Money(ItemPrice,"EUR"));
+        console.log("changing price eeeeee  ",ItemPrice);
+        onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
         //console.log("changing price")
     },[])
 

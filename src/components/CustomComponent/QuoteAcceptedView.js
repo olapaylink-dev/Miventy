@@ -53,8 +53,9 @@ const QuoteAcceptedView = props =>{
     }
 
     useEffect(()=>{
-        onChangeListingPrice(listingId, new Money(total,"EUR"));
-        //console.log(currentTransaction,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        console.log(total,"    aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        onChangeListingPrice(listingId, new Money(total*100,"EUR"));
+        
     },[])
 
     return (
