@@ -293,7 +293,7 @@ const EnhancedCheckoutPage = props => {
 
             <div className={css.top_con}>
                 <h6 className={css.amt_header}>Total amount</h6>
-                <h2 className={css.amount}>£{subTotal}</h2>
+                <h2 className={css.amount}>£{subTotal/100}</h2>
                 <div className={css.flex_row_center}>
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.5 7.5C6.5 7.22386 6.27614 7 6 7C5.72386 7 5.5 7.22386 5.5 7.5V8.5C5.5 8.77614 5.72386 9 6 9C6.27614 9 6.5 8.77614 6.5 8.5V7.5Z" fill="#008000"/>
@@ -314,7 +314,7 @@ const EnhancedCheckoutPage = props => {
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Price</span>
-                <span className={css.tvalue}>£{itemPrice}</span>
+                <span className={css.tvalue}>£{itemPrice/100}</span>
               </div>
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Quantity</span>
@@ -331,13 +331,13 @@ const EnhancedCheckoutPage = props => {
               </div> */}
               <div className={css.flex_row_btw}>
                 <span className={css.thead}>Sub total</span>
-                <span className={css.tvalue}>£{subTotal}</span>
+                <span className={css.tvalue}>£{subTotal/100}</span>
               </div>
               
               <div className={css.rule}></div>
               <div className={css.flex_row_btw}>
                 <span className={css.total_label}>Total</span>
-                <span className={css.total_val}>£{subTotal}</span>
+                <span className={css.total_val}>£{subTotal/100}</span>
               </div>
             </div>
             {paymentMethodUrl !== undefined && paymentMethodUrl !== null?

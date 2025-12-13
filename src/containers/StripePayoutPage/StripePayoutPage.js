@@ -1181,7 +1181,7 @@ const [currentListing,setCurrentListing] = useState({});
                     :""}
 
                     {currentTab === "earnings"?
-                      <Earnings setShowManagePayoutOptions={setShowManagePayoutOptions} showManagePayoutOptions={showManagePayoutOptions} />
+                      <Earnings setShowManagePayoutOptions={setShowManagePayoutOptions} showManagePayoutOptions={showManagePayoutOptions} transactions={transactions} />
                     :""}
 
                     {currentTab === "settings"?

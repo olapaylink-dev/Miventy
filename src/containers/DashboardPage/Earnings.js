@@ -2,11 +2,29 @@ import React from "react";
 import css from './Earnings.module.css';
 
 const Earnings = props=>{
+    const {transactions} = props;
     const {showManagePayoutOptions,setShowManagePayoutOptions} = props;
     const handleManagePayout = e =>{
         setShowManagePayoutOptions(true);
         //console.log("show form");
     }
+
+    const getTotalPayout = trx =>{
+        let result = 0;
+
+        trx.map((itm,key)=>{
+            const payout = itm?.attributes?.payoutTotal?.amount;
+            if(payout !== null && payout !== undefined){
+                result += parseInt(payout);
+            }
+            
+        })
+
+        return (result/100);
+    }
+
+    const totalPayout = getTotalPayout(transactions);
+    const balanceAvailable = totalPayout > 0;
 
     return (
         <div className={css.w_full}>
@@ -29,7 +47,7 @@ const Earnings = props=>{
                         </div>
                         <div className={css.flex_itm}>
                             <span>Balance available for withdrawal</span>
-                            <span className={css.amount}>€ 0.00</span>
+                            <span className={css.amount}>€{totalPayout}</span>
                         </div>
 
                     </div>
@@ -51,7 +69,7 @@ const Earnings = props=>{
                     </div>
                 </div>
                 <div className={css.flex_row}>
-                    <button className={css.withdraw_bal}>Withdraw balance</button>
+                    <button className={css.withdraw_bal} disabled={!balanceAvailable}>Withdraw balance</button>
                     <button onClick={handleManagePayout} className={css.manage_payout}>Manage payout options</button>
                 </div>
                 
