@@ -286,6 +286,7 @@ export const showListing = (listingId, config, isOwn = false) => (dispatch, getS
 
 export const fetchReviews = listingId => (dispatch, getState, sdk) => {
   dispatch(fetchReviewsRequest());
+  console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
   return sdk.reviews
     .query({
       listing_id: listingId,
@@ -295,7 +296,9 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
     })
     .then(response => {
       const reviews = denormalisedResponseEntities(response);
+      console.log(reviews,"   reviewsssssssssssssss")
       dispatch(fetchReviewsSuccess(reviews));
+
     })
     .catch(e => {
       dispatch(fetchReviewsError(storableError(e)));

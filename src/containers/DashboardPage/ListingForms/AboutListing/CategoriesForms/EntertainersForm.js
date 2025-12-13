@@ -34,7 +34,8 @@ const EntertainersForm = props =>{
     const [maxDuration,setMaxDuration] = useState(publicData?.maxDuration);
     const [workExperience,setWorkExperience] = useState(publicData?.workExperience);
     const [setFinalChoice] = useState(publicData?.finalChoice);
-    const [pricee,setPrice] = useState(price?.amount!==undefined?price.amount:"");
+    const [pricee,setPrice] = useState(price?.amount!==undefined?price.amount/100:"");
+    const [priceChange,setPriceChange] = useState(false);
     const [description, setDescription] = useState(attributes !== undefined?attributes.description:"");
 
     const [timeFormatMin, setTimeFormatMin] = useState(publicData?.timeFormatMin?publicData?.timeFormatMin:"Hour");
@@ -64,16 +65,22 @@ const EntertainersForm = props =>{
       "Service provider  will backup plans in case of weather",
     ];
 
+const handleChangePrice = e =>{
+  setPrice(e.target.value);
+  setPriceChange(true);
+}
+
 const handleSubmit = e=>{
   //console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
+      const priceVal = {amount:parseInt(pricee)*100,currency:"EUR"};
       const data = {
           id:currentListing.id,
-          price: new Money(parseInt(pricee),"EUR"),
+          price: priceVal,
            title:description,
            description:description,
           publicData:{
-            originalPrice: {amount:parseInt(pricee),currency:"EUR"},
+            originalPrice: priceVal,
             description,
             childrenAge,
             serviceStandards,
@@ -218,7 +225,7 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                       <label>Min order price</label>
                        <div className={css.money_con}>
                                               <span>€</span>
-                                              <input type="number" min={1} onChange={e=>{setPrice(e.target.value)}}  value={pricee} placeholder="€ Set min price" required/>
+                                              <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder="€ Set min price" required/>
                                             </div>
                     </div>
                   </div>

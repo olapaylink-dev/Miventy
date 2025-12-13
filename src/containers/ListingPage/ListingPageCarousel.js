@@ -769,7 +769,7 @@ const StyledRating = styled(Rating)({
   },
 });
 
-//console.log(reviews,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+console.log(reviews,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
 
   return (
     <div onClick={e=>{handleParentClicked(e,true); setShowDatePicker(false)}}>
@@ -1201,7 +1201,7 @@ const StyledRating = styled(Rating)({
                 </div>
                 
                 {reviews.length > 0 && reviews.map((itm,key)=>{
-                  //console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                  console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                   const {attributes,author} = itm;
                   const {content,rating} = attributes;
                   const displayName = author?.attributes?.profile?.displayName;
@@ -1559,6 +1559,8 @@ const mapStateToProps = state => {
     saveLikesSuccess,
   } = state.ListingPage;
   const { currentUser } = state.user;
+
+  console.log(reviews,"   ooooooooooooooo")
 
   const getListing = id => {
     const ref = { id, type: 'listing' };

@@ -55,10 +55,12 @@ const OrderDisplayView = props =>{
     const slug = currentTransaction?.listing?.attributes?.title;
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
 
+    console.log("transactionState",transactionState)
+
     //Change the price of the listing
     useEffect(()=>{
-        //console.log("changing price eeeeee  ",ItemPrice)
-        onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
+        console.log("changing price eeeeee  ",ItemPrice)
+        onChangeListingPrice(listingId, new Money(ItemPrice,"EUR"));
         //console.log("changing price")
     },[])
 
@@ -166,9 +168,9 @@ const OrderDisplayView = props =>{
                                 <>
                                     {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
                                     (
-                                        transactionState === "state/accepted"?
+                                        transactionState === "state/accepted" || transactionState === "state/accept"?
                                             "You have accepted this offer"
-                                        :transactionState === "state/declined"?
+                                        :transactionState === "state/declined" || transactionState === "state/decline"?
                                             <span className={css.declined_txt}>You have declined this order</span>
                                         :
                                         <div className={css.flex_row}>
@@ -199,7 +201,7 @@ const OrderDisplayView = props =>{
                                         <div className={css.flex_row}>
                                             Payment Completed
                                         </div>
-                                    :transactionState === "state/accepted"?
+                                    :transactionState === "state/accepted" || transactionState === "state/accept"?
                                     <div className={css.flex_row}>
                                         <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
                                             Proceed to payment
