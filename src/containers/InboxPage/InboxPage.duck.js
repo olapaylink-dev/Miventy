@@ -164,7 +164,8 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
       'customer',
       'customer.profileImage',
       'booking',
-      'metaData.offer'
+      'metaData.offer',
+      'stripeCustomer.defaultPaymentMethod'
     ],
     'fields.transaction': [
       'state',

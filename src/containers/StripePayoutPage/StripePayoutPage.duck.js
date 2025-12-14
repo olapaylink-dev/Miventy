@@ -61,6 +61,9 @@ export const savePayoutDetailsSuccess = () => ({
 // ================ Thunks ================ //
 
 export const savePayoutDetails = (values, isUpdateCall) => (dispatch, getState, sdk) => {
+
+  //Check this value on return from stripe onboarding to be able to set daily payout.
+  localStorage.setItem("PayoutOnboardingInProgress",true);
   const upsertThunk = isUpdateCall ? updateStripeAccount : createStripeAccount;
   dispatch(savePayoutDetailsRequest());
 

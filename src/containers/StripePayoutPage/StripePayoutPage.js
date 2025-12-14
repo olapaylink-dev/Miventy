@@ -63,6 +63,7 @@ import OnGoingOrders from '../../components/CustomComponent/OnGoingOders';
 import CompletedOrder from '../../components/CustomComponent/CompletedOrders';
 import ALLOrders from '../../components/CustomComponent/AllOrders';
 import { loadTransactions } from '../InboxPage/InboxPage.duck';
+import { stripeCustomer } from '../PaymentMethodsPage/PaymentMethodsPage.duck';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -312,6 +313,8 @@ const [currentListing,setCurrentListing] = useState({});
   if(userType === "customer"){
     history.push("/")
   }
+
+  
   
     useEffect(
       ()=>{
@@ -328,6 +331,21 @@ const [currentListing,setCurrentListing] = useState({});
     useEffect(()=>{
       onFetchTransaction();
     },[])
+
+
+    useEffect(()=>{
+      console.log("hereeeee")
+      const onboarding = localStorage.getItem("PayoutOnboardingInProgress");
+      if (onboarding){
+        console.log("hereeeee")
+        onFetchStripeCustomer();
+      }
+    },[])
+
+    useEffect(()=>{
+      console.log("here111111eeee ")
+      console.log(currentUser)
+    },[currentUser])
 
   
   // const checkIfListingsAvailable = (data)=>{
@@ -2103,6 +2121,7 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
     dispatch(savePayoutDetails(values, isUpdateCall)),
   onGetStripeConnectAccountLink: params => dispatch(getStripeConnectAccountLink(params)),
   onFetchTransaction: () => dispatch(loadTransactions({},"")),
+  onFetchStripeCustomer: () => dispatch(stripeCustomer()),
 });
 
 const StripePayoutPage = compose(
