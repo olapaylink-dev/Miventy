@@ -30,7 +30,7 @@ import {
 import TopbarContainer from '../../containers/TopbarContainer/TopbarContainer';
 import FooterContainer from '../../containers/FooterContainer/FooterContainer';
 
-import { loadData, savePayoutDetails } from './StripePayoutPage.duck';
+import { loadData, savePayoutDetails, setDailyPayoutCall } from './StripePayoutPage.duck';
 
 import css from './StripePayoutPage.module.css';
 import css2 from './StripePayoutPage2.module.css';
@@ -64,6 +64,7 @@ import CompletedOrder from '../../components/CustomComponent/CompletedOrders';
 import ALLOrders from '../../components/CustomComponent/AllOrders';
 import { loadTransactions } from '../InboxPage/InboxPage.duck';
 import { stripeCustomer } from '../PaymentMethodsPage/PaymentMethodsPage.duck';
+import { setDailyPayout } from '../../util/api';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -196,6 +197,7 @@ export const StripePayoutPageComponent = props => {
     onFetchTransaction,
     transactions,
     reviews,
+    onSetDailyPayout
   } = props;
    const{match}=props;
 
@@ -334,17 +336,23 @@ const [currentListing,setCurrentListing] = useState({});
 
 
     useEffect(()=>{
-      console.log("hereeeee")
-      const onboarding = localStorage.getItem("PayoutOnboardingInProgress");
-      if (onboarding){
-        console.log("hereeeee")
-        onFetchStripeCustomer();
-      }
+      // console.log("hereeeee")
+      // const onboarding = localStorage.getItem("PayoutOnboardingInProgress");
+      // if (onboarding){
+      //   console.log("hereeeee")
+      //   onFetchStripeCustomer();
+      // }
     },[])
 
     useEffect(()=>{
       console.log("here111111eeee ")
       console.log(currentUser)
+      const {stripeAccount} = currentUser;
+      const stripeAccountId = stripeAccount?.attributes?.stripeAccountId;
+      if(stripeAccountId !== undefined && stripeAccountId !== null){
+        //set daily payment for this user if not already set
+        onSetDailyPayout(stripeAccountId);
+      }
     },[currentUser])
 
   
@@ -2122,6 +2130,7 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
   onGetStripeConnectAccountLink: params => dispatch(getStripeConnectAccountLink(params)),
   onFetchTransaction: () => dispatch(loadTransactions({},"")),
   onFetchStripeCustomer: () => dispatch(stripeCustomer()),
+  onSetDailyPayout: (sid)=> dispatch(setDailyPayoutCall(sid))
 });
 
 const StripePayoutPage = compose(

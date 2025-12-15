@@ -16,38 +16,7 @@ module.exports = async (req, res)  =>  {
   const title = data.title;
   const txId = data.txId;
 
-
-
-
-
-
-
-
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
-
-
-    const balanceSettingsResponse = await stripe.balanceSettings.retrieve({
-      stripeAccount: '{{CONNECTED_ACCOUNT_ID}}',
-    });
-
-
-    const balanceSettings = await stripe.balanceSettings.update(
-      {
-        payments: {
-          payouts: {
-            schedule: {
-              interval: 'daily'
-            },
-          },
-        },
-      },
-      {
-        stripeAccount: '{{CONNECTED_ACCOUNT_ID}}',
-      }
-    );
-
-
-
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       payment_method_types: ['bancontact', 'card', 'ideal',],

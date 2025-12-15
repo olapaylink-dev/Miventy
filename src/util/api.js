@@ -168,3 +168,7 @@ export const sendSms = body => {
 export const changePrice = body => {
   return post('/api/change-price', body);
 };
+
+export const setDailyPayout = body => {
+  return post('/api/set-daily-payout', body);
+};

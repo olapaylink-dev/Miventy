@@ -7,6 +7,7 @@ import {
 import { fetchCurrentUser } from '../../ducks/user.duck';
 import { loadDataDash } from '../DashboardPage/DashboardPage.duck';
 import { queryUserReviews } from '../ProfilePage/ProfilePage.duck';
+import { setDailyPayout } from '../../util/api';
 
 // ================ Action types ================ //
 
@@ -92,4 +93,9 @@ export const loadData = () => (dispatch, getState, sdk) => {
     }
     return response;
   });
+};
+
+
+export const setDailyPayoutCall = (sid) => (dispatch, getState, sdk) => {
+  setDailyPayout(sid);
 };

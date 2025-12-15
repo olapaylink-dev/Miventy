@@ -27,6 +27,7 @@ const paymentMethod = require('./api/payment-method');
 const saveLikes = require('./api/save-likes');
 const webhookCallback = require('./api/stripe-webhook');
 const changePrice = require('./api/change-price');
+const setDailyPayout = require('./api/set-daily-payout');
 //const sendEmail = require('./api/send-email');
 
 const router = express.Router();
@@ -93,6 +94,7 @@ router.post('/create-offer', createOffer);
 router.post('/payment-method', paymentMethod);
 router.post('/save-likes', saveLikes);
 router.post('/change-price', changePrice);
+router.post('/set-daily-payout', setDailyPayout);
 //router.post('/send-email', sendEmail);
 
 router.post('/webhook',express.raw({type: 'application/json'}), webhookCallback);
