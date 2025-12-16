@@ -1310,7 +1310,7 @@ console.log(userListings,"   userListings")
                 </div>
                 <div className={css.aside_con}>
                   <div className={css.aside}>
-                    <div className={css.flex_row_3}><span>Starting from</span><span className={css.amount}>€{price.amount}</span></div>
+                    <div className={css.flex_row_3}><span>Starting from</span><span className={css.amount}>€{(price.amount/100).toFixed(2)}</span></div>
                     <p>Items in cart</p>
                     {currentUser?
                       <CartItems currentUser={currentUser} 

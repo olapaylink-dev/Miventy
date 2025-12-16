@@ -3,7 +3,7 @@ import css from './InboxView.module.css';
 import placeholder from '../assets/placeholder.png';
 import MessageListItemComponent from './CustomComponent/MessageListItemComponent';
 import MessageGen from './CustomComponent/MessageGen';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function InboxView(props){
 
@@ -31,6 +31,7 @@ export default function InboxView(props){
      //const [currentTransaction,setCurrentTransaction] = useState({});
      const [currentDisplayName,setCurrentDisplayName] = useState("");
      const [currentImgUrl,setCurrentImgUrl] = useState("");
+     const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
 
@@ -52,6 +53,7 @@ export default function InboxView(props){
         const txId = currentTransaction.id.uuid;
         //console.log("Sending")
         onSendMessage(txId,message);
+        inputRef.current.value = "";
      }
 
     return (
@@ -143,7 +145,7 @@ export default function InboxView(props){
                                     />
                                 </div>
                                 <div className={css.msg_input}>
-                                    <input className={css.input} type="text" placeholder="Type your message..." onChange={e=>setMessage(e.target.value)} />
+                                    <input className={css.input} ref={inputRef} type="text" placeholder="Type your message..." onChange={e=>setMessage(e.target.value)} />
                                     <div className={css.flex_row_4}>
                                         <button className={css.send_quote} onClick={e=>setShowQuotationForm(true)}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
