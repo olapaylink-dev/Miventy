@@ -67,14 +67,16 @@ const {
         authorDisplayName,
         userLocation,
         language,
-        about,
+        aboutMe,
         userListings,
         reviews,
         setShowShareMenus,
         showShareMenus,
         handleSendEnquiry,
         handleLike,
-        profileImage
+        profileImage,
+        setIsUserDetails,
+        history
 }=props;
 
 const [selectedCatalogFolderName,setSelectedCatalogFolderName] = useState("");
@@ -120,10 +122,7 @@ const StyledRating = styled(Rating)({
               <div className={css.content}>
                 <div className={css.flex_row_header}>
                     <div>
-                      <NamedLink name="StoreFrontPage" params={{id:"authorId"}}>
                         <img className={css.profile_img} src={profileImage} />
-                      </NamedLink>
-                      
                     </div>
                     <div className={css.details}>
                       <h1 className={css.header}>
@@ -134,14 +133,14 @@ const StyledRating = styled(Rating)({
                       </h1>
 
                       <div className={css.flex_row_2}>
-                        <div>
+                        <div className={css.location}>
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0011 5.5C9.51585 5.5 7.50113 7.51472 7.50113 10C7.50113 12.4853 9.51585 14.5 12.0011 14.5C14.4864 14.5 16.5011 12.4853 16.5011 10C16.5011 7.51472 14.4864 5.5 12.0011 5.5ZM9.50113 10C9.50113 8.61929 10.6204 7.5 12.0011 7.5C13.3818 7.5 14.5011 8.61929 14.5011 10C14.5011 11.3807 13.3818 12.5 12.0011 12.5C10.6204 12.5 9.50113 11.3807 9.50113 10Z" fill="#475367"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81037 3.59199C10.3481 1.90017 13.6542 1.90017 16.1919 3.59199C19.6228 5.87925 20.586 10.495 18.3562 13.9635L14.5247 19.9238C13.3438 21.7607 10.6585 21.7607 9.47759 19.9238L5.64603 13.9635C3.41626 10.495 4.37948 5.87925 7.81037 3.59199ZM8.91977 5.25609C10.7857 4.01214 13.2166 4.01214 15.0825 5.25609C17.6051 6.93785 18.3134 10.3317 16.6739 12.882L12.8423 18.8422C12.4487 19.4546 11.5536 19.4546 11.16 18.8422L7.32839 12.882C5.68889 10.3317 6.39712 6.93785 8.91977 5.25609Z" fill="#475367"/>
                           </svg>
                           <span>Barcelona</span>
                         </div>
-                         <span>Languages: {language}</span>
+                         <span>Languages: {language.map((i,k)=>`${i}, `)}</span>
                       </div>
                     </div>
                     <div className={css.flex_col}>
@@ -294,7 +293,7 @@ const StyledRating = styled(Rating)({
                 </h1>
 
                 <p>
-                  {"description"}
+                  {aboutMe}
                 </p>
                 
               </div>
@@ -303,8 +302,7 @@ const StyledRating = styled(Rating)({
                 <h1 className={css.about_header}>
                   Services & Listings:
                 </h1>
-                {userListings.length > 0 && <SearchCard2 listings={userListings}/>}
-                
+                {userListings.length > 0 && <SearchCard2 listings={userListings} setIsUserDetails={setIsUserDetails} history={history} />}
               </div>
              
               <div className={css.section}>

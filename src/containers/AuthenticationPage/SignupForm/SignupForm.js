@@ -10,10 +10,6 @@ import { getPropsForCustomUserFieldInputs } from '../../../util/userHelpers';
 
 import { Form, PrimaryButton, FieldTextInput, CustomExtendedDataField, FieldPhoneNumberInput, NamedLink } from '../../../components';
 
-import FieldSelectUserType from '../FieldSelectUserType';
-import UserFieldDisplayName from '../UserFieldDisplayName';
-import UserFieldPhoneNumber from '../UserFieldPhoneNumber';
-
 import css from './SignupForm.module.css';
 
 const getSoleUserTypeMaybe = userTypes =>
@@ -176,8 +172,8 @@ const SignupFormComponent = props => (
                           })
                         )}
                       />
+
                       <FieldTextInput
-                        
                         type="text"
                         id={formId ? `${formId}.lastName` : 'lastName'}
                         name="lastName"
@@ -194,6 +190,28 @@ const SignupFormComponent = props => (
                           })
                         )}
                       />
+
+                      {userTyp === "provider"?
+                        <FieldTextInput
+                          type="text"
+                          id={formId ? `${formId}.aboutMe` : 'aboutMe'}
+                          name="aboutMe"
+                          autoComplete="about-me"
+                          label={intl.formatMessage({
+                            id: 'SignupForm.aboutMeLabel',
+                          })}
+                          placeholder={intl.formatMessage({
+                            id: 'SignupForm.aboutMePlaceholder',
+                          })}
+                          validate={validators.required(
+                            intl.formatMessage({
+                              id: 'SignupForm.aboutMeRequired',
+                            })
+                          )}
+                        />
+                      :""}
+
+                      
 
 
                     <FieldTextInput

@@ -334,6 +334,27 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
     });
 };
 
+export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
+  dispatch(fetchReviewsRequest());
+  console.log("ReviewwwwwwwwwwAUthor    wwwwwwwwwwwwwwwwww")
+  return sdk.reviews
+    .query({
+      subjectId: authorId,
+      state: 'public',
+      include: ['author', 'author.profileImage'],
+      'fields.image': ['variants.square-small', 'variants.square-small2x'],
+    })
+    .then(response => {
+      const reviews = denormalisedResponseEntities(response);
+      console.log(reviews,"   reviewsssssssssssssss")
+      dispatch(fetchReviewsSuccess(reviews));
+
+    })
+    .catch(e => {
+      dispatch(fetchReviewsError(storableError(e)));
+    });
+};
+
 export const fetchUserListings = userId => (dispatch, getState, sdk) => {
   dispatch(fetchUserListingRequest());
   console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")

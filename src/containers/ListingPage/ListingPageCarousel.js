@@ -66,6 +66,7 @@ import {
   fetchTransactionLineItems,
   saveLike,
   fetchUserListings,
+  fetchReviews,
 } from './ListingPage.duck';
 
 import {
@@ -202,7 +203,8 @@ export const ListingPageComponent = props => {
     saveLikesError,
     saveLikesSuccess,
     userListings,
-    onFetchUserListings
+    onFetchUserListings,
+    onFetchReviews
   } = props;
 
   const savedCartData = currentUser?.attributes?.profile?.publicData?.cartData;
@@ -580,14 +582,22 @@ const serviceTypesRentalSpace = [
   const userLocation = currentListing?.author?.attributes?.profile?.publicData?.location;
   const authorId = currentListing?.author?.id;
   const language = currentListing?.author?.attributes?.profile?.publicData?.language;
+  const aboutMe = currentListing?.author?.attributes?.profile?.publicData?.aboutMe;
 
   
   useEffect(() => {
     if(userListings === null || userListings === undefined || userListings.length === 0){
       onFetchUserListings(authorId);
     }
-    
   }, []);
+
+  
+  useEffect(() => {
+    if(userListings === null || userListings === undefined || userListings.length === 0){
+      onFetchUserListings(authorId);
+      onFetchReviews(authorId);
+    }
+  }, [isUserDetails]);
 
   
   const { formattedPrice } = priceData(price, config.currency, intl);
@@ -824,7 +834,7 @@ console.log(userListings,"   userListings")
             authorDisplayName={authorDisplayName}
             userLocation={userLocation}
             language={language}
-            about={about}
+            aboutMe={aboutMe}
             userListings={userListings}
             reviews={reviews}
             setShowShareMenus={setShowShareMenus}
@@ -832,6 +842,8 @@ console.log(userListings,"   userListings")
             showShareMenus={showShareMenus}
             handleLike={handleLike}
             profileImage={profileImage}
+            setIsUserDetails={setIsUserDetails}
+            history={history}
           />
         :
          <div>
@@ -1653,7 +1665,8 @@ const mapDispatchToProps = dispatch => ({
   onUpdateProfile:(data) => dispatch(updateProfile(data)),
   onSendOrderMessage:(listing,orderData,isInquiry) => dispatch(sendInquiry(listing,orderData,isInquiry)),
   onSaveLikes:(listingId,userId) => dispatch(saveLike(listingId,userId)),
-  onFetchUserListings:(userId)=> dispatch(fetchUserListings(userId))
+  onFetchUserListings:(userId)=> dispatch(fetchUserListings(userId)),
+  onFetchReviews:(authorId)=> dispatch(fetchReviews())
 });
 
 

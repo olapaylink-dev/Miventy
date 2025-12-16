@@ -1,28 +1,37 @@
-import React from "react";
 import css from './SearchCard.module.css';
-import search1 from '../../assets/Search/search1.png';
-import search_icon1 from '../../assets/Search/search_icon1.png';
-import search_star from '../../assets/Search/search_star1.png';
 import classNames from "classnames";
 import NamedLink from "../NamedLink/NamedLink";
 
 const SearchCard2 = props =>{
-    const {listings} = props;
+
+    const {
+        listings,
+        setIsUserDetails,
+        history
+    } = props;
+
+    const handleLoadListing = (slug,listingId) =>{
+        console.log(listingId,"   ooopppuuu")
+        setIsUserDetails(false);
+        history.push(`/l/${slug}/${listingId}`);
+        ///l/My%20photo%20cam/693c4397-ce59-4b9d-bd1a-60276cdf077e
+    }
+
     return (
         <div className={css.flex_grid_2}>
             {listings.map((itm,key)=>{
                 const {id} = itm;
                 const uuid = id.uuid;
                 const {images={},attributes={},author={}} = itm;
-                const {title,description,from,price,profileImg,publicData} = attributes;
-                const {category,rating="0",location,coverPhoto=""} = publicData;
+                const {title,from,price,profileImg,publicData} = attributes;
+                const {category,rating="0",location,coverPhoto="",description} = publicData;
                 const img = coverPhoto;
                 const {profileImage={}} = author;
                 const displayName = author?.attributes?.profile?.displayName;
                 const profileImgUrl = profileImage?.attributes?.variants?.default?.url;
                 return(
-                    <NamedLink name='ListingPage' params={{slug:`${title}`,id:`${uuid}`}}>
-                        <div className={css.card_container}>
+                    
+                        <div className={css.card_container} onClick={e=>{handleLoadListing(description,uuid)}}>
                             <div className={css.flex_col}>
                                 <div className={css.abs_icon}>
                                     <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +46,7 @@ const SearchCard2 = props =>{
                                             {profileImgUrl !== undefined?
                                                 <img className={css.profileImgIcon} src={profileImgUrl}/>
                                             :""}
-                                            <span className={css.bold_txt}>{displayName}</span>
+                                            <span className={css.bold_txt}>{description}</span>
                                         </div>
                                         <div className={css.flex_row_sm_gap}>
                                             <span className={css.bold_txt}>From {`€${(price?.amount/100).toFixed(2)}`}</span> 
@@ -65,7 +74,7 @@ const SearchCard2 = props =>{
                                 </div>
                             </div>
                         </div>
-                    </NamedLink>
+                    
                 )
             })}
         </div>

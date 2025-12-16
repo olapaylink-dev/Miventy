@@ -1514,6 +1514,11 @@ padding: 0px;
   justify-content: flex-end;
 }
 
+.location{
+  display: flex;
+  flex-wrap: nowrap;
+}
+
 @media only screen and (max-width: 1440px) {
    
 }
