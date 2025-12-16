@@ -870,7 +870,7 @@ console.log(userListings,"   userListings")
                           <img onClick={e=>setIsUserDetails(true)} className={css.profile_img} src={profileImage} />
                         </div>
                         <div>
-                          <h1 className={css.header}>
+                          <h1 className={css.header} onClick={e=>setIsUserDetails(true)}>
                             {authorDisplayName}
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
                               <path d="M13.7023 8.75223C14.004 8.45153 13.9966 7.97118 13.6857 7.67933C13.3748 7.38749 12.8781 7.39467 12.5764 7.69537L8.57091 11.6868L7.42624 10.5461C7.12449 10.2454 6.62782 10.2383 6.31691 10.5301C6.006 10.8219 5.99858 11.3023 6.30033 11.603L8.00796 13.3046C8.1557 13.4519 8.35878 13.5349 8.57091 13.5349C8.78304 13.5349 8.98613 13.4519 9.13387 13.3046L13.7023 8.75223Z" fill="#0C63CC"/>

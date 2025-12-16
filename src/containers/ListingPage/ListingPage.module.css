@@ -929,6 +929,7 @@ vertical-align: middle;
   flex-shrink: 0;
   border-radius: 260px;
   border: 1.95px solid var(--Shade-White, #FFF);
+  cursor: pointer;
 }
 
 .header{
@@ -945,6 +946,7 @@ vertical-align: middle;
   align-items: center;
   padding: 20px 0px;
   margin: 0px;
+  cursor: pointer;
 }
 .verified{
   color: #0052B4;
