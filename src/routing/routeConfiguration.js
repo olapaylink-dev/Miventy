@@ -39,6 +39,7 @@ const TransactionPage = loadable(() => import(/* webpackChunkName: "TransactionP
 const NoAccessPage = loadable(() => import(/* webpackChunkName: "NoAccessPage" */ '../containers/NoAccessPage/NoAccessPage'));
 const DashboardPage = loadable(() => import(/* webpackChunkName: "DashboardPage" */ '../containers/DashboardPage/DashboardPage'));
 const PaymentMethodResponsePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/PaymentMethodResponse/PaymentMethodResponsePage'));
+const StoreFrontPage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/StoreFrontPage/StoreFrontPage'));
 
 // Styleguide helps you to review current components and develop new ones
 const StyleguidePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/StyleguidePage/StyleguidePage'));
@@ -309,6 +310,13 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       authPage: 'LoginPage',
       component: InboxPage,
       loadData: pageDataLoadingAPI.InboxPage.loadData,
+    },
+
+     {
+      path: '/storefront/:id',
+      name: 'StoreFrontPage',
+      component: StoreFrontPage,
+      loadData: pageDataLoadingAPI.StripePayoutPage.loadData,
     },
     
     {

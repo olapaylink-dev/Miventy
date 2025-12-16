@@ -848,7 +848,7 @@ vertical-align: middle;
 }
 .content_con{
   display: flex;
-  margin: 50px 20%;
+  margin: 50px auto;
   gap: 25px;
 }
 
@@ -866,7 +866,7 @@ vertical-align: middle;
 }
 
 .flex_col_f{
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -943,7 +943,7 @@ vertical-align: middle;
   gap: 4px;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px 0px;
+  padding:0px;
   margin: 0px;
 }
 .verified{
@@ -994,11 +994,25 @@ vertical-align: middle;
   margin-top: 20px;
 }
 .flex_row_3_{
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  gap: 20px;
-  margin-top: 20px;
+   display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    height: fit-content;
+    align-self: center;
+}
+
+.details{
+    min-width: 400px;
+    width: fit-content;
+    min-width: 400px;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
 }
 
 .flex_row_3_mobile{
@@ -1135,6 +1149,15 @@ vertical-align: middle;
   gap: 20px;
   width: 100%;
   margin-top: 20px;
+}
+
+.flex_col_share{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: fit-content;
+  gap: 10px;
+  width: 100%;
 }
 .section{
   display: flex;

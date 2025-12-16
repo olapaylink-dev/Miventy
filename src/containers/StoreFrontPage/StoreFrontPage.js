@@ -1,0 +1,433 @@
+import React, { useState } from 'react';
+import css from './StoreFrontPage.module.css';
+import TopbarContainer from '../TopbarContainer/TopbarContainer';
+import FooterContainer from '../FooterContainer/FooterContainer';
+import { LayoutSingleColumn, NamedLink, Page, ReviewRating } from '../../components';
+import { manageDisableScrolling } from '../../ducks/ui.duck';
+import { fetchTransactionLineItems, sendInquiry } from '../ListingPage/ListingPage.duck';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { Rating, styled } from '@mui/material';
+import classNames from 'classnames';
+import badges from '../../assets/badges.png';
+
+
+
+const StoreFrontPageComponent = props => {
+
+
+  const {
+    author,
+    listings=[],
+    reviews=[]
+  }=props;
+
+const [selectedCatalogFolderName,setSelectedCatalogFolderName] = useState("");
+  const [currentCartItmToEdit,setCurrentCartItmToEdit] = useState({});
+  const [cartData,setCartData] = useState("savedCartData");
+  const [showSuccessBadge,setShowSuccessBadge] = useState(false);
+  const [currentRequestQuoteTab,setCurrentRequestQuoteTab] = useState("");
+  const [selectedServiceType, setSelectedServiceType] = useState("");
+  const [serviceDescription, setServiceDescription] = useState("");
+  const [guestCount, setGuestCount] = useState("");
+  const [duration, setDuration] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  const [eventLocation, setEventLocation] = useState([]);
+  const [showProgress,setShowProgress] = useState(false);
+  const [showShareMenus, setShowShareMenus] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
+  const [showOwnListingMessage, setShowOwnListingMessage] = useState(false);
+  
+const handleSendEnquiry = ()=>{
+    
+    
+}
+  
+
+const handleLike = e=>{
+  setInProgress(true);
+  onSaveLikes(currentListing.id,currentUser.id);
+}
+
+const handleShowRequestQuoteView = e =>{
+  if(isOwnListing){
+      setShowOwnListingMessage(true);
+    }else{
+      setRequestQuoteView(true);
+    }
+}
+
+const handleParentClicked = (e,val)=>{
+  setShowShareMenus(false);
+}
+
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: '#ff6d75',
+  },
+  '& .MuiRating-iconHover': {
+    color: '#ff3d47',
+  },
+});
+
+
+  return(
+   
+
+           
+        <div className={css.content_con}>
+            <div className={css.flex_col_f}>
+              <div className={css.content}>
+                <div className={css.flex_row_header}>
+                    <div>
+                      <NamedLink name="StoreFrontPage" params={{id:"authorId"}}>
+                        <img className={css.profile_img} src={"profileImage"} />
+                      </NamedLink>
+                      
+                    </div>
+                    <div className={css.details}>
+                      <h1 className={css.header}>
+                        {"authorDisplayName"}
+
+                        <img src={badges}/>
+                       
+                      </h1>
+
+                      <div className={css.flex_row_2}>
+                        <div>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0011 5.5C9.51585 5.5 7.50113 7.51472 7.50113 10C7.50113 12.4853 9.51585 14.5 12.0011 14.5C14.4864 14.5 16.5011 12.4853 16.5011 10C16.5011 7.51472 14.4864 5.5 12.0011 5.5ZM9.50113 10C9.50113 8.61929 10.6204 7.5 12.0011 7.5C13.3818 7.5 14.5011 8.61929 14.5011 10C14.5011 11.3807 13.3818 12.5 12.0011 12.5C10.6204 12.5 9.50113 11.3807 9.50113 10Z" fill="#475367"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.81037 3.59199C10.3481 1.90017 13.6542 1.90017 16.1919 3.59199C19.6228 5.87925 20.586 10.495 18.3562 13.9635L14.5247 19.9238C13.3438 21.7607 10.6585 21.7607 9.47759 19.9238L5.64603 13.9635C3.41626 10.495 4.37948 5.87925 7.81037 3.59199ZM8.91977 5.25609C10.7857 4.01214 13.2166 4.01214 15.0825 5.25609C17.6051 6.93785 18.3134 10.3317 16.6739 12.882L12.8423 18.8422C12.4487 19.4546 11.5536 19.4546 11.16 18.8422L7.32839 12.882C5.68889 10.3317 6.39712 6.93785 8.91977 5.25609Z" fill="#475367"/>
+                          </svg>
+                          <span>Barcelona</span>
+                        </div>
+                         <span>Languages: {"language"}</span>
+                      </div>
+                    </div>
+                     <div className={css.flex_row_3_}>
+                        <button className={css.share} onClick={e=>{setShowShareMenus(true);e.preventDefault(); e.stopPropagation();}}>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1654 1.66667C12.3244 1.66667 10.832 3.15905 10.832 5C10.832 5.14235 10.841 5.28262 10.8583 5.42027C10.7378 5.51705 10.5807 5.63956 10.3977 5.77418C9.95111 6.10262 9.3769 6.48286 8.81426 6.74424C8.33092 6.96879 7.7504 7.16366 7.27492 7.30508C7.04048 7.3748 6.83816 7.42961 6.69513 7.46682C6.62372 7.48539 6.56737 7.49951 6.52951 7.50883L6.4871 7.51915L6.47715 7.52153L6.47515 7.522C6.45429 7.52689 6.43365 7.53257 6.41355 7.53892C5.8208 6.99715 5.03168 6.66667 4.16536 6.66667C2.32442 6.66667 0.832031 8.15905 0.832031 10C0.832031 11.841 2.32442 13.3333 4.16536 13.3333C5.03166 13.3333 5.82078 13.0029 6.41351 12.4611C6.44371 12.4706 6.47476 12.4786 6.5066 12.4847L6.50751 12.4849L6.5158 12.4866L6.55393 12.4945C6.58855 12.5018 6.64092 12.5132 6.708 12.5287C6.84241 12.5598 7.03457 12.6072 7.26044 12.6714C7.71811 12.8014 8.28817 12.9931 8.79269 13.2454C9.30285 13.5004 9.88559 13.8868 10.3574 14.2245C10.5528 14.3644 10.7241 14.4922 10.8566 14.5931C10.8404 14.7265 10.832 14.8623 10.832 15C10.832 16.841 12.3244 18.3333 14.1654 18.3333C16.0063 18.3333 17.4987 16.841 17.4987 15C17.4987 13.1591 16.0063 11.6667 14.1654 11.6667C13.0769 11.6667 12.1103 12.1884 11.5019 12.9954C11.4462 12.9547 11.388 12.9125 11.3276 12.8693C10.8342 12.5161 10.1669 12.0691 9.53804 11.7546C8.90353 11.4374 8.22359 11.2124 7.71601 11.0682C7.58478 11.0309 7.46334 10.9985 7.35508 10.9709C7.44847 10.6637 7.4987 10.3377 7.4987 10C7.4987 9.65769 7.4471 9.32742 7.35125 9.01657C7.46931 8.98418 7.60399 8.94603 7.75005 8.90258C8.256 8.75211 8.92548 8.53031 9.51647 8.25576C10.2233 7.9274 10.8991 7.47431 11.3851 7.11684C11.4296 7.08416 11.4726 7.05212 11.5142 7.02085C12.1233 7.81861 13.0842 8.33333 14.1654 8.33333C16.0063 8.33333 17.4987 6.84095 17.4987 5C17.4987 3.15905 16.0063 1.66667 14.1654 1.66667ZM12.4987 5C12.4987 4.07953 13.2449 3.33333 14.1654 3.33333C15.0858 3.33333 15.832 4.07953 15.832 5C15.832 5.92048 15.0858 6.66667 14.1654 6.66667C13.2449 6.66667 12.4987 5.92048 12.4987 5ZM2.4987 10C2.4987 9.07953 3.24489 8.33333 4.16536 8.33333C5.08584 8.33333 5.83203 9.07953 5.83203 10C5.83203 10.9205 5.08584 11.6667 4.16536 11.6667C3.24489 11.6667 2.4987 10.9205 2.4987 10ZM12.4987 15C12.4987 14.0795 13.2449 13.3333 14.1654 13.3333C15.0858 13.3333 15.832 14.0795 15.832 15C15.832 15.9205 15.0858 16.6667 14.1654 16.6667C13.2449 16.6667 12.4987 15.9205 12.4987 15Z" fill="#CC400C"/>
+                          </svg>
+                          Share profile
+                        </button>
+                        
+                        <div className={css.send_con}>
+                          <button className={css.send} onClick={e=>{handleSendEnquiry()}}>
+                            Send a message
+                            {showProgress?
+                              <div class="spinner-border" role="status">
+                              </div>
+                            :""}
+                          </button>
+                          <div onClick={handleLike} className={css.icon_con}>
+                            {isLiked?
+                              (
+                                inProgress?
+                                  <div class="spinner-border" role="status"></div>:<img className={css.resize_icon} src={chckedHeart}/>
+                              )
+                            :
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7139 2.27594C9.24748 2.54617 9.68185 2.86245 9.99872 3.12837C10.3156 2.86245 10.7499 2.54617 11.2835 2.27595C12.4926 1.66357 14.2328 1.28483 16.1898 2.27594C17.4399 2.90904 18.2855 3.86701 18.746 5.03009C19.2003 6.17753 19.262 7.47656 19.0434 8.79453C18.6708 11.04 17.136 13.0437 15.5597 14.5876C13.9638 16.1507 12.2139 17.3494 11.227 17.9745C10.4716 18.4529 9.52588 18.4529 8.77049 17.9745C7.78357 17.3494 6.03363 16.1507 4.43765 14.5876C2.86135 13.0437 1.32654 11.04 0.953963 8.79453C0.735282 7.47656 0.797008 6.17753 1.25131 5.03009C1.7118 3.86701 2.55744 2.90904 3.80753 2.27594C5.76453 1.28483 7.50476 1.66358 8.7139 2.27594ZM9.36383 4.82121C9.52214 5.00742 9.75426 5.11478 9.99874 5.11477C10.2428 5.11477 10.4745 5.00779 10.6328 4.82217C10.633 4.82195 10.6332 4.82174 10.6334 4.82153C10.6336 4.82128 10.6338 4.82102 10.634 4.82077L10.6466 4.80658C10.6596 4.79219 10.6814 4.76848 10.7116 4.73724C10.7721 4.67461 10.8656 4.58252 10.9887 4.47481C11.2368 4.25778 11.5948 3.98649 12.0365 3.76279C12.904 3.32344 14.0711 3.07115 15.4368 3.7628C16.3284 4.21437 16.8878 4.86426 17.1964 5.64362C17.5112 6.43863 17.5825 7.41664 17.3992 8.52173C17.1147 10.2365 15.8918 11.9294 14.3935 13.3969C12.9149 14.8451 11.2733 15.9723 10.3352 16.5665C10.1243 16.7001 9.87315 16.7001 9.66226 16.5665C8.72414 15.9723 7.08248 14.8451 5.60384 13.3969C4.10551 11.9294 2.88268 10.2365 2.59815 8.52173C2.41479 7.41664 2.48618 6.43863 2.80094 5.64362C3.10951 4.86426 3.66888 4.21437 4.56054 3.7628C5.92624 3.07115 7.09335 3.32344 7.96089 3.7628C8.40259 3.9865 8.76066 4.25779 9.00876 4.47482C9.13189 4.58253 9.22537 4.67462 9.28588 4.73725C9.31608 4.7685 9.33786 4.7922 9.35083 4.80659L9.36383 4.82121Z" fill="#CC400C"/>
+                              </svg>
+                            }
+                          </div>
+                        </div>
+                      </div>
+                      {showShareMenus?
+                          <div className={css.main_share_con}>
+                              <div className={css.share_link_con}>
+                                <div className={css.link_itm} onClick={e=>{setShowShareMenus(false);navigator.clipboard.writeText(window.location.href);}}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M19.7786 4.22179C17.826 2.26917 14.6602 2.26917 12.7076 4.22179L9.87913 7.05022C9.48861 7.44074 9.48861 8.07391 9.87913 8.46443C10.2697 8.85496 10.9028 8.85496 11.2933 8.46443L14.1218 5.636C15.2933 4.46443 17.1928 4.46443 18.3644 5.636C19.536 6.80758 19.536 8.70707 18.3644 9.87864L15.536 12.7071C15.1455 13.0976 15.1455 13.7308 15.536 14.1213C15.9265 14.5118 16.5597 14.5118 16.9502 14.1213L19.7786 11.2929C21.7312 9.34024 21.7312 6.17441 19.7786 4.22179Z" fill="black"/>
+                                        <path d="M14.1218 11.2929C14.5123 10.9023 14.5123 10.2692 14.1218 9.87864C13.7312 9.48812 13.0981 9.48812 12.7076 9.87864L9.87913 12.7071C9.48861 13.0976 9.48861 13.7308 9.87913 14.1213C10.2697 14.5118 10.9028 14.5118 11.2933 14.1213L14.1218 11.2929Z" fill="black"/>
+                                        <path d="M8.46492 11.2929C8.85544 10.9023 8.85544 10.2692 8.46492 9.87864C8.07439 9.48812 7.44123 9.48812 7.05071 9.87864L4.22228 12.7071C2.26966 14.6597 2.26966 17.8255 4.22228 19.7781C6.1749 21.7308 9.34072 21.7308 11.2933 19.7781L14.1218 16.9497C14.5123 16.5592 14.5123 15.926 14.1218 15.5355C13.7312 15.145 13.0981 15.145 12.7076 15.5355L9.87913 18.3639C8.70756 19.5355 6.80806 19.5355 5.63649 18.3639C4.46492 17.1924 4.46492 15.2929 5.63649 14.1213L8.46492 11.2929Z" fill="black"/>
+                                    </svg>
+                                    <span>Copy link</span>
+                                </div>
+                                <FacebookShareButton url={window.location.href}>
+                                    <div className={css.link_itm} onClick={e=>setShowShareMenus(false)}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                          <g clipPath="url(#clip0_761_66337)">
+                                              <path d="M18.375 0H5.625C2.5184 0 0 2.5184 0 5.625V18.375C0 21.4816 2.5184 24 5.625 24H18.375C21.4816 24 24 21.4816 24 18.375V5.625C24 2.5184 21.4816 0 18.375 0Z" fill="url(#paint0_radial_761_66337)"/>
+                                              <path d="M18.375 0H5.625C2.5184 0 0 2.5184 0 5.625V18.375C0 21.4816 2.5184 24 5.625 24H18.375C21.4816 24 24 21.4816 24 18.375V5.625C24 2.5184 21.4816 0 18.375 0Z" fill="url(#paint1_radial_761_66337)"/>
+                                              <path d="M12.0008 2.625C9.45478 2.625 9.13519 2.63616 8.13525 2.68163C7.13719 2.72738 6.45591 2.88534 5.85984 3.11719C5.24316 3.35662 4.72013 3.67697 4.19906 4.19822C3.67753 4.71937 3.35719 5.24241 3.117 5.85881C2.8845 6.45506 2.72634 7.13662 2.68144 8.13422C2.63672 9.13425 2.625 9.45394 2.625 12.0001C2.625 14.5463 2.63625 14.8648 2.68163 15.8647C2.72756 16.8628 2.88553 17.5441 3.11719 18.1402C3.35681 18.7568 3.67716 19.2799 4.19841 19.8009C4.71938 20.3225 5.24241 20.6436 5.85862 20.883C6.45516 21.1148 7.13653 21.2728 8.13441 21.3186C9.13444 21.364 9.45375 21.3752 11.9997 21.3752C14.5461 21.3752 14.8646 21.364 15.8646 21.3186C16.8626 21.2728 17.5447 21.1148 18.1412 20.883C18.7576 20.6436 19.2799 20.3225 19.8007 19.8009C20.3223 19.2799 20.6425 18.7568 20.8828 18.1404C21.1133 17.5441 21.2715 16.8626 21.3184 15.8649C21.3633 14.865 21.375 14.5463 21.375 12.0001C21.375 9.45394 21.3633 9.13444 21.3184 8.13441C21.2715 7.13634 21.1133 6.45516 20.8828 5.85909C20.6425 5.24241 20.3223 4.71937 19.8007 4.19822C19.2793 3.67678 18.7578 3.35644 18.1406 3.11728C17.543 2.88534 16.8613 2.72728 15.8632 2.68163C14.8632 2.63616 14.5448 2.625 11.9979 2.625H12.0008ZM11.1598 4.31447C11.4095 4.31409 11.688 4.31447 12.0008 4.31447C14.5041 4.31447 14.8007 4.32347 15.7892 4.36838C16.7032 4.41019 17.1994 4.56291 17.5298 4.69125C17.9674 4.86112 18.2793 5.06428 18.6072 5.3925C18.9353 5.72062 19.1384 6.03309 19.3088 6.47062C19.4371 6.80062 19.59 7.29675 19.6316 8.21081C19.6765 9.19913 19.6863 9.49594 19.6863 11.9979C19.6863 14.4999 19.6765 14.7968 19.6316 15.7851C19.5898 16.6991 19.4371 17.1952 19.3088 17.5253C19.1389 17.9629 18.9353 18.2744 18.6072 18.6023C18.2791 18.9305 17.9676 19.1335 17.5298 19.3035C17.1997 19.4324 16.7032 19.5848 15.7892 19.6266C14.8009 19.6715 14.5041 19.6812 12.0008 19.6812C9.49753 19.6812 9.20081 19.6715 8.21259 19.6266C7.29853 19.5844 6.80241 19.4317 6.47166 19.3033C6.03422 19.1333 5.72166 18.9303 5.39353 18.6022C5.06541 18.274 4.86234 17.9623 4.692 17.5246C4.56366 17.1945 4.41075 16.6984 4.36913 15.7843C4.32422 14.796 4.31522 14.4992 4.31522 11.9956C4.31522 9.492 4.32422 9.19678 4.36913 8.20847C4.41094 7.29441 4.56366 6.79828 4.692 6.46781C4.86197 6.03028 5.06541 5.71781 5.39363 5.38969C5.72184 5.06156 6.03422 4.85841 6.47175 4.68816C6.80222 4.55925 7.29853 4.40691 8.21259 4.36491C9.07744 4.32581 9.41259 4.31409 11.1598 4.31212V4.31447ZM17.0052 5.87109C16.3841 5.87109 15.8802 6.37453 15.8802 6.99572C15.8802 7.61681 16.3841 8.12072 17.0052 8.12072C17.6263 8.12072 18.1302 7.61681 18.1302 6.99572C18.1302 6.37463 17.6263 5.87072 17.0052 5.87072V5.87109ZM12.0008 7.18556C9.34209 7.18556 7.18641 9.34125 7.18641 12.0001C7.18641 14.6589 9.34209 16.8136 12.0008 16.8136C14.6597 16.8136 16.8146 14.6589 16.8146 12.0001C16.8146 9.34134 14.6595 7.18556 12.0007 7.18556H12.0008ZM12.0008 8.87503C13.7267 8.87503 15.1259 10.2741 15.1259 12.0001C15.1259 13.7259 13.7267 15.1252 12.0008 15.1252C10.275 15.1252 8.87588 13.7259 8.87588 12.0001C8.87588 10.2741 10.2749 8.87503 12.0008 8.87503Z" fill="white"/>
+                                          </g>
+                                          <defs>
+                                              <radialGradient id="paint0_radial_761_66337" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.375 25.8485) rotate(-90) scale(23.7858 22.1227)">
+                                              <stop stopColor="#FFDD55"/>
+                                              <stop offset="0.1" stopColor="#FFDD55"/>
+                                              <stop offset="0.5" stopColor="#FF543E"/>
+                                              <stop offset="1" stopColor="#C837AB"/>
+                                              </radialGradient>
+                                              <radialGradient id="paint1_radial_761_66337" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(-4.02009 1.72884) rotate(78.681) scale(10.6324 43.827)">
+                                              <stop stopColor="#3771C8"/>
+                                              <stop offset="0.128" stopColor="#3771C8"/>
+                                              <stop offset="1" stopColor="#6600FF" stopOpacity="0"/>
+                                              </radialGradient>
+                                              <clipPath id="clip0_761_66337">
+                                              <rect width="24" height="24" fill="white"/>
+                                              </clipPath>
+                                          </defs>
+                                      </svg>
+                                      <span>Instagram</span>
+                                  </div>
+                                </FacebookShareButton>
+                                
+                                <WhatsappShareButton url={window.location.href}>
+                                  <div className={css.link_itm} onClick={e=>setShowShareMenus(false)}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                          <g clipPath="url(#clip0_761_66343)">
+                                              <path d="M0.510625 11.8563C0.510062 13.8728 1.04106 15.8417 2.05075 17.5771L0.414062 23.5066L6.52956 21.9156C8.22104 22.8292 10.1162 23.308 12.0421 23.3081H12.0471C18.4048 23.3081 23.5801 18.1748 23.5828 11.8653C23.584 8.80792 22.3851 5.93295 20.2069 3.76997C18.0291 1.60718 15.1327 0.415458 12.0467 0.414062C5.68825 0.414062 0.513344 5.54709 0.510719 11.8563" fill="url(#paint0_linear_761_66343)"/>
+                                              <path d="M0.100313 11.8527C0.0996563 13.9417 0.649687 15.981 1.69537 17.7786L0 23.9207L6.33478 22.2726C8.08022 23.2168 10.0454 23.7147 12.0451 23.7154H12.0502C18.636 23.7154 23.9972 18.3975 24 11.8621C24.0011 8.69488 22.7591 5.71656 20.5031 3.47609C18.2468 1.23591 15.2468 0.00130233 12.0502 0C5.46337 0 0.102938 5.31721 0.100313 11.8527ZM3.87291 17.469L3.63637 17.0965C2.64206 15.5277 2.11725 13.7149 2.118 11.8534C2.12006 6.4213 6.57544 2.00186 12.054 2.00186C14.7071 2.00298 17.2005 3.02921 19.0759 4.89116C20.9512 6.7533 21.9831 9.22865 21.9824 11.8614C21.98 17.2935 17.5245 21.7135 12.0502 21.7135H12.0463C10.2638 21.7126 8.51569 21.2376 6.99113 20.34L6.62831 20.1265L2.86912 21.1045L3.87291 17.469Z" fill="url(#paint1_linear_761_66343)"/>
+                                              <path d="M9.06187 6.89771C8.83819 6.4044 8.60278 6.39445 8.39006 6.3858C8.21587 6.37836 8.01675 6.37892 7.81781 6.37892C7.61869 6.37892 7.29516 6.45324 7.02169 6.74952C6.74794 7.04608 5.97656 7.76273 5.97656 9.22031C5.97656 10.6779 7.04653 12.0866 7.19569 12.2845C7.34503 12.482 9.26128 15.5689 12.2962 16.7564C14.8184 17.7433 15.3317 17.547 15.8791 17.4975C16.4266 17.4482 17.6457 16.7811 17.8944 16.0892C18.1433 15.3975 18.1433 14.8046 18.0687 14.6807C17.9941 14.5572 17.795 14.4831 17.4964 14.335C17.1978 14.1869 15.7297 13.4701 15.4561 13.3712C15.1823 13.2724 14.9833 13.2231 14.7842 13.5198C14.5851 13.8159 14.0133 14.4831 13.839 14.6807C13.6649 14.8787 13.4906 14.9034 13.1921 14.7552C12.8933 14.6065 11.9317 14.2941 10.7909 13.2849C9.90328 12.4996 9.30403 11.5298 9.12984 11.2331C8.95566 10.937 9.11119 10.7764 9.26091 10.6288C9.39506 10.496 9.55959 10.2828 9.70903 10.1099C9.85791 9.93687 9.90759 9.81343 10.0072 9.61585C10.1068 9.41808 10.0569 9.24506 9.98241 9.09687C9.90759 8.94868 9.32737 7.48347 9.06187 6.89771Z" fill="white"/>
+                                          </g>
+                                          <defs>
+                                              <linearGradient id="paint0_linear_761_66343" x1="1158.85" y1="2309.67" x2="1158.85" y2="0.414062" gradientUnits="userSpaceOnUse">
+                                              <stop stopColor="#1FAF38"/>
+                                              <stop offset="1" stopColor="#60D669"/>
+                                              </linearGradient>
+                                              <linearGradient id="paint1_linear_761_66343" x1="1200" y1="2392.07" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
+                                              <stop stopColor="#F9F9F9"/>
+                                              <stop offset="1" stopColor="white"/>
+                                              </linearGradient>
+                                              <clipPath id="clip0_761_66343">
+                                              <rect width="24" height="24" fill="white"/>
+                                              </clipPath>
+                                          </defs>
+                                      </svg>
+                                      <span>WhatsApp</span>
+                                  </div>
+                                </WhatsappShareButton>
+                                
+                                <TwitterShareButton url={window.location.href}>
+                                    <div className={css.link_itm} onClick={e=>setShowShareMenus(false)}>
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 24 22" fill="none">
+                                          <path d="M18.9 0.124512H22.5806L14.5406 9.33708L24 21.8754H16.5943L10.7897 14.2725L4.15543 21.8754H0.471429L9.07029 12.0182L0 0.126226H7.59429L12.8331 7.07423L18.9 0.124512ZM17.6057 19.6674H19.6457L6.48 2.21765H4.29257L17.6057 19.6674Z" fill="black"/>
+                                      </svg>
+                                      <span>X (Twitter)</span>
+                                  </div>
+                                </TwitterShareButton>
+                                
+                            </div>
+                          </div>
+                          
+                      :""}
+                </div>
+                  
+                  <div className={css.flex_row_3_mobile}>
+                    <button className={css.share}>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1654 1.66667C12.3244 1.66667 10.832 3.15905 10.832 5C10.832 5.14235 10.841 5.28262 10.8583 5.42027C10.7378 5.51705 10.5807 5.63956 10.3977 5.77418C9.95111 6.10262 9.3769 6.48286 8.81426 6.74424C8.33092 6.96879 7.7504 7.16366 7.27492 7.30508C7.04048 7.3748 6.83816 7.42961 6.69513 7.46682C6.62372 7.48539 6.56737 7.49951 6.52951 7.50883L6.4871 7.51915L6.47715 7.52153L6.47515 7.522C6.45429 7.52689 6.43365 7.53257 6.41355 7.53892C5.8208 6.99715 5.03168 6.66667 4.16536 6.66667C2.32442 6.66667 0.832031 8.15905 0.832031 10C0.832031 11.841 2.32442 13.3333 4.16536 13.3333C5.03166 13.3333 5.82078 13.0029 6.41351 12.4611C6.44371 12.4706 6.47476 12.4786 6.5066 12.4847L6.50751 12.4849L6.5158 12.4866L6.55393 12.4945C6.58855 12.5018 6.64092 12.5132 6.708 12.5287C6.84241 12.5598 7.03457 12.6072 7.26044 12.6714C7.71811 12.8014 8.28817 12.9931 8.79269 13.2454C9.30285 13.5004 9.88559 13.8868 10.3574 14.2245C10.5528 14.3644 10.7241 14.4922 10.8566 14.5931C10.8404 14.7265 10.832 14.8623 10.832 15C10.832 16.841 12.3244 18.3333 14.1654 18.3333C16.0063 18.3333 17.4987 16.841 17.4987 15C17.4987 13.1591 16.0063 11.6667 14.1654 11.6667C13.0769 11.6667 12.1103 12.1884 11.5019 12.9954C11.4462 12.9547 11.388 12.9125 11.3276 12.8693C10.8342 12.5161 10.1669 12.0691 9.53804 11.7546C8.90353 11.4374 8.22359 11.2124 7.71601 11.0682C7.58478 11.0309 7.46334 10.9985 7.35508 10.9709C7.44847 10.6637 7.4987 10.3377 7.4987 10C7.4987 9.65769 7.4471 9.32742 7.35125 9.01657C7.46931 8.98418 7.60399 8.94603 7.75005 8.90258C8.256 8.75211 8.92548 8.53031 9.51647 8.25576C10.2233 7.9274 10.8991 7.47431 11.3851 7.11684C11.4296 7.08416 11.4726 7.05212 11.5142 7.02085C12.1233 7.81861 13.0842 8.33333 14.1654 8.33333C16.0063 8.33333 17.4987 6.84095 17.4987 5C17.4987 3.15905 16.0063 1.66667 14.1654 1.66667ZM12.4987 5C12.4987 4.07953 13.2449 3.33333 14.1654 3.33333C15.0858 3.33333 15.832 4.07953 15.832 5C15.832 5.92048 15.0858 6.66667 14.1654 6.66667C13.2449 6.66667 12.4987 5.92048 12.4987 5ZM2.4987 10C2.4987 9.07953 3.24489 8.33333 4.16536 8.33333C5.08584 8.33333 5.83203 9.07953 5.83203 10C5.83203 10.9205 5.08584 11.6667 4.16536 11.6667C3.24489 11.6667 2.4987 10.9205 2.4987 10ZM12.4987 15C12.4987 14.0795 13.2449 13.3333 14.1654 13.3333C15.0858 13.3333 15.832 14.0795 15.832 15C15.832 15.9205 15.0858 16.6667 14.1654 16.6667C13.2449 16.6667 12.4987 15.9205 12.4987 15Z" fill="#CC400C"/>
+                      </svg>
+                      Share profile
+                    </button>
+                    <div className={css.send_con}>
+                      <button className={css.send} onClick={e=>{handleSendEnquiry()}}>
+                        Send a message
+                        {showProgress?
+                          <div class="spinner-border" role="status">
+                          </div>
+                        :""}
+                        
+                      </button>
+                      <div onClick={handleLike} className={css.icon_con}>
+                        {isLiked?
+                              (
+                                inProgress?
+                                  <div class="spinner-border" role="status"></div>:<img className={css.resize_icon} src={chckedHeart}/>
+                              )
+                            :
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.7139 2.27594C9.24748 2.54617 9.68185 2.86245 9.99872 3.12837C10.3156 2.86245 10.7499 2.54617 11.2835 2.27595C12.4926 1.66357 14.2328 1.28483 16.1898 2.27594C17.4399 2.90904 18.2855 3.86701 18.746 5.03009C19.2003 6.17753 19.262 7.47656 19.0434 8.79453C18.6708 11.04 17.136 13.0437 15.5597 14.5876C13.9638 16.1507 12.2139 17.3494 11.227 17.9745C10.4716 18.4529 9.52588 18.4529 8.77049 17.9745C7.78357 17.3494 6.03363 16.1507 4.43765 14.5876C2.86135 13.0437 1.32654 11.04 0.953963 8.79453C0.735282 7.47656 0.797008 6.17753 1.25131 5.03009C1.7118 3.86701 2.55744 2.90904 3.80753 2.27594C5.76453 1.28483 7.50476 1.66358 8.7139 2.27594ZM9.36383 4.82121C9.52214 5.00742 9.75426 5.11478 9.99874 5.11477C10.2428 5.11477 10.4745 5.00779 10.6328 4.82217C10.633 4.82195 10.6332 4.82174 10.6334 4.82153C10.6336 4.82128 10.6338 4.82102 10.634 4.82077L10.6466 4.80658C10.6596 4.79219 10.6814 4.76848 10.7116 4.73724C10.7721 4.67461 10.8656 4.58252 10.9887 4.47481C11.2368 4.25778 11.5948 3.98649 12.0365 3.76279C12.904 3.32344 14.0711 3.07115 15.4368 3.7628C16.3284 4.21437 16.8878 4.86426 17.1964 5.64362C17.5112 6.43863 17.5825 7.41664 17.3992 8.52173C17.1147 10.2365 15.8918 11.9294 14.3935 13.3969C12.9149 14.8451 11.2733 15.9723 10.3352 16.5665C10.1243 16.7001 9.87315 16.7001 9.66226 16.5665C8.72414 15.9723 7.08248 14.8451 5.60384 13.3969C4.10551 11.9294 2.88268 10.2365 2.59815 8.52173C2.41479 7.41664 2.48618 6.43863 2.80094 5.64362C3.10951 4.86426 3.66888 4.21437 4.56054 3.7628C5.92624 3.07115 7.09335 3.32344 7.96089 3.7628C8.40259 3.9865 8.76066 4.25779 9.00876 4.47482C9.13189 4.58253 9.22537 4.67462 9.28588 4.73725C9.31608 4.7685 9.33786 4.7922 9.35083 4.80659L9.36383 4.82121Z" fill="#CC400C"/>
+                              </svg>
+                            }
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              
+              <div className={css.section}>
+                <h1 className={css.about_header}>
+                  About me:
+                </h1>
+
+                <p>
+                  {"description"}
+                </p>
+                
+              </div>
+
+              <div className={css.section}>
+                <h1 className={css.about_header}>
+                  Services & Listings:
+                </h1>
+
+                <p>
+                  {"description"}
+                </p>
+                
+              </div>
+             
+              <div className={css.section}>
+                <div className={classNames(css.flex_row_btw,css.mag_top_sm)}>
+                  <h1 className={css.about_header}>
+                    Completed services:
+                  </h1>
+                </div>
+                
+                {reviews.length > 0 && reviews.map((itm,key)=>{
+                  console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                  const {attributes,author} = itm;
+                  const {content,rating} = attributes;
+                  const displayName = author?.attributes?.profile?.displayName;
+                  const profileImage = author?.profileImage;
+                  const createdAt = author.attributes.createdAt.toDateString();
+
+                  return (
+                       <div className={css.section_sub}>
+                          <div className={classNames(css.flex_row_btw_2,css.mag_top_sm)}>
+                            <div className={classNames(css.flex_row_8)}>
+                              {profileImage !== undefined && profileImage !== null?
+                              <img src={profileImage} />
+                              :
+                              <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" fill="none">
+                                <circle cx="22" cy="22.5" r="22" fill="#D9D9D9"/>
+                              </svg>
+                            }
+                              
+                              <div>
+                                <h3 className={css.header_4}>{displayName}</h3>
+                                <p>{createdAt}</p>
+                              </div>
+                            </div>
+                          
+                            
+                             <Box sx={{ '& > legend': { mt: 2 } }} className={css.rating_con}>
+                                  <StyledRating
+                                      name="customized-color"
+                                      defaultValue={rating}
+                                      getLabelText={(value) => `${value} Heart${value !== 1 ? 's' : ''}`}
+                                      precision={1}
+                                      icon={
+                                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M8.26894 1.45105C9.06651 0.182982 10.9335 0.182982 11.7311 1.45105L13.6599 4.5178C13.9406 4.96396 14.3864 5.28413 14.9023 5.41009L18.4489 6.27584C19.9153 6.63382 20.4922 8.38907 19.5187 9.53076L17.1643 12.2919C16.8218 12.6936 16.6515 13.2116 16.6897 13.7356L16.9527 17.3374C17.0615 18.8268 15.5511 19.9116 14.1518 19.3491L10.7678 17.9888C10.2755 17.7909 9.72448 17.7909 9.23217 17.9888L5.84818 19.3491C4.44893 19.9116 2.93851 18.8268 3.04726 17.3374L3.31026 13.7356C3.34853 13.2116 3.17825 12.6936 2.83572 12.2919L0.481292 9.53076C-0.492242 8.38907 0.0846877 6.63382 1.55115 6.27584L5.09768 5.41009C5.61365 5.28413 6.05944 4.96396 6.34006 4.5178L8.26894 1.45105Z" fill="#FFD700"/>
+                                          </svg>
+                                      }
+                                      emptyIcon={
+                                          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18" fill="none">
+                                              <path fill-rule="evenodd" clip-rule="evenodd" d="M11.3159 1.1822C10.3245 -0.394067 8.01142 -0.394068 7.02 1.1822L5.41261 3.73782C5.29504 3.92475 5.10648 4.06146 4.88508 4.11551L1.92963 4.83697C0.114839 5.27999 -0.619074 7.46814 0.601607 8.89967L2.56363 11.2006C2.70764 11.3695 2.7779 11.5854 2.76206 11.8023L2.54289 14.8038C2.40617 16.6762 4.29639 18.0065 6.01892 17.3141L8.83891 16.1805C9.04973 16.0958 9.2862 16.0958 9.49701 16.1805L12.317 17.3141C14.0395 18.0065 15.9298 16.6762 15.793 14.8038L15.5739 11.8023C15.558 11.5854 15.6283 11.3695 15.7723 11.2006L17.7343 8.89967C18.955 7.46815 18.2211 5.27999 16.4063 4.83697L13.4509 4.11551C13.2294 4.06146 13.0409 3.92475 12.9233 3.73782L11.3159 1.1822ZM8.43082 2.06955C8.76868 1.53237 9.56724 1.53237 9.90511 2.06955L11.5125 4.62517C11.8626 5.18184 12.4171 5.57876 13.0556 5.73463L16.011 6.4561C16.6404 6.60972 16.868 7.34697 16.4661 7.81826L14.5041 10.1192C14.0772 10.6198 13.8637 11.2673 13.9116 11.9237L14.1308 14.9252C14.1753 15.5351 13.5482 16.0127 12.9386 15.7677L10.1186 14.6341C9.50892 14.389 8.82701 14.389 8.2173 14.6341L5.3973 15.7677C4.78775 16.0127 4.1606 15.5351 4.20513 14.9252L4.4243 11.9237C4.47224 11.2673 4.25871 10.6198 3.83183 10.1192L1.86981 7.81826C1.46793 7.34697 1.69557 6.60972 2.32488 6.4561L5.28033 5.73463C5.91886 5.57876 6.47329 5.18184 6.82342 4.62517L8.43082 2.06955Z" fill="#EBC600"/>
+                                          </svg>
+                                      }
+                                      disabled
+                                  />
+                                  
+                              </Box>
+                          </div>
+                          <p>{content}</p>
+                        </div>
+                  )
+                })}
+               
+
+                <button className={classNames(css.btn_outline,css.center_content)}>
+                  View all reviews
+                </button>
+              </div>
+              
+            </div>
+           
+            
+        </div>
+
+
+  )
+}
+
+
+const mapStateToProps = state => {
+  const { isAuthenticated } = state.auth;
+  const {
+    showListingError,
+    reviews,
+    fetchReviewsError,
+    monthlyTimeSlots,
+    sendInquiryInProgress,
+    sendInquiryError,
+    isInquiry,
+    lineItems,
+    fetchLineItemsInProgress,
+    fetchLineItemsError,
+    inquiryModalOpenForListingId,
+    saveLikesInProgress,
+    saveLikesError,
+    saveLikesSuccess,
+  } = state.ListingPage;
+  const { currentUser } = state.user;
+
+  console.log(reviews,"   ooooooooooooooo")
+
+  const getListing = id => {
+    const ref = { id, type: 'listing' };
+    const listings = getMarketplaceEntities(state, [ref]);
+    return listings.length === 1 ? listings[0] : null;
+  };
+
+  const getOwnListing = id => {
+    const ref = { id, type: 'ownListing' };
+    const listings = getMarketplaceEntities(state, [ref]);
+    return listings.length === 1 ? listings[0] : null;
+  };
+
+  return {
+    // isAuthenticated,
+    // currentUser,
+    // getListing,
+    // getOwnListing,
+    // scrollingDisabled: isScrollingDisabled(state),
+    // inquiryModalOpenForListingId,
+    // showListingError,
+    // reviews,
+    // fetchReviewsError,
+    // monthlyTimeSlots,
+    // lineItems,
+    // fetchLineItemsInProgress,
+    // fetchLineItemsError,
+    // sendInquiryInProgress,
+    // sendInquiryError,
+    // isInquiry,
+    // saveLikesInProgress,
+    // saveLikesError,
+    // saveLikesSuccess,
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  onManageDisableScrolling: (componentId, disableScrolling) =>
+    dispatch(manageDisableScrolling(componentId, disableScrolling)),
+  callSetInitialValues: (setInitialValues, values, saveToSessionStorage) =>
+    dispatch(setInitialValues(values, saveToSessionStorage)),
+  onFetchTransactionLineItems: params => dispatct(fetchTransactionLineItems(params)),
+  onSendInquiry: (listing, message) => dispatch(sendInquiry(listing, message)),
+});
+
+
+// Note: it is important that the withRouter HOC is **outside** the
+// connect HOC, otherwise React Router won't rerender any Route
+// components since connect implements a shouldComponentUpdate
+// lifecycle hook.
+//
+// See: https://github.com/ReactTraining/react-router/issues/4671
+const StoreFrontPage = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
+)(StoreFrontPageComponent);
+
+
+
+
+
+export default StoreFrontPage;

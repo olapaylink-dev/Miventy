@@ -48,6 +48,10 @@ export const SAVE_LIKES_REQUEST = 'app/ListingPage/SAVE_LIKES_REQUEST';
 export const SAVE_LIKES_SUCCESS = 'app/ListingPage/SAVE_LIKES_SUCCESS';
 export const SAVE_LIKES_ERROR = 'app/ListingPage/SAVE_LIKES_ERROR';
 
+export const FETCH_USER_LISTINGS_REQUEST = 'app/ListingPage/FETCH_USER_LISTINGS_REQUEST';
+export const FETCH_USER_LISTINGS_SUCCESS = 'app/ListingPage/FETCH_USER_LISTINGS_SUCCESS';
+export const FETCH_USER_LISTINGS_ERROR = 'app/ListingPage/FETCH_USER_LISTINGS_ERROR';
+
 
 
 // ================ Reducer ================ //
@@ -73,7 +77,10 @@ const initialState = {
   isInquiry:false,
   saveLikesInProgress:false,
   saveLikesError:null,
-  saveLikesSuccess:false
+  saveLikesSuccess:false,
+  userListings:[],
+  fetchUserListingsInProgress:false,
+  fetchUserListingsError:null
 };
 
 const listingPageReducer = (state = initialState, action = {}) => {
@@ -151,6 +158,14 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case SAVE_LIKES_ERROR:
       return { ...state, saveLikesInProgress: false, saveLikesError: payload,isInquiry:false };
 
+    case FETCH_USER_LISTINGS_REQUEST:
+      return { ...state, fetchUserListingsInProgress: true, fetchUserListingsError: null };
+    case FETCH_USER_LISTINGS_SUCCESS:
+      console.log(payload,"  aaabbbccc")
+      return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: null, userListings:payload };
+    case FETCH_USER_LISTINGS_ERROR:
+      return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: payload };
+
     default:
       return state;
   }
@@ -197,10 +212,12 @@ export const fetchTimeSlotsRequest = monthId => ({
   type: FETCH_TIME_SLOTS_REQUEST,
   payload: monthId,
 });
+
 export const fetchTimeSlotsSuccess = (monthId, timeSlots) => ({
   type: FETCH_TIME_SLOTS_SUCCESS,
   payload: { timeSlots, monthId },
 });
+
 export const fetchTimeSlotsError = (monthId, error) => ({
   type: FETCH_TIME_SLOTS_ERROR,
   error: true,
@@ -212,8 +229,20 @@ export const fetchLineItemsSuccess = lineItems => ({
   type: FETCH_LINE_ITEMS_SUCCESS,
   payload: lineItems,
 });
+
 export const fetchLineItemsError = error => ({
   type: FETCH_LINE_ITEMS_ERROR,
+  error: true,
+  payload: error,
+});
+
+export const fetchUserListingRequest = () => ({ type: FETCH_USER_LISTINGS_REQUEST });
+export const fetchUserListingSuccess = listings => ({
+  type: FETCH_USER_LISTINGS_SUCCESS,
+  payload: listings,
+});
+export const fetchUserListingError = error => ({
+  type: FETCH_USER_LISTINGS_ERROR,
   error: true,
   payload: error,
 });
@@ -302,6 +331,20 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
     })
     .catch(e => {
       dispatch(fetchReviewsError(storableError(e)));
+    });
+};
+
+export const fetchUserListings = userId => (dispatch, getState, sdk) => {
+  dispatch(fetchUserListingRequest());
+  console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
+  return sdk.listings.query({
+    authorId: userId,
+    }).then(res => {
+      // res.data contains the response data
+      dispatch(fetchUserListingSuccess(res.data.data));
+    })
+    .catch(e => {
+      dispatch(fetchUserListingError(storableError(e)));
     });
 };
 

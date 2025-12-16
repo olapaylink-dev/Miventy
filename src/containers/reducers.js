@@ -20,6 +20,7 @@ import StripePayoutPage from './StripePayoutPage/StripePayoutPage.duck';
 import TransactionPage from './TransactionPage/TransactionPage.duck';
 import DashboardPage from './DashboardPage/DashboardPage.duck';
 import PaymentMethodResponsePage from './PaymentMethodResponse/PaymentMethodResponsePage.duck';
+import StoreFrontPage from './StoreFrontPage/StoreFrontPage.duck';
 
 export {
   CheckoutPage,
@@ -38,5 +39,6 @@ export {
   StripePayoutPage,
   TransactionPage,
   DashboardPage,
-  PaymentMethodResponsePage
+  PaymentMethodResponsePage,
+  StoreFrontPage
 };

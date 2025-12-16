@@ -43,7 +43,7 @@ export default function PriceSelect(props){
         }else if(val === "€300 - €600"){
             history.push(`/s?price=${300}%2C${600}`);
         }else if(val === "€600+"){
-            history.push(`/s?price=${600}%2C${1000}`);
+            history.push(`/s?price=${600}%2C${10000}`);
         }else{}
         setSelectedPrice(val);
 
