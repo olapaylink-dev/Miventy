@@ -188,6 +188,8 @@ const EnhancedCheckoutPage = props => {
     // }
   }, []);
 
+  console.log(currentUser,"   xxxxx1234")
+
   useEffect(()=>{
     const getCommission = lineItems =>{
       let val = 0;

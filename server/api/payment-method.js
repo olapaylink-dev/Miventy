@@ -31,6 +31,10 @@ module.exports = async (req, res)  =>  {
         },
         quantity: 1,
       }],
+       payment_intent_data: {
+          on_behalf_of: 'acct_1SfL6F3GrezWFQQk',
+          transfer_group: 'ORDER100',
+        },
       mode: 'payment',
        success_url: `https://boomgoes-2sop.onrender.com/${txId}/${"successful"}/success`,
        cancel_url: 'https://boomgoes-2sop.onrender.com/cancel',
