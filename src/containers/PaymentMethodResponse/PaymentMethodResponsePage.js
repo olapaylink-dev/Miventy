@@ -61,7 +61,6 @@ const PaymentMethodResponsePageCom = (props) => {
 
   useEffect(() => {
     const trx = JSON.parse(localStorage.getItem("Transaction"));
-    const listingId = trx.listing.id.uuid;
     const speculatedTrx = JSON.parse(localStorage.getItem("SpeculatedTransaction"));
     if(speculatedTrx !== null && speculatedTrx !== undefined){
       onConfirmPayment(speculatedTrx,trx.listing,currentUser);
