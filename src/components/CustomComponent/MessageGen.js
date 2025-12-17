@@ -23,6 +23,16 @@ const MessageGen =(props)=>{
     currentOfferInView,
     setCurrentOfferInView,
   } = props;
+
+
+    const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
+    const {provider={},listing={}} = currentTransaction;
+    const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
+    const {cartData,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
+    const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
+    const listingType = listing?.attributes?.publicData?.listingType;
+
+    console.log(cartDat,"   cccccssssss222222")
   
     return(
         <div className={css.container}>
@@ -78,7 +88,7 @@ const MessageGen =(props)=>{
             }
           })}
           
-          {currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?
+          {currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}" && cartData !== undefined?
             <OrderView 
               trx={currentTransaction} 
               isProvider={isProvider} 

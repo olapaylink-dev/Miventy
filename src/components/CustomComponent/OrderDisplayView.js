@@ -22,6 +22,7 @@ const OrderDisplayView = props =>{
         currentListing,
         setCurrentRequestQuoteTab,
         setShowOrder,
+        showOrder={showOrder},
         currentTransaction,
         handleCreateProposal,
         setShowQuotationForm,
@@ -67,18 +68,24 @@ const OrderDisplayView = props =>{
         if(acceptOfferSuccess){
             //console.log("Offer accepted")
             //console.log(currentTransaction)
-            setShowOrder(false);
-            setSuccessMessage("You have accepted this order!");
-            setShowSuccessView(true);
+            if(showOrder){
+                setShowOrder(false);
+                setSuccessMessage("You have accepted this order!");
+                setShowSuccessView(true);
+            }
+           
         }
     },[acceptOfferSuccess])
 
     useEffect(()=>{
         if(declineOfferSuccess){
            // console.log("Offer declined  =====")
-            setShowOrder(false);
-            setSuccessMessage("You have declined this order!");
-            setShowSuccessView(true);
+           if(showOrder){
+                setShowOrder(false);
+                setSuccessMessage("You have declined this order!");
+                setShowSuccessView(true);
+           }
+            
         }
     },[declineOfferSuccess])
 

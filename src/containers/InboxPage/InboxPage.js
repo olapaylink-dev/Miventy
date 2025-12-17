@@ -391,6 +391,7 @@ const onSubmitReview = values => {
           <div  className={css.overlay}>
               <OrderDisplayView 
                 setShowOrder={setShowOrder} 
+                showOrder={showOrder}
                 currentTransaction={currentTransaction}
                 setShowQuotationForm={setShowQuotationForm}
                 onCreateProposal={onCreateProposal}
