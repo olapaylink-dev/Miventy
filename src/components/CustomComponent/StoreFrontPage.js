@@ -67,7 +67,7 @@ const {
         authorDisplayName,
         userLocation,
         language,
-        aboutMe,
+        bio,
         userListings,
         reviews,
         setShowShareMenus,
@@ -293,7 +293,7 @@ const StyledRating = styled(Rating)({
                 </h1>
 
                 <p>
-                  {aboutMe}
+                  {bio}
                 </p>
                 
               </div>

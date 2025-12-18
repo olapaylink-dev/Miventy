@@ -190,7 +190,7 @@ const SignupFormComponent = props => (
                           })
                         )}
                       />
-
+{/* 
                       {userTyp === "provider"?
                         <FieldTextInput
                           type="text"
@@ -209,7 +209,7 @@ const SignupFormComponent = props => (
                             })
                           )}
                         />
-                      :""}
+                      :""} */}
 
                       
 

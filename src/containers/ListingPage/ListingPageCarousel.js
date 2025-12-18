@@ -582,7 +582,7 @@ const serviceTypesRentalSpace = [
   const userLocation = currentListing?.author?.attributes?.profile?.publicData?.location;
   const authorId = currentListing?.author?.id;
   const language = currentListing?.author?.attributes?.profile?.publicData?.language;
-  const aboutMe = currentListing?.author?.attributes?.profile?.publicData?.aboutMe;
+  const bio = currentListing?.author?.attributes?.profile?.publicData?.bio;
 
   
   useEffect(() => {
@@ -834,7 +834,7 @@ console.log(userListings,"   userListings")
             authorDisplayName={authorDisplayName}
             userLocation={userLocation}
             language={language}
-            aboutMe={aboutMe}
+            bio={bio}
             userListings={userListings}
             reviews={reviews}
             setShowShareMenus={setShowShareMenus}

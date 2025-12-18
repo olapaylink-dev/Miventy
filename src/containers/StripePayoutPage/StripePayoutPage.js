@@ -2694,8 +2694,9 @@ const handleSubmit = e=>{
 const BusinessProfileForm = props=>{
   const {onSetSelectedFile,handleMoveBack,handleHideForm,moveNext,onUpdateProfile,image,onImageUpload,publicData,profileImage,setCurrentPage} = props;
   const profileImageSrc = profileImage?.attributes?.variants["square-small"]?.url;
-  const [businessName, setBusinesName] = React.useState(publicData?.businessName);
-  const [yearsOfExperience, setYearsOfExperience] = React.useState(publicData?.yearsOfExperience);
+  const [businessName, setBusinesName] = useState(publicData?.businessName);
+  const [yearsOfExperience, setYearsOfExperience] = useState(publicData?.yearsOfExperience);
+  const [bio, setBio] = useState(publicData?.bio);
   const [language, setLanguage] = useState(publicData?.language);
   const [imageSrc,setImageSrc] = useState(profileImageSrc);
   const fileInput = useRef(null);
@@ -2705,7 +2706,7 @@ const BusinessProfileForm = props=>{
   const [date,setDate] = useState("");
   const [showOptions,setShowOptions] = useState(false);
 
-  const isReady = businessName && yearsOfExperience && languages && dateOfBirth;
+  const isReady = businessName && yearsOfExperience && languages && dateOfBirth && bio;
 
   const handleFileClick = ()=>{
     fileInput.current.click();
@@ -2744,6 +2745,7 @@ const handleSubmit = async e=>{
           yearsOfExperience,
           language:languages,
           dateOfBirth,
+          bio
         }}
 
     //console.log(profile,"   xxxxxxxxxxxxxmmmmmmmmmmmmmmmmmm")
@@ -3007,6 +3009,20 @@ function onChange(timestamp) {
                         <label className={css2.labels} for={"outlined-controlled"}>Date of birth</label>
                         <MyDatePicker currentDate={dateOfBirth} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
                         {dateOfBirth !== undefined && dateOfBirth !== null ?"":<span className={css2.error_msg}>Date of birth is required</span>}
+                      </div>
+
+                       <div>
+                        <label className={css2.labels} for={"outlined-controlled"}>Bio</label>
+                        <input
+                          id="outlined-controlled"
+                          name='bio'
+                          onChange={(event) => {
+                            setBio(event.target.value);
+                          }}
+                          value={bio}
+                          placeholder={bio}
+                        />
+                        {bio !== undefined && bio !== ""?"":<span className={css2.error_msg}>Bio is required</span>}
                       </div>
 
                       <input 
