@@ -89,8 +89,9 @@ export const loadData = () => (dispatch, getState, sdk) => {
     const currentUser = getState().user.currentUser;
     if (currentUser && currentUser.stripeAccount) {
       dispatch(fetchStripeAccount());
-      dispatch(queryUserReviews(currentUser.id.uuid));
+      
     }
+    dispatch(queryUserReviews(currentUser.id.uuid));
     return response;
   });
 };

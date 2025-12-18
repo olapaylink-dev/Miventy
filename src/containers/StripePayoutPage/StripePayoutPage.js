@@ -205,7 +205,7 @@ export const StripePayoutPageComponent = props => {
    params: pathParams,
   }=props;
 
-  console.log(reviews,"   xxxxxxxxxxxxxxxxxx")
+  console.log(reviews,"   xxxxxxxx  Reviews  xxxxxxxxxx")
 
   const { returnURLType } = params || {};
   const ensuredCurrentUser = ensureCurrentUser(currentUser);

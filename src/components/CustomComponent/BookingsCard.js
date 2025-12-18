@@ -6,16 +6,44 @@ const BookingsCard = props=>{
     const {provider,listing,attributes} = data;
     const displayName = provider?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
-    const {protectedData} = attributes;
+    const {protectedData,lineItems} = attributes;
     const transactionState = data?.attributes?.state;
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
     const {eventDate="",eventLocation=[]} = protectedData?.cartData;
     const location = eventLocation[0]?.result?.place_name;
     const {ItemPrice=0,durationPrice=[]} = items.length > 0? items[0]:{};
-    const price = ItemPrice?ItemPrice:durationPrice[0]?.price;
+    const unitPrice = lineItems[0]?.unitPrice?.amount || 0;
+    const listItemPrice = ItemPrice?ItemPrice:durationPrice[0]?.price;
+    const price = listItemPrice || unitPrice/100;
+
+    console.log(transactionState,"    nnnnnotransactionStateoooppp")
 
     const listingType = listing?.attributes?.publicData?.listingType;
     const isProvider = provider.id.uuid === currentUser.id.uuid;
+
+    const checkIfCustomerAsReviewed = trx =>{
+        let result = false;
+        trx.attributes.transitions.map((itm,key)=>{
+            if(itm.transition === "transition/review-1-by-customer"){
+                result = true;
+            }
+        });
+        return result;
+    }
+
+    const isReviewedByCustomer = checkIfCustomerAsReviewed(data);
+
+    const checkIfConfirmedPayment = trx =>{
+        let result = false;
+        trx.attributes.transitions.map((itm,key)=>{
+            if(itm.transition === "transition/confirm-payment"){
+                result = true;
+            }
+        });
+        return result;
+    }
+
+    const isPaymentConfirmed = checkIfConfirmedPayment(data);
     
     return(
         <div className={css.container}>
@@ -40,19 +68,43 @@ const BookingsCard = props=>{
             </div>
             
             {isProvider?
-                <div className={css.flex_btw}>
-                    <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Add a review</button>
-                </div>
+                
+                (!isReviewedByCustomer?
+
+                    (isPaymentConfirmed?
+                        <div className={css.flex_btw}>
+                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
+                        </div>
+                        :
+                        <div className={css.flex_btw}>
+                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for customer review</button>
+                        </div>
+                    )
+                    
+                    :
+                    <div className={css.flex_btw}>
+                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} >Add a review</button>
+                    </div>
+                )
             :
             (transactionState === "state/reviewed"?
                 <div className={css.flex_btw}>
                     <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Edit review</button>
                 </div>
                 :
-                <div className={css.flex_btw}>
-                    <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
-                    <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
-                </div>
+                (
+                    (isPaymentConfirmed?
+                        <div className={css.flex_btw}>
+                            <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
+                            <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
+                        </div>
+                    :
+                    <div className={css.flex_btw}>
+                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
+                    </div>
+                    )
+                )
+                
             )
                 
             }

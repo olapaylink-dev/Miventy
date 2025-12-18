@@ -56,6 +56,10 @@
     border: none;
     width: 100%;
 }
+
+.fill_btn:disabled{
+    background-color: rgb(199, 199, 199);
+}
 .flex_btw{
     display: flex;
     justify-content: space-between;
