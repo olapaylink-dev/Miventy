@@ -3,9 +3,11 @@ import icon1 from '../../assets/images/AlexJohnson.png';
 
 const BookingsCard = props=>{
     const {data,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction,currentUser,setShowRatingForm} = props;
-    const {provider,listing,attributes} = data;
+    const {provider,listing,attributes,customer} = data;
     const displayName = provider?.attributes?.profile?.displayName;
+    const customerDisplayName = customer?.attributes?.profile?.displayName;
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
+    const customerDisplayImg = customer?.profileImage?.attributes?.variants["square-small"]?.url;
     const {protectedData,lineItems} = attributes;
     const transactionState = data?.attributes?.state;
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
@@ -51,21 +53,40 @@ const BookingsCard = props=>{
                 <h3 className={css.header}>{listingType} Service </h3>
                 <h3 className={css.header}>${price}</h3>
             </div>
-            <div className={css.flex_col}>
-                <div className={css.flex_row}>
-                    <span className={css.label}>Service provider:</span>
-                    <img className={css.img_circle} src={displayImg} />
-                    <span>{displayName}</span>
+            {isProvider?
+                <div className={css.flex_col}>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Customer:</span>
+                        <img className={css.img_circle} src={customerDisplayImg} />
+                        <span>{customerDisplayName}</span>
+                    </div>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Date:</span>
+                        <span>{eventDate}</span>
+                    </div>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Location:</span>
+                        <span>{location}</span>
+                    </div>
                 </div>
-                <div className={css.flex_row}>
-                    <span className={css.label}>Date:</span>
-                    <span>{eventDate}</span>
+            :
+                <div className={css.flex_col}>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Service provider:</span>
+                        <img className={css.img_circle} src={displayImg} />
+                        <span>{displayName}</span>
+                    </div>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Date:</span>
+                        <span>{eventDate}</span>
+                    </div>
+                    <div className={css.flex_row}>
+                        <span className={css.label}>Location:</span>
+                        <span>{location}</span>
+                    </div>
                 </div>
-                <div className={css.flex_row}>
-                    <span className={css.label}>Location:</span>
-                    <span>{location}</span>
-                </div>
-            </div>
+            }
+            
             
             {isProvider?
                 
