@@ -1189,6 +1189,12 @@ vertical-align: middle;
   display: flex;
   justify-content: flex-end;
 }
+.rating_con_{
+  background-color: rgb(242, 245, 58);
+}
+.rating_con_:disabled{
+  background-color: red;
+}
 .header_2{
   color: #000;
   font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
@@ -1199,6 +1205,20 @@ vertical-align: middle;
   font-style: normal;
   font-weight: 600;
   line-height: 145%; /* 26.1px */ 
+  margin: 0px;
+  padding: 0px;
+ 
+}
+.header_2_a{
+  color: #000;
+  font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
+
+  /* Body large/Semibold */
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 100%; /* 26.1px */ 
   margin: 0px;
   padding: 0px;
  
@@ -1242,6 +1262,12 @@ vertical-align: middle;
 }
 .mag_top_sm{
   margin-top: 10px;
+}
+
+.mag_top_sm_1{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
 }
 .section_sub{
   display: flex;
