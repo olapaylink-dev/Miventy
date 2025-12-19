@@ -9,7 +9,19 @@ import NamedLink from "../NamedLink/NamedLink";
 
 const SearchCard = props =>{
 
-    const {listings} = props;
+    const {listings,reviews} = props;
+    const getRatingsAverage = reviewData =>{
+        let res = [0,0,0,0,0,0];
+        let result = 0;
+        if(reviewData !== undefined){
+            reviewData.map((itm,key)=>{
+            res[itm.attributes.rating] += 1;
+            })
+             result = (res[1] + res[2] + res[3] + res[4] + res[5]) / 5;
+        }
+        return result;
+    }
+    const reviewsRatingsAverage = getRatingsAverage(reviews);
     return (
         <div className={css.flex_grid}>
             {listings.map((itm,key)=>{

@@ -449,13 +449,16 @@ const [currentListing,setCurrentListing] = useState({});
   const reviewsRatings = getRatingsGroups(reviews);
 
   const getRatingsAverage = reviewData =>{
-    let res = [0,0,0,0,0,0];
-    reviewData.map((itm,key)=>{
-      res[itm.attributes.rating] += 1;
-    })
-    const result = (res[1] + res[2] + res[3] + res[4] + res[5]) / 5;
-    return result;
-  }
+        let res = [0,0,0,0,0,0];
+        let result = 0;
+        if(reviewData !== undefined){
+            reviewData.map((itm,key)=>{
+            res[itm.attributes.rating] += 1;
+            })
+             result = (res[1] + res[2] + res[3] + res[4] + res[5]) / 5;
+        }
+        return result;
+    }
   const reviewsRatingsAverage = getRatingsAverage(reviews);
 
   const getRateByListing = reviewData =>{
