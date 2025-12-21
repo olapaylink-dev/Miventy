@@ -231,13 +231,9 @@ export const AuthenticationForms = props => {
       displayName, 
       ...rest 
     } = values;
-    const userTypeData = history?.location?.pathname === "/signup/provider"?"provider":"customer";
-    
-    const savedUserType = localStorage.getItem("userType");
-    const userType = history?.location?.pathname.includes("confirm")?savedUserType:userTypeData;
+    const userType = history?.location?.pathname === "/signup/provider"?"provider":"customer";
     const displayNameMaybe = displayName ? { displayName: displayName.trim() } : {};
     rest.phoneNumber = `${countryCode}${rest.phoneNumber}`;
-    console.log(userType,"  userTypeeeeeeeee");
 
     const params = {
       email,
@@ -384,9 +380,9 @@ const ConfirmIdProviderInfoForm = props => {
 
   const handleSubmitConfirm = values => {
     const { idpToken, email, firstName, lastName, idpId } = authInfo;
-
+    const userType = localStorage.getItem("userType");
+    
     const {
-      userType,
       email: newEmail,
       firstName: newFirstName,
       lastName: newLastName,
