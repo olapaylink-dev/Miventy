@@ -232,11 +232,12 @@ export const AuthenticationForms = props => {
       ...rest 
     } = values;
     const userTypeData = history?.location?.pathname === "/signup/provider"?"provider":"customer";
+    
     const savedUserType = localStorage.getItem("userType");
-    const userType = userTypeData || savedUserType;
+    const userType = history?.location?.pathname.includes("confirm")?savedUserType:userTypeData;
     const displayNameMaybe = displayName ? { displayName: displayName.trim() } : {};
     rest.phoneNumber = `${countryCode}${rest.phoneNumber}`;
-    console.log(rest);
+    console.log(userType,"  userTypeeeeeeeee");
 
     const params = {
       email,
