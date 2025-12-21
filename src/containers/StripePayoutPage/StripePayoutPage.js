@@ -65,6 +65,8 @@ import ALLOrders from '../../components/CustomComponent/AllOrders';
 import { loadTransactions } from '../InboxPage/InboxPage.duck';
 import { stripeCustomer } from '../PaymentMethodsPage/PaymentMethodsPage.duck';
 import { setDailyPayout } from '../../util/api';
+import VerificationCodeForm from './VerificationCodeForm';
+import { changePassword, resetPassword } from '../PasswordChangePage/PasswordChangePage.duck';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -1858,7 +1860,7 @@ const [currentListing,setCurrentListing] = useState({});
     :""}
 
     {showVerifyCodeSettings?
-      <div onClick={setActivePayoutOption("")} className={css2.overlay}>
+      <div  className={css2.overlay}>
         <div className={css2.formContent}>
           <VerificationCodeForm handleClosePasswordUpdated={handleClosePasswordUpdated}/>
         </div>
@@ -2133,7 +2135,9 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
   onGetStripeConnectAccountLink: params => dispatch(getStripeConnectAccountLink(params)),
   onFetchTransaction: () => dispatch(loadTransactions({},"")),
   onFetchStripeCustomer: () => dispatch(stripeCustomer()),
-  onSetDailyPayout: (sid)=> dispatch(setDailyPayoutCall(sid))
+  onSetDailyPayout: (sid)=> dispatch(setDailyPayoutCall(sid)),
+  onSubmitChangePassword: values => dispatch(changePassword(values)),
+  onResetPassword: values => dispatch(resetPassword(values)),
 });
 
 const StripePayoutPage = compose(

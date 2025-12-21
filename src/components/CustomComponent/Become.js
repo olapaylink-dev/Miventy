@@ -26,7 +26,7 @@ const Become = props =>{
                             </ol>
 
                             <div className={css.browse_cat_con}>
-                                <NamedLink className={css.browse_cat} name="ProfileSettingsPage">
+                                <NamedLink className={css.browse_cat} name="StripePayoutPage">
                                     Post your service
                                 </NamedLink>
                             </div>
@@ -55,7 +55,7 @@ const Become = props =>{
                                 </ol>
 
                                 <div className={css.browse_cat_con}>
-                                    <NamedLink className={css.browse_cat} name="SignupPage">
+                                    <NamedLink className={css.browse_cat} name="StripePayoutPage">
                                         Post your service
                                     </NamedLink>
                                 </div>

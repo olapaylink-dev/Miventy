@@ -172,3 +172,7 @@ export const changePrice = body => {
 export const setDailyPayout = body => {
   return post('/api/set-daily-payout', body);
 };
+
+export const resetPw = body => {
+  return post('/api/reset-pw', body);
+};

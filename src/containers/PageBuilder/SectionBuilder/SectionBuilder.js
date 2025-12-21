@@ -168,7 +168,7 @@ const SectionBuilder = props => {
                       <ReviewSlide/>
                       <ReviewSlider/>
                       <Become/>
-                      <WithUs/>
+                      <WithUs history={history}/>
                     </>
                   :""}
             </div>

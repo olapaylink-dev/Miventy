@@ -70,7 +70,7 @@ const Categories = (props)=>{
                                     wide audience of customer looking to make their event stand out.
                                 </p>
                                 <div className={css.browse_cat_con}>
-                                    <NamedLink className={css.browse_cat} name="SignupPage">
+                                    <NamedLink className={css.browse_cat} name="StripePayoutPage">
                                         Post your service
                                     </NamedLink>
                                 </div>
@@ -126,7 +126,7 @@ const Categories = (props)=>{
                                     wide audience of customer looking to make their event stand out.
                                 </p>
                                 <div className={css.browse_cat_con}>
-                                    <NamedLink className={css.browse_cat} name="SignupPage">
+                                    <NamedLink className={css.browse_cat} name="StripePayoutPage">
                                         Post your service
                                     </NamedLink>
                                 </div>

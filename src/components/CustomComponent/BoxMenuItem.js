@@ -37,7 +37,6 @@ const BoxMenuItem = props=>{
             history.push(`/s?keywords=${val}`);
         }
     }
-
     return (
         <div className={css.flex_col} onClick={handleParentClicked} onMouseOut={handleMouseOut}>
             <button className={classNames(css.menu_btn,itemData.css)} onMouseOver={handleMouseOver} onClick={e=>handleClick(itemData.key)}>

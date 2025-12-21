@@ -478,11 +478,17 @@ const TopbarDesktop = props => {
                               My profile
                             </div>
                           </NamedLink>
-                          <NamedLink name="StripePayoutPage" > 
-                            <div className={css.flex_row_menu}>
-                              Become a service provider
-                            </div>
-                          </NamedLink>
+
+                          {userType === "customer"?
+                            <NamedLink name="StripePayoutPage" > 
+                              <div className={css.flex_row_menu}>
+                                Become a service provider
+                              </div>
+                            </NamedLink>
+                          :
+                            ""
+                          }
+
                           <div className={css.flex_row_menu_last} onClick={handleSignOut}>
                             Logout
                           </div>

@@ -178,8 +178,7 @@ export const AuthenticationForms = props => {
     authInProgress,
     submitSignup,
     termsAndConditions,
-    history,
-    location
+    history
   } = props;
   const config = useConfiguration();
   const { userFields, userTypes = [] } = config.user;
@@ -191,6 +190,7 @@ export const AuthenticationForms = props => {
   const fromState = { state: { ...fromMaybe, ...userTypeMaybe } };
   const [reveal,setReveal] = useState(false);
   const [password,setPassword] = useState("");
+  const [countryCode,setCountryCode] = useState("");
   const tabs = [
     {
       text: (
@@ -220,12 +220,12 @@ export const AuthenticationForms = props => {
   ];
 
   const handleSubmitSignup = values => {
-    const userTyp = location.pathname.includes("customer")?"customer":"provider";
-    values.userType = userTyp;
     const { userType, email, 
       //password, 
       firstName, lastName, displayName, ...rest } = values;
     const displayNameMaybe = displayName ? { displayName: displayName.trim() } : {};
+    rest.phoneNumber = `${countryCode}${rest.phoneNumber}`;
+    console.log(rest);
 
     const params = {
       email,
@@ -346,7 +346,7 @@ const submitLoginData = data =>{
           reveal={reveal}
           setReveal={setReveal}
           setPassword={setPassword}
-          location={location}
+          setCountryCode={setCountryCode}
         />
       )}
     </div>
@@ -472,8 +472,7 @@ export const AuthenticationOrConfirmInfoForm = props => {
     signupError,
     confirmError,
     termsAndConditions,
-    history,
-    location
+    history
   } = props;
   const isConfirm = tab === 'confirm';
   const isLogin = tab === 'login';
@@ -502,7 +501,6 @@ export const AuthenticationOrConfirmInfoForm = props => {
       submitSignup={submitSignup}
       termsAndConditions={termsAndConditions}
       history={history}
-      location={location}
     ></AuthenticationForms>
   );
 };
@@ -624,11 +622,7 @@ export const AuthenticationPageComponent = props => {
     if (isAuthenticated && from) {
         return <Redirect to={from} />;
       } else if (isAuthenticated && currentUserLoaded && !showEmailVerification) {
-        if(userType === "customer"){
-          window.location.replace('/');
-        }else{
-          window.location.replace('/account/payments');
-        }
+        window.location.replace('/account/payments');
         
       } else if (show404) {
         return <NotFoundPage staticContext={props.staticContext} />;
@@ -709,7 +703,6 @@ export const AuthenticationPageComponent = props => {
               signupError={signupError}
               confirmError={confirmError}
               history={history}
-              location={location}
               termsAndConditions={
                 <TermsAndConditions
                   onOpenTermsOfService={() => setTosModalOpen(true)}

@@ -45,6 +45,8 @@ class PasswordRecoveryForm extends Component {
             inProgress = false,
             recoveryError,
             values,
+            phoneNumber,
+            sendSmsInProgress
           } = fieldRenderProps;
 
           const intl = useIntl();

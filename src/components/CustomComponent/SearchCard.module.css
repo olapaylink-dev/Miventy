@@ -73,7 +73,10 @@
 .flex_p{
     margin: 0px;
     padding: 0px;
-   
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .short_txt{

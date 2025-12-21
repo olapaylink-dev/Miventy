@@ -7,6 +7,8 @@ import DropDownList from "./DropdownList";
 
 const WithUs = props =>{
 
+    const {history} = props;
+
     const data = [
      {key: "Entertaining",item:["Animation","Magic","Face Paint"]},
      {key: "Catering",item:[]},
@@ -49,7 +51,7 @@ const WithUs = props =>{
                     <div className={css.content}>
                         {data.map((itm,key)=>{
                             return (
-                                <DropDownList item={itm.item} title={itm.key}/>
+                                <DropDownList item={itm.item} title={itm.key} history={history}/>
                             )
                         })}
                     </div>
@@ -66,7 +68,7 @@ const WithUs = props =>{
                     <div className={css.content}>
                         {data.map((itm,key)=>{
                             return (
-                                <DropDownList item={itm.item} title={itm.key}/>
+                                <DropDownList item={itm.item} title={itm.key} history={history}/>
                             )
                         })}
                     </div>

@@ -1,3 +1,6 @@
+
+
+import { resetPw, sendSms } from '../../util/api';
 import { storableError } from '../../util/errors';
 //import { Resend } from 'resend';
 
@@ -6,6 +9,11 @@ import { storableError } from '../../util/errors';
 export const RECOVERY_REQUEST = 'app/PasswordRecoveryPage/RECOVERY_REQUEST';
 export const RECOVERY_SUCCESS = 'app/PasswordRecoveryPage/RECOVERY_SUCCESS';
 export const RECOVERY_ERROR = 'app/PasswordRecoveryPage/RECOVERY_ERROR';
+
+export const SEND_SMS_REQUEST = 'app/PasswordRecoveryPage/SEND_SMS_REQUEST';
+export const SEND_SMS_SUCCESS = 'app/PasswordRecoveryPage/SEND_SMS_SUCCESS';
+export const SEND_SMS_ERROR = 'app/PasswordRecoveryPage/SEND_SMS_ERROR';
+
 export const RETYPE_EMAIL = 'app/PasswordRecoveryPage/RETYPE_EMAIL';
 export const CLEAR_RECOVERY_ERROR = 'app/PasswordRecoveryPage/CLEAR_RECOVERY_ERROR';
 
@@ -17,6 +25,10 @@ const initialState = {
   recoveryError: null,
   recoveryInProgress: false,
   passwordRequested: false,
+  sendSmsError:null,
+  sendSmsInProgress:false,
+  phoneNumber:null,
+  token:null
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -53,6 +65,14 @@ export default function reducer(state = initialState, action = {}) {
       };
     case CLEAR_RECOVERY_ERROR:
       return { ...state, recoveryError: null };
+
+    case SEND_SMS_REQUEST:
+      return { ...state, sendSmsError: null, sendSmsInProgress:true };
+    case SEND_SMS_SUCCESS:
+      return { ...state, phoneNumber: payload.data.phoneNumber,token:payload.data.token, sendSmsInProgress:false };
+    case SEND_SMS_ERROR:
+      return { ...state, phoneNumber: null, sendSmsError: payload,sendSmsInProgress:false };
+
     default:
       return state;
   }
@@ -67,38 +87,64 @@ export const passwordRecoveryError = (error, email) => ({
   payload: { error, email },
   error: true,
 });
+export const sendSmsRequest = () => ({ type: SEND_SMS_REQUEST });
+export const sendSmsSuccess = data => ({ type: SEND_SMS_SUCCESS, payload: { data } });
+export const sendSmsError = (error, data) => ({
+  type: SEND_SMS_ERROR,
+  payload: { error, data },
+  error: true,
+});
 export const retypePasswordRecoveryEmail = () => ({ type: RETYPE_EMAIL });
 export const clearPasswordRecoveryError = () => ({ type: CLEAR_RECOVERY_ERROR });
 
 // ================ Thunks ================ //
 
 export const recoverPassword = email => (dispatch, getState, sdk) => {
-  //dispatch(passwordRecoveryRequest());
+  dispatch(sendSmsRequest());
+  const otp = generateOTP(6);
+  localStorage.setItem("otp",otp);
+  sendSms({email,otp})
+  .then(response => {
+      console.log(response)
 
-  // return sdk.passwordReset
-  //   .request({ email })
-  //   .then(() => dispatch(passwordRecoverySuccess(email)))
-  //   .catch(e => dispatch(passwordRecoveryError(storableError(e), email)));
+        sdk.passwordReset.request({
+          email: email
+        }, {expand:true}).then(res => {
+          // res.data
+          const tokenId = res.data.data.id.uuid;
 
+          dispatch(sendSmsSuccess({phoneNumber:response.data.data,token:tokenId}));
 
-  //sendEmail({email});
-
-   //const resend = new Resend(apiKey);
-
-    // (async function () {
-    //     const { data, error } = await resend.emails.send({
-    //         from: 'Acme <onboarding@resend.dev>',
-    //         to: ['admisrael2012@gmail.com'],
-    //         subject: 'Your code is A123hd',
-    //         html: '<strong>It works!</strong>',
-    //     });
-
-    //     if (error) {
-    //         return console.error({ error });
-    //     }
-
-    //     console.log({ data });
-    //     })();
-
-
+        })
+       
+      })
+      .catch(e => {
+        dispatch(sendSmsError(storableError(e)));
+      });
 };
+
+export const resetPassword = (email,token,pw) => (dispatch, getState, sdk) => {
+  console.log("Passwprd was reset starting")
+  //dispatch(passwordRecoveryRequest());
+      // sdk.passwordReset.reset({
+      //   email: email,
+      //   passwordResetToken: tokenId,
+      //   newPassword: pw
+      // },{expand:true}).then(res => {
+      //   // res.data
+      //   console.log("Passwprd was reset successfully")
+      //   dispatch(passwordRecoverySuccess());
+
+      // });
+
+      resetPw({email:email,token:token,pw:pw})
+};
+
+const generateOTP = (length) => {
+    let otp = '';
+    const characters = '0123456789';
+    for (let i = 0; i < length; i++) {
+      otp += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return otp;
+  };

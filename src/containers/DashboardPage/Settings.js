@@ -5,7 +5,7 @@ import PasswordResetFormDashboard from "../PasswordResetPage/PasswordResetForm/P
 const Settings = props=>{
     const {setShowVerifyCodeSettings}= props;
     const handleSubmit = values =>{
-        console.log(values);
+        console.log(values,"    99999999999999999999999999999999");
         setShowVerifyCodeSettings(true);
     }
     return (

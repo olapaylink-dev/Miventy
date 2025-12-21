@@ -5,11 +5,14 @@ import classNames from "classnames";
 
 const DropDownList = (props)=>{
    
-    const {item,title} = props;
+    const {item,title,history} = props;
     const[showEntertain, setShowEntertain] = useState(false);
     const[isActive, setIsActive] = useState(false);
 
-    const handleShowEntertain = ()=>{
+    const handleShowEntertain = (title)=>{
+        if(title === "Catering"){
+            history.push(`/s?keywords=${title}`);
+        }
         setShowEntertain(!showEntertain);
         setTimeout(() => {
             setIsActive(!isActive);
@@ -24,11 +27,15 @@ const DropDownList = (props)=>{
         transition: '0.5s',
      }
 
+    const handleClick = val =>{
+        history.push(`/s?keywords=${val}`);
+    }
+    
     return (
             <div className={css.entertain_con}>
                 <div className={css.flex_row}>
                     <span className={css.header}>{title}</span>
-                    <button className={css.entertain} onClick={handleShowEntertain}>
+                    <button className={css.entertain} onClick={e=>handleShowEntertain(title)}>
                         {showEntertain?
                             <span className={css.entertain}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
@@ -51,9 +58,9 @@ const DropDownList = (props)=>{
                     >
                         {item.map((itm,key)=>{
                             return(
-                                <NamedLink name="LandingPage">
+                                <button className={css.btn} onClick={e=>handleClick(itm)}>
                                     {itm}
-                                </NamedLink>
+                                </button>
                             )
                         })}
                     </div>:""

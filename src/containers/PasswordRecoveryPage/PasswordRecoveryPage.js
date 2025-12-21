@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 
@@ -27,38 +27,68 @@ import {
   recoverPassword,
   retypePasswordRecoveryEmail,
   clearPasswordRecoveryError,
+  resetPassword,
 } from './PasswordRecoveryPage.duck';
 import css from './PasswordRecoveryPage.module.css';
+import VerificationCodeForm from '../DashboardPage/VerificationCodeForm';
 
 const PasswordRecovery = props => {
-  const { initialEmail, onChange, onSubmitEmail, recoveryInProgress, recoveryError } = props;
+  const { initialEmail, onChange, onSubmitEmail, recoveryInProgress, recoveryError ,
+    phoneNumber,
+    sendSmsInProgress,
+    onResetPassword,
+    token
+  } = props;
+
+  const [showOtpForm,setShowOtpForm] = useState(false);
+  const [phoneNo,setPhoneNo] = useState("");
+  const [email,setEmail] = useState("");
 
 
-console.log("Working ggggggggggggg")
+  useEffect(()=>{
+    if(phoneNumber !== null && phoneNumber !== undefined){
+      console.log(phoneNumber);
+      const phone = phoneNumber;
+      const last4 = `xxxxxxxxxx${phone.substr(-4)}`;
+      setPhoneNo(last4)
+      setShowOtpForm(true);
+    }
+  },[phoneNumber])
 
 
   return (
-    <div className={css.submitEmailContent}>
-      
-      <Heading as="h1" rootClassName={css.modalTitle} className={css.form_title}>
-        <FormattedMessage id="PasswordRecoveryPage.forgotPasswordTitle" />
-      </Heading>
-      <p className={css.modalMessage}>
-        <FormattedMessage id="PasswordRecoveryPage.forgotPasswordMessage" />
-      </p>
-      <PasswordRecoveryForm
-        inProgress={recoveryInProgress}
-        onChange={onChange}
-        onSubmit={values => onSubmitEmail(values.email)}
-        initialValues={{ email: initialEmail }}
-        recoveryError={recoveryError}
-      />
-       <div className={css.flex_row}>
-        <p>
-          Already have an account? <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>Login here</NamedLink>
-        </p>
-      </div>
-    </div>
+        <>
+        {phoneNumber?
+            <VerificationCodeForm phoneNumber={phoneNo} onResetPassword={onResetPassword} email={email} token={token} />
+            :
+            <div className={css.submitEmailContent}>
+          
+          <Heading as="h1" rootClassName={css.modalTitle} className={css.form_title}>
+            <FormattedMessage id="PasswordRecoveryPage.forgotPasswordTitle" />
+          </Heading>
+          <p className={css.modalMessage}>
+            <FormattedMessage id="PasswordRecoveryPage.forgotPasswordMessage" />
+          </p>
+            <PasswordRecoveryForm
+              inProgress={recoveryInProgress}
+              onChange={onChange}
+              onSubmit={values => {onSubmitEmail(values.email); setEmail(values.email);}}
+              initialValues={{ email: initialEmail }}
+              recoveryError={recoveryError}
+              phoneNumber={phoneNumber}
+              sendSmsInProgress={sendSmsInProgress}
+            />
+          
+          
+          <div className={css.flex_row}>
+            <p>
+              Already have an account? <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>Login here</NamedLink>
+            </p>
+          </div>
+        </div>
+          }
+        </>
+    
   );
 };
 
@@ -161,6 +191,11 @@ export const PasswordRecoveryPageComponent = props => {
     onChange,
     onSubmitEmail,
     onRetypeEmail,
+    sendSmsError,
+    sendSmsInProgress,
+    phoneNumber,
+    onResetPassword,
+    token
   } = props;
   const alreadyrequested = submittedEmail || passwordRequested;
   const showPasswordRecoveryForm = (
@@ -170,6 +205,10 @@ export const PasswordRecoveryPageComponent = props => {
       onSubmitEmail={onSubmitEmail}
       recoveryInProgress={recoveryInProgress}
       recoveryError={recoveryError}
+      phoneNumber={phoneNumber}
+      token={token}
+      sendSmsInProgress={sendSmsInProgress}
+      onResetPassword={onResetPassword}
     />
   );
 
@@ -215,6 +254,10 @@ const mapStateToProps = state => {
     recoveryError,
     recoveryInProgress,
     passwordRequested,
+    sendSmsError,
+    sendSmsInProgress,
+    phoneNumber,
+    token
   } = state.PasswordRecoveryPage;
   return {
     scrollingDisabled: isScrollingDisabled(state),
@@ -223,6 +266,10 @@ const mapStateToProps = state => {
     recoveryError,
     recoveryInProgress,
     passwordRequested,
+    sendSmsError,
+    sendSmsInProgress,
+    phoneNumber,
+    token
   };
 };
 
@@ -230,6 +277,7 @@ const mapDispatchToProps = dispatch => ({
   onChange: () => dispatch(clearPasswordRecoveryError()),
   onSubmitEmail: email => dispatch(recoverPassword(email)),
   onRetypeEmail: () => dispatch(retypePasswordRecoveryEmail()),
+  onResetPassword: (email,pw,token)=> dispatch(resetPassword(email,token,pw))
 });
 
 const PasswordRecoveryPage = compose(
