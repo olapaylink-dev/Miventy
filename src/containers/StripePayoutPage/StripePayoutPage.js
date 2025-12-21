@@ -314,6 +314,7 @@ const [currentListing,setCurrentListing] = useState({});
   const catalogName = pathParams.id;
   const path = match.path;
 
+  console.log(userType,"userType")
   if(userType === "customer"){
     history.push("/")
   }

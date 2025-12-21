@@ -220,9 +220,14 @@ export const AuthenticationForms = props => {
   ];
 
   const handleSubmitSignup = values => {
-    const { userType, email, 
+    const {email, 
       //password, 
-      firstName, lastName, displayName, ...rest } = values;
+      firstName, 
+      lastName, 
+      displayName, 
+      ...rest 
+    } = values;
+    const userType = history?.location?.pathname === "/signup/provider"?"provider":"customer";
     const displayNameMaybe = displayName ? { displayName: displayName.trim() } : {};
     rest.phoneNumber = `${countryCode}${rest.phoneNumber}`;
     console.log(rest);

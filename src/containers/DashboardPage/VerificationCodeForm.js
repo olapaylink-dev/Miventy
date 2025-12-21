@@ -80,7 +80,6 @@ const VerificationCodeForm = props=>{
                             Your verification was successful, you can now proceed to reset your password
                         </p>
                     </div>
-                    <NamedLink name="PasswordResetPage">Reset password</NamedLink>
                     <button onClick={e=>{setShowPasswordResetForm(true)}} className={css.verify_btn}>Reset password</button>
                     
                 </div>

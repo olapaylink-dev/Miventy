@@ -58,7 +58,7 @@ const PasswordRecovery = props => {
 
   return (
         <>
-        {phoneNumber?
+        {"phoneNumber"?
             <VerificationCodeForm phoneNumber={phoneNo} onResetPassword={onResetPassword} email={email} token={token} />
             :
             <div className={css.submitEmailContent}>
