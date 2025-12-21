@@ -191,6 +191,10 @@ export const AuthenticationForms = props => {
   const [reveal,setReveal] = useState(false);
   const [password,setPassword] = useState("");
   const [countryCode,setCountryCode] = useState("");
+  const userTypeFromUrl = history?.location?.pathname === "/signup/provider"?"provider":"customer";
+  if(userTypeFromUrl !== undefined){
+    localStorage.setItem("userType",userTypeFromUrl);
+  }
   const tabs = [
     {
       text: (
@@ -227,7 +231,9 @@ export const AuthenticationForms = props => {
       displayName, 
       ...rest 
     } = values;
-    const userType = history?.location?.pathname === "/signup/provider"?"provider":"customer";
+    const userTypeData = history?.location?.pathname === "/signup/provider"?"provider":"customer";
+    const savedUserType = localStorage.getItem("userType");
+    const userType = userTypeData || savedUserType;
     const displayNameMaybe = displayName ? { displayName: displayName.trim() } : {};
     rest.phoneNumber = `${countryCode}${rest.phoneNumber}`;
     console.log(rest);
