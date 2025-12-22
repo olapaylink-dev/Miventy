@@ -76,7 +76,17 @@
     padding: 0px 8px;
     border-radius: 5px;
   }
-  
+
+  .search_item_a > div > div > div{
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+    width: 100%;
+    border: none;
+  }
+
   .search_item_b{
     width: 100%;
     padding: 8px;
@@ -164,10 +174,10 @@
     border: none;
     padding-left: 0px;
     background-color: transparent;
+    width: 100%;
   }
   
   .input:focus{
-    outline-color: red;
   }
 
   .text_bold{

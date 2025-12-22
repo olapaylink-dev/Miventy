@@ -32,6 +32,9 @@ import icon14sm from '../../assets/icons/icon7.png';
 import rain from '../../assets/icons/rainn.png';
 import space from '../../assets/icons/space.png';
 import SearchMapNew from "../../containers/DashboardPage/SearchMapNew";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 
 const SearchBar = props =>{
     const {
@@ -69,6 +72,25 @@ const SearchBar = props =>{
     const display = useRef(null);
     const [showValue,setShowValue] = useState(false);
     const [eventLocation, setEventLocation] = useState([]);
+
+    // const serviceList = [
+    //         "Animation",
+    //         "Magic",
+    //         "Face Paint",
+    //         "Catering",
+    //         "BD Cake",
+    //         "Sweets",
+    //         "Photos",
+    //         "Videos",
+    //         "Classical Music",
+    //         "Party music/DJs",
+    //         "Balloon Decorations",
+    //         "Flower arrangements",
+    //         "Themed Decoration",
+    //         "Rental shade and rain equipment",
+    //         "Rental Space",
+    //         "Rental Bouncer",
+    //        ];
 
     const serviceList = [
             {key:"Animation",icon:icon1sm},
@@ -237,15 +259,27 @@ const SearchBar = props =>{
     const handleSetSelectedService = val =>{
         //console.log(val);
         setSelectedService(val);
-        setShowValue(!showValue);
+        setShowValue(true);
     }
 
     const handleClick = e =>{
         //document.getElementById("display").focus();
-        //inputDisplay.current.focus();
+        inputDisplay.current.value = selectedService;
+        if(e.target.value === undefined || e.target.value === null || e.target.value === ""){
+            setAutoValues(serviceList);
+        }
     }
 
-    
+    const handleFocus = e=>{
+        if(inputDisplay.current !== null && inputDisplay.current.value !== undefined){
+            inputDisplay.current.value = selectedService;
+        }
+        if(e.target.value === undefined || e.target.value === null || e.target.value === ""){
+            setAutoValues(serviceList);
+        }
+        
+
+    }
 const handleSendQuote = ()=>{
    //setShowRequestLocationTime(false);
    //handleSendOrderMessage();
@@ -270,11 +304,17 @@ const handleSaveLocation = val =>{
                             <div className={css.text_bold}>Service</div>
                             <div className={css.flex_row_2}>
                                     {showValue?
-                                        <div className={css.text_sm} onClick={e=>{setShowValue(!showValue); handleClick() }}>
+                                        <div className={css.text_sm} onClick={e=>{
+                                            setShowValue(!showValue); 
+                                            if(inputDisplay.current !== null && inputDisplay.current.value !== undefined){
+                                                inputDisplay.current.value = selectedService;
+                                            }
+                                        }
+                                            }>
                                             {selectedService}
                                         </div>
                                     :
-                                        <input ref={inputDisplay} id="display" className={css.text_sm} onChange={handleServiceChange} placeholder="What service do you want to hire?" autoFocus/>
+                                        <input ref={inputDisplay} id="display" className={css.text_sm} onFocus={handleFocus} onClick={handleClick} autocomplete="false" onChange={handleServiceChange} placeholder="What service do you want to hire?" autoFocus/>
                                     }
                                 <div>
                                     <svg onClick={handleCloseList1} width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -306,6 +346,23 @@ const handleSaveLocation = val =>{
                         :""
                         }
                     </div>
+
+
+
+{/* 
+                    <Autocomplete
+                        disablePortal
+                        options={serviceList}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Movie" />}
+                        /> */}
+
+
+
+
+
+
+
                     <div className={css.rule}></div>
                     <div className={classNames(css.search_item_con)}>
                         <div className={classNames(css.search_item_a,(isService?"":css.location_active_btn))} onClick={handleLocationClicked}>
