@@ -93,6 +93,153 @@ const onImageUploadHandler = (values, fn) => {
   }
 };
 
+const countryLanguages = {
+    "af": "Afrikaans",
+    "sq": "Albanian - shqip",
+    "am": "Amharic - አማርኛ",
+    "ar": "Arabic - العربية",
+    "an": "Aragonese - aragonés",
+    "hy": "Armenian - հայերեն",
+    "ast": "Asturian - asturianu",
+    "az": "Azerbaijani - azərbaycan dili",
+    "eu": "Basque - euskara",
+    "be": "Belarusian - беларуская",
+    "bn": "Bengali - বাংলা",
+    "bs": "Bosnian - bosanski",
+    "br": "Breton - brezhoneg",
+    "bg": "Bulgarian - български",
+    "ca": "Catalan - català",
+    "ckb": "Central Kurdish - کوردی (دەستنوسی عەرەبی)",
+    "zh": "Chinese - 中文",
+    "zh-HK": "Chinese (Hong Kong) - 中文（香港）",
+    "zh-CN": "Chinese (Simplified) - 中文（简体）",
+    "zh-TW": "Chinese (Traditional) - 中文（繁體）",
+    "co": "Corsican",
+    "hr": "Croatian - hrvatski",
+    "cs": "Czech - čeština",
+    "da": "Danish - dansk",
+    "nl": "Dutch - Nederlands",
+    "en": "English",
+    "en-AU": "English (Australia)",
+    "en-CA": "English (Canada)",
+    "en-IN": "English (India)",
+    "en-NZ": "English (New Zealand)",
+    "en-ZA": "English (South Africa)",
+    "en-GB": "English (United Kingdom)",
+    "en-US": "English (United States)",
+    "eo": "Esperanto - esperanto",
+    "et": "Estonian - eesti",
+    "fo": "Faroese - føroyskt",
+    "fil": "Filipino",
+    "fi": "Finnish - suomi",
+    "fr": "French - français",
+    "fr-CA": "French (Canada) - français (Canada)",
+    "fr-FR": "French (France) - français (France)",
+    "fr-CH": "French (Switzerland) - français (Suisse)",
+    "gl": "Galician - galego",
+    "ka": "Georgian - ქართული",
+    "de": "German - Deutsch",
+    "de-AT": "German (Austria) - Deutsch (Österreich)",
+    "de-DE": "German (Germany) - Deutsch (Deutschland)",
+    "de-LI": "German (Liechtenstein) - Deutsch (Liechtenstein)",
+    "de-CH": "German (Switzerland) - Deutsch (Schweiz)",
+    "el": "Greek - Ελληνικά",
+    "gn": "Guarani",
+    "gu": "Gujarati - ગુજરાતી",
+    "ha": "Hausa",
+    "haw": "Hawaiian - ʻŌlelo Hawaiʻi",
+    "he": "Hebrew - עברית",
+    "hi": "Hindi - हिन्दी",
+    "hu": "Hungarian - magyar",
+    "is": "Icelandic - íslenska",
+    "id": "Indonesian - Indonesia",
+    "ia": "Interlingua",
+    "ga": "Irish - Gaeilge",
+    "it": "Italian - italiano",
+    "it-IT": "Italian (Italy) - italiano (Italia)",
+    "it-CH": "Italian (Switzerland) - italiano (Svizzera)",
+    "ja": "Japanese - 日本語",
+    "kn": "Kannada - ಕನ್ನಡ",
+    "kk": "Kazakh - қазақ тілі",
+    "km": "Khmer - ខ្មែរ",
+    "ko": "Korean - 한국어",
+    "ku": "Kurdish - Kurdî",
+    "ky": "Kyrgyz - кыргызча",
+    "lo": "Lao - ລາວ",
+    "la": "Latin",
+    "lv": "Latvian - latviešu",
+    "ln": "Lingala - lingála",
+    "lt": "Lithuanian - lietuvių",
+    "mk": "Macedonian - македонски",
+    "ms": "Malay - Bahasa Melayu",
+    "ml": "Malayalam - മലയാളം",
+    "mt": "Maltese - Malti",
+    "mr": "Marathi - मराठी",
+    "mn": "Mongolian - монгол",
+    "ne": "Nepali - नेपाली",
+    "no": "Norwegian - norsk",
+    "nb": "Norwegian Bokmål - norsk bokmål",
+    "nn": "Norwegian Nynorsk - nynorsk",
+    "oc": "Occitan",
+    "or": "Oriya - ଓଡ଼ିଆ",
+    "om": "Oromo - Oromoo",
+    "ps": "Pashto - پښتو",
+    "fa": "Persian - فارسی",
+    "pl": "Polish - polski",
+    "pt": "Portuguese - português",
+    "pt-BR": "Portuguese (Brazil) - português (Brasil)",
+    "pt-PT": "Portuguese (Portugal) - português (Portugal)",
+    "pa": "Punjabi - ਪੰਜਾਬੀ",
+    "qu": "Quechua",
+    "ro": "Romanian - română",
+    "mo": "Romanian (Moldova) - română (Moldova)",
+    "rm": "Romansh - rumantsch",
+    "ru": "Russian - русский",
+    "gd": "Scottish Gaelic",
+    "sr": "Serbian - српски",
+    "sh": "Serbo - Croatian",
+    "sn": "Shona - chiShona",
+    "sd": "Sindhi",
+    "si": "Sinhala - සිංහල",
+    "sk": "Slovak - slovenčina",
+    "sl": "Slovenian - slovenščina",
+    "so": "Somali - Soomaali",
+    "st": "Southern Sotho",
+    "es": "Spanish - español",
+    "es-AR": "Spanish (Argentina) - español (Argentina)",
+    "es-419": "Spanish (Latin America) - español (Latinoamérica)",
+    "es-MX": "Spanish (Mexico) - español (México)",
+    "es-ES": "Spanish (Spain) - español (España)",
+    "es-US": "Spanish (United States) - español (Estados Unidos)",
+    "su": "Sundanese",
+    "sw": "Swahili - Kiswahili",
+    "sv": "Swedish - svenska",
+    "tg": "Tajik - тоҷикӣ",
+    "ta": "Tamil - தமிழ்",
+    "tt": "Tatar",
+    "te": "Telugu - తెలుగు",
+    "th": "Thai - ไทย",
+    "ti": "Tigrinya - ትግርኛ",
+    "to": "Tongan - lea fakatonga",
+    "tr": "Turkish - Türkçe",
+    "tk": "Turkmen",
+    "tw": "Twi",
+    "uk": "Ukrainian - українська",
+    "ur": "Urdu - اردو",
+    "ug": "Uyghur",
+    "uz": "Uzbek - o‘zbek",
+    "vi": "Vietnamese - Tiếng Việt",
+    "wa": "Walloon - wa",
+    "cy": "Welsh - Cymraeg",
+    "fy": "Western Frisian",
+    "xh": "Xhosa",
+    "yi": "Yiddish",
+    "yo": "Yoruba - Èdè Yorùbá",
+    "zu": "Zulu - isiZulu"
+};
+
+
+
 export const AsideContent = props => {
   const { user, displayName, showLinkToProfileSettingsPage } = props;
   return (
@@ -847,57 +994,20 @@ export const DashboardPageComponent = props => {
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
                     </svg>
-                    <span>Dashboard</span>
+                    <span>Personal information</span>
                 </div>
-                 <div onClick={handleShowMessages} className={css.flex_row}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8336 17.5C17.6745 17.5 19.1669 16.0076 19.1669 14.1667V6.68557C19.1672 6.67283 19.1672 6.66005 19.1669 6.64725V5.83333C19.1669 3.99238 17.6745 2.5 15.8336 2.5H4.16693C2.32598 2.5 0.833596 3.99238 0.833596 5.83333V6.64726C0.833299 6.66005 0.833301 6.67282 0.833596 6.68556V14.1667C0.833596 16.0076 2.32598 17.5 4.16693 17.5H15.8336ZM2.50026 14.1667C2.50026 15.0871 3.24645 15.8333 4.16693 15.8333H15.8336C16.7541 15.8333 17.5003 15.0871 17.5003 14.1667V7.89753L11.2382 10.4023C10.4435 10.7202 9.557 10.7202 8.76229 10.4023L2.50026 7.89753V14.1667ZM10.6192 8.85488L17.5003 6.10247V5.83333C17.5003 4.91286 16.7541 4.16667 15.8336 4.16667H4.16693C3.24645 4.16667 2.50026 4.91286 2.50026 5.83333V6.10247L9.38128 8.85488C9.77863 9.01382 10.2219 9.01382 10.6192 8.85488Z" fill="black"/>
-                    </svg>
-
-                    <span >Messages</span>
-                </div>
-                 <div onClick={showEarnings} className={css.flex_row}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 1.66732C10.8333 1.20708 10.4602 0.833984 10 0.833984C9.53976 0.833984 9.16667 1.20708 9.16667 1.66732V2.50065C6.86548 2.50065 5 4.36613 5 6.66732C5 8.9685 6.86548 10.834 9.16667 10.834V15.834C7.78595 15.834 6.66667 14.7147 6.66667 13.334C6.66667 12.8737 6.29357 12.5007 5.83333 12.5007C5.3731 12.5007 5 12.8737 5 13.334C5 15.6352 6.86548 17.5006 9.16667 17.5006V18.334C9.16667 18.7942 9.53976 19.1673 10 19.1673C10.4602 19.1673 10.8333 18.7942 10.8333 18.334V17.5006C13.1345 17.5006 15 15.6352 15 13.334C15 11.0328 13.1345 9.16732 10.8333 9.16732V4.16732C12.214 4.16732 13.3333 5.28661 13.3333 6.66732C13.3333 7.12755 13.7064 7.50065 14.1667 7.50065C14.6269 7.50065 15 7.12755 15 6.66732C15 4.36613 13.1345 2.50065 10.8333 2.50065V1.66732ZM9.16667 4.16732C7.78595 4.16732 6.66667 5.28661 6.66667 6.66732C6.66667 8.04803 7.78595 9.16732 9.16667 9.16732V4.16732ZM10.8333 10.834V15.834C12.214 15.834 13.3333 14.7147 13.3333 13.334C13.3333 11.9533 12.214 10.834 10.8333 10.834Z" fill="black"/>
-                    </svg>
-
-                    <span>Earnings</span>
-                </div>
-                 <div onClick={handleShowSettingsMenu} className={css.flex_row_full_btw}>
-                  <div className={css.flex_row}>
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66667 2.49935V4.27103C8.10436 4.64107 9.16667 5.94615 9.16667 7.49935C9.16667 9.05255 8.10436 10.3576 6.66667 10.7277V17.4993C6.66667 17.9596 6.29357 18.3327 5.83333 18.3327C5.3731 18.3327 5 17.9596 5 17.4993L5 10.7277C3.56231 10.3576 2.5 9.05255 2.5 7.49935C2.5 5.94615 3.56231 4.64107 5 4.27103L5 2.49935C5 2.03911 5.3731 1.66602 5.83333 1.66602C6.29357 1.66602 6.66667 2.03911 6.66667 2.49935ZM4.16667 7.49935C4.16667 6.57887 4.91286 5.83268 5.83333 5.83268C6.75381 5.83268 7.5 6.57887 7.5 7.49935C7.5 8.41982 6.75381 9.16602 5.83333 9.16602C4.91286 9.16602 4.16667 8.41982 4.16667 7.49935Z" fill="black"/>
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3333 15.7277V17.4993C13.3333 17.9596 13.7064 18.3327 14.1667 18.3327C14.6269 18.3327 15 17.9596 15 17.4993V15.7277C16.4377 15.3576 17.5 14.0525 17.5 12.4993C17.5 10.9461 16.4377 9.64107 15 9.27103V2.49935C15 2.03911 14.6269 1.66602 14.1667 1.66602C13.7064 1.66602 13.3333 2.03911 13.3333 2.49935V9.27103C11.8956 9.64107 10.8333 10.9461 10.8333 12.4993C10.8333 14.0525 11.8956 15.3576 13.3333 15.7277ZM15.8333 12.4993C15.8333 11.5789 15.0871 10.8327 14.1667 10.8327C13.2462 10.8327 12.5 11.5789 12.5 12.4993C12.5 13.4198 13.2462 14.166 14.1667 14.166C15.0871 14.166 15.8333 13.4198 15.8333 12.4993Z" fill="black"/>
-                    </svg>
-                    <span>Settings</span>
-                  </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41075 6.91009C9.73619 6.58466 10.2638 6.58466 10.5893 6.91009L15.5893 11.9101C15.9147 12.2355 15.9147 12.7632 15.5893 13.0886C15.2638 13.414 14.7362 13.414 14.4107 13.0886L10 8.67786L5.58926 13.0886C5.26382 13.414 4.73619 13.414 4.41075 13.0886C4.08531 12.7632 4.08531 12.2355 4.41075 11.9101L9.41075 6.91009Z" fill="#667185"/>
-                    </svg>
-                </div>
-                {showSettingsMenu?
-                  <>
-                    <div onClick={showSettings} className={css.flex_row_full_btw}>
+                
+                 <div onClick={showSettings} className={css.flex_row_full_btw}>
                       <div className={css.flex_row}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             
                         </svg>
-                        <span>Account privacy</span>
+                        <span>Password settings</span>
                       </div>
                         
                     </div>
 
-                    <div onClick={showPaymentSettings} className={css.flex_row_full_btw}>
-                      <div className={css.flex_row}>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            
-                        </svg>
-                        <span>Payment settings</span>
-                      </div>
-                      
-                    </div>
-
-                    <div onClick={showNotification} className={css.flex_row_full_btw}>
+                     <div onClick={showNotification} className={css.flex_row_full_btw}>
                       <div className={css.flex_row}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             
@@ -906,8 +1016,7 @@ export const DashboardPageComponent = props => {
                       </div>
                         
                     </div>
-                  </>
-                :""}
+
                
 
 
@@ -948,31 +1057,68 @@ export const DashboardPageComponent = props => {
 
                           <span>{businessName || fullName}</span>
                       </div>
-                      <span className={css.lang}>Languages: {typeof(language) === "string"?language:language.map((itm,key)=>`${itm} `)}</span>
-                      <div className={css.flex_row_btw}>
-                          <div className={css.flex_row_itm}>
-                              Available
-                              <form onChange={handleAvailability}>
-                                <Switch checked={availability} color="warning"/>
-                              </form>
-                              
 
-                          </div>
-                          <div className={classNames(css.flex_row_itm,css.edit_btn)} onClick={handleShowForm}>
-                              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g id="icon / pencil-edit">
-                                  <g id="icon">
-                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M21.0961 2.91033C19.7495 1.56374 17.5662 1.56374 16.2196 2.91033L7.69416 11.4358C7.08217 12.0478 6.68518 12.8418 6.56279 13.6985L6.31573 15.4279C6.12717 16.7478 7.25854 17.8792 8.57847 17.6906L10.3078 17.4436C11.1646 17.3212 11.9586 16.9242 12.5706 16.3122L21.0961 7.78676C22.4426 6.44017 22.4426 4.25692 21.0961 2.91033ZM17.8433 4.15085C18.407 3.76659 19.1818 3.82448 19.6818 4.32455C20.1819 4.82461 20.2398 5.59939 19.8555 6.16307L17.8433 4.15085ZM16.4112 5.54717L18.4592 7.59518L11.1564 14.898C10.8504 15.204 10.4534 15.4025 10.025 15.4637L8.29563 15.7108L8.54269 13.9814C8.60388 13.553 8.80238 13.156 9.10837 12.85L16.4112 5.54717Z" fill="#475367"/>
-                                  <path d="M6.5 2.00035C4.29086 2.00035 2.5 3.79121 2.5 6.00035V18.0003C2.5 20.2095 4.29086 22.0003 6.5 22.0003H18.5C20.7091 22.0003 22.5 20.2095 22.5 18.0003V12.0003C22.5 11.4481 22.0523 11.0003 21.5 11.0003C20.9477 11.0003 20.5 11.4481 20.5 12.0003V18.0003C20.5 19.1049 19.6046 20.0003 18.5 20.0003H6.5C5.39543 20.0003 4.5 19.1049 4.5 18.0003V6.00035C4.5 4.89578 5.39543 4.00035 6.5 4.00035H9.18421C9.7365 4.00035 10.1842 3.55263 10.1842 3.00035C10.1842 2.44806 9.7365 2.00035 9.18421 2.00035H6.5Z" fill="#475367"/>
-                                  </g>
-                                  </g>
-                              </svg>
-                              Edit profile
-                          </div>
-                      </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <FormControl className={classNames(css.full_w,css.form_input)}>
+                      <label className={css.labels} for={"outlined-controlled"}>Full name/ Business name</label>
+                      <input
+                        id="outlined-controlled"
+                        name='businessName'
+                        onChange={(event) => {
+                          // setBusinesName(event.target.value);
+                        }}
+                        value={"businessName"}
+                        placeholder={"businessName"}
+                      />
+                      <label className={css.labels} for={"outlined-controlled"}>Location (City, Country)</label>
+                      <input
+                        id="outlined-controlled"
+                        name='location'
+                        value={"yearsOfExperience"}
+                        onChange={(event) => {
+                          // setYearsOfExperience(event.target.value);
+                        }}
+                        placeholder="Write out your years of experience"
+                      />
+
+                      <label className={css.labels} for={"outlined-controlled"}>Language spoken</label>
+
+                      <SelectMultipleComponent options={Object.values(countryLanguages)} value={"languages"} handleSelectChange={e=>setLanguages(e)}/>
+                      
+                      <label className={css.labels} for={"outlined-controlled"}>Date of birth</label>
+                    
+                    </FormControl>
+                  
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      
                   </div>
-                  {!isProfileInfoComplete?
+                  {/* {!isProfileInfoComplete?
                     <div className={css.profile_completion}>
                           <div className={css.flex_row_start}>
                               <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -994,9 +1140,9 @@ export const DashboardPageComponent = props => {
                               <path d="M5.87571 4.6972C5.55028 4.37177 5.02264 4.37177 4.6972 4.6972C4.37177 5.02264 4.37177 5.55028 4.6972 5.87571L8.82199 10.0005L4.6972 14.1253C4.37177 14.4507 4.37177 14.9784 4.6972 15.3038C5.02264 15.6292 5.55028 15.6292 5.87571 15.3038L10.0005 11.179L14.1253 15.3038C14.4507 15.6292 14.9784 15.6292 15.3038 15.3038C15.6292 14.9784 15.6292 14.4507 15.3038 14.1253L11.179 10.0005L15.3038 5.87571C15.6292 5.55028 15.6292 5.02264 15.3038 4.6972C14.9784 4.37177 14.4507 4.37177 14.1253 4.6972L10.0005 8.82199L5.87571 4.6972Z" fill="black"/>
                           </svg>
                       </div>
-                  :""}
+                  :""} */}
                  
-                  <div className={css.profile_completion}>
+                  {/* <div className={css.profile_completion}>
                       <div className={css.flex_row_start}>
                           <div className={css.flex_col}>
                               <span className={css.header_listing}>Create your service listing and start advertising on Miventy</span>
@@ -1009,9 +1155,9 @@ export const DashboardPageComponent = props => {
                         </button>
                       </div>
                       
-                  </div>
+                  </div> */}
 
-                  <div className={css.your_listing_con}>
+                  {/* <div className={css.your_listing_con}>
                     
                     <div>
                         <h1 className={css.header_2}>Your Listing</h1>
@@ -1118,10 +1264,10 @@ export const DashboardPageComponent = props => {
                       </div>
                     
 
-                  </div>
+                  </div> */}
 
 
-                  <div className={css.order_tracking}>
+                  {/* <div className={css.order_tracking}>
                       <div className={css.flex_row_start}>
                           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.5C8.40056 1.5 5.20486 3.2299 3.1997 5.89942C1.81871 7.73797 1 10.0248 1 12.5C1 14.9752 1.81871 17.262 3.1997 19.1006C5.20486 21.7701 8.40056 23.5 12 23.5C15.5994 23.5 18.7951 21.7701 20.8003 19.1006C22.1813 17.262 23 14.9752 23 12.5C23 10.0248 22.1813 7.73797 20.8003 5.89942C18.7951 3.2299 15.5994 1.5 12 1.5ZM4.90148 7.4176C5.12565 7.39682 5.38969 7.37293 5.68444 7.34733C5.60258 8.56193 5.53095 9.99456 5.50782 11.5H3.05486C3.2194 10.0099 3.74743 8.63055 4.54856 7.45084C4.65102 7.44104 4.76929 7.42986 4.90148 7.4176ZM4.54856 17.5492C3.74743 16.3695 3.2194 14.9901 3.05486 13.5H5.50782C5.53095 15.0054 5.60258 16.4381 5.68444 17.6527C5.38969 17.6271 5.12565 17.6032 4.90148 17.5824C4.76929 17.5701 4.65102 17.559 4.54856 17.5492ZM7.50806 13.5C7.53297 15.0746 7.61241 16.5714 7.70023 17.8123C8.77446 17.8887 9.94229 17.9564 11 17.9852V13.5H7.50806ZM7.91935 20.3659C7.9254 20.4251 7.93118 20.4809 7.93664 20.5329C8.87517 21.0086 9.90816 21.3245 11 21.4451V19.9859C9.98757 19.9595 8.88779 19.8986 7.86654 19.8288C7.8846 20.0195 7.90151 20.1907 7.91673 20.3403C7.91761 20.3489 7.91848 20.3574 7.91935 20.3659ZM16.0634 20.5329C15.1248 21.0086 14.0918 21.3245 13 21.4451V19.9859C14.0124 19.9595 15.1122 19.8986 16.1335 19.8288C16.1154 20.0195 16.0985 20.1907 16.0833 20.3403C16.0763 20.4091 16.0696 20.4734 16.0634 20.5329ZM16.2998 17.8123C15.2255 17.8887 14.0577 17.9564 13 17.9852V13.5H16.4919C16.467 15.0746 16.3876 16.5714 16.2998 17.8123ZM16.2998 7.18766C16.3876 8.42861 16.467 9.92539 16.4919 11.5H13V7.01476C14.0577 7.0436 15.2255 7.11133 16.2998 7.18766ZM16.1335 5.17121C15.1122 5.10142 14.0124 5.04054 13 5.01407V3.55489C14.0918 3.67552 15.1248 3.99139 16.0634 4.46708C16.0696 4.52656 16.0763 4.59085 16.0833 4.65974C16.0985 4.80931 16.1154 4.98051 16.1335 5.17121ZM7.86654 5.17121C8.88779 5.10142 9.98757 5.04054 11 5.01407V3.55489C9.90816 3.67552 8.87517 3.99139 7.93664 4.46708C7.9304 4.52656 7.92375 4.59085 7.91673 4.65974C7.90151 4.80931 7.8846 4.98051 7.86654 5.17121ZM11 7.01476C9.94229 7.0436 8.77446 7.11133 7.70023 7.18766C7.61241 8.42861 7.53297 9.92539 7.50806 11.5H11V7.01476ZM19.0985 7.4176C18.8744 7.39682 18.6103 7.37293 18.3156 7.34733C18.3974 8.56193 18.4691 9.99456 18.4922 11.5H20.9451C20.7806 10.0099 20.2526 8.63055 19.4514 7.45084C19.349 7.44104 19.2307 7.42986 19.0985 7.4176ZM18.3156 17.6527C18.3974 16.4381 18.4691 15.0054 18.4922 13.5H20.9451C20.7806 14.9901 20.2526 16.3695 19.4514 17.5492C19.349 17.559 19.2307 17.5701 19.0985 17.5824C18.8744 17.6032 18.6103 17.6271 18.3156 17.6527Z" fill="#475367"/>
@@ -1170,8 +1316,8 @@ export const DashboardPageComponent = props => {
                             </div>
                           </div>
                       </div>
-                  </div>
-                  <div className={css.order_tracking}>
+                  </div> */}
+                  {/* <div className={css.order_tracking}>
                       <div className={css.flex_row_start}>
                           <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.5C8.40056 1.5 5.20486 3.2299 3.1997 5.89942C1.81871 7.73797 1 10.0248 1 12.5C1 14.9752 1.81871 17.262 3.1997 19.1006C5.20486 21.7701 8.40056 23.5 12 23.5C15.5994 23.5 18.7951 21.7701 20.8003 19.1006C22.1813 17.262 23 14.9752 23 12.5C23 10.0248 22.1813 7.73797 20.8003 5.89942C18.7951 3.2299 15.5994 1.5 12 1.5ZM4.90148 7.4176C5.12565 7.39682 5.38969 7.37293 5.68444 7.34733C5.60258 8.56193 5.53095 9.99456 5.50782 11.5H3.05486C3.2194 10.0099 3.74743 8.63055 4.54856 7.45084C4.65102 7.44104 4.76929 7.42986 4.90148 7.4176ZM4.54856 17.5492C3.74743 16.3695 3.2194 14.9901 3.05486 13.5H5.50782C5.53095 15.0054 5.60258 16.4381 5.68444 17.6527C5.38969 17.6271 5.12565 17.6032 4.90148 17.5824C4.76929 17.5701 4.65102 17.559 4.54856 17.5492ZM7.50806 13.5C7.53297 15.0746 7.61241 16.5714 7.70023 17.8123C8.77446 17.8887 9.94229 17.9564 11 17.9852V13.5H7.50806ZM7.91935 20.3659C7.9254 20.4251 7.93118 20.4809 7.93664 20.5329C8.87517 21.0086 9.90816 21.3245 11 21.4451V19.9859C9.98757 19.9595 8.88779 19.8986 7.86654 19.8288C7.8846 20.0195 7.90151 20.1907 7.91673 20.3403C7.91761 20.3489 7.91848 20.3574 7.91935 20.3659ZM16.0634 20.5329C15.1248 21.0086 14.0918 21.3245 13 21.4451V19.9859C14.0124 19.9595 15.1122 19.8986 16.1335 19.8288C16.1154 20.0195 16.0985 20.1907 16.0833 20.3403C16.0763 20.4091 16.0696 20.4734 16.0634 20.5329ZM16.2998 17.8123C15.2255 17.8887 14.0577 17.9564 13 17.9852V13.5H16.4919C16.467 15.0746 16.3876 16.5714 16.2998 17.8123ZM16.2998 7.18766C16.3876 8.42861 16.467 9.92539 16.4919 11.5H13V7.01476C14.0577 7.0436 15.2255 7.11133 16.2998 7.18766ZM16.1335 5.17121C15.1122 5.10142 14.0124 5.04054 13 5.01407V3.55489C14.0918 3.67552 15.1248 3.99139 16.0634 4.46708C16.0696 4.52656 16.0763 4.59085 16.0833 4.65974C16.0985 4.80931 16.1154 4.98051 16.1335 5.17121ZM7.86654 5.17121C8.88779 5.10142 9.98757 5.04054 11 5.01407V3.55489C9.90816 3.67552 8.87517 3.99139 7.93664 4.46708C7.9304 4.52656 7.92375 4.59085 7.91673 4.65974C7.90151 4.80931 7.8846 4.98051 7.86654 5.17121ZM11 7.01476C9.94229 7.0436 8.77446 7.11133 7.70023 7.18766C7.61241 8.42861 7.53297 9.92539 7.50806 11.5H11V7.01476ZM19.0985 7.4176C18.8744 7.39682 18.6103 7.37293 18.3156 7.34733C18.3974 8.56193 18.4691 9.99456 18.4922 11.5H20.9451C20.7806 10.0099 20.2526 8.63055 19.4514 7.45084C19.349 7.44104 19.2307 7.42986 19.0985 7.4176ZM18.3156 17.6527C18.3974 16.4381 18.4691 15.0054 18.4922 13.5H20.9451C20.7806 14.9901 20.2526 16.3695 19.4514 17.5492C19.349 17.559 19.2307 17.5701 19.0985 17.5824C18.8744 17.6032 18.6103 17.6271 18.3156 17.6527Z" fill="#475367"/>
@@ -1193,7 +1339,7 @@ export const DashboardPageComponent = props => {
                           </div>
                       </div>
                       <button className={css.all_reviews_btn}>View all reviews</button>
-                  </div>
+                  </div> */}
                 </div>
             :""}
 
@@ -2319,150 +2465,6 @@ const handleSubmit = async e=>{
     await handleMoveNext();
 }
 
-const countryLanguages = {
-    "af": "Afrikaans",
-    "sq": "Albanian - shqip",
-    "am": "Amharic - አማርኛ",
-    "ar": "Arabic - العربية",
-    "an": "Aragonese - aragonés",
-    "hy": "Armenian - հայերեն",
-    "ast": "Asturian - asturianu",
-    "az": "Azerbaijani - azərbaycan dili",
-    "eu": "Basque - euskara",
-    "be": "Belarusian - беларуская",
-    "bn": "Bengali - বাংলা",
-    "bs": "Bosnian - bosanski",
-    "br": "Breton - brezhoneg",
-    "bg": "Bulgarian - български",
-    "ca": "Catalan - català",
-    "ckb": "Central Kurdish - کوردی (دەستنوسی عەرەبی)",
-    "zh": "Chinese - 中文",
-    "zh-HK": "Chinese (Hong Kong) - 中文（香港）",
-    "zh-CN": "Chinese (Simplified) - 中文（简体）",
-    "zh-TW": "Chinese (Traditional) - 中文（繁體）",
-    "co": "Corsican",
-    "hr": "Croatian - hrvatski",
-    "cs": "Czech - čeština",
-    "da": "Danish - dansk",
-    "nl": "Dutch - Nederlands",
-    "en": "English",
-    "en-AU": "English (Australia)",
-    "en-CA": "English (Canada)",
-    "en-IN": "English (India)",
-    "en-NZ": "English (New Zealand)",
-    "en-ZA": "English (South Africa)",
-    "en-GB": "English (United Kingdom)",
-    "en-US": "English (United States)",
-    "eo": "Esperanto - esperanto",
-    "et": "Estonian - eesti",
-    "fo": "Faroese - føroyskt",
-    "fil": "Filipino",
-    "fi": "Finnish - suomi",
-    "fr": "French - français",
-    "fr-CA": "French (Canada) - français (Canada)",
-    "fr-FR": "French (France) - français (France)",
-    "fr-CH": "French (Switzerland) - français (Suisse)",
-    "gl": "Galician - galego",
-    "ka": "Georgian - ქართული",
-    "de": "German - Deutsch",
-    "de-AT": "German (Austria) - Deutsch (Österreich)",
-    "de-DE": "German (Germany) - Deutsch (Deutschland)",
-    "de-LI": "German (Liechtenstein) - Deutsch (Liechtenstein)",
-    "de-CH": "German (Switzerland) - Deutsch (Schweiz)",
-    "el": "Greek - Ελληνικά",
-    "gn": "Guarani",
-    "gu": "Gujarati - ગુજરાતી",
-    "ha": "Hausa",
-    "haw": "Hawaiian - ʻŌlelo Hawaiʻi",
-    "he": "Hebrew - עברית",
-    "hi": "Hindi - हिन्दी",
-    "hu": "Hungarian - magyar",
-    "is": "Icelandic - íslenska",
-    "id": "Indonesian - Indonesia",
-    "ia": "Interlingua",
-    "ga": "Irish - Gaeilge",
-    "it": "Italian - italiano",
-    "it-IT": "Italian (Italy) - italiano (Italia)",
-    "it-CH": "Italian (Switzerland) - italiano (Svizzera)",
-    "ja": "Japanese - 日本語",
-    "kn": "Kannada - ಕನ್ನಡ",
-    "kk": "Kazakh - қазақ тілі",
-    "km": "Khmer - ខ្មែរ",
-    "ko": "Korean - 한국어",
-    "ku": "Kurdish - Kurdî",
-    "ky": "Kyrgyz - кыргызча",
-    "lo": "Lao - ລາວ",
-    "la": "Latin",
-    "lv": "Latvian - latviešu",
-    "ln": "Lingala - lingála",
-    "lt": "Lithuanian - lietuvių",
-    "mk": "Macedonian - македонски",
-    "ms": "Malay - Bahasa Melayu",
-    "ml": "Malayalam - മലയാളം",
-    "mt": "Maltese - Malti",
-    "mr": "Marathi - मराठी",
-    "mn": "Mongolian - монгол",
-    "ne": "Nepali - नेपाली",
-    "no": "Norwegian - norsk",
-    "nb": "Norwegian Bokmål - norsk bokmål",
-    "nn": "Norwegian Nynorsk - nynorsk",
-    "oc": "Occitan",
-    "or": "Oriya - ଓଡ଼ିଆ",
-    "om": "Oromo - Oromoo",
-    "ps": "Pashto - پښتو",
-    "fa": "Persian - فارسی",
-    "pl": "Polish - polski",
-    "pt": "Portuguese - português",
-    "pt-BR": "Portuguese (Brazil) - português (Brasil)",
-    "pt-PT": "Portuguese (Portugal) - português (Portugal)",
-    "pa": "Punjabi - ਪੰਜਾਬੀ",
-    "qu": "Quechua",
-    "ro": "Romanian - română",
-    "mo": "Romanian (Moldova) - română (Moldova)",
-    "rm": "Romansh - rumantsch",
-    "ru": "Russian - русский",
-    "gd": "Scottish Gaelic",
-    "sr": "Serbian - српски",
-    "sh": "Serbo - Croatian",
-    "sn": "Shona - chiShona",
-    "sd": "Sindhi",
-    "si": "Sinhala - සිංහල",
-    "sk": "Slovak - slovenčina",
-    "sl": "Slovenian - slovenščina",
-    "so": "Somali - Soomaali",
-    "st": "Southern Sotho",
-    "es": "Spanish - español",
-    "es-AR": "Spanish (Argentina) - español (Argentina)",
-    "es-419": "Spanish (Latin America) - español (Latinoamérica)",
-    "es-MX": "Spanish (Mexico) - español (México)",
-    "es-ES": "Spanish (Spain) - español (España)",
-    "es-US": "Spanish (United States) - español (Estados Unidos)",
-    "su": "Sundanese",
-    "sw": "Swahili - Kiswahili",
-    "sv": "Swedish - svenska",
-    "tg": "Tajik - тоҷикӣ",
-    "ta": "Tamil - தமிழ்",
-    "tt": "Tatar",
-    "te": "Telugu - తెలుగు",
-    "th": "Thai - ไทย",
-    "ti": "Tigrinya - ትግርኛ",
-    "to": "Tongan - lea fakatonga",
-    "tr": "Turkish - Türkçe",
-    "tk": "Turkmen",
-    "tw": "Twi",
-    "uk": "Ukrainian - українська",
-    "ur": "Urdu - اردو",
-    "ug": "Uyghur",
-    "uz": "Uzbek - o‘zbek",
-    "vi": "Vietnamese - Tiếng Việt",
-    "wa": "Walloon - wa",
-    "cy": "Welsh - Cymraeg",
-    "fy": "Western Frisian",
-    "xh": "Xhosa",
-    "yi": "Yiddish",
-    "yo": "Yoruba - Èdè Yorùbá",
-    "zu": "Zulu - isiZulu"
-};
 
   return (
           <div className={css.overlay}>

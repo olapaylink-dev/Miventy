@@ -473,18 +473,41 @@ const TopbarDesktop = props => {
 
                     {showMenu?
                       <div className={css.menus_con}>
-                          <NamedLink name="StripePayoutPage" > 
-                            <div className={css.flex_row_menu}>
-                              My profile
-                            </div>
-                          </NamedLink>
-
-                          {userType === "customer"?
-                            <NamedLink name="StripePayoutPage" > 
+                         {userType === "customer"?
+                          <NamedLink name="ProfileSettingsPage" > 
                               <div className={css.flex_row_menu}>
-                                Become a service provider
+                                Profile settings
                               </div>
                             </NamedLink>
+                         :
+                         <NamedLink name="StripePayoutPage" > 
+                              <div className={css.flex_row_menu}>
+                                Profile settings
+                              </div>
+                            </NamedLink>
+                         }
+                          
+
+                          {userType === "customer"?
+                          <>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                  My bookings
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                  Favorite
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                  Become a service provider
+                                </div>
+                              </NamedLink>
+                          </>
+                            
+                            
                           :
                             ""
                           }
