@@ -25,112 +25,130 @@ const BookingsCard = props=>{
 
     const checkIfCustomerAsReviewed = trx =>{
         let result = false;
-        trx.attributes.transitions.map((itm,key)=>{
-            if(itm.transition === "transition/review-1-by-customer"){
-                result = true;
-            }
-        });
+        console.log("++++++++++++++++++")
+        if(trx.attributes.payinTotal !== null){
+            trx.attributes.transitions.map((itm,key)=>{
+                if(itm.transition === "transition/review-1-by-customer"){
+                    result = true;
+                }
+            });
+        }
+        
         return result;
     }
 
     const isReviewedByCustomer = checkIfCustomerAsReviewed(data);
 
     const checkIfConfirmedPayment = trx =>{
+        console.log("++++++++++++++++++")
         let result = false;
-        trx.attributes.transitions.map((itm,key)=>{
-            if(itm.transition === "transition/confirm-payment"){
-                result = true;
-            }
-        });
+        if(trx.attributes.payinTotal !== null){
+             trx.attributes.transitions.map((itm,key)=>{
+                if(itm.transition === "transition/confirm-payment"){
+                    result = true;
+                }
+            });
+        }
+       
         return result;
     }
 
     const isPaymentConfirmed = checkIfConfirmedPayment(data);
     
     return(
-        <div className={css.container}>
-            <div className={css.flex_btw}>
-                <h3 className={css.header}>{listingType} Service </h3>
-                <h3 className={css.header}>${price}</h3>
-            </div>
-            {isProvider?
-                <div className={css.flex_col}>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Customer:</span>
-                        <img className={css.img_circle} src={customerDisplayImg} />
-                        <span>{customerDisplayName}</span>
-                    </div>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Date:</span>
-                        <span>{eventDate}</span>
-                    </div>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Location:</span>
-                        <span>{location}</span>
-                    </div>
-                </div>
-            :
-                <div className={css.flex_col}>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Service provider:</span>
-                        <img className={css.img_circle} src={displayImg} />
-                        <span>{displayName}</span>
-                    </div>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Date:</span>
-                        <span>{eventDate}</span>
-                    </div>
-                    <div className={css.flex_row}>
-                        <span className={css.label}>Location:</span>
-                        <span>{location}</span>
-                    </div>
-                </div>
-            }
-            
-            
-            {isProvider?
-                
-                (!isReviewedByCustomer?
 
-                    (isPaymentConfirmed?
+        <>
+                {isPaymentConfirmed?
+                    <div className={css.container}>
+                    <div className={css.flex_btw}>
+                        <h3 className={css.header}>{listingType} Service </h3>
+                        <h3 className={css.header}>${price}</h3>
+                    </div>
+                    {isProvider?
+                        <div className={css.flex_col}>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Customer:</span>
+                                <img className={css.img_circle} src={customerDisplayImg} />
+                                <span>{customerDisplayName}</span>
+                            </div>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Date:</span>
+                                <span>{eventDate}</span>
+                            </div>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Location:</span>
+                                <span>{location}</span>
+                            </div>
+                        </div>
+                    :
+                        <div className={css.flex_col}>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Service provider:</span>
+                                <img className={css.img_circle} src={displayImg} />
+                                <span>{displayName}</span>
+                            </div>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Date:</span>
+                                <span>{eventDate}</span>
+                            </div>
+                            <div className={css.flex_row}>
+                                <span className={css.label}>Location:</span>
+                                <span>{location}</span>
+                            </div>
+                        </div>
+                    }
+                    
+                    
+                    {isProvider?
+                        
+                        (!isReviewedByCustomer?
+
+                            (isPaymentConfirmed?
+                                <div className={css.flex_btw}>
+                                    <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for customer review</button>
+                                </div>
+                                :
+                                
+                                <div className={css.flex_btw}>
+                                    <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
+                                </div>
+                            )
+                            
+                            :
+                            <div className={css.flex_btw}>
+                                <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} >Add a review</button>
+                            </div>
+                        )
+                    :
+                    (transactionState === "state/reviewed"?
                         <div className={css.flex_btw}>
-                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
+                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Edit review</button>
                         </div>
                         :
-                        <div className={css.flex_btw}>
-                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for customer review</button>
-                        </div>
+                        (
+                            (isPaymentConfirmed?
+                                <div className={css.flex_btw}>
+                                    <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
+                                    <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
+                                </div>
+                            :
+                            <div className={css.flex_btw}>
+                                <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
+                            </div>
+                            )
+                        )
+                        
                     )
+                        
+                    }
                     
-                    :
-                    <div className={css.flex_btw}>
-                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} >Add a review</button>
-                    </div>
-                )
-            :
-            (transactionState === "state/reviewed"?
-                <div className={css.flex_btw}>
-                    <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn}>Edit review</button>
                 </div>
                 :
-                (
-                    (isPaymentConfirmed?
-                        <div className={css.flex_btw}>
-                            <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
-                            <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
-                        </div>
-                    :
-                    <div className={css.flex_btw}>
-                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled >No payment yet</button>
-                    </div>
-                    )
-                )
+                ""
+                }
                 
-            )
-                
-            }
-            
-        </div>
+        </>
+       
     )
 }
 
