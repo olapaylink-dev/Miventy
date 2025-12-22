@@ -1049,46 +1049,30 @@ export const DashboardPageComponent = props => {
                        
 
                       <span className={css.profile_title}>{displayName}</span>
-                      <div className={css.flex_row_profile}>
-                          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 5.49914C10.0147 5.49914 8.00003 7.51385 8.00003 9.99914C8.00003 12.4844 10.0147 14.4991 12.5 14.4991C14.9853 14.4991 17 12.4844 17 9.99914C17 7.51385 14.9853 5.49914 12.5 5.49914ZM10 9.99914C10 8.61842 11.1193 7.49914 12.5 7.49914C13.8807 7.49914 15 8.61842 15 9.99914C15 11.3798 13.8807 12.4991 12.5 12.4991C11.1193 12.4991 10 11.3798 10 9.99914Z" fill="#475367"/>
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M8.30927 3.59112C10.847 1.89931 14.1531 1.89931 16.6908 3.59112C20.1217 5.87839 21.0849 10.4941 18.8551 13.9627L15.0236 19.9229C13.8427 21.7599 11.1574 21.7599 9.9765 19.9229L6.14493 13.9627C3.91516 10.4941 4.87838 5.87839 8.30927 3.59112ZM9.41867 5.25523C11.2846 4.01128 13.7155 4.01128 15.5814 5.25523C18.104 6.93699 18.8123 10.3308 17.1728 12.8812L13.3412 18.8414C12.9476 19.4537 12.0525 19.4537 11.6589 18.8414L7.82729 12.8812C6.18779 10.3308 6.89602 6.93699 9.41867 5.25523Z" fill="#475367"/>
-                          </svg>
+                      
 
-                          <span>{businessName || fullName}</span>
+                      <div className={css.main_header_con}>
+                        <h2 className={css.main_header}>
+                          Personal details
+                        </h2>
                       </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <FormControl className={classNames(css.full_w,css.form_input)}>
-                      <label className={css.labels} for={"outlined-controlled"}>Full name/ Business name</label>
+                      <label className={css.labels} for={"outlined-controlled"}>Name</label>
                       <input
                         id="outlined-controlled"
                         name='businessName'
                         onChange={(event) => {
                           // setBusinesName(event.target.value);
                         }}
-                        value={"businessName"}
+                        // value={"businessName"}
                         placeholder={"businessName"}
                       />
                       <label className={css.labels} for={"outlined-controlled"}>Location (City, Country)</label>
                       <input
                         id="outlined-controlled"
                         name='location'
-                        value={"yearsOfExperience"}
+                        // value={}
                         onChange={(event) => {
                           // setYearsOfExperience(event.target.value);
                         }}
@@ -1099,8 +1083,12 @@ export const DashboardPageComponent = props => {
 
                       <SelectMultipleComponent options={Object.values(countryLanguages)} value={"languages"} handleSelectChange={e=>setLanguages(e)}/>
                       
-                      <label className={css.labels} for={"outlined-controlled"}>Date of birth</label>
-                    
+
+                      <div className={css.flex_col_4}>
+                        <h3 className={css.sub_header_4}>System</h3>
+                        <button className={css.delete_btn}>Delete account</button>
+                      </div>
+                        
                     </FormControl>
                   
 

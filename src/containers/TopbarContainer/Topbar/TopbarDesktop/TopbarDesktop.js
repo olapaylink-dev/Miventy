@@ -480,11 +480,19 @@ const TopbarDesktop = props => {
                               </div>
                             </NamedLink>
                          :
-                         <NamedLink name="StripePayoutPage" > 
-                              <div className={css.flex_row_menu}>
-                                Profile settings
-                              </div>
-                            </NamedLink>
+                         <>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                My Profile
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="SearchPage" > 
+                                <div className={css.flex_row_menu}>
+                                Hire A Service
+                                </div>
+                              </NamedLink>
+                         </>
+                            
                          }
                           
 
