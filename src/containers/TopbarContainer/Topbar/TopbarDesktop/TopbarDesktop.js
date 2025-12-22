@@ -498,7 +498,7 @@ const TopbarDesktop = props => {
 
                           {userType === "customer"?
                           <>
-                              <NamedLink name="StripePayoutPage" > 
+                              <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
                                 <div className={css.flex_row_menu}>
                                   My bookings
                                 </div>
