@@ -38,7 +38,8 @@ const MessageGen =(props)=>{
         <div className={css.container}>
           {messages.length > 0 && messages.map((itm,key)=>{
             //console.log(itm,"   oooopppppp")
-            const isOwnMessage = currentUser.id.uuid === itm.sender.id.uuid;
+            const senderId = itm.sender.id.uuid;
+            const isOwnMessage = currentUser.id.uuid === senderId;
             const {content,createdAt} = itm?.attributes;
             const {description="",price=0} = content.includes("offerTitle")? JSON.parse(content):{};
             const isOffer = description !== "";
@@ -64,7 +65,7 @@ const MessageGen =(props)=>{
                           setCurrentOfferInView={setCurrentOfferInView}
                         />
               }else{
-                return <MessageCardOwn content={content} createdAt={time} currentUser={currentUser}/>
+                return <MessageCardOwn content={content} createdAt={time} senderId={senderId} currentUser={currentUser} currentTransaction={currentTransaction}/>
               }
               
             }else{
@@ -82,7 +83,7 @@ const MessageGen =(props)=>{
                           setCurrentOfferInView={setCurrentOfferInView}
                         />
               }else{
-                return <MessageCard content={content} createdAt={time} currentImgUrl={currentImgUrl} />
+                return <MessageCard content={content} createdAt={time} senderId={senderId} currentImgUrl={currentImgUrl} currentTransaction={currentTransaction} />
               }
              
             }

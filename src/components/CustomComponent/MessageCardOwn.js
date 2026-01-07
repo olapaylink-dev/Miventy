@@ -3,8 +3,12 @@ import css from './MessageCardOwn.module.css';
 
 // File updated
 export default function MessageCardOwn(props){
-    const {content,createdAt,currentUser} = props;
-    const profileImage = currentUser?.profileImage?.attributes?.variants['square-small']?.url;
+    const {content,createdAt,currentUser,senderId,currentTransaction} = props;
+    const {customer,provider} = currentTransaction;
+    const customerProfileImage = customer?.profileImage?.attributes?.variants['square-small']?.url;
+    const providerProfileImage = provider?.profileImage?.attributes?.variants['square-small']?.url;
+    const profileImage = customer.id.uuid === senderId?customerProfileImage:providerProfileImage;
+
     //console.log(profileImage,"    zzzxxxxccccvvv")
     return(
         <div className={css.main_com}>

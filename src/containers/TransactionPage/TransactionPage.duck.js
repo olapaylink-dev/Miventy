@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { types as sdkTypes, createImageVariantConfig } from '../../util/sdkLoader';
 import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
 import { isTransactionsTransitionInvalidTransition, storableError } from '../../util/errors';
-import { changePrice, transactionLineItems, updateTransaction } from '../../util/api';
+import { changePrice, declineOffer, transactionLineItems, updateTransaction } from '../../util/api';
 import * as log from '../../util/log';
 import {
   updatedEntities,
@@ -853,22 +853,32 @@ export const acceptOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
   });
 };
 
-export const declineOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
+export const declineOfferFromCustomer = (trxId,providerId,customerId) => (dispatch, getState, sdk) => {
   dispatch(declineOfferRequest());
-  sdk.transactions.transition({
-    id: trxId,
-    transition: "transition/provider-decline",
-    params: {
-      protectedData:{transactionState:"declined"}
-    }
-  }, {
-    expand: true
-  }).then(res => {
-    // res.data contains the response data
-    console.log("Offer declined ")
-    dispatch(declineOfferSuccess());
+
+  declineOffer({trxId,providerId,customerId})
+  .then(res => {
+      // res.data contains the response data
+      console.log("Offer declined ")
+      dispatch(declineOfferSuccess());
+      
+    });
+
+
+  // sdk.transactions.transition({
+  //   id: trxId,
+  //   transition: "transition/provider-decline",
+  //   params: {
+  //     protectedData:{transactionState:"declined"}
+  //   }
+  // }, {
+  //   expand: true
+  // }).then(res => {
+  //   // res.data contains the response data
+  //   console.log("Offer declined ")
+  //   dispatch(declineOfferSuccess());
     
-  });
+  // });
 };
 
 export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {

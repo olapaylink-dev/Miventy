@@ -3,7 +3,7 @@ import css from './InboxView.module.css';
 import placeholder from '../assets/placeholder.png';
 import MessageListItemComponent from './CustomComponent/MessageListItemComponent';
 import MessageGen from './CustomComponent/MessageGen';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function InboxView(props){
 
@@ -26,16 +26,22 @@ export default function InboxView(props){
         setShowQuoteAccepted,
         currentOfferInView,
         setCurrentOfferInView,
+        currentDisplayName,
+        setCurrentDisplayName,
+        currentImgUrl,
+        setCurrentImgUrl,
         
     } = props;
      //const [currentTransaction,setCurrentTransaction] = useState({});
-     const [currentDisplayName,setCurrentDisplayName] = useState("");
-     const [currentImgUrl,setCurrentImgUrl] = useState("");
+    //  const [currentDisplayName,setCurrentDisplayName] = useState("");
+    //  const [currentImgUrl,setCurrentImgUrl] = useState("");
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
 
      const msgCount = transactions.length;
+
+    
     
      const handleShowTransactionDetails = (itm,displayName,imgUrl,isProvider) =>{
         setCurrentTransaction(itm);

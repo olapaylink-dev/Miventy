@@ -495,7 +495,6 @@ const TopbarDesktop = props => {
                             
                          }
                           
-
                           {userType === "customer"?
                           <>
                               <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 

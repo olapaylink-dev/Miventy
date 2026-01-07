@@ -188,7 +188,7 @@ const OrderDisplayView = props =>{
                                             <span className={css.declined_txt}>You have declined this order</span>
                                         :
                                         <div className={css.flex_row}>
-                                            <button className={css.btn_outline} onClick={e=>onDeclineOfferFromCustomer(currentTransaction.id)}>
+                                            <button className={css.btn_outline} onClick={e=>onDeclineOfferFromCustomer(currentTransaction.id.uuid,currentTransaction.providerId.id.uuid,currentTransaction.customer.id.uuid)}>
                                                 Decline
                                             </button>
                                             <button className={css.btn_fill} onClick={e=>{onAcceptOfferFromCustomer(currentTransaction.id);}}>
@@ -199,7 +199,7 @@ const OrderDisplayView = props =>{
                                         
                                         :
                                         <div className={css.flex_row}>
-                                            <button className={css.btn_outline} onClick={e=>{onDeclineOfferFromCustomer(currentTransaction.id)}}>
+                                            <button className={css.btn_outline} onClick={e=>{onDeclineOfferFromCustomer(currentTransaction.id.uuid,currentTransaction.providerId.id.uuid,currentTransaction.customer.id.uuid)}}>
                                                 Decline
                                             </button>
                                             <button className={css.btn_fill} onClick={e=>{setShowQuotationForm(true); setShowOrder(false)}}>

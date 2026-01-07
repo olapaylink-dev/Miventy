@@ -19,7 +19,7 @@
     {:name :action/update-protected-data}
    ]
    :from :state/inquiry
-   :to :state/canceled} 
+   :to :state/decline} 
 
   {:name :transition/request-payment,
    :actor :actor.role/customer,

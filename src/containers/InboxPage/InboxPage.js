@@ -291,6 +291,8 @@ export const InboxPageComponent = props => {
   const [total,setTotal] = useState("");
   const [showSuccessView,setShowSuccessView] = useState(false);
   const [successMessage,setSuccessMessage] = useState("Your review was successfully added");
+  const [currentDisplayName,setCurrentDisplayName] = useState("");
+  const [currentImgUrl,setCurrentImgUrl] = useState("");
 
   const processName = resolveLatestProcessName(currentTransaction?.attributes?.processName);
     let process = null;
@@ -299,6 +301,30 @@ export const InboxPageComponent = props => {
     } catch (error) {
       // Process was not recognized!
     }
+
+ //useEffect(()=>{
+        if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}"){
+            if(transactions.length > 0){
+                const itm = transactions[0];
+                const isProvider = itm.provider.id.uuid === currentUser.id.uuid;
+                const data = isProvider?itm.customer:itm.provider;
+                const {attributes,profileImage} = data;
+                const {profile} = attributes;
+                const {displayName} = profile;
+                const imgUrl = profileImage?.attributes?.variants["square-small"]?.url;
+                const {cartData,location,message} = itm.attributes.protectedData.cartData;
+                const listingDescription = itm?.listing?.attributes?.title;
+                const lastTransitione = itm?.attributes?.lastTransition;
+                setCurrentTransaction(transactions[0]);
+
+                setCurrentDisplayName(displayName);
+                setCurrentImgUrl(imgUrl);
+                setIsProvider(isProvider);
+                onfetchMessage(itm.id.uuid);
+            }
+            
+        }
+     //},[transactions])
   
 
 const onSubmitReview = values => {
@@ -371,6 +397,10 @@ const onSubmitReview = values => {
           isProvider={isProvider}
           setIsProvider={setIsProvider}
           setShowQuoteAccepted={setShowQuoteAccepted}
+          currentDisplayName={currentDisplayName}
+          setCurrentDisplayName={setCurrentDisplayName}
+          currentImgUrl={currentImgUrl}
+          setCurrentImgUrl={setCurrentImgUrl}
         />
         }
         
@@ -545,7 +575,7 @@ const mapDispatchToProps = dispatch => ({
   onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer)),
   onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price)),
   onAcceptOfferFromCustomer:(trxId) =>dispatch(acceptOfferFromCustomer(trxId)),
-  onDeclineOfferFromCustomer:(trxId) =>dispatch(declineOfferFromCustomer(trxId)),
+  onDeclineOfferFromCustomer:(trxId,providerId,customerId) =>dispatch(declineOfferFromCustomer(trxId,providerId,customerId)),
   onHandleOrderDelivered:(trxId) =>dispatch(setOrderDelivered(trxId)),
   onHandleOrderReceived:(trxId) =>dispatch(setOrderReceived(trxId)),
   onSendProviderReview:(data) =>dispatch(sendReviewByProvider(data)),
