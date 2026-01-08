@@ -41,7 +41,7 @@ export default function MessageListItemComponent(props){
                             <div className={css.flex_row_2}>
                                 <span className={css.title}>{displayName}</span>
                             </div>
-                            <div className={css.service_desc}>{listingDescription}</div>
+                            {/* <div className={css.service_desc}>{listingDescription}</div> */}
                             <div className={css.msg}>{message}</div>
 
                             {lastTransitione === "transition/confirm-payment" || checkIfPaid(itm)?
