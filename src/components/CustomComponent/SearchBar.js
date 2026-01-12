@@ -218,6 +218,12 @@ const SearchBar = props =>{
         e.preventDefault();
         e.stopPropagation();
         setShowList1(false);
+        setAutoValues([]);
+        setShowValue(false);
+        if(inputDisplay !== null && inputDisplay?.current !== null && inputDisplay?.current?.value !== null){
+            inputDisplay.current.value = "";
+        }
+        
     }
 
     const handleCloseList2 = e =>{
@@ -225,6 +231,7 @@ const SearchBar = props =>{
         e.preventDefault();
         e.stopPropagation();
         setShowList2(false);
+        setEventLocation([]);
     }
 
     const addressChange1 = val=>{
