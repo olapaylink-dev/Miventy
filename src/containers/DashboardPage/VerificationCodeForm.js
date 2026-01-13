@@ -6,7 +6,7 @@ import PasswordResetForm from "../AuthenticationPage/LoginForm/PasswordResetForm
 import { NamedLink } from "../../components";
 
 const VerificationCodeForm = props=>{
-    const {handleClosePasswordUpdated,phoneNumber,onResetPassword,email,token} = props;
+    const {handleClosePasswordUpdated,phoneNumber,onResetPassword,email,token,onSubmitEmail} = props;
     const [showPasswordUpdated, setShowPasswordUpdated] = useState(false);
     const [showEmailConfirmedDialog, setShowEmailConfirmedDialog] = useState(false);
     const [showPasswordResetForm, setShowPasswordResetForm] = useState(false);
@@ -21,10 +21,13 @@ const VerificationCodeForm = props=>{
     const [value6, setValue6] = useState(0);
     const [otp, setOtp] = useState('');
     
+
+
     const handleVerify = e=>{
         const savedOtp = localStorage.getItem("otp");
         if(savedOtp === otp){
             console.log("  Otp is correct ooooo  ",otp)
+            onSubmitEmail(email);
         }
         console.log(savedOtp,"uuuuuuuooooooooooo")
         setShowEmailConfirmedDialog(true);

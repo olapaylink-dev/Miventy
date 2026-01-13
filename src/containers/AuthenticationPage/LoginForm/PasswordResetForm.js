@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form as FinalForm } from 'react-final-form';
 import classNames from 'classnames';
 
 import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 import * as validators from '../../../util/validators';
-import { Form, PrimaryButton, FieldTextInput, NamedLink, FieldCheckbox } from '../../../components';
+
+import { Form, PrimaryButton, FieldTextInput } from '../../../components';
 
 import css from './PasswordResetForm.module.css';
-import FieldPasswordInput from '../../../components/FieldTextInput/FieldPasswordInput';
 
-const PasswordResetFormComponent = props => (
-  
+/**
+ * The reset-password form.
+ *
+ * @param {Object} props
+ * @param {string} [props.formId] - The form ID
+ * @param {string} [props.rootClassName] - Custom class that overrides the default class for the root element
+ * @param {string} [props.className] - Custom class that extends the default class for the root element
+ * @param {boolean} [props.inProgress] - Whether the form is in progress
+ * @returns {JSX.Element} Reset-password form component
+ */
+const PasswordResetForm = props => (
   <FinalForm
     {...props}
     render={fieldRenderProps => {
@@ -19,110 +28,75 @@ const PasswordResetFormComponent = props => (
         className,
         formId,
         handleSubmit,
-        inProgress,
-        intl,
+        inProgress = false,
         invalid,
-        setPassword,
       } = fieldRenderProps;
 
-      
-
-      // email
-      const emailLabel = intl.formatMessage({
-        id: 'LoginForm.emailLabel',
-      });
-      const emailPlaceholder = intl.formatMessage({
-        id: 'LoginForm.emailPlaceholder',
-      });
-      const emailRequiredMessage = intl.formatMessage({
-        id: 'LoginForm.emailRequired',
-      });
-      const emailRequired = validators.required(emailRequiredMessage);
-      const emailInvalidMessage = intl.formatMessage({
-        id: 'LoginForm.emailInvalid',
-      });
-      const emailValid = validators.emailFormatValid(emailInvalidMessage);
-
+      const intl = useIntl();
       // password
       const passwordLabel = intl.formatMessage({
-        id: 'LoginForm.passwordLabel',
+        id: 'PasswordResetForm.passwordLabel',
       });
       const passwordPlaceholder = intl.formatMessage({
-        id: 'LoginForm.passwordPlaceholder',
+        id: 'PasswordResetForm.passwordPlaceholder',
       });
       const passwordRequiredMessage = intl.formatMessage({
-        id: 'LoginForm.passwordRequired',
+        id: 'PasswordResetForm.passwordRequired',
       });
+      const passwordMinLengthMessage = intl.formatMessage(
+        {
+          id: 'PasswordResetForm.passwordTooShort',
+        },
+        {
+          minLength: validators.PASSWORD_MIN_LENGTH,
+        }
+      );
+      const passwordMaxLengthMessage = intl.formatMessage(
+        {
+          id: 'PasswordResetForm.passwordTooLong',
+        },
+        {
+          maxLength: validators.PASSWORD_MAX_LENGTH,
+        }
+      );
       const passwordRequired = validators.requiredStringNoTrim(passwordRequiredMessage);
+      const passwordMinLength = validators.minLength(
+        passwordMinLengthMessage,
+        validators.PASSWORD_MIN_LENGTH
+      );
+      const passwordMaxLength = validators.maxLength(
+        passwordMaxLengthMessage,
+        validators.PASSWORD_MAX_LENGTH
+      );
 
       const classes = classNames(rootClassName || css.root, className);
+
       const submitInProgress = inProgress;
       const submitDisabled = invalid || submitInProgress;
 
-      const passwordRecoveryLink = (
-        <NamedLink name="PasswordRecoveryPage" className={css.recoveryLink}>
-          <FormattedMessage id="LoginForm.forgotPassword" />
-        </NamedLink>
-      );
-
       return (
-
-          <div className={css.main_con}>
-              
-              <Form className={classes} onSubmit={handleSubmit}>
-
-                <h3 className={css.form_header}>Reset Password</h3>
-                <p className={css.txt_center}>Your password must be at least 8 characters long</p>
-               
-                  <div className={css.defaultUserFields}>
-
-
-                      <FieldPasswordInput
-                        setPassword={setPassword}
-                        label="Password"
-                      />
-
-                      {/* <FieldPasswordInput
-                        setPassword={setPassword}
-                        label="Confirm password"
-                      /> */}
-
-                      
-                      <div className={css.bottomWrapper}>
-                        
-                        <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
-                          <FormattedMessage id="LoginForm.logIn" />
-                        </PrimaryButton>
-                      </div>
-
-                  </div>
-
-                
-               
-                 
-              </Form>
-            </div>
-
-
+        <Form className={classes} onSubmit={handleSubmit}>
+          <FieldTextInput
+            className={css.password}
+            type="password"
+            id={formId ? `${formId}.password` : 'password'}
+            name="password"
+            autoComplete="new-password"
+            label={passwordLabel}
+            placeholder={passwordPlaceholder}
+            validate={validators.composeValidators(
+              passwordRequired,
+              passwordMinLength,
+              passwordMaxLength
+            )}
+          />
+          <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
+            <FormattedMessage id="PasswordResetForm.submitButtonText" />
+          </PrimaryButton>
+        </Form>
       );
     }}
   />
 );
-
-/**
- * A component that renders the login form.
- *
- * @component
- * @param {Object} props
- * @param {string} props.rootClassName - The root class name that overrides the default class css.root
- * @param {string} props.className - The class that extends the root class
- * @param {string} props.formId - The form id
- * @param {boolean} props.inProgress - Whether the form is in progress
- * @returns {JSX.Element}
- */
-const PasswordResetForm = props => {
-  const intl = useIntl();
-  return <PasswordResetFormComponent {...props} intl={intl} />;
-};
 
 export default PasswordResetForm;

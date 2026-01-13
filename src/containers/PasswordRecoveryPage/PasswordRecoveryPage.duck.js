@@ -28,7 +28,8 @@ const initialState = {
   sendSmsError:null,
   sendSmsInProgress:false,
   phoneNumber:null,
-  token:null
+  token:null,
+  sendSmsSuccess:false
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -67,11 +68,11 @@ export default function reducer(state = initialState, action = {}) {
       return { ...state, recoveryError: null };
 
     case SEND_SMS_REQUEST:
-      return { ...state, sendSmsError: null, sendSmsInProgress:true };
+      return { ...state, sendSmsError: null, sendSmsInProgress:true,sendSmsSuccess:false };
     case SEND_SMS_SUCCESS:
-      return { ...state, phoneNumber: payload.data.phoneNumber,token:payload.data.token, sendSmsInProgress:false };
+      return { ...state, phoneNumber: payload.data.phoneNumber,token:payload.data.token, sendSmsInProgress:false,sendSmsSuccess:true };
     case SEND_SMS_ERROR:
-      return { ...state, phoneNumber: null, sendSmsError: payload,sendSmsInProgress:false };
+      return { ...state, phoneNumber: null, sendSmsError: payload,sendSmsInProgress:false ,sendSmsSuccess:false};
 
     default:
       return state;
@@ -100,8 +101,18 @@ export const clearPasswordRecoveryError = () => ({ type: CLEAR_RECOVERY_ERROR })
 // ================ Thunks ================ //
 
 export const recoverPassword = email => (dispatch, getState, sdk) => {
+  dispatch(passwordRecoveryRequest());
+
+  return sdk.passwordReset
+    .request({ email })
+    .then(() => dispatch(passwordRecoverySuccess(email)))
+    .catch(e => dispatch(passwordRecoveryError(storableError(e), email)));
+};
+
+export const sendRecoverPasswordSms = email => (dispatch, getState, sdk) => {
   dispatch(sendSmsRequest());
   const otp = generateOTP(6);
+  console.log("Calling sms");
   localStorage.setItem("otp",otp);
   sendSms({email,otp})
   .then(response => {
@@ -113,6 +124,7 @@ export const recoverPassword = email => (dispatch, getState, sdk) => {
           // res.data
           const tokenId = res.data.data.id.uuid;
 
+          dispatch(passwordRecoveryRequest());
           dispatch(sendSmsSuccess({phoneNumber:response.data.data,token:tokenId}));
 
         })

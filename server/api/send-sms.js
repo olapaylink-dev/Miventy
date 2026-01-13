@@ -38,7 +38,7 @@ const {email,otp} = req.body;
 integrationSdk.users.show({email: email}).then(resp => {
   // res.data contains the response data
   const phone = resp?.data?.data?.attributes?.profile?.protectedData?.phoneNumber;
-  console.log(phone,"      ==========")
+  console.log(phone,"      ==========");
   client.messages
   .create({
     body: `Your authentication code is ${otp}`,

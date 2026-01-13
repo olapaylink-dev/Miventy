@@ -35,7 +35,6 @@ const declineOffer = require('./api/decline-offer');
 const router = express.Router();
 
 // ================ API router middleware: ================ //
-
 // Parse Transit body first to a string
 router.use(
   bodyParser.text({

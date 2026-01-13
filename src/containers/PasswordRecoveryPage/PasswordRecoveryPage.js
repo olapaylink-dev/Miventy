@@ -28,22 +28,25 @@ import {
   retypePasswordRecoveryEmail,
   clearPasswordRecoveryError,
   resetPassword,
+  sendRecoverPasswordSms,
 } from './PasswordRecoveryPage.duck';
 import css from './PasswordRecoveryPage.module.css';
 import VerificationCodeForm from '../DashboardPage/VerificationCodeForm';
 
 const PasswordRecovery = props => {
-  const { initialEmail, onChange, onSubmitEmail, recoveryInProgress, recoveryError ,
+  const { initialEmail, onChange, onSubmitEmail,onSendRecoverySms, recoveryInProgress, recoveryError ,
     phoneNumber,
     sendSmsInProgress,
+    sendSmsSuccess,
     onResetPassword,
-    token
+    token,
   } = props;
+
+  console.log("ooooooooooooooooooooooooooooooooooooooo")
 
   const [showOtpForm,setShowOtpForm] = useState(false);
   const [phoneNo,setPhoneNo] = useState("");
   const [email,setEmail] = useState("");
-
 
   useEffect(()=>{
     if(phoneNumber !== null && phoneNumber !== undefined){
@@ -55,11 +58,17 @@ const PasswordRecovery = props => {
     }
   },[phoneNumber])
 
+  useEffect(()=>{
+    if(sendSmsSuccess){
+      console.log("SMS sent =======================")
+    }
+  },[sendSmsSuccess])
+
 
   return (
         <>
-        {"phoneNumber"?
-            <VerificationCodeForm phoneNumber={phoneNo} onResetPassword={onResetPassword} email={email} token={token} />
+        {phoneNumber?
+            <VerificationCodeForm phoneNumber={phoneNo} onResetPassword={onResetPassword} email={email} token={token} onSubmitEmail={onSubmitEmail} />
             :
             <div className={css.submitEmailContent}>
           
@@ -72,7 +81,8 @@ const PasswordRecovery = props => {
             <PasswordRecoveryForm
               inProgress={recoveryInProgress}
               onChange={onChange}
-              onSubmit={values => {onSubmitEmail(values.email); setEmail(values.email);}}
+              //onSubmit={values => {onSubmitEmail(values.email); setEmail(values.email);}}
+              onSubmit={values => {onSendRecoverySms(values.email); setEmail(values.email);}}
               initialValues={{ email: initialEmail }}
               recoveryError={recoveryError}
               phoneNumber={phoneNumber}
@@ -193,8 +203,10 @@ export const PasswordRecoveryPageComponent = props => {
     onRetypeEmail,
     sendSmsError,
     sendSmsInProgress,
+    sendSmsSuccess,
     phoneNumber,
     onResetPassword,
+    onSendRecoverySms,
     token
   } = props;
   const alreadyrequested = submittedEmail || passwordRequested;
@@ -208,7 +220,9 @@ export const PasswordRecoveryPageComponent = props => {
       phoneNumber={phoneNumber}
       token={token}
       sendSmsInProgress={sendSmsInProgress}
+      sendSmsSuccess={sendSmsSuccess}
       onResetPassword={onResetPassword}
+      onSendRecoverySms={onSendRecoverySms}
     />
   );
 
@@ -256,6 +270,7 @@ const mapStateToProps = state => {
     passwordRequested,
     sendSmsError,
     sendSmsInProgress,
+    sendSmsSuccess,
     phoneNumber,
     token
   } = state.PasswordRecoveryPage;
@@ -268,6 +283,7 @@ const mapStateToProps = state => {
     passwordRequested,
     sendSmsError,
     sendSmsInProgress,
+    sendSmsSuccess,
     phoneNumber,
     token
   };
@@ -276,6 +292,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onChange: () => dispatch(clearPasswordRecoveryError()),
   onSubmitEmail: email => dispatch(recoverPassword(email)),
+  onSendRecoverySms: email => dispatch(sendRecoverPasswordSms(email)),
   onRetypeEmail: () => dispatch(retypePasswordRecoveryEmail()),
   onResetPassword: (email,pw,token)=> dispatch(resetPassword(email,token,pw))
 });
