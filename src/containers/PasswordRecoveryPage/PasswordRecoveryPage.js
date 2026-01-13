@@ -297,7 +297,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const PasswordRecoveryPage = compose(
-   withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps
