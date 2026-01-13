@@ -1,24 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form as FinalForm } from 'react-final-form';
 import classNames from 'classnames';
 
 import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 import * as validators from '../../../util/validators';
-
-import { Form, PrimaryButton, FieldTextInput } from '../../../components';
+import { Form, PrimaryButton, FieldTextInput, NamedLink, FieldCheckbox } from '../../../components';
 
 import css from './PasswordResetForm.module.css';
+import FieldPasswordInput from '../../../components/FieldTextInput/FieldPasswordInput';
 
-/**
- * The reset-password form.
- *
- * @param {Object} props
- * @param {string} [props.formId] - The form ID
- * @param {string} [props.rootClassName] - Custom class that overrides the default class for the root element
- * @param {string} [props.className] - Custom class that extends the default class for the root element
- * @param {boolean} [props.inProgress] - Whether the form is in progress
- * @returns {JSX.Element} Reset-password form component
- */
 const PasswordResetForm = props => (
   <FinalForm
     {...props}

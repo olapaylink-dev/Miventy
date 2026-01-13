@@ -53,7 +53,6 @@ const ResetFormContent = props => {
   const { handleSubmit, resetPasswordInProgress, resetPasswordError } = props;
   return (
     <div className={css.content}>
-      
       <Heading as="h1" rootClassName={css.modalTitle}  className={css.header_title}>
         <FormattedMessage id="PasswordResetPage.mainHeading" />
       </Heading>
@@ -122,6 +121,7 @@ export const PasswordResetPageComponent = props => {
   const handleSubmit = values => {
     const { password } = values;
     setState({ newPasswordSubmitted: false });
+    console.log(token,"     zzzzzzzzzzzzzzzzzzzz")
     onSubmitPassword(email, token, password).then(() => {
       setState({ newPasswordSubmitted: true });
     });

@@ -32,20 +32,12 @@ const PasswordResetForm = props => (
         handleSubmit,
         inProgress = false,
         invalid,
-        values,
-        changePasswordError
       } = fieldRenderProps;
-
-      const [submittedValues,setSubmittedValues] = useState({});
-      const [pw2,setPw2] = useState("");
 
       const intl = useIntl();
       // password
       const passwordLabel = intl.formatMessage({
         id: 'PasswordResetForm.passwordLabel',
-      });
-       const confirmPasswordLabel = intl.formatMessage({
-        id: 'PasswordChangeForm.confirmPasswordLabel',
       });
       const passwordPlaceholder = intl.formatMessage({
         id: 'PasswordResetForm.passwordPlaceholder',
@@ -69,22 +61,6 @@ const PasswordResetForm = props => (
           maxLength: validators.PASSWORD_MAX_LENGTH,
         }
       );
-
-                // New password
-      const newPasswordLabel = intl.formatMessage({
-        id: 'PasswordChangeForm.newPasswordLabel',
-      });
-
-      const newPasswordPlaceholder = intl.formatMessage({
-            id: 'PasswordChangeForm.newPasswordPlaceholder',
-          });
-      const newPasswordRequiredMessage = intl.formatMessage({
-        id: 'PasswordChangeForm.newPasswordRequired',
-      });
-      const newPasswordRequired = validators.requiredStringNoTrim(newPasswordRequiredMessage);
-
-
-
       const passwordRequired = validators.requiredStringNoTrim(passwordRequiredMessage);
       const passwordMinLength = validators.minLength(
         passwordMinLengthMessage,
@@ -95,74 +71,27 @@ const PasswordResetForm = props => (
         validators.PASSWORD_MAX_LENGTH
       );
 
-      useEffect(()=>{
-
-      },[pw2]);
-
       const classes = classNames(rootClassName || css.root, className);
 
       const submitInProgress = inProgress;
       const submitDisabled = invalid || submitInProgress;
 
-       const handlePassChanged = e =>{
-        setPw1(e.target.value);
-        console.log(e.target.value);
-        console.log(pw1);
-      }
-
-      const handlePass2Changed = e =>{
-        setPw2(e.target.value);
-        console.log(e.target.value);
-        console.log(pw1);
-      }
-
-      const passwordTouched = values.currentPassword && values.newPassword === values.currentPassword;
-
-      const passwordErrorText = "Password must match";
-
-      const handleCheckPasswordMatch = e=>{
-        console.log(e.target.value);
-      }
-
-
       return (
-        <Form className={classes} onSubmit={e=>{
-          setSubmittedValues(values);
-          handleSubmit(e);
-        }
-          }>
-
-           <FieldTextInput
-              className={css.password}
-              type="password"
-              id={formId ? `${formId}.newPassword` : 'newPassword'}
-              name="newPassword"
-              autoComplete="new-password"
-              label={newPasswordLabel}
-              placeholder={newPasswordPlaceholder}
-              validate={validators.composeValidators(
-                newPasswordRequired,
-                passwordMinLength,
-                passwordMaxLength
-              )}
-            />
-
-            <FieldTextInput
-                className={css.password}
-                type="password"
-                id="currentPassword"
-                name="currentPassword"
-                autoComplete="current-password"
-                label={"Confirm password"}
-                placeholder={passwordPlaceholder}
-                validate={validators.composeValidators(
-                  passwordRequired,
-                  passwordMinLength,
-                  passwordMaxLength
-                )}
-                customErrorText={passwordTouched ? null : passwordErrorText}
-              />
-
+        <Form className={classes} onSubmit={handleSubmit}>
+          <FieldTextInput
+            className={css.password}
+            type="password"
+            id={formId ? `${formId}.password` : 'password'}
+            name="password"
+            autoComplete="new-password"
+            label={passwordLabel}
+            placeholder={passwordPlaceholder}
+            validate={validators.composeValidators(
+              passwordRequired,
+              passwordMinLength,
+              passwordMaxLength
+            )}
+          />
           <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
             <FormattedMessage id="PasswordResetForm.submitButtonText" />
           </PrimaryButton>
