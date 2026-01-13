@@ -12,11 +12,12 @@ export default function RadioSelect(props){
         selectedOption,
         setSelectedPrice,
         parentClicked,
-        setParentClicked
+        setParentClicked,
+        show,
+        setShow
     } = props;
     const [currOption,setCurrOption] = useState("");
     const [selectedSortOption,setSelectedSortOption] = useState("");
-    const [show,setShow] = useState(false);
 
     useEffect(()=>{
             if(parentClicked){

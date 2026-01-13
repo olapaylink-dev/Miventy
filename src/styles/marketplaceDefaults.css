@@ -1327,6 +1327,7 @@ textarea {
     padding: var(--modalPaddingMedium);
     margin-top: 12.5vh;
     margin-bottom: 12.5vh;
+    gap:20px;
    
   }
 }
@@ -1416,6 +1417,7 @@ textarea {
   @media (--viewportMedium) {
     line-height: 16px;
     margin: 0;
+    text-align: center;
   }
 }
 

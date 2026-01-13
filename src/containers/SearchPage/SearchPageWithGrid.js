@@ -97,14 +97,17 @@ export class SearchPageComponent extends Component {
       showMenu:false,
       showTopBoxMenu:false,
       showExpandedSearchBar:false,
-      //parentClicked:false,
+      parentClicked:false,
       showPopups:false,
       showTopBoxMenu:false,
       showList1:false,
       showList2:false,
       selectedPrice:"",
       selectedLocation:"",
-      selectedOption:""
+      selectedOption:"",
+      showBestRatedFilterList:false,
+      showLocationFilterList:false,
+      showPriceFilterList:false
     };
 
     this.onOpenMobileModal = this.onOpenMobileModal.bind(this);
@@ -118,6 +121,10 @@ export class SearchPageComponent extends Component {
     this.setSelectedOption = this.setSelectedOption.bind(this);
     this.setSelectedLocation = this.setSelectedLocation.bind(this);
     this.setSelectedPrice = this.setSelectedPrice.bind(this);
+    this.setShowBestRatedFilterList = this.setShowBestRatedFilterList.bind(this);
+    this.setShowLocationFilterList = this.setShowLocationFilterList.bind(this);
+    this.setShowPriceFilterList = this.setShowPriceFilterList.bind(this);
+    this.setParentClicked = this.setParentClicked.bind(this);
 
     // Filter functions
     this.resetAll = this.resetAll.bind(this);
@@ -192,6 +199,41 @@ export class SearchPageComponent extends Component {
       selectedPrice:val
     })
   }
+
+   setShowBestRatedFilterList(){
+    this.setState({
+      showBestRatedFilterList:true,
+      showLocationFilterList:false,
+      showPriceFilterList:false
+    })
+  }
+
+   setShowLocationFilterList(){
+    this.setState({
+      showBestRatedFilterList:false,
+      showLocationFilterList:true,
+      showPriceFilterList:false
+    })
+  }
+
+  setShowPriceFilterList(){
+    this.setState({
+      showBestRatedFilterList:false,
+      showLocationFilterList:false,
+      showPriceFilterList:true
+    })
+  }
+
+  setParentClicked(){
+    console.log("Calling --------")
+      this.setState(
+        {
+          showBestRatedFilterList:false,
+          showLocationFilterList:false,
+          showPriceFilterList:false
+        }
+      )
+    }
 
   // Reset all filter query parameters
   resetAll(e) {
@@ -296,8 +338,8 @@ export class SearchPageComponent extends Component {
       routeConfiguration,
       config,
       history,
-      parentClicked,
-      setParentClicked
+      // parentClicked,
+      // setParentClicked
     } = this.props;
 
     const { listingFields } = config?.listing || {};
@@ -542,7 +584,7 @@ export class SearchPageComponent extends Component {
     }
 
     return (
-      <div>
+      <div onClick={this.setParentClicked}>
           <Page
           
           scrollingDisabled={scrollingDisabled}
@@ -559,8 +601,8 @@ export class SearchPageComponent extends Component {
             showExpandedSearchBar={this.state.showExpandedSearchBar}
             setShowExpandedSearchBar={setShowExpandedSearchBar}
             handleChangeShowMenu={this.handleChangeShowMenu}
-            parentClicked={parentClicked}
-            setParentClicked={setParentClicked}
+            parentClicked={this.state.parentClicked}
+            setParentClicked={this.setParentClicked}
             setShowTopBoxMenu={this.setShowTopBoxMenu}
             showTopBoxMenu={this.state.showTopBoxMenu}
             showPopups={this.state.showPopups}
@@ -592,20 +634,26 @@ export class SearchPageComponent extends Component {
 
               <div className={css.drd_con}>
                 <RadioSelect
-                  parentClicked={parentClicked}
-                  setParentClicked={setParentClicked}
+                  parentClicked={this.state.parentClicked}
+                  setParentClicked={this.setParentClicked}
+                  show={ this.state.showBestRatedFilterList}
+                  setShow={this.setShowBestRatedFilterList}
                 />
                 <LocationSelect
-                  parentClicked={parentClicked}
-                  setParentClicked={setParentClicked}
+                  parentClicked={this.state.parentClicked}
+                  setParentClicked={this.setParentClicked}
+                  show={ this.state.showLocationFilterList}
+                  setShow={this.setShowLocationFilterList}
                 />
                 <PriceSelect history={history}
                   selectedPrice={this.state.selectedPrice}
                   setSelectedPrice={this.setSelectedPrice}
                   selectedLocation={this.state.selectedLocation}
                   selectedOption={this.state.selectedOption}
-                  parentClicked={parentClicked}
-                  setParentClicked={setParentClicked}
+                  parentClicked={this.state.parentClicked}
+                  setParentClicked={this.setParentClicked}
+                  show={ this.state.showPriceFilterList}
+                  setShow={this.setShowPriceFilterList}
                 />
               </div>
               <div className={css.showing}>Showing 200+ results</div>

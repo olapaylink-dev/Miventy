@@ -1519,6 +1519,10 @@ padding: 0px;
   justify-content: flex-end;
 }
 
+.bg_red{
+  fill: red;
+}
+
 @media only screen and (max-width: 1440px) {
    
 }

@@ -133,7 +133,7 @@ const SignupFormComponent = props => (
               <div className={css.flex_row_btn}>
                 
                 {socialGoogleBtns}
-                <button className={css.social_btn}>
+                {/* <button className={css.social_btn}>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g id="apple-color-svgrepo-com 1">
                     <g id="Icons">
@@ -145,7 +145,7 @@ const SignupFormComponent = props => (
                   </svg>
 
                   <span className={css.show_labe}>Sign in with Apple</span>
-                </button>
+                </button> */}
                 {socialBtns}
                 
               </div>
