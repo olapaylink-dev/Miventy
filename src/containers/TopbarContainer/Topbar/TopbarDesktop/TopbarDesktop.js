@@ -353,15 +353,20 @@ const TopbarDesktop = props => {
       </div>
       <div className={isSearchPage? css.other_menu_search:css.other_menu}>
 
-        {userType === "customer"?
-          <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
-            My Bookings
-          </NamedLink>
-        :
-          <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
-            Bookings
-          </NamedLink>
-        }
+      {isAuthenticated?
+        <>
+          {userType === "customer"?
+                    <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
+                      My Bookings
+                    </NamedLink>
+                  :
+                    <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
+                      Bookings
+                    </NamedLink>
+                  }
+        </>
+      :""}
+        
         
         
         <div className={css.trans_text}>
