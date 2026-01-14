@@ -67,6 +67,8 @@ import { stripeCustomer } from '../PaymentMethodsPage/PaymentMethodsPage.duck';
 import { setDailyPayout } from '../../util/api';
 import VerificationCodeForm from './VerificationCodeForm';
 import { changePassword, resetPassword } from '../PasswordChangePage/PasswordChangePage.duck';
+import NotificationUpdate from '../DashboardPage/NotificationUpdated';
+import RemoveAccountDialogue from '../DashboardPage/RemoveAccountDialogue';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -872,6 +874,17 @@ const [currentListing,setCurrentListing] = useState({});
     },
   });
 
+  const handleSaveNotificationSettings = async (emailNotificationEnabled,pushNotificationEnabled)=>{
+    const updatedValues = 
+    {publicData: {
+          enableEmailNotification:emailNotificationEnabled,
+          enablePushNotification:pushNotificationEnabled
+        }}
+
+    await onUpdateProfile(updatedValues);
+    
+  }
+
   return (
     <Page title={title} scrollingDisabled={scrollingDisabled}>
       <LayoutSingleColumn
@@ -1340,7 +1353,11 @@ const [currentListing,setCurrentListing] = useState({});
                     :""}
 
                     {currentTab === "notificationSettings"?
-                      <NotificationSetting setShowNotificationUpdated={setShowNotificationUpdated}/>
+                      <NotificationSetting 
+                        currentUser={currentUser}
+                        setShowNotificationUpdated={setShowNotificationUpdated}
+                        saveNotificationSettings={handleSaveNotificationSettings}
+                      />
                     :""}
 
                     {currentTab === "listings"?
@@ -1926,7 +1943,7 @@ const [currentListing,setCurrentListing] = useState({});
     :""}
 
     {activePayoutOption === "SuccessfulApplePay"?
-          <ApplePayCompleteForm 
+          <ApplePayCompleteForm
             onSubmit={handleSubmit} 
             handleClose={handleClose}
             handleContinue={handleContinue}
