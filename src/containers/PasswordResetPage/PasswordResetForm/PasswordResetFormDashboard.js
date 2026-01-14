@@ -134,6 +134,12 @@ const PasswordResetFormDashboard = props => (
             <h1 className={css.header}>Password settings</h1>
             <span>Change your password</span>
 
+
+            <input 
+              type='password' 
+              
+            />
+
             <FieldTextInput
                 className={css.password}
                 type="password"
@@ -165,7 +171,7 @@ const PasswordResetFormDashboard = props => (
               )}
             />
 
-            {/* <FieldTextInput
+            <FieldTextInput
                 className={css.password}
                 type="password"
                 id="confirmPassword"
@@ -179,7 +185,7 @@ const PasswordResetFormDashboard = props => (
                   passwordMaxLength
                 )}
                 customErrorText={passwordTouched ? null : passwordErrorText}
-              /> */}
+              />
 
           <button className={css.submit_btn} type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
             Save

@@ -6,7 +6,7 @@ import { FormattedMessage, useIntl } from '../../util/reactIntl';
 import { propTypes } from '../../util/types';
 import { isScrollingDisabled } from '../../ducks/ui.duck';
 
-import { Page, UserNav, H3, LayoutSideNavigation } from '../../components';
+import { Page, UserNav, H3, LayoutSideNavigation, LayoutSingleColumn } from '../../components';
 
 import TopbarContainer from '../../containers/TopbarContainer/TopbarContainer';
 import FooterContainer from '../../containers/FooterContainer/FooterContainer';
@@ -65,30 +65,12 @@ export const PasswordChangePageComponent = props => {
   const title = intl.formatMessage({ id: 'PasswordChangePage.title' });
 
   return (
-    <Page title={title} scrollingDisabled={scrollingDisabled}>
-      <LayoutSideNavigation
-        topbar={
-          <>
-            <TopbarContainer
-              desktopClassName={css.desktopTopbar}
-              mobileClassName={css.mobileTopbar}
-            />
-            <UserNav currentPage="PasswordChangePage" />
-          </>
-        }
-        sideNav={null}
-        useAccountSettingsNav
-        currentPage="PasswordChangePage"
-        footer={<FooterContainer />}
-      >
         <div className={css.content}>
           <H3 as="h1">
             <FormattedMessage id="PasswordChangePage.heading" />
           </H3>
           {changePasswordForm}
         </div>
-      </LayoutSideNavigation>
-    </Page>
   );
 };
 

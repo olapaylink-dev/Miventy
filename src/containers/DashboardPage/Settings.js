@@ -1,6 +1,7 @@
 import React from "react";
 import css from './Settings.module.css';
-import PasswordResetFormDashboard from "../PasswordResetPage/PasswordResetForm/PasswordResetFormDashboard";
+import PasswordResetFormDashboard from '../PasswordResetPage/PasswordResetForm/PasswordResetFormDashboard';
+import PasswordChangePage from "../PasswordChangePage/PasswordChangePage";
 
 const Settings = props=>{
     const {setShowVerifyCodeSettings}= props;
@@ -8,9 +9,11 @@ const Settings = props=>{
         console.log(values,"    99999999999999999999999999999999");
         setShowVerifyCodeSettings(true);
     }
+
+    
     return (
         <div className={css.main_con}>
-            <PasswordResetFormDashboard onSubmit={handleSubmit} />
+            <PasswordChangePage/>
             <div className={css.flex_col}>
                 <h1 className={css.header}>
                     Verifications

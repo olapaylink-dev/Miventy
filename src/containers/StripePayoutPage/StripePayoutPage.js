@@ -1281,7 +1281,9 @@ const [currentListing,setCurrentListing] = useState({});
                     :""}
 
                     {currentTab === "settings"?
-                      <Settings setShowVerifyCodeSettings={setShowVerifyCodeSettings}/>
+                      <Settings 
+                        setShowVerifyCodeSettings={setShowVerifyCodeSettings}
+                      />
                     :""}
 
                     {currentTab === "paymentSettings"?
