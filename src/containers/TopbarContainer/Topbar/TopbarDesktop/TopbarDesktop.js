@@ -375,7 +375,7 @@ const TopbarDesktop = props => {
         </div>
 
        
-          {isAuthenticated?
+          {/* {isAuthenticated?
             <div className={css.flex_col}>
               <div className={css.center} onClick={handleShowNotiMenu}>
                 <svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -407,7 +407,7 @@ const TopbarDesktop = props => {
 
             </div>
             
-          :null}
+          :null} */}
 
           {isAuthenticated?
             <div className={css.flex_col}>

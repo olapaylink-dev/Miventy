@@ -549,7 +549,7 @@ text-transform: uppercase;
 .no_spacing{
     padding: 0;
     margin: 0;
-    font-size: 10px;
+    font-size: 12px;
 }
 .radio{
     accent-color: #F56630;
