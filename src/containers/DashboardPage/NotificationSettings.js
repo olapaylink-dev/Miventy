@@ -4,7 +4,7 @@ import { Switch } from "@mui/material";
 
 const NotificationSetting = props=>{
     const {setShowNotificationUpdated,saveNotificationSettings,currentUser}= props;
-    const {enableEmailNotification,enablePushNotification} = currentUser?.attributes?.profile?.publicData;
+    const {enableEmailNotification,enablePushNotification} = currentUser?.attributes?.profile?.publicData || {};
 
     const [emailNotificationEnabled,setEmailNotificationEnabled] = useState(enableEmailNotification);
     const [pushNotificationEnabled,setPushNotificationEnabled] = useState(enablePushNotification);
@@ -33,7 +33,7 @@ const NotificationSetting = props=>{
                     />
                 </div>
                  <div className={css.flex_row}>
-                    
+
                     <h2 className={css.sub_header}>Mobile push notifications</h2>
                     <Switch color="warning" 
                         onChange={e=>setPushNotificationEnabled(e.target.checked)} 

@@ -964,6 +964,17 @@ export const DashboardPageComponent = props => {
       console
      history.push("inbox");
     }
+
+    const handleSaveNotificationSettings = async (emailNotificationEnabled,pushNotificationEnabled)=>{
+    const updatedValues = 
+    {publicData: {
+          enableEmailNotification:emailNotificationEnabled,
+          enablePushNotification:pushNotificationEnabled
+        }}
+
+    await onUpdateProfile(updatedValues);
+    
+  }
  
   // This is rendering normal profile page (not preview for pending-approval)
   return (
@@ -1348,8 +1359,12 @@ export const DashboardPageComponent = props => {
             :""}
 
             {currentTab === "notificationSettings"?
-              <NotificationSetting setShowNotificationUpdated={setShowNotificationUpdated}/>
-            :""}
+                                  <NotificationSetting 
+                                    currentUser={currentUser}
+                                    setShowNotificationUpdated={setShowNotificationUpdated}
+                                    saveNotificationSettings={handleSaveNotificationSettings}
+                                  />
+                                :""}
 
              {currentTab === "listings"?
                 <div >
