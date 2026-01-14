@@ -176,11 +176,25 @@ const Earnings = props=>{
                         </tr>
                         {transactions.map((itm,key)=>{
                             const {customer,attributes,listing} = itm;
-                            const {payoutTotal={},lastTransitionedAt} = attributes;
+                            const {payoutTotal={},lastTransitionedAt,transitions} = attributes;
                             const amount = (payoutTotal?.amount/100) || 0;
                             const {displayName} = customer?.attributes?.profile;
                             const listingType = listing.attributes.publicData.listingType;
                             const transactionState = itm?.attributes?.state;
+                            const checkIfPaid = (trx)=>{
+                                let paid = false;
+                                    transitions.map((i,k)=>{
+                                    //console.log(i.transition,"    vvvvvvvvvvv111111")
+                                    if(i.transition === "transition/confirm-payment"){
+                                        paid = true;
+                                    }
+                                })
+                                //console.log(trx?.attributes?.state,"  bbbnnnnnnmmmmmm2222222222222");
+                                return paid;
+                            }
+
+                            const isPaidFor = checkIfPaid(itm);
+                            if(!isPaidFor)return "";
                             
                             return (
                                 <tr>
