@@ -25,12 +25,15 @@ const VerificationCodeForm = props=>{
     const param = new URLSearchParams(urlSearchString);
     const token = param.get('t');
 
+    const [otpEqual,setOtpEqual] = useState(false);
+
     console.log(token," ----------2222222------------")
 
     const handleVerify = e=>{
         const savedOtp = localStorage.getItem("otp");
         if(savedOtp === otp){
             console.log("  Otp is correct ooooo  ",otp)
+            setOtpEqual(true);
             onSubmitEmail(email);
         }
         console.log(savedOtp,"uuuuuuuooooooooooo")
@@ -66,7 +69,7 @@ const VerificationCodeForm = props=>{
                         setReveal={setReveal}
                         setPassword={setPassword}
                     />
-                :showEmailConfirmedDialog?
+                :showEmailConfirmedDialog && otpEqual?
                 <div className={css.container_2}>
                     <div className={css.flex_row_btw}>
                         <div className={css.flex_row}>
