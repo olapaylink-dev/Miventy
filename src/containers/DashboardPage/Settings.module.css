@@ -16,6 +16,16 @@
     width: 100%;
     align-items: flex-end;
 }
+
+.flex_grid{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    gap: 20px;
+}
+.select_country{
+    height: 50px;
+    padding: 20px;
+}
 .flex_col{
     display: flex;
     flex-direction: column;

@@ -1283,6 +1283,8 @@ const [currentListing,setCurrentListing] = useState({});
                     {currentTab === "settings"?
                       <Settings 
                         setShowVerifyCodeSettings={setShowVerifyCodeSettings}
+                        onUpdateProfile={onUpdateProfile}
+                        currentUser={currentUser}
                       />
                     :""}
 

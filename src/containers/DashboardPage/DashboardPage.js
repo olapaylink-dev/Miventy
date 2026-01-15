@@ -1351,8 +1351,14 @@ export const DashboardPageComponent = props => {
             :""}
 
              {currentTab === "settings"?
-              <Settings setShowVerifyCodeSettings={setShowVerifyCodeSettings}/>
+              <Settings 
+                setShowVerifyCodeSettings={setShowVerifyCodeSettings}
+                                      onUpdateProfile={onUpdateProfile}
+                                      currentUser={currentUser}
+              />
             :""}
+
+           
 
             {currentTab === "paymentSettings"?
               <PaymentSetting setShowVerifyCodeSettings={setShowVerifyCodeSettings} setShowRemoveAccount={setShowRemoveAccount}/>
