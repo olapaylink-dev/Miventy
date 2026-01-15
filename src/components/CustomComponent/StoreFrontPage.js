@@ -140,7 +140,15 @@ const StyledRating = styled(Rating)({
                           </svg>
                           <span>Barcelona</span>
                         </div>
-                         <span>Languages: {language.map((i,k)=>`${i}, `)}</span>
+                         <span>Languages: {language.hasOwnProperty("length")?language.map((itm,key)=>{
+                              if(key < language.length-1){
+                                return `${itm}, `
+                              }else{
+                                return `${itm}`
+                              }
+                              
+                              }):language}
+                         </span>
                       </div>
                     </div>
                     <div className={css.flex_col}>

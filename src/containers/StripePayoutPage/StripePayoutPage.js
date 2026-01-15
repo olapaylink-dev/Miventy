@@ -1013,7 +1013,16 @@ const [currentListing,setCurrentListing] = useState({});
 
                                   <span>{businessName || fullName}</span>
                               </div>
-                              <span className={css2.lang}>Languages: {typeof(language) === "string"?language:language.map((itm,key)=>`${itm} `)}</span>
+                              <span className={css2.lang}>
+                                Languages:  {language.hasOwnProperty("length")?language.map((itm,key)=>{
+                                  if(key < language.length-1){
+                                    return `${itm}, `
+                                  }else{
+                                    return `${itm}`
+                                  }
+                                  
+                                  }):language}
+                              </span>
                               <div className={css2.flex_row_btw}>
                                   <div className={css2.flex_row_itm}>
                                       Available

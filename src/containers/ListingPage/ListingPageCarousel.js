@@ -916,7 +916,14 @@ console.log(userListings,"   userListings")
                               </svg>
                               <span>{userLocation}</span>
                             </div>
-                            <span>Languages: {language.hasOwnProperty("length")?language.map((itm,key)=>`${itm}, `):language}</span>
+                            <span>Languages:   {language.hasOwnProperty("length")?language.map((itm,key)=>{
+                              if(key < language.length-1){
+                                return `${itm}, `
+                              }else{
+                                return `${itm}`
+                              }
+                              
+                              }):language}</span>
                           </div>
                           <div className={css.flex_row_3_}>
                             <button className={css.share} onClick={e=>{setShowShareMenus(true);e.preventDefault(); e.stopPropagation();}}>
