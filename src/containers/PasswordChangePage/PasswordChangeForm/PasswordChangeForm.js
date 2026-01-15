@@ -216,17 +216,7 @@ class PasswordChangeForm extends Component {
               </div>
 
               <div className={confirmClasses}>
-                <H4 as="h3" className={css.confirmChangesTitle}>
-                  <FormattedMessage id="PasswordChangeForm.confirmChangesTitle" />
-                </H4>
-                <p className={css.confirmChangesInfo}>
-                  <FormattedMessage id="PasswordChangeForm.confirmChangesInfo" />
-                  <br />
-                  <FormattedMessage
-                    id="PasswordChangeForm.resetPasswordInfo"
-                    values={{ resetPasswordLink }}
-                  />
-                </p>
+                
 
                 <FieldTextInput
                   className={css.password}
@@ -243,6 +233,17 @@ class PasswordChangeForm extends Component {
                   )}
                   customErrorText={passwordTouched ? null : passwordErrorText}
                 />
+                {/* <H4 as="h3" className={css.confirmChangesTitle}>
+                  <FormattedMessage id="PasswordChangeForm.confirmChangesTitle" />
+                </H4> */}
+                <p className={css.confirmChangesInfo}>
+                  <FormattedMessage id="PasswordChangeForm.confirmChangesInfo" />
+                  <br />
+                  <FormattedMessage
+                    id="PasswordChangeForm.resetPasswordInfo"
+                    values={{ resetPasswordLink }}
+                  />
+                </p>
               </div>
               <div className={css.bottomWrapper}>
                 {genericFailure}
