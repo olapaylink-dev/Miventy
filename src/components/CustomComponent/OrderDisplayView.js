@@ -49,18 +49,21 @@ const OrderDisplayView = props =>{
     const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const {items=[]} = cartData  ||  {};
-    const {ItemPrice} = items[0] || {};
+    const {ItemPrice,durationPrice} = items[0] || {};
+    const perHourPrice = durationPrice[0]?.price;
     const isOwn = provider.id.uuid === currentUser.id.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
     const listingId = currentTransaction?.listing?.id?.uuid;
     const slug = currentTransaction?.listing?.attributes?.title;
+    const priceToChangeTo = perHourPrice || ItemPrice;
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
-    console.log("eventLocation  =================",eventLocation);
+    console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
+
 
     //Change the price of the listing
     useEffect(()=>{
-        console.log("changing price eeeeee  ",ItemPrice);
-        onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
+        console.log("changing price eeeeee  ",priceToChangeTo);
+        onChangeListingPrice(listingId, new Money(priceToChangeTo*100,"EUR"));
         //console.log("changing price")
     },[])
 

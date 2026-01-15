@@ -106,7 +106,7 @@ const EnhancedCheckoutPage = props => {
       const {protectedData={}} = trx?.attributes;
       const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
       const {cartData} = cartDat !== undefined?cartDat:{};
-      const {items=[]} = cartData;
+      const {items=[]} = cartData || {};
       const {ItemPrice=""} = items.length > 0 ? items[0] : {};
 
       const getPrice = lineItem =>{
