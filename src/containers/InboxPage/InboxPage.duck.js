@@ -100,7 +100,10 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
       'customer',
       'customer.profileImage',
       'booking',
-      'metaData.offer'
+      'metaData.offer',
+      'stripeCustomer.defaultPaymentMethod',
+      'customer.stripeCustomer',
+      'provider.stripeCustomer'
     ],
     'fields.transaction': [
       'state',
@@ -116,7 +119,11 @@ export const loadData = (params, search) => (dispatch, getState, sdk) => {
       'metaData.offer'
     ],
     'fields.listing': ['title', 'availabilityPlan', 'publicData.listingType'],
-    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned'],
+    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned',
+      'profile.stripeCustomerId',
+      'stripeCustomerId'
+
+    ],
     'fields.image': ['variants.square-small', 'variants.square-small2x'],
     page,
     perPage: INBOX_PAGE_SIZE,
@@ -165,7 +172,6 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
       'customer.profileImage',
       'booking',
       'metaData.offer',
-      'stripeCustomer.defaultPaymentMethod'
     ],
     'fields.transaction': [
       'state',
@@ -181,7 +187,10 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
       'metaData.offer'
     ],
     'fields.listing': ['title', 'availabilityPlan', 'publicData.listingType'],
-    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned'],
+    'fields.user': ['profile.displayName', 'profile.abbreviatedName', 'deleted', 'banned',
+      'profile.stripeCustomerId',
+      'stripeCustomerId'
+    ],
     'fields.image': ['variants.square-small', 'variants.square-small2x'],
     page,
     perPage: INBOX_PAGE_SIZE,

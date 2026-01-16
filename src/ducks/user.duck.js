@@ -293,7 +293,10 @@ export const fetchCurrentUserHasOrders = () => (dispatch, getState, sdk) => {
       'customer',
       'customer.profileImage',
       'booking',
-      'metaData.offer'
+      'metaData.offer',
+      'stripeCustomer.defaultPaymentMethod',
+      'customer.stripeCustomer',
+      'provider.stripeCustomer'
     ],
     'fields.transaction': [
       'state',

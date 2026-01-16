@@ -139,10 +139,14 @@ const EnhancedCheckoutPage = props => {
         return val;
       }
 
+  useEffect(()=>{
+    fetchStripeCustomer();
+  },[])
 
   useEffect(() => {
     
     onInitiateTransaction(trx);
+    
 
     // //console.log("55555555555555555555555555")
     // const initialData = { orderData, listing, transaction };
@@ -202,6 +206,8 @@ const EnhancedCheckoutPage = props => {
     }
 
     if(speculatedTransaction !== null){
+
+      console.log(currentUser,"     ssssssssssssssddddddddddddddddd")
       
       localStorage.setItem("SpeculatedTransaction",JSON.stringify(speculatedTransaction));// used on PaymentMethodResponsePage
       //console.log("speculatedTransaction",speculatedTransaction);

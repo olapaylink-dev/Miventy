@@ -510,13 +510,16 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
           'reviews.author',
           'reviews.subject',
           'metaData',
+          'stripeCustomer.defaultPaymentMethod',
+          'customer.stripeCustomer',
+          'provider.stripeCustomer'
         ],
         ...getImageVariants(config.layout.listingImage),
       },
       { expand: true }
     )
     .then(response => {
-      console.Console.log(response,"    aaaasss")
+      console.Console.log(response,"    aaaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooasss")
       const listingId = listingRelationship(response).id;
       const entities = updatedEntities({}, response.data);
       const listingRef = { id: listingId, type: 'listing' };

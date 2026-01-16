@@ -32,7 +32,7 @@ module.exports = async (req, res)  =>  {
         quantity: 1,
       }],
        payment_intent_data: {
-          on_behalf_of: 'acct_1SfL6F3GrezWFQQk',
+          on_behalf_of: 'acct_1SqEeYKdtfS3Nn99',
           transfer_group: 'ORDER100',
         },
       mode: 'payment',
