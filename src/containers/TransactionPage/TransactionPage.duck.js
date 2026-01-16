@@ -855,30 +855,8 @@ export const acceptOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
 
 export const declineOfferFromCustomer = (trxId,providerId,customerId) => (dispatch, getState, sdk) => {
   dispatch(declineOfferRequest());
-
-  declineOffer({trxId,providerId,customerId})
-  .then(res => {
-      // res.data contains the response data
-      console.log("Offer declined ")
-      dispatch(declineOfferSuccess());
-      
-    });
-
-
-  // sdk.transactions.transition({
-  //   id: trxId,
-  //   transition: "transition/provider-decline",
-  //   params: {
-  //     protectedData:{transactionState:"declined"}
-  //   }
-  // }, {
-  //   expand: true
-  // }).then(res => {
-  //   // res.data contains the response data
-  //   console.log("Offer declined ")
-  //   dispatch(declineOfferSuccess());
-    
-  // });
+  dispatch(declineOfferSuccess());
+  
 };
 
 export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {

@@ -18,6 +18,7 @@ const OfferDisplayView = props =>{
         currentListing,
         setCurrentRequestQuoteTab,
         setShowOffer,
+        showOffer,
         currentTransaction,
         handleCreateProposal,
         setShowQuotationForm,
@@ -26,16 +27,23 @@ const OfferDisplayView = props =>{
         isProvider,
         setShowQuoteAccepted,
         currentOfferInView,
-        setTotal
+        setTotal,
+        onUpdateProfile,
+        onDeclineOfferFromCustomer,
+        setShowSuccessView,
+        setSuccessMessage,
+        declineOfferSuccess
     }=props;
 
     //console.log("Here ======")
 
-    const{offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
+    const{id,offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider={},listing={}} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
+    const declinedTrx = currentUser?.attributes?.profile?.protectedData?.declinedTransaction || [];
+    const isOrderDeclined = declinedTrx.includes(id);
     const {cartData,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
@@ -51,8 +59,25 @@ const OfferDisplayView = props =>{
 
     //console.log("Here ===2222===")
 
-const handleBack = e =>{
-    setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
+    useEffect(()=>{
+            if(declineOfferSuccess){
+               // console.log("Offer declined  =====")
+               if(showOffer){
+                    setShowOffer(false);
+                    setSuccessMessage("You have declined this order!");
+                    setShowSuccessView(true);
+               }
+                
+            }
+        },[declineOfferSuccess])
+
+const handleDeclineOffer = async e =>{
+     const data = 
+    {protectedData: {
+          declinedTransaction:[...declinedTrx,id]
+        }}
+   await onUpdateProfile(data);
+   onDeclineOfferFromCustomer();
 }
 
     return (
@@ -139,14 +164,22 @@ const handleBack = e =>{
                     
                     
                     {!isProvider && !isOwn?
-                        <div className={css.flex_row}>
-                            <button className={css.btn_outline} onClick={handleBack}>
-                                Decline
-                            </button>
-                            <button className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(true); setShowOffer(false)}}>
-                                Accept
-                            </button>
-                        </div>
+                        <>
+                        {isOrderDeclined?
+                            <span className={css.declined_txt}>You have declined this Offer</span>
+                        :
+                            <div className={css.flex_row}>
+                                <button className={css.btn_outline} onClick={handleDeclineOffer}>
+                                    Decline
+                                </button>
+                                <button className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(true); setShowOffer(false)}}>
+                                    Accept
+                                </button>
+                            </div>
+                        }
+                        
+                        </>
+                        
                     :""}
                     
                     

@@ -61,6 +61,7 @@ import MarkOrderAsComplete from '../../components/CustomComponent/MarkOrderAsCom
 import CompleteOrder from '../../components/CustomComponent/CompleteOrder';
 import RatingForm from '../../components/CustomComponent/RatingForm';
 import SuccessView from '../../components/SuccessView/SuccessView';
+import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 // Check if the transaction line-items use booking-related units
 const getUnitLineItem = lineItems => {
@@ -258,7 +259,8 @@ export const InboxPageComponent = props => {
     onHandleOrderReceived,
     onSendProviderReview,
     onSendCustomerReview,
-    onSendReview
+    onSendReview,
+    onUpdateProfile
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -439,6 +441,7 @@ const onSubmitReview = values => {
                 onChangeListingPrice={onChangeListingPrice}
                 setShowSuccessView={setShowSuccessView}
                 setSuccessMessage={setSuccessMessage}
+                onUpdateProfile={onUpdateProfile}
               />
           </div>
         :""}
@@ -447,6 +450,7 @@ const onSubmitReview = values => {
           <div  className={css.overlay}>
               <OfferDisplayView
                 setShowOffer={setShowOffer} 
+                showOffer={showOffer}
                 currentTransaction={currentTransaction}
                 setShowQuotationForm={setShowQuotationForm}
                 onCreateProposal={onCreateProposal}
@@ -455,6 +459,12 @@ const onSubmitReview = values => {
                 setShowQuoteAccepted={setShowQuoteAccepted}
                 currentOfferInView={currentOfferInView}
                 setTotal={setTotal}
+                onUpdateProfile={onUpdateProfile}
+                setShowSuccessView={setShowSuccessView}
+                setSuccessMessage={setSuccessMessage}
+                onDeclineOfferFromCustomer={onDeclineOfferFromCustomer}
+                declineOfferError={declineOfferError}
+                declineOfferSuccess={declineOfferSuccess}
               />
           </div>
         :""}
@@ -575,12 +585,13 @@ const mapDispatchToProps = dispatch => ({
   onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer)),
   onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price)),
   onAcceptOfferFromCustomer:(trxId) =>dispatch(acceptOfferFromCustomer(trxId)),
-  onDeclineOfferFromCustomer:(trxId,providerId,customerId) =>dispatch(declineOfferFromCustomer(trxId,providerId,customerId)),
+  onDeclineOfferFromCustomer:() =>dispatch(declineOfferFromCustomer()),
   onHandleOrderDelivered:(trxId) =>dispatch(setOrderDelivered(trxId)),
   onHandleOrderReceived:(trxId) =>dispatch(setOrderReceived(trxId)),
   onSendProviderReview:(data) =>dispatch(sendReviewByProvider(data)),
   onSendCustomerReview:(trxId) =>dispatch(sendReview(trxId)),
   onSendReview: (tx, transitionOptions, params, config) => dispatch(sendReview(tx, transitionOptions, params, config)),
+  onUpdateProfile:(data)=>dispatch(updateProfile(data))
 });
 
 

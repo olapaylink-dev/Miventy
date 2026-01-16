@@ -40,7 +40,8 @@ const OrderDisplayView = props =>{
         setShowQuoteAccepted,
         onChangeListingPrice,
         setShowSuccessView,
-        setSuccessMessage
+        setSuccessMessage,
+        onUpdateProfile
     }=props;
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
@@ -48,7 +49,8 @@ const OrderDisplayView = props =>{
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
-    const {items=[]} = cartData  ||  {};
+    console.log("cartData  =======PPPPPPPPPPPPP==========",cartData);
+    const {items=[],id} = cartData  ||  {};
     const {ItemPrice,durationPrice} = items[0] || {};
     const perHourPrice = durationPrice[0]?.price;
     const isOwn = provider.id.uuid === currentUser.id.uuid;
@@ -56,6 +58,8 @@ const OrderDisplayView = props =>{
     const listingId = currentTransaction?.listing?.id?.uuid;
     const slug = currentTransaction?.listing?.attributes?.title;
     const priceToChangeTo = perHourPrice || ItemPrice;
+    const declinedTrx = currentUser?.attributes?.profile?.protectedData?.declinedTransaction || [];
+    const isOrderDeclined = declinedTrx.includes(id);
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
     console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
 
@@ -92,6 +96,7 @@ const OrderDisplayView = props =>{
         }
     },[declineOfferSuccess])
 
+   
     const handleBack = e =>{
         setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
     }
@@ -107,6 +112,15 @@ const OrderDisplayView = props =>{
     }
 
     const isPaid = checkIfPaid(currentTransaction);
+
+    const handleDeclineOffer = async ()=>{
+        const data = 
+        {protectedData: {
+            declinedTransaction:[...declinedTrx,id]
+            }}
+        await onUpdateProfile(data);
+        onDeclineOfferFromCustomer();
+    }
 
     return (
             <div className={css.modal}>
@@ -187,11 +201,11 @@ const OrderDisplayView = props =>{
                                     (
                                         transactionState === "state/accepted" || transactionState === "state/accept"?
                                             "You have accepted this offer"
-                                        :transactionState === "state/declined" || transactionState === "state/decline"?
+                                        :isOrderDeclined?
                                             <span className={css.declined_txt}>You have declined this order</span>
                                         :
                                         <div className={css.flex_row}>
-                                            <button className={css.btn_outline} onClick={e=>onDeclineOfferFromCustomer(currentTransaction.id.uuid,currentTransaction.providerId.id.uuid,currentTransaction.customer.id.uuid)}>
+                                            <button className={css.btn_outline} onClick={handleDeclineOffer}>
                                                 Decline
                                             </button>
                                             <button className={css.btn_fill} onClick={e=>{onAcceptOfferFromCustomer(currentTransaction.id);}}>
@@ -202,7 +216,7 @@ const OrderDisplayView = props =>{
                                         
                                         :
                                         <div className={css.flex_row}>
-                                            <button className={css.btn_outline} onClick={e=>{onDeclineOfferFromCustomer(currentTransaction.id.uuid,currentTransaction.providerId.id.uuid,currentTransaction.customer.id.uuid)}}>
+                                            <button className={css.btn_outline} onClick={handleDeclineOffer}>
                                                 Decline
                                             </button>
                                             <button className={css.btn_fill} onClick={e=>{setShowQuotationForm(true); setShowOrder(false)}}>

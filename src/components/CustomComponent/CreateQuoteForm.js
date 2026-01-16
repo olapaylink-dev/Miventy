@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import css from './CreateQuoteForm.module.css';
 import MyDatePicker from "../MyDatePicker";
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateQuoteForm = props =>{
 
@@ -34,13 +35,17 @@ const CreateQuoteForm = props =>{
 
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
+    console.log("   ==========================")
     const offer = {
+        id: uuidv4(),
         offerTitle,
         description,
         eventDate,
         duration,
         price
     }
+
+    console.log(offer,"   ============1111111111111111111==============")
     
     //onCreateProposal(currentTransaction.id.uuid,offer);
     onSendMessage(currentTransaction.id.uuid,JSON.stringify(offer))

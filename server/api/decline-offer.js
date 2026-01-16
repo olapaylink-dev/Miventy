@@ -20,7 +20,7 @@ module.exports = (req, res) => {
    const updateProvider = integrationSdk.users.show({id: providerId})
     .then(res => {
         // res.data contains the response data
-        const declinedTrx = res.data.data.attributes.protectedData.declinedTrx;
+        const declinedTrx = res?.data?.data?.attributes?.protectedData?.declinedTrx;
         declinedTrx.push({trxId});
 
         integrationSdk.users.updateProfile({

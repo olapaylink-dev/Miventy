@@ -20,6 +20,7 @@ import { getProcess, isBookingProcessAlias } from '../../transactions/transactio
 import { fetchCurrentUser, fetchCurrentUserHasOrdersSuccess } from '../../ducks/user.duck';
 
 const { UUID } = sdkTypes;
+import { v4 as uuidv4 } from 'uuid';
 
 // ================ Action types ================ //
 
@@ -314,6 +315,7 @@ export const sendInquiry = (listing, orderData) => (dispatch, getState, sdk) => 
   //This listing will be our offer
   
   let data ={
+              id: uuidv4(),
               title: `${listing.attributes.title} Offer`,
               authorId: author.id,
               state: "published",

@@ -285,6 +285,9 @@ export const updateProfile = actionPayload => {
         dispatch(updateProfileSuccess(response));
         console.log("================11111111111111111111111=====================");
         const entities = denormalisedResponseEntities(response);
+        if(actionPayload.hasOwnProperty("declinedTransaction")){
+          dispatch()
+        }
         if (entities.length !== 1) {
           throw new Error('Expected a resource in the sdk.currentUser.updateProfile response');
         }
