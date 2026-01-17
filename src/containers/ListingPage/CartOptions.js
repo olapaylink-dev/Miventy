@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import css from './CartOptions.module.css';
 import CardForm from "./CardFrom";
+import { v4 as uuidv4 } from 'uuid';
 
 const CartOptions = props =>{
 
@@ -89,6 +90,7 @@ const CartOptions = props =>{
             
             //Edit the selected catalog to reflect the selected durationPrice;
             let currentCatalog = currentSeletedCatalog;
+            currentCatalog.cartItemId = uuidv4();
             currentCatalog.durationPrice = [JSON.parse(selectedDurationPrice)];
             currentCatalog.total = (JSON.parse(selectedDurationPrice)).price;
             currentCatalog.quantity = 1;

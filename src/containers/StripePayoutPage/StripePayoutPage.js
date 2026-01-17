@@ -352,13 +352,25 @@ const [currentListing,setCurrentListing] = useState({});
     useEffect(()=>{
       console.log("here111111eeee ")
       console.log(currentUser)
-      const {stripeAccount} = currentUser;
+      const {stripeAccount,attributes} = currentUser;
+      const {profile} = attributes;
+      const {publicData} = profile;
       const stripeAccountId = stripeAccount?.attributes?.stripeAccountId;
+      const publicStripeAccountId = publicData?.stripeAccountId;
       if(stripeAccountId !== undefined && stripeAccountId !== null){
         //set daily payment for this user if not already set
+        if(publicStripeAccountId === undefined || publicStripeAccountId === null){
+          const data = {
+            publicData:{
+              stripeAccountId
+            }
+          };
+          console.log(stripeAccountId,"     ccccccccccccccccccccccccccccc");
+          onUpdateProfile(data);
+        }
         onSetDailyPayout(stripeAccountId);
       }
-    },[currentUser])
+    },[])
 
   
   // const checkIfListingsAvailable = (data)=>{

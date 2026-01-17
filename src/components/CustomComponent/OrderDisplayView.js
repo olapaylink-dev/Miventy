@@ -45,21 +45,23 @@ const OrderDisplayView = props =>{
     }=props;
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
-    const {provider,listing} = currentTransaction;
+    const {provider,listing,customer} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     console.log("cartData  =======PPPPPPPPPPPPP==========",cartData);
     const {items=[],id} = cartData  ||  {};
+    const cartItemId = items.length > 0? items[0].cartItemId :undefined;
     const {ItemPrice,durationPrice} = items[0] || {};
-    const perHourPrice = durationPrice[0]?.price;
+    const perHourPrice = durationPrice !== undefined? durationPrice[0]?.price:undefined;
     const isOwn = provider.id.uuid === currentUser.id.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
     const listingId = currentTransaction?.listing?.id?.uuid;
     const slug = currentTransaction?.listing?.attributes?.title;
     const priceToChangeTo = perHourPrice || ItemPrice;
-    const declinedTrx = currentUser?.attributes?.profile?.protectedData?.declinedTransaction || [];
-    const isOrderDeclined = declinedTrx.includes(id);
+    const declinedTrx = customer?.attributes?.profile?.publicData?.declinedTransaction || [];
+    const providerDeclinedTrx = provider?.attributes?.profile?.publicData?.declinedTransaction || [];
+    const isOrderDeclined = declinedTrx.includes(cartItemId) || providerDeclinedTrx.includes(cartItemId);
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
     console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
 
@@ -115,8 +117,8 @@ const OrderDisplayView = props =>{
 
     const handleDeclineOffer = async ()=>{
         const data = 
-        {protectedData: {
-            declinedTransaction:[...declinedTrx,id]
+        {publicData: {
+            declinedTransaction:[...declinedTrx,cartItemId]
             }}
         await onUpdateProfile(data);
         onDeclineOfferFromCustomer();
@@ -238,18 +240,14 @@ const OrderDisplayView = props =>{
                                             Proceed to payment
                                         </NamedLink>
                                     </div>
+                                    :isOrderDeclined?
+                                        <span className={css.declined_txt}>Order was declined</span>
                                     :
                                     <p>Waiting for Provider to accept your Order, before you can proceed to payment.</p>
                                 )
                             
                             }
                         </>
-                        
-                       
-                    
-                    
-                    
-                   
                 </div>
             </div>
 

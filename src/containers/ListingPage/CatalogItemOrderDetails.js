@@ -145,6 +145,7 @@ const CatalogItemOrderDetails = props =>{
             cart.state = "pending";
 
             const cartItem = currentCartItmToEdit;
+            cartItem.cartItemId = uuidv4();
             cartItem.id = listingId;
             cartItem.total = currentTotal;
             cartItem.created = new Date().toDateString();
@@ -170,7 +171,6 @@ const CatalogItemOrderDetails = props =>{
         setSuccessMessage("Item was successfully added to cart.");
         setShowSuccessView(true);
         //setShowSuccessBadge(true);
-        
     }
 
     return (

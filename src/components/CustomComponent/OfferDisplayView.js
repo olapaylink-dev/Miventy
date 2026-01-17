@@ -6,7 +6,6 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
 
-
 const REQUEST_QUOTE_TABS = [
   "service_type",
   "guest_count_and_duration",
@@ -38,11 +37,10 @@ const OfferDisplayView = props =>{
     //console.log("Here ======")
 
     const{id,offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
-
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider={},listing={}} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    const declinedTrx = currentUser?.attributes?.profile?.protectedData?.declinedTransaction || [];
+    const declinedTrx = currentUser?.attributes?.profile?.publicData?.declinedTransaction || [];
     const isOrderDeclined = declinedTrx.includes(id);
     const {cartData,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
@@ -71,14 +69,14 @@ const OfferDisplayView = props =>{
             }
         },[declineOfferSuccess])
 
-const handleDeclineOffer = async e =>{
-     const data = 
-    {protectedData: {
-          declinedTransaction:[...declinedTrx,id]
-        }}
-   await onUpdateProfile(data);
-   onDeclineOfferFromCustomer();
-}
+    const handleDeclineOffer = async e =>{
+        const data = 
+        {publicData: {
+            declinedTransaction:[...declinedTrx,id]
+            }}
+    await onUpdateProfile(data);
+    onDeclineOfferFromCustomer();
+    }
 
     return (
             <div className={css.modal}>

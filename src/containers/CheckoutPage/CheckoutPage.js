@@ -103,7 +103,8 @@ const EnhancedCheckoutPage = props => {
       const [quantity,setQuantity] = useState(0);
       const [itemPrice,setPrice] = useState(0);
 
-      const {protectedData={}} = trx?.attributes;
+      const {attributes,provider,customer} = trx;
+      const {protectedData={}} = attributes;
       const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
       const {cartData} = cartDat !== undefined?cartDat:{};
       const {items=[]} = cartData || {};
@@ -213,6 +214,7 @@ const EnhancedCheckoutPage = props => {
       //console.log("speculatedTransaction",speculatedTransaction);
 
       const {attributes} = speculatedTransaction;
+      const stripeAccountId = provider?.attributes?.profile?.publicData?.stripeAccountId;
       const {lineItems} = attributes;
       //console.log(lineItems,"   bbboooppp")
       const feePercent = getCommission(lineItems);
@@ -235,21 +237,27 @@ const EnhancedCheckoutPage = props => {
 
       if(price !== undefined && price !== null){
           //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
-          const data = {};
-          data.price = totalAmount;
-          data.title = listing?.attributes?.title;
-          data.txId = currentUser.id.uuid;
+          const data = {
+            stripeAccountId,
+            price:totalAmount,
+            title:listing?.attributes?.title,
+            txId:currentUser.id.uuid,
+          };
+         console.log(data, "   wwwwwwwwwwwwwwwwwwww22222222wwwwwwwwwwwww");
           //console.log(data);
           //localStorage.setItem("pageData",JSON.stringify(pageData));
           //console.log(price)
           onLoadOtherPaymentMethodUrl(data);
       }else if(ItemPrice !== undefined && ItemPrice !== null){
           //console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
-          const data = {};
-          data.price = totalAmount;
-          data.title = listing?.attributes?.title;
-          data.txId = currentUser.id.uuid;
-          //console.log(data);
+          const data = {
+            stripeAccountId,
+            price:totalAmount,
+            title:listing?.attributes?.title,
+            txId:currentUser.id.uuid,
+            };
+          
+          console.log(data, "   wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
           //localStorage.setItem("pageData",JSON.stringify(pageData));
           //console.log(ItemPrice)
           onLoadOtherPaymentMethodUrl(data);
