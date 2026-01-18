@@ -201,6 +201,11 @@ const OrderDisplayView = props =>{
                                 <>
                                     {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
                                     (
+                                         isPaid?
+                                        <div className={css.flex_row}>
+                                            Payment Completed
+                                        </div>
+                                        :
                                         transactionState === "state/accepted" || transactionState === "state/accept"?
                                             "You have accepted this offer"
                                         :isOrderDeclined?
