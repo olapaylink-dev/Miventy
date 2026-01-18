@@ -1,11 +1,19 @@
 import css from './BookingsList.module.css';
 import BookingsCard from "./BookingsCard";
+import { useEffect, useState } from 'react';
 
 const BookingsList = props =>{
     const {transactions,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction,currentUser,setShowRatingForm} = props;
+
+    const [trxs,setTrxs] = useState(transactions);
+     useEffect(()=>{
+        console.log("Data updated sssssssssssssssssssssssssssssss")
+        setTrxs(transactions);
+    },[transactions])
+
     return (
         <div className={css.container}>
-            {transactions.length > 0 && transactions.map((itm,key)=>{
+            {trxs !== undefined && trxs.length > 0 && trxs.map((itm,key)=>{
                 console.log(itm,"    ccccccccccccccccccccccccccccccccc")
                 return(
                     <BookingsCard 
