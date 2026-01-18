@@ -113,7 +113,7 @@ const ALLOrders = props =>{
                                        <div className={classNames(css.badge_ongoing)}>Ongonig</div>
                                    }
                                    <div className={css.flex_col_2}>
-                                       <h3 className={css.title}>€{total.toFixed(2)}</h3>
+                                       <h3 className={css.title}>€{(total/100).toFixed(2)}</h3>
                                        <p>{date}</p>
                                    </div>
                                </div>
