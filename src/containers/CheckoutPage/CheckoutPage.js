@@ -214,6 +214,10 @@ const EnhancedCheckoutPage = props => {
       //console.log("speculatedTransaction",speculatedTransaction);
 
       const {attributes} = speculatedTransaction;
+      const {protectedData} = attributes;
+      const {offer,cartData} = protectedData;
+      const {items=[]} = cartData?.cartData  ||  {};
+      const {ItemPrice,quantity} = items[0] || {};
       const stripeAccountId = provider?.attributes?.profile?.publicData?.stripeAccountId;
       const {lineItems} = attributes;
       //console.log(lineItems,"   bbboooppp")
@@ -239,9 +243,10 @@ const EnhancedCheckoutPage = props => {
           //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
           const data = {
             stripeAccountId,
-            price:totalAmount,
+            price:price*100,
             title:listing?.attributes?.title,
             txId:currentUser.id.uuid,
+            quantity
           };
          console.log(data, "   wwwwwwwwwwwwwwwwwwww22222222wwwwwwwwwwwww");
           //console.log(data);
@@ -252,9 +257,10 @@ const EnhancedCheckoutPage = props => {
           //console.log("vvvvvvvvvvvv2222222222222vvvvvvvvvvvvvvvvv")
           const data = {
             stripeAccountId,
-            price:totalAmount,
+            price:ItemPrice*100,
             title:listing?.attributes?.title,
             txId:currentUser.id.uuid,
+            quantity
             };
           
           console.log(data, "   wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");

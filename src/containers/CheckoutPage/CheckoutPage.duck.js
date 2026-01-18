@@ -620,6 +620,7 @@ export const initiateTransaction = (tx) => (dispatch, getState, sdk) => {
 };
 
 
+
 export const loadOtherPaymentMethodUrl = (data) => (dispatch, getState, sdk) => {
   dispatch(loadOtherPaymentRequest());
 

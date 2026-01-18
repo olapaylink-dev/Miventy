@@ -1026,7 +1026,7 @@ const [currentListing,setCurrentListing] = useState({});
                                   <span>{businessName || fullName}</span>
                               </div>
                               <span className={css2.lang}>
-                                Languages:  {language.hasOwnProperty("length")?language.map((itm,key)=>{
+                                Languages:  {language !== "" && typeof(language) === "array"?language.map((itm,key)=>{
                                   if(key < language.length-1){
                                     return `${itm}, `
                                   }else{

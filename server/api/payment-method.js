@@ -15,6 +15,9 @@ module.exports = async (req, res)  =>  {
   const title = data.title;
   const txId = data.txId;
   const stripeAccountId = data.stripeAccountId;
+  const quantity = data.quantity || 1;
+
+  console.log(stripeAccountId,"   ",quantity);
 
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.create({
@@ -29,7 +32,7 @@ module.exports = async (req, res)  =>  {
           },
           unit_amount: parseInt(amount),
         },
-        quantity: 1,
+        quantity:quantity
       }],
        payment_intent_data: {
           on_behalf_of: stripeAccountId,
