@@ -49,7 +49,7 @@ const Earnings = props=>{
                         </div>
                         <div className={css.flex_itm}>
                             <span>Balance available for withdrawal</span>
-                            <span className={css.amount}>€{totalPayout}</span>
+                            <span className={css.amount}>€{0.00}</span>
                         </div>
 
                     </div>
@@ -65,7 +65,7 @@ const Earnings = props=>{
                         
                         <div className={css.flex_itm}>
                             <span>Balance available for withdrawal</span>
-                            <span className={css.amount}>€ 0.00</span>
+                            <span className={css.amount}>€{totalPayout}</span>
                         </div>
 
                     </div>

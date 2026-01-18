@@ -14,10 +14,11 @@ const BookingsCard = props=>{
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
     const {eventDate="",eventLocation=[]} = protectedData?.cartData;
     const location = eventLocation[0]?.result?.place_name;
-    const {ItemPrice=0,durationPrice=[]} = items.length > 0? items[0]:{};
+    const {ItemPrice=0,durationPrice=[],quantity} = items.length > 0? items[0]:{};
     const unitPrice = lineItems[0]?.unitPrice?.amount || 0;
     const listItemPrice = ItemPrice?ItemPrice:durationPrice[0]?.price;
     const price = listItemPrice || unitPrice/100;
+    const totalPrice = parseInt(price) * (parseInt(quantity) || 1);
 
     console.log(transactionState,"    nnnnnotransactionStateoooppp")
 
@@ -63,7 +64,7 @@ const BookingsCard = props=>{
                     <div className={css.container}>
                             <div className={css.flex_btw}>
                                 <h3 className={css.header}>{listingType} Service </h3>
-                                <h3 className={css.header}>${price}</h3>
+                                <h3 className={css.header}>€{totalPrice}</h3>
                             </div>
                             {isProvider?
                                 <div className={css.flex_col}>
@@ -71,6 +72,14 @@ const BookingsCard = props=>{
                                         <span className={css.label}>Customer:</span>
                                         <img className={css.img_circle} src={customerDisplayImg} />
                                         <span>{customerDisplayName}</span>
+                                    </div>
+                                    <div className={css.flex_row}>
+                                        <span className={css.label}>Price:</span>
+                                        <span>€{price}</span>
+                                    </div>
+                                    <div className={css.flex_row}>
+                                        <span className={css.label}>Quantity:</span>
+                                        <span>{quantity}</span>
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Date:</span>
@@ -89,6 +98,14 @@ const BookingsCard = props=>{
                                         <span>{displayName}</span>
                                     </div>
                                     <div className={css.flex_row}>
+                                        <span className={css.label}>Price:</span>
+                                        <span>€{price}</span>
+                                    </div>
+                                    <div className={css.flex_row}>
+                                        <span className={css.label}>Quantity:</span>
+                                        <span>{quantity}</span>
+                                    </div>
+                                    <div className={css.flex_row}>
                                         <span className={css.label}>Date:</span>
                                         <span>{eventDate}</span>
                                     </div>
@@ -101,14 +118,14 @@ const BookingsCard = props=>{
                             
                             
                             {isProvider?
-                                (
+                                (transactionState === "state/reviewed"?
+                                        <div className={css.flex_btw}>
+                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Completed</button>
+                                        </div>
+                                    :
                                     !isReviewedByCustomer?
                                         <div className={css.flex_btw}>
                                             <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for customer review</button>
-                                        </div>
-                                    :transactionState === "state/reviewed"?
-                                        <div className={css.flex_btw}>
-                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Completed</button>
                                         </div>
                                     :
                                         <div className={css.flex_btw}>
@@ -116,17 +133,17 @@ const BookingsCard = props=>{
                                         </div>
                                 )
                             :
-                            (
-                                !isReviewedByCustomer?
-                                        <div className={css.flex_btw}>
-                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for provider to respond to your review</button>
-                                        </div>
-                                :
-                                transactionState === "state/reviewed"?
+                            (   transactionState === "state/reviewed"?
                                     <div className={css.flex_btw}>
                                         <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Completed</button>
                                     </div>
                                 :
+                                isReviewedByCustomer?
+                                        <div className={css.flex_btw}>
+                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Waiting for provider to respond to your review</button>
+                                        </div>
+                                :
+                               
                                     <div className={css.flex_btw}>
                                         <button onClick={e=>{setShowCancelBooking(true)}} className={css.outline_btn}>Cancel booking</button>
                                         <button onClick={e=>{setShowMarkOrder(true); setCurrentTransaction(data)}} className={css.fill_btn}>Mark as completed</button>
