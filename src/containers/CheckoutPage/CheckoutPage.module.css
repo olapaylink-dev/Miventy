@@ -660,6 +660,10 @@
   margin-top: 40px;
 }
 
+.btn_fill_disabled{
+  background-color: #d6d6d6;
+  cursor:not-allowed;
+}
 
 .confirm_btn{
   width: 100%;

@@ -509,7 +509,8 @@ const serviceTypesRentalSpace = [
         listingType="",
         unitType="",
         workExperience="",
-        childrenAge=[]
+        childrenAge=[],
+        originalPrice
 
       } = publicData;
 
@@ -585,11 +586,11 @@ const serviceTypesRentalSpace = [
   const bio = currentListing?.author?.attributes?.profile?.publicData?.bio;
 
   
-  useEffect(() => {
-    if(userListings === null || userListings === undefined || userListings.length === 0){
-      onFetchUserListings(authorId);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if(userListings === null || userListings === undefined || userListings.length === 0){
+  //     onFetchUserListings(authorId);
+  //   }
+  // }, []);
 
   
   useEffect(() => {
@@ -725,7 +726,9 @@ const serviceTypesRentalSpace = [
     
     let res = [];
     cartData !== undefined && cartData.length > 0 && cartData.map((itm,key)=>{
+        
         const listingId = currentListing?.id?.uuid;
+        console.log( listingId,"     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk      ",itm.id)
         if(itm.id === listingId){
             res = itm;
         }
@@ -1361,7 +1364,7 @@ console.log(userListings,"   userListings")
                 </div>
                 <div className={css.aside_con}>
                   <div className={css.aside}>
-                    <div className={css.flex_row_3}><span>Starting from</span><span className={css.amount}>€{(price.amount/100).toFixed(2)}</span></div>
+                    <div className={css.flex_row_3}><span>Starting from</span><span className={css.amount}>€{originalPrice !== undefined?(originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2)}</span></div>
                     <p>Items in cart</p>
                     {currentUser?
                       <CartItems currentUser={currentUser} 
@@ -1518,7 +1521,6 @@ console.log(userListings,"   userListings")
             />
           </div>
         :""}
-
         {showRequestLocationTime?
           <div className={css.overlay}>
             <RequestLocationTime

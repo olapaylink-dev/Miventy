@@ -21,6 +21,8 @@ const CartOptions = props =>{
     const [selectedValue, setSelectedValue] = useState("");
     const isSelected = selectedValue !== "";
 
+    console.log("here =====================")
+
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };
@@ -52,11 +54,15 @@ const CartOptions = props =>{
             cartData = dat;
         }
         let existingCart = getCartWithListingId(currentUser,listingId);
+        const priceData = JSON.parse(selectedDurationPrice);
+        const selectedPrice = priceData.price;
         if(existingCart !== undefined && JSON.stringify(existingCart) !== "{}"){
             //Cart exist
             //Insert this catalog details into the existing cart
              //Edit the selected catalog to reflect the selected durationPrice;
             let currentCatalog = currentSeletedCatalog;
+            currentCatalog.cartItemId = uuidv4();
+            currentCatalog.ItemPrice = selectedPrice;
             currentCatalog.durationPrice = [JSON.parse(selectedDurationPrice)];
             currentCatalog.total = (JSON.parse(selectedDurationPrice)).price;
             currentCatalog.quantity = 1;
@@ -91,6 +97,7 @@ const CartOptions = props =>{
             //Edit the selected catalog to reflect the selected durationPrice;
             let currentCatalog = currentSeletedCatalog;
             currentCatalog.cartItemId = uuidv4();
+            currentCatalog.ItemPrice = selectedPrice;
             currentCatalog.durationPrice = [JSON.parse(selectedDurationPrice)];
             currentCatalog.total = (JSON.parse(selectedDurationPrice)).price;
             currentCatalog.quantity = 1;

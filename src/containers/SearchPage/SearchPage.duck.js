@@ -341,6 +341,7 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
         // when transitioning from search page to listing page
         'publicData.pickupEnabled',
         'publicData.shippingEnabled',
+        'publicData.originalPrice',
       ],
      
       'limit.images': 100,

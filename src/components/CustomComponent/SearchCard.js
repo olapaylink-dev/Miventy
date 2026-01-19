@@ -29,7 +29,9 @@ const SearchCard = props =>{
                 const uuid = id.uuid;
                 const {images={},attributes={},author={}} = itm;
                 const {title,description,from,price,profileImg,publicData} = attributes;
-                const {category,rating="0",location,coverPhoto=""} = publicData;
+                const {category,rating="0",location,coverPhoto="",originalPrice} = publicData;
+                console.log(originalPrice,"   yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+                const origPrice = originalPrice !== undefined? (originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2);
                 const img = coverPhoto;
 
                 const {profileImage={}} = author;
@@ -78,7 +80,7 @@ const SearchCard = props =>{
                                     </div>
                                     <div className={classNames(css.flex_row_btw,css.no_padding,css.flex_full)}>
                                         <div className={css.flex_row_sm_gap}>
-                                        <span className={css.bold_txt}>From {`€${(price?.amount/100).toFixed(2)}`}</span> 
+                                        <span className={css.bold_txt}>From {`€${origPrice}`}</span> 
                                         </div>
                                         <div className={css.flex_row_sm_gap}>
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -370,11 +370,11 @@ const EnhancedCheckoutPage = props => {
                   </ExternalLink>
                 :
                 
-                  <ExternalLink href={"paymentMethodUrl"}>
-                    <div className={css.btn_fill}>
-                        Confirm payment
+                 
+                    <div className={css.btn_fill_disabled}>
+                        Loading...
                     </div>
-                  </ExternalLink>
+                  
                 
             }
             

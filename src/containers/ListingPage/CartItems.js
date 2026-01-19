@@ -29,6 +29,8 @@ const CartItems = props =>{
 
     const cartItems = getCartItem(cartData,listingId);
 
+    
+
     const getTotalAmount = (cartData) =>{
         let result = 0;
         cartData.map((itm,key)=>{
@@ -49,22 +51,34 @@ const CartItems = props =>{
     let grandTotal = grandTotalVal.toFixed(2);
     grandTotal = new Intl.NumberFormat().format(grandTotal);
 
-    
-    const handleRemoveItemFromCart = (listingId,itemName)=>{
-        if(cartItems !== undefined && JSON.stringify(cartItems) !== "{}"){
-           
-            const otherCartItems = cartItems.filter(itm=>itm.itemName !== itemName);
-            
-            //Add this edited catalog detail to the list of items in the cart
-            cartItems.items = [...otherCartItems];
+    console.log("=========+++++++++++=============")
 
-            //Remove the existing cart from cartData
-            const remainingCarts = cartData.filter(itm=>itm.id !== listingId);
+    
+    const handleRemoveItemFromCart = (listingId,cartItemId)=>{
+        //Get the cart for the current list
+        const currentListingCartToEdit = (cartData.filter(itm=>itm.id === listingId))[0];
+        const remainingListingCart = cartData.filter(itm=>itm.id !== listingId);
+        //Get existing cart items
+        let existingCartItems = currentListingCartToEdit?.items;
+        //Remove this item fron the cartItems in this listing cart
+    
+
+        if(existingCartItems !== undefined && existingCartItems.length > 0 && cartItemId !== undefined){
+           
+            // const otherCartItems = cartItems.filter(itm=>itm.itemName !== itemName);
+            
+            // //Add this edited catalog detail to the list of items in the cart
+            // cartItems.items = [...otherCartItems];
+
+            const remainingCartItems = existingCartItems.filter(itm=>itm.cartItemId !== cartItemId);
+            //Put back the remaining cartItems into items in currentListingCartToEdit
+            currentListingCartToEdit.items = remainingCartItems;
+            //Put back the items in currentListingCartToEdit
 
             //Save cart in user profile data
             const data = {
                     publicData: {
-                    cartData:[...remainingCarts,cartItems]
+                    cartData:[...remainingListingCart,currentListingCartToEdit]
                 }};
             onUpdateProfile(data);
             console.log("Item removed from cart")
@@ -79,7 +93,7 @@ const CartItems = props =>{
     return (
         <div className={css.flex_full}>
             {JSON.stringify(cartItems) !== "{}" && cartItems.length > 0 && cartItems.map((itm,key)=>{
-                 const {itemName = "",quantity,total,durationPrice=[],ItemPrice} = itm;
+                 const {itemName = "",quantity,total,durationPrice=[],ItemPrice,cartItemId} = itm;
                  let price = 0;
                  if(durationPrice[0].hasOwnProperty("price")){
                     price = durationPrice[0]?.price;
@@ -99,7 +113,7 @@ const CartItems = props =>{
                         </div>
                         <div className={css.flex_row_gap}>
                             <span className={css.amount}>€{price !== 0?price:ItemPrice}</span>
-                            <svg className={css.remove} onClick={e=>handleRemoveItemFromCart(listingId.uuid,itemName)} xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none">
+                            <svg className={css.remove} onClick={e=>handleRemoveItemFromCart(listingId.uuid,cartItemId)} xmlns="http://www.w3.org/2000/svg" width="10" height="14" viewBox="0 0 10 14" fill="none">
                                 <path d="M3.00007 0C2.72296 0 2.47475 0.171419 2.37661 0.430568L2.22355 0.834753C1.89543 0.801968 1.59311 0.769244 1.34839 0.741766C1.16545 0.721225 1.01506 0.703658 0.9106 0.691249L0.790103 0.676787L0.749178 0.671783C0.383783 0.626541 0.0503715 0.886008 0.00512287 1.2514C-0.0401262 1.6168 0.219406 1.9497 0.584805 1.99495L0.629333 2.00039L0.753318 2.01527C0.860215 2.02797 1.01346 2.04587 1.19961 2.06677C1.57159 2.10854 2.07645 2.16246 2.60615 2.2108C3.32067 2.27601 4.10388 2.33333 4.66674 2.33333C5.22959 2.33333 6.01281 2.27601 6.72733 2.2108C7.25702 2.16246 7.76189 2.10854 8.13386 2.06677C8.32001 2.04587 8.47326 2.02797 8.58015 2.01527L8.70414 2.00039L8.74858 1.99496C9.11398 1.94971 9.3736 1.6168 9.32835 1.2514C9.2831 0.886008 8.95021 0.626477 8.58482 0.671719L8.54337 0.676787L8.42287 0.691249C8.31841 0.703658 8.16803 0.721225 7.98509 0.741766C7.74036 0.769244 7.43805 0.801968 7.10992 0.834753L6.95686 0.430568C6.85872 0.171419 6.61051 0 6.3334 0H3.00007Z" fill="#475367"/>
                                 <path d="M4.00007 6.66667C4.00007 6.29848 3.70159 6 3.3334 6C2.96521 6 2.66674 6.29848 2.66674 6.66667V10C2.66674 10.3682 2.96521 10.6667 3.3334 10.6667C3.70159 10.6667 4.00007 10.3682 4.00007 10V6.66667Z" fill="#475367"/>
                                 <path d="M6.00007 6C6.36826 6 6.66674 6.29848 6.66674 6.66667V10C6.66674 10.3682 6.36826 10.6667 6.00007 10.6667C5.63188 10.6667 5.3334 10.3682 5.3334 10V6.66667C5.3334 6.29848 5.63188 6 6.00007 6Z" fill="#475367"/>

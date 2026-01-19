@@ -271,7 +271,8 @@ export const showListing = (listingId, config, isOwn = false) => (dispatch, getS
 
   const params = {
     id: listingId,
-    include: ['author', 'author.profileImage', 'images', 'currentStock'],
+    include: ['author', 'author.profileImage', 'images', 'currentStock',],
+      
     'fields.image': [
       // Scaled variants for large images
       'variants.scaled-small',
