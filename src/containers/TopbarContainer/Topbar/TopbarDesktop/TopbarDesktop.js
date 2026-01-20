@@ -426,7 +426,7 @@ const TopbarDesktop = props => {
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
-                    {transactions.data.length > 0?
+                    {transactions !== undefined && transactions.hasOwnProperty("data") && transactions?.data.length > 0?
                         <MessagesNote data={transactions} currentUser={currentUser}/>
                       :
                       <>

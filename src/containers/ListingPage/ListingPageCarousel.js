@@ -754,9 +754,10 @@ const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
      
     const listingCart = getListingCart(cartData);
-    //console.log(listingCart,"     ==========++++++=============        ",cartData);
+    console.log(listingCart,"     ==========++++++=============        ",cartData);
 
-    if(JSON.stringify(listingCart) !== "{}"){
+    if(listingCart !== undefined && listingCart !== null && Object.keys(listingCart).length > 0){
+      console.log(listingCart,"     =========2222222=============        ",cartData);
         const orderData = {
           cartData:listingCart,
           message:serviceDescription,
@@ -767,14 +768,13 @@ const handleSendOrderMessage = ()=>{
           eventLocation,
           selectedServiceType
       }
-
       onSendOrderMessage(currentListing,orderData);
       setShowConfirmOrderForm(false);
       setSuccessMessage("Your message was sent successfully!");
       setShowSuccessView(true);
       setShowSuccessBadge(true);
     }else{
-      console.log("Some information are missing.")
+      alert("Something went wrong. Please try again later.");
     }
     
 }
