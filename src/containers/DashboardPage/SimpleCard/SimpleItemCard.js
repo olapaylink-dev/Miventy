@@ -39,7 +39,7 @@ const SimpleItemCard = props=>{
             </div>
 
             {durationPrice !== undefined && durationPrice.length > 0 && durationPrice[0].price !== undefined && durationPrice[0].price !== undefined && durationPrice.map((itm,key)=>{
-                console.log("ooooooooooooooo22222222222222222222oooooooooooooooo")
+                //console.log("ooooooooooooooo22222222222222222222oooooooooooooooo")
                 const {duration,price,format} = itm;
                 
                 return (

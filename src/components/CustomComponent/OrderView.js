@@ -11,7 +11,7 @@ const OrderView = (props)=>{
         setTitle(listing?.attributes?.title);
         //console.log("Changingggggggg11111111111111111111111gggggggggggggg")
     },[listing])
-    console.log("    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+    //console.log("    nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
     return(
         <div className={css.main_com}>
             <div className={css.container}>

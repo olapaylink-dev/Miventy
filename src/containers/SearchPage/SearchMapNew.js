@@ -75,8 +75,8 @@ const SearchMapNew = (props) => {
       features:geoData
     };
 
-    console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-    console.log(geojson2);
+    //console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
+    //console.log(geojson2);
 
     const geojson = {
       type: 'FeatureCollection',

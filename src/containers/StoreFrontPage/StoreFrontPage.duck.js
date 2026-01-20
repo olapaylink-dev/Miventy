@@ -290,7 +290,7 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
   
   const userId = params.id;
 
-  console.log(userId,"   cccccccnnnnnnn")
+  //console.log(userId,"   cccccccnnnnnnn")
 
 
   sdk.listings.query({

@@ -92,13 +92,13 @@ const handleChangePrice = e =>{
   setPriceChange(true);
 }
 
-console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+//console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
   
 const handleSubmit = e=>{
-  console.log("submiting");
+  //console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const priceVal = {amount:parseInt(pricee)*100,currency:"EUR"};
-      console.log(priceVal,"  priceValllllllllll")
+      //console.log(priceVal,"  priceValllllllllll")
       const data = {
           id:currentListing.id,
           price: priceVal,
@@ -123,7 +123,7 @@ const handleSubmit = e=>{
         setPriceChange(false);
         onUpdateListing(data);
 
-        console.log("Form submitted");
+        //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }

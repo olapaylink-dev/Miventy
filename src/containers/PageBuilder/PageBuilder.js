@@ -149,9 +149,9 @@ const handleClick = e =>{
   seShowPopups(false);
   setShowMenu(false);
   handleChangePopups();
-  console.log("Removing oooooooo showPopups  oooooooo    " + showPopups);
-  console.log("Removing 11111111111   showMenu   11111111111111    " + showMenu);
-  console.log(showPopups);
+  //console.log("Removing oooooooo showPopups  oooooooo    " + showPopups);
+  //console.log("Removing 11111111111   showMenu   11111111111111    " + showMenu);
+  //console.log(showPopups);
   handleChangeShowMenu();
   setParentClicked(!parentClicked);
 }

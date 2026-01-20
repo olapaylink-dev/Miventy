@@ -147,7 +147,7 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case SEND_INQUIRY_REQUEST:
       return { ...state, sendInquiryInProgress: true, sendInquiryError: null,isInquiry:false };
     case SEND_INQUIRY_SUCCESS:
-      return { ...state, sendInquiryInProgress: false, inquiryModalOpenForListingId: null, isInquiry:payload.isInquiry };
+      return { ...state, sendInquiryInProgress: false, inquiryModalOpenForListingId: null, isInquiry:payload?.isInquiry || false };
     case SEND_INQUIRY_ERROR:
       return { ...state, sendInquiryInProgress: false, sendInquiryError: payload,isInquiry:false };
 
@@ -161,7 +161,7 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case FETCH_USER_LISTINGS_REQUEST:
       return { ...state, fetchUserListingsInProgress: true, fetchUserListingsError: null };
     case FETCH_USER_LISTINGS_SUCCESS:
-      console.log(payload,"  aaabbbccc")
+      //console.log(payload,"  aaabbbccc")
       return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: null, userListings:payload };
     case FETCH_USER_LISTINGS_ERROR:
       return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: payload };
@@ -316,7 +316,7 @@ export const showListing = (listingId, config, isOwn = false) => (dispatch, getS
 
 export const fetchReviews = listingId => (dispatch, getState, sdk) => {
   dispatch(fetchReviewsRequest());
-  console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
+  //console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
   return sdk.reviews
     .query({
       listing_id: listingId,
@@ -326,7 +326,7 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
     })
     .then(response => {
       const reviews = denormalisedResponseEntities(response);
-      console.log(reviews,"   reviewsssssssssssssss")
+      //console.log(reviews,"   reviewsssssssssssssss")
       dispatch(fetchReviewsSuccess(reviews));
 
     })
@@ -337,7 +337,7 @@ export const fetchReviews = listingId => (dispatch, getState, sdk) => {
 
 export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
   dispatch(fetchReviewsRequest());
-  console.log("ReviewwwwwwwwwwAUthor    wwwwwwwwwwwwwwwwww")
+  //console.log("ReviewwwwwwwwwwAUthor    wwwwwwwwwwwwwwwwww")
   return sdk.reviews
     .query({
       subjectId: authorId,
@@ -347,7 +347,7 @@ export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
     })
     .then(response => {
       const reviews = denormalisedResponseEntities(response);
-      console.log(reviews,"   reviewsssssssssssssss")
+      //console.log(reviews,"   reviewsssssssssssssss")
       dispatch(fetchReviewsSuccess(reviews));
 
     })
@@ -358,7 +358,7 @@ export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
 
 export const fetchUserListings = userId => (dispatch, getState, sdk) => {
   dispatch(fetchUserListingRequest());
-  console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
+  //console.log("Reviewwwwwwwwwwwwwwwwwwwwwwwwwwww")
   return sdk.listings.query({
     authorId: userId,
     }).then(res => {
@@ -422,7 +422,7 @@ export const sendInquiry = (listing, orderData,isInquiry) => (dispatch, getState
     .initiate(bodyParams)
     .then(response => {
       const transactionId = response.data.data.id;
-      console.log("Transaction created, message sent");
+      //console.log("Transaction created, message sent");
 
       // Send the message to the created transaction
       return sdk.messages.send({ transactionId, content: orderData.message }).then(() => {
@@ -465,12 +465,12 @@ const fetchMonthlyTimeSlots = (dispatch, listing) => {
 
 export const saveLike = (listingId,userId) => (dispatch, getState, sdk) => {
   dispatch(saveLikesRequest())
-  console.log(listingId,userId)
+  //console.log(listingId,userId)
   saveLikes({
       listingId,userId
     }
   ).then(response => {
-    console.log(response)
+    //console.log(response)
      dispatch(saveLikesSuccess());
     })
     .catch(e => {

@@ -20,7 +20,7 @@ const SimpleCard_2 = props=>{
         return result;
     }
 
-    console.log("===================");
+    //console.log("===================");
 
     const count = getItemCount(catalog);
     const price = getLeastPrice(catalog);

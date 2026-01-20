@@ -305,7 +305,7 @@ export const fetchTimeSlots = (listingId, start, end, timeZone) => (dispatch, ge
 
 export const sendInquiry = (listing, orderData) => (dispatch, getState, sdk) => {
   dispatch(sendInquiryRequest());
-  console.log(listing, "    ggggggggggggggggggggg")
+  //console.log(listing, "    ggggggggggggggggggggg")
   const {attributes,author} = listing;
   let {geolocation,publicData} = attributes;
   publicData.listingType = "Offer";

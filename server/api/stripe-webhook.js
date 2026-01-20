@@ -28,7 +28,7 @@ const integrationSdk = sharetribeIntegrationSdk.createInstance({
 
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
 const endpointSecret = process.env.REACT_APP_STRIPE_WEBHOOK;
-console.log("Running =====");
+//console.log("Running =====");
 module.exports = (request, response) => {
 
  // console.log("Ruuning ------------------    "+endpointSecret);
@@ -88,7 +88,7 @@ module.exports = (request, response) => {
   switch (event.type) {
     case 'payment_intent.succeeded':
       const paymentIntent = event.data.object;
-      console.log(`PaymentIntent for ${paymentIntent.amount} was successful!`);
+      //console.log(`PaymentIntent for ${paymentIntent.amount} was successful!`);
       // Then define and call a method to handle the successful payment intent.
       // handlePaymentIntentSucceeded(paymentIntent);
 
@@ -100,7 +100,7 @@ module.exports = (request, response) => {
       break;
     case 'invoice.payment_succeeded':
       const paymentInvoice = event.data.object;
-      console.log(paymentInvoice);
+      //console.log(paymentInvoice);
 
       break;
 
@@ -138,8 +138,8 @@ module.exports = (request, response) => {
           expand: true
         }).then(res => {
           // res.data
-          console.log("Account updated");
-          console.log(res.data);
+          //console.log("Account updated");
+          ///console.log(res.data);
         });
 
 

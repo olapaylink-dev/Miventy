@@ -26,7 +26,7 @@ const Settings = props=>{
         e.preventDefault();
         e.stopPropagation();
         setShowPhoneNumberForm(false);
-        console.log("Submiting---------")
+        //console.log("Submiting---------")
         const updatedValues = 
         {publicData: {
             phoneNumber:`${countryCode}${phoneNumber}`
@@ -39,7 +39,7 @@ const Settings = props=>{
     const handleSubmitSecret = async (e)=>{
         e.preventDefault();
         e.stopPropagation();
-        console.log("Submiting")
+        //console.log("Submiting")
         setShowSecretForm(false);
         const updatedValues = 
         {publicData: {

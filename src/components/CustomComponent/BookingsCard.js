@@ -23,14 +23,14 @@ const BookingsCard = props=>{
     const price = listItemPrice || unitPrice/100;
     const totalPrice = parseInt(price) * (parseInt(quantity) || 1);
 
-    console.log(transactionState,"    nnnnnotransactionStateoooppp")
+    //console.log(transactionState,"    nnnnnotransactionStateoooppp")
 
     const listingType = listing?.attributes?.publicData?.listingType;
     const isProvider = provider.id.uuid === currentUser.id.uuid;
 
     const checkIfCustomerAsReviewed = trx =>{
         let result = false;
-        console.log("++++++++++++++++++")
+        //console.log("++++++++++++++++++")
         if(trx.attributes.payinTotal !== null){
             trx.attributes.transitions.map((itm,key)=>{
                 if(itm.transition === "transition/review-1-by-customer"){
@@ -45,7 +45,7 @@ const BookingsCard = props=>{
     const isReviewedByCustomer = checkIfCustomerAsReviewed(data);
 
     const checkIfConfirmedPayment = trx =>{
-        console.log("++++++++++++++++++")
+        //console.log("++++++++++++++++++")
         let result = false;
         if(trx.attributes.payinTotal !== null){
              trx.attributes.transitions.map((itm,key)=>{

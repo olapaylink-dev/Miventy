@@ -15,7 +15,7 @@ const {
 
 module.exports = (req, res) => {
   const { txId,data } = req.body;
-  console.log(req.body,"     ccccccccxxxxxxxxxxx")
+  //console.log(req.body,"     ccccccccxxxxxxxxxxx")
 
   integrationSdk.transactions.updateMetadata({
   id: txId,
@@ -27,7 +27,7 @@ module.exports = (req, res) => {
     }).then(apiResponse => {
     // res.data contains the response data
        const { status, statusText, data } = apiResponse;
-       console.log(apiResponse)
+       //console.log(apiResponse)
         res
             .status(status)
             .set('Content-Type', 'application/transit+json')

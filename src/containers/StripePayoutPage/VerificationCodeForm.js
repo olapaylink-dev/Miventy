@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import css from './VerificationCodeForm.module.css';
 
 const VerificationCodeForm = props=>{
-    console.log("uuuuuuuuuuuoooooooooooooooo")
+    //console.log("uuuuuuuuuuuoooooooooooooooo")
     const {handleClosePasswordUpdated} = props;
     const [showPasswordUpdated, setShowPasswordUpdated] = useState(true);
 

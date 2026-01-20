@@ -30,7 +30,7 @@ const SearchCard = props =>{
                 const {images={},attributes={},author={}} = itm;
                 const {title,description,from,price,profileImg,publicData} = attributes;
                 const {category,rating="0",location,coverPhoto="",originalPrice} = publicData;
-                console.log(originalPrice,"   yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+                //console.log(originalPrice,"   yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy")
                 const origPrice = originalPrice !== undefined? (originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2);
                 const img = coverPhoto;
 

@@ -209,7 +209,7 @@ export const StripePayoutPageComponent = props => {
    params: pathParams,
   }=props;
 
-  console.log(reviews,"   xxxxxxxx  Reviews  xxxxxxxxxx")
+  //console.log(reviews,"   xxxxxxxx  Reviews  xxxxxxxxxx")
 
   const { returnURLType } = params || {};
   const ensuredCurrentUser = ensureCurrentUser(currentUser);
@@ -365,7 +365,7 @@ const [currentListing,setCurrentListing] = useState({});
               stripeAccountId
             }
           };
-          console.log(stripeAccountId,"     ccccccccccccccccccccccccccccc");
+          //console.log(stripeAccountId,"     ccccccccccccccccccccccccccccc");
           onUpdateProfile(data);
         }
         onSetDailyPayout(stripeAccountId);

@@ -118,14 +118,14 @@ const removeCartData = (currentUser,cartId,dispatch)=>{
 
               //Remove cartData
               dispatch(updateProfile(data))
-              console.log("Remove cart data +++++++++++++++++++++++++++++++++++++++")
+              //console.log("Remove cart data +++++++++++++++++++++++++++++++++++++++")
 
 }
 
 
 export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatch,getState,sdk)=>{
 
-  console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
+  //console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
   
   dispatch(confirmPaymentRequest(speculatedTx));
 
@@ -176,10 +176,7 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
  )
       .then(response=>{
 
-
-
-          console.log("Confirming payment========================= speculatedTrx.id   ",speculatedTrx.id)
-
+          //console.log("Confirming payment========================= speculatedTrx.id   ",speculatedTrx.id)
 
             // transitionPrivileged(
             //   {
@@ -221,7 +218,7 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
             expand: true,
           };
 
-          console.log(bodyParams, queryParams," cccccccccccccccc11111111111111cccccccccccccccc");
+          //console.log(bodyParams, queryParams," cccccccccccccccc11111111111111cccccccccccccccc");
 
           return sdk.transactions
             .transition(bodyParams, queryParams)

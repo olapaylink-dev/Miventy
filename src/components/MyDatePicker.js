@@ -28,7 +28,7 @@ export default class MyDatePicker extends Component {
 
     componentDidMount() {
         window.addEventListener('click', this.addBackDrop);
-        console.log(this.props.currentDate,"    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+        //console.log(this.props.currentDate,"    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         inputRef.current.value = this.props.currentDate;
         this.setDateToInput(this.props.currentDate !== undefined && this.props.currentDate !== null?this.props.currentDate:this.state.selectedDay);
     }

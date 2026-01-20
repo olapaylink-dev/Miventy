@@ -13,7 +13,7 @@ const CartItems = props =>{
     const {publicData={}} = profile;
     const {cartData=[]} = publicData;
 
-    console.log("oooooooooo1111111111111pppppppppp")
+    //console.log("oooooooooo1111111111111pppppppppp")
     const getCartItem = (cartData,listingId)=>{
         let result = [];
         if(listingId === undefined){
@@ -51,7 +51,7 @@ const CartItems = props =>{
     let grandTotal = grandTotalVal.toFixed(2);
     grandTotal = new Intl.NumberFormat().format(grandTotal);
 
-    console.log("=========+++++++++++=============")
+    //console.log("=========+++++++++++=============")
 
     
     const handleRemoveItemFromCart = (listingId,cartItemId)=>{

@@ -7,14 +7,14 @@ const BookingsList = props =>{
 
     const [trxs,setTrxs] = useState(transactions);
      useEffect(()=>{
-        console.log("Data updated sssssssssssssssssssssssssssssss")
+        //console.log("Data updated sssssssssssssssssssssssssssssss")
         setTrxs(transactions);
     },[transactions])
 
     return (
         <div className={css.container}>
             {trxs !== undefined && trxs.length > 0 && trxs.map((itm,key)=>{
-                console.log(itm,"    ccccccccccccccccccccccccccccccccc")
+                //console.log(itm,"    ccccccccccccccccccccccccccccccccc")
                 return(
                     <BookingsCard 
                         data={itm} 

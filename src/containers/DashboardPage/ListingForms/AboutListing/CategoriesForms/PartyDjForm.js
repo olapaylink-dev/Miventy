@@ -94,7 +94,7 @@ const handleSubmit = e=>{
           },
         }
         onUpdateListing(data);
-        console.log("Form submitted");
+       //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }

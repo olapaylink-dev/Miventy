@@ -586,11 +586,11 @@ const serviceTypesRentalSpace = [
   const bio = currentListing?.author?.attributes?.profile?.publicData?.bio;
 
   
-  // useEffect(() => {
-  //   if(userListings === null || userListings === undefined || userListings.length === 0){
-  //     onFetchUserListings(authorId);
-  //   }
-  // }, []);
+  useEffect(() => {
+    if(userListings === null || userListings === undefined || userListings.length === 0){
+      onFetchUserListings(authorId);
+    }
+  }, []);
 
   
   useEffect(() => {
@@ -728,7 +728,7 @@ const serviceTypesRentalSpace = [
     cartData !== undefined && cartData.length > 0 && cartData.map((itm,key)=>{
         
         const listingId = currentListing?.id?.uuid;
-        console.log( listingId,"     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk      ",itm.id)
+        //console.log( listingId,"     kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk      ",itm.id)
         if(itm.id === listingId){
             res = itm;
         }
@@ -754,8 +754,8 @@ const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
      
     const listingCart = getListingCart(cartData);
-    console.log(listingCart,"     ==========++++++=============        ",cartData);
-    
+    //console.log(listingCart,"     ==========++++++=============        ",cartData);
+
     if(JSON.stringify(listingCart) !== "{}"){
         const orderData = {
           cartData:listingCart,
@@ -819,8 +819,8 @@ const StyledRating = styled(Rating)({
   },
 });
 
-console.log(reviews,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
-console.log(userListings,"   userListings")
+//console.log(reviews,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
+//console.log(userListings,"   userListings")
 
   return (
     <div onClick={e=>{handleParentClicked(e,true); setShowDatePicker(false)}}>
@@ -1310,7 +1310,7 @@ console.log(userListings,"   userListings")
                     </div>
                     
                     {reviews.length > 0 && reviews.map((itm,key)=>{
-                      console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                      //console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                       const {attributes,author} = itm;
                       const {content,rating} = attributes;
                       const displayName = author?.attributes?.profile?.displayName;
@@ -1674,7 +1674,7 @@ const mapStateToProps = state => {
   } = state.ListingPage;
   const { currentUser } = state.user;
 
-  console.log(reviews,"   ooooooooooooooo")
+  //console.log(reviews,"   ooooooooooooooo")
 
   const getListing = id => {
     const ref = { id, type: 'listing' };

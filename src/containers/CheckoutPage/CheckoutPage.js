@@ -193,7 +193,7 @@ const EnhancedCheckoutPage = props => {
     // }
   }, []);
 
-  console.log(currentUser,"   xxxxx1234")
+  //console.log(currentUser,"   xxxxx1234")
 
   useEffect(()=>{
     const getCommission = lineItems =>{
@@ -208,7 +208,7 @@ const EnhancedCheckoutPage = props => {
 
     if(speculatedTransaction !== null){
 
-      console.log(currentUser,"     ssssssssssssssddddddddddddddddd")
+      //console.log(currentUser,"     ssssssssssssssddddddddddddddddd")
       
       localStorage.setItem("SpeculatedTransaction",JSON.stringify(speculatedTransaction));// used on PaymentMethodResponsePage
       //console.log("speculatedTransaction",speculatedTransaction);
@@ -248,7 +248,7 @@ const EnhancedCheckoutPage = props => {
             txId:currentUser.id.uuid,
             quantity
           };
-         console.log(data, "   wwwwwwwwwwwwwwwwwwww22222222wwwwwwwwwwwww");
+         //console.log(data, "   wwwwwwwwwwwwwwwwwwww22222222wwwwwwwwwwwww");
           //console.log(data);
           //localStorage.setItem("pageData",JSON.stringify(pageData));
           //console.log(price)
@@ -263,7 +263,7 @@ const EnhancedCheckoutPage = props => {
             quantity
             };
           
-          console.log(data, "   wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+          //console.log(data, "   wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
           //localStorage.setItem("pageData",JSON.stringify(pageData));
           //console.log(ItemPrice)
           onLoadOtherPaymentMethodUrl(data);

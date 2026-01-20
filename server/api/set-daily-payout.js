@@ -12,7 +12,7 @@ module.exports = async (req, res)  =>  {
 
     const statuss = balanceSettingsResponse?.payments?.payouts?.status;
     if(statuss !== "enabled"){
-        console.log("statuss",statuss)
+        //console.log("statuss",statuss)
         const balanceSettings = await stripe.balanceSettings.update(
           {
             payments: {

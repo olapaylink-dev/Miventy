@@ -74,7 +74,7 @@ const CompletedOrder = props =>{
                 const payinTotal = itm?.attributes?.payinTotal?.amount;
                 const lastTransitionedAt = itm?.attributes?.lastTransitionedAt;
 
-                console.log(payinTotal,"    aaaaaaaaaaazzzzzzzzzzzzzz")
+                //console.log(payinTotal,"    aaaaaaaaaaazzzzzzzzzzzzzz")
                
                 const date = lastTransitionedAt.toDateString();
                 const total = payinTotal?payinTotal:0;

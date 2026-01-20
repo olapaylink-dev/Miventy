@@ -268,7 +268,7 @@ export const InboxPageComponent = props => {
     return <NotFoundPage staticContext={props.staticContext} />;
   }
 
-  console.log(transactions);
+  //console.log(transactions);
 
   const path = location.pathname;
   const isShowBookings = path.includes("bookings");

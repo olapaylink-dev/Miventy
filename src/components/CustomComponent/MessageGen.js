@@ -32,7 +32,7 @@ const MessageGen =(props)=>{
     const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
 
-    console.log(cartDat,"   cccccssssss222222")
+    //console.log(cartDat,"   cccccssssss222222")
   
     return(
         <div className={css.container}>

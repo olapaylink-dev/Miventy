@@ -41,7 +41,7 @@ const PasswordRecovery = props => {
     onResetPassword,
   } = props;
 
-  console.log("ooooooooooooooooooooooooooooooooooooooo")
+  //console.log("ooooooooooooooooooooooooooooooooooooooo")
 
   const [showOtpForm,setShowOtpForm] = useState(false);
   const [phoneNo,setPhoneNo] = useState("");
@@ -49,7 +49,7 @@ const PasswordRecovery = props => {
 
   useEffect(()=>{
     if(phoneNumber !== null && phoneNumber !== undefined){
-      console.log(phoneNumber);
+      //console.log(phoneNumber);
       const phone = phoneNumber;
       const last4 = `xxxxxxxxxx${phone.substr(-4)}`;
       setPhoneNo(last4)
@@ -59,7 +59,7 @@ const PasswordRecovery = props => {
 
   useEffect(()=>{
     if(sendSmsSuccess){
-      console.log("SMS sent =======================")
+      //console.log("SMS sent =======================")
     }
   },[sendSmsSuccess])
 

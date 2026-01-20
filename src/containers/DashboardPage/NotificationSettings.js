@@ -12,9 +12,9 @@ const NotificationSetting = props=>{
         saveNotificationSettings(emailNotificationEnabled,pushNotificationEnabled)
         setShowNotificationUpdated(true);
     }
-    console.log("aaaaaaaaaa")
+    //console.log("aaaaaaaaaa")
     const handleEnablePushNotification = e =>{
-        console.log(e.target.checked)
+        //console.log(e.target.checked)
         setPushNotificationEnabled(e.target.checked);
     }
     return (

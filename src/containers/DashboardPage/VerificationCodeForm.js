@@ -27,16 +27,16 @@ const VerificationCodeForm = props=>{
 
     const [otpEqual,setOtpEqual] = useState(false);
 
-    console.log(token," ----------2222222------------")
+    //console.log(token," ----------2222222------------")
 
     const handleVerify = e=>{
         const savedOtp = localStorage.getItem("otp");
         if(savedOtp === otp){
-            console.log("  Otp is correct ooooo  ",otp)
+            //console.log("  Otp is correct ooooo  ",otp)
             setOtpEqual(true);
             onSubmitEmail(email);
         }
-        console.log(savedOtp,"uuuuuuuooooooooooo")
+        //console.log(savedOtp,"uuuuuuuooooooooooo")
         setShowEmailConfirmedDialog(true);
     }
 
@@ -56,7 +56,7 @@ const VerificationCodeForm = props=>{
     }
 
     const submitLoginData = data =>{
-        console.log(email , " vvvvvvvvv ",password)
+        //console.log(email , " vvvvvvvvv ",password)
         onResetPassword(email,password,token);
     }
 

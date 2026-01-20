@@ -113,7 +113,7 @@ const SignupFormComponent = props => (
       const submitDisabled = invalid || submitInProgress;
       const required = validators.required('This field is required');
 
-      console.log("ccccccccc")
+      //console.log("ccccccccc")
 
       useEffect(()=>{
         if(errorMsg){

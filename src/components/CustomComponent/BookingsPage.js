@@ -13,7 +13,7 @@ const BookingsPage = props =>{
     currentUser,
     setShowRatingForm
   } = props;
-  console.log(transactions,"    ssssdddddmmmm")
+  //console.log(transactions,"    ssssdddddmmmm")
     return (
         <div className={css.main_con}>
             <div className={css.container_m} >

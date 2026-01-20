@@ -96,7 +96,7 @@ const ConfirmOrderForm = props =>{
                         ,
                     };
 
-console.log("==========++++++=============")
+//console.log("==========++++++=============")
 const getListingCart = (cartData)=>{
     
     let res = [];
@@ -112,7 +112,7 @@ const listingCart = getListingCart(cartData);
 
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
-    console.log("==========++++++=============")
+    //console.log("==========++++++=============")
     const orderData = {
         cartData,
         message,

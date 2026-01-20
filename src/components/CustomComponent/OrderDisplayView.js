@@ -49,7 +49,7 @@ const OrderDisplayView = props =>{
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
-    console.log("cartData  =======PPPPPPPPPPPPP==========",cartData);
+    //console.log("cartData  =======PPPPPPPPPPPPP==========",cartData);
     const {items=[],id} = cartData  ||  {};
     const cartItemId = items.length > 0? items[0].cartItemId :undefined;
     const {ItemPrice,durationPrice} = items[0] || {};
@@ -63,12 +63,12 @@ const OrderDisplayView = props =>{
     const providerDeclinedTrx = provider?.attributes?.profile?.publicData?.declinedTransaction || [];
     const isOrderDeclined = declinedTrx.includes(cartItemId) || providerDeclinedTrx.includes(cartItemId);
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
-    console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
+    //console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
 
 
     //Change the price of the listing
     useEffect(()=>{
-        console.log("changing price eeeeee  ",priceToChangeTo);
+        //console.log("changing price eeeeee  ",priceToChangeTo);
         onChangeListingPrice(listingId, new Money(priceToChangeTo*100,"EUR"));
         //console.log("changing price")
     },[])

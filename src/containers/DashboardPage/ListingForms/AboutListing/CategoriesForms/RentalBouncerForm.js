@@ -68,7 +68,7 @@ const handleSubmit = e=>{
   //console.log("submiting");
    if(JSON.stringify(currentListing) !== "{}"){
       const priceVal = {amount:parseInt(pricee)*100,currency:"EUR"};
-      console.log(priceVal,"  priceValllllllllll")
+      //console.log(priceVal,"  priceValllllllllll")
       const data = {
           id:currentListing.id,
           price: priceVal,
@@ -89,7 +89,7 @@ const handleSubmit = e=>{
           },
         }
         onUpdateListing(data);
-        console.log("Form submitted");
+        //console.log("Form submitted");
     }
   handleMoveToCatalog();
 }

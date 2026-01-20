@@ -651,7 +651,7 @@ export function compareAndSetStock(listingId, oldTotal, newTotal) {
 export function getCurrentListing(listingId,lastAction) {
   return (dispatch, getState, sdk) => {
   dispatch(updateListingRequest())
-  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+  //console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
         return sdk.ownListings.show(
           {
             id:listingId,
@@ -689,7 +689,7 @@ export function getCurrentListing(listingId,lastAction) {
         .then(res => {
           
           res.lastAction = lastAction;
-          console.log(res,"   oooopppppaaaa")
+          //console.log(res,"   oooopppppaaaa")
            dispatch(updateListingSuccess(res));
            dispatch(addMarketplaceEntities(res));
            
@@ -717,13 +717,13 @@ const updateStockOfListingMaybe = (listingId, stockTotals, dispatch) => {
 // this means that there needs to be a sequence of calls:
 // create, set stock, show listing (to get updated currentStock entity)
 export function requestCreateListingDraft(data,action, config) {
-  console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+  //console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
   const BILLIARD = 1000000000000000;
   const stockUpdate=  {
                       oldTotal:null,
                       newTotal: BILLIARD,
                     };
-  console.log(data,"        ssssssssssssssssssssss");
+  //console.log(data,"        ssssssssssssssssssssss");
   return (dispatch, getState, sdk) => {
     dispatch(createListingDraftRequest(data));
     const {images, ...rest } = data;

@@ -105,7 +105,7 @@ const CatalogItemOrderDetails = props =>{
         }
         const listingId = currentCartItmToEdit.listingId;
         let existingCart = getCartWithListingId(currentUser,listingId);
-        console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
+        //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv")
         if(existingCart !== undefined && JSON.stringify(existingCart) !== "{}"){
             //Cart exist
             //Insert this catalog details into the existing cart

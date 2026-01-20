@@ -35,7 +35,7 @@ const CreateQuoteForm = props =>{
 
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
-    console.log("   ==========================")
+    //console.log("   ==========================")
     const offer = {
         id: uuidv4(),
         offerTitle,
@@ -45,7 +45,7 @@ const handleSendOrderMessage = ()=>{
         price
     }
 
-    console.log(offer,"   ============1111111111111111111==============")
+    //console.log(offer,"   ============1111111111111111111==============")
     
     //onCreateProposal(currentTransaction.id.uuid,offer);
     onSendMessage(currentTransaction.id.uuid,JSON.stringify(offer))

@@ -519,7 +519,7 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
       { expand: true }
     )
     .then(response => {
-      console.Console.log(response,"    aaaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooasss")
+      //console.Console.log(response,"    aaaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooasss")
       const listingId = listingRelationship(response).id;
       const entities = updatedEntities({}, response.data);
       const listingRef = { id: listingId, type: 'listing' };
@@ -541,7 +541,7 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
           fetchMonthlyTimeSlots(dispatch, listing);
         }
       } catch (error) {
-        console.log(`transaction process (${processName}) was not recognized`);
+        //console.log(`transaction process (${processName}) was not recognized`);
       }
 
       // API does not allow fetching transaction.listing.author, so we will
@@ -581,7 +581,7 @@ const refreshTransactionEntity = (sdk, txId, dispatch) => {
     })
     .catch(e => {
       // refresh failed, but we don't act upon it.
-      console.log('error', e);
+     // console.log('error', e);
     });
 };
 
@@ -669,7 +669,7 @@ const fetchTxMessages = (txId, page) => (dispatch, getState, sdk) => {
       ...paging,
     })
     .then(response => {
-      console.log(response,"   vvvvvvvvvvvvvvvvvv")
+      //console.log(response,"   vvvvvvvvvvvvvvvvvv")
       const messages = denormalisedResponseEntities(response);
       const { totalItems, totalPages, page: fetchedPage } = response.data.meta;
       const pagination = { totalItems, totalPages, page: fetchedPage };
@@ -711,7 +711,7 @@ export const fetchTrxMessages = (txId, page) => (dispatch, getState, sdk) => {
       ...paging,
     })
     .then(response => {
-      console.log(response,"   vvvvvvvvvvvvvvvvvv")
+      //console.log(response,"   vvvvvvvvvvvvvvvvvv")
       const messages = denormalisedResponseEntities(response);
       const { totalItems, totalPages, page: fetchedPage } = response.data.meta;
       const pagination = { totalItems, totalPages, page: fetchedPage };
@@ -783,7 +783,7 @@ export const sendMessage = (txId, message, config) => (dispatch, getState, sdk) 
 
 export const sendTxMessage = (txId, message) => (dispatch, getState, sdk) => {
   dispatch(sendMessageRequest());
-  console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng")
+  //console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng")
   return sdk.messages
     .send({ transactionId: txId, content: message })
     .then(response => {
@@ -795,7 +795,7 @@ export const sendTxMessage = (txId, message) => (dispatch, getState, sdk) => {
       // this should loop through most recent pages instead of fetching just the first one.
       return dispatch(fetchTxMessages(txId, 1))
         .then((res) => {
-          console.log(res);
+          //console.log(res);
           dispatch(sendMessageSuccess());
           dispatch(acceptOfferFromCustomer(txId))
           return messageId;
@@ -817,7 +817,7 @@ export const createProposal = (txId, offer) => (dispatch, getState, sdk) => {
           .then(response=>{
             dispatch(addMarketplaceEntities(response));
             dispatch(fetchTransactionSuccess(response));
-            console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng ",response)
+            //console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng ",response)
           }) 
           .catch(e => {
             dispatch(fetchTransactionError(storableError(e)));
@@ -826,15 +826,15 @@ export const createProposal = (txId, offer) => (dispatch, getState, sdk) => {
 
 export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk) => {
 
-  console.log(price, "  bbbbbbbbbbb")
+  //console.log(price, "  bbbbbbbbbbb")
  
   return changePrice({listingId,price})
           .then(response=>{
             
-            console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng ",response)
+            //console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng ",response)
           }) 
           .catch(e => {
-            console.log(e)
+            //console.log(e)
           });
 };
 
@@ -863,7 +863,7 @@ export const declineOfferFromCustomer = (trxId,providerId,customerId) => (dispat
 };
 
 export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {
-  console.log(trxId)
+  //console.log(trxId)
   dispatch(updateTransitionRequest());
   sdk.transactions.transition({
     id: trxId,
@@ -881,7 +881,7 @@ export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {
 
 
 export const setOrderReceived = (trxId) => (dispatch, getState, sdk) => {
-  console.log(trxId)
+  //console.log(trxId)
   dispatch(updateTransitionRequest());
   sdk.transactions.transition({
     id: trxId,
@@ -901,7 +901,7 @@ export const setOrderReceived = (trxId) => (dispatch, getState, sdk) => {
 // transitions.REVIEW_2_BY_<CUSTOMER/PROVIDER>
 const sendReviewAsSecond = (txId, transition, params, dispatch, sdk, config) => {
   const include = REVIEW_TX_INCLUDES;
-console.log("Sending review --22222222222--")
+//console.log("Sending review --22222222222--")
   return sdk.transactions
     .transition(
       { id: txId, transition, params },
@@ -928,7 +928,7 @@ console.log("Sending review --22222222222--")
 // by calling sendReviewAsSecond().
 const sendReviewAsFirst = (txId, transition, params, dispatch, sdk, config) => {
   const include = REVIEW_TX_INCLUDES;
-console.log("Sending review --111111111111--")
+//console.log("Sending review --111111111111--")
   return sdk.transactions
     .transition(
       { id: txId, transition, params },
@@ -958,7 +958,7 @@ export const sendReview = (tx, transitionOptionsInfo, params, config) => (
   getState,
   sdk
 ) => {
-  console.log("Sending review ----")
+  //console.log("Sending review ----")
   const { reviewAsFirst, reviewAsSecond, hasOtherPartyReviewedFirst } = transitionOptionsInfo;
   dispatch(sendReviewRequest());
 
@@ -1006,13 +1006,13 @@ export const sendReviewByProvider = ({txId,reviewRating,reviewContent}) => (disp
       { id: txId, transition:"transition/review-2-by-provider",params:{reviewRating:parseInt(reviewRating),reviewContent} }
     )
     .then(response => {
-      console.log("Sending transitions   ---------")
+      //console.log("Sending transitions   ---------")
       dispatch(addMarketplaceEntities(response));
       dispatch(sendReviewSuccess());
       return response;
     })
     .catch(e => {
-      console.log(e,"   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+      //console.log(e,"   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
     })
 };
 

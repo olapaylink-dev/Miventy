@@ -17,7 +17,7 @@ module.exports = async (req, res)  =>  {
   const stripeAccountId = data.stripeAccountId;
   const quantity = data.quantity || 1;
 
-  console.log(stripeAccountId,"   ",quantity);
+  //console.log(stripeAccountId,"   ",quantity);
 
     const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
     const session = await stripe.checkout.sessions.create({
@@ -46,7 +46,7 @@ module.exports = async (req, res)  =>  {
     });
 
     const { status } = session;
-    console.log(session);
+    //console.log(session);
     res
     .status(200)
     .set('Content-Type', 'application/transit+json')

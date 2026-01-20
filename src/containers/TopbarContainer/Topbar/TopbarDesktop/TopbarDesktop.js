@@ -179,7 +179,7 @@ const TopbarDesktop = props => {
     transactions
   } = props;
 
-  console.log(transactions)
+  //console.log(transactions)
   const [mounted, setMounted] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [showNotificationMenus, setShowNotificationMenus] = useState(false);

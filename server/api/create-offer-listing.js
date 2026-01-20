@@ -24,7 +24,7 @@ module.exports = (req, res) => {
 
     ).then(apiResponse => {
             
-            console.log("aaaaaaaaaaaaaaaaaaaaa   ",apiResponse);
+            //console.log("aaaaaaaaaaaaaaaaaaaaa   ",apiResponse);
             const { status, statusText, data } = apiResponse;
             res
             .status(status)
@@ -40,9 +40,9 @@ module.exports = (req, res) => {
         }
         
     ).catch(e => {
-      console.log(JSON.stringify(e.data));
+      //console.log(JSON.stringify(e.data));
     });
 
 
- console.log(listing)
+ //console.log(listing)
 };

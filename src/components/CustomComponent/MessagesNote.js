@@ -20,7 +20,7 @@ const MessagesNote = props =>{
         let result = {};
         data.map((itm,key)=>{
             if(itm.type === "user" && itm.id.uuid === userId){
-                const imgId = itm.relationships.profileImage.data.id.uuid;
+                const imgId = itm?.relationships?.profileImage?.data?.id?.uuid;
                 result = {
                     image:getImageUrl(data,imgId),
                     name:itm.attributes.profile.displayName

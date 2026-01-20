@@ -18,7 +18,7 @@ const Earnings = props=>{
                 result += parseInt(payout);
             }
 
-            console.log("33333333333333333333333333333")
+            //console.log("33333333333333333333333333333")
             
         })
 
