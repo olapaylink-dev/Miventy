@@ -859,7 +859,17 @@ const [currentListing,setCurrentListing] = useState({});
         let result = [];
         trx.map((itm,k)=>{
           const state = itm?.attributes?.state;
-          if(state !== "state/reviewed"){
+          let isPaidFor = false;
+          const {transitions} = itm?.attributes;
+                transitions.map((i,k)=>{
+                   if(i.transition === "transition/confirm-payment"){
+                        isPaidFor = true;
+                    }
+                })
+
+          //const isPaidFor = itm.attributes.transitions.includes("transition/confirm-payment");
+          console.log("5555555555555555555555555555555")
+          if(state !== "state/reviewed" && isPaidFor){
             result.push(itm)
           }
         })

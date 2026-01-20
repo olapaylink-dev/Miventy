@@ -2,6 +2,7 @@ import css from './BookingsCard.module.css';
 import icon1 from '../../assets/images/AlexJohnson.png';
 import { useEffect } from 'react';
 
+
 const BookingsCard = props=>{
     const {data,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction,currentUser,setShowRatingForm} = props;
     const {provider,listing,attributes,customer} = data;
@@ -10,6 +11,8 @@ const BookingsCard = props=>{
     const displayImg = provider?.profileImage?.attributes?.variants["square-small"]?.url;
     const customerDisplayImg = customer?.profileImage?.attributes?.variants["square-small"]?.url;
     const {protectedData,lineItems} = attributes;
+    const {offer} = protectedData;
+    const offerEventDate = offer?.eventDate;
     const transactionState = data?.attributes?.state;
     const {items=[]} = protectedData?.cartData && protectedData?.cartData?.cartData? protectedData?.cartData?.cartData:[];
     const {eventDate="",eventLocation=[]} = protectedData?.cartData;
@@ -79,11 +82,11 @@ const BookingsCard = props=>{
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Quantity:</span>
-                                        <span>{quantity}</span>
+                                        <span>{quantity || 1}</span>
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Date:</span>
-                                        <span>{eventDate}</span>
+                                        <span>{eventDate || offerEventDate}</span>
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Location:</span>
@@ -103,11 +106,11 @@ const BookingsCard = props=>{
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Quantity:</span>
-                                        <span>{quantity}</span>
+                                        <span>{quantity || 1}</span>
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Date:</span>
-                                        <span>{eventDate}</span>
+                                        <span>{eventDate || offerEventDate}</span>
                                     </div>
                                     <div className={css.flex_row}>
                                         <span className={css.label}>Location:</span>

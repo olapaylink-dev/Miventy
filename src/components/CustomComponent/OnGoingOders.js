@@ -69,7 +69,7 @@ const OnGoingOrders = props =>{
     return (
             <>
                {orders.length > 0? orders.map((itm,key)=>{
-                //console.log(itm,"     aaaaaaaaaaaaa");
+                console.log(itm,"     aaaaaaaa00000000000000000000000aaaaa");
                 const {protectedData={}} = itm !== undefined && JSON.stringify(itm) !== "{}"?itm?.attributes:{};
                 const payinTotal = itm?.attributes?.payinTotal?.amount;
                 const lastTransitionedAt = itm?.attributes?.lastTransitionedAt;

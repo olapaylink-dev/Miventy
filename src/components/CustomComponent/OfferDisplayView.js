@@ -5,6 +5,7 @@ import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
+import OfferItems from "../OfferItems";
 
 const REQUEST_QUOTE_TABS = [
   "service_type",
@@ -39,6 +40,8 @@ const OfferDisplayView = props =>{
     const{id,offerTitle,description,eventDate,duration,price} = JSON.parse(currentOfferInView);
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider={},listing={}} = currentTransaction;
+    const imgUrl = listing.attributes.publicData.coverPhoto;
+    const offerQuantity = 1;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const declinedTrx = currentUser?.attributes?.profile?.publicData?.declinedTransaction || [];
     const isOrderDeclined = declinedTrx.includes(id);
@@ -90,12 +93,21 @@ const OfferDisplayView = props =>{
                 <h3 className={css.sub_header}>{listingType} Service</h3>
                 
                 
+
                 <div className={css.container}>
 
                       <div className={css.flex_col}>
                         <div>
                             <h4 className={css.description}>Title</h4>
                             <p className={css.desc_text}>{offerTitle}</p>
+                        </div>
+                        <div>
+                            <OfferItems
+                                imgUrl={imgUrl}
+                                message={""}
+                                quantity={offerQuantity}
+                                total={total}
+                            />
                         </div>
                         <div>
                             <h4 className={css.description}>Description</h4>

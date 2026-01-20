@@ -4,7 +4,7 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 
 
 const CardForm = props =>{
-     const {itm,handleAddDurationPriceToCart} = props;
+     const {itm,handleAddDurationPriceToCart,imageUrl} = props;
     const [selectedValue, setSelectedValue] = useState("");
     const isSelected = selectedValue !== "";
 
@@ -52,7 +52,7 @@ const CardForm = props =>{
                     
                     
                 </form>
-                <button onClick={e=>handleAddDurationPriceToCart(e,selectedValue,itm)} className={css.btn_fill_full} disabled={!isSelected}>
+                <button onClick={e=>handleAddDurationPriceToCart(e,selectedValue,itm,imageUrl)} className={css.btn_fill_full} disabled={!isSelected}>
                     Add to cart
                 </button>
             </>

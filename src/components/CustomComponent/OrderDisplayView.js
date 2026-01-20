@@ -136,7 +136,6 @@ const OrderDisplayView = props =>{
                 <h3 className={css.sub_header}>{listingType} service</h3>
                 
                 <div className={css.container}>
-                    
                         <>
                             <div className={css.flex_col}> 
                                 

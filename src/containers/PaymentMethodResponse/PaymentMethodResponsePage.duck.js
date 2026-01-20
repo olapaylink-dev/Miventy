@@ -152,7 +152,7 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
                           id:speculatedTrx.id,
                           transition: "transition/request-payment-after-inquiry",
                           params: {
-                            stockReservationQuantity: 2,
+                            stockReservationQuantity: JSON.stringify(offer) !== "{}"? 1 : (quantity || 1),
                             listingId: {
                               "_sdkType": "UUID",
                               "uuid": listingId

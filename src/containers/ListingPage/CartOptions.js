@@ -44,7 +44,7 @@ const CartOptions = props =>{
         return cart;
     }
 
-    const handleAddDurationPriceToCart = (e,selectedDurationPrice,currentSeletedCatalog)=>{
+    const handleAddDurationPriceToCart = (e,selectedDurationPrice,currentSeletedCatalog,imageUrl)=>{
 
         //Check if there is a cart with cartId === listingId
         //Get cart with cartId === listingId
@@ -82,7 +82,7 @@ const CartOptions = props =>{
                     cartData:[...remainingCarts,existingCart]
                 }};
             onUpdateProfile(data);
-             console.log("Item added to existing cart")
+            console.log("Item added to existing cart")
         }else{
             //Cart does not exist
             //Create a new cart with the listingId
@@ -155,7 +155,7 @@ const CartOptions = props =>{
                                                 <p>{itm.description}</p>
                                             </div>
                                             
-                                            <CardForm itm={itm} handleAddDurationPriceToCart={handleAddDurationPriceToCart} />
+                                            <CardForm itm={itm} imageUrl={imageUrl} handleAddDurationPriceToCart={handleAddDurationPriceToCart} />
                                         </div>
                                     </div>
                                 )
