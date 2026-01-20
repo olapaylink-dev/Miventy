@@ -752,24 +752,31 @@ const getRatingsAverage = reviewData =>{
   
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
-     ////console.log("==========++++++=============")
+     
     const listingCart = getListingCart(cartData);
-    const orderData = {
-        cartData:listingCart,
-        message:serviceDescription,
-        eventDate,
-        location,
-        guestCount,
-        duration,
-        eventLocation,
-        selectedServiceType
-    }
+    console.log(listingCart,"     ==========++++++=============        ",cartData);
+    
+    if(JSON.stringify(listingCart) !== "{}"){
+        const orderData = {
+          cartData:listingCart,
+          message:serviceDescription,
+          eventDate,
+          location,
+          guestCount,
+          duration,
+          eventLocation,
+          selectedServiceType
+      }
 
-    onSendOrderMessage(currentListing,orderData);
-    setShowConfirmOrderForm(false);
-    setSuccessMessage("Your message was sent successfully!");
-    setShowSuccessView(true);
-    setShowSuccessBadge(true);
+      onSendOrderMessage(currentListing,orderData);
+      setShowConfirmOrderForm(false);
+      setSuccessMessage("Your message was sent successfully!");
+      setShowSuccessView(true);
+      setShowSuccessBadge(true);
+    }else{
+      console.log("Some information are missing.")
+    }
+    
 }
 
 const handleSendEnquiry = ()=>{
