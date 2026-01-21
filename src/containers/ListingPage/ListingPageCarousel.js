@@ -600,6 +600,17 @@ const serviceTypesRentalSpace = [
     }
   }, [isUserDetails]);
 
+  useEffect(() => {
+    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo")
+     const updated = currentUser?.attributes?.profile?.publicData?.cartData;
+     const isEqual = _.isEqual(updated,cartData);
+     if(!isEqual){
+      console.log("Updated    ooooooo")
+      setCartData(updated);
+     }
+     
+  }, [currentUser]);
+
   
   const { formattedPrice } = priceData(price, config.currency, intl);
 

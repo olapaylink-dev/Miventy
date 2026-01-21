@@ -8,6 +8,7 @@ import CatalogItems from "../CatalogItems";
 import NamedLink from "../NamedLink/NamedLink";
 
 import { types as sdkTypes } from '../../util/sdkLoader';
+import OfferItems from "../OfferItems";
 const { Money } = sdkTypes;
 
 
@@ -46,6 +47,9 @@ const OrderDisplayView = props =>{
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
     const {provider,listing,customer} = currentTransaction;
+    const listingPrice = listing?.attributes?.price?.amount;
+    const imgUrl = listing?.attributes?.publicData?.coverPhoto;
+    const offerQuantity = 1;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const transactionState = currentTransaction?.attributes?.state;
     const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
@@ -64,6 +68,8 @@ const OrderDisplayView = props =>{
     const isOrderDeclined = declinedTrx.includes(cartItemId) || providerDeclinedTrx.includes(cartItemId);
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
     //console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
+
+    const total = parseFloat(listingPrice/100).toFixed(2);
 
 
     //Change the price of the listing
@@ -142,7 +148,21 @@ const OrderDisplayView = props =>{
                                 <h3 className={css.sub_header_2}>Catalog order</h3>
                                 {cartData !== undefined && cartData.hasOwnProperty("items") && cartData.items.length > 0?
                                     <CatalogItems cartData={cartData}/>
-                                :""}
+                                :
+                                   
+                                    <OfferItems
+                                        imgUrl={imgUrl}
+                                        message={
+                                            isProvider?
+                                            "This order does not have items in Cart. You need to create a Offer for this."
+                                            :
+                                            "You did not add any item to cart for this order. The service provider will send you an offer for this."
+                                        }
+                                        quantity={offerQuantity}
+                                        total={total}
+                                    />
+                                
+                                }
                                 
                                 <div className={css.grid_con}>
                                     <div>
