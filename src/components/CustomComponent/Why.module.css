@@ -193,6 +193,7 @@
         border-radius: 15px;
         text-align: left;
         justify-content: flex-start;
+        height: auto;
     }
 
     .title {
