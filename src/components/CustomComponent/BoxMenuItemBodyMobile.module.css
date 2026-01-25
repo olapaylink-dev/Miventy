@@ -255,6 +255,18 @@
         display: block;
     }
 
+    .drd_itm_maincon{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999999999;
+        background-color: rgba(182, 182, 182, 0.295);
+        top: 0px;
+        left: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
    
 .menu_btn{
  
@@ -293,6 +305,10 @@
     flex-wrap: wrap;
 }
 
+.drd_itm_con{
+    margin: 90px 20px;
+    width: 90%;
+}
   
    
 }

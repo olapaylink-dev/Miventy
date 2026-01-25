@@ -10,6 +10,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 // import 'mapbox-gl/dist/mapbox-gl.css';
 // import '@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw.css';
+import css from './SearchMapNew.module.css';
 
 const SearchMapNew = (props) => {
 
@@ -218,7 +219,7 @@ const paragraphStyle = {
           left: 0,
           zIndex: 999999999,
           transform,
-          width:'500px',
+          width:'300px',
           height:'100%',
           pointerEvents: 'none'
         }}
@@ -226,7 +227,8 @@ const paragraphStyle = {
 
       <div
         ref={mapContainerRef}
-        style={{width:'500px', height: '100%' }}
+        // style={{width:'300px', height: '100%' }}
+        className={css.container}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}

@@ -81,11 +81,7 @@ const Hero = (props)=>{
            
 
           <div className={css.mobile}>
-                    <BoxMenu 
-                      setShowTopBoxMenu={setShowTopBoxMenu}
-                      showTopBoxMenu={showTopBoxMenu}
-                      history={history}
-                    />
+                   
 
                   <div className={classNames(css.container_mobile)} style={{backgroundImage:`url(${bgImg})`, backgroundSize:'cover'}}>
                     
@@ -98,7 +94,15 @@ const Hero = (props)=>{
                         celebration extraordinary quickly and effortlessly.
                       </p>
 
-                      <div className={css.action_con}>
+                     
+                    </div>
+                    <BoxMenu 
+                        setShowTopBoxMenu={setShowTopBoxMenu}
+                        showTopBoxMenu={showTopBoxMenu}
+                        history={history}
+                      />
+
+                       <div className={css.action_con}>
                         <NamedLink name="SearchPage" className={css.btn_a}>
                           Browse Category
                         </NamedLink>
@@ -106,9 +110,8 @@ const Hero = (props)=>{
                           Post your service
                         </NamedLink>
                       </div>
-                    </div>
-
                   </div>
+                   
 
           </div>
 

@@ -177,7 +177,7 @@ const TopbarComponent = props => {
     showList2,
     setShowList1,
     setShowList2,
-    transactions
+    transactions,
   } = props;
 
 //console.log(transactions,"   zzx2222222xcc");
@@ -247,7 +247,7 @@ const TopbarComponent = props => {
   const isMobileSearchOpen = isMobileLayout && mobilesearch === 'open';
   const [selectedService,setSelectedService] = useState("");
   const [selectedLocation,setSelectedLocation] = useState("");
-
+  
   const mobileMenu = (
     <TopbarMobileMenu
       isAuthenticated={isAuthenticated}
@@ -320,6 +320,11 @@ const handleClick = e =>{
 
 // },[parentClicked])
 
+const handleSearchClick = e =>{
+    e.preventDefault();
+    e.stopPropagation();
+    setShowExpandedSearchBar(true);
+  }
 
   return (
     <>
@@ -339,17 +344,18 @@ const handleClick = e =>{
               <img className={css.resize} src={logo} />
             </NamedLink>
           </div>
+          
           <div className={css.flex_row}>
              <div className={css.trans_text}>
               <span>EN</span>
               <img className={css.trans_icon} src={translation} />
             </div>
-            <button className={css.search_btn}>
+            <button className={css.search_btn} onClick={handleSearchClick}>
               <svg className={css.search_svg} width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.91 2.06245C5.76787 2.06245 2.41 5.42031 2.41 9.56245C2.41 13.7046 5.76787 17.0624 9.91 17.0624C11.6808 17.0624 13.3084 16.4487 14.5914 15.4224L17.6541 18.485C17.9795 18.8105 18.5072 18.8105 18.8326 18.485C19.158 18.1596 19.158 17.632 18.8326 17.3065L15.7699 14.2439C16.7963 12.9608 17.41 11.3333 17.41 9.56245C17.41 5.42031 14.0521 2.06245 9.91 2.06245ZM4.07667 9.56245C4.07667 6.34079 6.68834 3.72911 9.91 3.72911C13.1317 3.72911 15.7433 6.34079 15.7433 9.56245C15.7433 12.7841 13.1317 15.3958 9.91 15.3958C6.68834 15.3958 4.07667 12.7841 4.07667 9.56245Z" fill="black"></path></svg>
             </button>
             <button
               className={css.menu_btn}
-              onClick={() => redirectToURLWithModalState(history, location, 'mobilemenu')}
+              onClick={e=>setShowMenu(!showMenu)}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -360,6 +366,26 @@ const handleClick = e =>{
             </button>
           </div>
         </div>
+         {showMenu?
+               <div className={css.signup_option}>
+                  <div className={css.close_con} onClick={e=>setShowMenu(!showMenu)}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <path d="M1.70711 0.292893C1.31658 -0.0976309 0.683418 -0.0976312 0.292893 0.292893C-0.0976311 0.683418 -0.0976311 1.31658 0.292893 1.70711L5.24264 6.65685L0.292893 11.6066C-0.0976311 11.9971 -0.0976311 12.6303 0.292893 13.0208C0.683418 13.4113 1.31658 13.4113 1.70711 13.0208L6.65685 8.07107L11.6066 13.0208C11.9971 13.4113 12.6303 13.4113 13.0208 13.0208C13.4113 12.6303 13.4113 11.9971 13.0208 11.6066L8.07107 6.65685L13.0208 1.70711C13.4113 1.31658 13.4113 0.683418 13.0208 0.292893C12.6303 -0.0976309 11.9971 -0.0976306 11.6066 0.292893L6.65685 5.24264L1.70711 0.292893Z" fill="black"/>
+                    </svg>
+                  </div>
+                  <NamedLink name="SignupForUserTypePage" params={{userType:"customer"}} className={classNames(css.topbarLink_new)}>
+                    <span className={css.fill_btn}>
+                      I want to hire a service
+                    </span>
+                  </NamedLink>
+                  <NamedLink name="SignupForUserTypePage" params={{userType:"provider"}} className={classNames(css.topbarLink_new)}>
+                    <span className={css.outline_btn}>
+                      I want to provide a service
+                    </span>
+                  </NamedLink>
+              </div>
+              
+              :""}
         
       </div>
       <div className={css.desktop} onClick={e=>{e.preventDefault(); e.stopPropagation();}}>
