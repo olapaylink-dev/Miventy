@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 // Section components
@@ -98,6 +98,7 @@ const SectionBuilder = props => {
     history,
   } = props;
   const { sectionComponents = {}, isInsideContainer, ...otherOption } = options || {};
+  const [showExpandedSearchBar,setShowExpandedSearchBar] = useState(false);
 
   // If there's no sections, we can't render the correct section component
   if (!sections || sections.length === 0) {
@@ -153,6 +154,7 @@ const SectionBuilder = props => {
                   seShowPopups={seShowPopups}
                   handleShowPopUps={handleShowPopUps}
                   history={history}
+                  setShowExpandedSearchBar={setShowExpandedSearchBar}
                 />
               :""}
             <div className={css.main_pad}>

@@ -24,7 +24,7 @@ import BoxMenu from "./BoxMenu";
 import { useInView } from "react-intersection-observer";
 
 const Hero = (props)=>{
-  const {setShowTopBoxMenu,showTopBoxMenu,history} = props;
+  const {setShowTopBoxMenu,showTopBoxMenu,history,setShowExpandedSearchBar} = props;
 
       const { ref, inView, entry } = useInView({
           /* Optional options */
@@ -72,7 +72,10 @@ const Hero = (props)=>{
                       setShowTopBoxMenu={setShowTopBoxMenu}
                       showTopBoxMenu={showTopBoxMenu}
                       history={history}
-                    />:<div className={css.space}></div>
+                      setShowExpandedSearchBar={setShowExpandedSearchBar}
+                    />
+                    :
+                    <div className={css.space}></div>
                   }
                   
               </div>
@@ -100,6 +103,7 @@ const Hero = (props)=>{
                         setShowTopBoxMenu={setShowTopBoxMenu}
                         showTopBoxMenu={showTopBoxMenu}
                         history={history}
+                        setShowExpandedSearchBar={setShowExpandedSearchBar}
                       />
 
                        <div className={css.action_con}>

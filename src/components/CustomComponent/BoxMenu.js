@@ -41,7 +41,7 @@ import BoxMenuItemBodyMobile from "./BoxMenuItemBodyMobile";
 
 const BoxMenu = props =>{
 
-    const {setShowTopBoxMenu,history} = props;
+    const {setShowTopBoxMenu,history,setShowExpandedSearchBar} = props;
     // const { ref, inView, entry } = useInView({
     //     /* Optional options */
     //     threshold: 0,
@@ -102,7 +102,7 @@ const BoxMenu = props =>{
                 <div className={css.sub_menu}>
                     {data.map((itm,key)=>{
                         return (
-                            <BoxMenuItem itemData={itm} history={history}/>
+                            <BoxMenuItem itemData={itm} history={history} setShowExpandedSearchBar={setShowExpandedSearchBar} />
                         )
                     })}
                 </div>
@@ -112,7 +112,7 @@ const BoxMenu = props =>{
                     <div className={css.sub_menu}>
                         {data.map((itm,key)=>{
                             return (
-                                <BoxMenuItemBodyMobile itemData={itm} history={history}/>
+                                <BoxMenuItemBodyMobile itemData={itm} history={history} setShowExpandedSearchBar={setShowExpandedSearchBar}/>
                             )
                         })}
                     </div>

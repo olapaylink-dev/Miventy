@@ -27,7 +27,8 @@ const BoxMenuItemBodyMobile = props=>{
     }
 
     const handleParentClicked = e =>{
-        setShowExpandedSearchBar(true);
+        console.log("Parent clicked");
+        //setShowExpandedSearchBar(true);
     }
 
     const handleSearch = val =>{
@@ -42,7 +43,7 @@ const BoxMenuItemBodyMobile = props=>{
 
     return (
         <div className={css.flex_col} onClick={handleParentClicked} onMouseOut={handleMouseOut}>
-            <button className={classNames(css.menu_btn,itemData.css)} onMouseOver={handleMouseOver} onClick={e=>handleClick(itemData.key)}>
+            <button className={classNames(css.menu_btn,itemData.css)} onMouseOver={handleMouseOver} onClick={e=>{handleClick(itemData.key); e.preventDefault(); e.stopPropagation();}}>
                 <span>{itemData.key}</span>
             </button>
             {

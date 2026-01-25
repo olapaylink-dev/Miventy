@@ -494,7 +494,7 @@ const handleSearchClick = e =>{
           history={history}
         />:""}
 
-      {isSearchPage && !showExpandedSearchBar?<SearchPageBoxMenu isSearchPage={isSearchPage} history={history}/>:""}
+      {isSearchPage && !showExpandedSearchBar?<SearchPageBoxMenu isSearchPage={isSearchPage} history={history} setShowExpandedSearchBar={setShowExpandedSearchBar}/>:""}
         
     </div>
    
