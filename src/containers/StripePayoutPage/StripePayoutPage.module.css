@@ -90,3 +90,57 @@
 .no_spacing{
   font-size: 12px;
 }
+
+.desktop{
+  display: flex;
+}
+
+.mobile{
+  display: none;
+}
+
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+
+  
+   
+}
+
+@media only screen and (max-width: 768px) {
+    
+    
+  .desktop{
+    display: none;
+  }
+
+  .mobile{
+    display: flex;
+    width: 80%;
+    background-color: red;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+    z-index: 999999999;
+  }
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+}
+
+@media only screen and (max-width: 360px) {
+  
+   
+}
+    
+      

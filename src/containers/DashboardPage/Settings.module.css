@@ -87,3 +87,46 @@
     flex-direction: column;
     gap: 20px;
 }
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+
+  
+   
+}
+
+@media only screen and (max-width: 768px) {
+  
+   
+.open_con{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 0 24px;
+  }
+  
+.main_con{
+    padding: 0 16px;
+    border: none;
+}
+
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+}
+
+@media only screen and (max-width: 360px) {
+  
+   
+}
+    
+      

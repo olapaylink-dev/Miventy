@@ -1608,6 +1608,18 @@ svg:disabled{
     margin: 25px 0px;
 }
 
+
+
+.desktop{
+  display: flex;
+}
+
+.mobile{
+  display: none;
+}
+
+
+
 @media only screen and (max-width: 1440px) {
 
 .modal_complete_profile_busi{
@@ -1637,12 +1649,95 @@ svg:disabled{
 
     .container{
         flex-direction: column;
-        width: 95%;
+        width: 100%;
+        margin: 0px;
     }
 
   .modal_complete_profile_busi{
     width: 90%;
    }
+
+   
+  .desktop{
+    display: none;
+  }
+
+  .mobile{
+    display: flex;
+    width: 80%;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    left: 0px;
+    top: 90px;
+    height: 100vh;
+    z-index: 999999999;
+  }
+
+  .overlay{
+    display: flex;
+    width: 100%;
+    background-color: rgba(187, 187, 187, 0.205);
+    position: fixed;
+    left: 0px;
+    top: 90px;
+    height: 100vh;
+    z-index: 9999999;
+  }
+
+  .content{
+    width: 100%;
+  }
+
+  .flex_row_btw{
+    width: 100%;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .open_con{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .profile_photo{
+    border-top: none;
+    border-radius: 0px;
+    padding: 0px 24px 24px 24px;
+  }
+
+  .profile_completion{
+    flex-direction: column;
+    margin: 0px 16px;
+  }
+
+  .header_listing{
+    width: 100%;
+  }
+
+  .create_listing_btn_con{
+    width: 100%;
+    justify-content: center;
+}
+
+
+.your_listing_con{
+    display: flex;
+    width:100%;
+}
+
+.flex_row_btw_ord{
+    flex-direction: column;
+}
+
+.flex_row_btw_ord > div{
+    width: 100%;
+}
+
+.main_con{
+    padding-top: 0px;
+    border: none;
+}
 
 }
 

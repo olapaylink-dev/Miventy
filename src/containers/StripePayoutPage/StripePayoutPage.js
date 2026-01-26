@@ -310,6 +310,7 @@ const [currentListing,setCurrentListing] = useState({});
   const [listingAvailable,setListingAvailable] = useState(false);
   const [selectedFolderName,setSelectedFolderName] = useState("");
   const [counter,setCounter] = useState(0);
+  const [showSideNav,setshowSideNav] = useState(false);
 
   const fileInputProfile = useRef(null);
 
@@ -690,27 +691,33 @@ const [currentListing,setCurrentListing] = useState({});
     e.preventDefault();
     e.stopPropagation();
     //console.log("===")
+    setshowSideNav(false);
     setCurrentTab("dashboard");
   }
 
   const showMessages = val =>{
     setCurrentTab("messages");
+    setshowSideNav(false);
   }
 
   const showEarnings = val =>{
     setCurrentTab("earnings");
+    setshowSideNav(false);
   }
 
   const showSettings = val =>{
     setCurrentTab("settings");
+    setshowSideNav(false);
   }
 
   const showPaymentSettings = val =>{
     setCurrentTab("paymentSettings");
+    setshowSideNav(false);
   }
 
   const showNotification = val =>{
     setCurrentTab("notificationSettings");
+    setshowSideNav(false);
   }
 
   const handleShowSettingsMenu = e=>{
@@ -926,7 +933,8 @@ const [currentListing,setCurrentListing] = useState({});
         <div className={css2.main_con}>
 
                 <div className={css2.container}>
-                    <div className={css2.aside}>
+                  
+                    <div className={classNames(css2.aside,css2.desktop)}>
                         <div onClick={showDashboard} className={css2.flex_row}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.33333 9.58333C2.18274 9.58333 1.25 8.65059 1.25 7.5V3.33333C1.25 2.18274 2.18274 1.25 3.33333 1.25H7.5C8.65059 1.25 9.58333 2.18274 9.58333 3.33333V7.5C9.58333 8.65059 8.65059 9.58333 7.5 9.58333H3.33333ZM2.91667 7.5C2.91667 7.73012 3.10321 7.91667 3.33333 7.91667L7.5 7.91667C7.73012 7.91667 7.91667 7.73012 7.91667 7.5V3.33333C7.91667 3.10322 7.73012 2.91667 7.5 2.91667L3.33333 2.91667C3.10321 2.91667 2.91667 3.10322 2.91667 3.33333L2.91667 7.5Z" fill="black"/>
@@ -999,9 +1007,101 @@ const [currentListing,setCurrentListing] = useState({});
 
 
                     </div>
+                    {showSideNav?
+                        <>
+                              <div className={css2.overlay} onClick={e=>setshowSideNav(false)}>
+
+                              </div>
+                              <div className={classNames(css2.aside,css2.mobile)}>
+                                    <div onClick={showDashboard} className={css2.flex_row}>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M3.33333 9.58333C2.18274 9.58333 1.25 8.65059 1.25 7.5V3.33333C1.25 2.18274 2.18274 1.25 3.33333 1.25H7.5C8.65059 1.25 9.58333 2.18274 9.58333 3.33333V7.5C9.58333 8.65059 8.65059 9.58333 7.5 9.58333H3.33333ZM2.91667 7.5C2.91667 7.73012 3.10321 7.91667 3.33333 7.91667L7.5 7.91667C7.73012 7.91667 7.91667 7.73012 7.91667 7.5V3.33333C7.91667 3.10322 7.73012 2.91667 7.5 2.91667L3.33333 2.91667C3.10321 2.91667 2.91667 3.10322 2.91667 3.33333L2.91667 7.5Z" fill="black"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.25 16.6667C1.25 17.8173 2.18274 18.75 3.33333 18.75H7.5C8.65059 18.75 9.58333 17.8173 9.58333 16.6667V12.5C9.58333 11.3494 8.65059 10.4167 7.5 10.4167H3.33333C2.18274 10.4167 1.25 11.3494 1.25 12.5V16.6667ZM3.33333 17.0833C3.10321 17.0833 2.91667 16.8968 2.91667 16.6667L2.91667 12.5C2.91667 12.2699 3.10321 12.0833 3.33333 12.0833H7.5C7.73012 12.0833 7.91667 12.2699 7.91667 12.5V16.6667C7.91667 16.8968 7.73012 17.0833 7.5 17.0833H3.33333Z" fill="black"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
+                                        </svg>
+                                        <span>Dashboard</span>
+                                    </div>
+                                    <NamedLink onClick={handleShowMessages} className={css.flex_row} name="InboxBasePage">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8336 17.5C17.6745 17.5 19.1669 16.0076 19.1669 14.1667V6.68557C19.1672 6.67283 19.1672 6.66005 19.1669 6.64725V5.83333C19.1669 3.99238 17.6745 2.5 15.8336 2.5H4.16693C2.32598 2.5 0.833596 3.99238 0.833596 5.83333V6.64726C0.833299 6.66005 0.833301 6.67282 0.833596 6.68556V14.1667C0.833596 16.0076 2.32598 17.5 4.16693 17.5H15.8336ZM2.50026 14.1667C2.50026 15.0871 3.24645 15.8333 4.16693 15.8333H15.8336C16.7541 15.8333 17.5003 15.0871 17.5003 14.1667V7.89753L11.2382 10.4023C10.4435 10.7202 9.557 10.7202 8.76229 10.4023L2.50026 7.89753V14.1667ZM10.6192 8.85488L17.5003 6.10247V5.83333C17.5003 4.91286 16.7541 4.16667 15.8336 4.16667H4.16693C3.24645 4.16667 2.50026 4.91286 2.50026 5.83333V6.10247L9.38128 8.85488C9.77863 9.01382 10.2219 9.01382 10.6192 8.85488Z" fill="black"/>
+                                        </svg>
+                    
+                                        <span >Messages</span>
+                                    </NamedLink>
+                                    <div onClick={showEarnings} className={css2.flex_row}>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 1.66732C10.8333 1.20708 10.4602 0.833984 10 0.833984C9.53976 0.833984 9.16667 1.20708 9.16667 1.66732V2.50065C6.86548 2.50065 5 4.36613 5 6.66732C5 8.9685 6.86548 10.834 9.16667 10.834V15.834C7.78595 15.834 6.66667 14.7147 6.66667 13.334C6.66667 12.8737 6.29357 12.5007 5.83333 12.5007C5.3731 12.5007 5 12.8737 5 13.334C5 15.6352 6.86548 17.5006 9.16667 17.5006V18.334C9.16667 18.7942 9.53976 19.1673 10 19.1673C10.4602 19.1673 10.8333 18.7942 10.8333 18.334V17.5006C13.1345 17.5006 15 15.6352 15 13.334C15 11.0328 13.1345 9.16732 10.8333 9.16732V4.16732C12.214 4.16732 13.3333 5.28661 13.3333 6.66732C13.3333 7.12755 13.7064 7.50065 14.1667 7.50065C14.6269 7.50065 15 7.12755 15 6.66732C15 4.36613 13.1345 2.50065 10.8333 2.50065V1.66732ZM9.16667 4.16732C7.78595 4.16732 6.66667 5.28661 6.66667 6.66732C6.66667 8.04803 7.78595 9.16732 9.16667 9.16732V4.16732ZM10.8333 10.834V15.834C12.214 15.834 13.3333 14.7147 13.3333 13.334C13.3333 11.9533 12.214 10.834 10.8333 10.834Z" fill="black"/>
+                                        </svg>
+
+                                        <span>Earnings</span>
+                                    </div>
+                                    <div onClick={handleShowSettingsMenu} className={css2.flex_row_full_btw}>
+                                      <div className={css2.flex_row}>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66667 2.49935V4.27103C8.10436 4.64107 9.16667 5.94615 9.16667 7.49935C9.16667 9.05255 8.10436 10.3576 6.66667 10.7277V17.4993C6.66667 17.9596 6.29357 18.3327 5.83333 18.3327C5.3731 18.3327 5 17.9596 5 17.4993L5 10.7277C3.56231 10.3576 2.5 9.05255 2.5 7.49935C2.5 5.94615 3.56231 4.64107 5 4.27103L5 2.49935C5 2.03911 5.3731 1.66602 5.83333 1.66602C6.29357 1.66602 6.66667 2.03911 6.66667 2.49935ZM4.16667 7.49935C4.16667 6.57887 4.91286 5.83268 5.83333 5.83268C6.75381 5.83268 7.5 6.57887 7.5 7.49935C7.5 8.41982 6.75381 9.16602 5.83333 9.16602C4.91286 9.16602 4.16667 8.41982 4.16667 7.49935Z" fill="black"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3333 15.7277V17.4993C13.3333 17.9596 13.7064 18.3327 14.1667 18.3327C14.6269 18.3327 15 17.9596 15 17.4993V15.7277C16.4377 15.3576 17.5 14.0525 17.5 12.4993C17.5 10.9461 16.4377 9.64107 15 9.27103V2.49935C15 2.03911 14.6269 1.66602 14.1667 1.66602C13.7064 1.66602 13.3333 2.03911 13.3333 2.49935V9.27103C11.8956 9.64107 10.8333 10.9461 10.8333 12.4993C10.8333 14.0525 11.8956 15.3576 13.3333 15.7277ZM15.8333 12.4993C15.8333 11.5789 15.0871 10.8327 14.1667 10.8327C13.2462 10.8327 12.5 11.5789 12.5 12.4993C12.5 13.4198 13.2462 14.166 14.1667 14.166C15.0871 14.166 15.8333 13.4198 15.8333 12.4993Z" fill="black"/>
+                                        </svg>
+                                        <span>Settings</span>
+                                      </div>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                          <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41075 6.91009C9.73619 6.58466 10.2638 6.58466 10.5893 6.91009L15.5893 11.9101C15.9147 12.2355 15.9147 12.7632 15.5893 13.0886C15.2638 13.414 14.7362 13.414 14.4107 13.0886L10 8.67786L5.58926 13.0886C5.26382 13.414 4.73619 13.414 4.41075 13.0886C4.08531 12.7632 4.08531 12.2355 4.41075 11.9101L9.41075 6.91009Z" fill="#667185"/>
+                                        </svg>
+                                    </div>
+                                    {showSettingsMenu?
+                                      <>
+                                        <div onClick={showSettings} className={css2.flex_row_full_btw}>
+                                          <div className={css2.flex_row}>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                
+                                            </svg>
+                                            <span>Account privacy</span>
+                                          </div>
+                                            
+                                        </div>
+
+                                        <div onClick={showPaymentSettings} className={css2.flex_row_full_btw}>
+                                          <div className={css2.flex_row}>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                
+                                            </svg>
+                                            <span>Payment settings</span>
+                                          </div>
+                                          
+                                        </div>
+
+                                        <div onClick={showNotification} className={css2.flex_row_full_btw}>
+                                          <div className={css2.flex_row}>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                
+                                            </svg>
+                                            <span>Notifications</span>
+                                          </div>
+                                            
+                                        </div>
+                                      </>
+                                    :""}
+                                  
+
+
+                                </div>
+                        </>
+                        
+                    
+                    :""}
+                    
+
                     {currentTab === "dashboard"?
                       <div className={css2.content}>
                           <div className={css2.profile_photo}>
+
+                              <div className={css2.open_con} onClick={e=>setshowSideNav(true)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                  <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M3 12H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  <path d="M3 20H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                              </div>
                             
                               {imageSrcProfile !== undefined && imageSrcProfile !== null?
                                 <img className={css2.profilePhoto} onClick={handleProfileClick} src={imageSrcProfile}/>
@@ -1308,7 +1408,13 @@ const [currentListing,setCurrentListing] = useState({});
                     :""}
 
                     {currentTab === "earnings"?
-                      <Earnings setShowManagePayoutOptions={setShowManagePayoutOptions} showManagePayoutOptions={showManagePayoutOptions} transactions={transactions} />
+                      <Earnings 
+                        setShowManagePayoutOptions={setShowManagePayoutOptions} 
+                        showManagePayoutOptions={showManagePayoutOptions} 
+                        transactions={transactions} 
+                        setshowSideNav={setshowSideNav}
+                        showSideNav={showSideNav}
+                      />
                     :""}
 
                     {currentTab === "settings"?
@@ -1316,6 +1422,7 @@ const [currentListing,setCurrentListing] = useState({});
                         setShowVerifyCodeSettings={setShowVerifyCodeSettings}
                         onUpdateProfile={onUpdateProfile}
                         currentUser={currentUser}
+                        setshowSideNav={setshowSideNav}
                       />
                     :""}
 
@@ -1325,6 +1432,15 @@ const [currentListing,setCurrentListing] = useState({});
                       {/* <PaymentSetting setShowVerifyCodeSettings={setShowVerifyCodeSettings} setShowRemoveAccount={setShowRemoveAccount}/> */}
                       
                       <div className={css.main_con}>
+
+                          <div className={css2.open_con} onClick={e=>setshowSideNav(true)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 12H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 20H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                          </div>
+
                           <H3 as="h1" className={css2.header}>
                             <FormattedMessage id="StripePayoutPage.heading" />
                           </H3>

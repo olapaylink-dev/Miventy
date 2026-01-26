@@ -4,7 +4,7 @@ import PasswordResetFormDashboard from '../PasswordResetPage/PasswordResetForm/P
 import PasswordChangePage from "../PasswordChangePage/PasswordChangePage";
 
 const Settings = props=>{
-    const {setShowVerifyCodeSettings,currentUser,onUpdateProfile}= props;
+    const {setShowVerifyCodeSettings,currentUser,onUpdateProfile,setshowSideNav}= props;
 
     const {attributes={}} = currentUser;
     const {profile={}} = attributes;
@@ -53,6 +53,13 @@ const Settings = props=>{
     
     return (
         <div className={css.main_con}>
+            <div className={css.open_con} onClick={e=>setshowSideNav(true)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 20H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             <PasswordChangePage/>
             <div className={css.flex_col}>
                 <h1 className={css.header}>

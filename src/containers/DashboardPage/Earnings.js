@@ -1,8 +1,9 @@
 import React from "react";
 import css from './Earnings.module.css';
+import classNames from "classnames";
 
 const Earnings = props=>{
-    const {transactions} = props;
+    const {transactions,showSideNav,setshowSideNav} = props;
     const {showManagePayoutOptions,setShowManagePayoutOptions} = props;
     const handleManagePayout = e =>{
         setShowManagePayoutOptions(true);
@@ -30,6 +31,13 @@ const Earnings = props=>{
 
     return (
         <div className={css.w_full}>
+             <div className={classNames(css.open_con,css.mobile)} onClick={e=>setshowSideNav(true)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 20H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             <div className={css.no_spacing}>
                 <h1 className={css.header}>Earnings</h1>
                 <p className={css.sub_header}>Track and manage your earnings easily.</p>
@@ -77,7 +85,7 @@ const Earnings = props=>{
                 
             </div>
 
-             <div className={css.section}>
+             <div className={css.section_2}>
                 <div className={css.flex_row}>
                   <h1 className={css.tx_header}>Transaction History</h1>
                 </div>
@@ -167,7 +175,7 @@ const Earnings = props=>{
                 
 
                 <div className={css.tb_con}>
-                    <table className={css.trx_table}>
+                    <table className={classNames(css.trx_table,css.desktop)}>
                         <tr className={css.trx_header}>
                             <th>S/N</th>
                             <th>Client name</th>
@@ -181,7 +189,7 @@ const Earnings = props=>{
                             const {payoutTotal={},lastTransitionedAt,transitions} = attributes;
                             const amount = (payoutTotal?.amount/100) || 0;
                             const {displayName} = customer?.attributes?.profile;
-                            const listingType = listing.attributes.publicData.listingType;
+                            const listingType = listing?.attributes?.publicData?.listingType;
                             const transactionState = itm?.attributes?.state;
                             const checkIfPaid = (trx)=>{
                                 let paid = false;
@@ -233,6 +241,51 @@ const Earnings = props=>{
                             <td><button className={css.completed}>Completed</button></td>
                             <td>02/04/2024</td>
                         </tr> */}
+                    </table>
+
+                    <table className={classNames(css.trx_table,css.mobile)}>
+                        <tr className={css.trx_header}>
+                            <th>S/N</th>
+                            <th className={css.th_name}>Client</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                        {transactions.map((itm,key)=>{
+                            const {customer,attributes,listing} = itm;
+                            const {payoutTotal={},lastTransitionedAt,transitions} = attributes;
+                            const amount = (payoutTotal?.amount/100) || 0;
+                            const {displayName} = customer?.attributes?.profile;
+                            const listingType = listing?.attributes?.publicData?.listingType;
+                            const transactionState = itm?.attributes?.state;
+                            const checkIfPaid = (trx)=>{
+                                let paid = false;
+                                    transitions.map((i,k)=>{
+                                    if(i.transition === "transition/confirm-payment"){
+                                        paid = true;
+                                    }
+                                })
+                                return paid;
+                            }
+
+                            const isPaidFor = checkIfPaid(itm);
+                            if(!isPaidFor)return "";
+                            
+                            return (
+                                <tr>
+                                    <td>{key+1}</td>
+                                    <td>{displayName}</td>
+                                    <td>€{amount}</td>
+                                    <td>
+                                        {transactionState === "state/reviewed"?
+                                            <button className={css.completed}>Completed</button>
+                                        :
+                                            <button className={css.pending}>Pending</button>
+                                        }
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                      
                     </table>
                 </div>
                 
