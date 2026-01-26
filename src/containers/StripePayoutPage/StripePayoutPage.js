@@ -311,6 +311,8 @@ const [currentListing,setCurrentListing] = useState({});
   const [selectedFolderName,setSelectedFolderName] = useState("");
   const [counter,setCounter] = useState(0);
   const [showSideNav,setshowSideNav] = useState(false);
+  const [showMenu,setShowMenu] = useState(false);
+  const [showPopups,seShowPopups] = useState(false);
 
   const fileInputProfile = useRef(null);
 
@@ -922,6 +924,10 @@ const [currentListing,setCurrentListing] = useState({});
             <TopbarContainer
               desktopClassName={css.desktopTopbar}
               mobileClassName={css.mobileTopbar}
+              setShowMenu={setShowMenu}
+              showMenu={showMenu}
+              seShowPopups={seShowPopups}
+
             />
           
         }

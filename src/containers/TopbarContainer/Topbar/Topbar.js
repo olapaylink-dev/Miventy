@@ -178,7 +178,8 @@ const TopbarComponent = props => {
     setShowList1,
     setShowList2,
     transactions,
-    onLogout
+    onLogout,
+    
   } = props;
 
 //console.log(transactions,"   zzx2222222xcc");
