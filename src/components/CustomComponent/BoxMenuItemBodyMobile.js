@@ -38,24 +38,27 @@ const BoxMenuItemBodyMobile = props=>{
     const handleClick = val =>{
         if(val === "Catering"){
             history.push(`/s?keywords=${val}`);
+        }else{
+            setShowItems(true);
         }
+       
     }
 
     return (
-        <div className={css.flex_col} onClick={handleParentClicked} onMouseOut={handleMouseOut}>
-            <button className={classNames(css.menu_btn,itemData.css)} onMouseOver={handleMouseOver} onClick={e=>{handleClick(itemData.key); e.preventDefault(); e.stopPropagation();}}>
+        <div className={css.flex_col} onClick={handleParentClicked} >
+            <button className={classNames(css.menu_btn,itemData.css)}  onClick={e=>{handleClick(itemData.key); e.preventDefault(); e.stopPropagation();}}>
                 <span>{itemData.key}</span>
             </button>
             {
                 showItems?
-                    <div className={css.drd_itm_maincon} onMouseOut={handleMouseOut}>
-                        <div className={css.space} onMouseOver={handleMouseOver}></div>
+                    <div className={css.drd_itm_maincon} onClick={e=>setShowItems(false)}>
+                        <div className={css.space} ></div>
                         <div className={css.drd_itm_con}>
                                 {
 
                                     itemData.item.map((itm,key)=>{
                                         return (
-                                            <button className={classNames(css.drd_itm)} onMouseOver={handleMouseOver} onClick={e=>handleSearch(itm.key)}>
+                                            <button className={classNames(css.drd_itm)}  onClick={e=>handleSearch(itm.key)}>
                                                 <img src={itm.icon} className={css.icon_sm}/>
                                                 <span>{itm.key}</span>
                                             </button>

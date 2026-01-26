@@ -17,7 +17,7 @@ const PageBuilder = loadable(() =>
 );
 
 export const LandingPageComponent = props => {
-  const { pageAssetsData, inProgress, error,history } = props;
+  const { pageAssetsData, inProgress, error,history,onLogout } = props;
   const [showPopups,seShowPopups] = useState(false);
   const [showMenu,setShowMenu] = useState(false);
 
@@ -50,6 +50,7 @@ export const LandingPageComponent = props => {
       setShowList2={setShowList2}
       showList1={showList1}
       showList2={showList2}
+      onLogout={onLogout}
     />
   );
 };

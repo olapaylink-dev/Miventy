@@ -178,12 +178,17 @@ const TopbarComponent = props => {
     setShowList1,
     setShowList2,
     transactions,
+    onLogout
   } = props;
 
 //console.log(transactions,"   zzx2222222xcc");
   //const [showExpandedSearchBar, setShowExpandedSearchBar] = useState(false);
   //const [showList1, setShowList1] = useState(false);
   //const [showList2, setShowList2] = useState(false);
+
+  const profileUser = currentUser;
+  const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
+  const { businessName="",fullName="",language="",userType} = publicData || "";
 
   const handleSubmit = values => {
     const { currentSearchParams, history, config, routeConfiguration } = props;
@@ -326,6 +331,8 @@ const handleSearchClick = e =>{
     setShowExpandedSearchBar(true);
   }
 
+
+
   return (
     <>
     <div className={classNames(classes)} onClick={handleClick}>
@@ -366,7 +373,7 @@ const handleSearchClick = e =>{
             </button>
           </div>
         </div>
-         {showMenu?
+         {/* {showMenu && !isAuthenticated?
                <div className={css.signup_option}>
                   <div className={css.close_con} onClick={e=>setShowMenu(!showMenu)}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -385,7 +392,82 @@ const handleSearchClick = e =>{
                   </NamedLink>
               </div>
               
-              :""}
+              :
+              ""
+              } */}
+
+
+
+
+
+                    {showMenu?
+                      <div className={css.menus_con}>
+                         {userType === "customer"?
+                          <NamedLink name="ProfileSettingsPage" > 
+                              <div className={css.flex_row_menu}>
+                                Profile settings
+                              </div>
+                            </NamedLink>
+                         :
+                         <>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                My Profile
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="SearchPage" > 
+                                <div className={css.flex_row_menu}>
+                                Hire A Service
+                                </div>
+                              </NamedLink>
+                         </>
+                            
+                         }
+                          
+                          {userType === "customer"?
+                          <>
+                              <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
+                                <div className={css.flex_row_menu}>
+                                  My bookings
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                  Favorite
+                                </div>
+                              </NamedLink>
+                              <NamedLink name="StripePayoutPage" > 
+                                <div className={css.flex_row_menu}>
+                                  Become a service provider
+                                </div>
+                              </NamedLink>
+                          </>
+                            
+                            
+                          :
+                            ""
+                          }
+
+                          <div className={css.flex_row_menu_last} onClick={handleLogout}>
+                            Logout
+                          </div>
+                      </div>
+
+                    :""}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
       </div>
       <div className={css.desktop} onClick={e=>{e.preventDefault(); e.stopPropagation();}}>

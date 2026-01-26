@@ -121,6 +121,7 @@ const PageBuilder = props => {
     setShowList2,
     showList1,
     showList2,
+    onLogout,
     ...pageProps
   } = props;
 
@@ -168,6 +169,7 @@ const handleClick = e =>{
           const { Topbar, Main, Footer } = props;
           return (
             <>
+
               <Topbar as="header" className={css.topbar}>
                 <TopbarContainer 
                   currentPage={currentPage}
@@ -187,6 +189,7 @@ const handleClick = e =>{
                   showList2={showList2}
                   setShowList1={setShowList1}
                   setShowList2={setShowList2}
+                  onLogout={onLogout}
                 />
               </Topbar>
               <Main as="main" className={classNames(css.main,(showExpandedSearchBar?css.negative_mag_top:""))}>
