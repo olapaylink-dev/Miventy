@@ -310,7 +310,7 @@ label{
     align-self: stretch;
     border-radius: 6px;
     border: 1px solid var(--Grey-300, #D0D5DD);
-    background: var(--Shade-White, #FFF);
+    background-color: var(--Shade-White, #FFF);
 
 }
 
@@ -318,6 +318,7 @@ label{
     border-style: none;
     padding-left: 0px;
     font-size: 14px;
+    background-color: transparent;
 }
 
 .flex_row_btw_con input:active{
@@ -359,11 +360,11 @@ label{
     align-items: center;
     border-radius: 4px;
     border: 1px solid #E3E8ED;
-    background: #FFF;
 }
 
 .money_con input{
     border: none;
+    background-color: transparent;
 }
 
 
@@ -395,3 +396,87 @@ input[type=number] {
     padding-bottom: 2px;
     color: #101928;
 }
+
+
+.desktop{
+        display: flex;
+}
+.mobile{
+    display: none;
+}
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+
+  
+   
+}
+
+@media only screen and (max-width: 768px) {
+    
+        
+    .desktop{
+            display: none;
+    }
+    .mobile{
+        display: flex;
+    }
+    .formContent{
+        min-width: 300px;
+        width: 100%;
+        padding: 16px;
+        margin-bottom: 50px;
+    }
+
+    .close_icon {
+        margin-right: 0px;
+    }
+
+    .close_btn {
+        margin-top: 0px;
+    }
+
+    .flex_row{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .width_50{
+        width: 100%;
+    }
+    .textInput{
+        width: 100%;
+    }
+
+    .money_con{
+        width: 100%;
+    }
+
+    .money_con input{
+        background-color: transparent;
+    }
+
+    textarea{
+        margin-top: 10px;
+    }
+   
+}
+
+@media only screen and (max-width: 412px) {
+   
+}
+
+@media only screen and (max-width: 360px) {
+  
+   
+}
+    
+      
+
+

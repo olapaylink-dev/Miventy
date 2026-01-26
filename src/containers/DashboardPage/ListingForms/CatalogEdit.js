@@ -362,13 +362,18 @@ const saveCatalogName = e =>{
                                     
                                   </div>
 
-                                  <div className={css.base_btns}>
+                                  <div className={classNames(css.base_btns,css.desktop)}>
                                       <button onClick={handleHideForm} className={css.btn_1}>Close</button>
                                       <div>
                                           <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
                                           <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
                                       </div>
                                   </div>
+                                  <div className={classNames(css.base_btns,css.mobile)}>
+                                        <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
+                                        <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                  </div>
+                                 
 
                                   <input 
                                     id='file1' 
@@ -462,6 +467,7 @@ const saveCatalogName = e =>{
                                                   </div>
                                                 }
                                             </div>
+
                                             <p className={css.cover_desc}>Add a cover image or banner for your catalog</p>
                                             <input 
                                                   id='file' 
@@ -529,13 +535,22 @@ const saveCatalogName = e =>{
                                             </button>
                                           </div>
 
-                                          <div className={css.base_btns}>
-                                              <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+
+
+
+                                        <div className={classNames(css.base_btns,css.desktop)}>
+                                            <button onClick={handleHideForm} className={css.btn_1}>Close</button>
                                               <div>
                                                   <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
                                                   <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
                                               </div>
-                                          </div>
+                                        </div>
+                                        <div className={classNames(css.base_btns,css.mobile)}>
+                                              <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
+                                              <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                        </div>
+
+
                                 </>
                               }
                           

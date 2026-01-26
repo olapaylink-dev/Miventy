@@ -3,7 +3,7 @@ import css from './NotificationSettings.module.css';
 import { Switch } from "@mui/material";
 
 const NotificationSetting = props=>{
-    const {setShowNotificationUpdated,saveNotificationSettings,currentUser}= props;
+    const {setShowNotificationUpdated,saveNotificationSettings,currentUser,setshowSideNav}= props;
     const {enableEmailNotification,enablePushNotification} = currentUser?.attributes?.profile?.publicData || {};
 
     const [emailNotificationEnabled,setEmailNotificationEnabled] = useState(enableEmailNotification);
@@ -19,6 +19,13 @@ const NotificationSetting = props=>{
     }
     return (
         <div className={css.main_con}>
+            <div className={css.open_con} onClick={e=>setshowSideNav(true)}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 4H21" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 20H12" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
             <div className={css.flex_col}>
                 <h1 className={css.header}>
                     Manage your notifications

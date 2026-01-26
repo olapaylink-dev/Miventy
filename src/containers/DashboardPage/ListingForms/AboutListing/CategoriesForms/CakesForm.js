@@ -245,12 +245,17 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   <InputIncrementDecrement setWorkExperience={setWorkExperience} workExperience={workExperience} />
                 </div>
 
-                <div className={css.base_btns}>
+
+                <div className={classNames(css.base_btns,css.desktop)}>
                     <button onClick={handleHideForm} className={css.btn_1}>Close</button>
                     <div>
                         <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>Previous</button>
                         <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>Save and continue</button>
                     </div>
+                </div>
+                <div className={classNames(css.base_btns,css.mobile)}>
+                    <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>Previous</button>
+                    <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>Save and continue</button>
                 </div>
                   
             </form>

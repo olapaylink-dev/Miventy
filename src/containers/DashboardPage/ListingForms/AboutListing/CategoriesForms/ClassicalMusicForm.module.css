@@ -335,3 +335,87 @@ input[type=number] {
     padding-bottom: 2px;
     color: #101928;
 }
+
+
+.desktop{
+        display: flex;
+}
+.mobile{
+    display: none;
+}
+
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+
+  
+   
+}
+
+@media only screen and (max-width: 768px) {
+  
+    .desktop{
+        display: none;
+    }
+    .mobile{
+        display: flex;
+    }
+    .formContent{
+        min-width: 300px;
+        width: 100%;
+        padding: 16px;
+        margin-bottom: 50px;
+    }
+
+    .close_icon {
+        margin-right: 0px;
+    }
+
+    .close_btn {
+        margin-top: 0px;
+    }
+
+    .flex_row{
+        flex-direction: column;
+        margin-top: 20px;
+    }
+    .width_50{
+        width: 100%;
+    }
+    .textInput{
+        width: 100%;
+    }
+
+    .money_con{
+        width: 100%;
+    }
+
+    .money_con input{
+        background-color: transparent;
+    }
+
+    textarea{
+        margin-top: 10px;
+    }
+   
+}
+
+@media only screen and (max-width: 412px) {
+   
+}
+
+@media only screen and (max-width: 360px) {
+  
+   
+}
+    
+      
+
+

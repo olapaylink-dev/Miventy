@@ -1157,16 +1157,17 @@ const hamdleReset = e =>{
                       })}
                   </div>
                   
-                  
-
-                  <div className={css.base_btns}>
-                    <button onClick={handleHideForm} className={css.btn_1}>Close</button>
-                    <div>
+                  <div className={classNames(css.base_btns,css.desktop)}>
+                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                      <div>
+                          <button onClick={handleMoveToAboutService} className={css.btn_prev}>Previous</button>
+                          <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                      </div>
+                  </div>
+                  <div className={classNames(css.base_btns,css.mobile)}>
                         <button onClick={handleMoveToAboutService} className={css.btn_prev}>Previous</button>
                         <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
-                    </div>
                   </div>
-
 
               </div>:""}
           {showStartCat?
@@ -1187,12 +1188,16 @@ const hamdleReset = e =>{
                       <p className={css.full_width}>Create your first item</p>
                     </div>
                   </div>
-                  <div className={classNames(css.base_btns)}>
+                  <div className={classNames(css.base_btns,css.desktop)}>
                       <button onClick={handleHideForm} className={css.btn_1}>Close</button>
                       <div>
                           <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >Previous</button>
                           <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
                       </div>
+                  </div>
+                  <div className={classNames(css.base_btns,css.mobile)}>
+                        <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >Previous</button>
+                        <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
                   </div>
               </div>:""}
                <CatalogEdit

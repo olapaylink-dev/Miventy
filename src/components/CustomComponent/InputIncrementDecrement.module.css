@@ -320,6 +320,7 @@ label{
     border-style: none;
     padding-left: 0px;
     font-size: 14px;
+    background-color: transparent;
 }
 
 .flex_row_btw_con input:active{

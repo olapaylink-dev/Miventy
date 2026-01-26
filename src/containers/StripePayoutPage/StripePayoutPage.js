@@ -1508,6 +1508,7 @@ const [currentListing,setCurrentListing] = useState({});
                         currentUser={currentUser}
                         setShowNotificationUpdated={setShowNotificationUpdated}
                         saveNotificationSettings={handleSaveNotificationSettings}
+                        setshowSideNav={setshowSideNav}
                       />
                     :""}
 
@@ -3165,7 +3166,7 @@ function onChange(timestamp) {
                     </div>
                   <div className={classNames(css2.flex_col,css2.full_w)}>
                     <span className={css2.header_2}>Complete your profile</span>
-                    <div className={css2.main_slider_con}>
+                    {/* <div className={css2.main_slider_con}>
                       <span>Step 1 of 2</span>
                       <div className={css2.slider_con}>
                         <div className={css2.slide}></div>
@@ -3174,7 +3175,8 @@ function onChange(timestamp) {
                         <span className={css2.percent}>50%</span>
                       </div>
                       
-                    </div>
+                    </div> */}
+                    <h3 className={css2.sub_header_3}>Step 1 of 2</h3>
                     <div className={css2.flex_row_normal}>
                       <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2ZM9.5 7C9.5 5.34315 10.8431 4 12.5 4C14.1569 4 15.5 5.34315 15.5 7C15.5 8.65685 14.1569 10 12.5 10C10.8431 10 9.5 8.65685 9.5 7Z" fill="#475367"/>
@@ -3361,7 +3363,7 @@ const handleSubmit = async e=>{
                     </div>
                   <div className={classNames(css2.flex_col,css2.full_w)}>
                     <span className={css2.header_2}>Complete your profile</span>
-                    <div className={css2.main_slider_con}>
+                    {/* <div className={css2.main_slider_con}>
                       <span>Step 1 of 2</span>
                       <div className={css2.slider_con}>
                         <div className={css2.slide_100}></div>
@@ -3370,7 +3372,8 @@ const handleSubmit = async e=>{
                         <span className={css2.percent}>100%</span>
                       </div>
                       
-                    </div>
+                    </div> */}
+                    <h3 className={css2.sub_header_3}>Step 2 of 2</h3>
                     <div className={css2.flex_row_normal}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 5.49914C9.51487 5.49914 7.50015 7.51385 7.50015 9.99914C7.50015 12.4844 9.51487 14.4991 12.0002 14.4991C14.4854 14.4991 16.5002 12.4844 16.5002 9.99914C16.5002 7.51385 14.4854 5.49914 12.0002 5.49914ZM9.50015 9.99914C9.50015 8.61842 10.6194 7.49914 12.0002 7.49914C13.3809 7.49914 14.5002 8.61842 14.5002 9.99914C14.5002 11.3798 13.3809 12.4991 12.0002 12.4991C10.6194 12.4991 9.50015 11.3798 9.50015 9.99914Z" fill="#475367"/>

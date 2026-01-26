@@ -134,7 +134,7 @@
     
     .container{
         flex-direction: column;
-        width: 95%;
+        width: 100%;
     }
 
     .mobile{

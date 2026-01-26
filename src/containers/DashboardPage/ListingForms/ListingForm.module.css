@@ -141,3 +141,50 @@
     margin-right: -50px;
     position: absolute;
 }
+
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+
+  
+   
+}
+
+@media only screen and (max-width: 768px) {
+  
+    .formContent{
+        min-width: 300px;
+        width: 100%;
+        padding: 16px;
+        margin-bottom: 50px;
+    }
+
+    .close_icon {
+        margin-right: 0px;
+    }
+
+    .close_btn {
+        margin-top: 0px;
+    }
+   
+}
+
+@media only screen and (max-width: 412px) {
+   
+}
+
+@media only screen and (max-width: 360px) {
+  
+   
+}
+    
+      
+
+
