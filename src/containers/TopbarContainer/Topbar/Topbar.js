@@ -397,12 +397,11 @@ const handleSearchClick = e =>{
               ""
               } */}
 
-
-
-
-
                     {showMenu?
-                      <div className={css.menus_con}>
+                    <>
+                      {isAuthenticated?
+                      
+                       <div className={css.menus_con}>
                          {userType === "customer"?
                           <NamedLink name="ProfileSettingsPage" > 
                               <div className={css.flex_row_menu}>
@@ -453,8 +452,41 @@ const handleSearchClick = e =>{
                             Logout
                           </div>
                       </div>
+                      
+                      
+                      :
+                      
+                       <div className={css.signup_option}>
+                          <div className={css.close_con} onClick={e=>setShowMenu(!showMenu)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                              <path d="M1.70711 0.292893C1.31658 -0.0976309 0.683418 -0.0976312 0.292893 0.292893C-0.0976311 0.683418 -0.0976311 1.31658 0.292893 1.70711L5.24264 6.65685L0.292893 11.6066C-0.0976311 11.9971 -0.0976311 12.6303 0.292893 13.0208C0.683418 13.4113 1.31658 13.4113 1.70711 13.0208L6.65685 8.07107L11.6066 13.0208C11.9971 13.4113 12.6303 13.4113 13.0208 13.0208C13.4113 12.6303 13.4113 11.9971 13.0208 11.6066L8.07107 6.65685L13.0208 1.70711C13.4113 1.31658 13.4113 0.683418 13.0208 0.292893C12.6303 -0.0976309 11.9971 -0.0976306 11.6066 0.292893L6.65685 5.24264L1.70711 0.292893Z" fill="black"/>
+                            </svg>
+                          </div>
+                          <NamedLink name="LoginPage" className={classNames(css.topbarLink_new)}>
+                            <span className={css.fill_btn}>
+                              Login
+                            </span>
+                          </NamedLink>
+                          <NamedLink name="SignupForUserTypePage" params={{userType:"customer"}} className={classNames(css.topbarLink_new)}>
+                            <span className={css.fill_btn}>
+                              I want to hire a service
+                            </span>
+                          </NamedLink>
+                          <NamedLink name="SignupForUserTypePage" params={{userType:"provider"}} className={classNames(css.topbarLink_new)}>
+                            <span className={css.outline_btn}>
+                              I want to provide a service
+                            </span>
+                          </NamedLink>
+                      </div>
+                      
+                      }
+                    
+                    </>
+                     
 
-                    :""}
+                    :
+                     ""
+                    }
 
 
 

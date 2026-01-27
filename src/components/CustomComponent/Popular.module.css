@@ -212,6 +212,13 @@
       .flex_grids .items{
         border-radius: 5px;
     }
+
+    .title{
+        max-width: 120px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     
    
 }
