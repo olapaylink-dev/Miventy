@@ -159,6 +159,19 @@
         grid-template-columns: 100%;
     }
 
+    .locatn{
+       
+        max-width: 150px;
+       
+    }
+
+    
+.short_txt{
+    
+    max-width: 150px;
+   
+}
+
   
 }
 
