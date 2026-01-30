@@ -774,6 +774,7 @@ const handleSendOrderMessage = ()=>{
       console.log(listingCart,"     =========2222222=============        ",cartData);
         const orderData = {
           cartData:listingCart,
+          isRequestQuote:false,
           message:serviceDescription,
           eventDate,
           location,
@@ -787,8 +788,23 @@ const handleSendOrderMessage = ()=>{
       setSuccessMessage("Your message was sent successfully!");
       setShowSuccessView(true);
       setShowSuccessBadge(true);
-    }else{
-      alert("Something went wrong. Please try again later.");
+    }
+    else{
+      const orderData = {
+          isRequestQuote:true,
+          message:serviceDescription,
+          eventDate,
+          location,
+          guestCount,
+          duration,
+          eventLocation,
+          selectedServiceType
+      }
+      onSendOrderMessage(currentListing,orderData);
+      setShowConfirmOrderForm(false);
+      setSuccessMessage("Your message was sent successfully!");
+      setShowSuccessView(true);
+      setShowSuccessBadge(true);
     }
     
 }
