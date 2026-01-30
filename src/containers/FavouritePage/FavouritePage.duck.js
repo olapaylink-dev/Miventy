@@ -22,15 +22,15 @@ const RESULT_PAGE_SIZE = 50;
 
 // ================ Action types ================ //
 
-export const SEARCH_LISTINGS_REQUEST = 'app/StoreFrontPage/SEARCH_LISTINGS_REQUEST';
-export const SEARCH_LISTINGS_SUCCESS = 'app/StoreFrontPage/SEARCH_LISTINGS_SUCCESS';
-export const SEARCH_LISTINGS_ERROR = 'app/StoreFrontPage/SEARCH_LISTINGS_ERROR';
+export const SEARCH_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_LISTINGS_REQUEST';
+export const SEARCH_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_LISTINGS_SUCCESS';
+export const SEARCH_LISTINGS_ERROR = 'app/SearchPage/SEARCH_LISTINGS_ERROR';
 
-export const SEARCH_MAP_LISTINGS_REQUEST = 'app/StoreFrontPage/SEARCH_MAP_LISTINGS_REQUEST';
-export const SEARCH_MAP_LISTINGS_SUCCESS = 'app/StoreFrontPage/SEARCH_MAP_LISTINGS_SUCCESS';
-export const SEARCH_MAP_LISTINGS_ERROR = 'app/StoreFrontPage/SEARCH_MAP_LISTINGS_ERROR';
+export const SEARCH_MAP_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_MAP_LISTINGS_REQUEST';
+export const SEARCH_MAP_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_MAP_LISTINGS_SUCCESS';
+export const SEARCH_MAP_LISTINGS_ERROR = 'app/SearchPage/SEARCH_MAP_LISTINGS_ERROR';
 
-export const SEARCH_MAP_SET_ACTIVE_LISTING = 'app/StoreFrontPage/SEARCH_MAP_SET_ACTIVE_LISTING';
+export const SEARCH_MAP_SET_ACTIVE_LISTING = 'app/SearchPage/SEARCH_MAP_SET_ACTIVE_LISTING';
 
 // ================ Reducer ================ //
 
@@ -49,7 +49,7 @@ const resultIds = data => {
     .map(l => l.id);
 };
 
-const StoreFrontPageReducer = (state = initialState, action = {}) => {
+const FavouritePageReducer = (state = initialState, action = {}) => {
   const { type, payload } = action;
   switch (type) {
     case SEARCH_LISTINGS_REQUEST:
@@ -82,7 +82,7 @@ const StoreFrontPageReducer = (state = initialState, action = {}) => {
   }
 };
 
-export default StoreFrontPageReducer;
+export default FavouritePageReducer;
 
 // ================ Action creators ================ //
 
@@ -270,6 +270,8 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
 
       dispatch(addMarketplaceEntities(response, sanitizeConfig));
       dispatch(searchListingsSuccess(response));
+
+      console.log(response,"   zzzzxxxx")
       return response;
     })
     .catch(e => {
@@ -281,57 +283,76 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
     });
 };
 
+
 export const setActiveListing = listingId => ({
   type: SEARCH_MAP_SET_ACTIVE_LISTING,
   payload: listingId,
 });
 
 export const loadData = (params, search, config) => (dispatch, getState, sdk) => {
-  
-  const userId = params.id;
+  // In private marketplace mode, this page won't fetch data if the user is unauthorized
+  console.log(config);
+  const state = getState();
+  const currentUser = state.user?.currentUser;
+  const favourites = currentUser.attributes.profile.protectedData.favourites || [];
+  console.log(favourites,"  vvvvvv")
+  const isAuthorized = currentUser && isUserAuthorized(currentUser);
+  const hasViewingRights = currentUser && hasPermissionToViewData(currentUser);
+  const isPrivateMarketplace = config.accessControl.marketplace.private === true;
+  const canFetchData =
+    !isPrivateMarketplace || (isPrivateMarketplace && isAuthorized && hasViewingRights);
+  if (!canFetchData) {
+    return Promise.resolve();
+  }
 
-  //console.log(userId,"   cccccccnnnnnnn")
-
-
-  sdk.listings.query({
-    authorId: new UUID(userId),
-    include: ['author','author.profileImage', 'images'],
-        'fields.listing': [
-          'title',
-          'description',
-          'geolocation',
-          'price',
-          'deleted',
-          'state',
-          'publicData.rating',
-          'publicData.address',
-          'publicData.location',
-          'publicData.category',
-          'publicData.listingType',
-          'publicData.transactionProcessAlias',
-          'publicData.unitType',
-          'publicData.coverPhoto',
-          // These help rendering of 'purchase' listings,
-          // when transitioning from search page to listing page
-          'publicData.pickupEnabled',
-          'publicData.shippingEnabled',
-        ],
-  }).then(res => {
-    // res.data contains the response data
-    sdk.reviews.query({
-      listingId: new UUID("c6ff7190-bdf7-47a0-8a2b-e3136e74334f'")
-    }).then(res => {
-      // res.data contains the response data
-    });
+  const queryParams = parse(search, {
+    latlng: ['origin'],
+    latlngBounds: ['bounds'],
   });
 
+  const { page = 1, address, origin, ...rest } = queryParams;
+  const originMaybe = isOriginInUse(config) && origin ? { origin } : {};
 
+  const {
+    aspectWidth = 1,
+    aspectHeight = 1,
+    variantPrefix = 'listing-card',
+  } = config.layout.listingImage;
+  const aspectRatio = aspectHeight / aspectWidth;
 
-  
-
-
-
-
-
+  const searchListingsCall = searchListings(
+    {
+      ids:favourites.toString(),
+      ...rest,
+      ...originMaybe,
+      page,
+      perPage: RESULT_PAGE_SIZE,
+      include: ['author','author.profileImage', 'images'],
+      'fields.listing': [
+        'title',
+        'description',
+        'geolocation',
+        'price',
+        'deleted',
+        'state',
+        'publicData.rating',
+        'publicData.address',
+        'publicData.location',
+        'publicData.category',
+        'publicData.listingType',
+        'publicData.transactionProcessAlias',
+        'publicData.unitType',
+        'publicData.coverPhoto',
+        // These help rendering of 'purchase' listings,
+        // when transitioning from search page to listing page
+        'publicData.pickupEnabled',
+        'publicData.shippingEnabled',
+        'publicData.originalPrice',
+      ],
+     
+      'limit.images': 100,
+    },
+    config
+  );
   return dispatch(searchListingsCall);
 };

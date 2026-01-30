@@ -38,3 +38,15 @@
     padding-left: 8px;
     width: 100%;
 }           
+
+.flex_row{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.flex_row span{
+    white-space: nowrap;
+}

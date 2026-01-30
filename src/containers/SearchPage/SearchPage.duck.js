@@ -281,6 +281,7 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
     });
 };
 
+
 export const setActiveListing = listingId => ({
   type: SEARCH_MAP_SET_ACTIVE_LISTING,
   payload: listingId,

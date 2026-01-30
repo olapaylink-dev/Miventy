@@ -19,6 +19,7 @@ import { loadData as StripePayoutPageLoader } from './StripePayoutPage/StripePay
 import { loadData as TermsOfServicePageLoader } from './TermsOfServicePage/TermsOfServicePage.duck';
 import { loadData as DashboardPageLoader } from './DashboardPage/DashboardPage.duck';
 import { loadData as StoreFrontPageLoader } from './StoreFrontPage/StoreFrontPage.duck';
+import { loadData as FavouritePageLoader } from './FavouritePage/FavouritePage.duck';
 import {
   loadData as TransactionPageLoader,
   setInitialValues as TransactionPageInitialValues,
@@ -84,6 +85,9 @@ const getPageDataLoadingAPI = () => {
     },
     StoreFrontPage:{
       loadData: StoreFrontPageLoader,
+    },
+    FavouritePage:{
+      loadData: FavouritePageLoader,
     }
 
   };

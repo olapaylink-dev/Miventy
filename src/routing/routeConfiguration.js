@@ -40,6 +40,7 @@ const NoAccessPage = loadable(() => import(/* webpackChunkName: "NoAccessPage" *
 const DashboardPage = loadable(() => import(/* webpackChunkName: "DashboardPage" */ '../containers/DashboardPage/DashboardPage'));
 const PaymentMethodResponsePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/PaymentMethodResponse/PaymentMethodResponsePage'));
 const StoreFrontPage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/StoreFrontPage/StoreFrontPage'));
+const FavouritePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/FavouritePage/FavouritePage'));
 
 // Styleguide helps you to review current components and develop new ones
 const StyleguidePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/StyleguidePage/StyleguidePage'));
@@ -317,6 +318,15 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       name: 'StoreFrontPage',
       component: StoreFrontPage,
       loadData: pageDataLoadingAPI.StripePayoutPage.loadData,
+    },
+
+     {
+      path: '/favourites',
+      name: 'FavouritePage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: FavouritePage,
+      loadData: pageDataLoadingAPI.FavouritePage.loadData,
     },
     
     {

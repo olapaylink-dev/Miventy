@@ -507,7 +507,7 @@ const TopbarDesktop = props => {
                                   My bookings
                                 </div>
                               </NamedLink>
-                              <NamedLink name="StripePayoutPage" > 
+                              <NamedLink name="FavouritePage" > 
                                 <div className={css.flex_row_menu}>
                                   Favorite
                                 </div>
