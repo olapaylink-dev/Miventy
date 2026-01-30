@@ -1632,6 +1632,10 @@ svg:disabled{
     line-height: 145%; /* 20.3px */
 }
 
+.open_con{
+    display: none;
+}
+
 @media only screen and (max-width: 1440px) {
 
 .modal_complete_profile_busi{

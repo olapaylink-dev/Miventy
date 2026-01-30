@@ -38,6 +38,9 @@ const SEARCH_DISPLAY_ONLY_SEARCH_PAGE = 'onlySearchPage';
 import logo from '../../../assets/logo.png';
 import translation from '../../../assets/icons/translation.png';
 import SearchPageBoxMenu from '../../../components/CustomComponent/SearchPageBoxMenu';
+import { updateProfile } from '../../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 
 const redirectToURLWithModalState = (history, location, modalStateParam) => {
   const { pathname, search, state } = location;
@@ -179,8 +182,18 @@ const TopbarComponent = props => {
     setShowList2,
     transactions,
     onLogout,
+    onUpdateProfile
     
   } = props;
+
+
+  useEffect(()=>{
+    const lastAction = localStorage.getItem("lastAction");
+    if(lastAction === "changeUserType"){
+      localStorage.removeItem("lastAction");
+      history.push("/account/payments");
+    }
+  },[currentUser])
 
 //console.log(transactions,"   zzx2222222xcc");
   //const [showExpandedSearchBar, setShowExpandedSearchBar] = useState(false);
@@ -332,7 +345,23 @@ const handleSearchClick = e =>{
     setShowExpandedSearchBar(true);
   }
 
+const handleSwitchToProvider = e =>{
+    localStorage.setItem("lastAction","changeUserType");
+    const data = 
+    {publicData: {
+          userType:"businessOwner"
+        }}
+    onUpdateProfile(data);
+}
 
+const handleSwitchToCustomer = e =>{
+    localStorage.setItem("lastAction","changeUserType");
+    const data = 
+    {publicData: {
+          userType:"customer"
+        }}
+    onUpdateProfile(data);
+}
 
   return (
     <>
@@ -415,11 +444,10 @@ const handleSearchClick = e =>{
                                 My Profile
                                 </div>
                               </NamedLink>
-                              <NamedLink name="SearchPage" > 
-                                <div className={css.flex_row_menu}>
-                                Hire A Service
-                                </div>
-                              </NamedLink>
+                             
+                              <div className={css.flex_row_menu} onClick={handleSwitchToCustomer} > 
+                                  Hire A Service
+                              </div>
                          </>
                             
                          }
@@ -436,11 +464,9 @@ const handleSearchClick = e =>{
                                   Favorite
                                 </div>
                               </NamedLink>
-                              <NamedLink name="StripePayoutPage" > 
-                                <div className={css.flex_row_menu}>
+                              <div className={css.flex_row_menu} onClick={handleSwitchToProvider} > 
                                   Become a service provider
-                                </div>
-                              </NamedLink>
+                              </div>
                           </>
                             
                             
@@ -530,6 +556,8 @@ const handleSearchClick = e =>{
           parentClicked={parentClicked}
           setParentClicked={setParentClicked}
           transactions={transactions}
+          handleSwitchToProvider={handleSwitchToProvider}
+          handleSwitchToCustomer={handleSwitchToCustomer}
         />
       </div>
       <Modal

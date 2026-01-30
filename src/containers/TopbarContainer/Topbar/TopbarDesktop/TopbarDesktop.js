@@ -176,7 +176,9 @@ const TopbarDesktop = props => {
     handleChangeShowMenu,
     parentClicked,
     setParentClicked,
-    transactions
+    transactions,
+    handleSwitchToProvider,
+    handleSwitchToCustomer
   } = props;
 
   //console.log(transactions)
@@ -491,11 +493,9 @@ const TopbarDesktop = props => {
                                 My Profile
                                 </div>
                               </NamedLink>
-                              <NamedLink name="SearchPage" > 
-                                <div className={css.flex_row_menu}>
-                                Hire A Service
-                                </div>
-                              </NamedLink>
+                              <div className={css.flex_row_menu} onClick={handleSwitchToCustomer} > 
+                                  Hire A Service
+                              </div>
                          </>
                             
                          }
@@ -512,11 +512,9 @@ const TopbarDesktop = props => {
                                   Favorite
                                 </div>
                               </NamedLink>
-                              <NamedLink name="StripePayoutPage" > 
-                                <div className={css.flex_row_menu}>
+                              <div className={css.flex_row_menu} onClick={handleSwitchToProvider} > 
                                   Become a service provider
-                                </div>
-                              </NamedLink>
+                              </div>
                           </>
                             
                             

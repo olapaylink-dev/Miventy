@@ -9,6 +9,7 @@ import { propTypes } from '../../util/types';
 import { sendVerificationEmail, hasCurrentUserErrors, fetchCurrentUserHasListings, fetchCurrentUserHasOrders } from '../../ducks/user.duck';
 import { logout, authenticationInProgress } from '../../ducks/auth.duck';
 import { manageDisableScrolling } from '../../ducks/ui.duck';
+import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 const Topbar = loadable(() => import(/* webpackChunkName: "Topbar" */ './Topbar/Topbar'));
 
@@ -65,8 +66,8 @@ const mapDispatchToProps = dispatch => ({
   onLogout: historyPush => dispatch(logout(historyPush)),
   onManageDisableScrolling: (componentId, disableScrolling) => dispatch(manageDisableScrolling(componentId, disableScrolling)),
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
-  onFetchCurrentTransaction: () => dispatch(fetchCurrentUserHasOrders())
-
+  onFetchCurrentTransaction: () => dispatch(fetchCurrentUserHasOrders()),
+  onUpdateProfile:(data) => dispatch(updateProfile(data)),
 });
 
 // Note: it is important that the withRouter HOC is **outside** the

@@ -526,8 +526,8 @@ const [currentListing,setCurrentListing] = useState({});
     let res = {};
     reviewData.map((itm,key)=>{
       console.log("dffffgggghhhhkk");
-      const initial = res[itm.listing.attributes.publicData.category] === undefined?0:res[itm.listing.attributes.publicData.category];
-      res[itm.listing.attributes.publicData.category] =  initial + 1 ;
+      const initial = res[itm?.listing?.attributes?.publicData?.category] === undefined?0:res[itm?.listing?.attributes?.publicData?.category];
+      res[itm?.listing?.attributes?.publicData?.category] =  initial + 1 ;
     })
     return res;
   }
