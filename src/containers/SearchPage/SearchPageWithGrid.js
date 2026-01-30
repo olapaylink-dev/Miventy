@@ -80,6 +80,7 @@ import RadioSelect from '../../components/CustomComponent/RadioSelect';
 import PriceSelect from '../../components/CustomComponent/PriceSelect';
 import LocationSelect from '../../components/CustomComponent/LocationSelect';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 const MODAL_BREAKPOINT = 768; // Search is in modal on mobile layout
 
@@ -107,7 +108,7 @@ export class SearchPageComponent extends Component {
       selectedOption:"",
       showBestRatedFilterList:false,
       showLocationFilterList:false,
-      showPriceFilterList:false
+      showPriceFilterList:false,
     };
 
     this.onOpenMobileModal = this.onOpenMobileModal.bind(this);
@@ -338,6 +339,8 @@ export class SearchPageComponent extends Component {
       routeConfiguration,
       config,
       history,
+      onUpdateProfile,
+      favourites,
       // parentClicked,
       // setParentClicked
     } = this.props;
@@ -583,6 +586,23 @@ export class SearchPageComponent extends Component {
         )
     }
 
+    const handleAddFavourite = (listingId,e) =>{
+        const data = 
+        {protectedData: {
+              favourites:[...favourites,listingId]
+            }}
+        onUpdateProfile(data);
+    }
+
+    const handleRemoveFavourite = (listingId,e) =>{
+      const remainingFavourites = favourites.filter(itm=>itm !== listingId);
+        const data = 
+        {protectedData: {
+              favourites:remainingFavourites
+            }}
+        onUpdateProfile(data);
+    }
+
     return (
       <div onClick={this.setParentClicked}>
           <Page
@@ -657,7 +677,12 @@ export class SearchPageComponent extends Component {
                 />
               </div>
               <div className={css.showing}>Showing 200+ results</div>
-              <SearchCard listings={listings}/>
+              <SearchCard 
+                listings={listings}
+                handleAddFavourite={handleAddFavourite}
+                handleRemoveFavourite={handleRemoveFavourite}
+                favourites={favourites}
+              />
             </div>
           </div>
           </div>
@@ -702,6 +727,7 @@ const EnhancedSearchPage = props => {
   }
 
   const { currentUser, ...restOfProps } = props;
+  const favourites = currentUser?.attributes?.profile?.protectedData?.favourites || [];
   const isPrivateMarketplace = config.accessControl.marketplace.private === true;
   const isUnauthorizedUser = currentUser && !isUserAuthorized(currentUser);
   const hasNoViewingRightsUser = currentUser && !hasPermissionToViewData(currentUser);
@@ -741,6 +767,7 @@ const EnhancedSearchPage = props => {
             location={location}
             parentClicked={parentClicked}
             setParentClicked={setParentClicked}
+            favourites={favourites}
             {...restOfProps}
           />
         </div>
@@ -772,6 +799,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   onManageDisableScrolling: (componentId, disableScrolling) =>
     dispatch(manageDisableScrolling(componentId, disableScrolling)),
+  onUpdateProfile:(data) =>dispatch(updateProfile(data))
 });
 
 // Note: it is important that the withRouter HOC is **outside** the

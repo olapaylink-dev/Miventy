@@ -920,7 +920,7 @@ vertical-align: middle;
   padding: 6px;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  
 }
 
 .profile_img{
@@ -1149,15 +1149,6 @@ vertical-align: middle;
   gap: 20px;
   width: 100%;
   margin-top: 20px;
-}
-
-.flex_col_share{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: fit-content;
-  gap: 10px;
-  width: 100%;
 }
 .section{
   display: flex;
@@ -1512,11 +1503,6 @@ padding: 0px;
 .ratng{
   display: flex;
   justify-content: flex-end;
-}
-
-.location{
-  display: flex;
-  flex-wrap: nowrap;
 }
 
 @media only screen and (max-width: 1440px) {
