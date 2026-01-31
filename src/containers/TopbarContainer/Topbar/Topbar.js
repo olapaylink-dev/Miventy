@@ -182,8 +182,9 @@ const TopbarComponent = props => {
     setShowList2,
     transactions,
     onLogout,
-    onUpdateProfile
-    
+    onUpdateProfile,
+    onSearchKeyword,
+    searchTitles
   } = props;
 
 
@@ -624,6 +625,8 @@ const handleSwitchToCustomer = e =>{
           setShowList2={setShowList2}
           setShowExpandedSearchBar={setShowExpandedSearchBar}
           showExpandedSearchBar={showExpandedSearchBar}
+          onSearchKeyword={onSearchKeyword}
+          searchTitles={searchTitles}
         />
         :""
       }

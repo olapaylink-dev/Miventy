@@ -10,6 +10,7 @@ import { sendVerificationEmail, hasCurrentUserErrors, fetchCurrentUserHasListing
 import { logout, authenticationInProgress } from '../../ducks/auth.duck';
 import { manageDisableScrolling } from '../../ducks/ui.duck';
 import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { searchListingByKeyword } from '../SearchPage/SearchPage.duck';
 
 const Topbar = loadable(() => import(/* webpackChunkName: "Topbar" */ './Topbar/Topbar'));
 
@@ -46,6 +47,8 @@ const mapStateToProps = state => {
     transactions
   } = state.user;
   const hasGenericError = !!(logoutError || hasCurrentUserErrors(state));
+  const {searchTitles} = state.SearchPage;
+  console.log(searchTitles)
   return {
     authInProgress: authenticationInProgress(state),
     currentUser,
@@ -58,7 +61,8 @@ const mapStateToProps = state => {
     sendVerificationEmailInProgress,
     sendVerificationEmailError,
     hasGenericError,
-    transactions
+    transactions,
+    searchTitles
   };
 };
 
@@ -68,6 +72,7 @@ const mapDispatchToProps = dispatch => ({
   onResendVerificationEmail: () => dispatch(sendVerificationEmail()),
   onFetchCurrentTransaction: () => dispatch(fetchCurrentUserHasOrders()),
   onUpdateProfile:(data) => dispatch(updateProfile(data)),
+  onSearchKeyword: searchTerm => dispatch(searchListingByKeyword(searchTerm))
 });
 
 // Note: it is important that the withRouter HOC is **outside** the

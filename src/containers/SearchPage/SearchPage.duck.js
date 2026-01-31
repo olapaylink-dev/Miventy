@@ -26,6 +26,10 @@ export const SEARCH_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_LISTINGS_REQUEST';
 export const SEARCH_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_LISTINGS_SUCCESS';
 export const SEARCH_LISTINGS_ERROR = 'app/SearchPage/SEARCH_LISTINGS_ERROR';
 
+export const SEARCH_LISTINGS_AUTO_REQUEST = 'app/SearchPage/SEARCH_LISTINGS_AUTO_REQUEST';
+export const SEARCH_LISTINGS_AUTO_SUCCESS = 'app/SearchPage/SEARCH_LISTINGS_AUTO_SUCCESS';
+export const SEARCH_LISTINGS_AUTO_ERROR = 'app/SearchPage/SEARCH_LISTINGS_AUTO_ERROR';
+
 export const SEARCH_MAP_LISTINGS_REQUEST = 'app/SearchPage/SEARCH_MAP_LISTINGS_REQUEST';
 export const SEARCH_MAP_LISTINGS_SUCCESS = 'app/SearchPage/SEARCH_MAP_LISTINGS_SUCCESS';
 export const SEARCH_MAP_LISTINGS_ERROR = 'app/SearchPage/SEARCH_MAP_LISTINGS_ERROR';
@@ -40,6 +44,7 @@ const initialState = {
   searchInProgress: false,
   searchListingsError: null,
   currentPageResultIds: [],
+  searchTitles:[]
 };
 
 const resultIds = data => {
@@ -72,6 +77,34 @@ const listingPageReducer = (state = initialState, action = {}) => {
       console.error(payload);
       return { ...state, searchInProgress: false, searchListingsError: payload };
 
+
+
+
+
+
+ case SEARCH_LISTINGS_AUTO_REQUEST:
+      return {
+        ...state,
+        searchInProgress: true,
+        searchTitles: [],
+        searchListingsError: null,
+      };
+    case SEARCH_LISTINGS_AUTO_SUCCESS:
+      return {
+        ...state,
+        searchTitles:payload.data,
+        searchInProgress: false,
+      };
+    case SEARCH_LISTINGS_AUTO_ERROR:
+      // eslint-disable-next-line no-console
+      console.error(payload);
+      return { ...state, searchInProgress: false, searchListingsError: payload };
+
+
+
+
+
+
     case SEARCH_MAP_SET_ACTIVE_LISTING:
       return {
         ...state,
@@ -98,6 +131,22 @@ export const searchListingsSuccess = response => ({
 
 export const searchListingsError = e => ({
   type: SEARCH_LISTINGS_ERROR,
+  error: true,
+  payload: e,
+});
+
+export const searchListingsAutoRequest = searchParams => ({
+  type: SEARCH_LISTINGS_AUTO_REQUEST,
+  payload: { searchParams },
+});
+
+export const searchListingsAutoSuccess = response => ({
+  type: SEARCH_LISTINGS_AUTO_SUCCESS,
+  payload: { data: response },
+});
+
+export const searchListingsAutoError = e => ({
+  type: SEARCH_LISTINGS_AUTO_ERROR,
   error: true,
   payload: e,
 });
@@ -350,4 +399,29 @@ export const loadData = (params, search, config) => (dispatch, getState, sdk) =>
     config
   );
   return dispatch(searchListingsCall);
+};
+
+
+
+export const searchListingByKeyword = (searchTerm) => (dispatch, getState, sdk) => {
+    dispatch(searchListingsAutoRequest())
+    const getTitles = data =>{
+      let result = [];
+      data.map((i,k)=>{
+        result.push(i?.attributes?.title)
+      })
+      return result;
+    }
+ 
+    sdk.listings.query({
+      keywords: searchTerm,
+    }).then(res => {
+      // res.data contains the response data
+      
+      const listOfTitles = getTitles(res.data.data);
+      dispatch(searchListingsAutoSuccess(listOfTitles))
+    }).catch((e)=>{
+        return dispatch(searchListingsAutoError(storableError(e)));
+    })
+
 };

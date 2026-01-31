@@ -54,10 +54,12 @@ const SearchBar = props =>{
         setShowList1,
         setShowList2,
         showExpandedSearchBar,
-        setShowExpandedSearchBar
+        setShowExpandedSearchBar,
+        onSearchKeyword,
+        searchTitles=[]
     } = props;
 
-    //console.log(parentClicked,"  vvvvvv33333333333vvvvv")
+    console.log(searchTitles,"  vvvvvv33333333333vvvvv")
     const [isService, setIsService] = useState(false);
     const [isActive, setIsActive] = useState(false);
     const [addr1, setAddr1] = useState("");
@@ -72,6 +74,8 @@ const SearchBar = props =>{
     const display = useRef(null);
     const [showValue,setShowValue] = useState(false);
     const [eventLocation, setEventLocation] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResult, setSearchResult] = useState("");
 
     // const serviceList = [
     //         "Animation",
@@ -259,8 +263,10 @@ const SearchBar = props =>{
         setAddr5(val.target.value);
     }
 
-    const handleServiceChange = val =>{
-        setAutoValues(serviceList.filter(itm=>itm.key.toLowerCase().includes(val.target.value.toLowerCase())));
+    const handleServiceChange = e =>{
+        setSearchTerm(e.target.value);
+        onSearchKeyword(e.target.value);
+        //setAutoValues(serviceList.filter(itm=>itm.key.toLowerCase().includes(val.target.value.toLowerCase())));
     }
 
     const handleSetSelectedService = val =>{
@@ -321,7 +327,7 @@ const handleSaveLocation = val =>{
                                             {selectedService}
                                         </div>
                                     :
-                                        <input ref={inputDisplay} id="display" className={css.text_sm} onFocus={handleFocus} onClick={handleClick} autocomplete="false" onChange={handleServiceChange} placeholder="What service do you want to hire?" autoFocus/>
+                                        <input ref={inputDisplay} id="display" className={css.text_sm} autocomplete="false" onChange={handleServiceChange} placeholder="What service do you want to hire?" autoFocus/>
                                     }
                                 <div>
                                     <svg onClick={handleCloseList1} width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -333,13 +339,12 @@ const handleSaveLocation = val =>{
                         </div>
                         {showList1?
                          <div className={css.drd_itm}>
-                            {autoValues.length > 0?
+                            {searchTitles.length > 0?
                                 <>
-                                    {autoValues.length > 0 && autoValues.map((itm,key)=>{
+                                    {searchTitles.length > 0 && searchTitles.map((itm,key)=>{
                                         return (
-                                            <div key={`autoValues_${key}`} className={css.flex_row_3} onClick={e=>{setShowList1(false); handleSetSelectedService(itm.key)}}>
-                                                <img className={css.small_icon} src={itm.icon}/>
-                                                <span>{itm.key}</span>
+                                            <div key={`autoValues_${key}`} className={css.flex_row_3} onClick={e=>{setShowList1(false); handleSetSelectedService(itm)}}>
+                                                <span>{itm}</span>
                                             </div>
                                         )
                                     })}
