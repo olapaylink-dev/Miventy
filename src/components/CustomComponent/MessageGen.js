@@ -22,6 +22,8 @@ const MessageGen =(props)=>{
     setShowQuoteAccepted,
     currentOfferInView,
     setCurrentOfferInView,
+    handleDeleteMsg,
+    deletedMsg
   } = props;
 
 
@@ -43,6 +45,8 @@ const MessageGen =(props)=>{
             const {content,createdAt} = itm?.attributes;
             const {description="",price=0} = content.includes("offerTitle")? JSON.parse(content):{};
             const isOffer = description !== "";
+            const msgId = itm.id.uuid;
+            const isDelete = deletedMsg.includes(msgId);
             
             
             let time = createdAt.toLocaleString([], {
@@ -65,7 +69,20 @@ const MessageGen =(props)=>{
                           setCurrentOfferInView={setCurrentOfferInView}
                         />
               }else{
-                return <MessageCardOwn content={content} createdAt={time} senderId={senderId} currentUser={currentUser} currentTransaction={currentTransaction}/>
+                  return <>
+                          {!isDelete?
+                              <MessageCardOwn 
+                                      content={content} 
+                                      createdAt={time} 
+                                      senderId={senderId} 
+                                      currentUser={currentUser} 
+                                      currentTransaction={currentTransaction}
+                                      msgId={msgId}
+                                      handleDeleteMsg={handleDeleteMsg}
+                                    />
+                              :""}
+                          </> 
+                
               }
               
             }else{
@@ -83,7 +100,19 @@ const MessageGen =(props)=>{
                           setCurrentOfferInView={setCurrentOfferInView}
                         />
               }else{
-                return <MessageCard content={content} createdAt={time} senderId={senderId} currentImgUrl={currentImgUrl} currentTransaction={currentTransaction} />
+                return <>
+                  {!isDelete?
+                      <MessageCard 
+                          content={content} 
+                          createdAt={time} 
+                          senderId={senderId} 
+                          currentImgUrl={currentImgUrl} 
+                          currentTransaction={currentTransaction} 
+                          msgId={msgId}
+                          handleDeleteMsg={handleDeleteMsg}
+                        />
+                  :""}
+                </> 
               }
              
             }

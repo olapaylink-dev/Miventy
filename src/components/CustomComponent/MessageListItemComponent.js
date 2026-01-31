@@ -10,13 +10,13 @@ export default function MessageListItemComponent(props){
     return(
         <div className={css.main_container}>
             {transactions.map((itm,key)=>{
-                const isProvider = itm.provider.id.uuid === currentUserId;
+                const isProvider = itm?.provider?.id?.uuid === currentUserId;
                 const data = isProvider?itm.customer:itm.provider;
-                const {attributes,profileImage} = data;
-                const {profile} = attributes;
-                const {displayName} = profile;
+                const {attributes,profileImage} = data || {};
+                const {profile} = attributes || {};
+                const {displayName} = profile || {};
                 const imgUrl = profileImage?.attributes?.variants["square-small"]?.url;
-                const {cartData,location,message} = itm.attributes.protectedData.cartData;
+                const {cartData,location,message} = itm?.attributes?.protectedData?.cartData;
                 const listingDescription = itm?.listing?.attributes?.title;
                 const lastTransitione = itm?.attributes?.lastTransition;
 

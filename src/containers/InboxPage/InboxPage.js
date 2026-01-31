@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
@@ -296,6 +296,9 @@ export const InboxPageComponent = props => {
   const [currentDisplayName,setCurrentDisplayName] = useState("");
   const [currentImgUrl,setCurrentImgUrl] = useState("");
 
+
+  
+
   const processName = resolveLatestProcessName(currentTransaction?.attributes?.processName);
     let process = null;
     try {
@@ -308,11 +311,11 @@ export const InboxPageComponent = props => {
         if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}"){
             if(transactions.length > 0){
                 const itm = transactions[0];
-                const isProvider = itm.provider.id.uuid === currentUser.id.uuid;
+                const isProvider = itm?.provider?.id?.uuid === currentUser?.id?.uuid;
                 const data = isProvider?itm.customer:itm.provider;
-                const {attributes,profileImage} = data;
-                const {profile} = attributes;
-                const {displayName} = profile;
+                const {attributes,profileImage} = data || {};
+                const {profile} = attributes || {};
+                const {displayName} = profile || {};
                 const imgUrl = profileImage?.attributes?.variants["square-small"]?.url;
                 const {cartData,location,message} = itm.attributes.protectedData.cartData;
                 const listingDescription = itm?.listing?.attributes?.title;
@@ -327,7 +330,24 @@ export const InboxPageComponent = props => {
             
         }
      //},[transactions])
+
+  const getUpdatedCurrentTransaction = trxs =>{
+    let res = {};
+    trxs.map((itm,k)=>{
+      if(itm?.id?.uuid === currentTransaction?.id?.uuid){
+        res = itm;
+      }
+    })
+    return res;
+  }
   
+     
+  useEffect(()=>{
+      console.log("Transaction ===")
+      const updatedCurrentTrx = getUpdatedCurrentTransaction(transactions);
+      setCurrentTransaction(updatedCurrentTrx)
+      console.log("Transaction reloaded")
+  },[transactions])
 
 const onSubmitReview = values => {
     const { reviewRating, reviewContent,isProvider} = values;
@@ -403,6 +423,7 @@ const onSubmitReview = values => {
           setCurrentDisplayName={setCurrentDisplayName}
           currentImgUrl={currentImgUrl}
           setCurrentImgUrl={setCurrentImgUrl}
+          onUpdateProfile={onUpdateProfile}
         />
         }
         

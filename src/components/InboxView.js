@@ -30,20 +30,24 @@ export default function InboxView(props){
         setCurrentDisplayName,
         currentImgUrl,
         setCurrentImgUrl,
-        
+        onUpdateProfile
     } = props;
-     //const [currentTransaction,setCurrentTransaction] = useState({});
+     const {customer,provider} = currentTransaction || {};
     //  const [currentDisplayName,setCurrentDisplayName] = useState("");
     //  const [currentImgUrl,setCurrentImgUrl] = useState("");
 
     const userType = currentUser?.attributes?.profile?.publicData?.userType;
+    const customerDeletedMsg = customer?.attributes?.profile?.publicData?.deletedMsg || [];
+    const providerDeletedMsg = provider?.attributes?.profile?.publicData?.deletedMsg || [];
+    const currentUserDeletedMsg = currentUser?.attributes?.profile?.publicData?.deletedMsg || [];
+    console.log(currentTransaction,"   aaaaasssss")
+    const deletedMsg = [...customerDeletedMsg,...providerDeletedMsg,...currentUserDeletedMsg];
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
 
      const msgCount = transactions.length;
 
-    
     
      const handleShowTransactionDetails = (itm,displayName,imgUrl,isProvider) =>{
         setCurrentTransaction(itm);
@@ -63,6 +67,14 @@ export default function InboxView(props){
         onSendMessage(txId,message);
         inputRef.current.value = "";
      }
+
+    const handleDeleteMsg = msgId =>{
+        const data = 
+        {publicData: {
+              deletedMsg:[...deletedMsg,msgId]
+            }}
+        onUpdateProfile(data);
+    }
 
     return (
             <>
@@ -151,6 +163,8 @@ export default function InboxView(props){
                                         setShowQuoteAccepted={setShowQuoteAccepted}
                                         currentOfferInView={currentOfferInView}
                                         setCurrentOfferInView={setCurrentOfferInView}
+                                        handleDeleteMsg={handleDeleteMsg}
+                                        deletedMsg={deletedMsg}
                                     />
                                 </div>
 

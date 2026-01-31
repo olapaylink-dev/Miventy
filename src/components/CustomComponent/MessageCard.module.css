@@ -49,6 +49,15 @@
     color: #475367;
 }
 
+.delete{
+    cursor: pointer;
+}
+
+.content_con{
+    display: flex;
+    width: 100%;
+}
+
 
 @media only screen and (max-width: 1440px) {
 
