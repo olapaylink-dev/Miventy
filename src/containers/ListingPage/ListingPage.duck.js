@@ -422,14 +422,21 @@ export const sendInquiry = (listing, orderData,isInquiry) => (dispatch, getState
     .initiate(bodyParams)
     .then(response => {
       const transactionId = response.data.data.id;
-      //console.log("Transaction created, message sent");
+      console.log("Transaction created, message sent");
 
       // Send the message to the created transaction
-      return sdk.messages.send({ transactionId, content: orderData.message }).then(() => {
+      if(JSON.stringify(orderData?.message) !== "{}"  && orderData?.message !== undefined){
+        return sdk.messages.send({ transactionId, content: orderData.message }).then(() => {
+          dispatch(sendInquirySuccess(isInquiry));
+          dispatch(fetchCurrentUserHasOrdersSuccess(true));
+          return transactionId;
+        });
+      }else{
         dispatch(sendInquirySuccess(isInquiry));
         dispatch(fetchCurrentUserHasOrdersSuccess(true));
         return transactionId;
-      });
+      }
+      
     })
     .catch(e => {
       dispatch(sendInquiryError(storableError(e)));

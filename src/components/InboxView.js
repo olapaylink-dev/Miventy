@@ -136,6 +136,7 @@ export default function InboxView(props){
                             <div className={css.content}>
                                 <div className={css.msg_con}>
                                     
+
                                     <MessageGen 
                                         currentUser={currentUser}
                                         currentTransaction={currentTransaction} 
@@ -152,8 +153,17 @@ export default function InboxView(props){
                                         setCurrentOfferInView={setCurrentOfferInView}
                                     />
                                 </div>
+
                                 <div className={css.msg_input}>
-                                    <input className={css.input} ref={inputRef} type="text" placeholder="Type your message..." onChange={e=>setMessage(e.target.value)} />
+                                    <input className={css.input} ref={inputRef} type="text" placeholder="Type your message..." 
+                                        onKeyDown={e=>{
+                                            if (e.key === "Enter") {
+                                                console.log("Enter pressed")
+                                                handleSendMessage(e);
+                                            }
+                                        }} 
+                                        onChange={e=>setMessage(e.target.value)} 
+                                    />
                                     <div className={css.flex_row_4}>
                                         {userType === "businessOwner"?
                                             <button className={css.send_quote} onClick={e=>setShowQuotationForm(true)}>

@@ -1592,7 +1592,11 @@ padding: 0px;
 }
 
 .flex_row_2{
-  flex-direction: column;
+  flex-direction: row;
+}
+
+.send{
+  font-size: 12px;
 }
 
 }
