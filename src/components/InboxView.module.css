@@ -2,7 +2,10 @@
     display: flex;
     min-height: 70vh;
     flex-direction: column;
-    padding: 5%;
+    padding: 0 10%;
+    position: fixed;
+    width: 100%;
+    margin-top: 90px;
 }
 
 .grid_con{
@@ -23,7 +26,7 @@
     border: 1px solid #EDEDED;
     background: #FFF;
     height: 70vh;
-    overflow-y: scroll;
+    overflow: hidden;
 }
 .content_con{
 
