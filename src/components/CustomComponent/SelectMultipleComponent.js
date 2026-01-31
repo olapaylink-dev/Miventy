@@ -56,6 +56,13 @@ const SelectMultipleComponent = props=>{
                             </div>
                         )
                     })}
+                    <div className={css.add_language}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                        </svg>
+                        Click to add more Languages
+                    </div>
+                    
                 </div>
             :
                 <input className={css.no_border} type='text' placeholder='Select languages from the dropdown list'/>
@@ -65,9 +72,14 @@ const SelectMultipleComponent = props=>{
                 <div className={css.options_con}>
                     {options.map((itm,key)=>{
                         return(
+                            <>
                             <div key={`options_${key+1}`} className={css.option_item} onClick={e=>{handleSelect(itm); e.preventDefault(); e.stopPropagation()}}>{itm}</div>
+                            
+                            </>
+                            
                         )
                     })}
+                    
                 </div>
             :""}
         </div>
