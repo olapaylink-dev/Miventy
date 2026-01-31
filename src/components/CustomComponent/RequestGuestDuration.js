@@ -75,6 +75,8 @@ const handleBack = e =>{
     setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
 }
 
+console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
+
     return (
             <div className={css.modal}>
                 <div className={css.container_header}>
@@ -132,47 +134,52 @@ const handleBack = e =>{
                         :""}
                         
                     </div>
-                    <h2 className={css.form_header}>How long is the service required</h2>
-                     <div className={css.flex_row_btw}>
-                        <div>
-                            {duration !== undefined && duration.length > 0?
-                                <div className={css.full_w}>
-                                    <FormControl>
-                                        <RadioGroup
-                                            aria-labelledby="demo-radio-buttons-group-label"
-                                            name="radio-buttons-group"
-                                            onChange={e=>setDuration(e.target.value)}
-                                        >
+                    {listingType !== "BD Cake and Sweets"?
+                        <>
+                            <h2 className={css.form_header}>How long is the service required</h2>
+                            <div className={css.flex_row_btw}>
+                                <div>
+                                    {duration !== undefined && duration.length > 0?
+                                        <div className={css.full_w}>
+                                            <FormControl>
+                                                <RadioGroup
+                                                    aria-labelledby="demo-radio-buttons-group-label"
+                                                    name="radio-buttons-group"
+                                                    onChange={e=>setDuration(e.target.value)}
+                                                >
 
-                                        {duration.map((category,key)=>{
-                                            
-                                            return(
-                                            <FormControlLabel key={`radio ${category} ${key}`} className={css.no_spacing} value={category} control={
-                                                <Radio
-                                                sx={{
-                                                    color: "#F56630",
-                                                    '&.Mui-checked': {
-                                                        color: "#F56630",
-                                                    },
-                                                    }}
-                                                className={classNames(css.no_spacing,css.radio)}/>} 
-                                                label={
-                                                    <div className={css.flex_col}>
-                                                        <span className={css.label_txt}>{category}</span> 
-                                                        
-                                                    </div>
+                                                {duration.map((category,key)=>{
                                                     
-                                                } />
-                                            )
+                                                    return(
+                                                    <FormControlLabel key={`radio ${category} ${key}`} className={css.no_spacing} value={category} control={
+                                                        <Radio
+                                                        sx={{
+                                                            color: "#F56630",
+                                                            '&.Mui-checked': {
+                                                                color: "#F56630",
+                                                            },
+                                                            }}
+                                                        className={classNames(css.no_spacing,css.radio)}/>} 
+                                                        label={
+                                                            <div className={css.flex_col}>
+                                                                <span className={css.label_txt}>{category}</span> 
+                                                                
+                                                            </div>
+                                                            
+                                                        } />
+                                                    )
 
-                                        })}
-                                        </RadioGroup>
-                                    </FormControl>
+                                                })}
+                                                </RadioGroup>
+                                            </FormControl>
+                                        </div>
+                                    :""}
+                                    
                                 </div>
-                            :""}
-                            
-                        </div>
-                    </div>
+                            </div>
+                        </>
+                    :""}
+                    
 
                     
                     <div className={css.flex_row}>
