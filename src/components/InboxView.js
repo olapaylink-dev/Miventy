@@ -40,8 +40,14 @@ export default function InboxView(props){
     const customerDeletedMsg = customer?.attributes?.profile?.publicData?.deletedMsg || [];
     const providerDeletedMsg = provider?.attributes?.profile?.publicData?.deletedMsg || [];
     const currentUserDeletedMsg = currentUser?.attributes?.profile?.publicData?.deletedMsg || [];
+
+    const customerDeletedChat = customer?.attributes?.profile?.publicData?.deletedChat || [];
+    const providerDeletedChat = provider?.attributes?.profile?.publicData?.deletedChat || [];
+    const currentUserDeletedChat = currentUser?.attributes?.profile?.publicData?.deletedChat || [];
+
     console.log(currentTransaction,"   aaaaasssss")
     const deletedMsg = [...customerDeletedMsg,...providerDeletedMsg,...currentUserDeletedMsg];
+    const deletedChat = [...customerDeletedChat,...providerDeletedChat,...currentUserDeletedChat];
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
@@ -76,6 +82,15 @@ export default function InboxView(props){
         onUpdateProfile(data);
     }
 
+    const handleDeleteChat = trxId =>{
+        const data = 
+        {publicData: {
+              deletedChat:[...deletedChat,trxId]
+            }}
+        onUpdateProfile(data);
+        console.log("Deleted =========")
+    }
+
     return (
             <>
                 <div className={css.container_main}>
@@ -106,6 +121,8 @@ export default function InboxView(props){
                                 handleShowTransactionDetails={handleShowTransactionDetails}
                                 onfetchMessage={onfetchMessage}
                                 currentTransaction={currentTransaction}
+                                handleDeleteChat={handleDeleteChat}
+                                deletedChat={deletedChat}
                             />
                             
                         </aside>
