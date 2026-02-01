@@ -30,24 +30,15 @@ export default function InboxView(props){
         setCurrentDisplayName,
         currentImgUrl,
         setCurrentImgUrl,
-        onUpdateProfile
+        onUpdateProfile,
+        deletedChat,
+        deletedMsg
     } = props;
-     const {customer,provider} = currentTransaction || {};
+     
     //  const [currentDisplayName,setCurrentDisplayName] = useState("");
     //  const [currentImgUrl,setCurrentImgUrl] = useState("");
 
     const userType = currentUser?.attributes?.profile?.publicData?.userType;
-    const customerDeletedMsg = customer?.attributes?.profile?.publicData?.deletedMsg || [];
-    const providerDeletedMsg = provider?.attributes?.profile?.publicData?.deletedMsg || [];
-    const currentUserDeletedMsg = currentUser?.attributes?.profile?.publicData?.deletedMsg || [];
-
-    const customerDeletedChat = customer?.attributes?.profile?.publicData?.deletedChat || [];
-    const providerDeletedChat = provider?.attributes?.profile?.publicData?.deletedChat || [];
-    const currentUserDeletedChat = currentUser?.attributes?.profile?.publicData?.deletedChat || [];
-
-    console.log(currentTransaction,"   aaaaasssss")
-    const deletedMsg = [...customerDeletedMsg,...providerDeletedMsg,...currentUserDeletedMsg];
-    const deletedChat = [...customerDeletedChat,...providerDeletedChat,...currentUserDeletedChat];
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");

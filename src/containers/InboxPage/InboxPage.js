@@ -295,9 +295,19 @@ export const InboxPageComponent = props => {
   const [successMessage,setSuccessMessage] = useState("Your review was successfully added");
   const [currentDisplayName,setCurrentDisplayName] = useState("");
   const [currentImgUrl,setCurrentImgUrl] = useState("");
+  const {customer,provider} = currentTransaction || {};
 
+  const customerDeletedMsg = customer?.attributes?.profile?.publicData?.deletedMsg || [];
+  const providerDeletedMsg = provider?.attributes?.profile?.publicData?.deletedMsg || [];
+  const currentUserDeletedMsg = currentUser?.attributes?.profile?.publicData?.deletedMsg || [];
 
-  
+  const customerDeletedChat = customer?.attributes?.profile?.publicData?.deletedChat || [];
+  const providerDeletedChat = provider?.attributes?.profile?.publicData?.deletedChat || [];
+  const currentUserDeletedChat = currentUser?.attributes?.profile?.publicData?.deletedChat || [];
+
+  console.log(currentTransaction,"   aaaaasssss")
+  const deletedMsg = [...customerDeletedMsg,...providerDeletedMsg,...currentUserDeletedMsg];
+  const deletedChat = [...customerDeletedChat,...providerDeletedChat,...currentUserDeletedChat];
 
   const processName = resolveLatestProcessName(currentTransaction?.attributes?.processName);
     let process = null;
@@ -308,7 +318,7 @@ export const InboxPageComponent = props => {
     }
 
  //useEffect(()=>{
-        if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}"){
+        if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}" && !deletedChat.includes(transactions[0].id.uuid)){
             if(transactions.length > 0){
                 const itm = transactions[0];
                 const isProvider = itm?.provider?.id?.uuid === currentUser?.id?.uuid;
@@ -424,6 +434,8 @@ const onSubmitReview = values => {
           currentImgUrl={currentImgUrl}
           setCurrentImgUrl={setCurrentImgUrl}
           onUpdateProfile={onUpdateProfile}
+          deletedChat={deletedChat}
+          deletedMsg={deletedMsg}
         />
         }
         
