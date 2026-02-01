@@ -4,6 +4,7 @@ import { currentUserShowSuccess, fetchCurrentUser } from '../../ducks/user.duck'
 import { types as sdkTypes} from '../../util/sdkLoader';
 import { updateListingRequest, updateListingSuccess } from '../EditListingPage/EditListingPage.duck';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
+import { deletedChat } from '../../util/api';
 const { UUID } = sdkTypes;
 
 // ================ Action types ================ //
@@ -302,3 +303,35 @@ export const updateProfile = actionPayload => {
       });
   };
 };
+
+
+export const updateProfileDeleteChat = (customerId,providerId,trxId) => {
+  return (dispatch, getState, sdk) => {
+    dispatch(updateProfileRequest());
+
+    return deletedChat({customerId,providerId,trxId})
+      .then(response => {
+          dispatch(fetchCurrentUser({}));
+          dispatch(updateProfileSuccess(response));
+          console.log("================11111111111111111111111=====================");
+          const entities = denormalisedResponseEntities(response);
+          if(actionPayload.hasOwnProperty("declinedTransaction")){
+            dispatch()
+          }
+          if (entities.length !== 1) {
+            throw new Error('Expected a resource in the sdk.currentUser.updateProfile response');
+          }
+          const currentUser = entities[0];
+
+          // Update current user in state.user.currentUser through user.duck.js
+          dispatch(currentUserShowSuccess(currentUser));
+        })
+        .catch(e =>{
+          console.log(e);
+          dispatch(updateProfileError(storableError(e)));
+        });
+
+    }
+};
+
+

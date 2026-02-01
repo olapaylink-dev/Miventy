@@ -261,6 +261,15 @@
     outline-color: #ffbaa1;
 }
 
+.desktop{
+    display: flex;
+}
+
+.mobile{
+    display: none;
+}
+
+
 @media only screen and (max-width: 1440px) {
 
 
@@ -282,6 +291,15 @@
   
 @media only screen and (max-width: 768px) {
 
+        
+    .desktop{
+        display: none;
+    }
+
+    .mobile{
+        display: flex;
+    }
+
     .container_main{
         padding: 2%;
     }
@@ -301,6 +319,15 @@
     width: 80%;
 }
 
+.flex_row_3{
+    align-items: self-start;
+    gap: 5px;
+}
+
+.hide{
+    display: flex;
+    align-self: center;
+}
 
 }
 

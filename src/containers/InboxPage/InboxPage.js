@@ -61,7 +61,7 @@ import MarkOrderAsComplete from '../../components/CustomComponent/MarkOrderAsCom
 import CompleteOrder from '../../components/CustomComponent/CompleteOrder';
 import RatingForm from '../../components/CustomComponent/RatingForm';
 import SuccessView from '../../components/SuccessView/SuccessView';
-import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { updateProfile, updateProfileDeleteChat } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 // Check if the transaction line-items use booking-related units
 const getUnitLineItem = lineItems => {
@@ -260,7 +260,8 @@ export const InboxPageComponent = props => {
     onSendProviderReview,
     onSendCustomerReview,
     onSendReview,
-    onUpdateProfile
+    onUpdateProfile,
+    onUpdateProfileDeleteChat
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -297,17 +298,9 @@ export const InboxPageComponent = props => {
   const [currentImgUrl,setCurrentImgUrl] = useState("");
   const {customer,provider} = currentTransaction || {};
 
-  const customerDeletedMsg = customer?.attributes?.profile?.publicData?.deletedMsg || [];
-  const providerDeletedMsg = provider?.attributes?.profile?.publicData?.deletedMsg || [];
-  const currentUserDeletedMsg = currentUser?.attributes?.profile?.publicData?.deletedMsg || [];
-
-  const customerDeletedChat = customer?.attributes?.profile?.publicData?.deletedChat || [];
-  const providerDeletedChat = provider?.attributes?.profile?.publicData?.deletedChat || [];
-  const currentUserDeletedChat = currentUser?.attributes?.profile?.publicData?.deletedChat || [];
-
-  console.log(currentTransaction,"   aaaaasssss")
-  const deletedMsg = [...customerDeletedMsg,...providerDeletedMsg,...currentUserDeletedMsg];
-  const deletedChat = [...customerDeletedChat,...providerDeletedChat,...currentUserDeletedChat];
+  
+  const deletedMsg = currentUser?.attributes?.profile?.protectedData?.deletedMsg || [];
+  const deletedChat = currentUser?.attributes?.profile?.protectedData?.deletedChat || [];
 
   const processName = resolveLatestProcessName(currentTransaction?.attributes?.processName);
     let process = null;
@@ -318,7 +311,7 @@ export const InboxPageComponent = props => {
     }
 
  //useEffect(()=>{
-        if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}" && !deletedChat.includes(transactions[0].id.uuid)){
+        if(currentTransaction === undefined || currentTransaction === null || JSON.stringify(currentTransaction) === "{}" && !deletedChat.includes(transactions[0]?.id?.uuid)){
             if(transactions.length > 0){
                 const itm = transactions[0];
                 const isProvider = itm?.provider?.id?.uuid === currentUser?.id?.uuid;
@@ -436,6 +429,7 @@ const onSubmitReview = values => {
           onUpdateProfile={onUpdateProfile}
           deletedChat={deletedChat}
           deletedMsg={deletedMsg}
+          onUpdateProfileDeleteChat={onUpdateProfileDeleteChat}
         />
         }
         
@@ -625,7 +619,8 @@ const mapDispatchToProps = dispatch => ({
   onSendProviderReview:(data) =>dispatch(sendReviewByProvider(data)),
   onSendCustomerReview:(trxId) =>dispatch(sendReview(trxId)),
   onSendReview: (tx, transitionOptions, params, config) => dispatch(sendReview(tx, transitionOptions, params, config)),
-  onUpdateProfile:(data)=>dispatch(updateProfile(data))
+  onUpdateProfile:(data)=>dispatch(updateProfile(data)),
+  onUpdateProfileDeleteChat:(customerId,providerId,trxId) => dispatch(updateProfileDeleteChat(customerId,providerId,trxId))
 });
 
 

@@ -180,3 +180,7 @@ export const resetPw = body => {
 export const declineOffer = body => {
   return post('/api/decline-offer', body);
 };
+
+export const deletedChat = body => {
+  return post('/api/delete-chat', body);
+};

@@ -4,6 +4,7 @@ import placeholder from '../assets/placeholder.png';
 import MessageListItemComponent from './CustomComponent/MessageListItemComponent';
 import MessageGen from './CustomComponent/MessageGen';
 import { useEffect, useRef, useState } from 'react';
+import classNames from 'classnames';
 
 export default function InboxView(props){
 
@@ -32,16 +33,15 @@ export default function InboxView(props){
         setCurrentImgUrl,
         onUpdateProfile,
         deletedChat,
-        deletedMsg
+        deletedMsg,
+        onUpdateProfileDeleteChat
     } = props;
-     
-    //  const [currentDisplayName,setCurrentDisplayName] = useState("");
-    //  const [currentImgUrl,setCurrentImgUrl] = useState("");
-
+   
     const userType = currentUser?.attributes?.profile?.publicData?.userType;
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
+     const [showAside,setShowAside] = useState(true);
 
      const msgCount = transactions.length;
 
@@ -68,17 +68,13 @@ export default function InboxView(props){
     const handleDeleteMsg = msgId =>{
         const data = 
         {publicData: {
-              deletedMsg:[...deletedMsg,msgId]
+              deletedMsg:[...new Set(deletedMsg),msgId]
             }}
         onUpdateProfile(data);
     }
 
-    const handleDeleteChat = trxId =>{
-        const data = 
-        {publicData: {
-              deletedChat:[...deletedChat,trxId]
-            }}
-        onUpdateProfile(data);
+    const handleDeleteChat = (customerId,providerId,trxId) =>{
+        onUpdateProfileDeleteChat(customerId,providerId,trxId);
         console.log("Deleted =========")
     }
 
@@ -93,7 +89,34 @@ export default function InboxView(props){
                     </div>
                     
                     <div className={css.grid_con}>
-                        <aside className={css.msg_list}>
+                        {showAside?
+                            <aside className={classNames(css.msg_list,css.mobile)}>
+                                <div className={css.flex_row_2}>
+                                    <span className={`${css.sub_header} ${css.mag_16}`}>All Messages</span>
+                                    <div className={css.msg_count}>
+                                        {msgCount}
+                                    </div>
+                                </div>
+                                <div className={css.searchbar}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                        <path fillRule="evenodd" clipRule="evenodd" d="M7.33337 1.83398C4.01967 1.83398 1.33337 4.52028 1.33337 7.83398C1.33337 11.1477 4.01967 13.834 7.33337 13.834C8.75005 13.834 10.0521 13.343 11.0785 12.5219L13.5286 14.9721C13.789 15.2324 14.2111 15.2324 14.4714 14.9721C14.7318 14.7117 14.7318 14.2896 14.4714 14.0292L12.0213 11.5791C12.8424 10.5527 13.3334 9.25066 13.3334 7.83398C13.3334 4.52028 10.6471 1.83398 7.33337 1.83398ZM2.66671 7.83398C2.66671 5.25666 4.75605 3.16732 7.33337 3.16732C9.9107 3.16732 12 5.25666 12 7.83398C12 10.4113 9.9107 12.5007 7.33337 12.5007C4.75605 12.5007 2.66671 10.4113 2.66671 7.83398Z" fill="#475367"/>
+                                    </svg>
+                                    Search
+                                </div>
+                                <MessageListItemComponent
+                                    transactions={transactions} 
+                                    currentUser={currentUser}
+                                    handleShowTransactionDetails={handleShowTransactionDetails}
+                                    onfetchMessage={onfetchMessage}
+                                    currentTransaction={currentTransaction}
+                                    handleDeleteChat={handleDeleteChat}
+                                    deletedChat={deletedChat}
+                                    setShowAside={setShowAside}
+                                />
+                            </aside>
+                        :""}
+
+                        <aside className={classNames(css.msg_list,css.desktop)}>
                             <div className={css.flex_row_2}>
                                 <span className={`${css.sub_header} ${css.mag_16}`}>All Messages</span>
                                 <div className={css.msg_count}>
@@ -114,13 +137,17 @@ export default function InboxView(props){
                                 currentTransaction={currentTransaction}
                                 handleDeleteChat={handleDeleteChat}
                                 deletedChat={deletedChat}
+                                setShowAside={setShowAside}
                             />
-                            
                         </aside>
+                        
                         <div className={css.content_con}>
                             <div className={css.content_header}>
                                 {currentDisplayName !== undefined && currentDisplayName !== ""?
                                     <div className={css.flex_row_3}>
+                                        <svg onClick={e=>setShowAside(true)} className={classNames(css.mobile,css.hide)} xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                                        </svg>
                                         <div>
                                             <img
                                                 className={css.profile_img}

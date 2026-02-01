@@ -30,6 +30,7 @@ const changePrice = require('./api/change-price');
 const setDailyPayout = require('./api/set-daily-payout');
 const resetPw = require('./api/reset-pw');
 const declineOffer = require('./api/decline-offer');
+const deletedChat = require('./api/delete-chat');
 //const sendEmail = require('./api/send-email');
 
 const router = express.Router();
@@ -98,6 +99,7 @@ router.post('/change-price', changePrice);
 router.post('/set-daily-payout', setDailyPayout);
 router.post('/reset-pw', resetPw);
 router.post('/decline-offer', declineOffer);
+router.post('/delete-chat', deletedChat);
 //router.post('/send-email', sendEmail);
 
 router.post('/webhook',express.raw({type: 'application/json'}), webhookCallback);
