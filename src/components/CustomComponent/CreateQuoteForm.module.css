@@ -359,8 +359,9 @@ input:hover{
 }
 input:focus{
     outline-style: solid;
-    outline-color: #ffbaa1;
-    border-radius: 0px;
+    outline-style: solid;
+    outline-color: transparent;
+    border-radius: 10px;
 }
 
 input{

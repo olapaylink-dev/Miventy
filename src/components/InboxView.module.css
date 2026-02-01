@@ -258,7 +258,9 @@
 }
 .input:focus{
     outline-style: solid;
-    outline-color: #ffbaa1;
+    outline-style: solid;
+    outline-color: transparent;
+    border-radius: 10px;
 }
 
 .desktop{

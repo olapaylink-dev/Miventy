@@ -211,7 +211,7 @@ const SearchBar = props =>{
             history.push(`/s?bounds=${maxlon}%2C${maxlat}%2C${minlon}%2C${minlat}&mapSearch=true&keywords=${selectedService}`);
         }
         else{
-            history.push(`/s?keywords=${selectedService}`);
+            history.push(`/s?keywords=${searchTerm}`);
         }
 
         
@@ -324,10 +324,36 @@ const handleSaveLocation = val =>{
                                             }
                                         }
                                             }>
-                                            {selectedService}
+                                            {/* {selectedService} */}
+                                            <input 
+                                                ref={inputDisplay} id="display" 
+                                                className={css.text_sm} 
+                                                autocomplete="false" 
+                                                onChange={handleServiceChange} 
+                                                placeholder="What service do you want to hire?" 
+                                                autoFocus
+                                                value={selectedService}
+                                                onKeyDown={e=>{
+                                                        if (e.key === "Enter") {
+                                                            handleSearch(e);
+                                                        }
+                                                    }} 
+                                            />
                                         </div>
                                     :
-                                        <input ref={inputDisplay} id="display" className={css.text_sm} autocomplete="false" onChange={handleServiceChange} placeholder="What service do you want to hire?" autoFocus/>
+                                        <input 
+                                            ref={inputDisplay} id="display" 
+                                            className={css.text_sm} 
+                                            autocomplete="false" 
+                                            onChange={handleServiceChange} 
+                                            placeholder="What service do you want to hire?" 
+                                            autoFocus
+                                            onKeyDown={e=>{
+                                                    if (e.key === "Enter") {
+                                                        handleSearch(e);
+                                                    }
+                                                }} 
+                                        />
                                     }
                                 <div>
                                     <svg onClick={handleCloseList1} width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -337,26 +363,7 @@ const handleSaveLocation = val =>{
                                 </div>
                             </div>
                         </div>
-                        {showList1?
-                         <div className={css.drd_itm}>
-                            {searchTitles.length > 0?
-                                <>
-                                    {searchTitles.length > 0 && searchTitles.map((itm,key)=>{
-                                        return (
-                                            <div key={`autoValues_${key}`} className={css.flex_row_3} onClick={e=>{setShowList1(false); handleSetSelectedService(itm)}}>
-                                                <span>{itm}</span>
-                                            </div>
-                                        )
-                                    })}
-                                </>
-                            :
-                                <div className={css.flex_row_3}>
-                                    <span>No result found</span>
-                                </div>
-                            }
-                        </div>
-                        :""
-                        }
+                        
                     </div>
 
 
@@ -456,6 +463,27 @@ const handleSaveLocation = val =>{
                     </button>
                 </div>
             </div>
+
+            {showList1?
+                <div className={css.drd_itm}>
+                {searchTitles.length > 0?
+                    <>
+                        {searchTitles.length > 0 && searchTitles.map((itm,key)=>{
+                            return (
+                                <div key={`autoValues_${key}`} className={css.flex_row_3} onClick={e=>{setShowList1(false); handleSetSelectedService(itm)}}>
+                                    <span>{itm}</span>
+                                </div>
+                            )
+                        })}
+                    </>
+                :
+                    <div className={css.flex_row_3}>
+                        <span>No result found</span>
+                    </div>
+                }
+            </div>
+            :""
+            }
 
         </div>
     )
