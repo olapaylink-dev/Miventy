@@ -5,6 +5,7 @@ import css from './MessageGen.module.css';
 import OfferView from './OfferView';
 import OfferViewOther from './OfferViewOther';
 import OrderView from './OrderView';
+import no_msg from '../../assets/no_msg.png';
 
 // File updated
 const MessageGen =(props)=>{
@@ -23,7 +24,9 @@ const MessageGen =(props)=>{
     currentOfferInView,
     setCurrentOfferInView,
     handleDeleteMsg,
-    deletedMsg
+    deletedMsg,
+    deletedChat,
+    filteredTrx
   } = props;
 
 
@@ -35,6 +38,14 @@ const MessageGen =(props)=>{
     const listingType = listing?.attributes?.publicData?.listingType;
 
     //console.log(cartDat,"   cccccssssss222222")
+
+    if(filteredTrx.length === 0){
+      return (
+        <div className={css.no_msg_con}>
+          <img src={no_msg} />
+        </div>
+      )
+    }
   
     return(
         <div className={css.container}>

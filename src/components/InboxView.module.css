@@ -270,6 +270,7 @@
 }
 
 
+
 @media only screen and (max-width: 1440px) {
 
 
@@ -313,21 +314,29 @@
         width: 100%;
     }
 
-    
+        
 
-.input{
-    width: 80%;
-}
+    .input{
+        width: 80%;
+    }
 
-.flex_row_3{
-    align-items: self-start;
-    gap: 5px;
-}
+    .flex_row_3{
+        align-items: center;
+        gap: 10px;
+    }
 
-.hide{
-    display: flex;
-    align-self: center;
-}
+    .hide{
+        display: flex;
+        align-self: center;
+    }
+
+    .content{
+        padding: 10px;
+    }
+
+    .flex_row{
+        gap: 10px;
+    }
 
 }
 
