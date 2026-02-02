@@ -442,8 +442,21 @@
     width: 90%;
   }
 
-  .map_con{
-    width: fit-content;
+  .main_con {
+    align-items: center;
+    height: 80px;
+    justify-content: flex-start;
+    margin: 0;
+    width: 90%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30px;
+  }
+
+  .drd_itm{
+    margin-top: -40px;
   }
    
 }

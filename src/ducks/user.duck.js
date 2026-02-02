@@ -324,6 +324,7 @@ export const fetchCurrentUserHasOrders = () => (dispatch, getState, sdk) => {
       const hasOrders = response.data.data && response.data.data.length > 0;
       //console.log(response);
       dispatch(fetchCurrentUserHasOrdersSuccess(!!hasOrders,response.data));
+      dispatch(fetchCurrentUserNotifications());
     })
     .catch(e => dispatch(fetchCurrentUserHasOrdersError(storableError(e))));
 };
@@ -339,7 +340,7 @@ export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => 
   }
 
   const apiQueryParams = {
-    only: 'sale',
+    //only: 'sale',
     last_transitions: transitionsNeedingAttention,
     page: 1,
     perPage: NOTIFICATION_PAGE_SIZE,
@@ -350,6 +351,7 @@ export const fetchCurrentUserNotifications = () => (dispatch, getState, sdk) => 
     .query(apiQueryParams)
     .then(response => {
       const transactions = response.data.data;
+      console.log(response, " bbbbbb")
       dispatch(fetchCurrentUserNotificationsSuccess(transactions));
     })
     .catch(e => dispatch(fetchCurrentUserNotificationsError(storableError(e))));

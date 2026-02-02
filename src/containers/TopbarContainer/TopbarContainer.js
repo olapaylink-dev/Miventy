@@ -29,6 +29,7 @@ export const TopbarContainerComponent = props => {
     onFetchCurrentTransaction();
   },[])
   
+  console.log(notificationCount,"  vvvvvvvvvvvvvvvvvvv")
   return <Topbar notificationCount={notificationCount} {...rest} />;
 };
 
