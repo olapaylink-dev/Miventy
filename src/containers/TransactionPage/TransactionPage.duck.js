@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { types as sdkTypes, createImageVariantConfig } from '../../util/sdkLoader';
 import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
 import { isTransactionsTransitionInvalidTransition, storableError } from '../../util/errors';
-import { changePrice, declineOffer, transactionLineItems, updateTransaction } from '../../util/api';
+import { changePrice, declineOffer, sendNotification, transactionLineItems, updateTransaction } from '../../util/api';
 import * as log from '../../util/log';
 import {
   updatedEntities,
@@ -838,11 +838,11 @@ export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk)
           });
 };
 
-export const acceptOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
+export const acceptOfferFromCustomer = (trx,title,senderId) => (dispatch, getState, sdk) => {
  
   dispatch(acceptOfferRequest());
   sdk.transactions.transition({
-    id: trxId,
+    id: trx.id,
     transition: "transition/provider-accept",
     params: {
       protectedData:{transactionState:"accepted"}
@@ -851,13 +851,54 @@ export const acceptOfferFromCustomer = (trxId) => (dispatch, getState, sdk) => {
     expand: true
   }).then(res => {
     // res.data contains the response data
-    dispatch(acceptOfferSuccess())
-    dispatch(fetchTransactionSuccess(res));
+
+      const {
+        attributes,
+        customer,
+        provider,
+        id
+      }=trx;
+      //Data for notification sending
+      const customerId = customer.id.uuid;
+      const providerId = provider.id.uuid;
+      const trxId = id.uuid;
+      const pageToGo = "InboxPage";
+      
+      //send notification
+      sendNotification(
+        {
+          customerId,providerId,trxId,title,pageToGo,senderId
+        }
+      ).then((res)=>{
+        dispatch(acceptOfferSuccess())
+        dispatch(fetchTransactionSuccess(res));
+      })
+    
   });
 };
 
-export const declineOfferFromCustomer = (trxId,providerId,customerId) => (dispatch, getState, sdk) => {
+export const declineOfferFromCustomer = (trx,title,senderId) => (dispatch, getState, sdk) => {
+
   dispatch(declineOfferRequest());
+  const {
+    attributes,
+    customer,
+    provider,
+    id
+  }=trx;
+  //Data for notification sending
+  const customerId = customer.id.uuid;
+  const providerId = provider.id.uuid;
+  const trxId = id.uuid;
+  const pageToGo = "InboxPage";
+
+  //send notification
+  sendNotification(
+    {
+      customerId,providerId,trxId,title,pageToGo,senderId
+    }
+  )
+
   dispatch(declineOfferSuccess());
   
 };

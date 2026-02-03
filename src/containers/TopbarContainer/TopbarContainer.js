@@ -23,13 +23,11 @@ const Topbar = loadable(() => import(/* webpackChunkName: "Topbar" */ './Topbar/
 export const TopbarContainerComponent = props => {
   const {onFetchCurrentTransaction, notificationCount = 0, ...rest } = props;
   const {showPopups} = props;
-  console.log(showPopups);
-
+  
   useEffect(()=>{
     onFetchCurrentTransaction();
   },[])
   
-  console.log(notificationCount,"  vvvvvvvvvvvvvvvvvvv")
   return <Topbar notificationCount={notificationCount} {...rest} />;
 };
 

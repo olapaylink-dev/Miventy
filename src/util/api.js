@@ -184,3 +184,8 @@ export const declineOffer = body => {
 export const deletedChat = body => {
   return post('/api/delete-chat', body);
 };
+
+export const sendNotification = body => {
+  return post('/api/send-notification', body);
+};
+

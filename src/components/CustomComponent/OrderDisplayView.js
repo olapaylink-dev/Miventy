@@ -127,7 +127,7 @@ const OrderDisplayView = props =>{
             declinedTransaction:[...declinedTrx,cartItemId]
             }}
         await onUpdateProfile(data);
-        onDeclineOfferFromCustomer();
+        onDeclineOfferFromCustomer(currentTransaction,"Order was declined",currentUser.id.uuid);
     }
 
     return (
@@ -234,7 +234,10 @@ const OrderDisplayView = props =>{
                                             <button className={css.btn_outline} onClick={handleDeclineOffer}>
                                                 Decline
                                             </button>
-                                            <button className={css.btn_fill} onClick={e=>{onAcceptOfferFromCustomer(currentTransaction.id);}}>
+                                            <button className={css.btn_fill} 
+                                                onClick={e=>{
+                                                        onAcceptOfferFromCustomer(currentTransaction,"Offer was Accepted");
+                                                    }}>
                                                 Accept
                                             </button>
                                         </div>

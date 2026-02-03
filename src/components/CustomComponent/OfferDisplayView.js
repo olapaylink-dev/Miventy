@@ -73,12 +73,12 @@ const OfferDisplayView = props =>{
         },[declineOfferSuccess])
 
     const handleDeclineOffer = async e =>{
-        const data = 
-        {publicData: {
-            declinedTransaction:[...declinedTrx,id]
-            }}
-    await onUpdateProfile(data);
-    onDeclineOfferFromCustomer();
+            const data = 
+            {publicData: {
+                declinedTransaction:[...declinedTrx,id]
+                }}
+        await onUpdateProfile(data);
+        onDeclineOfferFromCustomer(currentTransaction,"Offer was declined",currentUser.id.uuid);
     }
 
     return (

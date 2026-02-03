@@ -16,6 +16,19 @@ export default function MessageListItemComponent(props){
         setShowAside
     } = props;
     const currentUserId = currentUser.id.uuid;
+    const profileUser = currentUser;
+    const {  protectedData } = profileUser?.attributes?.profile || {};
+    const data = protectedData?.notifications || [];
+
+    const getNotificationId = noti=>{
+        let res = [];
+        noti.map((itm,key)=>{
+        res.push(itm.trxId);
+        })
+        return res;
+    }
+
+    const notiIds = getNotificationId(data);
 
     if(transactions.length === 0){
         return "";
@@ -35,6 +48,7 @@ export default function MessageListItemComponent(props){
                         currentTransaction={currentTransaction}
                         handleDeleteChat={handleDeleteChat}
                         setShowAside={setShowAside}
+                        notiIds={notiIds}
                       />
                 
             })}

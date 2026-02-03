@@ -184,7 +184,7 @@ const TopbarComponent = props => {
     onLogout,
     onUpdateProfile,
     onSearchKeyword,
-    searchTitles
+    searchTitles,
   } = props;
 
 
@@ -202,7 +202,8 @@ const TopbarComponent = props => {
   //const [showList2, setShowList2] = useState(false);
 
   const profileUser = currentUser;
-  const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
+  const { bio, displayName, publicData, protectedData } = profileUser?.attributes?.profile || {};
+  const {notifications} = protectedData || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
 
   const handleSubmit = values => {
@@ -363,6 +364,8 @@ const handleSwitchToCustomer = e =>{
         }}
     onUpdateProfile(data);
 }
+
+
 
   return (
     <>
@@ -559,6 +562,9 @@ const handleSwitchToCustomer = e =>{
           transactions={transactions}
           handleSwitchToProvider={handleSwitchToProvider}
           handleSwitchToCustomer={handleSwitchToCustomer}
+          notifications={notifications}
+          history={history}
+          onUpdateProfile={onUpdateProfile}
         />
       </div>
       <Modal

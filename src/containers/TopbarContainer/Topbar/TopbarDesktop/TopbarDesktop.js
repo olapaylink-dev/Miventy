@@ -28,6 +28,7 @@ import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import placeholder from '../../../../assets/placeholder.jpg';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MessagesNote from '../../../../components/CustomComponent/MessagesNote';
+import NotificationNote from '../../../../components/CustomComponent/NotificationNote';
 
 const SignupLink = (props) => {
   const{showMenu,handleShowMenu} = props;
@@ -178,7 +179,10 @@ const TopbarDesktop = props => {
     setParentClicked,
     transactions,
     handleSwitchToProvider,
-    handleSwitchToCustomer
+    handleSwitchToCustomer,
+    notifications,
+    history,
+    onUpdateProfile
   } = props;
 
   //console.log(transactions)
@@ -311,9 +315,33 @@ const TopbarDesktop = props => {
     setShowExpandedSearchBar(true);
   }
 
+  const getNotificationId = noti=>{
+    let res = [];
+    noti.map((itm,key)=>{
+      res.push(itm.trxId);
+    })
+    return res;
+  }
+
+  // const filterTrx = transactions;
+   
+   const getnotificationTransactions = (trxs,noti)=>{
+      const notiIds = getNotificationId(noti);
+      let res = [];
+      trxs.map((itm,key)=>{
+        if(notiIds.includes(itm.id.uuid)){
+          res.push(itm);
+        }
+      })
+      return res;
+   }
+  // filterTrx.data = notificationTransactions;
+
+  const notificationTransactions = getnotificationTransactions(transactions?.data,notifications);
+
+  console.log(notificationTransactions)
   
-
-
+  
   return (
     <nav className={classNames(classes,css.default_pad,(isSearchPage?css.add_padding_bottom:null))} onClick={e=>{e.preventDefault(); e.stopPropagation();}}>
       <div className={css.flex_row}>
@@ -390,14 +418,26 @@ const TopbarDesktop = props => {
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
                       <span>Notifications</span>
-                      <div className={css.count}>1</div>
+                      <div className={css.count}>{notifications.length}</div>
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
+        
+                     {notifications !== undefined && notifications.length > 0?
+                        <NotificationNote data={notifications} history={history} onUpdateProfile={onUpdateProfile} currentUser={currentUser} />
+                        :
+                        <>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M13.8313 3.25952C13.8313 2.65937 13.355 2.17285 12.7674 2.17285C12.1798 2.17285 11.7034 2.65937 11.7034 3.25952V3.87986C8.09435 4.40696 5.31968 7.57601 5.31968 11.4083L5.31968 15.7554C5.31968 15.7554 5.31969 15.7553 5.31968 15.7554C5.31958 15.7575 5.31886 15.7721 5.31424 15.8006C5.3087 15.8348 5.29887 15.8814 5.28264 15.9412C5.24973 16.0626 5.19736 16.2137 5.1242 16.3924C4.97752 16.7506 4.77073 17.163 4.54202 17.5791C4.11203 18.3615 3.89528 19.2937 4.058 20.1803C4.2296 21.1152 4.81881 21.9305 5.82513 22.3218C6.72407 22.6714 7.92067 22.9911 9.50089 23.1814C9.53849 23.2147 9.58295 23.2528 9.63403 23.2945C9.79393 23.4252 10.0224 23.5945 10.3111 23.763C10.8841 24.0974 11.7313 24.4495 12.7674 24.4495C13.8035 24.4495 14.6507 24.0974 15.2237 23.763C15.5124 23.5945 15.7409 23.4252 15.9008 23.2945C15.9518 23.2528 15.9963 23.2147 16.0339 23.1814C17.6141 22.9911 18.8107 22.6714 19.7097 22.3218C20.716 21.9305 21.3052 21.1152 21.4768 20.1803C21.6395 19.2937 21.4228 18.3615 20.9928 17.5791C20.7641 17.163 20.5573 16.7506 20.4106 16.3924C20.3374 16.2137 20.285 16.0626 20.2521 15.9412C20.2359 15.8814 20.2261 15.8348 20.2205 15.8006C20.2159 15.7721 20.2152 15.7578 20.2151 15.7557C20.2151 15.7555 20.2151 15.7557 20.2151 15.7557L20.2151 15.7465V11.4088C20.2151 7.57663 17.4405 4.40705 13.8313 3.87987V3.25952ZM7.4476 11.4083C7.4476 8.40784 9.8291 5.97619 12.7674 5.97619C15.7056 5.97619 18.0872 8.40825 18.0872 11.4088V15.7562C18.0872 16.2592 18.2717 16.8018 18.4474 17.2309C18.6383 17.6971 18.8884 18.1903 19.1372 18.643C19.3791 19.0832 19.4368 19.4991 19.3853 19.7798C19.3426 20.0122 19.2289 20.1832 18.9525 20.2908C17.8088 20.7355 15.8783 21.1895 12.7674 21.1895C9.65645 21.1895 7.72593 20.7355 6.58233 20.2908C6.30585 20.1832 6.19214 20.0122 6.14949 19.7798C6.09796 19.4991 6.15565 19.0832 6.39757 18.643C6.64637 18.1903 6.8965 17.6971 7.08736 17.2309C7.26305 16.8018 7.4476 16.2592 7.4476 15.7562V11.4083Z" fill="#4B5563"/>
+                          </svg>
+                          <span>No messages yet</span>
+                        </>
+                      }
+
+                      {/* <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">
                         <path fillRule="evenodd" clipRule="evenodd" d="M13.8313 3.25952C13.8313 2.65937 13.355 2.17285 12.7674 2.17285C12.1798 2.17285 11.7034 2.65937 11.7034 3.25952V3.87986C8.09435 4.40696 5.31968 7.57601 5.31968 11.4083L5.31968 15.7554C5.31968 15.7554 5.31969 15.7553 5.31968 15.7554C5.31958 15.7575 5.31886 15.7721 5.31424 15.8006C5.3087 15.8348 5.29887 15.8814 5.28264 15.9412C5.24973 16.0626 5.19736 16.2137 5.1242 16.3924C4.97752 16.7506 4.77073 17.163 4.54202 17.5791C4.11203 18.3615 3.89528 19.2937 4.058 20.1803C4.2296 21.1152 4.81881 21.9305 5.82513 22.3218C6.72407 22.6714 7.92067 22.9911 9.50089 23.1814C9.53849 23.2147 9.58295 23.2528 9.63403 23.2945C9.79393 23.4252 10.0224 23.5945 10.3111 23.763C10.8841 24.0974 11.7313 24.4495 12.7674 24.4495C13.8035 24.4495 14.6507 24.0974 15.2237 23.763C15.5124 23.5945 15.7409 23.4252 15.9008 23.2945C15.9518 23.2528 15.9963 23.2147 16.0339 23.1814C17.6141 22.9911 18.8107 22.6714 19.7097 22.3218C20.716 21.9305 21.3052 21.1152 21.4768 20.1803C21.6395 19.2937 21.4228 18.3615 20.9928 17.5791C20.7641 17.163 20.5573 16.7506 20.4106 16.3924C20.3374 16.2137 20.285 16.0626 20.2521 15.9412C20.2359 15.8814 20.2261 15.8348 20.2205 15.8006C20.2159 15.7721 20.2152 15.7578 20.2151 15.7557C20.2151 15.7555 20.2151 15.7557 20.2151 15.7557L20.2151 15.7465V11.4088C20.2151 7.57663 17.4405 4.40705 13.8313 3.87987V3.25952ZM7.4476 11.4083C7.4476 8.40784 9.8291 5.97619 12.7674 5.97619C15.7056 5.97619 18.0872 8.40825 18.0872 11.4088V15.7562C18.0872 16.2592 18.2717 16.8018 18.4474 17.2309C18.6383 17.6971 18.8884 18.1903 19.1372 18.643C19.3791 19.0832 19.4368 19.4991 19.3853 19.7798C19.3426 20.0122 19.2289 20.1832 18.9525 20.2908C17.8088 20.7355 15.8783 21.1895 12.7674 21.1895C9.65645 21.1895 7.72593 20.7355 6.58233 20.2908C6.30585 20.1832 6.19214 20.0122 6.14949 19.7798C6.09796 19.4991 6.15565 19.0832 6.39757 18.643C6.64637 18.1903 6.8965 17.6971 7.08736 17.2309C7.26305 16.8018 7.4476 16.2592 7.4476 15.7562V11.4083Z" fill="#4B5563"/>
                       </svg>
-                      <span>No notifications yet</span>
+                      <span>No notifications yet</span> */}
                   </div>
                   <div className={css.rule}></div>
                   <NamedLink className={css.view_all} name="InboxPage" params={{tab:"orders"}}>
@@ -424,7 +464,7 @@ const TopbarDesktop = props => {
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
                       <span>Inbox</span>
-                      <div className={css.count}>1</div>
+                      <div className={css.count}>{transactions.data.length}</div>
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>

@@ -56,13 +56,41 @@ export default function InboxView(props){
      }
 
      const filteredTrx = removeDeletedTransaction(transactions);
+
+    const getNotificationId = noti=>{
+        let res = [];
+        noti.map((itm,key)=>{
+        res.push(itm.trxId);
+        })
+        return res;
+    }
     
      const handleShowTransactionDetails = (itm,displayName,imgUrl,isProvider) =>{
+        console.log("wwwwwwwwwwwwwwwwwwwwwwwww")
         setCurrentTransaction(itm);
         setCurrentDisplayName(displayName);
         setCurrentImgUrl(imgUrl);
         setIsProvider(isProvider);
         onfetchMessage(itm.id.uuid);
+
+        //Remove notification for this trx
+        const profileUser = currentUser;
+        const {  protectedData } = profileUser?.attributes?.profile || {};
+        const data = protectedData?.notifications || [];
+
+        const notiIds = getNotificationId(data);
+
+        if(notiIds.includes(itm.id.uuid)){
+            console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
+            const notifications = data.filter(i=>i.trxId !== itm.id.uuid);
+            const dat = 
+                {protectedData: {
+                    notifications
+                    }}
+            onUpdateProfile(dat);
+        }
+        
+
      }
 
      const handleBack = e=>{

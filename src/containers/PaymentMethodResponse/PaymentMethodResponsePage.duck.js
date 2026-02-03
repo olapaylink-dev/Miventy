@@ -1,5 +1,5 @@
 import { uniqueId } from "lodash";
-import { initiatePrivileged, transitionPrivileged } from "../../util/api";
+import { initiatePrivileged, sendNotification, transitionPrivileged } from "../../util/api";
 import { types as sdkTypes } from '../../util/sdkLoader';
 import { storableError } from "../../util/errors";
 const { UUID } = sdkTypes;
@@ -133,13 +133,29 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
   speculatedTrx.isSpeculative = false;
 
   const {
-    attributes
+    attributes,
+    relationships,
+    id
   }=speculatedTrx;
   const listingId = listing?.id?.uuid;
   const {publicData={}} = listing?.attributes;
   const {originalPrice} = publicData;
   const {protectedData} = attributes;
   const {offer,cartData} = protectedData;
+
+  //Data for notification sending
+  const customerId = currentUser?.id?.uuid;
+  const providerId = relationships?.provider?.data?.id?.uuid;
+  const trxId = id.uuid;
+  const title = "Payment Confirmed";
+  const pageToGo = "InboxPage";
+  const senderId = currentUser.id.uuid;
+
+  // sendNotification(
+  //               {
+  //                 customerId,providerId,trxId,title,pageToGo
+  //               }
+  //             )
 
   return transitionPrivileged(
    {
@@ -173,41 +189,8 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
                           "expand": true
                         }
                       }
- )
+      )
       .then(response=>{
-
-          //console.log("Confirming payment========================= speculatedTrx.id   ",speculatedTrx.id)
-
-            // transitionPrivileged(
-            //   {
-            //                         isSpeculative: false,
-            //                         bodyParams: {
-            //                           id:speculatedTrx.id,
-            //                           params:{},
-            //                           transition: "transition/confirm-payment",
-                                     
-            //                         },
-            //                         queryParams: {
-            //                           "include": [
-            //                             "booking",
-            //                             "provider"
-            //                           ],
-            //                           "expand": true
-            //                         }
-            //                       }
-            // )
-            //       .then(res=>{
-            //         console.log(res)
-            //         dispatch(confirmPaymentSuccess(response.data));
-            //         console.log("Confirmed payment ooooooooooooooooo")
-            //       })
-            //       .catch(e=>{
-            //         console.log(e)
-            //         dispatch(confirmPaymentError(storableError(e)));
-            //       });
-
-
-
         const bodyParams = {
             id: speculatedTrx.id,
             transition: "transition/confirm-payment",
@@ -218,40 +201,36 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
             expand: true,
           };
 
-          //console.log(bodyParams, queryParams," cccccccccccccccc11111111111111cccccccccccccccc");
-
           return sdk.transactions
             .transition(bodyParams, queryParams)
             .then(response => {
-              const order = response.data.data;
-              dispatch(confirmPaymentSuccess(order.id));
-              localStorage.removeItem("Transaction");
 
-              removeCartData(currentUser,listingId,dispatch);
+              //send notification
+              sendNotification(
+                {
+                  customerId,providerId,trxId,title,pageToGo,senderId
+                }
+              ).then((res)=>{
 
-              //Reset listing price back to original price
-              dispatch(changeListingPrice(listingId,originalPrice))
-              return order;
+                const order = response.data.data;
+                dispatch(confirmPaymentSuccess(order.id));
+                localStorage.removeItem("Transaction");
+
+                removeCartData(currentUser,listingId,dispatch);
+
+                //Reset listing price back to original price
+                dispatch(changeListingPrice(listingId,originalPrice));
+
+                console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+                return order;
+
+              })
+              
             })
             .catch(e => {
               console.log(e)
-              // dispatch(confirmPaymentError(storableError(e)));
-              // const transactionIdMaybe = transactionId ? { transactionId: transactionId.uuid } : {};
-              // log.error(e, 'initiate-order-failed', {
-              //   ...transactionIdMaybe,
-              // });
-              // throw e;
             });
-
-
-
-
-
-
-
-
-
-
 
       })
       .catch(e=>{
