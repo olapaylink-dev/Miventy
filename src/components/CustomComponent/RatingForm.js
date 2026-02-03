@@ -127,14 +127,14 @@ const RatingForm = props =>{
                     {isProvider?
                         <div className={css.flex_row}>
                             <button className={css.btn_fill} 
-                            onClick={e=>{onSendProviderReview({txId:currentTransaction.id, reviewRating:rating,reviewContent:reviewText});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
+                            onClick={e=>{onSendProviderReview({tx:currentTransaction, reviewRating:rating,reviewContent:reviewText});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
                                 Publish review
                             </button>
                         </div>
                     :
                         <div className={css.flex_row}>
                             <button className={css.btn_fill} 
-                            onClick={e=>{onSendCustomerReview({reviewRating:rating,reviewContent:reviewText,isProvider:false});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
+                            onClick={e=>{onSendCustomerReview({tx:currentTransaction,reviewRating:rating,reviewContent:reviewText,isProvider:false});setShowSuccessView(true);setShowRatingForm(false)}} disabled={!isReady}>
                                 Publish review
                             </button>
                         </div>

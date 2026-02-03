@@ -999,9 +999,30 @@ export const sendReview = (tx, transitionOptionsInfo, params, config) => (
   getState,
   sdk
 ) => {
-  //console.log("Sending review ----")
+  console.log("Sending review ----",tx)
   const { reviewAsFirst, reviewAsSecond, hasOtherPartyReviewedFirst } = transitionOptionsInfo;
   dispatch(sendReviewRequest());
+
+  //Send notification
+   const {
+        attributes,
+        customer,
+        provider,
+        id
+      }=tx;
+      //Data for notification sending
+      const customerId = customer.id.uuid;
+      const providerId = provider.id.uuid;
+      const trxId = id.uuid;
+      const pageToGo = "AccountReviewPage";
+      const title = "Review was sent."
+      
+      //send notification
+      sendNotification(
+        {
+          customerId,providerId,trxId,title,pageToGo
+        }
+      )
 
   return hasOtherPartyReviewedFirst
     ? sendReviewAsSecond(tx?.id, reviewAsSecond, params, dispatch, sdk, config)
@@ -1041,16 +1062,38 @@ export const fetchTransactionLineItems = ({ orderData, listingId, isOwnListing }
     });
 };
 
-export const sendReviewByProvider = ({txId,reviewRating,reviewContent}) => (dispatch, getState, sdk) => {
+
+export const sendReviewByProvider = ({tx,reviewRating,reviewContent}) => (dispatch, getState, sdk) => {
   sdk.transactions
     .transition(
-      { id: txId, transition:"transition/review-2-by-provider",params:{reviewRating:parseInt(reviewRating),reviewContent} }
+      { id: tx.id, transition:"transition/review-2-by-provider",params:{reviewRating:parseInt(reviewRating),reviewContent} }
     )
     .then(response => {
       //console.log("Sending transitions   ---------")
-      dispatch(addMarketplaceEntities(response));
-      dispatch(sendReviewSuccess());
-      return response;
+      const {
+        attributes,
+        customer,
+        provider,
+        id
+      }=tx;
+      //Data for notification sending
+      const customerId = customer.id.uuid;
+      const providerId = provider.id.uuid;
+      const trxId = id.uuid;
+      const pageToGo = "AccountReviewPage";
+      const title = "Review was sent.";
+      
+      //send notification
+      sendNotification(
+        {
+          customerId,providerId,trxId,title,pageToGo
+        }
+      ).then((res)=>{
+        dispatch(addMarketplaceEntities(response));
+        dispatch(sendReviewSuccess());
+        return response;
+      })
+      
     })
     .catch(e => {
       //console.log(e,"   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")

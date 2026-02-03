@@ -151,6 +151,8 @@ const ProfileMenu = ({ currentPage, currentUser, onLogout }) => {
  * @param {boolean} props.showSearchForm
  * @returns {JSX.Element} search icon
  */
+
+
 const TopbarDesktop = props => {
   const {
     className,

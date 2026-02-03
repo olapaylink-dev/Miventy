@@ -30,7 +30,13 @@ const NotificationNote = props =>{
         // localStorage.setItem("pageToGo",pageToGo);
         // onUpdateProfile(dat);
 
-         history.push("/inbox/orders");
+        if(pageToGo === "InboxPage"){
+            history.push("/inbox/orders");
+        }else{
+            history.push("/account/payments");
+        }
+
+         
     }
 
     return (

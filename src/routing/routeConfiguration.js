@@ -403,6 +403,15 @@ const routeConfiguration = (layoutConfig, accessControlConfig) => {
       loadData:pageDataLoadingAPI.DashboardPage.loadData
     },
     {
+      path: '/account/review',
+      name: 'AccountReviewPage',
+      auth: true,
+      authPage: 'LoginPage',
+      component: StripePayoutPage,
+      loadData: pageDataLoadingAPI.StripePayoutPage.loadData,
+      loadData:pageDataLoadingAPI.DashboardPage.loadData
+    },
+    {
       path: '/account/payments/:returnURLType',
       name: 'StripePayoutOnboardingPage',
       auth: true,
