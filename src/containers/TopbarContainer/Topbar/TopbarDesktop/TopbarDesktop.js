@@ -338,6 +338,7 @@ const TopbarDesktop = props => {
   // filterTrx.data = notificationTransactions;
 
   const notificationTransactions = getnotificationTransactions(transactions?.data,notifications);
+  const notificationCounts = notifications.length || 0;
 
   console.log(notificationTransactions)
   
@@ -418,7 +419,7 @@ const TopbarDesktop = props => {
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
                       <span>Notifications</span>
-                      <div className={css.count}>{notifications.length}</div>
+                      <div className={css.count}>{notificationCounts}</div>
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
@@ -464,7 +465,7 @@ const TopbarDesktop = props => {
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
                       <span>Inbox</span>
-                      <div className={css.count}>{transactions.data.length}</div>
+                      <div className={css.count}>{transactions?.data?.length || 0}</div>
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
