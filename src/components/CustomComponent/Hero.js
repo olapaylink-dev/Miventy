@@ -22,9 +22,12 @@ import magician from '../../assets/magician.jpeg';
 import NamedLink from "../NamedLink/NamedLink";
 import BoxMenu from "./BoxMenu";
 import { useInView } from "react-intersection-observer";
+import { AddressAutofill } from "@mapbox/search-js-react";
 
 const Hero = (props)=>{
   const {setShowTopBoxMenu,showTopBoxMenu,history,setShowExpandedSearchBar} = props;
+
+  const [value, setValue] = React.useState('');
 
       const { ref, inView, entry } = useInView({
           /* Optional options */
@@ -40,6 +43,10 @@ const Hero = (props)=>{
           setShowTopBoxMenu(true);
       
       }
+
+    const handleChange = (e) => {
+      setValue(e.target.value);
+    };
 
     return (
         <>
@@ -77,15 +84,10 @@ const Hero = (props)=>{
                     :
                     <div className={css.space}></div>
                   }
-                  
               </div>
-              
           </div>
-           
-
+        
           <div className={css.mobile}>
-                   
-
                   <div className={classNames(css.container_mobile)} style={{backgroundImage:`url(${bgImg})`, backgroundSize:'cover'}}>
                     
                     <div className={css.header_con}>
@@ -96,8 +98,6 @@ const Hero = (props)=>{
                         From magicians to event planners, find everything you need to make your 
                         celebration extraordinary quickly and effortlessly.
                       </p>
-
-                     
                     </div>
                     <BoxMenu 
                         setShowTopBoxMenu={setShowTopBoxMenu}
@@ -115,9 +115,9 @@ const Hero = (props)=>{
                         </NamedLink>
                       </div>
                   </div>
-                   
-
           </div>
+
+          
 
 
         </>

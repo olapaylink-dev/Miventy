@@ -33,7 +33,7 @@ const NotificationNote = props =>{
         if(pageToGo === "InboxPage"){
             history.push("/inbox/orders");
         }else{
-            history.push("/account/payments");
+            history.push("inbox/orders/bookings");
         }
 
          

@@ -52,6 +52,8 @@ export const FETCH_USER_LISTINGS_REQUEST = 'app/ListingPage/FETCH_USER_LISTINGS_
 export const FETCH_USER_LISTINGS_SUCCESS = 'app/ListingPage/FETCH_USER_LISTINGS_SUCCESS';
 export const FETCH_USER_LISTINGS_ERROR = 'app/ListingPage/FETCH_USER_LISTINGS_ERROR';
 
+export const RESET_REQUEST = 'app/ListingPage/RESET_REQUEST';
+
 
 
 // ================ Reducer ================ //
@@ -166,6 +168,9 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case FETCH_USER_LISTINGS_ERROR:
       return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: payload };
 
+    case RESET_REQUEST:
+      return { ...state, isInquiry:false };
+
     default:
       return state;
   }
@@ -250,6 +255,8 @@ export const fetchUserListingError = error => ({
 export const sendInquiryRequest = () => ({ type: SEND_INQUIRY_REQUEST });
 export const sendInquirySuccess = (isInquiry) => ({ type: SEND_INQUIRY_SUCCESS,payload:isInquiry});
 export const sendInquiryError = e => ({ type: SEND_INQUIRY_ERROR, error: true, payload: e });
+
+export const resetRequest = () => ({ type: RESET_REQUEST });
 
 // ================ Thunks ================ //
 
@@ -499,6 +506,10 @@ export const fetchTransactionLineItems = ({ orderData, listingId, isOwnListing }
         orderData,
       });
     });
+};
+
+export const reset = () => (dispatch, getState, sdk) => {
+  dispatch(resetRequest())
 };
 
 export const loadData = (params, search, config) => (dispatch, getState, sdk) => {

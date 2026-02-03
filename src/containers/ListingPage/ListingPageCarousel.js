@@ -67,6 +67,7 @@ import {
   saveLike,
   fetchUserListings,
   fetchReviews,
+  reset,
 } from './ListingPage.duck';
 
 import {
@@ -205,6 +206,7 @@ export const ListingPageComponent = props => {
     userListings,
     onFetchUserListings,
     onFetchReviews,
+    onReset
   } = props;
 
   const savedCartData = currentUser?.attributes?.profile?.publicData?.cartData;
@@ -270,6 +272,7 @@ export const ListingPageComponent = props => {
 
   useEffect(() => {
     if(isInquiry){
+      onReset();
       history.push("/inbox");
     }
   }, [isInquiry]);
@@ -1788,7 +1791,8 @@ const mapDispatchToProps = dispatch => ({
   onSendOrderMessage:(listing,orderData,isInquiry) => dispatch(sendInquiry(listing,orderData,isInquiry)),
   onSaveLikes:(listingId,userId) => dispatch(saveLike(listingId,userId)),
   onFetchUserListings:(userId)=> dispatch(fetchUserListings(userId)),
-  onFetchReviews:(authorId)=> dispatch(fetchReviews())
+  onFetchReviews:(authorId)=> dispatch(fetchReviews()),
+  onReset:()=>dispatch(reset())
 });
 
 
