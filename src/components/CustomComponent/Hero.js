@@ -22,7 +22,7 @@ import magician from '../../assets/magician.jpeg';
 import NamedLink from "../NamedLink/NamedLink";
 import BoxMenu from "./BoxMenu";
 import { useInView } from "react-intersection-observer";
-import { AddressAutofill } from "@mapbox/search-js-react";
+
 
 const Hero = (props)=>{
   const {setShowTopBoxMenu,showTopBoxMenu,history,setShowExpandedSearchBar} = props;
