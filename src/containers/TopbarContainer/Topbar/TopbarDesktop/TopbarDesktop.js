@@ -338,7 +338,8 @@ const TopbarDesktop = props => {
   // filterTrx.data = notificationTransactions;
 
   const notificationTransactions = getnotificationTransactions(transactions?.data,notifications);
-  const notificationCounts = notifications.length || 0;
+  const notificationCounts = notifications !== undefined? notifications.length : 0;
+  const msgCounts = transactions !== null && transactions !== undefined && transactions.hasOwnProperty("data") && transactions?.data.length > 0? transactions.data.length : 0;
 
   console.log(notificationTransactions)
   
@@ -465,7 +466,7 @@ const TopbarDesktop = props => {
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
                       <span>Inbox</span>
-                      <div className={css.count}>{transactions?.data?.length || 0}</div>
+                      <div className={css.count}>{msgCounts}</div>
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
