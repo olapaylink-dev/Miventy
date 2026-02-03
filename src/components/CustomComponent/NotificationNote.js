@@ -9,26 +9,28 @@ const NotificationNote = props =>{
     console.log(props,"  aaaadddggg")
 
     useEffect(()=>{
-        const lastAction = localStorage.getItem("lastAction");
-        if(lastAction === "show_notification"){
-            //const pageToGo = localStorage.getItem("pageToGo");
-            localStorage.removeItem("lastAction");
-            localStorage.removeItem("pageToGo");
-            history.push("/inbox/orders");
-        }
+        // const lastAction = localStorage.getItem("lastAction");
+        // if(lastAction === "show_notification"){
+        //     //const pageToGo = localStorage.getItem("pageToGo");
+        //     localStorage.removeItem("lastAction");
+        //     localStorage.removeItem("pageToGo");
+        //     history.push("/inbox/orders");
+        // }
     },[currentUser])
     
 
     const handleDeleteNoti = (id,pageToGo) =>{
-        const notifications = data.filter(itm=>itm.id !== id);
-        const dat = 
-            {protectedData: {
-                notifications
-                }}
+        // const notifications = data.filter(itm=>itm.id !== id);
+        // const dat = 
+        //     {protectedData: {
+        //         notifications
+        //         }}
         
-        localStorage.setItem("lastAction","show_notification");
-        localStorage.setItem("pageToGo",pageToGo);
-        onUpdateProfile(dat);
+        // localStorage.setItem("lastAction","show_notification");
+        // localStorage.setItem("pageToGo",pageToGo);
+        // onUpdateProfile(dat);
+
+         history.push("/inbox/orders");
     }
 
     return (

@@ -317,7 +317,7 @@ const TopbarDesktop = props => {
 
   const getNotificationId = noti=>{
     let res = [];
-    noti.map((itm,key)=>{
+    noti !== undefined && noti.map((itm,key)=>{
       res.push(itm.trxId);
     })
     return res;
@@ -328,7 +328,7 @@ const TopbarDesktop = props => {
    const getnotificationTransactions = (trxs,noti)=>{
       const notiIds = getNotificationId(noti);
       let res = [];
-      trxs.map((itm,key)=>{
+      trxs !== undefined && trxs.map((itm,key)=>{
         if(notiIds.includes(itm.id.uuid)){
           res.push(itm);
         }
