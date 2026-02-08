@@ -88,6 +88,10 @@
     gap: 20px;
 }
 
+.open_con{
+    display: none;
+}
+
 @media only screen and (max-width: 1440px) {
    
 }

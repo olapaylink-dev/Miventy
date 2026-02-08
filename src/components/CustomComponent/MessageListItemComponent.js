@@ -30,6 +30,7 @@ export default function MessageListItemComponent(props){
 
     const notiIds = getNotificationId(data);
 
+    
     if(transactions.length === 0){
         return "";
     }
