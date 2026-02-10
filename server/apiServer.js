@@ -18,6 +18,7 @@ const sitemapResourceRoute = require('./resources/sitemap');
 const radix = 10;
 const PORT = parseInt(process.env.REACT_APP_DEV_API_SERVER_PORT, radix);
 const app = express();
+const endpointSecret = process.env.REACT_APP_STRIPE_WEBHOOK;
 
 // NOTE: CORS is only needed in this dev API server because it's
 // running in a different port than the main app.
@@ -47,6 +48,52 @@ app.get('/robots.txt', robotsTxtRoute);
 // Handle different sitemap-* resources. E.g. /sitemap-index.xml
 app.get('/sitemap-:resource', sitemapResourceRoute);
 
+
+
+app.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
+    let event;
+    if (endpointSecret) {
+      // Get the signature sent by Stripe
+      const signature = request.headers['stripe-signature'];
+      try {
+        event = stripe.webhooks.constructEvent(
+          request.body,
+          signature,
+          endpointSecret
+        );
+      } catch (err) {
+        console.log(`⚠️ Webhook signature verification failed.`, err.message);
+        return response.sendStatus(400);
+      }
+
+    // Handle the event
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        const paymentIntent = event.data.object;
+        // Then define and call a method to handle the successful payment intent.
+        // handlePaymentIntentSucceeded(paymentIntent);
+
+        console.log("Payment succeed")
+        break;
+      case 'payment_method.attached':
+        const paymentMethod = event.data.object;
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached(paymentMethod);
+        break;
+      // ... handle other event types
+      default:
+        console.log(`Unhandled event type ${event.type}`);
+    }
+
+    // Return a response to acknowledge receipt of the event
+    response.json({received: true});
+  }
+
+})
+
 app.listen(PORT, () => {
   console.log(`API server listening on ${PORT}`);
 });
+
+  
+app.listen(4242, () => console.log('Running on port 4242'));

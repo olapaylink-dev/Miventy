@@ -14946,6 +14946,11 @@ react-app-polyfill@^3.0.0:
     regenerator-runtime "^0.13.9"
     whatwg-fetch "^3.6.2"
 
+react-currency-input-field@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/react-currency-input-field/-/react-currency-input-field-4.0.3.tgz#bd3f7223e3a867e4123ecd656abae21420b733dc"
+  integrity sha512-alimHDX5tplPsNB3jEAW7qjlJ76RfBAc/p8yru3cTiAYslj3oJ+KNnk788IZYe6ja3cAuH26v047lMzadh47ow==
+
 react-datepicker@^8.3.0:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/react-datepicker/-/react-datepicker-8.3.0.tgz#21d51294a953755bcc273d411fe10d12918a6f51"

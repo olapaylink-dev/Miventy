@@ -32,6 +32,9 @@ const resetPw = require('./api/reset-pw');
 const declineOffer = require('./api/decline-offer');
 const deletedChat = require('./api/delete-chat');
 const sendNotification = require('./api/send-notification');
+const getBalance = require('./api/get-stripe-balance');
+const instantPayout = require('./api/stripe-instant-payout');
+const stripeTransfer = require('./api/stripe-transfer');
 //const sendEmail = require('./api/send-email');
 
 const router = express.Router();
@@ -102,6 +105,9 @@ router.post('/reset-pw', resetPw);
 router.post('/decline-offer', declineOffer);
 router.post('/delete-chat', deletedChat);
 router.post('/send-notification', sendNotification);
+router.post('/get-balance', getBalance);
+router.post('/instant-payout', instantPayout);
+router.post('/stripe-transfer', stripeTransfer);
 //router.post('/send-email', sendEmail);
 
 router.post('/webhook',express.raw({type: 'application/json'}), webhookCallback);

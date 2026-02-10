@@ -30,7 +30,7 @@ import {
 import TopbarContainer from '../../containers/TopbarContainer/TopbarContainer';
 import FooterContainer from '../../containers/FooterContainer/FooterContainer';
 
-import { loadData, savePayoutDetails, setDailyPayoutCall } from './StripePayoutPage.duck';
+import { getAccountBalance, loadData, reset, savePayoutDetails, setDailyPayoutCall, stripeInstantPayout } from './StripePayoutPage.duck';
 
 import css from './StripePayoutPage.module.css';
 import css2 from './StripePayoutPage2.module.css';
@@ -69,6 +69,9 @@ import VerificationCodeForm from './VerificationCodeForm';
 import { changePassword, resetPassword } from '../PasswordChangePage/PasswordChangePage.duck';
 import NotificationUpdate from '../DashboardPage/NotificationUpdated';
 import RemoveAccountDialogue from '../DashboardPage/RemoveAccountDialogue';
+import WithdrawalForm from '../WithdrawalForm';
+import SuccessViewPayment from '../../components/SuccessView/SuccessViewPayment';
+import SuccessView from '../../components/SuccessView/SuccessView';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -201,9 +204,19 @@ export const StripePayoutPageComponent = props => {
     onFetchTransaction,
     transactions,
     reviews,
-    onSetDailyPayout
+    onSetDailyPayout,
+    onGetAccountBalance,
+    getAccountBalanceInProgress,
+    accountBalance,
+    onStripeInstantPayout,
+    onStripeTransferToConnectedAccountBalance,
+    instantPayoutSuccess,
+    instantPayoutInProgress,
+    onReset
   } = props;
    const{match}=props;
+
+   console.log(accountBalance,"  vvvvbbbb");
 
   const {
    params: pathParams,
@@ -313,8 +326,16 @@ const [currentListing,setCurrentListing] = useState({});
   const [showSideNav,setshowSideNav] = useState(false);
   const [showMenu,setShowMenu] = useState(false);
   const [showPopups,seShowPopups] = useState(false);
-
+  const {balance} = accountBalance || {};
+  const {available=[],instant_available=[]} = balance || {};
+  const instant_availablee = instant_available[0]?.amount || 0;
+  const amount = available[0]?.amount || 0;
   const fileInputProfile = useRef(null);
+  const [showWithdrawalForm,setShowWithdrawalForm] = useState(false);
+
+  const stripeAccountId = stripeAccount?.attributes?.stripeAccountId;
+  const publicStripeAccountId = publicData?.stripeAccountId;
+  const [showSuccessView,setShowSuccessView] = useState(false);
 
   const catalogName = pathParams.id;
   const path = match.path;
@@ -355,11 +376,7 @@ const [currentListing,setCurrentListing] = useState({});
     useEffect(()=>{
       console.log("here111111eeee ")
       console.log(currentUser)
-      const {stripeAccount,attributes} = currentUser;
-      const {profile} = attributes;
-      const {publicData} = profile;
-      const stripeAccountId = stripeAccount?.attributes?.stripeAccountId;
-      const publicStripeAccountId = publicData?.stripeAccountId;
+      
       if(stripeAccountId !== undefined && stripeAccountId !== null){
         //set daily payment for this user if not already set
         if(publicStripeAccountId === undefined || publicStripeAccountId === null){
@@ -372,6 +389,7 @@ const [currentListing,setCurrentListing] = useState({});
           onUpdateProfile(data);
         }
         onSetDailyPayout(stripeAccountId);
+        // onGetAccountBalance(stripeAccountId);
       }
     },[])
 
@@ -446,17 +464,17 @@ const [currentListing,setCurrentListing] = useState({});
     }
   },[closeListingSuccess,currentUser])
 
-  // useEffect(()=>{
-  //    setListingAvailable(checkIfListingsAvailable(ownEntities));
-  //    ////console.log("Responseeeuuuuuuuu0000000000000");
-  // },[ownEntities]);
+  useEffect(()=>{
+     if(instantPayoutSuccess){
+      setShowSuccessView(true);
+      onReset();
 
-  // useEffect(()=>{
-  //    if(!showCreateListing){
-  //     onFetctCurrentUser();
-  //     setCurrentListing({});
-  //    }
-  // },[showCreateListing]);
+      if(stripeAccountId !== undefined){
+          onGetAccountBalance(stripeAccountId);
+      }
+            
+     }
+  },[instantPayoutSuccess]);
 
   const getCompletedTotal = (trxs)=>{
         let completed = 0;
@@ -1420,6 +1438,11 @@ const [currentListing,setCurrentListing] = useState({});
                         transactions={transactions} 
                         setshowSideNav={setshowSideNav}
                         showSideNav={showSideNav}
+                        available={available}
+                        instant_available={instant_available}
+                        onGetAccountBalance={onGetAccountBalance}
+                        stripeAccountId={stripeAccountId}
+                        setShowWithdrawalForm={setShowWithdrawalForm}
                       />
                     :""}
 
@@ -2196,6 +2219,28 @@ const [currentListing,setCurrentListing] = useState({});
     :""}
 
 
+    {showWithdrawalForm?
+      <div  className={css2.overlay} onClick={e=>{setShowWithdrawalForm(false); e.preventDefault(); e.stopPropagation();}}>
+          <WithdrawalForm 
+            handleCloseListing={handleCloseListing} 
+            setShowWithdrawalForm={setShowWithdrawalForm}
+            onStripeInstantPayout={onStripeInstantPayout}
+            stripeAccountId={stripeAccountId}
+            instantPayoutInProgress={instantPayoutInProgress}
+            amount={amount}
+          />
+      </div>
+    :""}
+
+
+{showSuccessView?
+      <div  className={css2.overlay} onClick={e=>{setShowSuccessView(false); e.preventDefault(); e.stopPropagation();}}>
+          <SuccessView
+            setShowSuccessView={setShowSuccessView}
+            message={"Your withdrawal amount has been successfully transfered to your bank account."}
+          />
+      </div>
+    :""}
 
 
 
@@ -2308,7 +2353,15 @@ const {
     stripeAccountFetched,
   } = state.stripeConnectAccount;
   //const { currentUser } = state.user;
-  const { payoutDetailsSaveInProgress, payoutDetailsSaved } = state.StripePayoutPage;
+  const { 
+    payoutDetailsSaveInProgress, 
+    payoutDetailsSaved,
+    getAccountBalanceInProgress,
+    accountBalance,
+    instantPayoutSuccess,
+    instantPayoutInProgress
+
+  } = state.StripePayoutPage;
   return {
 
     scrollingDisabled: isScrollingDisabled(state),
@@ -2349,6 +2402,10 @@ const {
     payoutDetailsSaved,
     scrollingDisabled: isScrollingDisabled(state),
     transactions: getMarketplaceEntities(state, transactionRefs),
+    accountBalance,
+    getAccountBalanceInProgress,
+    instantPayoutSuccess,
+    instantPayoutInProgress
   };
 };
 
@@ -2372,6 +2429,10 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
   onSetDailyPayout: (sid)=> dispatch(setDailyPayoutCall(sid)),
   onSubmitChangePassword: values => dispatch(changePassword(values)),
   onResetPassword: values => dispatch(resetPassword(values)),
+  onGetAccountBalance: sid => dispatch(getAccountBalance(sid)),
+  onStripeInstantPayout: data => dispatch(stripeInstantPayout(data)),
+  onStripeTransferToConnectedAccountBalance: data => dispatch(stripeTransferToConnectedAccountBalance(data)),
+  onReset: () => dispatch(reset()),
 });
 
 const StripePayoutPage = compose(

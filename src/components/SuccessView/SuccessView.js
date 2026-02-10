@@ -3,19 +3,11 @@ import css from './SuccessView.module.css';
 import classNames from "classnames";
 
 const SuccessView = props=>{
-  const {handleMoveBack,currentSelectedUserType,setShowSuccessView,message} = props;
+  const {setShowSuccessView,message} = props;
 
   const handleBackToDashboard = e=>{
     console.log("closing")
     setShowSuccessView(false);
-  }
-
-
-let back = "";
-if(currentSelectedUserType === "businessOwner"){
-      back = "businessProfile";
-    }else{
-      back = "personalProfile";
   }
 
   return (

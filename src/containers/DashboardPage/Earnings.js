@@ -1,21 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from './Earnings.module.css';
 import classNames from "classnames";
 
 const Earnings = props=>{
-    const {transactions,showSideNav,setshowSideNav} = props;
+    const {transactions,showSideNav,setshowSideNav,available,instant_available,
+            onGetAccountBalance,
+            stripeAccountId,
+            setShowWithdrawalForm
+    } = props;
     const {showManagePayoutOptions,setShowManagePayoutOptions} = props;
+    //const {amount = 0} = available[0] || {};
+    const instant_availablee = instant_available[0]?.amount || 0;
+    const amount = available[0]?.amount || 0;
+
+
+    useEffect(()=>{
+        if(stripeAccountId !== undefined){
+            onGetAccountBalance(stripeAccountId);
+        }
+         
+    },[])
+
+
     const handleManagePayout = e =>{
         setShowManagePayoutOptions(true);
-        //console.log("show form");
+       
     }
+     
+
+     const formatedAmount = (parseInt(amount)/100).toFixed(2);
+     console.log(instant_availablee," available cccccccccccc ",amount);
 
     const getTotalPayout = trx =>{
         let result = 0;
 
         trx.map((itm,key)=>{
             const payout = itm?.attributes?.payoutTotal?.amount;
-            if(payout !== null && payout !== undefined){
+            const providerStripeBalanceCredited = itm?.attributes?.protectedData?.providerStripeBalanceCredited;
+            if(payout !== null && payout !== undefined && !providerStripeBalanceCredited){
                 result += parseInt(payout);
             }
 
@@ -27,7 +49,7 @@ const Earnings = props=>{
     }
 
     const totalPayout = getTotalPayout(transactions);
-    const balanceAvailable = totalPayout > 0;
+    const balanceAvailable = formatedAmount > 0;
 
     return (
         <div className={css.w_full}>
@@ -57,7 +79,7 @@ const Earnings = props=>{
                         </div>
                         <div className={css.flex_itm}>
                             <span>Balance available for withdrawal</span>
-                            <span className={css.amount}>€{0.00}</span>
+                            <span className={css.amount}>€{formatedAmount}</span>
                         </div>
 
                     </div>
@@ -79,7 +101,7 @@ const Earnings = props=>{
                     </div>
                 </div>
                 <div className={css.flex_row}>
-                    <button className={css.withdraw_bal} disabled={!balanceAvailable}>Withdraw balance</button>
+                    <button className={css.withdraw_bal} disabled={!balanceAvailable} onClick={e=>setShowWithdrawalForm(true)} >Withdraw balance</button>
                     <button onClick={handleManagePayout} className={css.manage_payout}>Manage payout options</button>
                 </div>
                 

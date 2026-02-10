@@ -20,7 +20,11 @@ const MarkOrderAsComplete = props =>{
         onHandleOrderReceived
     }=props;
 
-    //console.log(transaction)
+    const handleCompleteOrder = e =>{
+        setShowCompleteOrder(true); 
+        setShowMarkOrder(false); 
+        onHandleOrderReceived(transaction.id)
+    }
     
     return (
             <div className={css.modal}>
@@ -45,7 +49,7 @@ const MarkOrderAsComplete = props =>{
                             <button className={css.btn_outline} onClick={e=>setShowMarkOrder(false)}>
                                 Cancel
                             </button>
-                            <button className={css.btn_fill} onClick={e=>{setShowCompleteOrder(true); setShowMarkOrder(false); onHandleOrderReceived(transaction.id)}}>
+                            <button className={css.btn_fill} onClick={handleCompleteOrder}>
                                 Yes, Complete Order
                             </button>
                         </div>

@@ -5,7 +5,7 @@ import isEmpty from 'lodash/isEmpty';
 import { types as sdkTypes, createImageVariantConfig } from '../../util/sdkLoader';
 import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
 import { isTransactionsTransitionInvalidTransition, storableError } from '../../util/errors';
-import { changePrice, declineOffer, sendNotification, transactionLineItems, updateTransaction } from '../../util/api';
+import { changePrice, declineOffer, sendNotification, stripeTransfer, transactionLineItems, updateTransaction } from '../../util/api';
 import * as log from '../../util/log';
 import {
   updatedEntities,
@@ -519,7 +519,7 @@ export const fetchTransaction = (id, txRole, config) => (dispatch, getState, sdk
       { expand: true }
     )
     .then(response => {
-      //console.Console.log(response,"    aaaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooasss")
+      console.Console.log(response,"    aaaooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooasss")
       const listingId = listingRelationship(response).id;
       const entities = updatedEntities({}, response.data);
       const listingRef = { id: listingId, type: 'listing' };
@@ -922,19 +922,64 @@ export const setOrderDelivered = (trxId) => (dispatch, getState, sdk) => {
 
 
 export const setOrderReceived = (trxId) => (dispatch, getState, sdk) => {
-  //console.log(trxId)
+  console.log(trxId,"  zzzzzzzzzzzz")
   dispatch(updateTransitionRequest());
   sdk.transactions.transition({
     id: trxId,
     transition: "transition/mark-received",
     params:{
-      
+      protectedData:{providerStripeBalanceCredited:true}
     }
   }, {
     expand: true
   }).then(res => {
     // res.data contains the response data
-    dispatch(updateTransitionSuccess());
+        sdk.transactions
+            .show(
+              {
+                id:trxId,
+                include: [
+                  'customer',
+                  'customer.profileImage',
+                  'provider',
+                  'provider.profileImage',
+                  'listing',
+                  'listing.currentStock',
+                  'listing.images',
+                  'booking',
+                  'reviews',
+                  'reviews.author',
+                  'reviews.subject',
+                  'metaData',
+                  'stripeCustomer.defaultPaymentMethod',
+                  'customer.stripeCustomer',
+                  'provider.stripeCustomer'
+                ],
+              },
+              { expand: true }
+            )
+            .then((resData)=>{
+              const totalPayout = resData?.data?.data?.attributes?.payoutTotal?.amount;
+              const providerId = resData?.data?.data?.relationships?.provider?.data?.id?.uuid;
+
+                if(totalPayout && providerId){
+                  //send payout
+                  stripeTransfer(
+                      {
+                        providerId,
+                        totalPayout
+                      }
+                  )
+                  .then((res)=>{
+                    console.log(res,"   dddddddddddd");
+                    //dispatch(getAccountBalanceSuccess(res));
+                    dispatch(updateTransitionSuccess());
+                  })
+                  .catch((e)=>{
+                    console.log(e,"      eeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+                  })
+                }
+            })
   });
 };
 

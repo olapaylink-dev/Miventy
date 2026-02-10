@@ -189,3 +189,22 @@ export const sendNotification = body => {
   return post('/api/send-notification', body);
 };
 
+export const getStripeBalance = body => {
+  return post('/api/get-balance', body);
+};
+
+
+export const instantPayout = body => {
+  console.log(body)
+  return post('/api/instant-payout', body);
+};
+
+export const stripeTransfer = body => {
+  console.log(body)
+  return post('/api/stripe-transfer', body);
+};
+
+
+
+
+

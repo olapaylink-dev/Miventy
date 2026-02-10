@@ -1,10 +1,11 @@
 import { uniqueId } from "lodash";
-import { initiatePrivileged, sendNotification, transitionPrivileged } from "../../util/api";
+import { initiatePrivileged, sendNotification, stripeTransfer, transitionPrivileged } from "../../util/api";
 import { types as sdkTypes } from '../../util/sdkLoader';
 import { storableError } from "../../util/errors";
 const { UUID } = sdkTypes;
 import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 import { changeListingPrice } from "../TransactionPage/TransactionPage.duck";
+import { stripeTransferToConnectedAccountBalance } from "../StripePayoutPage/StripePayoutPage.duck";
 
 
 export const ONBOARD_REQUEST =
@@ -125,7 +126,7 @@ const removeCartData = (currentUser,cartId,dispatch)=>{
 
 export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatch,getState,sdk)=>{
 
-  //console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
+  console.log("speculatedTxxxxxxxxxxxxxxxxxxxxxx",speculatedTx)
   
   dispatch(confirmPaymentRequest(speculatedTx));
 
@@ -206,11 +207,13 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
             .then(response => {
 
               //send notification
-              sendNotification(
+              const notiRes =  sendNotification(
                 {
                   customerId,providerId,trxId,title,pageToGo,senderId
                 }
-              ).then((res)=>{
+              )
+              .then((res)=>{
+
 
                 const order = response.data.data;
                 dispatch(confirmPaymentSuccess(order.id));
