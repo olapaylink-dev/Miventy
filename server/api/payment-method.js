@@ -39,10 +39,10 @@ module.exports = async (req, res)  =>  {
           transfer_group: 'ORDER100',
         },
       mode: 'payment',
-      //  success_url: `https://boomgoes-2sop.onrender.com/${txId}/${"successful"}/success`,
-      //  cancel_url: 'https://boomgoes-2sop.onrender.com/cancel',
-      success_url: `http://localhost:4000/${txId}/${"successful"}/success`,
-      cancel_url: 'http://localhost:4000/cancel',
+       success_url: `https://boomgoes-2sop.onrender.com/${txId}/${"successful"}/success`,
+       cancel_url: 'https://boomgoes-2sop.onrender.com/cancel',
+      // success_url: `http://localhost:4000/${txId}/${"successful"}/success`,
+      // cancel_url: 'http://localhost:4000/cancel',
     });
 
     const { status } = session;
