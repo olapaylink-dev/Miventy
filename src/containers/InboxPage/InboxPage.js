@@ -61,7 +61,7 @@ import MarkOrderAsComplete from '../../components/CustomComponent/MarkOrderAsCom
 import CompleteOrder from '../../components/CustomComponent/CompleteOrder';
 import RatingForm from '../../components/CustomComponent/RatingForm';
 import SuccessView from '../../components/SuccessView/SuccessView';
-import { updateProfile, updateProfileDeleteChat } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { reset, updateProfile, updateProfileDeleteChat } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 // Check if the transaction line-items use booking-related units
 const getUnitLineItem = lineItems => {
@@ -261,7 +261,10 @@ export const InboxPageComponent = props => {
     onSendCustomerReview,
     onSendReview,
     onUpdateProfile,
-    onUpdateProfileDeleteChat
+    onUpdateProfileDeleteChat,
+    updateInProgress,
+    updateSuccess,
+    onReset
   } = props;
   const { tab } = params;
   const validTab = tab === 'orders' || tab === 'sales';
@@ -430,6 +433,9 @@ const onSubmitReview = values => {
           deletedChat={deletedChat}
           deletedMsg={deletedMsg}
           onUpdateProfileDeleteChat={onUpdateProfileDeleteChat}
+          updateInProgress={updateInProgress}
+          updateSuccess={updateSuccess}
+          onReset={onReset}
         />
         }
         
@@ -573,7 +579,6 @@ const onSubmitReview = values => {
   );
 };
 
-
 const mapStateToProps = state => {
   const { fetchInProgress, fetchOrdersOrSalesError, pagination, transactionRefs } = state.InboxPage;
   const { currentUser, currentUserNotificationCount: providerNotificationCount } = state.user;
@@ -587,6 +592,7 @@ const mapStateToProps = state => {
     declineOfferError,
     declineOfferSuccess,
   } = state.TransactionPage;
+  const {updateInProgress,updateSuccess} = state.ProfileSettingsPage;
   return {
     currentUser,
     fetchInProgress,
@@ -603,6 +609,8 @@ const mapStateToProps = state => {
     declineOfferInProgress,
     declineOfferError,
     declineOfferSuccess,
+    updateInProgress,
+    updateSuccess
   };
 };
 
@@ -620,7 +628,8 @@ const mapDispatchToProps = dispatch => ({
   onSendCustomerReview:(trxId) =>dispatch(sendReview(trxId)),
   onSendReview: (tx, transitionOptions, params, config) => dispatch(sendReview(tx, transitionOptions, params, config)),
   onUpdateProfile:(data)=>dispatch(updateProfile(data)),
-  onUpdateProfileDeleteChat:(customerId,providerId,trxId) => dispatch(updateProfileDeleteChat(customerId,providerId,trxId))
+  onUpdateProfileDeleteChat:(customerId,providerId,trxId) => dispatch(updateProfileDeleteChat(customerId,providerId,trxId)),
+  onReset:()=>dispatch(reset())
 });
 
 

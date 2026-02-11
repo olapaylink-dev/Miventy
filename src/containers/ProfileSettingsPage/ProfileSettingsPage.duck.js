@@ -19,6 +19,8 @@ export const UPDATE_PROFILE_REQUEST = 'app/ProfileSettingsPage/UPDATE_PROFILE_RE
 export const UPDATE_PROFILE_SUCCESS = 'app/ProfileSettingsPage/UPDATE_PROFILE_SUCCESS';
 export const UPDATE_PROFILE_ERROR = 'app/ProfileSettingsPage/UPDATE_PROFILE_ERROR';
 
+export const RESET_REQUEST = 'app/ProfileSettingsPage/RESET_REQUEST';
+
 // ================ Reducer ================ //
 
 const initialState = {
@@ -27,6 +29,7 @@ const initialState = {
   uploadInProgress: false,
   updateInProgress: false,
   updateProfileError: null,
+  updateSuccess:false,
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -57,12 +60,14 @@ export default function reducer(state = initialState, action = {}) {
         ...state,
         updateInProgress: true,
         updateProfileError: null,
+        updateSuccess:false
       };
     case UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
         image: null,
         updateInProgress: false,
+        updateSuccess:true
       };
     case UPDATE_PROFILE_ERROR:
       return {
@@ -70,10 +75,14 @@ export default function reducer(state = initialState, action = {}) {
         image: null,
         updateInProgress: false,
         updateProfileError: payload,
+        updateSuccess:false
       };
 
     case CLEAR_UPDATED_FORM:
       return { ...state, updateProfileError: null, uploadImageError: null };
+
+    case RESET_REQUEST:
+      return { ...state,updateInProgress: false, updateSuccess: false };
 
     default:
       return state;
@@ -110,6 +119,10 @@ export const updateProfileError = error => ({
   type: UPDATE_PROFILE_ERROR,
   payload: error,
   error: true,
+});
+
+export const resetRequest = params => ({
+  type: RESET_REQUEST
 });
 
 // ================ Thunk ================ //
@@ -304,6 +317,9 @@ export const updateProfile = actionPayload => {
   };
 };
 
+export const reset = () => (dispatch, getState, sdk) => {
+  dispatch(resetRequest());
+};
 
 export const updateProfileDeleteChat = (customerId,providerId,trxId) => {
   return (dispatch, getState, sdk) => {

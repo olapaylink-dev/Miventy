@@ -167,7 +167,14 @@
     border-radius: 5px;
 }
 
-
+.popup{
+    display: flex;
+    position: relative;
+    top: 0px;
+    align-self: center;
+    background-color: red;
+    margin-left: 100%;
+}
 
 @media only screen and (max-width: 1440px) {
 

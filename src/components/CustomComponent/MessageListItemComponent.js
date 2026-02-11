@@ -13,7 +13,10 @@ export default function MessageListItemComponent(props){
         currentTransaction,
         handleDeleteChat,
         deletedChat,
-        setShowAside
+        setShowAside,
+        showDeletePopup,
+        setShowDeletePopup,
+        setTrxToDelete
     } = props;
     const currentUserId = currentUser.id.uuid;
     const profileUser = currentUser;
@@ -36,6 +39,7 @@ export default function MessageListItemComponent(props){
     }
     
     return(
+
         <div className={css.main_container}>
             {transactions.map((itm,key)=>{
                
@@ -50,10 +54,13 @@ export default function MessageListItemComponent(props){
                         handleDeleteChat={handleDeleteChat}
                         setShowAside={setShowAside}
                         notiIds={notiIds}
+                        showDeletePopup={showDeletePopup}
+                        setShowDeletePopup={setShowDeletePopup}
+                        setTrxToDelete={setTrxToDelete}
                       />
                 
             })}
-            
+
         </div>
         
     )

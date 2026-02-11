@@ -34,14 +34,28 @@ export default function InboxView(props){
         onUpdateProfile,
         deletedChat,
         deletedMsg,
-        onUpdateProfileDeleteChat
+        onUpdateProfileDeleteChat,
+        updateInProgress,
+        updateSuccess,
+        onReset
     } = props;
+
+    const [showDeletePopup,setShowDeletePopup] = useState(false);
+    const [trxToDelete,setTrxToDelete] = useState({});
+    const [showConfirmDelete,setShowConfirmDelete] = useState(false);
    
     const userType = currentUser?.attributes?.profile?.publicData?.userType;
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
      const [showAside,setShowAside] = useState(true);
+
+     useEffect(()=>{
+        if(updateSuccess){
+            setShowConfirmDelete(false);
+            onReset();
+        }
+     },[updateSuccess])
 
      const msgCount = transactions.length;
 
@@ -64,6 +78,8 @@ export default function InboxView(props){
         })
         return res;
     }
+
+    
     
      const handleShowTransactionDetails = (itm,displayName,imgUrl,isProvider) =>{
         console.log("wwwwwwwwwwwwwwwwwwwwwwwww")
@@ -112,14 +128,22 @@ export default function InboxView(props){
         onUpdateProfile(data);
     }
 
-    const handleDeleteChat = (customerId,providerId,trxId) =>{
+    const handleDeleteChat = (e) =>{
+        e.preventDefault();
+        e.stopPropagation();
+        const customerId = trxToDelete.customer.id.uuid;
+        const providerId = trxToDelete.provider.id.uuid;
+        const trxId = trxToDelete.id.uuid;
         onUpdateProfileDeleteChat(customerId,providerId,trxId);
-        console.log("Deleted =========")
     }
 
     return (
             <>
                 <div className={css.container_main}>
+                     {showConfirmDelete || showDeletePopup?
+                        <div onClick={e=>{setShowDeletePopup(false);setShowConfirmDelete(false)}} className={css.overlay}></div>
+                    :""}
+                    
                     <div className={css.flex_row}>
                         <svg onClick={handleBack} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2.29289 12.7071C1.90237 12.3166 1.90237 11.6834 2.29289 11.2929L6.29289 7.29289C6.68342 6.90237 7.31658 6.90237 7.70711 7.29289C8.09763 7.68342 8.09763 8.31658 7.70711 8.70711L5.41421 11L21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13L5.41421 13L7.70711 15.2929C8.09763 15.6834 8.09763 16.3166 7.70711 16.7071C7.31658 17.0976 6.68342 17.0976 6.29289 16.7071L2.29289 12.7071Z" fill="#475367"/>
@@ -128,8 +152,10 @@ export default function InboxView(props){
                     </div>
                     
                     <div className={css.grid_con}>
+                        
                         {showAside?
                             <aside className={classNames(css.msg_list,css.mobile)}>
+                                
                                 <div className={css.flex_row_2}>
                                     <span className={`${css.sub_header} ${css.mag_16}`}>All Messages</span>
                                     <div className={css.msg_count}>
@@ -142,16 +168,52 @@ export default function InboxView(props){
                                     </svg>
                                     Search
                                 </div>
-                                <MessageListItemComponent
-                                    transactions={filteredTrx} 
-                                    currentUser={currentUser}
-                                    handleShowTransactionDetails={handleShowTransactionDetails}
-                                    onfetchMessage={onfetchMessage}
-                                    currentTransaction={currentTransaction}
-                                    handleDeleteChat={handleDeleteChat}
-                                    deletedChat={deletedChat}
-                                    setShowAside={setShowAside}
-                                />
+                                    <MessageListItemComponent
+                                        transactions={filteredTrx} 
+                                        currentUser={currentUser}
+                                        handleShowTransactionDetails={handleShowTransactionDetails}
+                                        onfetchMessage={onfetchMessage}
+                                        currentTransaction={currentTransaction}
+                                        handleDeleteChat={handleDeleteChat}
+                                        deletedChat={deletedChat}
+                                        setShowAside={setShowAside}
+                                        showDeletePopup={showDeletePopup}
+                                        setShowDeletePopup={setShowDeletePopup}
+                                        setTrxToDelete={setTrxToDelete}
+                                    />
+
+                                    {showDeletePopup?
+                                        <div className={classNames(css.popup_con,css.mobile)}>
+                                            <div className={css.popup}>
+                                                <h3>Actions</h3>
+                                                <button onClick={e=>{setShowConfirmDelete(true);setShowDeletePopup(false)}}>Delete</button>
+                                            </div>
+                                        </div>
+                                    :""}
+
+
+                                    {showConfirmDelete?
+                                        <div className={classNames(css.popup_con,css.mobile)}>
+                                            <div className={css.popup}>
+                                                <h3>Are you sure you want to delete this chat</h3>
+                                                <div className={css.flex_btw}>
+                                                    <button onClick={e=>showConfirmDelete(false)}>No</button>
+                                                    <button onClick={handleDeleteChat}>Yes, delete
+                                                        {updateInProgress?
+                                                            <div class="spinner-border" role="status">
+                                                                <span class="sr-only">Loading...</span>
+                                                            </div>
+                                                        :""}
+                                                    </button>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    :""}
+
+                                    
+            
+                                
                             </aside>
                         :""}
 
@@ -168,16 +230,50 @@ export default function InboxView(props){
                                 </svg>
                                 Search
                             </div>
-                            <MessageListItemComponent
-                                transactions={filteredTrx} 
-                                currentUser={currentUser}
-                                handleShowTransactionDetails={handleShowTransactionDetails}
-                                onfetchMessage={onfetchMessage}
-                                currentTransaction={currentTransaction}
-                                handleDeleteChat={handleDeleteChat}
-                                deletedChat={deletedChat}
-                                setShowAside={setShowAside}
-                            />
+                            
+                                <MessageListItemComponent
+                                    transactions={filteredTrx} 
+                                    currentUser={currentUser}
+                                    handleShowTransactionDetails={handleShowTransactionDetails}
+                                    onfetchMessage={onfetchMessage}
+                                    currentTransaction={currentTransaction}
+                                    handleDeleteChat={handleDeleteChat}
+                                    deletedChat={deletedChat}
+                                    setShowAside={setShowAside}
+                                    showDeletePopup={showDeletePopup}
+                                    setShowDeletePopup={setShowDeletePopup}
+                                    setTrxToDelete={setTrxToDelete}
+                                />
+                                
+                                {showDeletePopup?
+                                    <div className={classNames(css.popup_con,css.desktop)}>
+                                        <div className={css.popup}>
+                                            <span>Actions</span>
+                                            <button onClick={e=>{setShowConfirmDelete(true);setShowDeletePopup(false)}}>Delete</button>
+                                        </div>
+                                    </div>
+                                :""}
+
+                                {showConfirmDelete?
+                                    <div className={classNames(css.popup_con,css.desktop)}>
+                                        <div className={css.popup}>
+                                            <h3>Are you sure you want to delete this chat</h3>
+                                            <div className={css.flex_btw}>
+                                                <button onClick={e=>showConfirmDelete(false)}>No</button>
+
+                                                <button onClick={handleDeleteChat}>Yes, delete
+                                                    {updateInProgress?
+                                                        <div class="spinner-border" role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </div>
+                                                    :""}
+                                                </button>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                :""}
+                                
                         </aside>
                         
                         <div className={css.content_con}>
