@@ -184,7 +184,7 @@ const TopbarDesktop = props => {
     handleSwitchToCustomer,
     notifications,
     history,
-    onUpdateProfile
+    onUpdateProfile,
   } = props;
 
   //console.log(transactions)
@@ -197,7 +197,7 @@ const TopbarDesktop = props => {
   const profileUser = currentUser;
   const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
-  
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -357,13 +357,18 @@ const TopbarDesktop = props => {
           /> */}
 
           <div className={css.logo}>
-            <NamedLink name="LandingPage">
+           
+            {userType === "customer"?
+              <NamedLink name="LandingPage">
+                <img className={css.resize} src={logo} />
+              </NamedLink>
+            :
               <img className={css.resize} src={logo} />
-            </NamedLink>
-            
+            }
+           
           </div>
 
-            {!showExpandedSearchBar && showSearchBar?
+            {!showExpandedSearchBar && showSearchBar && userType === "customer"?
               <div className={css.search_con} onClick={handleSearchClick}>
                 <div className={css.flex_row_s}>
                   <div className={css.search_item_a}>

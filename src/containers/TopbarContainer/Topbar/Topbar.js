@@ -381,9 +381,14 @@ const handleSwitchToCustomer = e =>{
       <div className={css.mobile}>
         <div className={css.flex_row}>
           <div>
-            <NamedLink name="LandingPage">
+            {userType === "customer"?
+              <NamedLink name="LandingPage">
+                <img className={css.resize} src={logo} />
+              </NamedLink>
+            :
               <img className={css.resize} src={logo} />
-            </NamedLink>
+            }
+           
           </div>
           
           <div className={css.flex_row}>
@@ -565,6 +570,7 @@ const handleSwitchToCustomer = e =>{
           notifications={notifications}
           history={history}
           onUpdateProfile={onUpdateProfile}
+          userType={userType}
         />
       </div>
       <Modal

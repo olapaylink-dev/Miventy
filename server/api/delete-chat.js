@@ -16,7 +16,7 @@ const integrationSdk = sharetribeIntegrationSdk.createInstance({
 
 module.exports = (req, res) => {
     const {customerId,providerId,trxId}  = req.body;
-    //console.log(req.body,"   sssqqs")
+    console.log(req.body,"   sssqqs")
 
    const updateProvider = integrationSdk.users.show({id: providerId})
     .then(res => {
@@ -59,6 +59,7 @@ module.exports = (req, res) => {
   
  Promise.all([updateProvider, updateCustomer])
     .then(([updateProviderResponse,updateCustomerResponse]) => {
+      console.log("pppppppppppppppppppppp")
 
        const { status, statusText, data } = updateCustomerResponse || {};
                                     res
