@@ -185,6 +185,8 @@ const TopbarDesktop = props => {
     notifications,
     history,
     onUpdateProfile,
+    newMsg,
+    newMsgCount,
   } = props;
 
   //console.log(transactions)
@@ -213,10 +215,10 @@ const TopbarDesktop = props => {
 
 
   useEffect(() => {
-    console.log("Page changing 0000000");
+    
   }, [pageRef]);
 
-  
+  console.log("Page changing 0000000");
 
   const location = useLocation();
   const path = location.pathname;
@@ -341,7 +343,7 @@ const TopbarDesktop = props => {
 
   const notificationTransactions = getnotificationTransactions(transactions?.data,notifications);
   const notificationCounts = notifications !== undefined? notifications.length : 0;
-  const msgCounts = transactions !== null && transactions !== undefined && transactions.hasOwnProperty("data") && transactions?.data.length > 0? transactions.data.length : 0;
+  const msgCounts = newMsgCount;
 
   console.log(notificationTransactions)
   
@@ -484,8 +486,8 @@ const TopbarDesktop = props => {
                   </div>
                   <div className={css.rule}></div>
                   <div className={css.icon_con}>
-                    {transactions !== undefined && transactions.hasOwnProperty("data") && transactions?.data.length > 0?
-                        <MessagesNote data={transactions} currentUser={currentUser}/>
+                    {newMsg !== undefined && newMsg.length > 0?
+                        <MessagesNote data={newMsg} included={transactions.included} currentUser={currentUser}/>
                       :
                       <>
                         <svg xmlns="http://www.w3.org/2000/svg" width="26" height="27" viewBox="0 0 26 27" fill="none">

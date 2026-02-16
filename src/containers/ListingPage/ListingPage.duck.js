@@ -3,7 +3,7 @@ import pick from 'lodash/pick';
 import { types as sdkTypes, createImageVariantConfig } from '../../util/sdkLoader';
 import { storableError } from '../../util/errors';
 import { addMarketplaceEntities } from '../../ducks/marketplaceData.duck';
-import { createOffer, saveLikes, transactionLineItems } from '../../util/api';
+import { addUnseenMsg, createOffer, saveLikes, transactionLineItems } from '../../util/api';
 import * as log from '../../util/log';
 import { denormalisedResponseEntities } from '../../util/data';
 import { findNextBoundary, getStartOf, monthIdString } from '../../util/dates';
@@ -18,6 +18,7 @@ import {
 } from '../../util/urlHelpers';
 import { getProcess, isBookingProcessAlias } from '../../transactions/transaction';
 import { fetchCurrentUser, fetchCurrentUserHasOrdersSuccess } from '../../ducks/user.duck';
+import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 
 const { UUID } = sdkTypes;
 
@@ -405,7 +406,7 @@ export const fetchTimeSlots = (listingId, start, end, timeZone) => (dispatch, ge
 
 export const sendInquiry = (listing, orderData,isInquiry) => (dispatch, getState, sdk) => {
   dispatch(sendInquiryRequest());
-  
+  console.log("+++++++++++++++++++++++++++++++++++++++++")
   const processAlias = listing?.attributes?.publicData?.transactionProcessAlias;
   if (!processAlias) {
     const error = new Error('No transaction process attached to listing');
@@ -419,28 +420,39 @@ export const sendInquiry = (listing, orderData,isInquiry) => (dispatch, getState
   const listingId = listing?.id;
   const [processName, alias] = processAlias.split('/');
   const transitions = getProcess(processName)?.transitions;
-
+console.log("++++++++++++++++++++2222222222+++++++++++++++++++++")
   const bodyParams = {
     transition: transitions.INQUIRE,
     processAlias,
     params: { listingId,protectedData:{cartData:orderData},metaData:{cartData:orderData}},
   };
+
+  console.log("ccccccccccccccccccccccccccccccccc")
+
   return sdk.transactions
     .initiate(bodyParams)
     .then(response => {
+      console.log("++++++++++++++++++++33333333333+++++++++++++++++++++")
       const transactionId = response.data.data.id;
       console.log("Transaction created, message sent");
 
       // Send the message to the created transaction
       if(JSON.stringify(orderData?.message) !== "{}"  && orderData?.message !== undefined){
         return sdk.messages.send({ transactionId, content: orderData.message }).then(() => {
+
+          //send the trx Id to server to add the unseen trx for both users
+          addUnseenMsg({trxId:transactionId.uuid});
+
           dispatch(sendInquirySuccess(isInquiry));
           dispatch(fetchCurrentUserHasOrdersSuccess(true));
+
           return transactionId;
         });
       }else{
         dispatch(sendInquirySuccess(isInquiry));
         dispatch(fetchCurrentUserHasOrdersSuccess(true));
+        //send the trx Id to server to add the unseen trx for both users
+        addUnseenMsg({trxId:transactionId.uuid});
         return transactionId;
       }
       

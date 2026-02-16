@@ -3,8 +3,7 @@ import icon from '../../assets/msg.png';
 import NamedLink from "../NamedLink/NamedLink";
 
 const MessagesNote = props =>{
-    const {data=[],currentUser} = props;
-    const {included} = data;
+    const {data=[],currentUser,included} = props;
 
     const getImageUrl = (data,imgId)=>{
         let url = "";
@@ -36,7 +35,7 @@ const MessagesNote = props =>{
 
     return (
         <div className={css.container_main}>
-            {data.data.map((itm,key)=>{
+            {data.map((itm,key)=>{
                 if(key > 3){return ""}
                 const providerId = itm.relationships.provider.data.id.uuid;
                 const isOwnListing = currentUser.id.uuid === providerId;

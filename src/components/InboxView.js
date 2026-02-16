@@ -93,20 +93,27 @@ export default function InboxView(props){
         const profileUser = currentUser;
         const {  protectedData } = profileUser?.attributes?.profile || {};
         const data = protectedData?.notifications || [];
+        const unseenMsgData = protectedData?.unseenMsg || [];
 
         const notiIds = getNotificationId(data);
 
         if(notiIds.includes(itm.id.uuid)){
-            console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
             const notifications = data.filter(i=>i.trxId !== itm.id.uuid);
             const dat = 
                 {protectedData: {
-                    notifications
+                        notifications
                     }}
             onUpdateProfile(dat);
         }
-        
 
+         if(unseenMsgData.includes(itm.id.uuid)){
+            const unseenMsg = unseenMsgData.filter(i=>i !== itm.id.uuid);
+            const dat = 
+                {protectedData: {
+                        unseenMsg
+                    }}
+            onUpdateProfile(dat);
+        }
      }
 
      const handleBack = e=>{

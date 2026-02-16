@@ -204,6 +204,11 @@ export const stripeTransfer = body => {
   return post('/api/stripe-transfer', body);
 };
 
+export const addUnseenMsg = body => {
+  console.log(body)
+  return post('/api/add-unseen-msg', body);
+};
+
 
 
 

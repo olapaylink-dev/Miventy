@@ -35,6 +35,7 @@ const sendNotification = require('./api/send-notification');
 const getBalance = require('./api/get-stripe-balance');
 const instantPayout = require('./api/stripe-instant-payout');
 const stripeTransfer = require('./api/stripe-transfer');
+const addUnseenMsg = require('./api/add-unseen-message');
 //const sendEmail = require('./api/send-email');
 
 const router = express.Router();
@@ -108,6 +109,7 @@ router.post('/send-notification', sendNotification);
 router.post('/get-balance', getBalance);
 router.post('/instant-payout', instantPayout);
 router.post('/stripe-transfer', stripeTransfer);
+router.post('/add-unseen-msg', addUnseenMsg);
 //router.post('/send-email', sendEmail);
 
 router.post('/webhook',express.raw({type: 'application/json'}), webhookCallback);

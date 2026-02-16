@@ -203,7 +203,7 @@ const TopbarComponent = props => {
 
   const profileUser = currentUser;
   const { bio, displayName, publicData, protectedData } = profileUser?.attributes?.profile || {};
-  const {notifications} = protectedData || {};
+  const {notifications,unseenMsg} = protectedData || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
 
   const handleSubmit = values => {
@@ -329,6 +329,14 @@ const TopbarComponent = props => {
     <div className={css.searchMenu} />
   );
 
+
+const getNewMsg = (trxs,unseenMsgId=[])=>{
+  const msg = trxs !== null && trxs?.data.filter(itm=>unseenMsgId.includes(itm.id.uuid)) || [];
+  return msg;
+}
+
+const newMsg = getNewMsg(transactions,unseenMsg);
+const newMsgCount = newMsg.length;
 
 const handleClick = e =>{
   e.preventDefault();
@@ -571,6 +579,8 @@ const handleSwitchToCustomer = e =>{
           history={history}
           onUpdateProfile={onUpdateProfile}
           userType={userType}
+          newMsg={newMsg}
+          newMsgCount={newMsgCount}
         />
       </div>
       <Modal
