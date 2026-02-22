@@ -42,6 +42,12 @@ import { updateProfile } from '../../ProfileSettingsPage/ProfileSettingsPage.duc
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 
+import i18n from "i18next";
+import { initReactI18next } from "react-i18next";
+import eng from "../../../translations/en.json";  // translation file containing json from above
+import ita from "../../../translations/es.json";
+
+
 const redirectToURLWithModalState = (history, location, modalStateParam) => {
   const { pathname, search, state } = location;
   const searchString = `?${stringify({ [modalStateParam]: 'open', ...parse(search) })}`;
@@ -186,6 +192,7 @@ const TopbarComponent = props => {
     onSearchKeyword,
     searchTitles,
   } = props;
+
 
 
   useEffect(()=>{
@@ -374,6 +381,10 @@ const handleSwitchToCustomer = e =>{
 }
 
 
+const handleLanguageChange = e =>{
+  
+}
+
 
   return (
     <>
@@ -401,6 +412,11 @@ const handleSwitchToCustomer = e =>{
           
           <div className={css.flex_row}>
              <div className={css.trans_text}>
+              {/* <div>{translated}</div> */}
+              <select onChange={handleLanguageChange}>
+                <option value="en">EN</option>
+                <option value="es">ES</option>
+              </select>
               <span>EN</span>
               <img className={css.trans_icon} src={translation} />
             </div>

@@ -28,6 +28,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 
 
@@ -55,9 +56,10 @@
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 69.6px */
+    color: black;
 }
 
-.header span{
+.txt_span{
     color: #F47133;
     font-family: Inter;
     font-size: 48px;
@@ -198,6 +200,10 @@
 
 .space{
     height: 200px;
+}
+
+.txt_black{
+    color: black;
 }
 
 

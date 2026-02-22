@@ -40,6 +40,7 @@ const ImageCarousel = props => {
 
   const items = images.map((img, i) => {
     return {
+      
       // We will only use the image resource, but react-image-gallery
       // requires the `original` key from each item.
       original: '',

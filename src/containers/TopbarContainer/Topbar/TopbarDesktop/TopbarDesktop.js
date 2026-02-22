@@ -19,7 +19,8 @@ import CustomLinksMenu from './CustomLinksMenu/CustomLinksMenu';
 
 import css from './TopbarDesktop.module.css';
 import magnifyGlass from '../../../../assets/icons/magnify_glass.png';
-import translation from '../../../../assets/icons/translation.png';
+import translation from '../../../../assets/icons/english.png';
+import spanish from '../../../../assets/icons/spanish.png';
 import logo from '../../../../assets/logo.png';
 import bell from '../../../../assets/bell.svg';
 import maill from '../../../../assets/mail.svg';
@@ -29,6 +30,8 @@ import placeholder from '../../../../assets/placeholder.jpg';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MessagesNote from '../../../../components/CustomComponent/MessagesNote';
 import NotificationNote from '../../../../components/CustomComponent/NotificationNote';
+import { changeLanguge,currentLang } from '../../../..';
+import CustomDropdown from '../../../../components/CustomComponent/CustomDropdown';
 
 const SignupLink = (props) => {
   const{showMenu,handleShowMenu} = props;
@@ -200,6 +203,9 @@ const TopbarDesktop = props => {
   const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
 
+  const currentLangSaved = currentLang;
+  const [currentLanguage,setCurrentLanguage] = useState(currentLangSaved);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -346,6 +352,10 @@ const TopbarDesktop = props => {
   const msgCounts = newMsgCount;
 
   console.log(notificationTransactions)
+
+  const handleLanguageChange = e =>{
+    changeLanguge(e)
+  }
   
   
   return (
@@ -408,11 +418,14 @@ const TopbarDesktop = props => {
         </>
       :""}
         
-        
-        
         <div className={css.trans_text}>
-          <span>EN</span>
-          <img className={css.trans_icon} src={translation} />
+          <CustomDropdown handleLanguageChange={handleLanguageChange} curr={currentLanguage} setCurr={setCurrentLanguage} parentClicked={parentClicked} />
+          {currentLanguage === "EN"?
+            <img className={css.trans_icon} src={translation} />
+            :
+            <img className={css.trans_icon} src={spanish} />
+          }
+          
         </div>
 
        

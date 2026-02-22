@@ -22,6 +22,7 @@ import magician from '../../assets/magician.jpeg';
 import NamedLink from "../NamedLink/NamedLink";
 import BoxMenu from "./BoxMenu";
 import { useInView } from "react-intersection-observer";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 
 const Hero = (props)=>{
@@ -56,19 +57,19 @@ const Hero = (props)=>{
                     
                     <div className={css.header_con}>
                       <h2 className={css.header}>
-                        Discover and Book The Perfect <br/><span>Entertainer</span> for Your Events
+
+                        <FormattedMessage className={css.txt_black} id="LandingPage.heroTitle"/> <br/><span className={css.txt_span}><FormattedMessage id="LandingPage.entertainer"/></span> <FormattedMessage id="LandingPage.forYouEvent"/>
                       </h2>
                       <p ref={ref}>
-                        From magicians to event planners, find everything you need to make your 
-                        celebration extraordinary quickly and effortlessly.
+                        <FormattedMessage id="LandingPage.heroDescription" />
                       </p>
 
                       <div className={css.action_con}>
                         <NamedLink name="SearchPage" className={css.btn_a}>
-                          Browse Category
+                          <FormattedMessage id="LandingPage.browseCategory" />
                         </NamedLink>
                         <NamedLink name="ProfileSettingsPage" className={css.btn_b}>
-                          Post your service
+                          <FormattedMessage id="LandingPage.postService" />
                         </NamedLink>
                       </div>
                     </div>

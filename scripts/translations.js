@@ -26,6 +26,8 @@ const TARGET_LANG_NAMES = {
 class BreakToRun {}
 class BreakToRunWithTarget {}
 
+console.log("ooooooooooooooopppppppppppp")
+
 /**
  * Resolves translation file path for a lang code: en, es, de, etc.
  */

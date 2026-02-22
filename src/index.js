@@ -12,7 +12,7 @@
  */
 
 // Dependency libs
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOMClient from 'react-dom/client';
 import { loadableReady } from '@loadable/component';
 
@@ -44,6 +44,21 @@ import routeConfiguration from './routing/routeConfiguration';
 // App it self
 import { ClientApp, renderApp } from './app';
 
+
+
+import english from "./translations/en.json";  // translation file containing json from above
+import spanish from "./translations/es.json";
+
+const eng = english;
+const spa = spanish;
+let translated = eng;
+let currentLang = "EN";
+
+let store;
+
+
+
+
 const render = (store, shouldHydrate) => {
   // If the server already loaded the auth information, render the app
   // immediately. Otherwise wait for the flag to be loaded and render
@@ -67,7 +82,9 @@ const render = (store, shouldHydrate) => {
       const { translations: translationsRaw, ...rest } = fetchedAppAssets || {};
       // We'll handle translations as a separate data.
       // It's given to React Intl instead of pushing to config Context
+      
       const translations = translationsRaw?.data || {};
+      console.log(spa,"    ccccccccccccccccccccccccccc")
 
       // Rest of the assets are considered as hosted configs
       const configEntries = Object.entries(rest);
@@ -80,14 +97,14 @@ const render = (store, shouldHydrate) => {
 
         ReactDOMClient.hydrateRoot(
           container,
-          <ClientApp store={store} hostedTranslations={translations} hostedConfig={hostedConfig} />,
+          <ClientApp store={store} hostedTranslations={translated} hostedConfig={hostedConfig} />,
           { onRecoverableError: log.onRecoverableError }
         );
       } else {
         const container = document.getElementById('root');
         const root = ReactDOMClient.createRoot(container);
         root.render(
-          <ClientApp store={store} hostedTranslations={translations} hostedConfig={hostedConfig} />
+          <ClientApp store={store} hostedTranslations={translated} hostedConfig={hostedConfig} />
         );
       }
     })
@@ -144,10 +161,12 @@ if (typeof window !== 'undefined') {
   const googleAnalyticsIdFromSSR = initialState?.hostedAssets?.googleAnalyticsId;
   const googleAnalyticsId = googleAnalyticsIdFromSSR || process.env.REACT_APP_GOOGLE_ANALYTICS_ID;
   const analyticsHandlers = setupAnalyticsHandlers(googleAnalyticsId);
-  const store = configureStore(initialState, sdk, analyticsHandlers);
+  store = configureStore(initialState, sdk, analyticsHandlers);
 
   require('./util/polyfills');
   render(store, !!window.__PRELOADED_STATE__);
+
+  
 
   if (appSettings.dev) {
     // Expose stuff for the browser REPL
@@ -159,6 +178,25 @@ if (typeof window !== 'undefined') {
       store,
     };
   }
+}
+
+
+// useEffect(()=>{
+   
+//     console.log("Changing translation")
+//   },[translated])
+
+const changeLanguge = (currentLanguage)=>{
+  console.log("curent language ", currentLanguage)
+  if(currentLanguage === "en"){
+    translated = eng;
+    currentLang = "EN";
+  }else{
+    translated = spa;
+    currentLang = "ES";
+  }
+  
+   render(store, !!window.__PRELOADED_STATE__);
 }
 
 // Show warning if CSP is not enabled
@@ -188,4 +226,6 @@ export {
   defaultConfig,
   mergeConfig,
   fetchAppAssets,
+  changeLanguge,
+  currentLang
 };
