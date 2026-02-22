@@ -8,7 +8,7 @@ import why4 from '../../assets/why/why4.png';
 
 import star from '../../assets/icons/star.png';
 import classNames from "classnames";
-import NamedLink from "../NamedLink/NamedLink";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 
 const Why = (props)=>{
@@ -19,7 +19,7 @@ const Why = (props)=>{
                     <div className={classNames(css.desktop)}>
                         <div className={css.title_con}>
                             <div className={css.popular_title}>
-                                Why Miventy?
+                                <FormattedMessage id="LandingPage.whyTitle" />
                             </div>
                             
                         </div>
@@ -28,31 +28,31 @@ const Why = (props)=>{
                             <div className={css.items}>
                                 <img src={why1}/>
                                 
-                                <span className={css.title}>Convenience</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.convinience" /></span>
                                 <p>
-                                    Find all services in one place with easy filters for location and price, saving you time.
+                                    <FormattedMessage id="LandingPage.findAll" />
                                 </p>
                             </div>
                             <div className={css.items}>
                                 <img src={why2}/>
-                                <span className={css.title}>Variety for self-planning</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.varietyForSelf" /></span>
                                 <p>
-                                    Access a wide range of goods and services to independently organize your events without costly agencies.
+                                    <FormattedMessage id="LandingPage.AccessAWide" />
                                 </p>
                             </div>
                             <div className={css.items}>
                                 <img src={why3}/>
-                                <span className={css.title}>Payment Protection</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.paymentProtection" /></span>
                                 <p>
-                                    We hold the payment until you’re satisfied with the service, ensuring that you only pay when you’re happy with what you receive.
+                                    <FormattedMessage id="LandingPage.weHoldThePayment" />
                                 </p>
                             </div>
 
                             <div className={css.items}>
                                 <img src={why4}/>
-                                <span className={css.title}>Trust</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.trust" /></span>
                                 <p>
-                                    Our review system helps you choose reliable service providers confidently.
+                                    <FormattedMessage id="LandingPage.ourReview" />
                                 </p>
                             </div>
 
@@ -66,7 +66,7 @@ const Why = (props)=>{
         <div className={classNames(css.mobile_con)}>
                         <div className={css.title_con}>
                             <div className={css.popular_title}>
-                                Why Miventy?
+                                <FormattedMessage id="LandingPage.whyTitle" />
                             </div>
                             
                         </div>
@@ -75,31 +75,31 @@ const Why = (props)=>{
                             <div className={css.items}>
                                 <img src={why1}/>
                                 
-                                <span className={css.title}>Convenience</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.convinience" /></span>
                                 <p>
-                                    Find all services in one place with easy filters for location and price, saving you time.
+                                    <FormattedMessage id="LandingPage.findAll" />
                                 </p>
                             </div>
                             <div className={css.items}>
                                 <img src={why2}/>
-                                <span className={css.title}>Variety for self-planning</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.varietyForSelf" /></span>
                                 <p>
-                                    Access a wide range of goods and services to independently organize your events without costly agencies.
+                                    <FormattedMessage id="LandingPage.AccessAWide" />
                                 </p>
                             </div>
                             <div className={css.items}>
                                 <img src={why3}/>
-                                <span className={css.title}>Payment Protection</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.paymentProtection" /></span>
                                 <p>
-                                    We hold the payment until you’re satisfied with the service, ensuring that you only pay when you’re happy with what you receive.
+                                    <FormattedMessage id="LandingPage.weHoldThePayment" />
                                 </p>
                             </div>
 
                             <div className={css.items}>
                                 <img src={why4}/>
-                                <span className={css.title}>Trust</span>
+                                <span className={css.title}><FormattedMessage id="LandingPage.trust" /></span>
                                 <p>
-                                    Our review system helps you choose reliable service providers confidently.
+                                    <FormattedMessage id="LandingPage.ourReview" />
                                 </p>
                             </div>
 

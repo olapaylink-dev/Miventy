@@ -1,6 +1,7 @@
 import React from "react";
 import css from './Popular.module.css';
 
+
 import popular1 from '../../assets/popular/popular1.png';
 import popular2 from '../../assets/popular/popular2.png';
 import popular3 from '../../assets/popular/popular3.png';
@@ -20,6 +21,7 @@ import baloonman from '../../assets/ballonman.jpeg';
 import clown from '../../assets/clownman.jpg';
 import magician from '../../assets/magician.jpeg';
 import NamedLink from "../NamedLink/NamedLink";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const Popular = (props)=>{
 
@@ -34,10 +36,10 @@ const Popular = (props)=>{
                     <div className={classNames(css.desktop)}>
                         <div className={css.title_con}>
                             <div className={css.popular_title}>
-                                Most Popular in Your Area
+                                <FormattedMessage id="LandingPage.mostPopularInArea" />
                             </div>
                             <p className={css.title_p}>
-                                Discover the most requested services in your area
+                                <FormattedMessage id="LandingPage.discoverTheMost" />
                             </p>
                         </div>
                         <div className={css.flex_grids}>
@@ -49,7 +51,7 @@ const Popular = (props)=>{
                                 </div>
                                 
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Animators</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.animators" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -61,7 +63,7 @@ const Popular = (props)=>{
                                 </div>
                                 
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Cakes</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.cakes" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -72,7 +74,7 @@ const Popular = (props)=>{
                                     <img className={css.zoom} src={popular3}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Catering</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.catering" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -83,7 +85,7 @@ const Popular = (props)=>{
                                     <img className={css.zoom} src={popular4}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Photographer</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.photographer" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -94,7 +96,7 @@ const Popular = (props)=>{
                                     <img className={css.zoom} src={popular5}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Balloon Decoration</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.balloonDecorations" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -105,7 +107,7 @@ const Popular = (props)=>{
                                     <img className={css.zoom} src={popular6}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Themed Decoration</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.themedDecoration" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -116,7 +118,7 @@ const Popular = (props)=>{
                                         <img className={css.zoom} src={popular7}/>
                                     </div>
                                     <div className={css.flex_row}>
-                                        <span className={css.title}>Rental shade and rain equipment</span>
+                                        <span className={css.title}><FormattedMessage id="LandingPage.rentalsShadeAndRain" /></span>
                                         <img src={star}/>
                                     </div>
                                 </div>
@@ -127,27 +129,16 @@ const Popular = (props)=>{
                                         <img className={css.zoom} src={popular8}/>
                                     </div>
                                     <div className={css.flex_row}>
-                                        <span className={css.title}>Rental Space</span>
+                                        <span className={css.title}><FormattedMessage id="LandingPage.rentalSpace" /></span>
                                         <img src={star}/>
                                     </div>
                                 </div>
                             </div>
-                            {/* <div>
-                                <div className={css.items}>
-                                    <div className={css.img_con}>
-                                        <img className={css.zoom} src={popular8}/>
-                                    </div>
-                                    <div className={css.flex_row}>
-                                        <span className={css.title}>Rental Bouncer</span>
-                                        <img src={star}/>
-                                    </div>
-                                </div>
-                            </div> */}
-                            
+                           
                         </div>
                         <div className={css.browse_cat_con}>
                             <NamedLink className={css.browse_cat} name="SearchPage">
-                                Browse Category
+                                <FormattedMessage id="LandingPage.browseCategory" />
                             </NamedLink>
                         </div>
                         
@@ -158,78 +149,78 @@ const Popular = (props)=>{
             <div className={classNames(css.mobile_con)}>
                         <div className={classNames(css.title_con,css.mag_top)}>
                             <div className={classNames(css.popular_title)}>
-                                Most Popular in Your Area
+                                <FormattedMessage id="LandingPage.mostPopularInArea" />
                             </div>
                             <p className={css.title_p}>
-                                Discover the most requested services in your area
+                                <FormattedMessage id="LandingPage.discoverTheMost" />
                             </p>
                         </div>
                         <div className={css.flex_grids}>
 
                             <div>
- <div className={css.items}>
+                        <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular1}/>
                                 </div>
                                 
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Animators</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.animators" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
                             </div>
                             <div>
-<div className={css.items}>
+                        <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular2}/>
                                 </div>
                                 
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Cakes</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.cakes" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
                             </div>
                             <div>
-<div className={css.items}>
+                            <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular3}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Catering</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.catering" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
                             </div>
                             <div>
- <div className={css.items}>
+                            <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular4}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Photographer</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.photographer" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
                             </div>
                             <div>
-<div className={css.items}>
+                            <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular5}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Balloon Decoration</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.balloonDecorations" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
                             </div>
                             <div>
-<div className={css.items}>
+                            <div className={css.items}>
                                 <div className={css.img_con}>
                                     <img className={css.zoom} src={popular6}/>
                                 </div>
                                 <div className={css.flex_row}>
-                                    <span className={css.title}>Themed Decoration</span>
+                                    <span className={css.title}><FormattedMessage id="LandingPage.themedDecoration" /></span>
                                     <img src={star}/>
                                 </div>
                             </div>
@@ -240,7 +231,7 @@ const Popular = (props)=>{
                                         <img className={css.zoom} src={popular7}/>
                                     </div>
                                     <div className={css.flex_row}>
-                                        <span className={css.title}>Rental shade and rain equipment</span>
+                                        <span className={css.title}><FormattedMessage id="LandingPage.rentalsShadeAndRain" /></span>
                                         <img src={star}/>
                                     </div>
                                 </div>
@@ -251,27 +242,17 @@ const Popular = (props)=>{
                                         <img className={css.zoom} src={popular8}/>
                                     </div>
                                     <div className={css.flex_row}>
-                                        <span className={css.title}>Rental Space</span>
+                                        <span className={css.title}><FormattedMessage id="LandingPage.rentalSpace" /></span>
                                         <img src={star}/>
                                     </div>
                                 </div>
                             </div>
-                            {/* <div>
-                                <div className={css.items}>
-                                    <div className={css.img_con}>
-                                        <img className={css.zoom} src={popular8}/>
-                                    </div>
-                                    <div className={css.flex_row}>
-                                        <span className={css.title}>Rental Bouncer</span>
-                                        <img src={star}/>
-                                    </div>
-                                </div>
-                            </div> */}
+                           
 
                         </div>
                         <div className={css.browse_cat_con}>
                             <NamedLink className={css.browse_cat} name="SearchPage">
-                                Browse Category
+                                <FormattedMessage id="LandingPage.browseCategory" />
                             </NamedLink>
                         </div>
                         

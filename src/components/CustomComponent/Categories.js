@@ -8,6 +8,7 @@ import provider_icon from '../../assets/icons/provider.png';
 import chevronUp from '../../assets/icons/chevron-up.png';
 import classNames from "classnames";
 import NamedLink from "../NamedLink/NamedLink";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const Categories = (props)=>{
 
@@ -33,7 +34,7 @@ const Categories = (props)=>{
                         <div className={classNames(css.flex_row)} onClick={handleShowClient}>
                             <div className={css.flex_row}>
                                 <img src={client_icon}/>
-                                <span>I am a client</span>
+                                <span> <FormattedMessage id="LandingPage.iAmAClient" /></span>
                             </div>
                             
                             <img src={chevronUp}/>
@@ -41,12 +42,11 @@ const Categories = (props)=>{
                         {showClient?
                             <>
                                 <p className={css.pad_1}>
-                                    Explore our wide range of party planning services to make 
-                                    your event truly unforgettable. From decorations to catering, we've got you covered.
+                                    <FormattedMessage id="LandingPage.clientTypeDescription" />
                                 </p>
                                 <div className={css.browse_cat_con}>
                                     <NamedLink className={css.browse_cat} name="SearchPage">
-                                        Browse Category
+                                        <FormattedMessage id="LandingPage.browseCategory" />
                                     </NamedLink>
                                 </div>
                             </>
@@ -58,7 +58,7 @@ const Categories = (props)=>{
                         <div className={classNames(css.flex_row)} onClick={handleShowService}>
                             <div className={css.flex_row}>
                                 <img src={provider_icon}/>
-                                <span>I am a service provider</span>
+                                <span><FormattedMessage id="LandingPage.iAmAProvider" /></span>
                             </div>
                             
                             <img src={chevronUp}/>
@@ -66,12 +66,11 @@ const Categories = (props)=>{
                         {showService?
                             <>
                                 <p className={css.pad_1}>
-                                    List your party decoration services on our platform and reach a 
-                                    wide audience of customer looking to make their event stand out.
+                                    <FormattedMessage id="LandingPage.providerTypeDescription" />
                                 </p>
                                 <div className={css.browse_cat_con}>
                                     <NamedLink className={css.browse_cat} name="StripePayoutPage">
-                                        Post your service
+                                        <FormattedMessage id="LandingPage.postService" />
                                     </NamedLink>
                                 </div>
                             </>
@@ -89,7 +88,7 @@ const Categories = (props)=>{
                         <div className={classNames(css.flex_row,css.pad_1)} onClick={handleShowClient}>
                             <div className={css.flex_row}>
                                 <img className={css.resize} src={client_icon}/>
-                                <span>I am a client</span>
+                                <span><FormattedMessage id="LandingPage.iAmAClient" /></span>
                             </div>
                             
                             <img src={chevronUp}/>
@@ -97,12 +96,11 @@ const Categories = (props)=>{
                         {showClient?
                             <>
                                 <p>
-                                    Explore our wide range of party planning services to make 
-                                    your event truly unforgettable. From decorations to catering, we've got you covered.
+                                    <FormattedMessage id="LandingPage.clientTypeDescription" />
                                 </p>
                                 <div className={css.browse_cat_con}>
                                     <NamedLink className={css.browse_cat} name="SearchPage">
-                                        Browse Category
+                                        <FormattedMessage id="LandingPage.browseCategory" />
                                     </NamedLink>
                                 </div>
                             </>
@@ -114,7 +112,7 @@ const Categories = (props)=>{
                         <div className={classNames(css.flex_row,css.pad_1)} onClick={handleShowService}>
                             <div className={css.flex_row}>
                                 <img className={css.resize} src={provider_icon}/>
-                                <span>I am a service provider</span>
+                                <span><FormattedMessage id="LandingPage.iAmAProvider" /></span>
                             </div>
                             
                             <img src={chevronUp}/>
@@ -122,12 +120,11 @@ const Categories = (props)=>{
                         {showService?
                             <>
                                 <p>
-                                    List your party decoration services on our platform and reach a 
-                                    wide audience of customer looking to make their event stand out.
+                                    <FormattedMessage id="LandingPage.providerTypeDescription" />
                                 </p>
                                 <div className={css.browse_cat_con}>
                                     <NamedLink className={css.browse_cat} name="StripePayoutPage">
-                                        Post your service
+                                        <FormattedMessage id="LandingPage.postService" />
                                     </NamedLink>
                                 </div>
                             </>
