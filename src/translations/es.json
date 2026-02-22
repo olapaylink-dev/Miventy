@@ -1057,6 +1057,14 @@
   "TopbarMobileMenu.unauthorizedGreeting": "Hola,{lineBreak}¿te gustaría {signupOrLogin}?",
   "TopbarMobileMenu.yourListingsLink": "Tus anuncios",
   "TopbarSearchForm.placeholder": "Buscar anuncios…",
+
+  "TopbarDesktop.register": "Registro",
+  "TopbarDesktop.iWantToHire": "Quiero contratar un servicio",
+  "TopbarDesktop.iWantToProvideService": "Quiero brindar un servicio",
+   "TopbarDesktop.service": "Servicio",
+  "TopbarDesktop.location": "Ubicación",
+  "TopbarDesktop.search": "Buscar",
+
   "TransactionPage.ActivityFeed.default-booking.accepted": "{actor, select, you {Aceptaste la solicitud de reserva} operator {La solicitud de reserva fue aceptada.} other {{otherUsersName} aceptó la solicitud de reserva.}}",
   "TransactionPage.ActivityFeed.default-booking.canceled": "La reserva fue cancelada.",
   "TransactionPage.ActivityFeed.default-booking.declined": "{actor, select, you {Rechazaste la solicitud de reserva} operator {La solicitud de reserva fue rechazada.} other {{otherUsersName} rechazó la solicitud de reserva.}}",

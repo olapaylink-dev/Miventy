@@ -42,19 +42,19 @@ const SignupLink = (props) => {
     <div className={css.login_con}>
       <div onClick={handleShowMenu} className={classNames(css.topbarLink,css.register)}>
         <span className={css.topbarLinkLabel}>
-          Register
+          <FormattedMessage id="TopbarDesktop.register" />
         </span>
       </div>
       {showMenu?
        <div className={css.signup_option}>
           <NamedLink name="SignupForUserTypePage" params={{userType:"customer"}} className={classNames(css.topbarLink_new)}>
             <span className={css.topbarLinkLabel}>
-              I want to hire a service
+             <FormattedMessage id="TopbarDesktop.iWantToHire" />
             </span>
           </NamedLink>
           <NamedLink name="SignupForUserTypePage" params={{userType:"provider"}} className={classNames(css.topbarLink_new)}>
             <span className={css.topbarLinkLabel}>
-              I want to provide a service
+              <FormattedMessage id="TopbarDesktop.iWantToProvideService" />
             </span>
           </NamedLink>
       </div>
@@ -69,9 +69,7 @@ const SignupLink = (props) => {
 const LoginLink = () => {
   return (
     <NamedLink name="LoginPage" className={classNames(css.topbarLink,css.login)}>
-      
-        Login
-    
+        <FormattedMessage id="TopbarDesktop.login" />
     </NamedLink>
   );
 };
@@ -224,8 +222,6 @@ const TopbarDesktop = props => {
     
   }, [pageRef]);
 
-  console.log("Page changing 0000000");
-
   const location = useLocation();
   const path = location.pathname;
 
@@ -357,6 +353,7 @@ const TopbarDesktop = props => {
     changeLanguge(e)
   }
   
+  console.log(userType,"  nnnnnnnnnnnnnnnnnn")
   
   return (
     <nav className={classNames(classes,css.default_pad,(isSearchPage?css.add_padding_bottom:null))} onClick={e=>{e.preventDefault(); e.stopPropagation();}}>
@@ -380,14 +377,14 @@ const TopbarDesktop = props => {
            
           </div>
 
-            {!showExpandedSearchBar && showSearchBar && userType === "customer"?
+            {!showExpandedSearchBar && showSearchBar && (userType === "customer" || userType===undefined)?
               <div className={css.search_con} onClick={handleSearchClick}>
                 <div className={css.flex_row_s}>
                   <div className={css.search_item_a}>
-                    Service
+                    <FormattedMessage id="TopbarDesktop.service" />
                   </div>
                   <div className={classNames(css.border_left,css.search_item_b)}>
-                    Location
+                    <FormattedMessage id="TopbarDesktop.location" />
                   </div>
                 </div>
                 <div className={css.btn_border}>
@@ -395,7 +392,7 @@ const TopbarDesktop = props => {
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M9.91 2.06245C5.76787 2.06245 2.41 5.42031 2.41 9.56245C2.41 13.7046 5.76787 17.0624 9.91 17.0624C11.6808 17.0624 13.3084 16.4487 14.5914 15.4224L17.6541 18.485C17.9795 18.8105 18.5072 18.8105 18.8326 18.485C19.158 18.1596 19.158 17.632 18.8326 17.3065L15.7699 14.2439C16.7963 12.9608 17.41 11.3333 17.41 9.56245C17.41 5.42031 14.0521 2.06245 9.91 2.06245ZM4.07667 9.56245C4.07667 6.34079 6.68834 3.72911 9.91 3.72911C13.1317 3.72911 15.7433 6.34079 15.7433 9.56245C15.7433 12.7841 13.1317 15.3958 9.91 15.3958C6.68834 15.3958 4.07667 12.7841 4.07667 9.56245Z" fill="#CC400C"/>
                     </svg>
-                    Search
+                    <FormattedMessage id="TopbarDesktop.search" />
                   </button>
                 </div>
               </div>:""

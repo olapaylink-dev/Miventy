@@ -1062,6 +1062,17 @@
   "TopbarMobileMenu.unauthorizedGreeting": "Hello there,{lineBreak}would you like to {signupOrLogin}?",
   "TopbarMobileMenu.yourListingsLink": "Your listings",
   "TopbarSearchForm.placeholder": "Search listings…",
+
+
+  "TopbarDesktop.register": "Register",
+  "TopbarDesktop.iWantToHire": "I want to hire a service",
+  "TopbarDesktop.iWantToProvideService": "I want to provide a service",
+  "TopbarDesktop.service": "Service",
+  "TopbarDesktop.location": "Location",
+  "TopbarDesktop.search": "Search",
+
+
+
   "TransactionPage.ActivityFeed.default-booking.accepted": "{actor, select, you {You accepted the booking request.} operator {The booking request was accepted.} other {{otherUsersName} accepted the booking request.}}",
   "TransactionPage.ActivityFeed.default-booking.canceled": "The booking was canceled.",
   "TransactionPage.ActivityFeed.default-booking.declined": "{actor, select, you {You declined the booking request.} operator {The booking request was declined.} other {{otherUsersName} declined the booking request.}}",

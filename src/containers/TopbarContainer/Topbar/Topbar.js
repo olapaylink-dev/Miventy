@@ -522,17 +522,17 @@ const handleSwitchToCustomer = e =>{
                           </div>
                           <NamedLink name="LoginPage" className={classNames(css.topbarLink_new)}>
                             <span className={css.fill_btn}>
-                              Login
+                              <FormattedMessage id="TopbarDesktop.register" />
                             </span>
                           </NamedLink>
                           <NamedLink name="SignupForUserTypePage" params={{userType:"customer"}} className={classNames(css.topbarLink_new)}>
                             <span className={css.fill_btn}>
-                              I want to hire a service
+                              <FormattedMessage id="TopbarDesktop.iWantToHire" />
                             </span>
                           </NamedLink>
                           <NamedLink name="SignupForUserTypePage" params={{userType:"provider"}} className={classNames(css.topbarLink_new)}>
                             <span className={css.outline_btn}>
-                              I want to provide a service
+                              <FormattedMessage id="TopbarDesktop.iWantToProvideService" />
                             </span>
                           </NamedLink>
                       </div>
