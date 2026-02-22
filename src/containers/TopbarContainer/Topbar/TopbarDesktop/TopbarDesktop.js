@@ -420,8 +420,6 @@ const TopbarDesktop = props => {
         
         <div className={css.trans_text}>
           <CustomDropdown handleLanguageChange={handleLanguageChange} curr={currentLanguage} setCurr={setCurrentLanguage} parentClicked={parentClicked} />
-          
-          
         </div>
 
        

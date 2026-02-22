@@ -46,6 +46,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import eng from "../../../translations/en.json";  // translation file containing json from above
 import ita from "../../../translations/es.json";
+import CustomDropdown from '../../../components/CustomComponent/CustomDropdown';
+import { changeLanguge, currentLang } from '../../..';
 
 
 const redirectToURLWithModalState = (history, location, modalStateParam) => {
@@ -212,6 +214,9 @@ const TopbarComponent = props => {
   const { bio, displayName, publicData, protectedData } = profileUser?.attributes?.profile || {};
   const {notifications,unseenMsg} = protectedData || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
+
+  const currentLangSaved = currentLang;
+  const [currentLanguage,setCurrentLanguage] = useState(currentLangSaved);
 
   const handleSubmit = values => {
     const { currentSearchParams, history, config, routeConfiguration } = props;
@@ -381,9 +386,9 @@ const handleSwitchToCustomer = e =>{
 }
 
 
-const handleLanguageChange = e =>{
-  
-}
+  const handleLanguageChange = e =>{
+    changeLanguge(e)
+  }
 
 
   return (
@@ -412,13 +417,7 @@ const handleLanguageChange = e =>{
           
           <div className={css.flex_row}>
              <div className={css.trans_text}>
-              {/* <div>{translated}</div> */}
-              <select onChange={handleLanguageChange}>
-                <option value="en">EN</option>
-                <option value="es">ES</option>
-              </select>
-              <span>EN</span>
-              <img className={css.trans_icon} src={translation} />
+              <CustomDropdown handleLanguageChange={handleLanguageChange} curr={currentLanguage} setCurr={setCurrentLanguage} parentClicked={parentClicked} />
             </div>
             <button className={css.search_btn} onClick={handleSearchClick}>
               <svg className={css.search_svg} width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M9.91 2.06245C5.76787 2.06245 2.41 5.42031 2.41 9.56245C2.41 13.7046 5.76787 17.0624 9.91 17.0624C11.6808 17.0624 13.3084 16.4487 14.5914 15.4224L17.6541 18.485C17.9795 18.8105 18.5072 18.8105 18.8326 18.485C19.158 18.1596 19.158 17.632 18.8326 17.3065L15.7699 14.2439C16.7963 12.9608 17.41 11.3333 17.41 9.56245C17.41 5.42031 14.0521 2.06245 9.91 2.06245ZM4.07667 9.56245C4.07667 6.34079 6.68834 3.72911 9.91 3.72911C13.1317 3.72911 15.7433 6.34079 15.7433 9.56245C15.7433 12.7841 13.1317 15.3958 9.91 15.3958C6.68834 15.3958 4.07667 12.7841 4.07667 9.56245Z" fill="black"></path></svg>
