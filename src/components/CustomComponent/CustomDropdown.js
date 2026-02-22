@@ -16,33 +16,40 @@ const CustomDropdown = props =>{
     return (
 
 
-        <div className={css.container}>
-            
-            {show?
-                <div className={css.option_con}>
-                    <div className={css.flex_row} onClick={e=>{handleLanguageChange("en");setShow(false);setCurr("en")}} >
-                        EN
-                        <img src={english} className={css.trans_icon} />
-                    </div>
-                    <div className={css.flex_row} onClick={e=>{handleLanguageChange("es");setShow(false);setCurr("es")}}>
-                        
-                        ES
-                        <img src={spanish} className={css.trans_icon} />
-                    </div>
-                </div>
-                :
+        <>
+                <div className={css.container}>
+
                 <div className={css.flex_row} onClick={e=>setShow(!show)}>
-                    {curr}
-                    {curr === "EN"?
-                        <img className={css.trans_icon} src={english} />
-                        :
-                        <img className={css.trans_icon} src={spanish} />
-                    }
+                        {curr}
+                        {curr === "EN"?
+                            <img className={css.trans_icon} src={english} />
+                            :
+                            <img className={css.trans_icon} src={spanish} />
+                        }
                 </div>
-            }
-            
-            
-        </div>
+                
+                
+                
+                
+            </div>
+            {show?
+                    <div className={css.option_con}>
+                        <div className={css.flex_row} onClick={e=>{handleLanguageChange("en");setShow(false);setCurr("en")}} >
+                            <img src={english} className={css.trans_icon} />
+                            English
+                        </div>
+                        <div className={css.flex_row} onClick={e=>{handleLanguageChange("es");setShow(false);setCurr("es")}}>
+                            <img src={spanish} className={css.trans_icon} />
+                            Spanish
+                        </div>
+                    </div>
+                    :
+                    ""
+                }
+        </>
+
+
+        
     )
 }
 

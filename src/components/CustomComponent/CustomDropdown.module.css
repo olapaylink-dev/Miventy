@@ -13,6 +13,14 @@
 .option_con{
     display: flex;
     flex-direction: column;
+    position: absolute;
+    gap: 10px;
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    top: 60px;
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: flex-start;
+    background-color: white;
 }
 
 .resize{
@@ -23,10 +31,50 @@
 .flex_row{
     display: flex;
     gap: 10px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
 .trans_icon{
   width: 25px;
 }
+
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+    
+    .option_con{
+        top: 90px;
+    }
+}
+
+@media only screen and (max-width: 412px) {
+   
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   
+}
+
+  
+
