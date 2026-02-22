@@ -58,7 +58,7 @@ const BoxMenuItemBodyMobile = props=>{
 
                                     itemData.item.map((itm,key)=>{
                                         return (
-                                            <button className={classNames(css.drd_itm)}  onClick={e=>handleSearch(itm.key)}>
+                                            <button className={classNames(css.drd_itm)}  onClick={e=>handleSearch(itm.value)}>
                                                 <img src={itm.icon} className={css.icon_sm}/>
                                                 <span>{itm.key}</span>
                                             </button>

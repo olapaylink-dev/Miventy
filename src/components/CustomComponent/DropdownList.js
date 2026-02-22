@@ -58,8 +58,8 @@ const DropDownList = (props)=>{
                     >
                         {item.map((itm,key)=>{
                             return(
-                                <button className={css.btn} onClick={e=>handleClick(itm)}>
-                                    {itm}
+                                <button className={css.btn} onClick={e=>handleClick(itm.value)}>
+                                    {itm.key}
                                 </button>
                             )
                         })}

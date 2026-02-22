@@ -25,6 +25,7 @@ import icon12sm from '../../assets/icons/icon5.png';
 import rain from '../../assets/icons/rainn.png';
 import space from '../../assets/icons/space.png';
 import BoxMenuItemBodyMobile from "./BoxMenuItemBodyMobile";
+import { FormattedMessage } from '../../util/reactIntl';
 
 const SearchPageBoxMenu = props =>{
 
@@ -44,41 +45,42 @@ const SearchPageBoxMenu = props =>{
     
     // }
 
+
     const data = [
-        {key: "Entertaining",
+        {key: <FormattedMessage id="LandingPage.entertaining" />,
             item:[
-                {key:"Animation",icon:icon1sm},
-                {key:"Magic",icon:icon2sm},
-                {key:"Face Paint",icon:icon3sm}
-            ],css:css.menu1,icon:icon1},
-        {key: "Catering",item:[],css:css.menu2,icon:icon2},
-        {key: "BD cake & Sweets",
+                {key:<FormattedMessage id="LandingPage.animation" />,value:"Animation"},
+                {key:<FormattedMessage id="LandingPage.magic" />,value:"Magic"},
+                {key:<FormattedMessage id="LandingPage.facePaint" />,value:"Face Paint"}
+            ],css:css.menu1},
+        {key: <FormattedMessage id="LandingPage.catering" />,item:[],value:"Catering"},
+        {key: <FormattedMessage id="LandingPage.bdCakesAndSweets" />,
             item:[
-                {key:"BD Cake",icon:icon4sm},
-                {key:"Sweets",icon:icon5sm},
-            ],css:css.menu3,icon:icon3},
-        {key: "Photo/Video",
+                {key:<FormattedMessage id="LandingPage.bdCake" />,value:"BD Cake"},
+                {key:<FormattedMessage id="LandingPage.sweets" />,value:"Sweets"},
+            ],css:css.menu3},
+        {key: <FormattedMessage id="LandingPage.photoVideo" />,
             item:[
-                {key:"Photos",icon:icon6sm},
-                {key:"Videos",icon:icon7sm},
-            ],css:css.menu4,icon:icon4},
-        {key: "Music for events",
+                {key:<FormattedMessage id="LandingPage.photos" />,value:"Photos"},
+                {key:<FormattedMessage id="LandingPage.videos" />,value:"Videos"},
+            ],css:css.menu4},
+        {key: <FormattedMessage id="LandingPage.musicEvents" />,
             item:[
-                {key:"Classical Music",icon:icon8sm},
-                {key:"Party music/DJs",icon:icon9sm},
-            ],css:css.menu5,icon:icon5},
-        {key: "Decoration",
+                {key:<FormattedMessage id="LandingPage.classicMusic" />,value:"Classical Music"},
+                {key:<FormattedMessage id="LandingPage.partyMusic" />,value:"Party music/DJs"},
+            ],css:css.menu5},
+        {key: <FormattedMessage id="LandingPage.decoration" />,
             item:[
-                {key:"Balloon Decorations",icon:icon10sm},
-                {key:"Flower arrangements",icon:icon11sm},
-                {key:"Themed Decoration",icon:icon12sm},
-            ],css:css.menu6,icon:icon6},
-        {key: "Rentals",
-                    item:[
-                        {key:"Rental shade and rain equipment",icon:rain},
-                        {key:"Rental Space",icon:space},
-                        {key:"Rental Bouncer",icon:icon6},
-                    ],css:css.menu7,icon:icon7},
+                {key:<FormattedMessage id="LandingPage.balloonDecorations" />,value:"Balloon Decorations"},
+                {key:<FormattedMessage id="LandingPage.flowerArragement" />,value:"Flower arrangements"},
+                {key:<FormattedMessage id="LandingPage.themedDecoration" />,value:"Themed Decoration"},
+            ],css:css.menu6},
+        {key: <FormattedMessage id="LandingPage.rentals" />,
+                            item:[
+                                {key:<FormattedMessage id="LandingPage.rentalsShadeAndRain" />,value:"Rental shade and rain equipment"},
+                                {key:<FormattedMessage id="LandingPage.rentalSpace" />,value:"Rental Space"},
+                                {key:<FormattedMessage id="LandingPage.rentalBouncer" />,value:"Rental Bouncer"},
+                            ],css:css.menu7},
        ];
 
 

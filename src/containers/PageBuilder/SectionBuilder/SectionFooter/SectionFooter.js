@@ -8,6 +8,7 @@ import BlockBuilder from '../../BlockBuilder';
 import SectionContainer from '../SectionContainer';
 import css from './SectionFooter.module.css';
 import logo from '../../../../assets/logo.png';
+import { FormattedMessage } from '../../../../util/reactIntl';
 
 // The number of columns (numberOfColumns) affects styling
 
@@ -121,44 +122,44 @@ const SectionFooter = props => {
                 <div className={css.flex_row_3}>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        Getting started
+                        <FormattedMessage id="Footer.getingStarted" />
                       </span>
                       <NamedLink name="LandingPage">
-                        How it works
+                        <FormattedMessage id="Footer.how" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Offer your service
+                        <FormattedMessage id="Footer.offer" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Popular categories
+                        <FormattedMessage id="Footer.popular" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Tips for entertainers
+                        <FormattedMessage id="Footer.tips" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        FAQ
+                        <FormattedMessage id="Footer.faq" />
                       </NamedLink>
                     </div>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        Contact us
+                        <FormattedMessage id="Footer.contacts" />
                       </span>
                       <NamedLink name="LandingPage">
-                        Instagram
+                        <FormattedMessage id="Footer.instagram" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Twitter
+                        <FormattedMessage id="Footer.twitter" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Facebook
+                        <FormattedMessage id="Footer.facebook" />
                       </NamedLink>
                     </div>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        About us
+                        <FormattedMessage id="Footer.about" />
                       </span>
                       <NamedLink name="LandingPage">
-                        Contact us
+                        <FormattedMessage id="Footer.contacts" />
                       </NamedLink>
                     </div>
                 </div>
@@ -166,8 +167,8 @@ const SectionFooter = props => {
           
           
           <div className={css.flex_row}>
-              <div className={css.copyright}>© 2023 — Copyright</div>
-              <div className={css.privacy}>Privacy</div>
+              <div className={css.copyright}>© <FormattedMessage id="Footer.copyright" /></div>
+              <div className={css.privacy}><FormattedMessage id="Footer.policy" /></div>
           </div>
             
             
@@ -188,44 +189,44 @@ const SectionFooter = props => {
                 <div className={css.flex_row_3}>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        Getting started
+                        <FormattedMessage id="Footer.getingStarted" />
                       </span>
                       <NamedLink name="LandingPage">
-                        How it works
+                        <FormattedMessage id="Footer.how" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Offer your service
+                        <FormattedMessage id="Footer.offer" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Popular categories
+                        <FormattedMessage id="Footer.popular" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Tips for entertainers
+                        <FormattedMessage id="Footer.tips" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        FAQ
+                        <FormattedMessage id="Footer.faq" />
                       </NamedLink>
                     </div>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        Contact us
+                        <FormattedMessage id="Footer.contacts" />
                       </span>
                       <NamedLink name="LandingPage">
-                        Instagram
+                        <FormattedMessage id="Footer.instagram" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Twitter
+                        <FormattedMessage id="Footer.twitter" />
                       </NamedLink>
                       <NamedLink name="LandingPage">
-                        Facebook
+                        <FormattedMessage id="Footer.facebook" />
                       </NamedLink>
                     </div>
                     <div className={css.flex_col}>
                       <span className={css.footer_header}>
-                        About us
+                        <FormattedMessage id="Footer.about" />
                       </span>
                       <NamedLink name="LandingPage">
-                        Contact us
+                        <FormattedMessage id="Footer.contacts" />
                       </NamedLink>
                     </div>
                 </div>
@@ -233,8 +234,8 @@ const SectionFooter = props => {
           
           
           <div className={css.flex_row}>
-              <div className={css.copyright}>© 2023 — Copyright</div>
-              <div className={css.privacy}>Privacy</div>
+              <div className={css.copyright}>© <FormattedMessage id="Footer.copyright" /></div>
+              <div className={css.privacy}><FormattedMessage id="Footer.policy" /></div>
           </div>
             
             

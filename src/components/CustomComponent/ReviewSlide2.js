@@ -32,20 +32,6 @@ const ReviewSlider = props =>{
 
     const reff = useRef(null);
 
-    // setTimeout(() => {
-    //     console.log("Hello, World!");
-    //     try{
-    //         if(reff.current !== undefined && reff.current.click()){
-                
-    //             reff.current.click();
-    //         }
-    //     }catch(e){
-
-    //     }
-       
-        
-    //   }, 1000);
-
 
     return(
         <>
