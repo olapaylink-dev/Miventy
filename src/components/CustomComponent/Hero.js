@@ -92,12 +92,11 @@ const Hero = (props)=>{
                   <div className={classNames(css.container_mobile)} style={{backgroundImage:`url(${bgImg})`, backgroundSize:'cover'}}>
                     
                     <div className={css.header_con}>
-                      <h2 className={css.header}>
-                        Discover and Book The Perfect <span>Entertainer</span> for Your Events
+                       <h2 className={css.header}>
+                        <FormattedMessage className={css.txt_black} id="LandingPage.heroTitle"/> <br/><span className={css.txt_span}><FormattedMessage id="LandingPage.entertainer"/></span> <FormattedMessage id="LandingPage.forYouEvent"/>
                       </h2>
                       <p>
-                        From magicians to event planners, find everything you need to make your 
-                        celebration extraordinary quickly and effortlessly.
+                        <FormattedMessage id="LandingPage.heroDescription" />
                       </p>
                     </div>
                     <BoxMenu 
@@ -109,10 +108,10 @@ const Hero = (props)=>{
 
                        <div className={css.action_con}>
                         <NamedLink name="SearchPage" className={css.btn_a}>
-                          Browse Category
+                          <FormattedMessage id="LandingPage.browseCategory" />
                         </NamedLink>
                         <NamedLink name="ProfileSettingsPage" className={css.btn_b}>
-                          Post your service
+                          <FormattedMessage id="LandingPage.postService" />
                         </NamedLink>
                       </div>
                   </div>

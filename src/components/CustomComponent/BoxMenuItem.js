@@ -51,8 +51,9 @@ const BoxMenuItem = props=>{
                                 
                                 {
                                     itemData.item.map((itm,key)=>{
+                                        console.log(itm)
                                         return (
-                                            <button className={classNames(css.drd_itm)} onMouseOver={handleMouseOver} onClick={e=>handleSearch(itm.key)}>
+                                            <button className={classNames(css.drd_itm)} onMouseOver={handleMouseOver} onClick={e=>handleSearch(itm.value)}>
                                                 <img src={itm.icon} className={css.icon_sm}/>
                                                 <span>{itm.key}</span>
                                             </button>

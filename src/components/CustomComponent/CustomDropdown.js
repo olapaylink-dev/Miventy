@@ -11,7 +11,6 @@ const CustomDropdown = props =>{
         if(parrentClicked){
             setShow(false);
         }
-        console.log("Parent cklicccc")
     },[parrentClicked])
     
     return (
@@ -23,16 +22,23 @@ const CustomDropdown = props =>{
                 <div className={css.option_con}>
                     <div className={css.flex_row} onClick={e=>{handleLanguageChange("en");setShow(false);setCurr("en")}} >
                         EN
-                        <img src={english} className={css.resize} />
+                        <img src={english} className={css.trans_icon} />
                     </div>
                     <div className={css.flex_row} onClick={e=>{handleLanguageChange("es");setShow(false);setCurr("es")}}>
                         
                         ES
-                        <img src={spanish} className={css.resize} />
+                        <img src={spanish} className={css.trans_icon} />
                     </div>
                 </div>
                 :
-                <div onClick={e=>setShow(!show)}>{curr}</div>
+                <div className={css.flex_row} onClick={e=>setShow(!show)}>
+                    {curr}
+                    {curr === "EN"?
+                        <img className={css.trans_icon} src={english} />
+                        :
+                        <img className={css.trans_icon} src={spanish} />
+                    }
+                </div>
             }
             
             
