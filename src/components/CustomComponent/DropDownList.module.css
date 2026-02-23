@@ -83,7 +83,7 @@
 .flex_row{
     display: flex;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
 }
 .flex_row h3{
@@ -148,7 +148,7 @@
 
 }
 .header{
-    font-size: 32px;
+    font-size: 25px;
     font-weight: bold;
 }
 

@@ -84,7 +84,7 @@ const WithUs = props =>{
                 <div className={css.container}>
                     <div className={css.become_title_con}>
                         <h2 className={css.become_title}>
-                            With us you can book
+                            <FormattedMessage id="LandingPage.withUs" />
                         </h2>
                     </div>
                     <div className={css.content}>
@@ -101,7 +101,7 @@ const WithUs = props =>{
                 <div className={css.container}>
                     <div className={css.become_title_con}>
                         <h2 className={css.become_title}>
-                            With us you can book
+                            <FormattedMessage id="LandingPage.withUs" />
                         </h2>
                     </div>
                     <div className={css.content}>

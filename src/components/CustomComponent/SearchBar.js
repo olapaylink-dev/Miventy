@@ -35,6 +35,7 @@ import SearchMapNew from "../../containers/DashboardPage/SearchMapNew";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const SearchBar = props =>{
     const {
@@ -58,6 +59,8 @@ const SearchBar = props =>{
         onSearchKeyword,
         searchTitles=[]
     } = props;
+
+    const intl = useIntl();
 
     console.log(searchTitles,"  vvvvvv33333333333vvvvv")
     const [isService, setIsService] = useState(false);
@@ -314,7 +317,7 @@ const handleSaveLocation = val =>{
                 <div className={classNames(css.flex_row_s,(isActive?css.location_active_bg:""))}>
                     <div className={css.search_item_con}>
                         <div className={classNames(css.search_item_a,(isService?css.location_active_btn:""))} onClick={handleServiceClicked}>
-                            <div className={css.text_bold}>Service</div>
+                            <div className={css.text_bold}><FormattedMessage id="TopbarDesktop.service" /></div>
                             <div className={css.flex_row_2}>
                                     {showValue?
                                         <div className={css.text_sm} onClick={e=>{
@@ -323,6 +326,7 @@ const handleSaveLocation = val =>{
                                                 inputDisplay.current.value = selectedService;
                                             }
                                         }
+
                                             }>
                                             {/* {selectedService} */}
                                             <input 
@@ -330,7 +334,7 @@ const handleSaveLocation = val =>{
                                                 className={css.text_sm} 
                                                 autocomplete="false" 
                                                 onChange={handleServiceChange} 
-                                                placeholder="What service do you want to hire?" 
+                                                placeholder={intl.formatMessage({ id: 'LandingPage.whatService'})}
                                                 autoFocus
                                                 value={selectedService}
                                                 onKeyDown={e=>{
@@ -346,7 +350,7 @@ const handleSaveLocation = val =>{
                                             className={css.text_sm} 
                                             autocomplete="false" 
                                             onChange={handleServiceChange} 
-                                            placeholder="What service do you want to hire?" 
+                                            placeholder={intl.formatMessage({ id: 'LandingPage.whatService' })}
                                             autoFocus
                                             onKeyDown={e=>{
                                                     if (e.key === "Enter") {
@@ -385,10 +389,10 @@ const handleSaveLocation = val =>{
                     <div className={css.rule}></div>
                     <div className={classNames(css.search_item_con)}>
                         <div className={classNames(css.search_item_a,(isService?"":css.location_active_btn))} onClick={handleLocationClicked}>
-                            <div className={css.text_bold}>Location</div>
+                            <div className={css.text_bold}><FormattedMessage id="TopbarDesktop.location" /></div>
                             <div className={css.flex_row_2}>
                                 <span className={css.text_sm}>
-                                   {eventLocation.length > 0 && eventLocation[0].result?.place_name !== ""?eventLocation[0].result?.place_name:"Where do you need the services?"}  
+                                   {eventLocation.length > 0 && eventLocation[0].result?.place_name !== ""?eventLocation[0].result?.place_name:intl.formatMessage({ id: 'TopbarDesktop.whereDoYou' })}  
                                 </span>
                                 
                                 <svg onClick={handleCloseList2} width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -459,7 +463,7 @@ const handleSaveLocation = val =>{
                             <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.91 2.06245C5.76787 2.06245 2.41 5.42031 2.41 9.56245C2.41 13.7046 5.76787 17.0624 9.91 17.0624C11.6808 17.0624 13.3084 16.4487 14.5914 15.4224L17.6541 18.485C17.9795 18.8105 18.5072 18.8105 18.8326 18.485C19.158 18.1596 19.158 17.632 18.8326 17.3065L15.7699 14.2439C16.7963 12.9608 17.41 11.3333 17.41 9.56245C17.41 5.42031 14.0521 2.06245 9.91 2.06245ZM4.07667 9.56245C4.07667 6.34079 6.68834 3.72911 9.91 3.72911C13.1317 3.72911 15.7433 6.34079 15.7433 9.56245C15.7433 12.7841 13.1317 15.3958 9.91 15.3958C6.68834 15.3958 4.07667 12.7841 4.07667 9.56245Z" fill="#CC400C"/>
                             </svg>
-                        Search
+                        <FormattedMessage id="TopbarDesktop.search" />
                     </button>
                 </div>
             </div>
@@ -478,7 +482,7 @@ const handleSaveLocation = val =>{
                     </>
                 :
                     <div className={css.flex_row_3}>
-                        <span>No result found</span>
+                        <span><FormattedMessage id="TopbarDesktop.noResultFound" /></span>
                     </div>
                 }
             </div>

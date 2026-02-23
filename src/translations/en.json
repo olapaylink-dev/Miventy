@@ -492,7 +492,8 @@
   "LandingPage.showcaseTalent": "Showcase your talent.",
   "LandingPage.growYourBusi": "Grow your business.",
   "LandingPage.getPaid": "Get paid.",
-
+  "LandingPage.withUs":"With us you can book",
+  "LandingPage.whatService":"What service do you want to hire?",
 
 
   "Footer.getingStarted": "Getting started",
@@ -1070,6 +1071,8 @@
   "TopbarDesktop.service": "Service",
   "TopbarDesktop.location": "Location",
   "TopbarDesktop.search": "Search",
+  "TopbarDesktop.whereDoYou": "Where do you need the services?",
+  "TopbarDesktop.noResultFound": "No result found",
 
 
 

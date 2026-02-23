@@ -493,7 +493,8 @@
   "LandingPage.showcaseTalent": "Muestra tu talento.",
   "LandingPage.growYourBusi": "Haga crecer su negocio.",
   "LandingPage.getPaid": "Recibir el pago.",
-
+  "LandingPage.withUs":"Con nosotras puedes reservar",
+  "LandingPage.whatService":"¿Qué servicio deseas contratar?",
 
 
   "Footer.getingStarted": "Empezando",
@@ -1064,6 +1065,8 @@
    "TopbarDesktop.service": "Servicio",
   "TopbarDesktop.location": "Ubicación",
   "TopbarDesktop.search": "Buscar",
+  "TopbarDesktop.whereDoYou": "¿Dónde necesita los servicios?",
+  "TopbarDesktop.noResultFound": "No se encontraron resultados",
 
   "TransactionPage.ActivityFeed.default-booking.accepted": "{actor, select, you {Aceptaste la solicitud de reserva} operator {La solicitud de reserva fue aceptada.} other {{otherUsersName} aceptó la solicitud de reserva.}}",
   "TransactionPage.ActivityFeed.default-booking.canceled": "La reserva fue cancelada.",
