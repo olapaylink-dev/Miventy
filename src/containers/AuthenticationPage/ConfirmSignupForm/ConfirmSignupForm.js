@@ -77,11 +77,12 @@ const ConfirmSignupFormComponent = props => (
       // Initial values from idp provider
       const { email, firstName, lastName } = authInfo;
 
+
       return (
        <div className={css.main_con}>
               <div className={css.form_header_con}>
-                <span className={css.form_header}>Get started on Miventy</span>
-                <p>Create an account or login to connect with entertainers and clients</p>
+                <span className={css.form_header}><FormattedMessage id="ConfirmSignupForm.getStarted" /></span>
+                <p><FormattedMessage id="ConfirmSignupForm.createAnAccount" /></p>
               </div>
 
               <Form className={classes} onSubmit={handleSubmit}>
@@ -153,7 +154,7 @@ const ConfirmSignupFormComponent = props => (
                     
 
                     <div className={css.flex_col}>
-                      <span className={css.phone_label}>Phone number</span>
+                      <span className={css.phone_label}><FormattedMessage id="ConfirmSignupForm.phoneNumber" /></span>
                       <div className={css.phone_con}>
                         <select>
                           <option data-countryCode="GB" value="44" Selected><span className={css.bg_green}>UK (+44)</span></option>
@@ -378,7 +379,9 @@ const ConfirmSignupFormComponent = props => (
                         <FieldPhoneNumberInput
                           id={`${formId}.phoneNumber`}
                           name="phoneNumber"
-                          placeholder="Phone number"
+                          placeholder={intl.formatMessage({
+                            id: 'ConfirmSignupForm.phoneNumber',
+                          })}
                           className={css.phoneInput}
                         />
                       </div>
@@ -398,7 +401,10 @@ const ConfirmSignupFormComponent = props => (
 
                 <div className={css.flex_row}>
                   <p>
-                    Already have an account? <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>Login here</NamedLink>
+                    <FormattedMessage id="ConfirmSignupForm.alreadyHaveAccount" /> 
+                    <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>
+                      <FormattedMessage id="ConfirmSignupForm.loginHere" /> 
+                    </NamedLink>
                   </p>
                 </div>
               </Form>

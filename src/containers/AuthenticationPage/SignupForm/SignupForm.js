@@ -125,8 +125,8 @@ const SignupFormComponent = props => (
       return (
             <div  className={css.main_con}>
               <div ref={error} className={css.form_header_con}>
-                <span className={css.form_header}>Get started on Miventy</span>
-                <p>Create an account or login to connect with entertainers and clients</p>
+                <span className={css.form_header}><FormattedMessage id="ConfirmSignupForm.getStarted" /></span>
+                <p><FormattedMessage id="ConfirmSignupForm.createAnAccount" /></p>
                 
               </div>
 
@@ -210,7 +210,7 @@ const SignupFormComponent = props => (
                     />
                     
                      <div className={css.password_con}>
-                          <label>Password</label>
+                          <label><FormattedMessage id="SignupForm.passwordLabel" /></label>
                           <div className={css.field_con}>
                             
                             {reveal?
@@ -272,7 +272,7 @@ const SignupFormComponent = props => (
                     /> */}
 
                     <div className={css.flex_col}>
-                      <span className={css.phone_label}>Phone number</span>
+                      <span className={css.phone_label}><FormattedMessage id="ConfirmSignupForm.phoneNumber" /></span>
                       <div className={css.phone_con}>
                         <div className={css.select_country}>
                             <select  name="countryCode" id="" onChange={e=>setCountryCode(e.target.value)}>
@@ -500,7 +500,9 @@ const SignupFormComponent = props => (
                         <FieldPhoneNumberInput
                           id={`${formId}.phoneNumber`}
                           name="phoneNumber"
-                          placeholder="Phone number"
+                          placeholder={intl.formatMessage({
+                            id: 'ConfirmSignupForm.phoneNumber',
+                          })}
                           validate={required}
                           className={css.phoneInput}
                         />
@@ -523,7 +525,10 @@ const SignupFormComponent = props => (
 
                 <div className={css.flex_row}>
                   <p>
-                    Already have an account? <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>Login here</NamedLink>
+                    <FormattedMessage id="ConfirmSignupForm.alreadyHaveAccount" /> 
+                    <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>
+                      <FormattedMessage id="ConfirmSignupForm.loginHere" /> 
+                    </NamedLink>
                   </p>
                 </div>
               </Form>

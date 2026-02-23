@@ -110,6 +110,14 @@
   "ConfirmSignupForm.phoneNumberPlaceholder": "Enter your phone number.",
   "ConfirmSignupForm.phoneNumberRequired": "You need to add a phone number.",
   "ConfirmSignupForm.signUp": "Continue with {idp}",
+
+  "ConfirmSignupForm.getStarted": "Get started on Miventy",
+  "ConfirmSignupForm.createAnAccount": "Create an account or login to connect with entertainers and clients",
+  "ConfirmSignupForm.phoneNumber": "Phone number",
+  "ConfirmSignupForm.alreadyHaveAccount": "Already have an account?",
+  "ConfirmSignupForm.loginHere": "Login here",
+
+
   "ContactDetailsForm.confirmChangesInfo": "To change your email address, please enter your current password.",
   "ContactDetailsForm.confirmChangesTitle": "Confirm your changes",
   "ContactDetailsForm.emailInvalid": "A valid email address is required.",
@@ -570,6 +578,18 @@
   "LoginForm.passwordLabel": "Password",
   "LoginForm.passwordPlaceholder": "Enter password",
   "LoginForm.passwordRequired": "This field is required.",
+  "LoginForm.forgotPasswordQuestion": "Forgot password?",
+  "LoginForm.rememberMe": "Remember me",
+
+  "LoginForm.dontHaveAccount": "Don’t have an account?",
+  "LoginForm.signupHere": "Signup here",
+  "LoginForm.byLoggingIn": "By logging in, I agree to the terms of use of Miventy.",
+  "LoginForm.orr": "OR",
+
+  "LoginForm.welcomeBack": "Welcome back to Miventy",
+  "LoginForm.loginToConnect": "Login to connect with entertainers and clients",
+
+
   "MainPanelHeader.foundResults": "{count, number} {count, plural, one {result} other {results}}",
   "MainPanelHeader.loadingResults": "Loading search results…",
   "MainPanelHeader.sortBy": "Sort by:",

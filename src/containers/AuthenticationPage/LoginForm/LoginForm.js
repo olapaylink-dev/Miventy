@@ -74,8 +74,8 @@ const LoginFormComponent = props => (
 
           <div className={css.main_con}>
               <div className={css.form_header_con}>
-                <span className={css.form_header}>Welcome back to Miventy</span>
-                <p>Login to connect with entertainers and clients</p>
+                <span className={css.form_header}><FormattedMessage id="LoginForm.welcomeBack" /></span>
+                <p><FormattedMessage id="LoginForm.loginToConnect" /></p>
                 <div className={css.error}>{errorMsg}</div>
               </div>
 
@@ -98,7 +98,7 @@ const LoginFormComponent = props => (
                 
               </div>
                <div className={css.or_con}>
-                <div className={css.hr}></div>OR<div className={css.hr}></div>
+                <div className={css.hr}></div><FormattedMessage id="LoginForm.orr" /><div className={css.hr}></div>
               </div>
               <Form className={classes} onSubmit={handleSubmit}>
                
@@ -171,9 +171,16 @@ const LoginFormComponent = props => (
                   </div>
 
                   <div className={css.rem_me}>
-                    <FieldCheckbox id="checkbox-id1" name="checkbox-group" label="Remember me" value="RememberMe" />
+                    <FieldCheckbox 
+                      id="checkbox-id1" 
+                      name="checkbox-group" 
+                      label={intl.formatMessage({
+                                  id: 'LoginForm.rememberMe',
+                                })}
+                      value="RememberMe" 
+                    />
                     <NamedLink name="PasswordRecoveryPage">
-                      Forgot password?
+                      <FormattedMessage id="LoginForm.forgotPasswordQuestion" />
                     </NamedLink>
                   </div>
                 
@@ -187,12 +194,12 @@ const LoginFormComponent = props => (
                  
                 <div className={css.dontHaveAc}>
                    <span>
-                    Don’t have an account? <NamedLink name="SignupPage">Sign up here</NamedLink>
+                    <FormattedMessage id="LoginForm.dontHaveAccount" /> <NamedLink name="SignupPage"><FormattedMessage id="LoginForm.signupHere" /></NamedLink>
                   </span>
                 </div>
                 <div className={css.simple_con}>
                    <span>
-                     By logging in, I agree to the terms of use of Miventy.
+                     <FormattedMessage id="LoginForm.byLoggingIn" /> 
                   </span>
                 </div>
 

@@ -110,6 +110,14 @@
   "ConfirmSignupForm.phoneNumberPlaceholder": "Introduce tu número telefónico.",
   "ConfirmSignupForm.phoneNumberRequired": "Necesitas añadir tu número de teléfono.",
   "ConfirmSignupForm.signUp": "Continuar con {idp}",
+  "ConfirmSignupForm.getStarted": "Empiece a utilizar Miventy",
+  "ConfirmSignupForm.createAnAccount": "Crea una cuenta o inicia sesión para conectarte con artistas y clientes.",
+  "ConfirmSignupForm.phoneNumber": "Número de teléfono",
+  "ConfirmSignupForm.alreadyHaveAccount": "¿Ya tienes una cuenta?",
+  "ConfirmSignupForm.loginHere": "Inicie sesión aquí",
+
+
+
   "ContactDetailsForm.confirmChangesInfo": "Para cambiar tu cuenta de correo electrónico, por favor ingresa tu contraseña.",
   "ContactDetailsForm.confirmChangesTitle": "Confirmar cambios",
   "ContactDetailsForm.emailInvalid": "Se requiere una dirección de correo electrónico válida.",
@@ -571,6 +579,18 @@
   "LoginForm.passwordLabel": "Contraseña",
   "LoginForm.passwordPlaceholder": "Introduce tu contraseña…",
   "LoginForm.passwordRequired": "Este campo es obligatorio.",
+  "LoginForm.dontHaveAccount": "¿No tienes una cuenta?",
+  "LoginForm.signupHere": "Regístrate aquí",
+  "LoginForm.byLoggingIn": "Al iniciar sesión, acepto los términos de uso de Miventy.",
+  "LoginForm.orr": "O",
+
+
+  "LoginForm.forgotPasswordQuestion": "¿Has olvidado tu contraseña?",
+  "LoginForm.rememberMe": "Acuérdate de mí",
+
+  "LoginForm.welcomeBack": "Bienvenido de nuevo a Miventy",
+  "LoginForm.loginToConnect": "Inicie sesión para conectarse con artistas y clientes.",
+
   "MainPanelHeader.foundResults": "{count, number} {count, plural, one {resultado} other {resultados}}",
   "MainPanelHeader.loadingResults": "Cargando los resultados de la búsqueda…",
   "MainPanelHeader.sortBy": "Ordenar por:",

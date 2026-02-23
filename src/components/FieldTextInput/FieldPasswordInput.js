@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import css from './FieldPasswordInput.module.css';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 
 const FieldPasswordInput = props => {
+    const intl = useIntl();
     const {setPassword,label} = props;
     const [reveal,setReveal] = useState(false);
  return (
@@ -16,7 +18,9 @@ const FieldPasswordInput = props => {
                     id={"formId" ? `${"formId"}.password` : 'password'}
                     name="password"
                     autoComplete="current-password"
-                    placeholder={"Password"}
+                    placeholder={intl.formatMessage({
+                                  id: 'LoginForm.passwordPlaceholder',
+                                })}
                     onChange={e=>setPassword(e.target.value)}
                     />
                     :
@@ -25,7 +29,9 @@ const FieldPasswordInput = props => {
                         id={"formId" ? `${"formId"}.password` : 'password'}
                         name="password"
                         autoComplete="current-password"
-                        placeholder={"Password"}
+                        placeholder={intl.formatMessage({
+                                  id: 'LoginForm.passwordPlaceholder',
+                                })}
                         onChange={e=>setPassword(e.target.value)}
                     />
                 }
