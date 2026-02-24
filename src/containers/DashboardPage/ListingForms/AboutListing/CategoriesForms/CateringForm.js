@@ -7,8 +7,11 @@ import TopTab from "../../TopTab";
 import InputIncrementDecrement from "../../../../../components/CustomComponent/InputIncrementDecrement";
 const { types } = require('sharetribe-flex-sdk');
 const { Money } = types;
+import { FormattedMessage, useIntl } from '../../../../../util/reactIntl';
 
 const CateringForm = props =>{
+
+  const intl = useIntl();
 
     const {
       handleMoveToServiceDescription,
@@ -55,48 +58,28 @@ const CateringForm = props =>{
     
 
     const serviceMenuTypeLabel = [
-        "A La Carte Menu:",
-        "Fixed Menu:",
-        "Both: A la carte and Fix menu",
+       intl.formatMessage({id: 'CategoriesForm.alaCarte',}),
+       intl.formatMessage({id: 'CategoriesForm.fixedMenu',}),
+       intl.formatMessage({id: 'CategoriesForm.bothAlacart',}),
     ];
     const serviceMenuTypeDescription = [
-        "A La Carte MenuA menu where clients can select individual dishes from a list of menu. That allows clients to choose individual dishes from a list",
-        "A pre-set menu that offers a specific selection of dishes at a set price. Clients can choose from various fixed menu options, which typically include a combination of appetizers, main courses, and desserts",
-        "A menu that includes elements of both a la carte and fixed menus, offering clients the flexibility to select from a range of fixed dishes along with additional a la carte options."
+      intl.formatMessage({id: 'CategoriesForm.alaCartDescription',}),
+      intl.formatMessage({id: 'CategoriesForm.fixedMenuDescription',}),
+      intl.formatMessage({id: 'CategoriesForm.bothAlaCartDescription',})
     ];
     
     const serviceTypes = [
-      "Basic:",
-      "Medium:",
-      "Pro:",
-      "Extra:"
-    ];
-
-    const serviceTypesDescription = [
-      "Food delivery only",
-      "Food + table setting items",
-      "Everything in Medium + food serving + cleanup",
-      "Optional add-ons like chairs, tables or special requests."
+      intl.formatMessage({id: 'CategoriesForm.basic',}),
+      intl.formatMessage({id: 'CategoriesForm.medium',}),
+      intl.formatMessage({id: 'CategoriesForm.pro',}),
+      intl.formatMessage({id: 'CategoriesForm.extra',})
     ];
 
     const ServiceStandards = [
-      "Service provider will provide all equipment needed",
-      "Service provider  will organize personalized consultation to understand client’s vision, theme, and budget",
-      "Service provider  will be on-time for setup and dismantling",
-      "Service provider  will backup plans in case of weather",
-    ];
-
-    const Extras = [
-      "Add-ons",
-      "Chairs",
-      "Tables",
-      "Custom orders"
-    ];
-    const ExtrasPair = [
-      "Add-ons",
-      "Chairs",
-      "Tables",
-      "Custom orders"
+      intl.formatMessage({id: 'CategoriesForm.willProvide',}),
+      intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
+      intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
+      intl.formatMessage({id: 'CategoriesForm.willBackup',}),
     ];
 
 const handleChangePrice = e =>{
@@ -139,9 +122,8 @@ const handleSubmit = e=>{
 }
 
 
-const subHeader = "Add more details about the service for the clients to know";
-const instruction = "The Q&A section will be visible to clients. This will help answer any questions, clients may have, before proceeding with a booking. Please, answer all the questions below.";
-
+const subHeader = intl.formatMessage({id: 'CategoriesForm.addMoreDetails',});
+const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
     return (
 
         <div className={css.formContent}>
@@ -155,12 +137,12 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 <ProgressTopbar step={"Step 2 of 3"} percentage={"30%"}/>
                 <TopTab activeTab={"about"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                 <div>
-                    <h1 className={classNames(css.header_2,"mb-2")}>Service description</h1>
-                    <p className={css.marg_btm_1}>Write a short description about yourself and the service you offer</p>
-                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder="Write here"/>
+                    <h1 className={classNames(css.header_2,"mb-2")}> {intl.formatMessage({id: 'CategoriesForm.serviceDescription',})}</h1>
+                    <p className={css.marg_btm_1}> {intl.formatMessage({id: 'CategoriesForm.shortDescription',})}</p>
+                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder={intl.formatMessage({id: 'CategoriesForm.writeHere',})}/>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Service menu type</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceMenuType',})}</h1>
                   <div className={css.check_con}>
 
                     <FormGroup>
@@ -201,7 +183,7 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 </div>
                 
                 <div>
-                  <h1 className={css.header_2}>Service types</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceType',})}</h1>
                   <div className={css.check_con}>
 
                     <FormGroup>
@@ -283,15 +265,18 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Maximum amount of guests</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the maximum amount of guests you can offer your service for.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.maxAmtOfGuest',})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setMaxAmtOfGuest',})}</p>
                   <div>
-                      <label className={css.label_header}>Maximum guests</label>
-                      <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMaxAmountOfGuest(e.target.value)}} value={maxAmountOfGuest} placeholder="Max guests" />
+                      <label className={css.label_header}>{intl.formatMessage({id: 'CategoriesForm.maximumGuest',})}</label>
+                      <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMaxAmountOfGuest(e.target.value)}} 
+                        value={maxAmountOfGuest} 
+                        placeholder={intl.formatMessage({id: 'CategoriesForm.maxGuest',})} 
+                      />
                   </div>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Service standards</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceStandard',})}</h1>
                   <div className={css.check_con}>
                     <FormGroup>
                       {ServiceStandards.map((itm,key)=>{
@@ -326,14 +311,14 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 </div>
                
                 <div>
-                  <h1 className={css.header_2}>Price</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the minimum price for your service.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.price'})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setTheMinPrice'})}</p>
                   <div className={css.flex_row}>
                     <div className={css.width_50}>
-                      <label>Min order price</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.minOrderPrice'})}</label>
                        <div className={css.money_con}>
                                               <span>€</span>
-                                              <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder="€ Set min price" />
+                                              <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder={intl.formatMessage({id: 'CategoriesForm.setMinPrice'})} />
                                             </div>
                     </div>
                   </div>
@@ -406,22 +391,22 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 
                
                 <div>
-                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>Work experience</label>
+                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>{intl.formatMessage({id: 'CategoriesForm.workExperience'})}</label>
                   <InputIncrementDecrement setWorkExperience={setWorkExperience} workExperience={workExperience} />
                 </div>
 
 
 
                 <div className={classNames(css.base_btns,css.desktop)}>
-                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                      <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
-                        <button onClick={handleMoveToServiceDescription} className={css.btn_prev}>Previous</button>
-                        <button type="submit" className={css.btn_next} disabled={isReady}>Save and continue</button>
+                        <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                        <button className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                     </div>
                   </div>
                   <div className={classNames(css.base_btns,css.mobile)}>
-                        <button onClick={handleMoveToServiceDescription} className={css.btn_prev}>Previous</button>
-                        <button type="submit" className={css.btn_next} disabled={isReady}>Save and continue</button>
+                        <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                        <button className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                   </div>
 
 

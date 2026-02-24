@@ -2008,9 +2008,9 @@ useEffect(()=>{
                   </form>
 
                   <div className={css.base_btns}>
-                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                      <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                       <div>
-                        <button className={css.btn_prev} disabled>Previous</button>
+                        <button className={css.btn_prev} disabled>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                         <button onClick={handleSubmit} className={css.btn_next}>Next</button>
                       </div>
                     </div>
@@ -2441,9 +2441,9 @@ const handleSubmit = e=>{
                 
 
                   <div className={css.base_btns}>
-                    <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
-                      <button onClick={e=>handleMoveBack("userType")} className={css.btn_1}>Previous</button>
+                      <button onClick={e=>handleMoveBack("userType")} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                       <button onClick={handleSubmit} className={css.btn_next}>Next</button>
                        <input 
                             id='file' 
@@ -2612,7 +2612,7 @@ const handleSubmit = async e=>{
                 
 
                   <div className={css.base_btns}>
-                    <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
                       <button onClick={handleSubmit} className={css.btn_next}>Next</button>
                     </div>
@@ -2775,9 +2775,9 @@ const handleSubmit = async e=>{
                 
 
                   <div className={css.base_btns}>
-                    <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
-                      <button onClick={moveBack} className={css.btn_1}>Previous</button>
+                      <button onClick={moveBack} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                       <button onClick={handleSubmit} className={css.btn_next}>Save</button>
                     </div>
                   </div>

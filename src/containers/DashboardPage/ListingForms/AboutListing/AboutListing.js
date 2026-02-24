@@ -18,9 +18,10 @@ import SweetsForm from "./CategoriesForms/SweetsForm";
 import RentalBouncerForm from "./CategoriesForms/RentalBouncerForm";
 const { types } = require('sharetribe-flex-sdk');
 const { Money } = types;
+import { FormattedMessage, useIntl } from '../../../../util/reactIntl';
 
 const AboutListing = props =>{
-
+    const intl = useIntl();
     const {handleMoveToServiceDescription,handleMoveToCatalog,setShowCreateListing,selectedSubCategory,
             onCreateListingDraft,
             currentListing,
@@ -35,42 +36,7 @@ const AboutListing = props =>{
     //console.log(selectedSubCategory, "selectedSubCategory");
 
     const [currentTab,setCurrentTab] = useState("start");
-    const serviceTypes = [
-      "Photo booth",
-      "Portrait photography",
-      "Wedding photography",
-      "Event photography  (birthdays, corporate events, etc.)",
-      "Commercial photography (advertising, branding)",
-      "Product photography (for online stores)",
-      "Family photography",
-      "Newborn and child photography",
-      "Fashion photography",
-      "Studio photography",
-      "Outdoor photography",
-      "Real estate photography",
-      "Model portfolio photography"
-    ];
-
-    const ServiceStandards = [
-      "Service provider will provide all equipment needed",
-      "Service provider  will organize personalized consultation to understand client’s vision, theme, and budget",
-      "Service provider  will be on-time for setup and dismantling",
-      "Service provider  will backup plans in case of weather",
-    ];
-
-    const EquipmentProvided = [
-      "Camera",
-      "Phone",
-      "Drone",
-    ];
-
-    const PhotoVideo = [
-      "USB",
-      "DVD",
-      "Online link",
-      "Hardcopy(paper)"
-    ];
-    
+  
 
 const handleMoveToStart = e=>{
   setCurrentTab("start");

@@ -58,7 +58,6 @@ const BoxMenu = props =>{
     
     // }
 
-
     const data = [
         {key: <FormattedMessage id="LandingPage.entertaining" />,
             item:[

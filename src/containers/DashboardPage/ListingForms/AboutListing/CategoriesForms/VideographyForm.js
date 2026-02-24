@@ -6,11 +6,12 @@ import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
 import TopTab from "../../TopTab";
 import InputIncrementDecrement from "../../../../../components/CustomComponent/InputIncrementDecrement";
 import SelectComponent from "../../../../../components/CustomComponent/SelectComponent";
+import { FormattedMessage, useIntl } from '../../../../../util/reactIntl';
 const { types } = require('sharetribe-flex-sdk');
 const { Money } = types;
 
 const VideographyForm = props =>{
-
+     const intl = useIntl();
     const {
         handleMoveToServiceDescription,
         handleMoveToCatalog,
@@ -43,45 +44,45 @@ const VideographyForm = props =>{
 
     const isReady = !serviceType || !serviceStandards || !equipmentProvided || !photoVideoFormat || !pricee   || !deliveryTime || !minDuration || !maxDuration;
 
-useEffect(()=>{
-                  if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" ){
-                    setCurrentListing(updatedListing.data);
-                  }
-                },[updatedListing]);
+    useEffect(()=>{
+        if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" ){
+          setCurrentListing(updatedListing.data);
+        }
+    },[updatedListing]);
 
-    const [currentTab,setCurrentTab] = useState("start");
     const serviceTypes = [
-      "Photo booth",
-      "Wedding videography",
-      "Event videography  (birthdays, corporate events, etc.)",
-      "Commercial videography (advertising, branding)",
-      "Product videography (for online stores)",
-      "Family videography",
-      "Newborn and child videography",
-      "Fashion videography",
-      "Studio videography",
-      "Outdoor videography",
-      "Real estate videography",
-      "Model portfolio videography"
+      intl.formatMessage({id: 'CategoriesForm.photoBooth',}),
+      intl.formatMessage({id: 'CategoriesForm.weddingVideography',}),
+      intl.formatMessage({id: 'CategoriesForm.eventVideography',}),
+      intl.formatMessage({id: 'CategoriesForm.commercialVideography',}),
+      intl.formatMessage({id: 'CategoriesForm.productVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.familyVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.newbornVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.fashionVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.studioVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.outdoorVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.realEstateVideo',}),
+      intl.formatMessage({id: 'CategoriesForm.modelPortfolioVideo',})
     ];
 
     const ServiceStandards = [
-      "Service provider will provide all equipment needed",
-      "Service provider  will organize personalized consultation to understand client’s vision, theme, and budget",
-      "Service provider  will be on-time for setup and dismantling",
-      "Service provider  will backup plans in case of weather",
+      intl.formatMessage({id: 'CategoriesForm.willProvide',}),
+      intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
+      intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
+      intl.formatMessage({id: 'CategoriesForm.willBackup',}),
     ];
 
     const EquipmentProvided = [
-      "Camera",
-      "Phone",
-      "Drone",
+      intl.formatMessage({id: 'CategoriesForm.camera',}),
+      intl.formatMessage({id: 'CategoriesForm.phone',}),
+      intl.formatMessage({id: 'CategoriesForm.drone',}),
     ];
 
     const PhotoVideo = [
-      "USB",
-      "DVD",
-      "Online link"
+      intl.formatMessage({id: 'CategoriesForm.usb',}),
+      intl.formatMessage({id: 'CategoriesForm.dvd',}),
+      intl.formatMessage({id: 'CategoriesForm.onlineLink',}),
+      
     ];
     
 const handleChangePrice = e =>{
@@ -121,9 +122,8 @@ const handleSubmit = e=>{
   handleMoveToCatalog();
 }
 
-const subHeader = "Add more details about the service for the clients to know";
-const instruction = "The Q&A section will be visible to clients. This will help answer any questions, clients may have, before proceeding with a booking. Please, answer all the questions below.";
-
+const subHeader = intl.formatMessage({id: 'CategoriesForm.addMoreDetails',});
+const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
     return (
 
         <div className={css.formContent}>
@@ -137,12 +137,12 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 <ProgressTopbar step={"Step 2 of 3"} percentage={"30%"}/>
                 <TopTab activeTab={"about"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                 <div>
-                    <h1 className={classNames(css.header_2,"mb-2")}>Service description</h1>
-                    <p className={css.marg_btm_1}>Write a short description about yourself and the service you offer</p>
-                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder="Write here"/>
+                    <h1 className={classNames(css.header_2,"mb-2")}> {intl.formatMessage({id: 'CategoriesForm.serviceDescription',})}</h1>
+                    <p className={css.marg_btm_1}> {intl.formatMessage({id: 'CategoriesForm.shortDescription',})}</p>
+                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder={intl.formatMessage({id: 'CategoriesForm.writeHere',})}/>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Service types</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceType',})}</h1>
                   <div className={css.check_con}>
 
                     <FormGroup>
@@ -178,7 +178,7 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                  <div>
-                  <h1 className={css.header_2}>Video format presented with this service</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.videoFormat',})}</h1>
                   <div className={css.check_con}>
                     <FormGroup>
                       {PhotoVideo.map((itm,key)=>{
@@ -211,9 +211,11 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                  <div>
-                  <label className={classNames(css.header_2,"mb-1")}>The approximate delivery time for Videos</label>
+                  <label className={classNames(css.header_2,"mb-1")}>{intl.formatMessage({id: 'CategoriesForm.videoDeliveryTime',})}</label>
                   <div className={css.flex_row_btw_con}>
-                      <input className={classNames(css.textInput_2)} type="text" min={1} max={200} onChange={e=>{setDeliveryTime(e.target.value)}} value={deliveryTime} name="deliveryTime" placeholder="How long for you to deliver the videos. E.g 2 days" />
+                      <input className={classNames(css.textInput_2)} type="text" min={1} max={200} onChange={e=>{setDeliveryTime(e.target.value)}} value={deliveryTime} name="deliveryTime" 
+                      placeholder={intl.formatMessage({id: 'CategoriesForm.howLongForVideoDelivery',})}
+                      />
                       <div className={css.flex_row_start}>
                         <span>0/200</span>
                       </div>
@@ -221,7 +223,7 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 </div>
               
                 <div>
-                  <h1 className={css.header_2}>Equipments provided</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.equipmentProvided',})}</h1>
                   <div className={css.check_con}>
                     <FormGroup>
                       {EquipmentProvided.map((itm,key)=>{
@@ -255,28 +257,42 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                  <div>
-                  <h1 className={css.header_2}>Duration of Service</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the minimum and maximum duration of time you can offer your service for.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.durationOfService',})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setMinAndMaxDuration',})}</p>
                   <div className={css.flex_row}>
                     <div className={css.width_50}>
-                      <label>Min duration</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.minDuration',})}</label>
                        <div className={css.flex_row_select}>
-                          <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMinDuration(e.target.value)}} value={minDuration} placeholder="Set min duration" />
-                           <SelectComponent options={["Hour","Minutes","Days"]} value={timeFormatMin} handleSelectChange={e=>setTimeFormatMin(e)}/>
+                          <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMinDuration(e.target.value)}} value={minDuration} 
+                          placeholder={intl.formatMessage({id: 'CategoriesForm.setMinDuration',})}
+                        />
+                           <SelectComponent options={[
+                          intl.formatMessage({id: 'CategoriesForm.hour',}),
+                          intl.formatMessage({id: 'CategoriesForm.minutes',}),
+                          intl.formatMessage({id: 'CategoriesForm.days',})
+                        ]} 
+                          value={timeFormatMin} handleSelectChange={e=>setTimeFormatMin(e)}/>
                         </div>
                     </div>
                     <div className={css.width_50}>
-                      <label>Max duration</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.maxDuration',})}</label>
                       <div className={css.flex_row_select}>
-                          <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMaxDuration(e.target.value)}} value={maxDuration} placeholder="Max duration" />
-                           <SelectComponent options={["Hour","Minutes","Days"]} value={timeFormatMax} handleSelectChange={e=>setTimeFormatMax(e)}/>
+                          <input className={classNames(css.textInput)} type="number" min={1} onChange={e=>{setMaxDuration(e.target.value)}} value={maxDuration} 
+                            placeholder={intl.formatMessage({id: 'CategoriesForm.maxDuration',})}
+                          />
+                            <SelectComponent options={[
+                          intl.formatMessage({id: 'CategoriesForm.hour',}),
+                          intl.formatMessage({id: 'CategoriesForm.minutes',}),
+                          intl.formatMessage({id: 'CategoriesForm.days',})
+                        ]} 
+                          value={timeFormatMax} handleSelectChange={e=>setTimeFormatMax(e)}/>
                         </div>
                     
                     </div>
                   </div>
                 </div>
                   <div>
-                  <h1 className={css.header_2}>Service standards</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceStandard',})}</h1>
                   <div className={css.check_con}>
                     <FormGroup>
                       {ServiceStandards.map((itm,key)=>{
@@ -310,14 +326,14 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Price</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the minimum price for your service.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.price'})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setTheMinPrice'})}</p>
                   <div className={css.flex_row}>
                     <div className={css.width_50}>
-                      <label>Min order price</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.minOrderPrice'})}</label>
                        <div className={css.money_con}>
                                               <span>€</span>
-                                              <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder="€ Set min price" />
+                                              <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder={intl.formatMessage({id: 'CategoriesForm.setMinPrice'})} />
                                             </div>
                     </div>
                   </div>
@@ -326,21 +342,21 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                
                 
                 <div>
-                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>Work experience</label>
+                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>{intl.formatMessage({id: 'CategoriesForm.workExperience'})}</label>
                   <InputIncrementDecrement setWorkExperience={setWorkExperience} workExperience={workExperience} />
                 </div>
                
 
                <div className={classNames(css.base_btns,css.desktop)}>
-                  <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                  <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                   <div>
-                      <button onClick={handleMoveToServiceDescription} className={css.btn_prev}>Previous</button>
-                      <button type="submit" className={css.btn_next} disabled={isReady}>Save and continue</button>
+                      <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                      <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                   </div>
               </div>
               <div className={classNames(css.base_btns,css.mobile)}>
-                  <button onClick={handleMoveToServiceDescription} className={css.btn_prev}>Previous</button>
-                  <button type="submit" className={css.btn_next} disabled={isReady}>Save and continue</button>
+                  <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                  <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
               </div>
                   
             </form>

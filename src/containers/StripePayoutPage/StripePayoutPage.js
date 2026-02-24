@@ -2542,7 +2542,7 @@ useEffect(()=>{
                   <div className={css2.base_btns}>
                       <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
                       <div>
-                        <button className={css2.btn_prev} disabled>Previous</button>
+                        <button className={css2.btn_prev} disabled>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                         <button onClick={handleSubmit} className={css2.btn_next}>Next</button>
                       </div>
                     </div>
@@ -2975,7 +2975,7 @@ const handleSubmit = e=>{
                   <div className={css2.base_btns}>
                     <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
                     <div>
-                      <button onClick={e=>handleMoveBack("userType")} className={css2.btn_1}>Previous</button>
+                      <button onClick={e=>handleMoveBack("userType")} className={css2.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                       <button onClick={handleSubmit} className={css2.btn_next}>Next</button>
                        <input 
                             id='file' 
@@ -3525,7 +3525,7 @@ const handleSubmit = async e=>{
                   <div className={css2.base_btns}>
                     <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
                     <div>
-                      <button onClick={moveBack} className={css2.btn_1}>Previous</button>
+                      <button onClick={moveBack} className={css2.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                       <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>Save</button>
                     </div>
                   </div>

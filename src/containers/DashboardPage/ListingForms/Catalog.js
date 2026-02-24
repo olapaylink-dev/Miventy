@@ -13,6 +13,7 @@ import SimpleFormCard from "../SimpleCard/SimpleFolderCard";
 import SimpleItemCard from "../SimpleCard/SimpleItemCard";
 import CatalogEdit from "./CatalogEdit";
 import { NamedLink } from "../../../components";
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 
 const Catalog = props =>{
 
@@ -59,6 +60,7 @@ const Catalog = props =>{
       } = props;
 
      const folderName = localStorage.getItem("folderName");
+     const intl = useIntl();
 
 useEffect(()=>{
   
@@ -460,12 +462,8 @@ const handleCreateNewItem = folderName=>{
   localStorage.removeItem("folderName");
 }
 
-const subHeader = "Create a catalog";
-const instruction = "Create a catalog to showcase the different service options you offer, making it easier for customers to explore and choose what suits them best. You can add multiple service packages, pricing tiers, and special offers.";
-
-const handleSelectChange = e=>{
-  //console.log(e.target.value);
-}
+const subHeader = intl.formatMessage({id: 'Catalog.createCatalog'});
+const instruction = intl.formatMessage({id: 'Catalog.createCatalogInsturction'});
 
 const getNewCatalogData = ()=>{
   const {attributes} = updatedListing === undefined || JSON.stringify(updatedListing) === "{}"?currentListing:updatedListing.data;
@@ -1124,9 +1122,9 @@ const hamdleReset = e =>{
                   <ProgressTopbar step={"Step 2 of 3"} percentage={"60%"}/>
                   <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                   <div className={css.action_con} >
-                      <button className={css.create_new_btn} onClick={e=>{handleCreateNewItem("Create new folder")}}>Create new folder</button>
+                      <button className={css.create_new_btn} onClick={e=>{handleCreateNewItem(<FormattedMessage id="CategoriesForm.createNewFolder" />)}}>{intl.formatMessage({id: 'CategoriesForm.createNewFolder'})}</button>
                       <button className={css.import_btn} >
-                        Import catalog
+                        <FormattedMessage id="CategoriesForm.importCatalog" />
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <path d="M13.9229 11.4219L10.5896 14.7553C10.2641 15.0807 9.73651 15.0807 9.41107 14.7553L6.07774 11.4219C5.7523 11.0965 5.7523 10.5689 6.07774 10.2434C6.40317 9.91799 6.93081 9.91799 7.25625 10.2434L9.16699 12.1542V2.49935C9.16699 2.03911 9.54009 1.66602 10.0003 1.66602C10.4606 1.66602 10.8337 2.03911 10.8337 2.49935V12.1542L12.7444 10.2434C13.0698 9.91799 13.5975 9.91799 13.9229 10.2434C14.2484 10.5689 14.2484 11.0965 13.9229 11.4219Z" fill="#CC400C"/>
                           <path d="M3.33366 14.5827C3.33366 14.1224 2.96056 13.7493 2.50033 13.7493C2.04009 13.7493 1.66699 14.1224 1.66699 14.5827V15.8327C1.66699 17.6736 3.15938 19.166 5.00033 19.166H15.0003C16.8413 19.166 18.3337 17.6736 18.3337 15.8327V14.5827C18.3337 14.1224 17.9606 13.7493 17.5003 13.7493C17.0401 13.7493 16.667 14.1224 16.667 14.5827V15.8327C16.667 16.7532 15.9208 17.4993 15.0003 17.4993H5.00033C4.07985 17.4993 3.33366 16.7532 3.33366 15.8327V14.5827Z" fill="#CC400C"/>
@@ -1158,15 +1156,15 @@ const hamdleReset = e =>{
                   </div>
                   
                   <div className={classNames(css.base_btns,css.desktop)}>
-                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                      <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                       <div>
-                          <button onClick={handleMoveToAboutService} className={css.btn_prev}>Previous</button>
-                          <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                          <button onClick={handleMoveToAboutService} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                          <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                       </div>
                   </div>
                   <div className={classNames(css.base_btns,css.mobile)}>
-                        <button onClick={handleMoveToAboutService} className={css.btn_prev}>Previous</button>
-                        <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                        <button onClick={handleMoveToAboutService} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                        <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                   </div>
 
               </div>:""}
@@ -1180,24 +1178,24 @@ const hamdleReset = e =>{
                   <ProgressTopbar step={"Step 2 of 3"} percentage={"60%"}/>
                   <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                   <div className={css.box_con} onClick={handleAddItem}>
-                    <h2 className={css.header}>Add bookable items to your catalog and group them into folders </h2>
+                    <h2 className={css.header}>{intl.formatMessage({id: 'Catalog.addBookableItems'})}</h2>
                     <div className={css.listing_box}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none">
                         <path d="M13.5 4C13.5 3.44772 13.0523 3 12.5 3C11.9477 3 11.5 3.44772 11.5 4V11H4.5C3.94772 11 3.5 11.4477 3.5 12C3.5 12.5523 3.94772 13 4.5 13H11.5V20C11.5 20.5523 11.9477 21 12.5 21C13.0523 21 13.5 20.5523 13.5 20V13H20.5C21.0523 13 21.5 12.5523 21.5 12C21.5 11.4477 21.0523 11 20.5 11H13.5V4Z" fill="#404040"/>
                       </svg>
-                      <p className={css.full_width}>Create your first item</p>
+                      <p className={css.full_width}>{intl.formatMessage({id: 'Catalog.createYourFirst'})}</p>
                     </div>
                   </div>
                   <div className={classNames(css.base_btns,css.desktop)}>
-                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                      <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                       <div>
-                          <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >Previous</button>
-                          <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                          <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                          <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                       </div>
                   </div>
                   <div className={classNames(css.base_btns,css.mobile)}>
-                        <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >Previous</button>
-                        <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                        <button onClick={e=>{handleMoveToAboutService(currentListing)}} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                        <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                   </div>
               </div>:""}
                <CatalogEdit

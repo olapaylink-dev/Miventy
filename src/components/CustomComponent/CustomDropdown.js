@@ -19,7 +19,7 @@ const CustomDropdown = props =>{
         <>
                 <div className={css.container}>
 
-                <div className={css.flex_row} onClick={e=>setShow(!show)}>
+                <div className={css.flex_row_2} onClick={e=>setShow(!show)}>
                         {curr}
                         {curr === "EN"?
                             <img className={css.trans_icon} src={english} />

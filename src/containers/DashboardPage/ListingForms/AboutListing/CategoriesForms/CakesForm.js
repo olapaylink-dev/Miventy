@@ -8,9 +8,12 @@ import InputIncrementDecrement from "../../../../../components/CustomComponent/I
 import SelectComponent from "../../../../../components/CustomComponent/SelectComponent";
 const { types } = require('sharetribe-flex-sdk');
 const { Money } = types;
+import { FormattedMessage, useIntl } from '../../../../../util/reactIntl';
+
 
 const CakesForm = props =>{
 
+    const intl = useIntl();
     
     const {handleMoveToServiceDescription,
       handleMoveToCatalog,
@@ -53,20 +56,20 @@ const CakesForm = props =>{
     },[updatedListing])
     
     const ServiceTypes = [
-      "Single-Tier Cake (One level only)",
-      "Multi-Tier Cake (Two or more stacked layers)",
-      "Themed cakes (custom shapes: cars, animals, handbags, letters, numbers)",
-      "Piñata Cake (Surprise Inside)",
-      "Lactose-free cakes",
-      "Gluten-free cakes",
-      "Sugar-free cakes",
+      intl.formatMessage({id: 'CategoriesForm.singleTier',}),
+      intl.formatMessage({id: 'CategoriesForm.multiTier',}),
+      intl.formatMessage({id: 'CategoriesForm.themedCakes',}),
+      intl.formatMessage({id: 'CategoriesForm.pinataCake',}),
+      intl.formatMessage({id: 'CategoriesForm.lactoseFree',}),
+      intl.formatMessage({id: 'CategoriesForm.glutenFree',}),
+      intl.formatMessage({id: 'CategoriesForm.sugarFree',}),
     ];
 
     const ServiceStandards = [
-      "Service provider will provide all equipment needed",
-      "Service provider  will organize personalized consultation to understand client’s vision, theme, and budget",
-      "Service provider  will be on-time for setup and dismantling",
-      "Service provider  will backup plans in case of weather",
+      intl.formatMessage({id: 'CategoriesForm.willProvide',}),
+      intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
+      intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
+      intl.formatMessage({id: 'CategoriesForm.willBackup',}),
     ];
 
 const handleChangePrice = e =>{
@@ -104,8 +107,8 @@ const handleSubmitValues = e=>{
 }
 
 
-const subHeader = "Add more details about the service for the clients to know";
-const instruction = "The Q&A section will be visible to clients. This will help answer any questions, clients may have, before proceeding with a booking. Please, answer all the questions below.";
+const subHeader = intl.formatMessage({id: 'CategoriesForm.addMoreDetails',});
+const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
 
     return (
 
@@ -120,12 +123,12 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 <ProgressTopbar step={"Step 2 of 3"} percentage={"30%"}/>
                 <TopTab activeTab={"about"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                 <div>
-                    <h1 className={classNames(css.header_2,"mb-2")}>Service description</h1>
-                    <p className={css.marg_btm_1}>Write a short description about yourself and the service you offer</p>
-                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder="Write here"/>
+                    <h1 className={classNames(css.header_2,"mb-2")}> {intl.formatMessage({id: 'CategoriesForm.serviceDescription',})}</h1>
+                    <p className={css.marg_btm_1}> {intl.formatMessage({id: 'CategoriesForm.shortDescription',})}</p>
+                    <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder={intl.formatMessage({id: 'CategoriesForm.writeHere',})}/>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Service types</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceType'})}</h1>
                   <div className={css.check_con}>
 
                     <FormGroup>
@@ -134,7 +137,6 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                         return (
                                 <FormControlLabel className={css.form_check} control={
                                   <Checkbox 
-                                    
                                     className={css.no_padding}
                                     onChange={e=>{
                                         if(e.target.checked){
@@ -164,16 +166,22 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                
                
                 <div>
-                  <h1 className={css.header_2}>Weight</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the minimum and maximum weight for the cakes to be baked.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.weight'})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setTheMinimumWeight'})}</p>
                   <div className={css.flex_row}>
                     <div className={css.width_50}>
-                      <label>Min weight</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.minWeght'})}</label>
 
 
                       <div className={css.flex_row_select}>
-                        <input type="number" min={1} onChange={e=>{setMaxWeight(e.target.value)}} value={maxWeight} placeholder="Set min weight"  />
-                        <SelectComponent options={["Kg","Grams","Pieces"]} value={weightUnitMin} handleSelectChange={e=>setWeighUnitMin(e)}/>
+                        <input type="number" min={1} onChange={e=>{setMaxWeight(e.target.value)}} value={maxWeight} placeholder={intl.formatMessage({id: 'CategoriesForm.setMinWeight'})}  />
+                        <SelectComponent 
+                          options={[
+                            intl.formatMessage({id: 'CategoriesForm.kg'}),
+                            intl.formatMessage({id: 'CategoriesForm.grams'}),
+                            intl.formatMessage({id: 'CategoriesForm.pieces'})
+                          ]} 
+                          value={weightUnitMin} handleSelectChange={e=>setWeighUnitMin(e)}/>
                       </div>
 
 
@@ -184,14 +192,22 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                       <label>Max weight</label>
                       
                       <div className={css.flex_row_select}>
-                        <input type="number" min={1} onChange={e=>{setMinWeight(e.target.value)}} value={minWeight} placeholder="Max weight" />
-                        <SelectComponent options={["Kg","Grams","Pieces"]} value={weightUnitMax} handleSelectChange={e=>setWeighUnitMax(e)}/>
+                        <input type="number" min={1} onChange={e=>{setMinWeight(e.target.value)}} value={minWeight} placeholder={intl.formatMessage({id: 'CategoriesForm.maxWeght'})} />
+                        <SelectComponent 
+                          options={[
+                              intl.formatMessage({id: 'CategoriesForm.kg'}),
+                              intl.formatMessage({id: 'CategoriesForm.grams'}),
+                              intl.formatMessage({id: 'CategoriesForm.pieces'})
+                            ]} 
+                          value={weightUnitMax} 
+                          handleSelectChange={e=>setWeighUnitMax(e)}
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
                  <div>
-                  <h1 className={css.header_2}>Service standards</h1>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.serviceStandard'})}</h1>
                   <div className={css.check_con}>
                     <FormGroup>
                       {ServiceStandards.map((itm,key)=>{
@@ -226,14 +242,14 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                   </div>
                 </div>
                 <div>
-                  <h1 className={css.header_2}>Price</h1>
-                  <p className={classNames(css.no_spacing,"pb-2")}>Set the minimum price for your service.</p>
+                  <h1 className={css.header_2}>{intl.formatMessage({id: 'CategoriesForm.price'})}</h1>
+                  <p className={classNames(css.no_spacing,"pb-2")}>{intl.formatMessage({id: 'CategoriesForm.setTheMinPrice'})}</p>
                   <div className={css.flex_row}>
                     <div className={css.width_50}>
-                      <label>Min order price</label>
+                      <label>{intl.formatMessage({id: 'CategoriesForm.minOrderPrice'})}</label>
                       <div className={css.money_con}>
                         <span>€</span>
-                        <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder="€ Set min price" />
+                        <input type="number" min={1} onChange={handleChangePrice}  value={pricee} placeholder={intl.formatMessage({id: 'CategoriesForm.setMinPrice'})} />
                       </div>
                       
                     </div>
@@ -241,21 +257,20 @@ const instruction = "The Q&A section will be visible to clients. This will help 
                 </div>
 
                 <div>
-                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>Work experience</label>
+                  <label labelFor="work_experience" className={classNames(css.header_2,"mb-1")}>{intl.formatMessage({id: 'CategoriesForm.workExperience'})}</label>
                   <InputIncrementDecrement setWorkExperience={setWorkExperience} workExperience={workExperience} />
                 </div>
 
-
                 <div className={classNames(css.base_btns,css.desktop)}>
-                    <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
-                        <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>Previous</button>
-                        <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>Save and continue</button>
+                        <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                        <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                     </div>
                 </div>
                 <div className={classNames(css.base_btns,css.mobile)}>
-                    <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>Previous</button>
-                    <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>Save and continue</button>
+                    <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                    <button onClick={handleSubmitValues} className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                 </div>
                   
             </form>

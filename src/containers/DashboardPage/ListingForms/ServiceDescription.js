@@ -139,16 +139,16 @@ const ServiceDescription = props=>{
                       <div>
                           <h1 className={classNames(css.header_2,"mb-2")}>Service description</h1>
                           <p className={css.marg_btm_1}>Write a short description about yourself and the service you offer</p>
-                          <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder="Write here"/>
+                          <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder={intl.formatMessage({id: 'CategoriesForm.writeHere',})}/>
                       </div>
 
                       <div className={css.base_btns}>
-                          <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                          <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                           <div>
-                              <button onClick={handleMoveToStart} className={css.btn_prev} >Previous</button>
+                              <button onClick={handleMoveToStart} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                               <button onClick={handleCreateDraftOrUpdateExisting} className={css.btn_next}
                                 disabled={isReady?false:true}
-                              >Save and continue</button>
+                              >{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                           </div>
                       </div>
                   </div>

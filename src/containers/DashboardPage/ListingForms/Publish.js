@@ -155,7 +155,7 @@ const handleRemoveImage = ()=>{
     onUpdateListing(data,"remove_image");
 }
 
-const subHeader = "Create a catalog";
+const subHeader = intl.formatMessage({id: 'Catalog.createCatalog'});
 const instruction = "Create a catalog to showcase the different service options you offer, making it easier for customers to explore and choose what suits them best. You can add multiple service packages, pricing tiers, and special offers. If a catalog isn’t necessary for your service, you can leave this section empty it's completely optional.";
 
 
@@ -238,9 +238,9 @@ const instruction = "Create a catalog to showcase the different service options 
                     </div>
                   
                     <div className={classNames(css.base_btns)}>
-                        <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                        <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                         <div>
-                            <button onClick={handleMoveToCatalog} className={css.btn_prev}>Previous</button>
+                            <button onClick={handleMoveToCatalog} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                             <button onClick={handlePublish} className={css.btn_next_publish} disabled={uploadInProgress}> 
                               {uploadInProgress?
                                 <CircularProgress size={20} sx={{ color: 'white'}}/>
@@ -297,10 +297,10 @@ const instruction = "Create a catalog to showcase the different service options 
                     </div>
                   
                     <div className={classNames(css.base_btns)}>
-                        <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                        <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                         <div>
-                            <button onClick={handleMoveToServiceDescription} className={css.btn_prev}>Previous</button>
-                            <button onClick={handleMoveToCatalog} className={css.btn_next} disabled>Save and continue</button>
+                            <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                            <button onClick={handleMoveToCatalog} className={css.btn_next} disabled>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
 
                         </div>
                     </div>

@@ -7,6 +7,7 @@ import css from './Catalog.module.css';
 import SelectComponent from "../../../components/CustomComponent/SelectComponent";
 import { useEffect, useState } from "react";
 import SelectComponent2 from "../../../components/CustomComponent/SelectComponent2";
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 
 
 const CatalogEdit = props=>{
@@ -85,6 +86,8 @@ const CatalogEdit = props=>{
         handleRemoveCatalogImage,
         hamdleReset
     } = props;
+    
+    const intl = useIntl();
 
     const currentAction = localStorage.getItem("action");
     const folderNameToEdit = localStorage.getItem("folderName");
@@ -104,6 +107,7 @@ const handleChangeFolderName = e =>{
 const saveCatalogName = e =>{
   localStorage.setItem("folderName",e.target.value);
 }
+
 
     return (
         <>
@@ -363,15 +367,15 @@ const saveCatalogName = e =>{
                                   </div>
 
                                   <div className={classNames(css.base_btns,css.desktop)}>
-                                      <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                                      <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                                       <div>
-                                          <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
-                                          <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                          <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                          <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                       </div>
                                   </div>
                                   <div className={classNames(css.base_btns,css.mobile)}>
-                                        <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
-                                        <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                        <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                        <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                   </div>
                                  
 
@@ -497,7 +501,6 @@ const saveCatalogName = e =>{
                                                 <>
                                                   {data !== undefined && data.map((itm,key)=>{
                                                     if(itm.folder === selectedFolderName){
-                                                      //console.log(itm.folder === folder,"   ttttttttttttttttttttttttt")
                                                       return (
                                                         <SimpleItemCard key={`catalog_item_card_${key+1}`} 
                                                           catalogDetails={itm} 
@@ -539,15 +542,15 @@ const saveCatalogName = e =>{
 
 
                                         <div className={classNames(css.base_btns,css.desktop)}>
-                                            <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                                            <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                                               <div>
-                                                  <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
-                                                  <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                                  <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                                  <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                               </div>
                                         </div>
                                         <div className={classNames(css.base_btns,css.mobile)}>
-                                              <button onClick={handleMoveToAboutService} className={css.btn_prev} >Previous</button>
-                                              <button onClick={handleSubmit} className={css.btn_next}>Save and continue</button>
+                                              <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                              <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                         </div>
 
 

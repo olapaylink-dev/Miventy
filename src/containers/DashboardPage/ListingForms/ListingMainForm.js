@@ -16,9 +16,10 @@ import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { types as sdkTypes } from '../../../util/sdkLoader';
 const { UUID,Money } = sdkTypes;
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 
 const ListingMainForm = props =>{
-
+    const intl = useIntl();
     const {setShowCreateListing,
         selectedCategory,
         setSelectedCategory,
@@ -151,71 +152,64 @@ const handleHideForm = e=>{
 }
 
 const handleClick = (e,val)=>{
+    console.log("oooooooooooooooooo")
     setSelectedCategory(val);
+
 }
 
 const handleChangeTab = (e,tab)=>{
+    console.log("ooooooooo111ooooooooo")
     setCurrentTab(tab);
 }
 
  const handleChange = (event) => {
+    console.log("oooooooooo22oooooooo")
       setCurrRadioBtnCategory(event.target.value);
       setSelectedSubCategory(event.target.value);
     };
 
-const categories = {
-                        "Entertainers":
-                                    [
-                                    "Magic",
-                                    "Face Paint",
-                                    "Animation",
-                                    ]
-                        ,
-                         "Catering":
-                                    [
-                                        "Catering"
-                                    ]
-                        ,
-                        "BD Cake and Sweets":
-                                    [
-                                    "BD Cake",
-                                    "Sweets"
-                                    ]
-                        ,
-                        "Photos Or Videos":
-                                    [
-                                    "Photographer",
-                                    "Videographer"
-                                    ]
-                        ,
-                        "Music For Events":
-                                    [
-                                    "Classical music",
-                                    "Party Music/DJs"
-                                    ]
-                        ,
-                         "Decorations":
-                                    [
-                                    "Balloon decoration",
-                                    "Flower arrangements",
-                                    "Themed decoration"
-                                    ]
-                        ,
-                        "Rentals":
-                                    [
-                                    "Rental shade and rain equipment",
-                                    "Rental space",
-                                    "Rental bouncer"
-                                    ]
-                        ,
-                       
-                       
-    
-                    };
-
+ const categories = [
+        {key: intl.formatMessage({id: 'LandingPage.entertaining',}),
+            item:[
+                {key:intl.formatMessage({id: 'LandingPage.animation',}),value:"Animation"},
+                {key:intl.formatMessage({id: 'LandingPage.magic',}),value:"Magic"},
+                {key:intl.formatMessage({id: 'LandingPage.facePaint',}),value:"Face Paint"}
+            ],css:css.menu1,icon:icon1},
+        {key:intl.formatMessage({id: 'LandingPage.catering',}),
+                item:[
+                    {key:intl.formatMessage({id: 'LandingPage.catering',}),value:"Catering"}
+                ],
+                css:css.menu2,icon:icon2,value:"Catering"},
+        {key: intl.formatMessage({id: 'LandingPage.bdCakesAndSweets',}),
+            item:[
+                {key:intl.formatMessage({id: 'LandingPage.bdCake',}),value:"BD Cake"},
+                {key:intl.formatMessage({id: 'LandingPage.sweets',}),value:"Sweets"},
+            ],css:css.menu3,icon:icon3},
+        {key: intl.formatMessage({id: 'LandingPage.photoVideo',}),
+            item:[
+                {key:intl.formatMessage({id: 'LandingPage.photos',}),value:"Photos"},
+                {key:intl.formatMessage({id: 'LandingPage.videos',}),value:"Videos"},
+            ],css:css.menu4,icon:icon4},
+        {key: intl.formatMessage({id: 'LandingPage.musicEvents',}),
+            item:[
+                {key:intl.formatMessage({id: 'LandingPage.classicMusic',}),value:"Classical Music"},
+                {key:intl.formatMessage({id: 'LandingPage.partyMusic',}),value:"Party music/DJs"},
+            ],css:css.menu5,icon:icon5},
+        {key: intl.formatMessage({id: 'LandingPage.decoration',}),
+            item:[
+                {key:intl.formatMessage({id: 'LandingPage.balloonDecorations',}),value:"Balloon Decorations"},
+                {key:intl.formatMessage({id: 'LandingPage.flowerArragement',}),value:"Flower arrangements"},
+                {key:intl.formatMessage({id: 'LandingPage.themedDecoration',}),value:"Themed Decoration"},
+            ],css:css.menu6,icon:icon6},
+        {key: intl.formatMessage({id: 'LandingPage.rentals',}),
+                            item:[
+                                {key:intl.formatMessage({id: 'LandingPage.rentalsShadeAndRain',}),value:"Rental shade and rain equipment"},
+                                {key:intl.formatMessage({id: 'LandingPage.rentalSpace',}),value:"Rental Space"},
+                                {key:intl.formatMessage({id: 'LandingPage.rentalBouncer',}),icon:icon6,value:"Rental Bouncer"},
+                            ],css:css.menu7,icon:icon7},
+       ];
 
     const handleCreateDraftOrUpdateExisting = e =>{
-      //console.log("ccccccccccccccccccc");
       if(lastAction === "updateDraft"){
             handleMoveToAboutService();
       }
@@ -225,18 +219,6 @@ const categories = {
       setIsDraft(true);
       if(JSON.stringify(currentListing) !== "{}"){
         handleMoveToAboutService();
-        // localStorage.setItem("currentListing",currentListing.id.uuid);
-        // const data = {
-        //   id:currentListing.id,
-        //   title:currentListing?.attributes?.title,
-        //   description:currentListing?.attributes?.description,
-        //   publicData:{
-        //     category:currRadioBtnCategory,
-        //     listingType:selectedCategory,
-        //   },
-        // }
-        // onUpdateListing(data,"updateDraft");
-
       }else{
         const data = {
           title:"Not yet set",
@@ -269,33 +251,15 @@ const categories = {
                     <p className={css.sub_header}>Select the category you are creating your listing</p>
 
 
-                    {Object.keys(categories).map((itmm,key)=>{
-
-                        let icon = "";
-                        if(key === 0){
-                            icon = icon1;
-                        }else if(key === 1){
-                            icon = icon2;
-                        }else if(key === 2){
-                            icon = icon3;
-                        }else if(key === 3){
-                            icon = icon4;
-                        }else if(key === 4){
-                            icon = icon5;
-                        }else if(key === 5){
-                            icon = icon6;
-                        }else if(key === 6){
-                            icon = icon7;
-                        }
-
+                    {categories.map((itmm,key)=>{
                         return(
-                            <div className={classNames(css.items, (selectedCategory === itmm?css.item_active:""))} onClick={e=>{handleClick(e,itmm)}}>
+                            <div className={classNames(css.items, (selectedCategory === itmm.key?css.item_active:""))} onClick={e=>{handleClick(e,itmm.key)}}>
                                 <div className={css.flex_row}>
-                                    <img className={css.icons} src={icon} />
-                                    <span>{itmm}</span>
+                                    <img className={css.icons} src={itmm.icon} />
+                                    <span>{itmm.key}</span>
                                 </div>
                                 
-                                {selectedCategory === itmm?
+                                {selectedCategory === itmm.key?
                                     <div className={css2.full_w}>
                                         <FormControl>
                                             <RadioGroup
@@ -307,10 +271,10 @@ const categories = {
                                             onChange={handleChange}
                                             >
 
-                                            {categories[itmm].map((category,key)=>{
-
+                                            {itmm.item.map((category,key)=>{
+                                                console.log(category,"   bbbbbbbb")
                                                 return(
-                                                <FormControlLabel key={`radio ${category} ${key}`} className={css2.no_spacing} value={category} control={
+                                                <FormControlLabel key={`radio ${category.value} ${key}`} className={css2.no_spacing} value={category.value} control={
                                                     <Radio
                                                     sx={{
                                                         color: "#F56630",
@@ -318,7 +282,7 @@ const categories = {
                                                             color: "#F56630",
                                                         },
                                                         }}
-                                                    className={classNames(css2.no_spacing,css2.radio)}/>} label={category} />
+                                                    className={classNames(css2.no_spacing,css2.radio)}/>} label={category.key} />
                                                 )
 
                                             })}
@@ -333,9 +297,9 @@ const categories = {
                     })}
 
                     <div className={css.base_btns}>
-                        <button onClick={handleHideForm} className={css.btn_1}>Close</button>
+                        <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                         <div>
-                            <button className={css.btn_prev} disabled>Previous</button>
+                            <button className={css.btn_prev} disabled>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                             <button onClick={handleCreateDraftOrUpdateExisting} className={css.btn_next}
                              disabled={selectedCategory === undefined || selectedCategory === null || selectedCategory === ""?true:false}
                             >Next</button>

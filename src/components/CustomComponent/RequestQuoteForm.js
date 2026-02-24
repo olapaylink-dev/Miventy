@@ -40,80 +40,11 @@ const RequestQuoteForm = props =>{
     }
 
     const descriptions = [
-        "Food delivery only",
-        "Food + table setting items",
-        "Everything in Medium + food serving + cleanup",
-        "Optional add-ons like chairs, tables or special requests"
+       intl.formatMessage({id: 'CategoriesForm.foodDelivery',}),
+       intl.formatMessage({id: 'CategoriesForm.foodTable',}) ,
+       intl.formatMessage({id: 'CategoriesForm.everythingInMedium',}),
+       intl.formatMessage({id: 'CategoriesForm.optionalAddOnsLike',})
     ];
-
-    const categories = {
-                        "Entertainers":
-                                    [
-                                    "0-2 years",
-                                    "2-4 years",
-                                    "4-6 years",
-                                    "6-8 years",
-                                    "All ages",
-                                    ]
-                        ,
-                         "Catering":
-                                    [
-                                        "Basic:",
-                                        "Medium:",
-                                        "Pro:"
-                                    ]
-                        ,
-                        "BD Cake and Sweets":
-                                    [
-                                    "Single-Tier Cake (One level only)",
-                                    "Multi-Tier Cake (Two or more stacked layers)",
-                                    "Themed cakes (custom shapes: cars, animals, handbags, letters, numbers)",
-                                    "Piñata Cake (Surprise Inside)",
-                                    "Lactose-free cakes",
-                                    "Gluten-free cakes",
-                                    "Sugar-free cakes",
-                                    ]
-                        ,
-                        "Photos Or Videos":
-                                    [
-                                    "Photo booth",
-                                    "Portrait photography",
-                                    "Wedding photography",
-                                    "Event photography  (birthdays, corporate events, etc.)",
-                                    "Commercial photography (advertising, branding)",
-                                    "Product photography (for online stores)",
-                                    "Family photography",
-                                    "Newborn and child photography",
-                                    "Fashion photography",
-                                    "Studio photography",
-                                    "Outdoor photography",
-                                    "Real estate photography",
-                                    "Model portfolio photography"
-                                    ]
-                        ,
-                        "Music For Events":
-                                    [
-                                     "Vocalist",
-                                    "Instrumental",
-                                    "Both of them"
-                                    ]
-                        ,
-                         "Decorations":
-                                    [
-                                    "Flower decoration",
-                                    "Balloon decoration",
-                                    "Themed decoration"
-                                    ]
-                        ,
-                        "Rentals":
-                                    [
-                                    "Rental shade and rain equipment",
-                                    "Rental space",
-                                    "Rental bouncer"
-                                    ]
-                        ,
-                    };
-
 
 const handleSendOrderMessage = ()=>{
     // //{/* Create a new transaction and add order details to it, them send the order message to provider */}
