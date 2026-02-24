@@ -4,11 +4,9 @@ import cust1 from '../../assets/customers/cust1.png';
 import cust2 from '../../assets/customers/cust2.png';
 import cust3 from '../../assets/customers/cust1.png';
 import cust4 from '../../assets/customers/cust2.png';
-import avater from '../../assets/avater2.png';
-
-import star from '../../assets/icons/star.png';
 import classNames from "classnames";
 import ReviewRating from "../ReviewRating/ReviewRating";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const responsive = {
   desktop: {
@@ -29,6 +27,8 @@ const responsive = {
 };
 
 const ReviewSlider = props =>{
+
+    const intl = useIntl();
 
     const reff = useRef(null);
 
