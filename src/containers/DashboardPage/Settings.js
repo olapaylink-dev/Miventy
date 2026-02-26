@@ -310,7 +310,7 @@ const Settings = props=>{
                         </div>
                         <div>
                            
-                            <button className={css.edit_btn} type="submit" >Save</button>
+                            <button className={css.edit_btn} type="submit" >{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                             
                         </div>
                     </form>
@@ -347,7 +347,7 @@ const Settings = props=>{
                         </div>
                         <div>
                              
-                            <button className={css.edit_btn} type="submit" >Save</button>
+                            <button className={css.edit_btn} type="submit" >{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                         
                         </div>
                     </form>

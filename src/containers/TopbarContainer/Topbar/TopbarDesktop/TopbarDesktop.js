@@ -435,7 +435,7 @@ const TopbarDesktop = props => {
                 {showNotificationMenus?
                 <div className={css.noti_menu_con}>
                   <div className={css.menu_title_con}>
-                      <span>Notifications</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.notifications'})}</span>
                       <div className={css.count}>{notificationCounts}</div>
                   </div>
                   <div className={css.rule}></div>

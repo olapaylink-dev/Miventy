@@ -966,21 +966,21 @@ const [currentListing,setCurrentListing] = useState({});
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
                             </svg>
-                            <span>Dashboard</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.dashboard'})}</span>
                         </div>
                         <NamedLink onClick={handleShowMessages} className={css.flex_row} name="InboxBasePage">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8336 17.5C17.6745 17.5 19.1669 16.0076 19.1669 14.1667V6.68557C19.1672 6.67283 19.1672 6.66005 19.1669 6.64725V5.83333C19.1669 3.99238 17.6745 2.5 15.8336 2.5H4.16693C2.32598 2.5 0.833596 3.99238 0.833596 5.83333V6.64726C0.833299 6.66005 0.833301 6.67282 0.833596 6.68556V14.1667C0.833596 16.0076 2.32598 17.5 4.16693 17.5H15.8336ZM2.50026 14.1667C2.50026 15.0871 3.24645 15.8333 4.16693 15.8333H15.8336C16.7541 15.8333 17.5003 15.0871 17.5003 14.1667V7.89753L11.2382 10.4023C10.4435 10.7202 9.557 10.7202 8.76229 10.4023L2.50026 7.89753V14.1667ZM10.6192 8.85488L17.5003 6.10247V5.83333C17.5003 4.91286 16.7541 4.16667 15.8336 4.16667H4.16693C3.24645 4.16667 2.50026 4.91286 2.50026 5.83333V6.10247L9.38128 8.85488C9.77863 9.01382 10.2219 9.01382 10.6192 8.85488Z" fill="black"/>
                             </svg>
         
-                            <span >Messages</span>
+                            <span >{intl.formatMessage({id:'StripePayoutPage.messages'})}</span>
                         </NamedLink>
                         <div onClick={showEarnings} className={css2.flex_row}>
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 1.66732C10.8333 1.20708 10.4602 0.833984 10 0.833984C9.53976 0.833984 9.16667 1.20708 9.16667 1.66732V2.50065C6.86548 2.50065 5 4.36613 5 6.66732C5 8.9685 6.86548 10.834 9.16667 10.834V15.834C7.78595 15.834 6.66667 14.7147 6.66667 13.334C6.66667 12.8737 6.29357 12.5007 5.83333 12.5007C5.3731 12.5007 5 12.8737 5 13.334C5 15.6352 6.86548 17.5006 9.16667 17.5006V18.334C9.16667 18.7942 9.53976 19.1673 10 19.1673C10.4602 19.1673 10.8333 18.7942 10.8333 18.334V17.5006C13.1345 17.5006 15 15.6352 15 13.334C15 11.0328 13.1345 9.16732 10.8333 9.16732V4.16732C12.214 4.16732 13.3333 5.28661 13.3333 6.66732C13.3333 7.12755 13.7064 7.50065 14.1667 7.50065C14.6269 7.50065 15 7.12755 15 6.66732C15 4.36613 13.1345 2.50065 10.8333 2.50065V1.66732ZM9.16667 4.16732C7.78595 4.16732 6.66667 5.28661 6.66667 6.66732C6.66667 8.04803 7.78595 9.16732 9.16667 9.16732V4.16732ZM10.8333 10.834V15.834C12.214 15.834 13.3333 14.7147 13.3333 13.334C13.3333 11.9533 12.214 10.834 10.8333 10.834Z" fill="black"/>
                             </svg>
 
-                            <span>Earnings</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.earnings'})}</span>
                         </div>
                         <div onClick={handleShowSettingsMenu} className={css2.flex_row_full_btw}>
                           <div className={css2.flex_row}>
@@ -988,7 +988,7 @@ const [currentListing,setCurrentListing] = useState({});
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66667 2.49935V4.27103C8.10436 4.64107 9.16667 5.94615 9.16667 7.49935C9.16667 9.05255 8.10436 10.3576 6.66667 10.7277V17.4993C6.66667 17.9596 6.29357 18.3327 5.83333 18.3327C5.3731 18.3327 5 17.9596 5 17.4993L5 10.7277C3.56231 10.3576 2.5 9.05255 2.5 7.49935C2.5 5.94615 3.56231 4.64107 5 4.27103L5 2.49935C5 2.03911 5.3731 1.66602 5.83333 1.66602C6.29357 1.66602 6.66667 2.03911 6.66667 2.49935ZM4.16667 7.49935C4.16667 6.57887 4.91286 5.83268 5.83333 5.83268C6.75381 5.83268 7.5 6.57887 7.5 7.49935C7.5 8.41982 6.75381 9.16602 5.83333 9.16602C4.91286 9.16602 4.16667 8.41982 4.16667 7.49935Z" fill="black"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3333 15.7277V17.4993C13.3333 17.9596 13.7064 18.3327 14.1667 18.3327C14.6269 18.3327 15 17.9596 15 17.4993V15.7277C16.4377 15.3576 17.5 14.0525 17.5 12.4993C17.5 10.9461 16.4377 9.64107 15 9.27103V2.49935C15 2.03911 14.6269 1.66602 14.1667 1.66602C13.7064 1.66602 13.3333 2.03911 13.3333 2.49935V9.27103C11.8956 9.64107 10.8333 10.9461 10.8333 12.4993C10.8333 14.0525 11.8956 15.3576 13.3333 15.7277ZM15.8333 12.4993C15.8333 11.5789 15.0871 10.8327 14.1667 10.8327C13.2462 10.8327 12.5 11.5789 12.5 12.4993C12.5 13.4198 13.2462 14.166 14.1667 14.166C15.0871 14.166 15.8333 13.4198 15.8333 12.4993Z" fill="black"/>
                             </svg>
-                            <span>Settings</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.settings'})}</span>
                           </div>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41075 6.91009C9.73619 6.58466 10.2638 6.58466 10.5893 6.91009L15.5893 11.9101C15.9147 12.2355 15.9147 12.7632 15.5893 13.0886C15.2638 13.414 14.7362 13.414 14.4107 13.0886L10 8.67786L5.58926 13.0886C5.26382 13.414 4.73619 13.414 4.41075 13.0886C4.08531 12.7632 4.08531 12.2355 4.41075 11.9101L9.41075 6.91009Z" fill="#667185"/>
@@ -1001,7 +1001,7 @@ const [currentListing,setCurrentListing] = useState({});
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     
                                 </svg>
-                                <span>Account privacy</span>
+                                <span>{intl.formatMessage({id:'StripePayoutPage.accountPrivacy'})}</span>
                               </div>
                                 
                             </div>
@@ -1011,7 +1011,7 @@ const [currentListing,setCurrentListing] = useState({});
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     
                                 </svg>
-                                <span>Payment settings</span>
+                                <span>{intl.formatMessage({id:'StripePayoutPage.paymentSettings'})}</span>
                               </div>
                               
                             </div>
@@ -1021,7 +1021,7 @@ const [currentListing,setCurrentListing] = useState({});
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     
                                 </svg>
-                                <span>Notifications</span>
+                                <span>{intl.formatMessage({id:'StripePayoutPage.notifications'})}</span>
                               </div>
                                 
                             </div>
@@ -1044,21 +1044,21 @@ const [currentListing,setCurrentListing] = useState({});
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
                                         </svg>
-                                        <span>Dashboard</span>
+                                        {intl.formatMessage({id:'StripePayoutPage.dashboard'})}
                                     </div>
                                     <NamedLink onClick={handleShowMessages} className={css.flex_row} name="InboxBasePage">
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.8336 17.5C17.6745 17.5 19.1669 16.0076 19.1669 14.1667V6.68557C19.1672 6.67283 19.1672 6.66005 19.1669 6.64725V5.83333C19.1669 3.99238 17.6745 2.5 15.8336 2.5H4.16693C2.32598 2.5 0.833596 3.99238 0.833596 5.83333V6.64726C0.833299 6.66005 0.833301 6.67282 0.833596 6.68556V14.1667C0.833596 16.0076 2.32598 17.5 4.16693 17.5H15.8336ZM2.50026 14.1667C2.50026 15.0871 3.24645 15.8333 4.16693 15.8333H15.8336C16.7541 15.8333 17.5003 15.0871 17.5003 14.1667V7.89753L11.2382 10.4023C10.4435 10.7202 9.557 10.7202 8.76229 10.4023L2.50026 7.89753V14.1667ZM10.6192 8.85488L17.5003 6.10247V5.83333C17.5003 4.91286 16.7541 4.16667 15.8336 4.16667H4.16693C3.24645 4.16667 2.50026 4.91286 2.50026 5.83333V6.10247L9.38128 8.85488C9.77863 9.01382 10.2219 9.01382 10.6192 8.85488Z" fill="black"/>
                                         </svg>
                     
-                                        <span >Messages</span>
+                                        <span >{intl.formatMessage({id:'StripePayoutPage.messages'})}</span>
                                     </NamedLink>
                                     <div onClick={showEarnings} className={css2.flex_row}>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 1.66732C10.8333 1.20708 10.4602 0.833984 10 0.833984C9.53976 0.833984 9.16667 1.20708 9.16667 1.66732V2.50065C6.86548 2.50065 5 4.36613 5 6.66732C5 8.9685 6.86548 10.834 9.16667 10.834V15.834C7.78595 15.834 6.66667 14.7147 6.66667 13.334C6.66667 12.8737 6.29357 12.5007 5.83333 12.5007C5.3731 12.5007 5 12.8737 5 13.334C5 15.6352 6.86548 17.5006 9.16667 17.5006V18.334C9.16667 18.7942 9.53976 19.1673 10 19.1673C10.4602 19.1673 10.8333 18.7942 10.8333 18.334V17.5006C13.1345 17.5006 15 15.6352 15 13.334C15 11.0328 13.1345 9.16732 10.8333 9.16732V4.16732C12.214 4.16732 13.3333 5.28661 13.3333 6.66732C13.3333 7.12755 13.7064 7.50065 14.1667 7.50065C14.6269 7.50065 15 7.12755 15 6.66732C15 4.36613 13.1345 2.50065 10.8333 2.50065V1.66732ZM9.16667 4.16732C7.78595 4.16732 6.66667 5.28661 6.66667 6.66732C6.66667 8.04803 7.78595 9.16732 9.16667 9.16732V4.16732ZM10.8333 10.834V15.834C12.214 15.834 13.3333 14.7147 13.3333 13.334C13.3333 11.9533 12.214 10.834 10.8333 10.834Z" fill="black"/>
                                         </svg>
 
-                                        <span>Earnings</span>
+                                        <span>{intl.formatMessage({id:'StripePayoutPage.earnings'})}</span>
                                     </div>
                                     <div onClick={handleShowSettingsMenu} className={css2.flex_row_full_btw}>
                                       <div className={css2.flex_row}>
@@ -1066,7 +1066,7 @@ const [currentListing,setCurrentListing] = useState({});
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66667 2.49935V4.27103C8.10436 4.64107 9.16667 5.94615 9.16667 7.49935C9.16667 9.05255 8.10436 10.3576 6.66667 10.7277V17.4993C6.66667 17.9596 6.29357 18.3327 5.83333 18.3327C5.3731 18.3327 5 17.9596 5 17.4993L5 10.7277C3.56231 10.3576 2.5 9.05255 2.5 7.49935C2.5 5.94615 3.56231 4.64107 5 4.27103L5 2.49935C5 2.03911 5.3731 1.66602 5.83333 1.66602C6.29357 1.66602 6.66667 2.03911 6.66667 2.49935ZM4.16667 7.49935C4.16667 6.57887 4.91286 5.83268 5.83333 5.83268C6.75381 5.83268 7.5 6.57887 7.5 7.49935C7.5 8.41982 6.75381 9.16602 5.83333 9.16602C4.91286 9.16602 4.16667 8.41982 4.16667 7.49935Z" fill="black"/>
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M13.3333 15.7277V17.4993C13.3333 17.9596 13.7064 18.3327 14.1667 18.3327C14.6269 18.3327 15 17.9596 15 17.4993V15.7277C16.4377 15.3576 17.5 14.0525 17.5 12.4993C17.5 10.9461 16.4377 9.64107 15 9.27103V2.49935C15 2.03911 14.6269 1.66602 14.1667 1.66602C13.7064 1.66602 13.3333 2.03911 13.3333 2.49935V9.27103C11.8956 9.64107 10.8333 10.9461 10.8333 12.4993C10.8333 14.0525 11.8956 15.3576 13.3333 15.7277ZM15.8333 12.4993C15.8333 11.5789 15.0871 10.8327 14.1667 10.8327C13.2462 10.8327 12.5 11.5789 12.5 12.4993C12.5 13.4198 13.2462 14.166 14.1667 14.166C15.0871 14.166 15.8333 13.4198 15.8333 12.4993Z" fill="black"/>
                                         </svg>
-                                        <span>Settings</span>
+                                        <span>{intl.formatMessage({id:'StripePayoutPage.settings'})}</span>
                                       </div>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M9.41075 6.91009C9.73619 6.58466 10.2638 6.58466 10.5893 6.91009L15.5893 11.9101C15.9147 12.2355 15.9147 12.7632 15.5893 13.0886C15.2638 13.414 14.7362 13.414 14.4107 13.0886L10 8.67786L5.58926 13.0886C5.26382 13.414 4.73619 13.414 4.41075 13.0886C4.08531 12.7632 4.08531 12.2355 4.41075 11.9101L9.41075 6.91009Z" fill="#667185"/>
@@ -1079,7 +1079,7 @@ const [currentListing,setCurrentListing] = useState({});
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 
                                             </svg>
-                                            <span>Account privacy</span>
+                                            <span>{intl.formatMessage({id:'StripePayoutPage.accountPrivacy'})}</span>
                                           </div>
                                             
                                         </div>
@@ -1089,7 +1089,7 @@ const [currentListing,setCurrentListing] = useState({});
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 
                                             </svg>
-                                            <span>Payment settings</span>
+                                            <span>{intl.formatMessage({id:'StripePayoutPage.paymentSettings'})}</span>
                                           </div>
                                           
                                         </div>
@@ -1099,7 +1099,7 @@ const [currentListing,setCurrentListing] = useState({});
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 
                                             </svg>
-                                            <span>Notifications</span>
+                                            <span>{intl.formatMessage({id:'StripePayoutPage.notifications'})}</span>
                                           </div>
                                             
                                         </div>
@@ -1171,7 +1171,7 @@ const [currentListing,setCurrentListing] = useState({});
                               </span>
                               <div className={css2.flex_row_btw}>
                                   <div className={css2.flex_row_itm}>
-                                      Available
+                                      {intl.formatMessage({id:'StripePayoutPage.available'})}
                                       <form onChange={handleAvailability}>
                                         <Switch checked={availability} color="warning"/>
                                       </form>
@@ -1187,7 +1187,7 @@ const [currentListing,setCurrentListing] = useState({});
                                           </g>
                                           </g>
                                       </svg>
-                                      Edit profile
+                                      {intl.formatMessage({id:'StripePayoutPage.editProfile'})}
                                   </div>
                               </div>
 
@@ -1204,9 +1204,9 @@ const [currentListing,setCurrentListing] = useState({});
                                           </g>
                                       </svg>
                                       <div className={css2.flex_col}>
-                                          <span className={css2.header}>Your profile is 40% incomplete</span>
-                                          <p>Your profile is incomplete. Complete required fields to make your service visible to customers.</p>
-                                          <button onClick={handleShowForm} className={css2.complete_profile_btn}>Complete profile</button>
+                                          <span className={css2.header}>{intl.formatMessage({id:'StripePayoutPage.yourProfileIsTitle'})}</span>
+                                          <p>{intl.formatMessage({id:'StripePayoutPage.yourProfileIsDescription'})}</p>
+                                          <button onClick={handleShowForm} className={css2.complete_profile_btn}>{intl.formatMessage({id:'StripePayoutPage.completeProfile'})}</button>
                                       </div>
                                   </div>
                                 
@@ -1219,13 +1219,13 @@ const [currentListing,setCurrentListing] = useState({});
                           <div className={css2.profile_completion}>
                               <div className={css2.flex_row_start}>
                                   <div className={css2.flex_col}>
-                                      <span className={css2.header_listing}>Create your service listing and start advertising on Miventy</span>
-                                      <p>Your service listing will be showcased to thousands of clients daily, get more bookings and grow your business.</p>
+                                      <span className={css2.header_listing}>{intl.formatMessage({id:'StripePayoutPage.createYourService'})}</span>
+                                      <p>{intl.formatMessage({id:'StripePayoutPage.yourServiceListingWill'})}</p>
                                   </div>
                               </div>
                               <div className={css2.create_listing_btn_con}>
                                 <button onClick={handleShowCreateListing} className={css2.create_listing_btn} disabled={!isProfileInfoComplete}>
-                                  {isProfileInfoComplete?"Create a listing":"Your need to complete your Profile before you can create a Listing"}
+                                  {isProfileInfoComplete?intl.formatMessage({id:'StripePayoutPage.createAListing'}):intl.formatMessage({id:'StripePayoutPage.youNeedToComplete'})}
                                 </button>
                               </div>
                               
@@ -1234,9 +1234,9 @@ const [currentListing,setCurrentListing] = useState({});
                           <div className={css2.your_listing_con}>
                             
                             <div>
-                                <h1 className={css2.header_2}>Your Listing</h1>
+                                <h1 className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.yourListings'})}</h1>
                                   <p className={css2.sub_header_2}>
-                                  Manage your service listings
+                                  {intl.formatMessage({id:'StripePayoutPage.manageYourService'})}
                                 </p>
                             </div>
                               
@@ -1281,8 +1281,8 @@ const [currentListing,setCurrentListing] = useState({});
                                               {isDraft?
                                                 <div onClick={event=>{handleEditListing(event,listing)}} className={css2.draft_overlay}>
                                                   <div className={css2.text_center}>
-                                                    <h5>Draft</h5>
-                                                    <p>Click to complete</p>
+                                                    <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                    <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                                   </div>
                                                 </div>
                                               :""}
@@ -1293,8 +1293,8 @@ const [currentListing,setCurrentListing] = useState({});
                                               {isDraft?
                                                 <div onClick={event=>{handleEditListing(event,listing)}} className={css2.draft_overlay}>
                                                   <div className={css2.text_center}>
-                                                    <h5>Draft</h5>
-                                                    <p>Click to complete</p>
+                                                    <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                    <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                                   </div>
                                                 </div>
                                               :""}
@@ -1310,7 +1310,7 @@ const [currentListing,setCurrentListing] = useState({});
                                           {closeListingInProgress?
                                             <CircularProgress size={20} sx={{ color: 'gray'}}/>
                                           :""}
-                                          <span>Remove Listing</span>
+                                          <span>{intl.formatMessage({id:'StripePayoutPage.removeListing'})}</span>
                                           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                             <path d="M7.91708 1.45898C7.57069 1.45898 7.26043 1.67326 7.13775 1.99719L6.94643 2.50243C6.53628 2.46144 6.15838 2.42054 5.85247 2.38619C5.6238 2.36052 5.43582 2.33856 5.30524 2.32305L5.15462 2.30497L5.10346 2.29871C4.64672 2.24216 4.22996 2.56649 4.1734 3.02324C4.11683 3.47999 4.44125 3.89611 4.898 3.95267L4.95366 3.95947L5.10864 3.97808C5.24226 3.99395 5.43382 4.01632 5.66651 4.04245C6.13148 4.09466 6.76256 4.16206 7.42467 4.22248C8.31782 4.30399 9.29685 4.37565 10.0004 4.37565C10.704 4.37565 11.683 4.30399 12.5761 4.22248C13.2383 4.16206 13.8694 4.09466 14.3343 4.04245C14.567 4.01632 14.7586 3.99395 14.8922 3.97808L15.0472 3.95947L15.1027 3.95268C15.5595 3.89612 15.884 3.47999 15.8274 3.02324C15.7709 2.56649 15.3548 2.24208 14.898 2.29863L14.8462 2.30497L14.6956 2.32305C14.565 2.33856 14.377 2.36052 14.1484 2.38619C13.8424 2.42054 13.4645 2.46144 13.0544 2.50243L12.8631 1.99719C12.7404 1.67326 12.4301 1.45898 12.0837 1.45898H7.91708Z" fill="#475367"/>
                                             <path d="M9.16708 9.79232C9.16708 9.33208 8.79398 8.95898 8.33375 8.95898C7.87351 8.95898 7.50041 9.33208 7.50041 9.79232V13.959C7.50041 14.4192 7.87351 14.7923 8.33375 14.7923C8.79398 14.7923 9.16708 14.4192 9.16708 13.959V9.79232Z" fill="#475367"/>
@@ -1327,7 +1327,7 @@ const [currentListing,setCurrentListing] = useState({});
                                   {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).length>2?
                                   <div className={css2.mylisting_card_2}>
                                     <button onClick={handleShowListings} className={css2.view_more}>
-                                      <span>View all Listings</span>
+                                      <span>{intl.formatMessage({id:'StripePayoutPage.viewAllListing'})}</span>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                         <path d="M21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L17.7071 7.29289C17.3166 6.90237 16.6834 6.90237 16.2929 7.29289C15.9024 7.68342 15.9024 8.31658 16.2929 8.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L16.2929 15.2929C15.9024 15.6834 15.9024 16.3166 16.2929 16.7071C16.6834 17.0976 17.3166 17.0976 17.7071 16.7071L21.7071 12.7071Z" fill="#EB5017"/>
                                       </svg>
@@ -1348,14 +1348,14 @@ const [currentListing,setCurrentListing] = useState({});
                                   </svg>
 
                                   <div className={css2.flex_col_order}>
-                                      <span className={css2.header}>Orders Tracking</span>
-                                      <p>Track your orders both on-going and completed orders. </p>
+                                      <span className={css2.header}>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</span>
+                                      <p>{intl.formatMessage({id:'StripePayoutPage.trackYourOrders'})} </p>
                                   </div>
                               </div>
                               <div className={css2.flex_row_btw_ord}>
                                   <div onClick={handleShowOngoingOrders}>
                                     <div className={css2.flex_row_full_btw}>
-                                        <span className={css2.counter_header}>On-going Orders</span>
+                                        <span className={css2.counter_header}>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <rect width="24" height="24" fill="#FCF4F0"/>
                                           <path d="M8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8H16C16.5523 8 17 7.55228 17 7C17 6.44772 16.5523 6 16 6H8Z" fill="#475367"/>
@@ -1365,15 +1365,15 @@ const [currentListing,setCurrentListing] = useState({});
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
                                         </svg>
                                     </div>
-                                    <p className={css2.no_spacing}>You currently have</p>
+                                    <p className={css2.no_spacing}>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</p>
                                     <div className={css2.flex_row_start_bottom}>
                                       <span className={css2.counter}>{numberOfPendingTransactions}</span>
-                                      <span>On-going orders</span>
+                                      <span>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</span>
                                     </div>
                                   </div>
                                   <div onClick={handleShowCompletedOrders}>
                                     <div className={css2.flex_row_full_btw}>
-                                        <span className={css2.counter_header}>Completed</span>
+                                        <span className={css2.counter_header}>{intl.formatMessage({id:'StripePayoutPage.completed'})}</span>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <rect width="24" height="24" fill="#FCF4F0"/>
                                           <path d="M8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8H16C16.5523 8 17 7.55228 17 7C17 6.44772 16.5523 6 16 6H8Z" fill="#475367"/>
@@ -1383,10 +1383,10 @@ const [currentListing,setCurrentListing] = useState({});
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
                                         </svg>
                                     </div>
-                                    <p className={css2.no_spacing}>You currently have</p>
+                                    <p className={css2.no_spacing}>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</p>
                                     <div className={css2.flex_row_start_bottom}>
                                       <span className={css2.counter}>{numberOfCompletedTransactions}</span>
-                                      <span>Completed</span>
+                                      <span>{intl.formatMessage({id:'StripePayoutPage.completed'})}</span>
                                     </div>
                                   </div>
                               </div>
@@ -1398,11 +1398,11 @@ const [currentListing,setCurrentListing] = useState({});
                                   </svg>
 
                                   <div className={css2.flex_col_order}>
-                                      <span className={css2.header}>Reviews</span>
-                                      <p>View feedback from customers who have used your services. </p>
+                                      <span className={css2.header}>{intl.formatMessage({id:'StripePayoutPage.reviews'})}</span>
+                                      <p>{intl.formatMessage({id:'StripePayoutPage.viewFeedback'})}</p>
                                   </div>
                               </div>
-                              <p className={classNames(css2.no_spacing_main,css2.cust_p)}>Current rating: --</p>
+                              <p className={classNames(css2.no_spacing_main,css2.cust_p)}>{intl.formatMessage({id:'StripePayoutPage.currentRating'})}</p>
                               <div className={css2.flex_row_center} onClick={e=>{setCurrentTab("reviews"); e.preventDefault(); e.stopPropagation();}}>
                                   <div>
                                     <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1410,14 +1410,14 @@ const [currentListing,setCurrentListing] = useState({});
                                     </svg>
                                     {reviews.length > 0?
                                       <>
-                                      <p className={css2.no_spacing}>You currently have</p>
+                                      <p className={css2.no_spacing}>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</p>
                                       <div className={css2.flex_row_start_bottom}>
                                         <span className={css2.counter}>{reviews.length}</span>
-                                        <span>Reviews</span>
+                                        <span>{intl.formatMessage({id:'StripePayoutPage.reviews'})}</span>
                                       </div>
                                       </>
                                     :
-                                      <span className={css2.rate_header}>You currently have no ratings</span>
+                                      <span className={css2.rate_header}>{intl.formatMessage({id:'StripePayoutPage.youCurrentlyHaveNoRating'})}</span>
                                     }
                                     
                                   </div>
@@ -1553,13 +1553,13 @@ const [currentListing,setCurrentListing] = useState({});
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                       <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                  <span>Back to Dashboard</span>
+                                  <span>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</span>
                                   </button>
                                 </div>
 
-                                <h1 className={css2.header_2}>Listings</h1>
+                                <h1 className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.listings'})}</h1>
                                   <p className={css2.sub_header_2}>
-                                  Manage your listings
+                                  {intl.formatMessage({id:'StripePayoutPage.manageYourListing'})}
                                 </p>
                             </div>
                               
@@ -1596,8 +1596,8 @@ const [currentListing,setCurrentListing] = useState({});
                                                   {isDraft?
                                                     <div onClick={event=>{handleEditListing(event,listing)}} className={css2.draft_overlay}>
                                                       <div className={css2.text_center}>
-                                                        <h5>Draft</h5>
-                                                        <p>Click to complete</p>
+                                                        <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                        <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                                       </div>
                                                     </div>
                                                   :""}
@@ -1608,8 +1608,8 @@ const [currentListing,setCurrentListing] = useState({});
                                                   {isDraft?
                                                     <div onClick={event=>{handleEditListing(event,listing)}} className={css2.draft_overlay}>
                                                       <div className={css2.text_center}>
-                                                        <h5>Draft</h5>
-                                                        <p>Click to complete</p>
+                                                        <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                        <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                                       </div>
                                                     </div>
                                                   :""}
@@ -1625,7 +1625,7 @@ const [currentListing,setCurrentListing] = useState({});
                                               {closeListingInProgress?
                                                 <CircularProgress size={20} sx={{ color: 'gray'}}/>
                                               :""}
-                                              <span>Remove Listing</span>
+                                              <span>{intl.formatMessage({id:'StripePayoutPage.removeListing'})}</span>
                                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                                 <path d="M7.91708 1.45898C7.57069 1.45898 7.26043 1.67326 7.13775 1.99719L6.94643 2.50243C6.53628 2.46144 6.15838 2.42054 5.85247 2.38619C5.6238 2.36052 5.43582 2.33856 5.30524 2.32305L5.15462 2.30497L5.10346 2.29871C4.64672 2.24216 4.22996 2.56649 4.1734 3.02324C4.11683 3.47999 4.44125 3.89611 4.898 3.95267L4.95366 3.95947L5.10864 3.97808C5.24226 3.99395 5.43382 4.01632 5.66651 4.04245C6.13148 4.09466 6.76256 4.16206 7.42467 4.22248C8.31782 4.30399 9.29685 4.37565 10.0004 4.37565C10.704 4.37565 11.683 4.30399 12.5761 4.22248C13.2383 4.16206 13.8694 4.09466 14.3343 4.04245C14.567 4.01632 14.7586 3.99395 14.8922 3.97808L15.0472 3.95947L15.1027 3.95268C15.5595 3.89612 15.884 3.47999 15.8274 3.02324C15.7709 2.56649 15.3548 2.24208 14.898 2.29863L14.8462 2.30497L14.6956 2.32305C14.565 2.33856 14.377 2.36052 14.1484 2.38619C13.8424 2.42054 13.4645 2.46144 13.0544 2.50243L12.8631 1.99719C12.7404 1.67326 12.4301 1.45898 12.0837 1.45898H7.91708Z" fill="#475367"/>
                                                 <path d="M9.16708 9.79232C9.16708 9.33208 8.79398 8.95898 8.33375 8.95898C7.87351 8.95898 7.50041 9.33208 7.50041 9.79232V13.959C7.50041 14.4192 7.87351 14.7923 8.33375 14.7923C8.79398 14.7923 9.16708 14.4192 9.16708 13.959V9.79232Z" fill="#475367"/>
@@ -1656,24 +1656,24 @@ const [currentListing,setCurrentListing] = useState({});
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                                   </svg>
-                                <span>Back to Dashboard</span>
+                                <span>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</span>
                                 </button>
                               </div>
 
-                              <h1 className={css2.header_2}>Reviews</h1>
+                              <h1 className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.reviews'})}</h1>
                                 <p className={css2.sub_header_2}>
-                                  View and respond to customer feedback
+                                  {intl.formatMessage({id:'StripePayoutPage.viewAndRespond'})}
                                 </p>
                           </div>
                           <div className={css2.content_flex_row}>
                             <div className={css2.review_sumary}>
-                              <h3 className={css2.title}>Review Summary</h3>
+                              <h3 className={css2.title}>{intl.formatMessage({id:'StripePayoutPage.reviewSummary'})}</h3>
                               <div className={css2.flex_row_btw_normal}>
                                 <div>
                                   <h1 className={css2.rate}>
                                     {reviewsRatingsAverage}
                                   </h1>
-                                  <span className={css2.rate_txt}>out of 5</span>
+                                  <span className={css2.rate_txt}>{intl.formatMessage({id:'StripePayoutPage.outOf5'})}</span>
                                 </div>
                                 <Box sx={{ '& > legend': { mt: 2 } }} className={css.rating_con}>
                                       <StyledRating
@@ -1807,31 +1807,28 @@ const [currentListing,setCurrentListing] = useState({});
                               </div>
 
                               <div className={css2.flex_col_3}>
-                                <h3 className={css2.title}>Service Breakdown</h3>
+                                <h3 className={css2.title}>{intl.formatMessage({id:'StripePayoutPage.serviceBreakdown'})}</h3>
 
                                   {Object.keys(reviewsByListing).map((itm,key)=>{
                                     return(
                                       <div className={css2.flex_row_normal_2}>
                                         <button className={css2.serv_btn}>{itm}</button>
-                                        <span>{reviewsByListing[itm]} reviews</span>
+                                        <span>{reviewsByListing[itm]} {intl.formatMessage({id:'StripePayoutPage.reviews'})}</span>
                                       </div>
                                     )
                                   })}
-                                 
                               </div>
 
                               <div className={css2.flex_col_4}>
-                                <h3 className={css2.title}>Response Rate</h3>
+                                <h3 className={css2.title}>{intl.formatMessage({id:'StripePayoutPage.responseRate'})}</h3>
                                 <div className={css2.progress_response}>
                                     <div style={{width:"60%"}} ></div>
                                 </div>
-                                <p>You've responded to 4 out of 6 reviews</p>
+                                <p>{intl.formatMessage({id:'StripePayoutPage.youHaveRespondedTo'})}</p>
                               </div>
-                              
-                             
                             </div>
                             <div className={css2.review_all}>
-                              <h3 className={css2.title}>All Reviews</h3>
+                              <h3 className={css2.title}>{intl.formatMessage({id:'StripePayoutPage.allReviews'})}</h3>
                               {reviews.length > 0 && reviews.map((itm,key)=>{
 
                                 const category = itm?.listing?.attributes?.publicData?.category;
@@ -1902,25 +1899,25 @@ const [currentListing,setCurrentListing] = useState({});
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                                   </svg>
-                                <span>Back to Dashboard</span>
+                                <span>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</span>
                                 </button>
                               </div>
 
-                              <h1 className={css2.header_2}>Orders</h1>
+                              <h1 className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.orders'})}</h1>
                                 <p className={css2.sub_header_2}>
-                                  Manage and track all your service orders
+                                  {intl.formatMessage({id:'StripePayoutPage.manageAndTrackAll'})}
                                 </p>
                           </div>
                           <div className={css2.content_detail}>
                             <div className={css2.order_tab}>
                               <button onClick={e=>{setOrderTab("allOrders")}} className={orderTab === "allOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                All Orders <span>(10)</span>
+                                {intl.formatMessage({id:'StripePayoutPage.allOrders'})} <span>(10)</span>
                               </button>
                               <button onClick={e=>{setOrderTab("onGoingOrders")}} className={orderTab === "onGoingOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                Ongoing Orders <span>(4)</span>
+                                 {intl.formatMessage({id:'StripePayoutPage.onGoingOrdrs'})} <span>(4)</span>
                               </button>
                               <button onClick={e=>{setOrderTab("completedOrders")}} className={orderTab === "completedOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                Completed Orders <span>(6)</span>
+                                {intl.formatMessage({id:'StripePayoutPage.completedOrders'})}<span>(6)</span>
                               </button>
                             </div>
 
@@ -2014,10 +2011,10 @@ const [currentListing,setCurrentListing] = useState({});
           <div className={css2.header_con}>
             <div className={css2.flex_col_normal}>
               <span className={css2.header_manage}>
-                Payout Method
+                {intl.formatMessage({id:'StripePayoutPage.payoutMethod'})}
               </span>
               <p>
-                Choose and add your preferred method of withdrawal
+                {intl.formatMessage({id:'StripePayoutPage.chooseAndAdd'})}
               </p>
             </div>
             <div className={css2.close_btn}>
@@ -2033,11 +2030,11 @@ const [currentListing,setCurrentListing] = useState({});
             </svg>
             <div className={css2.flex_col_2}>
               <span className={css2.header_sub}>
-                Apple pay
+                {intl.formatMessage({id:'StripePayoutPage.applePay'})}
               </span>
               <p className={css2.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -2052,11 +2049,11 @@ const [currentListing,setCurrentListing] = useState({});
             </svg>
             <div className={css2.flex_col_2}>
               <span className={css2.header_sub}>
-                Google pay
+                {intl.formatMessage({id:'StripePayoutPage.googlePay'})}
               </span>
               <p className={css2.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -2071,8 +2068,8 @@ const [currentListing,setCurrentListing] = useState({});
                 Paypal
               </span>
               <p className={css2.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -2082,11 +2079,11 @@ const [currentListing,setCurrentListing] = useState({});
             </svg>
             <div className={css2.flex_col_2}>
               <span className={css2.header_sub}>
-                Bank transfer
+                {intl.formatMessage({id:'StripePayoutPage.bankTransfer'})}
               </span>
               <p className={css2.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -2237,7 +2234,7 @@ const [currentListing,setCurrentListing] = useState({});
       <div  className={css2.overlay} onClick={e=>{setShowSuccessView(false); e.preventDefault(); e.stopPropagation();}}>
           <SuccessView
             setShowSuccessView={setShowSuccessView}
-            message={"Your withdrawal amount has been successfully transfered to your bank account."}
+            message={intl.formatMessage({id:'StripePayoutPage.yourWithdrawalAmountHas'})}
           />
       </div>
     :""}
@@ -2496,8 +2493,8 @@ useEffect(()=>{
 
                     <form>
                       <div className={css2.flex_col}>
-                      <span className={css2.header_2}>Complete your profile</span>
-                      <p className={classNames(css2.no_spacing,css2.p)}>Are you registering as a Business Owner or a Private Owner?</p>
+                      <span className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.completeYourProfile'})}</span>
+                      <p className={classNames(css2.no_spacing,css2.p)}>{intl.formatMessage({id:'StripePayoutPage.areYouRegistering'})}</p>
 
                       {/* <input type='radio' name='userType' value="businessOwner" id='businessOwner'/> <label for="">I am a business owner</label>
                       <input type='radio' name='userType' value="privateOwner" id='privateOwner'/><label for="">I am a private owner</label>
@@ -2520,7 +2517,7 @@ useEffect(()=>{
                                     color: "#F56630",
                                   },
                                 }}
-                          className={classNames(css2.no_spacing,css2.radio)}/>} label="I am a business owner" />
+                          className={classNames(css2.no_spacing,css2.radio)}/>} label={intl.formatMessage({id:'StripePayoutPage.iAmABusinessOwner'})}/>
                           <FormControlLabel className={css2.no_spacing} value="privateOwner" control={
                             <Radio 
                               sx={{
@@ -2529,7 +2526,7 @@ useEffect(()=>{
                                   color: "#F56630",
                                 },
                               }}
-                            className={classNames(css2.no_spacing,css2.radio)}/>} label="I am a private owner" />
+                            className={classNames(css2.no_spacing,css2.radio)}/>} label={intl.formatMessage({id:'StripePayoutPage.iAmAPrivateOwner'})} />
                         </RadioGroup>
                         
                       </FormControl>
@@ -2540,10 +2537,10 @@ useEffect(()=>{
                   </form>
 
                   <div className={css2.base_btns}>
-                      <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
+                      <button onClick={handleHideForm} className={css2.btn_1}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                       <div>
                         <button className={css2.btn_prev} disabled>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                        <button onClick={handleSubmit} className={css2.btn_next}>Next</button>
+                        <button onClick={handleSubmit} className={css2.btn_next}>{intl.formatMessage({id:'StripePayoutPage.next'})}</button>
                       </div>
                     </div>
                 </div>
@@ -2646,9 +2643,9 @@ const handleSubmit = e=>{
                         </svg>
                     </div>
                   <div className={classNames(css2.flex_col,css2.full_w)}>
-                    <span className={css2.header_2}>Complete your profile</span>
+                    <span className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.completeYourProfile'})}</span>
                     <div className={css2.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css2.slider_con}>
                         <div className={css2.slide}></div>
                       </div>
@@ -2662,7 +2659,7 @@ const handleSubmit = e=>{
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2ZM9.5 7C9.5 5.34315 10.8431 4 12.5 4C14.1569 4 15.5 5.34315 15.5 7C15.5 8.65685 14.1569 10 12.5 10C10.8431 10 9.5 8.65685 9.5 7Z" fill="#475367"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 23C10.9595 23 8.72982 22.6502 7.05543 21.9174C6.23343 21.5576 5.39745 21.0427 4.91175 20.2974C4.65632 19.9054 4.49483 19.4437 4.50013 18.9282C4.50537 18.4174 4.67344 17.9281 4.95591 17.4728C6.32532 15.2656 9.12679 13 12.5 13C15.8732 13 18.6747 15.2656 20.0441 17.4728C20.3266 17.9281 20.4946 18.4174 20.4999 18.9282C20.5052 19.4437 20.3437 19.9054 20.0882 20.2974C19.6025 21.0427 18.7666 21.5576 17.9446 21.9174C16.2702 22.6502 14.0405 23 12.5 23ZM6.65539 18.5272C6.52372 18.7394 6.50077 18.8757 6.50002 18.9487C6.49932 19.017 6.51686 19.0973 6.58736 19.2055C6.75354 19.4605 7.15707 19.7787 7.85732 20.0852C9.22744 20.6848 11.1732 21 12.5 21C13.8268 21 15.7726 20.6848 17.1427 20.0852C17.8429 19.7787 18.2465 19.4605 18.4126 19.2055C18.4831 19.0973 18.5007 19.017 18.5 18.9487C18.4992 18.8757 18.4763 18.7394 18.3446 18.5272C17.2225 16.7185 14.9843 15 12.5 15C10.0157 15 7.77754 16.7185 6.65539 18.5272Z" fill="#475367"/>
                       </svg>
-                      <span>Personal Profile</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.personalProfile'})}</span>
                     </div>
 
 
@@ -2670,7 +2667,7 @@ const handleSubmit = e=>{
                       {imageSrc==="" || imageSrc === undefined?
                           <>
                             <img className={css2.resize} src={camera}/>
-                            <span>Add profile photo</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.addProfilePhoto'})}</span>
                           </>
                           :
                           <img className={css2.resize} src={imageSrc}/>
@@ -2679,10 +2676,10 @@ const handleSubmit = e=>{
                     </div>
                     
                     <FormControl className={classNames(css2.full_w,css2.form_input)}>
-                      <label className={css2.labels} for={"outlined-controlled"}>Full name</label>
+                      <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.fullName'})}</label>
                       <input
                         id="outlined-controlled"
-                        label="Full name"
+                        label={intl.formatMessage({id:'StripePayoutPage.fullName'})}
                         name='fullName'
                         onChange={(event) => {
                           setFullName(event.target.value);
@@ -2690,19 +2687,19 @@ const handleSubmit = e=>{
                         value={fullName}
                         placeholder="Anima Justin"
                       />
-                      <label className={css2.labels} for={"outlined-controlled"}>Years of experience</label>
+                      <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}</label>
                       <input
                         id="outlined-controlled"
-                        label="Years of experience"
+                        label={intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}
                         name='yearsOfExperience'
                         value={yearsOfExperience}
                         onChange={(event) => {
                           setYearsOfExperience(event.target.value);
                         }}
-                        placeholder="Years of experience"
+                        placeholder={intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}
                       />
 
-                      <label className={css2.labels} for={"outlined-controlled"}>Language spoken</label>
+                      <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                       <select name='language' 
                       value={language}
                       onChange={
@@ -2710,7 +2707,7 @@ const handleSubmit = e=>{
                           setLanguage(event.target.value);
                           }
                         }>
-                        <option value={1}>Select languages from the dropdown list</option>
+                        <option value={1}>{intl.formatMessage({id:'StripePayoutPage.selectLanguages'})}</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">�land Islands</option>
                         <option value="AL">Albania</option>
@@ -2962,7 +2959,7 @@ const handleSubmit = e=>{
                         <option value="ZW">Zimbabwe</option>
                       </select>
 
-                    <label className={css2.labels} for={"outlined-controlled"}>Date of birth</label>
+                    <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.dateOfBirth'})}</label>
                     <input value={dateOfBirth} type='date' name='dateOfBirth' onChange={
                       event=>{
                           setDateOfBirth(event.target.value);
@@ -2973,10 +2970,10 @@ const handleSubmit = e=>{
                 
 
                   <div className={css2.base_btns}>
-                    <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css2.btn_1}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                     <div>
                       <button onClick={e=>handleMoveBack("userType")} className={css2.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                      <button onClick={handleSubmit} className={css2.btn_next}>Next</button>
+                      <button onClick={handleSubmit} className={css2.btn_next}>{intl.formatMessage({id:'StripePayoutPage.next'})}</button>
                        <input 
                             id='file' 
                             name='file' 
@@ -3233,9 +3230,9 @@ function onChange(timestamp) {
                         </svg>
                     </div>
                   <div className={classNames(css2.flex_col,css2.full_w)}>
-                    <span className={css2.header_2}>Complete your profile</span>
+                    <span className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.completeYourProfile'})}</span>
                     {/* <div className={css2.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css2.slider_con}>
                         <div className={css2.slide}></div>
                       </div>
@@ -3244,20 +3241,20 @@ function onChange(timestamp) {
                       </div>
                       
                     </div> */}
-                    <h3 className={css2.sub_header_3}>Step 1 of 2</h3>
+                    <h3 className={css2.sub_header_3}>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</h3>
                     <div className={css2.flex_row_normal}>
                       <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2ZM9.5 7C9.5 5.34315 10.8431 4 12.5 4C14.1569 4 15.5 5.34315 15.5 7C15.5 8.65685 14.1569 10 12.5 10C10.8431 10 9.5 8.65685 9.5 7Z" fill="#475367"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 23C10.9595 23 8.72982 22.6502 7.05543 21.9174C6.23343 21.5576 5.39745 21.0427 4.91175 20.2974C4.65632 19.9054 4.49483 19.4437 4.50013 18.9282C4.50537 18.4174 4.67344 17.9281 4.95591 17.4728C6.32532 15.2656 9.12679 13 12.5 13C15.8732 13 18.6747 15.2656 20.0441 17.4728C20.3266 17.9281 20.4946 18.4174 20.4999 18.9282C20.5052 19.4437 20.3437 19.9054 20.0882 20.2974C19.6025 21.0427 18.7666 21.5576 17.9446 21.9174C16.2702 22.6502 14.0405 23 12.5 23ZM6.65539 18.5272C6.52372 18.7394 6.50077 18.8757 6.50002 18.9487C6.49932 19.017 6.51686 19.0973 6.58736 19.2055C6.75354 19.4605 7.15707 19.7787 7.85732 20.0852C9.22744 20.6848 11.1732 21 12.5 21C13.8268 21 15.7726 20.6848 17.1427 20.0852C17.8429 19.7787 18.2465 19.4605 18.4126 19.2055C18.4831 19.0973 18.5007 19.017 18.5 18.9487C18.4992 18.8757 18.4763 18.7394 18.3446 18.5272C17.2225 16.7185 14.9843 15 12.5 15C10.0157 15 7.77754 16.7185 6.65539 18.5272Z" fill="#475367"/>
                       </svg>
-                      <span>Business Profile</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.businessProfile'})}</span>
                     </div>
 
                     <div className={css2.add_profile} onClick={handleFileClick}>
                       {imageSrc==="" || imageSrc === undefined?
                           <>
                             <img className={css2.resize} src={camera}/>
-                            <span>Add profile photo</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.addProfilePhoto'})}</span>
                           </>
                           :
                           <img className={css2.resize} src={imageSrc}/>
@@ -3267,7 +3264,7 @@ function onChange(timestamp) {
                     
                     <FormControl className={classNames(css2.full_w,css2.form_input)}>
                       <div>
-                        <label className={css2.labels} for={"outlined-controlled"}>Full name/ Business name</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.fullNameBusiName'})}</label>
                         <input
                           id="outlined-controlled"
                           name='businessName'
@@ -3277,11 +3274,11 @@ function onChange(timestamp) {
                           value={businessName}
                           placeholder={businessName}
                         />
-                        {businessName !== undefined && businessName !== ""?"":<span className={css2.error_msg}>Name is required</span>}
+                        {businessName !== undefined && businessName !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.nameIsRequired'})}</span>}
                       </div>
                       
                       <div>
-                          <label className={css2.labels} for={"outlined-controlled"}>Years of Experience</label>
+                          <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}</label>
                         <input
                           id="outlined-controlled"
                           name='yearsOfExperience'
@@ -3289,14 +3286,14 @@ function onChange(timestamp) {
                           onChange={(event) => {
                             setYearsOfExperience(event.target.value);
                           }}
-                          placeholder="Write out your years of experience"
+                          placeholder={intl.formatMessage({id:'StripePayoutPage.writeOutYourExperience'})}
                         />
-                        {yearsOfExperience !== undefined && yearsOfExperience !== ""?"":<span className={css2.error_msg}>Years of experience is required</span>}
+                        {yearsOfExperience !== undefined && yearsOfExperience !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.yearsOfExpeRequired'})}</span>}
                       </div>
                       
 
                       <div>
-                        <label className={css2.labels} for={"outlined-controlled"}>Language spoken</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                         <SelectMultipleComponent 
                             options={Object.values(countryLanguages)} 
                             value={languages}
@@ -3304,18 +3301,18 @@ function onChange(timestamp) {
                             showOptions = {showOptions}
                             setShowOptions = {setShowOptions}
                           />
-                          {languages !== undefined && languages.length > 0 ?"":<span className={css2.error_msg}>Language spoken is required</span>}
+                          {languages !== undefined && languages.length > 0 ?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.languageSpokenRequired'})}</span>}
                       </div>
                       
                       
                       <div className={css.flex_col}>
-                        <label className={css2.labels} for={"outlined-controlled"}>Date of birth</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                         <MyDatePicker currentDate={dateOfBirth} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
-                        {dateOfBirth !== undefined && dateOfBirth !== null ?"":<span className={css2.error_msg}>Date of birth is required</span>}
+                        {dateOfBirth !== undefined && dateOfBirth !== null ?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.dateOfBirthRequired'})}</span>}
                       </div>
 
                        <div>
-                        <label className={css2.labels} for={"outlined-controlled"}>Bio</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.bio'})}</label>
                         <input
                           id="outlined-controlled"
                           name='bio'
@@ -3325,7 +3322,7 @@ function onChange(timestamp) {
                           value={bio}
                           placeholder={bio}
                         />
-                        {bio !== undefined && bio !== ""?"":<span className={css2.error_msg}>Bio is required</span>}
+                        {bio !== undefined && bio !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.bioIsRequired'})}</span>}
                       </div>
 
                       <input 
@@ -3342,9 +3339,9 @@ function onChange(timestamp) {
                 
 
                   <div className={css2.base_btns}>
-                    <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css2.btn_1}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                     <div>
-                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>Next</button>
+                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>{intl.formatMessage({id:'StripePayoutPage.next'})}</button>
                     </div>
                   </div>
                 </div>
@@ -3430,9 +3427,9 @@ const handleSubmit = async e=>{
                         </svg>
                     </div>
                   <div className={classNames(css2.flex_col,css2.full_w)}>
-                    <span className={css2.header_2}>Complete your profile</span>
+                    <span className={css2.header_2}>{intl.formatMessage({id:'StripePayoutPage.completeYourProfile'})}</span>
                     {/* <div className={css2.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css2.slider_con}>
                         <div className={css2.slide_100}></div>
                       </div>
@@ -3441,49 +3438,45 @@ const handleSubmit = async e=>{
                       </div>
                       
                     </div> */}
-                    <h3 className={css2.sub_header_3}>Step 2 of 2</h3>
+                    <h3 className={css2.sub_header_3}>{intl.formatMessage({id:'StripePayoutPage.step2Of2'})}</h3>
                     <div className={css2.flex_row_normal}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 5.49914C9.51487 5.49914 7.50015 7.51385 7.50015 9.99914C7.50015 12.4844 9.51487 14.4991 12.0002 14.4991C14.4854 14.4991 16.5002 12.4844 16.5002 9.99914C16.5002 7.51385 14.4854 5.49914 12.0002 5.49914ZM9.50015 9.99914C9.50015 8.61842 10.6194 7.49914 12.0002 7.49914C13.3809 7.49914 14.5002 8.61842 14.5002 9.99914C14.5002 11.3798 13.3809 12.4991 12.0002 12.4991C10.6194 12.4991 9.50015 11.3798 9.50015 9.99914Z" fill="#475367"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M7.80939 3.59112C10.3471 1.89931 13.6532 1.89931 16.1909 3.59112C19.6218 5.87839 20.585 10.4941 18.3553 13.9627L14.5237 19.9229C13.3428 21.7599 10.6575 21.7599 9.47662 19.9229L5.64505 13.9627C3.41528 10.4941 4.3785 5.87839 7.80939 3.59112ZM8.9188 5.25523C10.7847 4.01128 13.2156 4.01128 15.0815 5.25523C17.6042 6.93699 18.3124 10.3308 16.6729 12.8812L12.8413 18.8414C12.4477 19.4537 11.5526 19.4537 11.159 18.8414L7.32741 12.8812C5.68792 10.3308 6.39615 6.93699 8.9188 5.25523Z" fill="#475367"/>
                       </svg>
-                      <span>Location & Availability</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.locationAndAvailability'})}</span>
                     </div>
 
                   
                     <FormControl className={classNames(css2.full_w,css2.form_input)}>
-                     
-
                        <div>
-                         <label className={css2.labels} for={"outlined-controlled"}>Address</label>
+                         <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.address'})}</label>
                         <input
                           id="outlined-controlled"
                           value={address}
                           onChange={(event) => {
                             setAddress(event.target.value);
                           }}
-                          placeholder="Street address"
+                          placeholder={intl.formatMessage({id:'StripePayoutPage.streetAddress'})}
                         />
-                        {address !== undefined && address !== ""?"":<span className={css2.error_msg}>Address is required</span>}
+                        {address !== undefined && address !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.addressRequired'})}</span>}
                       </div>
 
-
-
                       <div>
-                        <label className={css2.labels} for={"outlined-controlled"}>City</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.city'})}</label>
                         <input
                           id="outlined-controlled"
                           value={city}
                           onChange={(event) => {
                             setCity(event.target.value);
                           }}
-                          placeholder="City"
+                          placeholder={intl.formatMessage({id:'StripePayoutPage.city'})}
                         />
-                        {city !== undefined && city !== ""?"":<span className={css2.error_msg}>City is required</span>}
+                        {city !== undefined && city !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.cityRequired'})}</span>}
                       </div>
                       
                       <div>
-                        <label className={css2.labels} for={"outlined-controlled"}>Service area (km)</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.serviceArea'})}</label>
                         <div className={css2.area_con} onClick={e=>setShowMap(true)}>
                           <div className={css2.flex_row_area}>
                             
@@ -3503,7 +3496,7 @@ const handleSubmit = async e=>{
                             </div>
                             :
                             <>
-                              <span>Select your service area from the map</span>
+                              <span>{intl.formatMessage({id:'StripePayoutPage.selectYourService'})}</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 5.49914C9.51487 5.49914 7.50015 7.51385 7.50015 9.99914C7.50015 12.4844 9.51487 14.4991 12.0002 14.4991C14.4854 14.4991 16.5002 12.4844 16.5002 9.99914C16.5002 7.51385 14.4854 5.49914 12.0002 5.49914ZM9.50015 9.99914C9.50015 8.61842 10.6194 7.49914 12.0002 7.49914C13.3809 7.49914 14.5002 8.61842 14.5002 9.99914C14.5002 11.3798 13.3809 12.4991 12.0002 12.4991C10.6194 12.4991 9.50015 11.3798 9.50015 9.99914Z" fill="#475367"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.80939 3.59112C10.3471 1.89931 13.6532 1.89931 16.1909 3.59112C19.6218 5.87839 20.585 10.4941 18.3553 13.9627L14.5237 19.9229C13.3428 21.7599 10.6575 21.7599 9.47662 19.9229L5.64505 13.9627C3.41528 10.4941 4.3785 5.87839 7.80939 3.59112ZM8.9188 5.25523C10.7847 4.01128 13.2156 4.01128 15.0815 5.25523C17.6042 6.93699 18.3124 10.3308 16.6729 12.8812L12.8413 18.8414C12.4477 19.4537 11.5526 19.4537 11.159 18.8414L7.32741 12.8812C5.68792 10.3308 6.39615 6.93699 8.9188 5.25523Z" fill="#475367"/>
@@ -3512,9 +3505,9 @@ const handleSubmit = async e=>{
                             }
                             
                           </div>
-                          <span className={css2.your_serv}>Your service will be shown to users in the service areas you select.</span>
+                          <span className={css2.your_serv}>{intl.formatMessage({id:'StripePayoutPage.yourServiceWillBe'})}</span>
                         </div>
-                        {serviceAreas !== undefined && serviceAreas.length > 0?"":<span className={css2.error_msg}>Service area is required</span>}
+                        {serviceAreas !== undefined && serviceAreas.length > 0?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.serviceAreaRequired'})}</span>}
                       </div>
                       
                       
@@ -3523,10 +3516,10 @@ const handleSubmit = async e=>{
                 
 
                   <div className={css2.base_btns}>
-                    <button onClick={handleHideForm} className={css2.btn_1}>Close</button>
+                    <button onClick={handleHideForm} className={css2.btn_1}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                     <div>
                       <button onClick={moveBack} className={css2.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>Save</button>
+                      <button onClick={handleSubmit} className={css2.btn_next} disabled={!isReady}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                     </div>
                   </div>
 
@@ -3590,24 +3583,21 @@ if(currentSelectedUserType === "businessOwner"){
 
   return (
           <div className={css2.overlay}>
-
-                <div className={css2.modal_complete_profile_busi}>
-                  <div className={classNames(css2.flex_col,css2.full_w)}>
-                    <span className={css2.completed_header}>Profile Completed</span>
-                    <div className={css2.mark_con}>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M0 60C0 44.087 6.32141 28.8258 17.5736 17.5736C28.8258 6.32141 44.087 0 60 0C75.913 0 91.1742 6.32141 102.426 17.5736C113.679 28.8258 120 44.087 120 60C120 75.913 113.679 91.1742 102.426 102.426C91.1742 113.679 75.913 120 60 120C44.087 120 28.8258 113.679 17.5736 102.426C6.32141 91.1742 0 75.913 0 60ZM56.576 85.68L91.12 42.496L84.88 37.504L55.424 74.312L34.56 56.928L29.44 63.072L56.576 85.68Z" fill="#6DC347"/>
-                      </svg>
-                    </div>
-                     <p className={css2.complete_content}>
-                      Your profile is now complete. Continue to create a listing.
-                    </p>
-                    <button className={css2.back_btn} onClick={handleBackToDashboard}>Back to dashboard</button>
-                  </div>
-                 
+            <div className={css2.modal_complete_profile_busi}>
+              <div className={classNames(css2.flex_col,css2.full_w)}>
+                <span className={css2.completed_header}>{intl.formatMessage({id:'StripePayoutPage.profileCompleted'})}</span>
+                <div className={css2.mark_con}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 60C0 44.087 6.32141 28.8258 17.5736 17.5736C28.8258 6.32141 44.087 0 60 0C75.913 0 91.1742 6.32141 102.426 17.5736C113.679 28.8258 120 44.087 120 60C120 75.913 113.679 91.1742 102.426 102.426C91.1742 113.679 75.913 120 60 120C44.087 120 28.8258 113.679 17.5736 102.426C6.32141 91.1742 0 75.913 0 60ZM56.576 85.68L91.12 42.496L84.88 37.504L55.424 74.312L34.56 56.928L29.44 63.072L56.576 85.68Z" fill="#6DC347"/>
+                  </svg>
                 </div>
-                
+                  <p className={css2.complete_content}>
+                  {intl.formatMessage({id:'StripePayoutPage.yourProfileIs'})}
+                </p>
+                <button className={css2.back_btn} onClick={handleBackToDashboard}>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</button>
               </div>
+            </div>
+          </div>
   )
 }
 
@@ -3621,10 +3611,10 @@ const AddApplePayForm = props => {
      <div className={css2.header_con}>
             <div className={css2.flex_col_normal}>
               <span className={classNames("pb-2",css2.header_manage)}>
-                Add Apple pay account
+                {intl.formatMessage({id:'StripePayoutPage.addApplePay'})}
               </span>
               <p>
-                Enter the email address linked to the Apple pay account you want to use for withdrawing funds. A verification code will be sent to the email address or phone linked to your account.
+                 {intl.formatMessage({id:'StripePayoutPage.enterTheEmailAddress'})}
               </p>
             </div>
             <div className={css2.close_btn}>
@@ -3634,9 +3624,9 @@ const AddApplePayForm = props => {
             </div>
           </div>
           <form className={css2.form} onSubmit={handleSubmit}>
-              <label labelfor="email">Email address</label>
-              <input type='email' placeholder='Enter your email address'/>
-              <button onClick={e=>{handleContinue(e,"VerificationCodeApplePay")}} className={css2.continue} type="submit">Continue</button>
+              <label labelfor="email">{intl.formatMessage({id:'StripePayoutPage.emailAddress'})}</label>
+              <input type='email' placeholder={intl.formatMessage({id:'StripePayoutPage.enterEmail'})}/>
+              <button onClick={e=>{handleContinue(e,"VerificationCodeApplePay")}} className={css2.continue} type="submit">{intl.formatMessage({id:'StripePayoutPage.continue'})}</button>
           </form>
     
     </>
@@ -3654,10 +3644,10 @@ const VerificationCodeApplePayForm = props => {
      <div className={css2.header_con}>
             <div className={css2.flex_col_normal}>
               <span className={classNames("pb-2",css2.header_manage)}>
-                Verification code sent
+                {intl.formatMessage({id:'StripePayoutPage.verificationCodeSent'})}
               </span>
               <p>
-                 Verification code has been sent to the email ks######@gmail.com, and also the phone number +33********6. Kindly check.
+                 {intl.formatMessage({id:'StripePayoutPage.verificationCodeHasBeen'})}
               </p>
             </div>
             <div className={css2.close_btn}>
@@ -3667,9 +3657,9 @@ const VerificationCodeApplePayForm = props => {
             </div>
           </div>
           <form className={css2.form} onSubmit={handleSubmit}>
-              <label labelfor="email">Enter code</label>
-              <input type='number' placeholder='Enter your email address'/>
-              <button onClick={e=>{handleSubmitVerification(e,"SuccessfulApplePay")}} className={css2.continue} type="submit">Submit</button>
+              <label labelfor="email">{intl.formatMessage({id:'StripePayoutPage.enterCode'})}</label>
+              <input type='number' placeholder={intl.formatMessage({id:'StripePayoutPage.enterEmail'})}/>
+              <button onClick={e=>{handleSubmitVerification(e,"SuccessfulApplePay")}} className={css2.continue} type="submit">{intl.formatMessage({id:'StripePayoutPage.submit'})}</button>
           </form>
     
     </>
@@ -3713,13 +3703,13 @@ if(currentSelectedUserType === "businessOwner"){
                       </svg>
                     </div>
                     <div className={css2.success_center}>
-                      <span className={css2.success_header}>Successful</span>
+                      <span className={css2.success_header}>{intl.formatMessage({id:'StripePayoutPage.successful'})}</span>
                       <p className={css2.success_content}>
-                        Apple pay account ks######@gmail.com has been added successfully for withdrawal.
+                        {intl.formatMessage({id:'StripePayoutPage.applePayAccount'})}
                       </p>
                     </div>
                     
-                    <button className={css2.close_success_btn} onClick={handleCloseSuccessApplePay}>Close</button>
+                    <button className={css2.close_success_btn} onClick={handleCloseSuccessApplePay}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                   </div>
                  
                 </div>

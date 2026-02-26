@@ -1027,7 +1027,7 @@ export const DashboardPageComponent = props => {
                       <div className={css.flex_row}>
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         </svg>
-                        <span>Notifications</span>
+                        <span>{intl.formatMessage({id:'StripePayoutPage.notifications'})}</span>
                       </div>
                     </div>
 
@@ -1062,7 +1062,7 @@ export const DashboardPageComponent = props => {
                             <div className={css.flex_row}>
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                               </svg>
-                              <span>Notifications</span>
+                              <span>{intl.formatMessage({id:'StripePayoutPage.notifications'})}</span>
                             </div>
                           </div>
 
@@ -1136,10 +1136,10 @@ export const DashboardPageComponent = props => {
                         onChange={(event) => {
                           // setYearsOfExperience(event.target.value);
                         }}
-                        placeholder="Write out your years of experience"
+                        placeholder={intl.formatMessage({id:'StripePayoutPage.writeOutYourExperience'})}
                       />
 
-                      <label className={css.labels} for={"outlined-controlled"}>Language spoken</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
 
                       <SelectMultipleComponent options={Object.values(countryLanguages)} value={"languages"} handleSelectChange={e=>setLanguages(e)}/>
                       
@@ -1254,8 +1254,8 @@ export const DashboardPageComponent = props => {
                                       {isDraft?
                                         <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
                                           <div className={css.text_center}>
-                                            <h5>Draft</h5>
-                                            <p>Click to complete</p>
+                                            <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                            <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                           </div>
                                         </div>
                                       :""}
@@ -1266,8 +1266,8 @@ export const DashboardPageComponent = props => {
                                       {isDraft?
                                         <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
                                           <div className={css.text_center}>
-                                            <h5>Draft</h5>
-                                            <p>Click to complete</p>
+                                            <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                            <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                           </div>
                                         </div>
                                       :""}
@@ -1283,7 +1283,7 @@ export const DashboardPageComponent = props => {
                                   {closeListingInProgress?
                                     <CircularProgress size={20} sx={{ color: 'gray'}}/>
                                   :""}
-                                   <span>Remove Listing</span>
+                                   <span>{intl.formatMessage({id:'StripePayoutPage.removeListing'})}</span>
                                   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                     <path d="M7.91708 1.45898C7.57069 1.45898 7.26043 1.67326 7.13775 1.99719L6.94643 2.50243C6.53628 2.46144 6.15838 2.42054 5.85247 2.38619C5.6238 2.36052 5.43582 2.33856 5.30524 2.32305L5.15462 2.30497L5.10346 2.29871C4.64672 2.24216 4.22996 2.56649 4.1734 3.02324C4.11683 3.47999 4.44125 3.89611 4.898 3.95267L4.95366 3.95947L5.10864 3.97808C5.24226 3.99395 5.43382 4.01632 5.66651 4.04245C6.13148 4.09466 6.76256 4.16206 7.42467 4.22248C8.31782 4.30399 9.29685 4.37565 10.0004 4.37565C10.704 4.37565 11.683 4.30399 12.5761 4.22248C13.2383 4.16206 13.8694 4.09466 14.3343 4.04245C14.567 4.01632 14.7586 3.99395 14.8922 3.97808L15.0472 3.95947L15.1027 3.95268C15.5595 3.89612 15.884 3.47999 15.8274 3.02324C15.7709 2.56649 15.3548 2.24208 14.898 2.29863L14.8462 2.30497L14.6956 2.32305C14.565 2.33856 14.377 2.36052 14.1484 2.38619C13.8424 2.42054 13.4645 2.46144 13.0544 2.50243L12.8631 1.99719C12.7404 1.67326 12.4301 1.45898 12.0837 1.45898H7.91708Z" fill="#475367"/>
                                     <path d="M9.16708 9.79232C9.16708 9.33208 8.79398 8.95898 8.33375 8.95898C7.87351 8.95898 7.50041 9.33208 7.50041 9.79232V13.959C7.50041 14.4192 7.87351 14.7923 8.33375 14.7923C8.79398 14.7923 9.16708 14.4192 9.16708 13.959V9.79232Z" fill="#475367"/>
@@ -1301,7 +1301,7 @@ export const DashboardPageComponent = props => {
                           {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).length>2?
                            <div className={css.mylisting_card_2}>
                              <button onClick={handleShowListings} className={css.view_more}>
-                              <span>View all Listings</span>
+                              <span>{intl.formatMessage({id:'StripePayoutPage.viewAllListing'})}</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L17.7071 7.29289C17.3166 6.90237 16.6834 6.90237 16.2929 7.29289C15.9024 7.68342 15.9024 8.31658 16.2929 8.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L16.2929 15.2929C15.9024 15.6834 15.9024 16.3166 16.2929 16.7071C16.6834 17.0976 17.3166 17.0976 17.7071 16.7071L21.7071 12.7071Z" fill="#EB5017"/>
                               </svg>
@@ -1342,7 +1342,7 @@ export const DashboardPageComponent = props => {
                             <p className={css.no_spacing}>You currently have</p>
                             <div className={css.flex_row_start_bottom}>
                               <span className={css.counter}>0</span>
-                              <span>On-going orders</span>
+                              <span>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</span>
                             </div>
                           </div>
                           <div onClick={handleShowCompletedOrders}>
@@ -1360,7 +1360,7 @@ export const DashboardPageComponent = props => {
                             <p className={css.no_spacing}>You currently have</p>
                             <div className={css.flex_row_start_bottom}>
                               <span className={css.counter}>0</span>
-                              <span>Completed</span>
+                              <span>{intl.formatMessage({id:'StripePayoutPage.completed'})}</span>
                             </div>
                           </div>
                       </div>
@@ -1372,8 +1372,8 @@ export const DashboardPageComponent = props => {
                           </svg>
 
                           <div className={css.flex_col_order}>
-                              <span className={css.header}>Reviews</span>
-                              <p>View feedback from customers who have used your services. </p>
+                              <span className={css.header}>{intl.formatMessage({id:'StripePayoutPage.reviews'})}</span>
+                              <p>{intl.formatMessage({id:'StripePayoutPage.viewFeedback'})}</p>
                           </div>
                       </div>
                       <p className={classNames(css.no_spacing_main,css.cust_p)}>Current rating: --</p>
@@ -1432,7 +1432,7 @@ export const DashboardPageComponent = props => {
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                               <path d="M15.8327 9.99935H4.16602M4.16602 9.99935L9.99935 15.8327M4.16602 9.99935L9.99935 4.16602" stroke="#0F172A" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                          <span>Back to Dashboard</span>
+                          <span>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</span>
                           </button>
                         </div>
 
@@ -1475,8 +1475,8 @@ export const DashboardPageComponent = props => {
                                           {isDraft?
                                             <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
                                               <div className={css.text_center}>
-                                                <h5>Draft</h5>
-                                                <p>Click to complete</p>
+                                                <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                               </div>
                                             </div>
                                           :""}
@@ -1487,8 +1487,8 @@ export const DashboardPageComponent = props => {
                                           {isDraft?
                                             <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
                                               <div className={css.text_center}>
-                                                <h5>Draft</h5>
-                                                <p>Click to complete</p>
+                                                <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
+                                                <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
                                               </div>
                                             </div>
                                           :""}
@@ -1604,7 +1604,7 @@ export const DashboardPageComponent = props => {
           <div className={css.header_con}>
             <div className={css.flex_col_normal}>
               <span className={css.header_manage}>
-                Payout Method
+                {intl.formatMessage({id:'StripePayoutPage.payoutMethod'})}
               </span>
               <p>
                 Choose and add your preferred method of withdrawal
@@ -1626,8 +1626,8 @@ export const DashboardPageComponent = props => {
                 Apple pay
               </span>
               <p className={css.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -1645,8 +1645,8 @@ export const DashboardPageComponent = props => {
                 Google pay
               </span>
               <p className={css.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -1661,8 +1661,8 @@ export const DashboardPageComponent = props => {
                 Paypal
               </span>
               <p className={css.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -1675,8 +1675,8 @@ export const DashboardPageComponent = props => {
                 Bank transfer
               </span>
               <p className={css.flow_row_sm_gap}>
-                <span>Up to 1 business day</span>
-                <span>Fees may apply</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
+                <span>{intl.formatMessage({id:'StripePayoutPage.feesMayApply'})}</span>
               </p>
             </div>
           </div>
@@ -1988,7 +1988,7 @@ useEffect(()=>{
                                     color: "#F56630",
                                   },
                                 }}
-                          className={classNames(css.no_spacing,css.radio)}/>} label="I am a business owner" />
+                          className={classNames(css.no_spacing,css.radio)}/>} label={intl.formatMessage({id:'StripePayoutPage.iAmABusinessOwner'})} />
                           <FormControlLabel className={css.no_spacing} value="privateOwner" control={
                             <Radio 
                               sx={{
@@ -2116,7 +2116,7 @@ const handleSubmit = e=>{
                   <div className={classNames(css.flex_col,css.full_w)}>
                     <span className={css.header_2}>Complete your profile</span>
                     <div className={css.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css.slider_con}>
                         <div className={css.slide}></div>
                       </div>
@@ -2130,14 +2130,14 @@ const handleSubmit = e=>{
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2ZM9.5 7C9.5 5.34315 10.8431 4 12.5 4C14.1569 4 15.5 5.34315 15.5 7C15.5 8.65685 14.1569 10 12.5 10C10.8431 10 9.5 8.65685 9.5 7Z" fill="#475367"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 23C10.9595 23 8.72982 22.6502 7.05543 21.9174C6.23343 21.5576 5.39745 21.0427 4.91175 20.2974C4.65632 19.9054 4.49483 19.4437 4.50013 18.9282C4.50537 18.4174 4.67344 17.9281 4.95591 17.4728C6.32532 15.2656 9.12679 13 12.5 13C15.8732 13 18.6747 15.2656 20.0441 17.4728C20.3266 17.9281 20.4946 18.4174 20.4999 18.9282C20.5052 19.4437 20.3437 19.9054 20.0882 20.2974C19.6025 21.0427 18.7666 21.5576 17.9446 21.9174C16.2702 22.6502 14.0405 23 12.5 23ZM6.65539 18.5272C6.52372 18.7394 6.50077 18.8757 6.50002 18.9487C6.49932 19.017 6.51686 19.0973 6.58736 19.2055C6.75354 19.4605 7.15707 19.7787 7.85732 20.0852C9.22744 20.6848 11.1732 21 12.5 21C13.8268 21 15.7726 20.6848 17.1427 20.0852C17.8429 19.7787 18.2465 19.4605 18.4126 19.2055C18.4831 19.0973 18.5007 19.017 18.5 18.9487C18.4992 18.8757 18.4763 18.7394 18.3446 18.5272C17.2225 16.7185 14.9843 15 12.5 15C10.0157 15 7.77754 16.7185 6.65539 18.5272Z" fill="#475367"/>
                       </svg>
-                      <span>Personal Profile</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.personalProfile'})}</span>
                     </div>
 
                     <div className={css.add_profile} onClick={handleFileClick}>
                       {imageSrc===""?
                           <>
                             <img className={css.resize} src={camera}/>
-                            <span>Add profile photo</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.addProfilePhoto'})}</span>
                           </>
                           :
                           <img className={css.resize} src={imageSrc}/>
@@ -2146,7 +2146,7 @@ const handleSubmit = e=>{
                     </div>
                     
                     <FormControl className={classNames(css.full_w,css.form_input)}>
-                      <label className={css.labels} for={"outlined-controlled"}>Full name</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.fullName'})}</label>
                       <input
                         id="outlined-controlled"
                         label="Full name"
@@ -2157,7 +2157,7 @@ const handleSubmit = e=>{
                         value={fullName}
                         placeholder="Anima Justin"
                       />
-                      <label className={css.labels} for={"outlined-controlled"}>Years of experience</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}</label>
                       <input
                         id="outlined-controlled"
                         label="Years of experience"
@@ -2169,7 +2169,7 @@ const handleSubmit = e=>{
                         placeholder="Years of experience"
                       />
 
-                      <label className={css.labels} for={"outlined-controlled"}>Language spoken</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                       <select name='language' 
                       value={language}
                       onChange={
@@ -2177,7 +2177,7 @@ const handleSubmit = e=>{
                           setLanguage(event.target.value);
                           }
                         }>
-                        <option value={1}>Select languages from the dropdown list</option>
+                        <option value={1}>{intl.formatMessage({id:'StripePayoutPage.selectLanguages'})}</option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">�land Islands</option>
                         <option value="AL">Albania</option>
@@ -2430,7 +2430,7 @@ const handleSubmit = e=>{
                       </select>
 
 
-                    <label className={css.labels} for={"outlined-controlled"}>Date of birth</label>
+                    <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                     <input value={dateOfBirth} type='date' name='dateOfBirth' onChange={
                       event=>{
                           setDateOfBirth(event.target.value);
@@ -2536,7 +2536,7 @@ const handleSubmit = async e=>{
                   <div className={classNames(css.flex_col,css.full_w)}>
                     <span className={css.header_2}>Complete your profile</span>
                     <div className={css.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css.slider_con}>
                         <div className={css.slide}></div>
                       </div>
@@ -2550,14 +2550,14 @@ const handleSubmit = async e=>{
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 2C9.73858 2 7.5 4.23858 7.5 7C7.5 9.76142 9.73858 12 12.5 12C15.2614 12 17.5 9.76142 17.5 7C17.5 4.23858 15.2614 2 12.5 2ZM9.5 7C9.5 5.34315 10.8431 4 12.5 4C14.1569 4 15.5 5.34315 15.5 7C15.5 8.65685 14.1569 10 12.5 10C10.8431 10 9.5 8.65685 9.5 7Z" fill="#475367"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5 23C10.9595 23 8.72982 22.6502 7.05543 21.9174C6.23343 21.5576 5.39745 21.0427 4.91175 20.2974C4.65632 19.9054 4.49483 19.4437 4.50013 18.9282C4.50537 18.4174 4.67344 17.9281 4.95591 17.4728C6.32532 15.2656 9.12679 13 12.5 13C15.8732 13 18.6747 15.2656 20.0441 17.4728C20.3266 17.9281 20.4946 18.4174 20.4999 18.9282C20.5052 19.4437 20.3437 19.9054 20.0882 20.2974C19.6025 21.0427 18.7666 21.5576 17.9446 21.9174C16.2702 22.6502 14.0405 23 12.5 23ZM6.65539 18.5272C6.52372 18.7394 6.50077 18.8757 6.50002 18.9487C6.49932 19.017 6.51686 19.0973 6.58736 19.2055C6.75354 19.4605 7.15707 19.7787 7.85732 20.0852C9.22744 20.6848 11.1732 21 12.5 21C13.8268 21 15.7726 20.6848 17.1427 20.0852C17.8429 19.7787 18.2465 19.4605 18.4126 19.2055C18.4831 19.0973 18.5007 19.017 18.5 18.9487C18.4992 18.8757 18.4763 18.7394 18.3446 18.5272C17.2225 16.7185 14.9843 15 12.5 15C10.0157 15 7.77754 16.7185 6.65539 18.5272Z" fill="#475367"/>
                       </svg>
-                      <span>Business Profile</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.businessProfile'})}</span>
                     </div>
 
                     <div className={css.add_profile} onClick={handleFileClick}>
                       {imageSrc===""?
                           <>
                             <img className={css.resize} src={camera}/>
-                            <span>Add profile photo</span>
+                            <span>{intl.formatMessage({id:'StripePayoutPage.addProfilePhoto'})}</span>
                           </>
                           :
                           <img className={css.resize} src={imageSrc}/>
@@ -2566,7 +2566,7 @@ const handleSubmit = async e=>{
                     </div>
                     
                     <FormControl className={classNames(css.full_w,css.form_input)}>
-                      <label className={css.labels} for={"outlined-controlled"}>Full name/ Business name</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.fullNameBusiName'})}</label>
                       <input
                         id="outlined-controlled"
                         name='businessName'
@@ -2576,7 +2576,7 @@ const handleSubmit = async e=>{
                         value={businessName}
                         placeholder={businessName}
                       />
-                      <label className={css.labels} for={"outlined-controlled"}>Years of Experience</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}</label>
                       <input
                         id="outlined-controlled"
                         name='yearsOfExperience'
@@ -2584,14 +2584,14 @@ const handleSubmit = async e=>{
                         onChange={(event) => {
                           setYearsOfExperience(event.target.value);
                         }}
-                        placeholder="Write out your years of experience"
+                        placeholder={intl.formatMessage({id:'StripePayoutPage.writeOutYourExperience'})}
                       />
 
-                      <label className={css.labels} for={"outlined-controlled"}>Language spoken</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
 
                       <SelectMultipleComponent options={Object.values(countryLanguages)} value={languages} handleSelectChange={e=>setLanguages(e)}/>
                       
-                      <label className={css.labels} for={"outlined-controlled"}>Date of birth</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
                       <input value={dateOfBirth} type='date' name='dateOfBirth' onChange={
                         event=>{
                             setDateOfBirth(event.target.value);
@@ -2700,7 +2700,7 @@ const handleSubmit = async e=>{
                   <div className={classNames(css.flex_col,css.full_w)}>
                     <span className={css.header_2}>Complete your profile</span>
                     <div className={css.main_slider_con}>
-                      <span>Step 1 of 2</span>
+                      <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css.slider_con}>
                         <div className={css.slide_100}></div>
                       </div>
@@ -2738,7 +2738,7 @@ const handleSubmit = async e=>{
                         placeholder="City"
                       />
 
-                      <label className={css.labels} for={"outlined-controlled"}>Service area (km)</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.serviceArea'})}</label>
                      <div className={css.area_con} onClick={e=>setShowMap(true)}>
                       <div className={css.flex_row_area}>
                         
@@ -2758,7 +2758,7 @@ const handleSubmit = async e=>{
                         </div>
                         :
                         <>
-                          <span>Select your service area from the map</span>
+                          <span>{intl.formatMessage({id:'StripePayoutPage.selectYourService'})}</span>
                           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 5.49914C9.51487 5.49914 7.50015 7.51385 7.50015 9.99914C7.50015 12.4844 9.51487 14.4991 12.0002 14.4991C14.4854 14.4991 16.5002 12.4844 16.5002 9.99914C16.5002 7.51385 14.4854 5.49914 12.0002 5.49914ZM9.50015 9.99914C9.50015 8.61842 10.6194 7.49914 12.0002 7.49914C13.3809 7.49914 14.5002 8.61842 14.5002 9.99914C14.5002 11.3798 13.3809 12.4991 12.0002 12.4991C10.6194 12.4991 9.50015 11.3798 9.50015 9.99914Z" fill="#475367"/>
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.80939 3.59112C10.3471 1.89931 13.6532 1.89931 16.1909 3.59112C19.6218 5.87839 20.585 10.4941 18.3553 13.9627L14.5237 19.9229C13.3428 21.7599 10.6575 21.7599 9.47662 19.9229L5.64505 13.9627C3.41528 10.4941 4.3785 5.87839 7.80939 3.59112ZM8.9188 5.25523C10.7847 4.01128 13.2156 4.01128 15.0815 5.25523C17.6042 6.93699 18.3124 10.3308 16.6729 12.8812L12.8413 18.8414C12.4477 19.4537 11.5526 19.4537 11.159 18.8414L7.32741 12.8812C5.68792 10.3308 6.39615 6.93699 8.9188 5.25523Z" fill="#475367"/>
@@ -2767,7 +2767,7 @@ const handleSubmit = async e=>{
                         }
                         
                       </div>
-                      <span className={css.your_serv}>Your service will be shown to users in the service areas you select.</span>
+                      <span className={css.your_serv}>{intl.formatMessage({id:'StripePayoutPage.yourServiceWillBe'})}</span>
                      </div>
                       
                     </FormControl>
@@ -2778,7 +2778,7 @@ const handleSubmit = async e=>{
                     <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
                       <button onClick={moveBack} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                      <button onClick={handleSubmit} className={css.btn_next}>Save</button>
+                      <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                     </div>
                   </div>
 
@@ -2845,7 +2845,7 @@ if(currentSelectedUserType === "businessOwner"){
 
                 <div className={css.modal_complete_profile_busi}>
                   <div className={classNames(css.flex_col,css.full_w)}>
-                    <span className={css.completed_header}>Profile Completed</span>
+                    <span className={css.completed_header}>{intl.formatMessage({id:'StripePayoutPage.yourProfileIs'})}</span>
                     <div className={css.mark_con}>
                       <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 60C0 44.087 6.32141 28.8258 17.5736 17.5736C28.8258 6.32141 44.087 0 60 0C75.913 0 91.1742 6.32141 102.426 17.5736C113.679 28.8258 120 44.087 120 60C120 75.913 113.679 91.1742 102.426 102.426C91.1742 113.679 75.913 120 60 120C44.087 120 28.8258 113.679 17.5736 102.426C6.32141 91.1742 0 75.913 0 60ZM56.576 85.68L91.12 42.496L84.88 37.504L55.424 74.312L34.56 56.928L29.44 63.072L56.576 85.68Z" fill="#6DC347"/>
@@ -2854,7 +2854,7 @@ if(currentSelectedUserType === "businessOwner"){
                      <p className={css.complete_content}>
                       Your profile is now complete. Continue to create a listing.
                     </p>
-                    <button className={css.back_btn} onClick={handleBackToDashboard}>Back to dashboard</button>
+                    <button className={css.back_btn} onClick={handleBackToDashboard}>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</button>
                   </div>
                  
                 </div>
@@ -2971,7 +2971,7 @@ if(currentSelectedUserType === "businessOwner"){
                       </p>
                     </div>
                     
-                    <button className={css.close_success_btn} onClick={handleCloseSuccessApplePay}>Close</button>
+                    <button className={css.close_success_btn} onClick={handleCloseSuccessApplePay}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                   </div>
                  
                 </div>

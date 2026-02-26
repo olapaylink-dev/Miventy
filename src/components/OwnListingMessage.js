@@ -22,7 +22,7 @@ const OwnListingMessage = props=>{
                      <p className={css.complete_content}>
                      You cannot book your own listing.
                     </p>
-                    <button className={css.back_btn} onClick={handleClose}>Close</button>
+                    <button className={css.back_btn} onClick={handleClose}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                   </div>
                  
                 </div>

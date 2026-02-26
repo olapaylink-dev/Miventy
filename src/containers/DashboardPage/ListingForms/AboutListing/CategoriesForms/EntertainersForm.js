@@ -253,15 +253,15 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
 
 
                 <div className={classNames(css.base_btns,css.desktop)}>
-                    <button onClick={handleHideForm} className={classNames(css.btn_1)}>Close</button>
+                    <button onClick={handleHideForm} className={classNames(css.btn_1)}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                     <div>
                         <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                        <button type="submit" className={css.btn_next} disabled={isReady}>Save</button>
+                        <button type="submit" className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                     </div>
                 </div>
                 <div className={classNames(css.base_btns,css.mobile)}>
                     <button onClick={e=>{handleMoveToServiceDescription(e,currentListing)}} className={css.btn_prev}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                    <button type="submit" className={css.btn_next} disabled={isReady}>Save</button>
+                    <button type="submit" className={css.btn_next} disabled={isReady}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
                 </div>
                   
             </form>

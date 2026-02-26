@@ -11,15 +11,7 @@ import popular6 from '../../assets/popular/popular6.png';
 import popular7 from '../../assets/popular/popular7.png';
 import popular8 from '../../assets/popular/popular8.png';
 import star from '../../assets/icons/star.png';
-
-import gear from '../../assets/gear.png';
-import bgImg from '../../assets/hero_bg.PNG';
 import classNames from "classnames";
-import SlideshowDesk from "./SlideShowDesk";
-
-import baloonman from '../../assets/ballonman.jpeg';
-import clown from '../../assets/clownman.jpg';
-import magician from '../../assets/magician.jpeg';
 import NamedLink from "../NamedLink/NamedLink";
 import { FormattedMessage, useIntl } from '../../util/reactIntl';
 

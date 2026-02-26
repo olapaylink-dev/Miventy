@@ -36,7 +36,7 @@ const VerificationCodeForm = props=>{
                             Your password has been updated
                         </p>
                     </div>
-                    <button onClick={handleClosePasswordUpdated} className={css.close_btn}>Close</button>
+                    <button onClick={handleClosePasswordUpdated} className={css.close_btn}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
                     
                 </div>
                 
