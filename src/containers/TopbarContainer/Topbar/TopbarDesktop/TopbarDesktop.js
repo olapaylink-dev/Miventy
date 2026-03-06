@@ -353,8 +353,6 @@ const TopbarDesktop = props => {
     changeLanguge(e)
   }
   
-  console.log(userType,"  nnnnnnnnnnnnnnnnnn")
-  
   return (
     <nav className={classNames(classes,css.default_pad,(isSearchPage?css.add_padding_bottom:null))} onClick={e=>{e.preventDefault(); e.stopPropagation();}}>
       <div className={css.flex_row}>
@@ -405,11 +403,11 @@ const TopbarDesktop = props => {
         <>
           {userType === "customer"?
                     <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
-                      My Bookings
+                      {intl.formatMessage({id:'Dashboard.myBookings'})}
                     </NamedLink>
                   :
                     <NamedLink className={css.my_booking_link} name="InboxOrderViewPage" params={{tab:"orders"}}>
-                      Bookings
+                      {intl.formatMessage({id:'Dashboard.bookings'})}
                     </NamedLink>
                   }
         </>
@@ -550,6 +548,7 @@ const TopbarDesktop = props => {
                             </NamedLink>
                          :
                          <>
+
                               <NamedLink name="StripePayoutPage" > 
                                 <div className={css.flex_row_menu}>
                                 My Profile

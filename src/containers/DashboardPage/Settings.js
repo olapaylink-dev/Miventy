@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import css from './Settings.module.css';
 import PasswordResetFormDashboard from '../PasswordResetPage/PasswordResetForm/PasswordResetFormDashboard';
 import PasswordChangePage from "../PasswordChangePage/PasswordChangePage";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const Settings = props=>{
+    const intl = useIntl();
     const {setShowVerifyCodeSettings,currentUser,onUpdateProfile,setshowSideNav}= props;
 
     const {attributes={}} = currentUser;
@@ -63,24 +65,24 @@ const Settings = props=>{
             <PasswordChangePage/>
             <div className={css.flex_col}>
                 <h1 className={css.header}>
-                    Verifications
+                    {intl.formatMessage({ id: 'Dashboard.verification' })}
                 </h1>
                 <div className={css.flex_row}>
                     <div>
-                        <h2 className={css.sub_header}>Phone verification</h2>
+                        <h2 className={css.sub_header}>{intl.formatMessage({ id: 'Dashboard.phoneVerification' })}</h2>
                         <p className={css.detail}>
-                            Your phone is verified with Miventy. Click Edit to change your phone number
+                            {intl.formatMessage({ id: 'Dashboard.yourPhoneIsVerifi' })}
                         </p>
                     </div>
                     {!showPhoneNumberForm?
-                        <button className={css.edit_btn} onClick={e=>setShowPhoneNumberForm(true)} >Edit</button>
+                        <button className={css.edit_btn} onClick={e=>setShowPhoneNumberForm(true)} >{intl.formatMessage({ id: 'Dashboard.edit' })}</button>
                     :""}
                     
                 </div>
                 {showPhoneNumberForm?
                     <form className={css.form} onSubmit={handleSubmitPhone}>
                         <div>
-                            <label>Phone number</label>
+                            <label>{intl.formatMessage({ id: 'Dashboard.phoneNumber' })}</label>
                             <div className={css.flex_grid}>
                                 
                                 <select  name="countryCode" id="" onChange={e=>setCountryCode(e.target.value)}>
@@ -304,7 +306,9 @@ const Settings = props=>{
                                     </optgroup>
                                     </select>
                                                     
-                                <input type="text" value={phoneNumber} placeholder="Enter your new phone number" onChange={e=>setPhoneNumber(e.target.value)} required/>
+                                <input type="text" value={phoneNumber} 
+                                placeholder={intl.formatMessage({id: 'CategoriesForm.enterYourNew'})}
+                                onChange={e=>setPhoneNumber(e.target.value)} required/>
                             </div>
                             
                         </div>
@@ -318,32 +322,32 @@ const Settings = props=>{
                 
                  <div className={css.flex_row}>
                     <div>
-                        <h2 className={css.sub_header}>Security question</h2>
+                        <h2 className={css.sub_header}>{intl.formatMessage({ id: 'Dashboard.securityQuestion' })}</h2>
                         <p className={css.detail}>
-                            By creating a security question, you will add an additional layer of protection for your revenue withdrawals and for changing your password.
+                            {intl.formatMessage({ id: 'Dashboard.byCreating' })}
                         </p>
                     </div>
                     {!showSecretForm?
-                            <button className={css.edit_btn} onClick={e=>setShowSecretForm(true)}>Edit</button>
+                            <button className={css.edit_btn} onClick={e=>setShowSecretForm(true)}>{intl.formatMessage({ id: 'Dashboard.edit' })}Edit</button>
                     :""}
                    
                 </div>
                 {showSecretForm?
                     <form className={css.form} onSubmit={handleSubmitSecret}>
                         <div>
-                            <label>Set your security question</label>
+                            <label>{intl.formatMessage({ id: 'Dashboard.setYourSecurity' })}</label>
                             <select onChange={e=>setSecretQuestion(e.target.value)}>
-                                <option value="What is your favorite color?">What is your favorite color?</option>
-                                <option value="What is your favorite food?" >What is your favorite food?</option>
-                                <option value="What is your dream vacation destination?" >What is your dream vacation destination?</option>
-                                <option value="What is your favorite hobby?">What is your favorite hobby?</option>
-                                <option value="What is your favorite book?">What is your favorite book?</option>
-                                <option value="What is your favorite movie?">What is your favorite movie?</option>
+                                <option value="What is your favorite color?">{intl.formatMessage({ id: 'Dashboard.favoritrColor' })}</option>
+                                <option value="What is your favorite food?" >{intl.formatMessage({ id: 'Dashboard.foavouriteFood' })}</option>
+                                <option value="What is your dream vacation destination?" >{intl.formatMessage({ id: 'Dashboard.vacationDestination' })}</option>
+                                <option value="What is your favorite hobby?">{intl.formatMessage({ id: 'Dashboard.favouriteHobby' })}</option>
+                                <option value="What is your favorite book?">{intl.formatMessage({ id: 'Dashboard.favouritrBook' })}</option>
+                                <option value="What is your favorite movie?">{intl.formatMessage({ id: 'Dashboard.favouriteMovie' })}</option>
                             </select>
                         </div>
                         <div>
-                            <label>Set your security question</label>
-                            <input type="text" onChange={e=>setSecretAnswer(e.target.value)} placeholder="Enter your new phone number" />
+                            <label>{intl.formatMessage({ id: 'Dashboard.setYourSecurity' })}</label>
+                            <input type="text" onChange={e=>setSecretAnswer(e.target.value)} placeholder={intl.formatMessage({ id: 'Dashboard.enterYourNew' })} />
                         </div>
                         <div>
                              

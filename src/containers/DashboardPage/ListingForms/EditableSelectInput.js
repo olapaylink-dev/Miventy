@@ -38,17 +38,18 @@ const EditableSelectInput = props =>{
         setNewOption(e.target.value);
     }
 
+
     return(
         <div className={css.container} onClick={handleShowOption}>
             
             <div>{selectedFolderName}</div>
             {showOptions?
                 <div className={css.select_options}>
-                    <div className={css.create_new_folder} onClick={handleCreateFolder}>Create new folder</div>
+                    <div className={css.create_new_folder} onClick={handleCreateFolder}>{intl.formatMessage({id: 'Dashboard.createNewFolder'})}</div>
                     {showAddOptions?
                         <div className={css.add_input_con}>
-                            <input ref={inputRef} onClick={handleCreateFolder} onChange={handleSaveValue} type="text" placeholder="Type folder name"/>
-                            <button onClick={handleAddFolder} className={css.add_btn}>Add</button>
+                            <input ref={inputRef} onClick={handleCreateFolder} onChange={handleSaveValue} type="text" placeholder={intl.formatMessage({id: 'Dashboard.typeFolderName'})}/>
+                            <button onClick={handleAddFolder} className={css.add_btn}>{intl.formatMessage({id: 'Dashboard.add'})}</button>
                         </div>
                     :""}
                     

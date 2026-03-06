@@ -1429,14 +1429,13 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                   
 
                     <button className={classNames(css.btn_outline,css.center_content)}>
-                      View all reviews
+                      {intl.formatMessage({ id: 'Dashboard.viewAllReview' })}
                     </button>
                   </div>
-                  
                 </div>
                 <div className={css.aside_con}>
                   <div className={css.aside}>
-                    <div className={css.flex_row_3}><span>Starting from</span><span className={css.amount}>€{originalPrice !== undefined?(originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2)}</span></div>
+                    <div className={css.flex_row_3}><span>{intl.formatMessage({ id: 'Dashboard.startingFrom' })}</span><span className={css.amount}>€{originalPrice !== undefined?(originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2)}</span></div>
                     <p>Items in cart</p>
                     {currentUser?
                       <CartItems currentUser={currentUser} 
@@ -1451,7 +1450,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                         Place an order
                       </button> */}
                       <button className={css.send} onClick={handleShowRequestQuoteView}>
-                        Request a quote
+                        {intl.formatMessage({ id: 'Dashboard.requestAQuote' })}
                       </button>
                     </div>
                     
@@ -1465,10 +1464,10 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                       </div>
                       <div>
                         <h3 className={css.header_5}>
-                          Order sent
+                          {intl.formatMessage({ id: 'Dashboard.orderSent' })}
                         </h3>
                         <p className={css.description}>
-                          Your order has been sent, you will get a notification when the service provider responds
+                          {intl.formatMessage({ id: 'Dashboard.yourOrderHasBeenSent' })}
                         </p>
                       </div>
                       <div onClick={e=>setShowSuccessBadge(false)}>

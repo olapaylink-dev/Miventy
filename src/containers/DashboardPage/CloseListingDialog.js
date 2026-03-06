@@ -9,11 +9,11 @@ const CloseListingDialog = props =>{
         <div className={css.container}>
             <div className={css.tb_con}>
                 <div>
-                    <h1 className={css.header}>Are you sure you want to remove this listing?</h1>
-                    <p className={css.description}>You can always edit your listings.</p>
+                    <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.areYouSure' })}</h1>
+                    <p className={css.description}>{intl.formatMessage({ id: 'Dashboard.youCanAlways' })}</p>
                     <div className={css.btn_con}>
-                        <button onClick={e=>setShowCloseListingDialog(false)} className={css.outling_btn}>No, Keep Listing</button>
-                         <button onClick={handleCloseListing} className={css.normal_btn}>Yes, Remove Listing</button>
+                        <button onClick={e=>setShowCloseListingDialog(false)} className={css.outling_btn}>{intl.formatMessage({ id: 'Dashboard.noKeep' })}</button>
+                         <button onClick={handleCloseListing} className={css.normal_btn}>{intl.formatMessage({ id: 'Dashboard.yesRemove' })}</button>
                     </div>
                 </div>
             </div>

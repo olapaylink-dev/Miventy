@@ -32,8 +32,8 @@ const SimpleCard_2 = props=>{
             </div>
             <img className={css.resize} src={image} />
             <div className={css.flex_row}>
-                <span className={css.card_title}>{count} items</span>
-                <div className={css.per_item}><span className={css.price}>Starting from €{price}</span></div>
+                <span className={css.card_title}>{count} {intl.formatMessage({ id: 'Dashboard.items' })}</span>
+                <div className={css.per_item}><span className={css.price}>{intl.formatMessage({ id: 'Dashboard.startingFrom' })} €{price}</span></div>
             </div>
             <p className={css.description}>{description}</p>
         </div>

@@ -65,7 +65,7 @@ const SelectMultipleComponent = props=>{
                     
                 </div>
             :
-                <input className={css.no_border} type='text' placeholder='Select languages from the dropdown list'/>
+                <input className={css.no_border} type='text' placeholder={intl.formatMessage({ id: 'StripePayoutPage.selectLanguages' })}/>
             }
             
             {showOptions?

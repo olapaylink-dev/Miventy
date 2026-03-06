@@ -6,11 +6,13 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
 import NamedLink from "../NamedLink/NamedLink";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 import { types as sdkTypes } from '../../util/sdkLoader';
 const { Money } = sdkTypes;
 
 const ALLOrders = props =>{
+    const intl = useIntl();
     const {
         orders=[1,2,3]
     }=props;
@@ -100,7 +102,7 @@ const ALLOrders = props =>{
                                            {/* {transactionState === "reviewed"?
                                                <div className={classNames(css.badge,css.mobile)}>completed</div>
                                            :
-                                               <div className={classNames(css.badge,css.badge_ongoing)}>Ongonig</div>
+                                               <div className={classNames(css.badge,css.badge_ongoing)}>{intl.formatMessage({ id: 'Dashboard.ongoing' })}</div>
                                            } */}
                                        </div>
                                    </div>
@@ -108,9 +110,9 @@ const ALLOrders = props =>{
                                </div>
                                <div className={css.flex_row_1}>
                                    {transactionState === "state/reviewed"?
-                                       <div className={classNames(css.badge)}>Completed</div>
+                                       <div className={classNames(css.badge)}>{intl.formatMessage({ id: 'Dashboard.completed' })}</div>
                                    :
-                                       <div className={classNames(css.badge_ongoing)}>Ongonig</div>
+                                       <div className={classNames(css.badge_ongoing)}>{intl.formatMessage({ id: 'Dashboard.ongoing' })}</div>
                                    }
                                    <div className={css.flex_col_2}>
                                        <h3 className={css.title}>€{(total/100).toFixed(2)}</h3>
@@ -121,7 +123,7 @@ const ALLOrders = props =>{
                        )
        
                    }):
-                   <p>Nothing to show</p>
+                   <p>{intl.formatMessage({ id: 'Dashboard.nothingToShow' })}</p>
                }
                    </>
             

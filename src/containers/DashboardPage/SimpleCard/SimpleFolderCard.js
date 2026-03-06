@@ -14,7 +14,8 @@ const SimpleFormCard = props=>{
             
             <div className={css.flex_row}>
                 <span className={css.card_title}>{folderName}</span>
-                <div className={css.per_item}><span className={css.price}>{numberOfItems} items</span></div>
+                <div className={css.per_item}><span className={css.price}>{numberOfItems}{intl.formatMessage({ id: 'Dashboard.items' })}</span></div>
+
             </div>
             <div className={css.delete_btn} onClick={e=>{e.preventDefault(); e.stopPropagation(); handleDeleteCatalog(folderName)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 21 20" fill="none">
@@ -23,7 +24,7 @@ const SimpleFormCard = props=>{
                 <path d="M12.1671 8.95898C12.6273 8.95898 13.0004 9.33208 13.0004 9.79232V13.959C13.0004 14.4192 12.6273 14.7923 12.1671 14.7923C11.7068 14.7923 11.3337 14.4192 11.3337 13.959V9.79232C11.3337 9.33208 11.7068 8.95898 12.1671 8.95898Z" fill="#667185"/>
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M16.2585 6.70945C16.334 5.65214 15.4224 4.80451 14.3865 4.92423C13.3265 5.04674 11.6907 5.20898 10.5004 5.20898C9.31013 5.20898 7.67436 5.04674 6.61433 4.92423C5.57839 4.80451 4.66685 5.65214 4.74237 6.70945L5.45631 16.7047C5.51043 17.4624 6.0748 18.103 6.84928 18.2194C7.67979 18.3443 9.2037 18.5438 10.5014 18.5423C11.7831 18.5408 13.3132 18.3422 14.1474 18.2184C14.9232 18.1034 15.4904 17.4623 15.5447 16.7024L16.2585 6.70945ZM14.5778 6.57988C14.5807 6.57955 14.5829 6.57974 14.5829 6.57974L14.5851 6.58025C14.587 6.58089 14.5899 6.58241 14.5928 6.58513C14.5947 6.58693 14.5961 6.58913 14.5961 6.58913L14.596 6.5907L13.883 16.5728C13.0574 16.6948 11.6425 16.8743 10.4994 16.8757C9.34399 16.877 7.9378 16.6972 7.11792 16.5744L6.4048 6.5907L6.40474 6.58913C6.40474 6.58913 6.40616 6.58693 6.40806 6.58513C6.41093 6.58241 6.41384 6.58089 6.41569 6.58025L6.41789 6.57974C6.41789 6.57974 6.42011 6.57955 6.423 6.57988C7.4849 6.7026 9.20495 6.87565 10.5004 6.87565C11.7959 6.87565 13.5159 6.7026 14.5778 6.57988Z" fill="#667185"/>
                 </svg>
-                <span className={css.delete_txt}>Delete catalog</span>
+                <span className={css.delete_txt}>{intl.formatMessage({ id: 'Dashboard.deleteCatalog' })}</span>
             </div>
         </div>
     )

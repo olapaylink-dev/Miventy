@@ -118,7 +118,7 @@ const saveCatalogName = e =>{
                           <path d="M2.05086 1.13616C1.66033 0.745631 1.02717 0.74563 0.636643 1.13616C0.246119 1.52668 0.246119 2.15984 0.636643 2.55037L5.58639 7.50012L0.636643 12.4499C0.246119 12.8404 0.246119 13.4736 0.636643 13.8641C1.02717 14.2546 1.66033 14.2546 2.05086 13.8641L7.0006 8.91433L11.9504 13.8641C12.3409 14.2546 12.974 14.2546 13.3646 13.8641C13.7551 13.4736 13.7551 12.8404 13.3646 12.4499L8.41482 7.50012L13.3646 2.55037C13.7551 2.15984 13.7551 1.52668 13.3646 1.13616C12.974 0.745631 12.3409 0.745631 11.9504 1.13616L7.0006 6.0859L2.05086 1.13616Z" fill="black"/>
                       </svg>
                   </div>
-                    <ProgressTopbar step={"Step 2 of 3"} percentage={"60%"}/>
+                    <ProgressTopbar step={intl.formatMessage({ id: 'Dashboard.step2of3' })} percentage={"60%"}/>
                     <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                    
                     <div className={css.flex_col_main}>
@@ -126,22 +126,24 @@ const saveCatalogName = e =>{
                               {showItemDetailsForm?
                                 <>
                                   <div className={css.header_con_2}>
-                                    <h2 >Add items to {selectedFolderName}</h2>
+                                    <h2 >{intl.formatMessage({ id: 'Dashboard.addItemsTo' })} {selectedFolderName}</h2>
                                   </div>
                                   
                                   <div className={css.select_cat}>
-                                    <label for="itemName">Product/service name*</label>
+                                    <label for="itemName">{intl.formatMessage({ id: 'Dashboard.productServiceName' })}</label>
                                     <input type="text" hidden/>
-                                    <input type="text" onChange={e=>{setItemName(e.target.value)}} value={itemName}  name="itemName" id="itemName" placeholder="Add item name"/>
+                                    <input type="text" onChange={e=>{setItemName(e.target.value)}} value={itemName}  name="itemName" id="itemName" 
+                                    placeholder={intl.formatMessage({ id: 'Dashboard.addItemName' })}/>
                                   </div>
 
                                   <div className={css.select_cat}>
                                     <label>Describe your product/service</label>
-                                    <textarea rows="5" onChange={e=>{setDescription(e.target.value)}} value={description}  placeholder="Talk about what the product/service contains"/>
+                                    <textarea rows="5" onChange={e=>{setDescription(e.target.value)}} value={description} 
+                                     placeholder={intl.formatMessage({ id: 'Dashboard.talkAbout' })}/>
                                   </div>
 
                                   <div className={css.select_cat}>
-                                    <label>Price (€)*</label>
+                                    <label>{intl.formatMessage({ id:'Dashboard.price' })} (€)*</label>
                                     <input className={css.item_price} type="number" min={1} onChange={e=>{setPrice(e.target.value)}} value={pricee} placeholder="€" disabled={usePriceByDuration}/>
                                   </div>
                                     <FormControl className={css.full_w}>
@@ -157,8 +159,8 @@ const saveCatalogName = e =>{
                                                   }}
                                               className={classNames(css.no_spacing,css.radio)}/>} label={
                                                 <div>
-                                                  <h3 className={css.label_header}>Pricing by duration</h3>
-                                                  <p className={css.label_desc}>Set prices for your services if you offer them by duration.</p>
+                                                  <h3 className={css.label_header}>{intl.formatMessage({ id:'Dashboard.pricingByDuration' })}</h3>
+                                                  <p className={css.label_desc}>{intl.formatMessage({ id:'Dashboard.setPriceForYour' })}</p>
                                                 </div>
                                               } 
                                               checked={usePriceByDuration}
@@ -172,14 +174,19 @@ const saveCatalogName = e =>{
                                         return (
                                                 <div key={`durationPrice_${key+1}`} className={css.flex_row} onClick={e=>{setParentClick(!parentClick);e.preventDefault(); e.stopPropagation()}}>
                                                   <div className={css.width_50}>
-                                                    <label>Duration</label>
+                                                    <label>{intl.formatMessage({ id:'Dashboard.duration' })}</label>
                                                     <div className={css.flex_row_select} >
-                                                      <input className={classNames(css.textInput)} value={duration} type="number" min={1} onChange={e=>handleDurationChange(itm,e.target.value)}  placeholder="Set min duration" />
-                                                      <SelectComponent options={["Hour","Minutes","Days"]} id={key} value={durationPrice[key].format?durationPrice[key].format:"Hour"} handleSelectChange={e=>{handleFormatChange(itm,e);setSelectedFormat(e)}} parentClicked={parentClick}/>
+                                                      <input className={classNames(css.textInput)} value={duration} type="number" min={1} onChange={e=>handleDurationChange(itm,e.target.value)}  placeholder={intl.formatMessage({ id:'Dashboard.setMinDuration' })} />
+                                                      <SelectComponent 
+                                                        options={[
+                                                            intl.formatMessage({id: 'CategoriesForm.hour',}),
+                                                            intl.formatMessage({id: 'CategoriesForm.minutes',}),
+                                                            intl.formatMessage({id: 'CategoriesForm.days',})
+                                                          ]}  id={key} value={durationPrice[key].format?durationPrice[key].format:"Hour"} handleSelectChange={e=>{handleFormatChange(itm,e);setSelectedFormat(e)}} parentClicked={parentClick}/>
                                                     </div>
                                                   </div>
                                                   <div className={css.width_50}>
-                                                    <label>Price</label>
+                                                    <label>{intl.formatMessage({id:'Dashboard.price',})}</label>
                                                     <div className={css.flex_row_select}>
                                                       <input type="number" min={1} value={price} onChange={e=>{handlePriceChange(itm,e.target.value)}} placeholder="€"/>
                                                     </div>
@@ -194,14 +201,14 @@ const saveCatalogName = e =>{
                                               <path d="M13.5 4C13.5 3.44772 13.0523 3 12.5 3C11.9477 3 11.5 3.44772 11.5 4V11H4.5C3.94772 11 3.5 11.4477 3.5 12C3.5 12.5523 3.94772 13 4.5 13H11.5V20C11.5 20.5523 11.9477 21 12.5 21C13.0523 21 13.5 20.5523 13.5 20V13H20.5C21.0523 13 21.5 12.5523 21.5 12C21.5 11.4477 21.0523 11 20.5 11H13.5V4Z" fill="#404040"/>
                                             </svg>
                                           </div>
-                                            <span className={css.label_5}>Add new duration pricing</span>
+                                            <span className={css.label_5}>{intl.formatMessage({id: 'Dashboard.addNewDuration',})}</span>
                                         </div>
                                     </>
                                   :""}
 
                                     <div className={css.select_cat}>
-                                    <h1 className={css.header_2}>Upload images (drag to change order)</h1>
-                                    <p className={css.label_desc}>Please upload image files of types: jpg or png. Up to 1.5MB each. Preferred dimensions: Landscape photo, 500 x 430 pixels</p>
+                                    <h1 className={css.header_2}>{intl.formatMessage({id: 'Dashboard.uploadImage'})}</h1>
+                                    <p className={css.label_desc}>{intl.formatMessage({id: 'Dashboard.PleaseUploadImage'})}</p>
                                   </div>
 
                                   
@@ -215,7 +222,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                               </svg>
                                             </div>
-                                            <span className={css.pic_label}>Click to upload</span>
+                                            <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                           </div>
                                           :
                                           <div>
@@ -230,7 +237,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                               </svg>
-                                              <span className={css.remove}>Remove image</span>
+                                              <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                             </div>
                                           </div>
                                         }
@@ -244,7 +251,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                               </svg>
                                             </div>
-                                            <span className={css.pic_label}>Click to upload</span>
+                                            <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                           </div>
                                           :
                                           <div>
@@ -259,7 +266,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                               </svg>
-                                              <span className={css.remove}>Remove image</span>
+                                              <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                             </div>
                                           </div>
                                         }
@@ -273,7 +280,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                               </svg>
                                             </div>
-                                            <span className={css.pic_label}>Click to upload</span>
+                                            <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                           </div>
                                           :
                                           <div>
@@ -288,7 +295,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                               </svg>
-                                              <span className={css.remove}>Remove image</span>
+                                              <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                             </div>
                                           </div>
                                         }
@@ -302,7 +309,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                               </svg>
                                             </div>
-                                            <span className={css.pic_label}>Click to upload</span>
+                                            <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                           </div>
                                           :
                                           <div>
@@ -317,7 +324,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                               </svg>
-                                              <span className={css.remove}>Remove image</span>
+                                              <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                             </div>
                                           </div>
                                         }
@@ -331,7 +338,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                               </svg>
                                             </div>
-                                            <span className={css.pic_label}>Click to upload</span>
+                                            <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                           </div>
                                           :
                                           <div>
@@ -346,7 +353,7 @@ const saveCatalogName = e =>{
                                                 <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                               </svg>
-                                              <span className={css.remove}>Remove image</span>
+                                              <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                             </div>
                                           </div>
                                         }
@@ -355,13 +362,13 @@ const saveCatalogName = e =>{
 
 
                                   <div className={css.reset_con} >
-                                    <button className={css.reset_btn} onClick={hamdleReset}>Reset</button>
+                                    <button className={css.reset_btn} onClick={hamdleReset}>{intl.formatMessage({id: 'Dashboard.reset'})}</button>
                                     <button className={css.add_item_btn} onClick={e=>{handleAddListing(e,"add")}} disabled={uploadInProgress}> 
                                         {uploadInProgress?
                                           <CircularProgress size={20} sx={{ color: 'white'}}/>
                                         :""}
                                         
-                                        Add item to catalog
+                                        {intl.formatMessage({id: 'Dashboard.addItemToCatalog'})}
                                     </button>
                                     
                                   </div>
@@ -425,23 +432,23 @@ const saveCatalogName = e =>{
                               :
                               <>
                                     <div className={css.header_con}>
-                                      <h2 >Catalog details</h2>
+                                      <h2 >{intl.formatMessage({id: 'Dashboard.catalogDetails'})}</h2>
                                     </div>
                                 
                                   
                                       <div className={css.select_cat}>
-                                        <label>Catalog name/title</label>
+                                        <label>{intl.formatMessage({id: 'Dashboard.catalogName'})}</label>
                                         {currentAction === ACTIONS[1]?//"create_catalog_details
-                                          <input type="text" onChange={handleChangeFolderName} onBlur={saveCatalogName}  placeholder="Add catalog name/title"/>
+                                          <input type="text" onChange={handleChangeFolderName} onBlur={saveCatalogName}  placeholder={intl.formatMessage({id: 'Dashboard.addCatalogName'})}/>
                                         :
-                                          <input type="text" onChange={handleChangeFolderName}  disabled  value={folderNameToEdit} placeholder="Add catalog name/title"/>
+                                          <input type="text" onChange={handleChangeFolderName}  disabled  value={folderNameToEdit} placeholder={intl.formatMessage({id: 'Dashboard.addCatalogName'})}/>
                                         }
                                         
-                                        <span className={css.cover_desc}>Create a name for your catalog.</span>
+                                        <span className={css.cover_desc}>{intl.formatMessage({id: 'Dashboard.createANameFor'})}</span>
                                       </div>
 
                                       <div className={css.photo_con}>
-                                            <h2 className={css.cover_header}>Cover image</h2>
+                                            <h2 className={css.cover_header}>{intl.formatMessage({id: 'Dashboard.coverImage'})}</h2>
                                             <div >
                                                 {imageSrc==="" || folderNameToEdit === undefined || folderNameToEdit === null || folderNameToEdit === ""?
                                                   <div onClick={handleFileClick} className={css.pic_item}>
@@ -451,7 +458,7 @@ const saveCatalogName = e =>{
                                                         <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                                       </svg>
                                                     </div>
-                                                    <span className={css.pic_label}>Click to upload</span>
+                                                    <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                                                   </div>
                                                   :
                                                   <div className={css.cover_con}>
@@ -466,13 +473,13 @@ const saveCatalogName = e =>{
                                                         <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                                       </svg>
-                                                      <span className={css.remove}>Remove image</span>
+                                                      <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                                     </div>
                                                   </div>
                                                 }
                                             </div>
 
-                                            <p className={css.cover_desc}>Add a cover image or banner for your catalog</p>
+                                            <p className={css.cover_desc}>{intl.formatMessage({id: 'Dashboard.addCoverImage'})}</p>
                                             <input 
                                                   id='file' 
                                                   name='file' 
@@ -487,7 +494,7 @@ const saveCatalogName = e =>{
                                           <div className={css.hr}></div>
 
                                           <div className={css.header_con_2}>
-                                            <h2 >Catalog Items</h2>
+                                            <h2 >{intl.formatMessage({id: 'Dashboard.catalogItems'})}</h2>
                                           </div>
                                           <div className={css.grid_con}>
 
@@ -523,7 +530,7 @@ const saveCatalogName = e =>{
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                   <path d="M13 4C13 3.44772 12.5523 3 12 3C11.4477 3 11 3.44772 11 4V11H4C3.44772 11 3 11.4477 3 12C3 12.5523 3.44772 13 4 13H11V20C11 20.5523 11.4477 21 12 21C12.5523 21 13 20.5523 13 20V13H20C20.5523 13 21 12.5523 21 12C21 11.4477 20.5523 11 20 11H13V4Z" fill="#404040"/>
                                                 </svg>
-                                                Add new item
+                                                {intl.formatMessage({id: 'Dashboard.addNewItems'})}
                                               </div>
                                           </div>
                                           
@@ -534,7 +541,7 @@ const saveCatalogName = e =>{
                                                   <CircularProgress size={20} sx={{ color: 'white'}}/>
                                                 :""}
                                                 
-                                                Save catalog
+                                                {intl.formatMessage({id: 'Dashboard.saveCatalog'})}
                                             </button>
                                           </div>
 

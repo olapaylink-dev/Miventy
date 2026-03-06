@@ -1119,7 +1119,7 @@ const hamdleReset = e =>{
                         <path d="M2.05086 1.13616C1.66033 0.745631 1.02717 0.74563 0.636643 1.13616C0.246119 1.52668 0.246119 2.15984 0.636643 2.55037L5.58639 7.50012L0.636643 12.4499C0.246119 12.8404 0.246119 13.4736 0.636643 13.8641C1.02717 14.2546 1.66033 14.2546 2.05086 13.8641L7.0006 8.91433L11.9504 13.8641C12.3409 14.2546 12.974 14.2546 13.3646 13.8641C13.7551 13.4736 13.7551 12.8404 13.3646 12.4499L8.41482 7.50012L13.3646 2.55037C13.7551 2.15984 13.7551 1.52668 13.3646 1.13616C12.974 0.745631 12.3409 0.745631 11.9504 1.13616L7.0006 6.0859L2.05086 1.13616Z" fill="black"/>
                     </svg>
                 </div>
-                  <ProgressTopbar step={"Step 2 of 3"} percentage={"60%"}/>
+                  <ProgressTopbar step={intl.formatMessage({ id: 'Dashboard.step2of3' })} percentage={"60%"}/>
                   <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                   <div className={css.action_con} >
                       <button className={css.create_new_btn} onClick={e=>{handleCreateNewItem(<FormattedMessage id="CategoriesForm.createNewFolder" />)}}>{intl.formatMessage({id: 'CategoriesForm.createNewFolder'})}</button>
@@ -1175,7 +1175,7 @@ const hamdleReset = e =>{
                           <path d="M2.05086 1.13616C1.66033 0.745631 1.02717 0.74563 0.636643 1.13616C0.246119 1.52668 0.246119 2.15984 0.636643 2.55037L5.58639 7.50012L0.636643 12.4499C0.246119 12.8404 0.246119 13.4736 0.636643 13.8641C1.02717 14.2546 1.66033 14.2546 2.05086 13.8641L7.0006 8.91433L11.9504 13.8641C12.3409 14.2546 12.974 14.2546 13.3646 13.8641C13.7551 13.4736 13.7551 12.8404 13.3646 12.4499L8.41482 7.50012L13.3646 2.55037C13.7551 2.15984 13.7551 1.52668 13.3646 1.13616C12.974 0.745631 12.3409 0.745631 11.9504 1.13616L7.0006 6.0859L2.05086 1.13616Z" fill="black"/>
                       </svg>
                   </div>
-                  <ProgressTopbar step={"Step 2 of 3"} percentage={"60%"}/>
+                  <ProgressTopbar step={intl.formatMessage({ id: 'Dashboard.step2of3' })} percentage={"60%"}/>
                   <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                   <div className={css.box_con} onClick={handleAddItem}>
                     <h2 className={css.header}>{intl.formatMessage({id: 'Catalog.addBookableItems'})}</h2>

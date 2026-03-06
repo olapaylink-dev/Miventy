@@ -28,7 +28,7 @@ const BookingsPage = props =>{
                       <NamedLink name="SearchPage">
                         <span className={css.item_list}>Item List</span>
                       </NamedLink> 
-                      &nbsp; / <span className={css.item_list}>My Bookings</span></span>
+                      &nbsp; / <span className={css.item_list}>{intl.formatMessage({id:'Dashboard.myBookings'})}</span></span>
                   </div>
             </div>
             <BookingsList 

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import css from './NotificationSettings.module.css';
 import { Switch } from "@mui/material";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const NotificationSetting = props=>{
+    const intl = useIntl();
     const {setShowNotificationUpdated,saveNotificationSettings,currentUser,setshowSideNav}= props;
     const {enableEmailNotification,enablePushNotification} = currentUser?.attributes?.profile?.publicData || {};
 
@@ -28,11 +30,11 @@ const NotificationSetting = props=>{
             </div>
             <div className={css.flex_col}>
                 <h1 className={css.header}>
-                    Manage your notifications
+                     {intl.formatMessage({ id: 'Dashboard.manageYour' })}
                 </h1>
                 <div className={css.flex_row}>
 
-                    <h2 className={css.sub_header}>Email notifications</h2>
+                    <h2 className={css.sub_header}>{intl.formatMessage({ id: 'Dashboard.emailNoti' })}</h2>
 
                     <Switch color="warning" 
                         onChange={e=>{setEmailNotificationEnabled(e.target.checked)}}
@@ -41,14 +43,14 @@ const NotificationSetting = props=>{
                 </div>
                  <div className={css.flex_row}>
 
-                    <h2 className={css.sub_header}>Mobile push notifications</h2>
+                    <h2 className={css.sub_header}>{intl.formatMessage({ id: 'Dashboard.mobilePush' })}</h2>
                     <Switch color="warning" 
                         onChange={e=>setPushNotificationEnabled(e.target.checked)} 
                         checked={enablePushNotification}
                     />
                 </div>
                 <div className={css.save_changes_con}>
-                    <button onClick={handleSaveChanges} className={css.save_changes}>Save changes</button>
+                    <button onClick={handleSaveChanges} className={css.save_changes}>{intl.formatMessage({ id: 'Dashboard.saveChanges' })}</button>
                 </div>
                 
             </div>

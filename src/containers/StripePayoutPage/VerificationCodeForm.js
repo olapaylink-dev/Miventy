@@ -28,12 +28,12 @@ const VerificationCodeForm = props=>{
                         </svg>
                     </div>
                     <div>
-                        <h1 className={css.header}>PASSWORD UPDATED</h1>
+                        <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.passwordUpdate' })}</h1>
                         <svg xmlns="http://www.w3.org/2000/svg" width="121" height="120" viewBox="0 0 121 120" fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M0.5 60C0.5 44.087 6.82141 28.8258 18.0736 17.5736C29.3258 6.32141 44.587 0 60.5 0C76.413 0 91.6742 6.32141 102.926 17.5736C114.179 28.8258 120.5 44.087 120.5 60C120.5 75.913 114.179 91.1742 102.926 102.426C91.6742 113.679 76.413 120 60.5 120C44.587 120 29.3258 113.679 18.0736 102.426C6.82141 91.1742 0.5 75.913 0.5 60ZM57.076 85.68L91.62 42.496L85.38 37.504L55.924 74.312L35.06 56.928L29.94 63.072L57.076 85.68Z" fill="#6DC347"/>
                         </svg>
                         <p>
-                            Your password has been updated
+                            {intl.formatMessage({ id: 'Dashboard.yourPasswordHas' })}
                         </p>
                     </div>
                     <button onClick={handleClosePasswordUpdated} className={css.close_btn}>{intl.formatMessage({id:'StripePayoutPage.close'})}</button>
@@ -44,9 +44,9 @@ const VerificationCodeForm = props=>{
                 
                 <div className={css.container}>
                     <div>
-                        <h1 className={css.header}>Verification code</h1>
+                        <h1 className={css.header}>{intl.formatMessage({id:'Dashboard.verificationCode'})}</h1>
                         <p>
-                            Confirm the OTP sent to ellafedora@gmail and enter the verification code that was sent. Code expires in 00:59
+                            {intl.formatMessage({id:'Dashboard.confirmTheOTP'})}
                         </p>
                     </div>
                     <div>
@@ -58,9 +58,9 @@ const VerificationCodeForm = props=>{
                             <input className={css.vals} type="text"/>
                             <input className={css.vals} type="text"/>
                         </div>
-                        <button onClick={handleVerify} className={css.verify_btn}>Verify</button>
+                        <button onClick={handleVerify} className={css.verify_btn}>{intl.formatMessage({id:'Dashboard.verify'})}</button>
                         <p>
-                            Didnt receive any code? Resend
+                            {intl.formatMessage({id:'Dashboard.didntrecive'})}
                         </p>
                     </div>
                     

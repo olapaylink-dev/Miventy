@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
 import css from './Earnings.module.css';
 import classNames from "classnames";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const Earnings = props=>{
+    const intl = useIntl();
     const {transactions,showSideNav,setshowSideNav,available,instant_available,
             onGetAccountBalance,
             stripeAccountId,
@@ -61,8 +63,8 @@ const Earnings = props=>{
                 </svg>
             </div>
             <div className={css.no_spacing}>
-                <h1 className={css.header}>Earnings</h1>
-                <p className={css.sub_header}>Track and manage your earnings easily.</p>
+                <h1 className={css.header}>{intl.formatMessage({id:'EarningsPage.earnings'})}</h1>
+                <p className={css.sub_header}>{intl.formatMessage({id:'EarningsPage.trackAndMange'})}</p>
             </div>
             
 
@@ -70,7 +72,7 @@ const Earnings = props=>{
                 <div className={css.flex_row}>
                     <div className={css.flex_col}>
                         <div className={css.flex_row_fit}>
-                            <span className={css.header_2}>Available balance</span>
+                            <span className={css.header_2}>{intl.formatMessage({id:'EarningsPage.availableBal'})}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 6C12.5523 6 13 6.44772 13 7V14C13 14.5523 12.5523 15 12 15C11.4477 15 11 14.5523 11 14V7C11 6.44772 11.4477 6 12 6Z" fill="#475367"/>
                                 <path d="M10.75 16.75C10.75 17.4404 11.3096 18 12 18C12.6904 18 13.25 17.4404 13.25 16.75C13.25 16.0596 12.6904 15.5 12 15.5C11.3096 15.5 10.75 16.0596 10.75 16.75Z" fill="#475367"/>
@@ -78,14 +80,14 @@ const Earnings = props=>{
                             </svg>
                         </div>
                         <div className={css.flex_itm}>
-                            <span>Balance available for withdrawal</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.balanceAvailable'})}</span>
                             <span className={css.amount}>€{formatedAmount}</span>
                         </div>
 
                     </div>
                     <div className={css.flex_col}>
                         <div className={css.flex_row_fit}>
-                            <span className={css.header_2}>Future payments</span>
+                            <span className={css.header_2}>{intl.formatMessage({id:'EarningsPage.futurePayment'})}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                 <path d="M12 6C12.5523 6 13 6.44772 13 7V14C13 14.5523 12.5523 15 12 15C11.4477 15 11 14.5523 11 14V7C11 6.44772 11.4477 6 12 6Z" fill="#475367"/>
                                 <path d="M10.75 16.75C10.75 17.4404 11.3096 18 12 18C12.6904 18 13.25 17.4404 13.25 16.75C13.25 16.0596 12.6904 15.5 12 15.5C11.3096 15.5 10.75 16.0596 10.75 16.75Z" fill="#475367"/>
@@ -94,22 +96,22 @@ const Earnings = props=>{
                         </div>
                         
                         <div className={css.flex_itm}>
-                            <span>Balance available for withdrawal</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.balanceAvailable'})}</span>
                             <span className={css.amount}>€{totalPayout}</span>
                         </div>
 
                     </div>
                 </div>
                 <div className={css.flex_row}>
-                    <button className={css.withdraw_bal} disabled={!balanceAvailable} onClick={e=>setShowWithdrawalForm(true)} >Withdraw balance</button>
-                    <button onClick={handleManagePayout} className={css.manage_payout}>Manage payout options</button>
+                    <button className={css.withdraw_bal} disabled={!balanceAvailable} onClick={e=>setShowWithdrawalForm(true)} >{intl.formatMessage({id:'EarningsPage.withdrawBal'})}</button>
+                    <button onClick={handleManagePayout} className={css.manage_payout}>{intl.formatMessage({id:'EarningsPage.managePayout'})}</button>
                 </div>
                 
             </div>
 
              <div className={css.section_2}>
                 <div className={css.flex_row}>
-                  <h1 className={css.tx_header}>Transaction History</h1>
+                  <h1 className={css.tx_header}>{intl.formatMessage({id:'EarningsPage.transactionHistory'})}</h1>
                 </div>
 
                 {transactions.length === 0?
@@ -117,12 +119,12 @@ const Earnings = props=>{
                         <div className={css.flex_row}>
                             <div className={css.tx_table}>
                                 <div className={css.tb_header}>
-                                    <span>S/N</span>
-                                    <span>Client name</span>
-                                    <span>Service description</span>
-                                    <span>Amount</span>
-                                    <span>Status</span>
-                                    <span>Date</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.sn'})}</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.clientName'})}</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.serviceDesc'})}</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.amount'})}</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.status'})}</span>
+                                    <span>{intl.formatMessage({id:'EarningsPage.date'})}</span>
                                 </div>
                                 <div>
                                     <div colSpan={6} className={css.tx_content_default}>
@@ -186,7 +188,7 @@ const Earnings = props=>{
                                         </svg>
 
                                         <p>
-                                            Your transaction history will appear here once you make your first transaction.
+                                            {intl.formatMessage({id:'EarningsPage.yourTransaction'})}
                                         </p>
                                     </div>
                                 </div>
@@ -199,12 +201,12 @@ const Earnings = props=>{
                 <div className={css.tb_con}>
                     <table className={classNames(css.trx_table,css.desktop)}>
                         <tr className={css.trx_header}>
-                            <th>S/N</th>
-                            <th>Client name</th>
-                            <th>Service description</th>
-                            <th>Amount</th>
-                            <th>Status</th>
-                            <th>Date</th>
+                            <span>{intl.formatMessage({id:'EarningsPage.sn'})}</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.clientName'})}</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.serviceDesc'})}</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.amount'})}</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.status'})}</span>
+                            <span>{intl.formatMessage({id:'EarningsPage.date'})}</span>
                         </tr>
                         {transactions.map((itm,key)=>{
                             const {customer,attributes,listing} = itm;
@@ -232,14 +234,14 @@ const Earnings = props=>{
                                 <tr>
                                     <td>{key+1}</td>
                                     <td>{displayName}</td>
-                                    <td>{listingType} Service</td>
+                                    <td>{listingType} {intl.formatMessage({id:'EarningsPage.service'})}</td>
                                     <td>€{amount}</td>
                                     <td>
                                         
                                         {transactionState === "state/reviewed"?
-                                            <button className={css.completed}>Completed</button>
+                                            <button className={css.completed}>{intl.formatMessage({id:'EarningsPage.completed'})}</button>
                                         :
-                                            <button className={css.pending}>Pending</button>
+                                            <button className={css.pending}>{intl.formatMessage({id:'EarningsPage.pending'})}</button>
                                         }
 
                                     </td>
@@ -247,10 +249,11 @@ const Earnings = props=>{
                                 </tr>
                             )
                         })}
+
                         {/* <tr>
                             <td>1</td>
                             <td>Matha Ruis</td>
-                            <td>Cathering Service</td>
+                            <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                             <td>€ 250</td>
                             <td><button className={css.pending}>Pending</button></td>
                             <td>02/04/2024</td>
@@ -258,18 +261,18 @@ const Earnings = props=>{
                         <tr>
                             <td>2</td>
                             <td>Matha Ruis</td>
-                            <td>Cathering Service</td>
+                            <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                             <td>€ 250</td>
-                            <td><button className={css.completed}>Completed</button></td>
+                            <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                             <td>02/04/2024</td>
                         </tr> */}
                     </table>
 
                     <table className={classNames(css.trx_table,css.mobile)}>
                         <tr className={css.trx_header}>
-                            <th>S/N</th>
-                            <th className={css.th_name}>Client</th>
-                            <th>Amount</th>
+                            <th>{intl.formatMessage({id:'EarningsPage.sn'})}</th>
+                            <th className={css.th_name}>{intl.formatMessage({id:'EarningsPage.client'})}</th>
+                            <th>{intl.formatMessage({id:'EarningsPage.amount'})}</th>
                             <th></th>
                         </tr>
                         {transactions.map((itm,key)=>{
@@ -299,9 +302,9 @@ const Earnings = props=>{
                                     <td>€{amount}</td>
                                     <td>
                                         {transactionState === "state/reviewed"?
-                                            <button className={css.completed}>Completed</button>
+                                            <button className={css.completed}>{intl.formatMessage({id:'EarningsPage.completed'})}</button>
                                         :
-                                            <button className={css.pending}>Pending</button>
+                                            <button className={css.pending}>{intl.formatMessage({id:'EarningsPage.pending'})}</button>
                                         }
                                     </td>
                                 </tr>

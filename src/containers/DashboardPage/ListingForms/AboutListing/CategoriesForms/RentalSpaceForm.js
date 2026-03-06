@@ -134,7 +134,7 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                 </div>
           <form className={css.container} onSubmit={handleSubmit}>
             
-                <ProgressTopbar step={"Step 2 of 3"} percentage={"30%"}/>
+                <ProgressTopbar step={intl.formatMessage({ id: 'Dashboard.step2of3' })} percentage={"30%"}/>
                 <TopTab activeTab={"about"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                 <div>
                     <h1 className={classNames(css.header_2,"mb-2")}> {intl.formatMessage({id: 'CategoriesForm.serviceDescription',})}</h1>

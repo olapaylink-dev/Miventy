@@ -151,13 +151,11 @@ const handleRemoveImage = ()=>{
                                 coverPhoto:""
                               },                              
                   };
-  
     onUpdateListing(data,"remove_image");
 }
 
 const subHeader = intl.formatMessage({id: 'Catalog.createCatalog'});
-const instruction = "Create a catalog to showcase the different service options you offer, making it easier for customers to explore and choose what suits them best. You can add multiple service packages, pricing tiers, and special offers. If a catalog isn’t necessary for your service, you can leave this section empty it's completely optional.";
-
+const instruction = intl.formatMessage({ id: 'Dashboard.createACatalog' });
 
     return (
     
@@ -175,7 +173,7 @@ const instruction = "Create a catalog to showcase the different service options 
                    
                     <div className={css.photo_con}>
 
-                      <h2 className={css.cover_header}>Cover image (required)</h2>
+                      <h2 className={css.cover_header}>{intl.formatMessage({id: 'Dashboard.coverImageRequired'})}</h2>
 
                        <div >
                           {imageSrc===""?
@@ -186,7 +184,7 @@ const instruction = "Create a catalog to showcase the different service options 
                                   <path d="M11.3476 14.4782C11.7197 14.1474 12.2804 14.1474 12.6525 14.4782L14.1256 15.7876C14.5309 16.1479 14.5675 16.7687 14.2071 17.1741C13.8919 17.5287 13.3774 17.601 12.9821 17.3723V22.0867C12.9821 22.629 12.5424 23.0687 12 23.0687C11.4576 23.0687 11.0179 22.629 11.0179 22.0867V17.3723C10.6227 17.601 10.1081 17.5287 9.7929 17.1741C9.43256 16.7687 9.46908 16.1479 9.87446 15.7876L11.3476 14.4782Z" fill="#475367"/>
                                 </svg>
                               </div>
-                              <span className={css.pic_label}>Click to upload</span>
+                              <span className={css.pic_label}>{intl.formatMessage({id: 'Dashboard.clickToUpload'})}</span>
                             </div>
                             :
                             <div className={css.cover_con}>
@@ -201,12 +199,12 @@ const instruction = "Create a catalog to showcase the different service options 
                                   <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
                                   <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
                                 </svg>
-                                <span className={css.remove}>Remove image</span>
+                                <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                               </div>
                             </div>
                           }
                       </div>
-                      <p className={css.cover_desc}>The cover image will be displayed on your listing in your public profile.</p>
+                      <p className={css.cover_desc}>{intl.formatMessage({id: 'Dashboard.theCoverImage'})}</p>
                       <input 
                             id='file' 
                             name='file' 
@@ -220,18 +218,18 @@ const instruction = "Create a catalog to showcase the different service options 
                     </div>
 
                     <div className={css.what_happen}>
-                      <h1 className={css.header}>What happens next</h1>
+                      <h1 className={css.header}>{intl.formatMessage({id: 'Dashboard.whatHappenNext'})}</h1>
                       <ol>
                         <li>
-                          <span>You must update your availability.</span>
+                          <span>{intl.formatMessage({id: 'Dashboard.youMustUpdate'})}</span>
                           <p>
-                            Make sure to turn on your availability in the profile settings so that customers can see your service listing.
+                            {intl.formatMessage({id: 'Dashboard.makeSureTo'})}
                           </p>
                         </li>
                         <li>
-                          <span>Review</span>
+                          <span>{intl.formatMessage({id: 'Dashboard.review'})}</span>
                           <p>
-                            Our team will review your listing and if all the requirements are met it will be live and available for clients to book within 24 hours.
+                            {intl.formatMessage({id: 'Dashboard.ourTeamWill'})}
                           </p>
                         </li>
                       </ol>
@@ -245,8 +243,7 @@ const instruction = "Create a catalog to showcase the different service options 
                               {uploadInProgress?
                                 <CircularProgress size={20} sx={{ color: 'white'}}/>
                               :""}
-                              
-                              Publish
+                                {intl.formatMessage({id: 'Dashboard.publish'})}
                               </button>
                               
                         </div>
@@ -255,7 +252,7 @@ const instruction = "Create a catalog to showcase the different service options 
 
             :
             <div className={css.formContent}>
-                    <ProgressTopbar step={"Step 3 of 4"} percentage={"60%"}/>
+                    <ProgressTopbar step={intl.formatMessage({id: 'Dashboard.step1Of4'})} percentage={"60%"}/>
                     <TopTab activeTab={"publish"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
 
                     <div className={css.profile_completion}>
@@ -267,8 +264,8 @@ const instruction = "Create a catalog to showcase the different service options 
                           </div>
                             
                             <div className={css.flex_col}>
-                                <span className={css.header}>Please fill all the required steps</span>
-                                <p>We are unable to publish your listing until you have finished all the required steps.</p>
+                                <span className={css.header}>{intl.formatMessage({id:'Dashboard.pleaseFillAll'})}</span>
+                                <p>{intl.formatMessage({id:'Dashboard.weAreUnable'})}</p>
                             </div>
                         </div>
                       
@@ -279,18 +276,18 @@ const instruction = "Create a catalog to showcase the different service options 
                     </div>
 
                     <div className={css.what_happen}>
-                      <h1 className={css.header}>What happens next</h1>
+                      <h1 className={css.header}>{intl.formatMessage({id:'Dashboard.whatHappenedNext'})}</h1>
                       <ol>
                         <li>
-                          <span>You must update your availability.</span>
+                          <span>{intl.formatMessage({id:'Dashboard.youMustUpdateYour'})}</span>
                           <p>
-                            Make sure to turn on your availability in the profile settings so that customers can see your service listing.
+                            {intl.formatMessage({id:'Dashboard.makeSureTo'})}
                           </p>
                         </li>
                         <li>
-                          <span>Review</span>
+                          <span>{intl.formatMessage({id:'Dashboard.review'})}</span>
                           <p>
-                            Our team will review your listing and if all the requirements are met it will be live and available for clients to book within 24 hours.
+                            {intl.formatMessage({id:'Dashboard.ourTeamWill'})}
                           </p>
                         </li>
                       </ol>

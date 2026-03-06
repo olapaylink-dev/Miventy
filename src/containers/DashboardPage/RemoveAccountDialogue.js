@@ -11,13 +11,13 @@ const RemoveAccountDialogue = props=>{
     return (
        
                 <div className={css.container_2}>
-                    <h1 className={css.header}>Are you sure you want to remove this account?</h1>
+                    <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.areYouSureAccount' })}</h1>
                     <p>
-                        You can always edit your payment information or add a new account.
+                        {intl.formatMessage({ id: 'Dashboard.youCanAlwaysEdit' })}
                     </p>
                     <div className={css.flex_row_btw}>
-                        <button onClick={handleClose} className={css.cancel_btn}>No, Cancel</button>
-                        <button onClick={handleClose} className={css.yes_btn}>Yes, I want to</button>
+                        <button onClick={handleClose} className={css.cancel_btn}>{intl.formatMessage({ id: 'Dashboard.noCancel' })}</button>
+                        <button onClick={handleClose} className={css.yes_btn}>{intl.formatMessage({ id: 'Dashboard.yesIWant' })}</button>
                     </div>
                     
                     

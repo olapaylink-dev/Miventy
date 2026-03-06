@@ -1012,7 +1012,7 @@ export const DashboardPageComponent = props => {
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
                     </svg>
-                    <span>Personal information</span>
+                    <span>{intl.formatMessage({ id: 'Dashboard.personalInformation' })}</span>
                 </div>
                 
                  <div onClick={showSettings} className={css.flex_row_full_btw}>
@@ -1047,7 +1047,7 @@ export const DashboardPageComponent = props => {
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 16.6667C10.4167 17.8173 11.3494 18.75 12.5 18.75H16.6667C17.8173 18.75 18.75 17.8173 18.75 16.6667V12.5C18.75 11.3494 17.8173 10.4167 16.6667 10.4167H12.5C11.3494 10.4167 10.4167 11.3494 10.4167 12.5V16.6667ZM12.5 17.0833C12.2699 17.0833 12.0833 16.8968 12.0833 16.6667V12.5C12.0833 12.2699 12.2699 12.0833 12.5 12.0833H16.6667C16.8968 12.0833 17.0833 12.2699 17.0833 12.5V16.6667C17.0833 16.8968 16.8968 17.0833 16.6667 17.0833H12.5Z" fill="black"/>
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4167 7.5C10.4167 8.65059 11.3494 9.58333 12.5 9.58333H16.6667C17.8173 9.58333 18.75 8.65059 18.75 7.5V3.33333C18.75 2.18274 17.8173 1.25 16.6667 1.25H12.5C11.3494 1.25 10.4167 2.18274 10.4167 3.33333V7.5ZM12.5 7.91667C12.2699 7.91667 12.0833 7.73012 12.0833 7.5V3.33333C12.0833 3.10322 12.2699 2.91667 12.5 2.91667L16.6667 2.91667C16.8968 2.91667 17.0833 3.10322 17.0833 3.33333V7.5C17.0833 7.73012 16.8968 7.91667 16.6667 7.91667L12.5 7.91667Z" fill="black"/>
                           </svg>
-                          <span>Personal information</span>
+                          <span>{intl.formatMessage({ id: 'Dashboard.personalInformation' })}</span>
                       </div>
                       
                       <div onClick={showSettings} className={css.flex_row_full_btw}>
@@ -1113,12 +1113,12 @@ export const DashboardPageComponent = props => {
 
                       <div className={css.main_header_con}>
                         <h2 className={css.main_header}>
-                          Personal details
+                          {intl.formatMessage({ id: 'Dashboard.personalDetails' })}
                         </h2>
                       </div>
 
                     <FormControl className={classNames(css.full_w,css.form_input)}>
-                      <label className={css.labels} for={"outlined-controlled"}>Name</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.name' })}</label>
                       <input
                         id="outlined-controlled"
                         name='businessName'
@@ -1128,7 +1128,7 @@ export const DashboardPageComponent = props => {
                         // value={"businessName"}
                         placeholder={"businessName"}
                       />
-                      <label className={css.labels} for={"outlined-controlled"}>Location (City, Country)</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.locationCity' })}</label>
                       <input
                         id="outlined-controlled"
                         name='location'
@@ -1145,249 +1145,15 @@ export const DashboardPageComponent = props => {
                       
 
                       <div className={css.flex_col_4}>
-                        <h3 className={css.sub_header_4}>System</h3>
-                        <button className={css.delete_btn}>Delete account</button>
+                        <h3 className={css.sub_header_4}>{intl.formatMessage({ id: 'Dashboard.system' })}</h3>
+                        <button className={css.delete_btn}>{intl.formatMessage({ id: 'Dashboard.deleteAccount' })}</button>
                       </div>
                         
                     </FormControl>
-                  
-
-
-
-
-
-
-
-
-
-
-
-
 
                       
                   </div>
-                  {/* {!isProfileInfoComplete?
-                    <div className={css.profile_completion}>
-                          <div className={css.flex_row_start}>
-                              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <g id="icon / pencil-edit">
-                                  <g id="icon">
-                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M21.0961 2.91033C19.7495 1.56374 17.5662 1.56374 16.2196 2.91033L7.69416 11.4358C7.08217 12.0478 6.68518 12.8418 6.56279 13.6985L6.31573 15.4279C6.12717 16.7478 7.25854 17.8792 8.57847 17.6906L10.3078 17.4436C11.1646 17.3212 11.9586 16.9242 12.5706 16.3122L21.0961 7.78676C22.4426 6.44017 22.4426 4.25692 21.0961 2.91033ZM17.8433 4.15085C18.407 3.76659 19.1818 3.82448 19.6818 4.32455C20.1819 4.82461 20.2398 5.59939 19.8555 6.16307L17.8433 4.15085ZM16.4112 5.54717L18.4592 7.59518L11.1564 14.898C10.8504 15.204 10.4534 15.4025 10.025 15.4637L8.29563 15.7108L8.54269 13.9814C8.60388 13.553 8.80238 13.156 9.10837 12.85L16.4112 5.54717Z" fill="#475367"/>
-                                  <path d="M6.5 2.00035C4.29086 2.00035 2.5 3.79121 2.5 6.00035V18.0003C2.5 20.2095 4.29086 22.0003 6.5 22.0003H18.5C20.7091 22.0003 22.5 20.2095 22.5 18.0003V12.0003C22.5 11.4481 22.0523 11.0003 21.5 11.0003C20.9477 11.0003 20.5 11.4481 20.5 12.0003V18.0003C20.5 19.1049 19.6046 20.0003 18.5 20.0003H6.5C5.39543 20.0003 4.5 19.1049 4.5 18.0003V6.00035C4.5 4.89578 5.39543 4.00035 6.5 4.00035H9.18421C9.7365 4.00035 10.1842 3.55263 10.1842 3.00035C10.1842 2.44806 9.7365 2.00035 9.18421 2.00035H6.5Z" fill="#475367"/>
-                                  </g>
-                                  </g>
-                              </svg>
-                              <div className={css.flex_col}>
-                                  <span className={css.header}>Your profile is 40% incomplete</span>
-                                  <p>Your profile is incomplete. Complete required fields to make your service visible to customers.</p>
-                                  <button onClick={handleShowForm} className={css.complete_profile_btn}>Complete profile</button>
-                              </div>
-                          </div>
-                        
-                          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M5.87571 4.6972C5.55028 4.37177 5.02264 4.37177 4.6972 4.6972C4.37177 5.02264 4.37177 5.55028 4.6972 5.87571L8.82199 10.0005L4.6972 14.1253C4.37177 14.4507 4.37177 14.9784 4.6972 15.3038C5.02264 15.6292 5.55028 15.6292 5.87571 15.3038L10.0005 11.179L14.1253 15.3038C14.4507 15.6292 14.9784 15.6292 15.3038 15.3038C15.6292 14.9784 15.6292 14.4507 15.3038 14.1253L11.179 10.0005L15.3038 5.87571C15.6292 5.55028 15.6292 5.02264 15.3038 4.6972C14.9784 4.37177 14.4507 4.37177 14.1253 4.6972L10.0005 8.82199L5.87571 4.6972Z" fill="black"/>
-                          </svg>
-                      </div>
-                  :""} */}
-                 
-                  {/* <div className={css.profile_completion}>
-                      <div className={css.flex_row_start}>
-                          <div className={css.flex_col}>
-                              <span className={css.header_listing}>Create your service listing and start advertising on Miventy</span>
-                              <p>Your service listing will be showcased to thousands of clients daily, get more bookings and grow your business.</p>
-                          </div>
-                      </div>
-                      <div className={css.create_listing_btn_con}>
-                        <button onClick={handleShowCreateListing} className={css.create_listing_btn} disabled={!isProfileInfoComplete}>
-                          {isProfileInfoComplete?"Create a listing":"Your need to complete your Profile before you can create a Listing"}
-                        </button>
-                      </div>
-                      
-                  </div> */}
-
-                  {/* <div className={css.your_listing_con}>
-                    
-                    <div>
-                        <h1 className={css.header_2}>Your Listing</h1>
-                          <p className={css.sub_header_2}>
-                          Manage your service listings
-                        </p>
-                    </div>
-                      
-
-                      <div className={css.flex_grid}>
-                        {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).map((listing,key)=>{
-                          const {id}=listing;
-                          const {publicData,state}=listing.attributes;
-                          const {listingType,coverPhoto="",catalog=[],category} = publicData;
-                          const isDraft = state === "draft";
-
-                          let firstImageInCatId = ""; 
-                          if(catalog.length > 0 && catalog[0].hasOwnProperty("catalogImages")){
-                            firstImageInCatId = catalog[0].catalogImages[0]?.imgUrl;
-                          }
-
-                          let img = "";
-                            if(coverPhoto !== undefined && coverPhoto !== ""){
-                                img = coverPhoto;
-                            }else if(ownEntities.hasOwnProperty("image")){
-                              const firstImageId = Object.keys(ownEntities?.image)[0];
-                              img = ownEntities?.image[firstImageInCatId]?.attributes?.variants["scaled-medium"]?.url;
-                            }
-
-                            if(state === "closed"){
-                              return "";
-                            }else{
-                              
-                            }
-
-                            if(key > 2){
-                              return "";
-                            }
-
-                          return(
-                            <div key={key} className={css.mylisting_card}>
-                              <div className={css.img_con}>
-
-                                  {img !== undefined && img !== ""?
-                                    <div className={css.image_con}>
-                                      {isDraft?
-                                        <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
-                                          <div className={css.text_center}>
-                                            <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
-                                            <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
-                                          </div>
-                                        </div>
-                                      :""}
-                                      <img className={css.resizeimg}  src={img}  onClick={event=>{handleEditListing(event,listing)}}/>
-                                    </div>
-                                    :
-                                    <div className={css.image_con}>
-                                      {isDraft?
-                                        <div onClick={event=>{handleEditListing(event,listing)}} className={css.draft_overlay}>
-                                          <div className={css.text_center}>
-                                            <h5>{intl.formatMessage({id:'StripePayoutPage.draft'})}</h5>
-                                            <p>{intl.formatMessage({id:'StripePayoutPage.clickToComplete'})}</p>
-                                          </div>
-                                        </div>
-                                      :""}
-                                      <img  className={css.resizeimg} src={list1}  onClick={event=>{handleEditListing(event,listing)}}/>
-                                    </div>
-                                    
-                                  }
-
-                              </div>
-                              <div className={css.flex_row_center_2}>
-                                <h2 className={css.caption}>{category}</h2>
-                                <div className={css.remove_con} onClick={e=>{handleSetListingToClose(e,id,state)}}>
-                                  {closeListingInProgress?
-                                    <CircularProgress size={20} sx={{ color: 'gray'}}/>
-                                  :""}
-                                   <span>{intl.formatMessage({id:'StripePayoutPage.removeListing'})}</span>
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M7.91708 1.45898C7.57069 1.45898 7.26043 1.67326 7.13775 1.99719L6.94643 2.50243C6.53628 2.46144 6.15838 2.42054 5.85247 2.38619C5.6238 2.36052 5.43582 2.33856 5.30524 2.32305L5.15462 2.30497L5.10346 2.29871C4.64672 2.24216 4.22996 2.56649 4.1734 3.02324C4.11683 3.47999 4.44125 3.89611 4.898 3.95267L4.95366 3.95947L5.10864 3.97808C5.24226 3.99395 5.43382 4.01632 5.66651 4.04245C6.13148 4.09466 6.76256 4.16206 7.42467 4.22248C8.31782 4.30399 9.29685 4.37565 10.0004 4.37565C10.704 4.37565 11.683 4.30399 12.5761 4.22248C13.2383 4.16206 13.8694 4.09466 14.3343 4.04245C14.567 4.01632 14.7586 3.99395 14.8922 3.97808L15.0472 3.95947L15.1027 3.95268C15.5595 3.89612 15.884 3.47999 15.8274 3.02324C15.7709 2.56649 15.3548 2.24208 14.898 2.29863L14.8462 2.30497L14.6956 2.32305C14.565 2.33856 14.377 2.36052 14.1484 2.38619C13.8424 2.42054 13.4645 2.46144 13.0544 2.50243L12.8631 1.99719C12.7404 1.67326 12.4301 1.45898 12.0837 1.45898H7.91708Z" fill="#475367"/>
-                                    <path d="M9.16708 9.79232C9.16708 9.33208 8.79398 8.95898 8.33375 8.95898C7.87351 8.95898 7.50041 9.33208 7.50041 9.79232V13.959C7.50041 14.4192 7.87351 14.7923 8.33375 14.7923C8.79398 14.7923 9.16708 14.4192 9.16708 13.959V9.79232Z" fill="#475367"/>
-                                    <path d="M11.6671 8.95898C12.1273 8.95898 12.5004 9.33208 12.5004 9.79232V13.959C12.5004 14.4192 12.1273 14.7923 11.6671 14.7923C11.2068 14.7923 10.8337 14.4192 10.8337 13.959V9.79232C10.8337 9.33208 11.2068 8.95898 11.6671 8.95898Z" fill="#475367"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.7585 6.70945C15.834 5.65214 14.9224 4.80451 13.8865 4.92423C12.8265 5.04674 11.1907 5.20898 10.0004 5.20898C8.81013 5.20898 7.17436 5.04674 6.11433 4.92423C5.07839 4.80451 4.16685 5.65214 4.24237 6.70945L4.95631 16.7047C5.01043 17.4624 5.5748 18.103 6.34928 18.2194C7.17979 18.3443 8.7037 18.5438 10.0014 18.5423C11.2831 18.5408 12.8132 18.3422 13.6474 18.2184C14.4232 18.1034 14.9904 17.4623 15.0447 16.7024L15.7585 6.70945ZM14.0778 6.57988C14.0807 6.57955 14.0829 6.57974 14.0829 6.57974L14.0851 6.58025C14.087 6.58089 14.0899 6.58241 14.0928 6.58513C14.0947 6.58693 14.0961 6.58913 14.0961 6.58913L14.096 6.5907L13.383 16.5728C12.5574 16.6948 11.1425 16.8743 9.99945 16.8757C8.84399 16.877 7.4378 16.6972 6.61792 16.5744L5.9048 6.5907L5.90474 6.58913C5.90474 6.58913 5.90616 6.58693 5.90806 6.58513C5.91093 6.58241 5.91384 6.58089 5.91569 6.58025L5.91789 6.57974C5.91789 6.57974 5.92011 6.57955 5.923 6.57988C6.9849 6.7026 8.70495 6.87565 10.0004 6.87565C11.2959 6.87565 13.0159 6.7026 14.0778 6.57988Z" fill="#475367"/>
-                                  </svg>
-                                 
-                                </div>
-                              </div>
-                              
-                            </div>
-                          )
-                        })}
-
-                          {ownEntities !== undefined && ownEntities.hasOwnProperty("ownListing") && Object.values(ownEntities.ownListing).length>2?
-                           <div className={css.mylisting_card_2}>
-                             <button onClick={handleShowListings} className={css.view_more}>
-                              <span>{intl.formatMessage({id:'StripePayoutPage.viewAllListing'})}</span>
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M21.7071 12.7071C22.0976 12.3166 22.0976 11.6834 21.7071 11.2929L17.7071 7.29289C17.3166 6.90237 16.6834 6.90237 16.2929 7.29289C15.9024 7.68342 15.9024 8.31658 16.2929 8.70711L18.5858 11L3 11C2.44772 11 2 11.4477 2 12C2 12.5523 2.44772 13 3 13L18.5858 13L16.2929 15.2929C15.9024 15.6834 15.9024 16.3166 16.2929 16.7071C16.6834 17.0976 17.3166 17.0976 17.7071 16.7071L21.7071 12.7071Z" fill="#EB5017"/>
-                              </svg>
-                             </button>
-                            </div>
-                          :""}
-                           
-                      </div>
-                    
-
-                  </div> */}
-
-
-                  {/* <div className={css.order_tracking}>
-                      <div className={css.flex_row_start}>
-                          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.5C8.40056 1.5 5.20486 3.2299 3.1997 5.89942C1.81871 7.73797 1 10.0248 1 12.5C1 14.9752 1.81871 17.262 3.1997 19.1006C5.20486 21.7701 8.40056 23.5 12 23.5C15.5994 23.5 18.7951 21.7701 20.8003 19.1006C22.1813 17.262 23 14.9752 23 12.5C23 10.0248 22.1813 7.73797 20.8003 5.89942C18.7951 3.2299 15.5994 1.5 12 1.5ZM4.90148 7.4176C5.12565 7.39682 5.38969 7.37293 5.68444 7.34733C5.60258 8.56193 5.53095 9.99456 5.50782 11.5H3.05486C3.2194 10.0099 3.74743 8.63055 4.54856 7.45084C4.65102 7.44104 4.76929 7.42986 4.90148 7.4176ZM4.54856 17.5492C3.74743 16.3695 3.2194 14.9901 3.05486 13.5H5.50782C5.53095 15.0054 5.60258 16.4381 5.68444 17.6527C5.38969 17.6271 5.12565 17.6032 4.90148 17.5824C4.76929 17.5701 4.65102 17.559 4.54856 17.5492ZM7.50806 13.5C7.53297 15.0746 7.61241 16.5714 7.70023 17.8123C8.77446 17.8887 9.94229 17.9564 11 17.9852V13.5H7.50806ZM7.91935 20.3659C7.9254 20.4251 7.93118 20.4809 7.93664 20.5329C8.87517 21.0086 9.90816 21.3245 11 21.4451V19.9859C9.98757 19.9595 8.88779 19.8986 7.86654 19.8288C7.8846 20.0195 7.90151 20.1907 7.91673 20.3403C7.91761 20.3489 7.91848 20.3574 7.91935 20.3659ZM16.0634 20.5329C15.1248 21.0086 14.0918 21.3245 13 21.4451V19.9859C14.0124 19.9595 15.1122 19.8986 16.1335 19.8288C16.1154 20.0195 16.0985 20.1907 16.0833 20.3403C16.0763 20.4091 16.0696 20.4734 16.0634 20.5329ZM16.2998 17.8123C15.2255 17.8887 14.0577 17.9564 13 17.9852V13.5H16.4919C16.467 15.0746 16.3876 16.5714 16.2998 17.8123ZM16.2998 7.18766C16.3876 8.42861 16.467 9.92539 16.4919 11.5H13V7.01476C14.0577 7.0436 15.2255 7.11133 16.2998 7.18766ZM16.1335 5.17121C15.1122 5.10142 14.0124 5.04054 13 5.01407V3.55489C14.0918 3.67552 15.1248 3.99139 16.0634 4.46708C16.0696 4.52656 16.0763 4.59085 16.0833 4.65974C16.0985 4.80931 16.1154 4.98051 16.1335 5.17121ZM7.86654 5.17121C8.88779 5.10142 9.98757 5.04054 11 5.01407V3.55489C9.90816 3.67552 8.87517 3.99139 7.93664 4.46708C7.9304 4.52656 7.92375 4.59085 7.91673 4.65974C7.90151 4.80931 7.8846 4.98051 7.86654 5.17121ZM11 7.01476C9.94229 7.0436 8.77446 7.11133 7.70023 7.18766C7.61241 8.42861 7.53297 9.92539 7.50806 11.5H11V7.01476ZM19.0985 7.4176C18.8744 7.39682 18.6103 7.37293 18.3156 7.34733C18.3974 8.56193 18.4691 9.99456 18.4922 11.5H20.9451C20.7806 10.0099 20.2526 8.63055 19.4514 7.45084C19.349 7.44104 19.2307 7.42986 19.0985 7.4176ZM18.3156 17.6527C18.3974 16.4381 18.4691 15.0054 18.4922 13.5H20.9451C20.7806 14.9901 20.2526 16.3695 19.4514 17.5492C19.349 17.559 19.2307 17.5701 19.0985 17.5824C18.8744 17.6032 18.6103 17.6271 18.3156 17.6527Z" fill="#475367"/>
-                          </svg>
-
-                          <div className={css.flex_col_order}>
-                              <span className={css.header}>Orders Tracking</span>
-                              <p>Track your orders both on-going and completed orders. </p>
-                          </div>
-                      </div>
-                      <div className={css.flex_row_btw_ord}>
-                          <div onClick={handleShowOngoingOrders}>
-                            <div className={css.flex_row_full_btw}>
-                                <span className={css.counter_header}>On-going Orders</span>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <rect width="24" height="24" fill="#FCF4F0"/>
-                                  <path d="M8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8H16C16.5523 8 17 7.55228 17 7C17 6.44772 16.5523 6 16 6H8Z" fill="#475367"/>
-                                  <path d="M7 12C7 11.4477 7.44772 11 8 11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H8C7.44772 13 7 12.5523 7 12Z" fill="#475367"/>
-                                  <path d="M8 16C7.44772 16 7 16.4477 7 17C7 17.5523 7.44772 18 8 18H10.6667C11.219 18 11.6667 17.5523 11.6667 17C11.6667 16.4477 11.219 16 10.6667 16H8Z" fill="#475367"/>
-                                  <path d="M13.3333 16C12.781 16 12.3333 16.4477 12.3333 17C12.3333 17.5523 12.781 18 13.3333 18H16C16.5523 18 17 17.5523 17 17C17 16.4477 16.5523 16 16 16H13.3333Z" fill="#475367"/>
-                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
-                                </svg>
-                            </div>
-                            <p className={css.no_spacing}>You currently have</p>
-                            <div className={css.flex_row_start_bottom}>
-                              <span className={css.counter}>0</span>
-                              <span>{intl.formatMessage({id:'StripePayoutPage.onGoingOrders'})}</span>
-                            </div>
-                          </div>
-                          <div onClick={handleShowCompletedOrders}>
-                            <div className={css.flex_row_full_btw}>
-                                <span className={css.counter_header}>Completed</span>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <rect width="24" height="24" fill="#FCF4F0"/>
-                                  <path d="M8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8H16C16.5523 8 17 7.55228 17 7C17 6.44772 16.5523 6 16 6H8Z" fill="#475367"/>
-                                  <path d="M7 12C7 11.4477 7.44772 11 8 11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H8C7.44772 13 7 12.5523 7 12Z" fill="#475367"/>
-                                  <path d="M8 16C7.44772 16 7 16.4477 7 17C7 17.5523 7.44772 18 8 18H10.6667C11.219 18 11.6667 17.5523 11.6667 17C11.6667 16.4477 11.219 16 10.6667 16H8Z" fill="#475367"/>
-                                  <path d="M13.3333 16C12.781 16 12.3333 16.4477 12.3333 17C12.3333 17.5523 12.781 18 13.3333 18H16C16.5523 18 17 17.5523 17 17C17 16.4477 16.5523 16 16 16H13.3333Z" fill="#475367"/>
-                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
-                                </svg>
-                            </div>
-                            <p className={css.no_spacing}>You currently have</p>
-                            <div className={css.flex_row_start_bottom}>
-                              <span className={css.counter}>0</span>
-                              <span>{intl.formatMessage({id:'StripePayoutPage.completed'})}</span>
-                            </div>
-                          </div>
-                      </div>
-                  </div> */}
-                  {/* <div className={css.order_tracking}>
-                      <div className={css.flex_row_start}>
-                          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.5C8.40056 1.5 5.20486 3.2299 3.1997 5.89942C1.81871 7.73797 1 10.0248 1 12.5C1 14.9752 1.81871 17.262 3.1997 19.1006C5.20486 21.7701 8.40056 23.5 12 23.5C15.5994 23.5 18.7951 21.7701 20.8003 19.1006C22.1813 17.262 23 14.9752 23 12.5C23 10.0248 22.1813 7.73797 20.8003 5.89942C18.7951 3.2299 15.5994 1.5 12 1.5ZM4.90148 7.4176C5.12565 7.39682 5.38969 7.37293 5.68444 7.34733C5.60258 8.56193 5.53095 9.99456 5.50782 11.5H3.05486C3.2194 10.0099 3.74743 8.63055 4.54856 7.45084C4.65102 7.44104 4.76929 7.42986 4.90148 7.4176ZM4.54856 17.5492C3.74743 16.3695 3.2194 14.9901 3.05486 13.5H5.50782C5.53095 15.0054 5.60258 16.4381 5.68444 17.6527C5.38969 17.6271 5.12565 17.6032 4.90148 17.5824C4.76929 17.5701 4.65102 17.559 4.54856 17.5492ZM7.50806 13.5C7.53297 15.0746 7.61241 16.5714 7.70023 17.8123C8.77446 17.8887 9.94229 17.9564 11 17.9852V13.5H7.50806ZM7.91935 20.3659C7.9254 20.4251 7.93118 20.4809 7.93664 20.5329C8.87517 21.0086 9.90816 21.3245 11 21.4451V19.9859C9.98757 19.9595 8.88779 19.8986 7.86654 19.8288C7.8846 20.0195 7.90151 20.1907 7.91673 20.3403C7.91761 20.3489 7.91848 20.3574 7.91935 20.3659ZM16.0634 20.5329C15.1248 21.0086 14.0918 21.3245 13 21.4451V19.9859C14.0124 19.9595 15.1122 19.8986 16.1335 19.8288C16.1154 20.0195 16.0985 20.1907 16.0833 20.3403C16.0763 20.4091 16.0696 20.4734 16.0634 20.5329ZM16.2998 17.8123C15.2255 17.8887 14.0577 17.9564 13 17.9852V13.5H16.4919C16.467 15.0746 16.3876 16.5714 16.2998 17.8123ZM16.2998 7.18766C16.3876 8.42861 16.467 9.92539 16.4919 11.5H13V7.01476C14.0577 7.0436 15.2255 7.11133 16.2998 7.18766ZM16.1335 5.17121C15.1122 5.10142 14.0124 5.04054 13 5.01407V3.55489C14.0918 3.67552 15.1248 3.99139 16.0634 4.46708C16.0696 4.52656 16.0763 4.59085 16.0833 4.65974C16.0985 4.80931 16.1154 4.98051 16.1335 5.17121ZM7.86654 5.17121C8.88779 5.10142 9.98757 5.04054 11 5.01407V3.55489C9.90816 3.67552 8.87517 3.99139 7.93664 4.46708C7.9304 4.52656 7.92375 4.59085 7.91673 4.65974C7.90151 4.80931 7.8846 4.98051 7.86654 5.17121ZM11 7.01476C9.94229 7.0436 8.77446 7.11133 7.70023 7.18766C7.61241 8.42861 7.53297 9.92539 7.50806 11.5H11V7.01476ZM19.0985 7.4176C18.8744 7.39682 18.6103 7.37293 18.3156 7.34733C18.3974 8.56193 18.4691 9.99456 18.4922 11.5H20.9451C20.7806 10.0099 20.2526 8.63055 19.4514 7.45084C19.349 7.44104 19.2307 7.42986 19.0985 7.4176ZM18.3156 17.6527C18.3974 16.4381 18.4691 15.0054 18.4922 13.5H20.9451C20.7806 14.9901 20.2526 16.3695 19.4514 17.5492C19.349 17.559 19.2307 17.5701 19.0985 17.5824C18.8744 17.6032 18.6103 17.6271 18.3156 17.6527Z" fill="#475367"/>
-                          </svg>
-
-                          <div className={css.flex_col_order}>
-                              <span className={css.header}>{intl.formatMessage({id:'StripePayoutPage.reviews'})}</span>
-                              <p>{intl.formatMessage({id:'StripePayoutPage.viewFeedback'})}</p>
-                          </div>
-                      </div>
-                      <p className={classNames(css.no_spacing_main,css.cust_p)}>Current rating: --</p>
-                      <div className={css.flex_row_center}>
-                          <div>
-                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M29.1543 5.83729C26.7749 2.05424 21.2235 2.05424 18.8441 5.83729L14.9864 11.9708C14.7042 12.4194 14.2516 12.7475 13.7203 12.8772L6.62721 14.6087C2.27171 15.672 0.510317 20.9235 3.43995 24.3592L8.1488 29.8814C8.49442 30.2867 8.66306 30.805 8.62505 31.3256L8.09903 38.5292C7.77091 43.0228 12.3074 46.2157 16.4415 44.5539L23.2095 41.8333C23.7154 41.6299 24.283 41.6299 24.7889 41.8333L31.5569 44.5539C35.691 46.2157 40.2275 43.0228 39.8994 38.5292L39.3734 31.3256C39.3354 30.805 39.504 30.2867 39.8496 29.8814L44.5585 24.3592C47.4881 20.9235 45.7267 15.672 41.3712 14.6087L34.2781 12.8772C33.7468 12.7475 33.2942 12.4194 33.0121 11.9708L29.1543 5.83729ZM22.2301 7.96693C23.0409 6.67769 24.9575 6.67769 25.7684 7.96693L29.6261 14.1004C30.4664 15.4364 31.7971 16.389 33.3295 16.7631L40.4226 18.4946C41.933 18.8633 42.4793 20.6327 41.5148 21.7638L36.8059 27.2861C35.7814 28.4875 35.269 30.0415 35.384 31.6169L35.91 38.8205C36.0169 40.2842 34.5117 41.4305 33.0488 40.8425L26.2808 38.1219C24.8175 37.5337 23.1809 37.5337 21.7176 38.1219L14.9496 40.8425C13.4867 41.4306 11.9815 40.2842 12.0884 38.8205L12.6144 31.6169C12.7295 30.0415 12.217 28.4875 11.1925 27.2861L6.48363 21.7638C5.51913 20.6327 6.06546 18.8633 7.5758 18.4946L14.6689 16.7631C16.2014 16.389 17.532 15.4364 18.3723 14.1004L22.2301 7.96693Z" fill="#475367"/>
-                            </svg>
-
-                            <span className={css.rate_header}>You currently have no ratings</span>
-                          </div>
-                      </div>
-                      <button className={css.all_reviews_btn}>View all reviews</button>
-                  </div> */}
+                
                 </div>
             :""}
 
@@ -1436,9 +1202,9 @@ export const DashboardPageComponent = props => {
                           </button>
                         </div>
 
-                        <h1 className={css.header_2}>Listings</h1>
+                        <h1 className={css.header_2}>{intl.formatMessage({ id: 'Dashboard.listing' })}</h1>
                           <p className={css.sub_header_2}>
-                          Manage your listings
+                         {intl.formatMessage({ id: 'Dashboard.manageYourListing' })} 
                         </p>
                     </div>
                       
@@ -1504,7 +1270,7 @@ export const DashboardPageComponent = props => {
                                       {closeListingInProgress?
                                         <CircularProgress size={20} sx={{ color: 'gray'}}/>
                                       :""}
-                                      <span>Remove image</span>
+                                      <span>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                                         <path d="M7.91708 1.45898C7.57069 1.45898 7.26043 1.67326 7.13775 1.99719L6.94643 2.50243C6.53628 2.46144 6.15838 2.42054 5.85247 2.38619C5.6238 2.36052 5.43582 2.33856 5.30524 2.32305L5.15462 2.30497L5.10346 2.29871C4.64672 2.24216 4.22996 2.56649 4.1734 3.02324C4.11683 3.47999 4.44125 3.89611 4.898 3.95267L4.95366 3.95947L5.10864 3.97808C5.24226 3.99395 5.43382 4.01632 5.66651 4.04245C6.13148 4.09466 6.76256 4.16206 7.42467 4.22248C8.31782 4.30399 9.29685 4.37565 10.0004 4.37565C10.704 4.37565 11.683 4.30399 12.5761 4.22248C13.2383 4.16206 13.8694 4.09466 14.3343 4.04245C14.567 4.01632 14.7586 3.99395 14.8922 3.97808L15.0472 3.95947L15.1027 3.95268C15.5595 3.89612 15.884 3.47999 15.8274 3.02324C15.7709 2.56649 15.3548 2.24208 14.898 2.29863L14.8462 2.30497L14.6956 2.32305C14.565 2.33856 14.377 2.36052 14.1484 2.38619C13.8424 2.42054 13.4645 2.46144 13.0544 2.50243L12.8631 1.99719C12.7404 1.67326 12.4301 1.45898 12.0837 1.45898H7.91708Z" fill="#475367"/>
                                         <path d="M9.16708 9.79232C9.16708 9.33208 8.79398 8.95898 8.33375 8.95898C7.87351 8.95898 7.50041 9.33208 7.50041 9.79232V13.959C7.50041 14.4192 7.87351 14.7923 8.33375 14.7923C8.79398 14.7923 9.16708 14.4192 9.16708 13.959V9.79232Z" fill="#475367"/>
@@ -1607,7 +1373,7 @@ export const DashboardPageComponent = props => {
                 {intl.formatMessage({id:'StripePayoutPage.payoutMethod'})}
               </span>
               <p>
-                Choose and add your preferred method of withdrawal
+                {intl.formatMessage({ id: 'Dashboard.chooseAndAdd' })}
               </p>
             </div>
             <div className={css.close_btn}>
@@ -1623,7 +1389,7 @@ export const DashboardPageComponent = props => {
             </svg>
             <div className={css.flex_col_2}>
               <span className={css.header_sub}>
-                Apple pay
+                {intl.formatMessage({ id: 'StripePayoutPage.applePay' })}
               </span>
               <p className={css.flow_row_sm_gap}>
                 <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
@@ -1642,7 +1408,7 @@ export const DashboardPageComponent = props => {
             </svg>
             <div className={css.flex_col_2}>
               <span className={css.header_sub}>
-                Google pay
+                {intl.formatMessage({id:'StripePayoutPage.googlePay'})}
               </span>
               <p className={css.flow_row_sm_gap}>
                 <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
@@ -1672,7 +1438,7 @@ export const DashboardPageComponent = props => {
             </svg>
             <div className={css.flex_col_2}>
               <span className={css.header_sub}>
-                Bank transfer
+                {intl.formatMessage({id:'StripePayoutPage.bankTransfer'})}
               </span>
               <p className={css.flow_row_sm_gap}>
                 <span>{intl.formatMessage({id:'StripePayoutPage.upTo1BusinessDay'})}</span>
@@ -1964,11 +1730,11 @@ useEffect(()=>{
 
                     <form>
                       <div className={css.flex_col}>
-                      <span className={css.header_2}>Complete your profile</span>
-                      <p className={classNames(css.no_spacing,css.p)}>Are you registering as a Business Owner or a Private Owner?</p>
+                      <span className={css.header_2}>{intl.formatMessage({ id: 'Dashboard.completeYourProfile' })}</span>
+                      <p className={classNames(css.no_spacing,css.p)}>{intl.formatMessage({ id: 'Dashboard.areYouRegistering' })}</p>
 
-                      {/* <input type='radio' name='userType' value="businessOwner" id='businessOwner'/> <label for="">I am a business owner</label>
-                      <input type='radio' name='userType' value="privateOwner" id='privateOwner'/><label for="">I am a private owner</label>
+                      {/* <input type='radio' name='userType' value="businessOwner" id='businessOwner'/> <label for="">{intl.formatMessage({ id: 'StripePayoutPage.iAmABusinessOwner' })}</label>
+                      <input type='radio' name='userType' value="privateOwner" id='privateOwner'/><label for="">{intl.formatMessage({ id: 'StripePayoutPage.iAmAPrivateOwner' })}</label>
                       <input type='submit' value='Submit'/> */}
 
                       <FormControl className={css.full_w}>
@@ -1997,7 +1763,7 @@ useEffect(()=>{
                                   color: "#F56630",
                                 },
                               }}
-                            className={classNames(css.no_spacing,css.radio)}/>} label="I am a private owner" />
+                            className={classNames(css.no_spacing,css.radio)}/>} label={intl.formatMessage({ id: 'StripePayoutPage.iAmAPrivateOwner' })} />
                         </RadioGroup>
                         
                       </FormControl>
@@ -2011,7 +1777,7 @@ useEffect(()=>{
                       <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                       <div>
                         <button className={css.btn_prev} disabled>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                        <button onClick={handleSubmit} className={css.btn_next}>Next</button>
+                        <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'Dashboard.next'})}</button>
                       </div>
                     </div>
                 </div>
@@ -2114,7 +1880,7 @@ const handleSubmit = e=>{
                         </svg>
                     </div>
                   <div className={classNames(css.flex_col,css.full_w)}>
-                    <span className={css.header_2}>Complete your profile</span>
+                    <span className={css.header_2}>{intl.formatMessage({id:'Dashboard.completeYourProfile'})}</span>
                     <div className={css.main_slider_con}>
                       <span>{intl.formatMessage({id:'StripePayoutPage.step1Of2'})}</span>
                       <div className={css.slider_con}>
@@ -2166,7 +1932,7 @@ const handleSubmit = e=>{
                         onChange={(event) => {
                           setYearsOfExperience(event.target.value);
                         }}
-                        placeholder="Years of experience"
+                        placeholder={intl.formatMessage({id:'StripePayoutPage.yearsOfExperience'})}
                       />
 
                       <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
@@ -2444,7 +2210,7 @@ const handleSubmit = e=>{
                     <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
                       <button onClick={e=>handleMoveBack("userType")} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
-                      <button onClick={handleSubmit} className={css.btn_next}>Next</button>
+                      <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.next'})}</button>
                        <input 
                             id='file' 
                             name='file' 
@@ -2614,7 +2380,7 @@ const handleSubmit = async e=>{
                   <div className={css.base_btns}>
                     <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                     <div>
-                      <button onClick={handleSubmit} className={css.btn_next}>Next</button>
+                      <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.next'})}</button>
                     </div>
                   </div>
                 </div>
@@ -2852,7 +2618,7 @@ if(currentSelectedUserType === "businessOwner"){
                       </svg>
                     </div>
                      <p className={css.complete_content}>
-                      Your profile is now complete. Continue to create a listing.
+                      {intl.formatMessage({id:'Dashboard.yourProfileIs'})}
                     </p>
                     <button className={css.back_btn} onClick={handleBackToDashboard}>{intl.formatMessage({id:'StripePayoutPage.backToDashboard'})}</button>
                   </div>
@@ -2873,10 +2639,10 @@ const AddApplePayForm = props => {
      <div className={css.header_con}>
             <div className={css.flex_col_normal}>
               <span className={classNames("pb-2",css.header_manage)}>
-                Add Apple pay account
+                {intl.formatMessage({id:'Dashboard.addApple'})}
               </span>
               <p>
-                Enter the email address linked to the Apple pay account you want to use for withdrawing funds. A verification code will be sent to the email address or phone linked to your account.
+                {intl.formatMessage({id:'Dashboard.enterTheEmail'})}
               </p>
             </div>
             <div className={css.close_btn}>
@@ -2886,8 +2652,8 @@ const AddApplePayForm = props => {
             </div>
           </div>
           <form className={css.form} onSubmit={handleSubmit}>
-              <label labelfor="email">Email address</label>
-              <input type='email' placeholder='Enter your email address'/>
+              <label labelfor="email">{intl.formatMessage({id:'StripePayoutPage.emailAddress'})}</label>
+              <input type='email' placeholder={intl.formatMessage({id:'StripePayoutPage.enterEmail'})}/>
               <button onClick={e=>{handleContinue(e,"VerificationCodeApplePay")}} className={css.continue} type="submit">Continue</button>
           </form>
     
@@ -2906,10 +2672,10 @@ const VerificationCodeApplePayForm = props => {
      <div className={css.header_con}>
             <div className={css.flex_col_normal}>
               <span className={classNames("pb-2",css.header_manage)}>
-                Verification code sent
+                {intl.formatMessage({ id: 'Dashboard.verificationCodeSent' })}
               </span>
               <p>
-                 Verification code has been sent to the email ks######@gmail.com, and also the phone number +33********6. Kindly check.
+                {intl.formatMessage({ id: 'Dashboard.verificationCodeHasBeen' })}
               </p>
             </div>
             <div className={css.close_btn}>
@@ -2919,9 +2685,9 @@ const VerificationCodeApplePayForm = props => {
             </div>
           </div>
           <form className={css.form} onSubmit={handleSubmit}>
-              <label labelfor="email">Enter code</label>
-              <input type='number' placeholder='Enter your email address'/>
-              <button onClick={e=>{handleSubmitVerification(e,"SuccessfulApplePay")}} className={css.continue} type="submit">Submit</button>
+              <label labelfor="email">{intl.formatMessage({ id: 'Dashboard.enterCode' })}</label>
+              <input type='number' placeholder={intl.formatMessage({ id: 'StripePayoutPage.enterEmail' })}/>
+              <button onClick={e=>{handleSubmitVerification(e,"SuccessfulApplePay")}} className={css.continue} type="submit">{intl.formatMessage({ id: 'Dasboard.submit' })}</button>
           </form>
     
     </>
@@ -2965,9 +2731,9 @@ if(currentSelectedUserType === "businessOwner"){
                       </svg>
                     </div>
                     <div className={css.success_center}>
-                      <span className={css.success_header}>Successful</span>
+                      <span className={css.success_header}>{intl.formatMessage({ id: 'Dashboard.successful' })}</span>
                       <p className={css.success_content}>
-                        Apple pay account ks######@gmail.com has been added successfully for withdrawal.
+                        {intl.formatMessage({ id: 'Dashboard.applePayAccount' })}
                       </p>
                     </div>
                     

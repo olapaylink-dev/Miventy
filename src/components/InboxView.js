@@ -5,8 +5,10 @@ import MessageListItemComponent from './CustomComponent/MessageListItemComponent
 import MessageGen from './CustomComponent/MessageGen';
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
+import { FormattedMessage, useIntl } from '../util/reactIntl';
 
 export default function InboxView(props){
+    const intl = useIntl();
 
      const {
         listingId,
@@ -367,7 +369,6 @@ export default function InboxView(props){
                                     <input className={css.input} ref={inputRef} type="text" placeholder="Type your message..." 
                                         onKeyDown={e=>{
                                             if (e.key === "Enter") {
-                                                console.log("Enter pressed")
                                                 handleSendMessage(e);
                                             }
                                         }} 

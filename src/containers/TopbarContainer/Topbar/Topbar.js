@@ -466,19 +466,19 @@ const handleSwitchToCustomer = e =>{
                          {userType === "customer"?
                           <NamedLink name="ProfileSettingsPage" > 
                               <div className={css.flex_row_menu}>
-                                Profile settings
+                                {intl.formatMessage({ id: 'Topbar.profileSettings' })}
                               </div>
                             </NamedLink>
                          :
                          <>
                               <NamedLink name="StripePayoutPage" > 
                                 <div className={css.flex_row_menu}>
-                                My Profile
+                                {intl.formatMessage({ id: 'Topbar.myProfile' })}
                                 </div>
                               </NamedLink>
                              
                               <div className={css.flex_row_menu} onClick={handleSwitchToCustomer} > 
-                                  Hire A Service
+                                 {intl.formatMessage({ id: 'Topbar.hireAService' })}
                               </div>
                          </>
                             
@@ -488,16 +488,16 @@ const handleSwitchToCustomer = e =>{
                           <>
                               <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
                                 <div className={css.flex_row_menu}>
-                                  My bookings
+                                 {intl.formatMessage({ id: 'Topbar.myBookings' })} My bookings
                                 </div>
                               </NamedLink>
                               <NamedLink name="FavouritePage" > 
                                 <div className={css.flex_row_menu}>
-                                  Favorite
+                                 {intl.formatMessage({ id: 'Topbar.favourite' })}
                                 </div>
                               </NamedLink>
                               <div className={css.flex_row_menu} onClick={handleSwitchToProvider} > 
-                                  Become a service provider
+                                 {intl.formatMessage({ id: 'Topbar.becomeAService' })}
                               </div>
                           </>
                             
@@ -507,7 +507,7 @@ const handleSwitchToCustomer = e =>{
                           }
 
                           <div className={css.flex_row_menu_last} onClick={handleLogout}>
-                            Logout
+                           {intl.formatMessage({ id: 'Topbar.logout' })} Logout
                           </div>
                       </div>
                       

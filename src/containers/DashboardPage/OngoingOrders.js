@@ -13,13 +13,13 @@ const OngoingPrders = props =>{
                             <path d="M2.05086 1.13616C1.66033 0.745631 1.02717 0.74563 0.636643 1.13616C0.246119 1.52668 0.246119 2.15984 0.636643 2.55037L5.58639 7.50012L0.636643 12.4499C0.246119 12.8404 0.246119 13.4736 0.636643 13.8641C1.02717 14.2546 1.66033 14.2546 2.05086 13.8641L7.0006 8.91433L11.9504 13.8641C12.3409 14.2546 12.974 14.2546 13.3646 13.8641C13.7551 13.4736 13.7551 12.8404 13.3646 12.4499L8.41482 7.50012L13.3646 2.55037C13.7551 2.15984 13.7551 1.52668 13.3646 1.13616C12.974 0.745631 12.3409 0.745631 11.9504 1.13616L7.0006 6.0859L2.05086 1.13616Z" fill="black"/>
                         </svg>
                     </div>
-                    <h1 className={css.header}>View your orders</h1>
+                    <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.viewYourOrders' })}</h1>
                     
                 </div>
                 <div className={css.action_con}>
                     <div className={css.flex_row}>
-                        <button className={css.active}>All</button>
-                        <button>Completed</button>
+                        <button className={css.active}>{intl.formatMessage({ id: 'Dashboard.all' })}</button>
+                        <button>{intl.formatMessage({ id: 'Dashboard.completed' })}</button>
                         <button>Ongoing</button>
                     </div>
                     <div className={css.flex_row}>
@@ -27,7 +27,7 @@ const OngoingPrders = props =>{
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33398 1.33398C4.02028 1.33398 1.33398 4.02028 1.33398 7.33398C1.33398 10.6477 4.02028 13.334 7.33398 13.334C8.75066 13.334 10.0527 12.843 11.0791 12.0219L13.5292 14.4721C13.7896 14.7324 14.2117 14.7324 14.4721 14.4721C14.7324 14.2117 14.7324 13.7896 14.4721 13.5292L12.0219 11.0791C12.843 10.0527 13.334 8.75066 13.334 7.33398C13.334 4.02028 10.6477 1.33398 7.33398 1.33398ZM2.66732 7.33398C2.66732 4.75666 4.75666 2.66732 7.33398 2.66732C9.91131 2.66732 12.0007 4.75666 12.0007 7.33398C12.0007 9.91131 9.91131 12.0007 7.33398 12.0007C4.75666 12.0007 2.66732 9.91131 2.66732 7.33398Z" fill="#7A7A7A"/>
                             </svg>
-                            <input className={css.search_input} type="text" placeholder="Search orders" />
+                            <input className={css.search_input} type="text" placeholder={intl.formatMessage({ id: 'Dashboard.searchOrders' })} />
                         </div>
                         <button>
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -51,23 +51,23 @@ const OngoingPrders = props =>{
                     <tr>
                         <td>1</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
-                        <td><button className={css.completed}>Completed</button></td>
+                        <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
-                        <td><button className={css.completed}>Completed</button></td>
+                        <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
                         <td><button className={css.ongoing}>Ongoing</button></td>
@@ -75,15 +75,15 @@ const OngoingPrders = props =>{
                     <tr>
                         <td>2</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
-                        <td><button className={css.completed}>Completed</button></td>
+                        <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
                         <td><button className={css.ongoing}>Ongoing</button></td>
@@ -91,15 +91,15 @@ const OngoingPrders = props =>{
                     <tr>
                         <td>2</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
-                        <td><button className={css.completed}>Completed</button></td>
+                        <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
                         <td><button className={css.ongoing}>Ongoing</button></td>
@@ -107,10 +107,10 @@ const OngoingPrders = props =>{
                     <tr>
                         <td>2</td>
                         <td>Matha Ruis</td>
-                        <td>Cathering Service</td>
+                        <td>{intl.formatMessage({ id: 'Dashboard.catheringService' })}</td>
                         <td>02/04/2024</td>
                         <td>€ 250</td>
-                        <td><button className={css.completed}>Completed</button></td>
+                        <td><button className={css.completed}>{intl.formatMessage({ id: 'Dashboard.completed' })}</button></td>
                     </tr>
                     
                 </table>

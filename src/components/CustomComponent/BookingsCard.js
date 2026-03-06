@@ -123,7 +123,7 @@ const BookingsCard = props=>{
                             {isProvider?
                                 (transactionState === "state/reviewed"?
                                         <div className={css.flex_btw}>
-                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Completed</button>
+                                            <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>{intl.formatMessage({ id: 'Dashboard.completed' })}</button>
                                         </div>
                                     :
                                     !isReviewedByCustomer?
@@ -138,7 +138,7 @@ const BookingsCard = props=>{
                             :
                             (   transactionState === "state/reviewed"?
                                     <div className={css.flex_btw}>
-                                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>Completed</button>
+                                        <button onClick={e=>{setShowRatingForm(true); setCurrentTransaction(data)}} className={css.fill_btn} disabled>{intl.formatMessage({ id: 'Dashboard.completed' })}</button>
                                     </div>
                                 :
                                 isReviewedByCustomer?

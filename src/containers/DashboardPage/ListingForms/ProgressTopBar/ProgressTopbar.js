@@ -8,7 +8,7 @@ const ProgressTopbar = props=>{
     const {step,percentage} = props;
     return (
         <div className={css.container}>
-            <h1 className={css.header}>Create your listing</h1>
+            <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.craeteYourListing' })}</h1>
             <div className={css.main_slider_con}>
                 <span>{step}</span>
                 <div className={css.slider_con}>

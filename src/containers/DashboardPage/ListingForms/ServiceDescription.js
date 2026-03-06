@@ -79,9 +79,9 @@ const ServiceDescription = props=>{
                           <path d="M2.05086 1.13616C1.66033 0.745631 1.02717 0.74563 0.636643 1.13616C0.246119 1.52668 0.246119 2.15984 0.636643 2.55037L5.58639 7.50012L0.636643 12.4499C0.246119 12.8404 0.246119 13.4736 0.636643 13.8641C1.02717 14.2546 1.66033 14.2546 2.05086 13.8641L7.0006 8.91433L11.9504 13.8641C12.3409 14.2546 12.974 14.2546 13.3646 13.8641C13.7551 13.4736 13.7551 12.8404 13.3646 12.4499L8.41482 7.50012L13.3646 2.55037C13.7551 2.15984 13.7551 1.52668 13.3646 1.13616C12.974 0.745631 12.3409 0.745631 11.9504 1.13616L7.0006 6.0859L2.05086 1.13616Z" fill="black"/>
                       </svg>
                   </div>
-                  <h1 className={css.header}>Create your listing</h1>
+                  <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.craeteYourListing' })}</h1>
                   <div className={css.main_slider_con}>
-                      <span>Step 1 of 4</span>
+                      <span>{intl.formatMessage({ id: 'Dashboard.step1Of4' })}</span>
                       <div className={css.slider_con}>
                       <div className={css.slide}></div>
                       </div>
@@ -93,20 +93,20 @@ const ServiceDescription = props=>{
                   <div className={css.form_body}>
                       <div className={css.tabs_con}>
                           
-                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"about")}>About service</span>
-                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"catalog")}>Catalog</span>
-                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"publish")}>Publish</span>
+                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"about")}>{intl.formatMessage({ id: 'Dashboard.aboutService' })}</span>
+                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"catalog")}>{intl.formatMessage({ id: 'Dashboard.catalog' })}</span>
+                          <span className={css.tab_item} onClick={e=>handleChangeTab(e,"publish")}>{intl.formatMessage({ id: 'Dashboard.publish' })}</span>
                       </div>
 
                       <div className={css.sub_con}>
-                          <h2 className={css.sub_header}>Listing creation guide:</h2>
+                          <h2 className={css.sub_header}>{intl.formatMessage({ id: 'Dashboard.listingCreation' })}</h2>
                           <ul className={css.list}>
-                              <li>This service listing should be focused on one specific sub category</li>
-                              <li>Add detailed description</li>
+                              <li>{intl.formatMessage({ id: 'Dashboard.ThisService' })}</li>
+                              <li>{intl.formatMessage({ id: 'Dashboard.addDetails' })}</li>
                           </ul>
                       </div>
                       <div>
-                          <h1 className={css.header_2}>Sub-category</h1>
+                          <h1 className={css.header_2}>{intl.formatMessage({ id: 'Dashboard.subCategory' })}</h1>
                           <FormControl className={css.full_w}>
                             <RadioGroup
 
@@ -137,8 +137,8 @@ const ServiceDescription = props=>{
                       </div>
 
                       <div>
-                          <h1 className={classNames(css.header_2,"mb-2")}>Service description</h1>
-                          <p className={css.marg_btm_1}>Write a short description about yourself and the service you offer</p>
+                          <h1 className={classNames(css.header_2,"mb-2")}>{intl.formatMessage({ id: 'Dashboard.serviceDesc' })}</h1>
+                          <p className={css.marg_btm_1}>{intl.formatMessage({ id: 'Dashboard.writeAShort' })}</p>
                           <textarea className={css.text_area} type="text" name="description" onChange={e=>{setDescription(e.target.value)}} value={description} placeholder={intl.formatMessage({id: 'CategoriesForm.writeHere',})}/>
                       </div>
 

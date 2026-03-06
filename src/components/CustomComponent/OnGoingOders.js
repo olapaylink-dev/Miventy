@@ -101,7 +101,7 @@ const OnGoingOrders = props =>{
                                     {/* {transactionState === "reviewed"?
                                         <div className={classNames(css.badge,css.mobile)}>completed</div>
                                     :
-                                        <div className={classNames(css.badge,css.badge_ongoing)}>Ongonig</div>
+                                        <div className={classNames(css.badge,css.badge_ongoing)}>{intl.formatMessage({ id: 'Dashboard.ongoing' })}</div>
                                     } */}
                                 </div>
                             </div>
@@ -109,9 +109,9 @@ const OnGoingOrders = props =>{
                         </div>
                         <div className={css.flex_row_1}>
                             {transactionState === "state/reviewed"?
-                                <div className={classNames(css.badge)}>Completed</div>
+                                <div className={classNames(css.badge)}>{intl.formatMessage({ id: 'Dashboard.completed' })}</div>
                             :
-                                <div className={classNames(css.badge_ongoing)}>Ongonig</div>
+                                <div className={classNames(css.badge_ongoing)}>{intl.formatMessage({ id: 'Dashboard.ongoing' })}</div>
                             }
                             <div className={css.flex_col_2}>
                                 <h3 className={css.title}>€{(total/100).toFixed(2)}</h3>
