@@ -124,9 +124,10 @@ const CompletedOrder = props =>{
                 )
 
             }):
-            <p>Nothing to show</p>
+            <p>{intl.formatMessage({id:'Dashboard.nothingToShow'})}</p>
         }
             </>
+
 
     )
 }

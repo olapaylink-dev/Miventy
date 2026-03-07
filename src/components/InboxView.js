@@ -157,7 +157,7 @@ export default function InboxView(props){
                         <svg onClick={handleBack} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M2.29289 12.7071C1.90237 12.3166 1.90237 11.6834 2.29289 11.2929L6.29289 7.29289C6.68342 6.90237 7.31658 6.90237 7.70711 7.29289C8.09763 7.68342 8.09763 8.31658 7.70711 8.70711L5.41421 11L21 11C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13L5.41421 13L7.70711 15.2929C8.09763 15.6834 8.09763 16.3166 7.70711 16.7071C7.31658 17.0976 6.68342 17.0976 6.29289 16.7071L2.29289 12.7071Z" fill="#475367"/>
                         </svg>
-                        <h2 className={css.header}>Inbox</h2>
+                        <h2 className={css.header}>{intl.formatMessage({id:'Dashboard.inbox'})}</h2>
                     </div>
                     
                     <div className={css.grid_con}>
@@ -166,7 +166,7 @@ export default function InboxView(props){
                             <aside className={classNames(css.msg_list,css.mobile)}>
                                 
                                 <div className={css.flex_row_2}>
-                                    <span className={`${css.sub_header} ${css.mag_16}`}>All Messages</span>
+                                    <span className={`${css.sub_header} ${css.mag_16}`}>{intl.formatMessage({id:'Dashboard.allMsg'})}</span>
                                     <div className={css.msg_count}>
                                         {msgCount}
                                     </div>
@@ -175,7 +175,7 @@ export default function InboxView(props){
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                         <path fillRule="evenodd" clipRule="evenodd" d="M7.33337 1.83398C4.01967 1.83398 1.33337 4.52028 1.33337 7.83398C1.33337 11.1477 4.01967 13.834 7.33337 13.834C8.75005 13.834 10.0521 13.343 11.0785 12.5219L13.5286 14.9721C13.789 15.2324 14.2111 15.2324 14.4714 14.9721C14.7318 14.7117 14.7318 14.2896 14.4714 14.0292L12.0213 11.5791C12.8424 10.5527 13.3334 9.25066 13.3334 7.83398C13.3334 4.52028 10.6471 1.83398 7.33337 1.83398ZM2.66671 7.83398C2.66671 5.25666 4.75605 3.16732 7.33337 3.16732C9.9107 3.16732 12 5.25666 12 7.83398C12 10.4113 9.9107 12.5007 7.33337 12.5007C4.75605 12.5007 2.66671 10.4113 2.66671 7.83398Z" fill="#475367"/>
                                     </svg>
-                                    Search
+                                    {intl.formatMessage({id:'Dashboard.search'})}
                                 </div>
                                     <MessageListItemComponent
                                         transactions={filteredTrx} 
@@ -202,7 +202,7 @@ export default function InboxView(props){
                                                         <path d="M6.00007 6C6.36826 6 6.66674 6.29848 6.66674 6.66667V10C6.66674 10.3682 6.36826 10.6667 6.00007 10.6667C5.63188 10.6667 5.3334 10.3682 5.3334 10V6.66667C5.3334 6.29848 5.63188 6 6.00007 6Z" fill="#000"/>
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.27317 4.20037C9.33359 3.35453 8.60435 2.67642 7.7756 2.7722C6.92758 2.8702 5.61896 3 4.66674 3C3.71451 3 2.4059 2.8702 1.55787 2.7722C0.729122 2.67642 -0.000115544 3.35453 0.060302 4.20037L0.631458 12.1965C0.674754 12.8027 1.12624 13.3152 1.74583 13.4084C2.41023 13.5083 3.62936 13.6679 4.66751 13.6667C5.69289 13.6655 6.91698 13.5066 7.58431 13.4076C8.20496 13.3155 8.65872 12.8027 8.70214 12.1947L9.27317 4.20037ZM7.92867 4.09672C7.93098 4.09645 7.93275 4.09661 7.93275 4.09661L7.93452 4.09701C7.936 4.09752 7.93832 4.09874 7.94062 4.10092C7.94214 4.10236 7.94328 4.10412 7.94328 4.10412L7.94322 4.10538L7.37282 12.091C6.71236 12.1886 5.58042 12.3323 4.66597 12.3333C3.7416 12.3344 2.61665 12.1906 1.96075 12.0924L1.39025 4.10538L1.3902 4.10412C1.3902 4.10412 1.39133 4.10236 1.39285 4.10092C1.39515 4.09874 1.39747 4.09752 1.39896 4.09701L1.40072 4.09661C1.40072 4.09661 1.40249 4.09645 1.4048 4.09672C2.25433 4.19489 3.63037 4.33333 4.66674 4.33333C5.70311 4.33333 7.07915 4.19489 7.92867 4.09672Z" fill="#000"/>
                                                     </svg>
-                                                    Delete
+                                                    {intl.formatMessage({id:'Dashboard.delete'})}
                                                 </button>
                                             </div>
                                         </div>
@@ -212,10 +212,10 @@ export default function InboxView(props){
                                     {showConfirmDelete?
                                         <div className={classNames(css.popup_con,css.mobile)}>
                                             <div className={css.popup_modal}>
-                                                <h3>Are you sure you want to delete this chat</h3>
+                                                <h3>{intl.formatMessage({id:'InboxView.areYouSure'})}</h3>
                                                 <div className={css.flex_btw}>
-                                                    <button onClick={e=>showConfirmDelete(false)}>No</button>
-                                                    <button onClick={handleDeleteChat}>Yes, delete
+                                                    <button onClick={e=>showConfirmDelete(false)}>{intl.formatMessage({id:'Dashboard.no'})}</button>
+                                                    <button onClick={handleDeleteChat}>{intl.formatMessage({id:'Dashboard.yesDelete'})}
                                                         {updateInProgress?
                                                             <div class="spinner-border" role="status">
                                                                 
@@ -236,7 +236,7 @@ export default function InboxView(props){
 
                         <aside className={classNames(css.msg_list,css.desktop)}>
                             <div className={css.flex_row_2}>
-                                <span className={`${css.sub_header} ${css.mag_16}`}>All Messages</span>
+                                <span className={`${css.sub_header} ${css.mag_16}`}>{intl.formatMessage({id:'Dashboard.allMsg'})}</span>
                                 <div className={css.msg_count}>
                                     {msgCount}
                                 </div>
@@ -245,7 +245,7 @@ export default function InboxView(props){
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
                                     <path fillRule="evenodd" clipRule="evenodd" d="M7.33337 1.83398C4.01967 1.83398 1.33337 4.52028 1.33337 7.83398C1.33337 11.1477 4.01967 13.834 7.33337 13.834C8.75005 13.834 10.0521 13.343 11.0785 12.5219L13.5286 14.9721C13.789 15.2324 14.2111 15.2324 14.4714 14.9721C14.7318 14.7117 14.7318 14.2896 14.4714 14.0292L12.0213 11.5791C12.8424 10.5527 13.3334 9.25066 13.3334 7.83398C13.3334 4.52028 10.6471 1.83398 7.33337 1.83398ZM2.66671 7.83398C2.66671 5.25666 4.75605 3.16732 7.33337 3.16732C9.9107 3.16732 12 5.25666 12 7.83398C12 10.4113 9.9107 12.5007 7.33337 12.5007C4.75605 12.5007 2.66671 10.4113 2.66671 7.83398Z" fill="#475367"/>
                                 </svg>
-                                Search
+                                {intl.formatMessage({id:'Dashboard.search'})}
                             </div>
                             
                                 <MessageListItemComponent
@@ -273,7 +273,7 @@ export default function InboxView(props){
                                                         <path d="M6.00007 6C6.36826 6 6.66674 6.29848 6.66674 6.66667V10C6.66674 10.3682 6.36826 10.6667 6.00007 10.6667C5.63188 10.6667 5.3334 10.3682 5.3334 10V6.66667C5.3334 6.29848 5.63188 6 6.00007 6Z" fill="#000"/>
                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M9.27317 4.20037C9.33359 3.35453 8.60435 2.67642 7.7756 2.7722C6.92758 2.8702 5.61896 3 4.66674 3C3.71451 3 2.4059 2.8702 1.55787 2.7722C0.729122 2.67642 -0.000115544 3.35453 0.060302 4.20037L0.631458 12.1965C0.674754 12.8027 1.12624 13.3152 1.74583 13.4084C2.41023 13.5083 3.62936 13.6679 4.66751 13.6667C5.69289 13.6655 6.91698 13.5066 7.58431 13.4076C8.20496 13.3155 8.65872 12.8027 8.70214 12.1947L9.27317 4.20037ZM7.92867 4.09672C7.93098 4.09645 7.93275 4.09661 7.93275 4.09661L7.93452 4.09701C7.936 4.09752 7.93832 4.09874 7.94062 4.10092C7.94214 4.10236 7.94328 4.10412 7.94328 4.10412L7.94322 4.10538L7.37282 12.091C6.71236 12.1886 5.58042 12.3323 4.66597 12.3333C3.7416 12.3344 2.61665 12.1906 1.96075 12.0924L1.39025 4.10538L1.3902 4.10412C1.3902 4.10412 1.39133 4.10236 1.39285 4.10092C1.39515 4.09874 1.39747 4.09752 1.39896 4.09701L1.40072 4.09661C1.40072 4.09661 1.40249 4.09645 1.4048 4.09672C2.25433 4.19489 3.63037 4.33333 4.66674 4.33333C5.70311 4.33333 7.07915 4.19489 7.92867 4.09672Z" fill="#000"/>
                                                     </svg>
-                                                    Delete
+                                                    {intl.formatMessage({id:'Dashboard.delete'})}
                                                 </button>
                                         </div>
                                     </div>
@@ -282,11 +282,11 @@ export default function InboxView(props){
                                 {showConfirmDelete?
                                     <div className={classNames(css.popup_con,css.desktop)}>
                                         <div className={css.popup_modal}>
-                                            <h3>Are you sure you want to delete this chat</h3>
+                                            <h3>{intl.formatMessage({id:'InboxView.areYouSure'})}</h3>
                                             <div className={css.flex_btw}>
-                                                <button onClick={e=>showConfirmDelete(false)}>No</button>
+                                                <button onClick={e=>showConfirmDelete(false)}>{intl.formatMessage({id:'Dashboard.no'})}</button>
 
-                                                <button onClick={handleDeleteChat}>Yes, delete
+                                                <button onClick={handleDeleteChat}>{intl.formatMessage({id:'Dashboard.yesDelete'})}
                                                     {updateInProgress?
                                                         <div class="spinner-border" role="status">
                                                             
@@ -319,7 +319,7 @@ export default function InboxView(props){
                                         </div>
                                         <div>
                                             <span className={css.user_name}>{currentDisplayName}</span>
-                                            <p className={css.active_txt}>Active now</p>
+                                            <p className={css.active_txt}>{intl.formatMessage({id:'Dashboard.activeNow'})}</p>
                                         </div>
                                     </div>
                                 :
@@ -366,7 +366,7 @@ export default function InboxView(props){
                                 </div>
 
                                 <div className={css.msg_input}>
-                                    <input className={css.input} ref={inputRef} type="text" placeholder="Type your message..." 
+                                    <input className={css.input} ref={inputRef} type="text" placeholder={intl.formatMessage({id:'Dashboard.typeYourMsg'})} 
                                         onKeyDown={e=>{
                                             if (e.key === "Enter") {
                                                 handleSendMessage(e);
@@ -384,7 +384,7 @@ export default function InboxView(props){
                                                     <path d="M13.3333 16C12.781 16 12.3333 16.4477 12.3333 17C12.3333 17.5523 12.781 18 13.3333 18H16C16.5523 18 17 17.5523 17 17C17 16.4477 16.5523 16 16 16H13.3333Z" fill="#475367"/>
                                                     <path fillRule="evenodd" clipRule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
                                                 </svg>
-                                                Send a quote
+                                               {intl.formatMessage({id:'Dashboard.sendAQuote'})}
                                             </button>
                                         :""}
                                         

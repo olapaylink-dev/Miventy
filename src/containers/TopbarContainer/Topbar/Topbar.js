@@ -488,7 +488,7 @@ const handleSwitchToCustomer = e =>{
                           <>
                               <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
                                 <div className={css.flex_row_menu}>
-                                 {intl.formatMessage({ id: 'Topbar.myBookings' })} My bookings
+                                 {intl.formatMessage({ id: 'Topbar.myBookings' })}
                                 </div>
                               </NamedLink>
                               <NamedLink name="FavouritePage" > 
@@ -507,7 +507,7 @@ const handleSwitchToCustomer = e =>{
                           }
 
                           <div className={css.flex_row_menu_last} onClick={handleLogout}>
-                           {intl.formatMessage({ id: 'Topbar.logout' })} Logout
+                           {intl.formatMessage({ id: 'Topbar.logout' })}
                           </div>
                       </div>
                       

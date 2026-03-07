@@ -105,7 +105,6 @@ const OnGoingOrders = props =>{
                                     } */}
                                 </div>
                             </div>
-                            
                         </div>
                         <div className={css.flex_row_1}>
                             {transactionState === "state/reviewed"?
@@ -122,7 +121,7 @@ const OnGoingOrders = props =>{
                 )
 
             }):
-            <p>Nothing to show</p>
+            <p>{intl.formatMessage({id:'Dashboard.nothingToShow'})}</p>
         }
     </>
 
