@@ -175,38 +175,38 @@ const handleChangeTab = (e,tab)=>{
                 {key:intl.formatMessage({id: 'LandingPage.magic',}),value:"Magic"},
                 {key:intl.formatMessage({id: 'LandingPage.facePaint',}),value:"Face Paint"}
             ],css:css.menu1,icon:icon1},
-        {key:intl.formatMessage({id: 'LandingPage.catering',}),
-                item:[
-                    {key:intl.formatMessage({id: 'LandingPage.catering',}),value:"Catering"}
-                ],
-                css:css.menu2,icon:icon2,value:"Catering"},
-        {key: intl.formatMessage({id: 'LandingPage.bdCakesAndSweets',}),
-            item:[
-                {key:intl.formatMessage({id: 'LandingPage.bdCake',}),value:"BD Cake"},
-                {key:intl.formatMessage({id: 'LandingPage.sweets',}),value:"Sweets"},
-            ],css:css.menu3,icon:icon3},
-        {key: intl.formatMessage({id: 'LandingPage.photoVideo',}),
-            item:[
-                {key:intl.formatMessage({id: 'LandingPage.photos',}),value:"Photos"},
-                {key:intl.formatMessage({id: 'LandingPage.videos',}),value:"Videos"},
-            ],css:css.menu4,icon:icon4},
-        {key: intl.formatMessage({id: 'LandingPage.musicEvents',}),
-            item:[
-                {key:intl.formatMessage({id: 'LandingPage.classicMusic',}),value:"Classical Music"},
-                {key:intl.formatMessage({id: 'LandingPage.partyMusic',}),value:"Party music/DJs"},
-            ],css:css.menu5,icon:icon5},
-        {key: intl.formatMessage({id: 'LandingPage.decoration',}),
-            item:[
-                {key:intl.formatMessage({id: 'LandingPage.balloonDecorations',}),value:"Balloon Decorations"},
-                {key:intl.formatMessage({id: 'LandingPage.flowerArragement',}),value:"Flower arrangements"},
-                {key:intl.formatMessage({id: 'LandingPage.themedDecoration',}),value:"Themed Decoration"},
-            ],css:css.menu6,icon:icon6},
-        {key: intl.formatMessage({id: 'LandingPage.rentals',}),
-                            item:[
-                                {key:intl.formatMessage({id: 'LandingPage.rentalsShadeAndRain',}),value:"Rental shade and rain equipment"},
-                                {key:intl.formatMessage({id: 'LandingPage.rentalSpace',}),value:"Rental Space"},
-                                {key:intl.formatMessage({id: 'LandingPage.rentalBouncer',}),icon:icon6,value:"Rental Bouncer"},
-                            ],css:css.menu7,icon:icon7},
+        // {key:intl.formatMessage({id: 'LandingPage.catering',}),
+        //         item:[
+        //             {key:intl.formatMessage({id: 'LandingPage.catering',}),value:"Catering"}
+        //         ],
+        //         css:css.menu2,icon:icon2,value:"Catering"},
+        // {key: intl.formatMessage({id: 'LandingPage.bdCakesAndSweets',}),
+        //     item:[
+        //         {key:intl.formatMessage({id: 'LandingPage.bdCake',}),value:"BD Cake"},
+        //         {key:intl.formatMessage({id: 'LandingPage.sweets',}),value:"Sweets"},
+        //     ],css:css.menu3,icon:icon3},
+        // {key: intl.formatMessage({id: 'LandingPage.photoVideo',}),
+        //     item:[
+        //         {key:intl.formatMessage({id: 'LandingPage.photos',}),value:"Photos"},
+        //         {key:intl.formatMessage({id: 'LandingPage.videos',}),value:"Videos"},
+        //     ],css:css.menu4,icon:icon4},
+        // {key: intl.formatMessage({id: 'LandingPage.musicEvents',}),
+        //     item:[
+        //         {key:intl.formatMessage({id: 'LandingPage.classicMusic',}),value:"Classical Music"},
+        //         {key:intl.formatMessage({id: 'LandingPage.partyMusic',}),value:"Party music/DJs"},
+        //     ],css:css.menu5,icon:icon5},
+        // {key: intl.formatMessage({id: 'LandingPage.decoration',}),
+        //     item:[
+        //         {key:intl.formatMessage({id: 'LandingPage.balloonDecorations',}),value:"Balloon Decorations"},
+        //         {key:intl.formatMessage({id: 'LandingPage.flowerArragement',}),value:"Flower arrangements"},
+        //         {key:intl.formatMessage({id: 'LandingPage.themedDecoration',}),value:"Themed Decoration"},
+        //     ],css:css.menu6,icon:icon6},
+        // {key: intl.formatMessage({id: 'LandingPage.rentals',}),
+        //                     item:[
+        //                         {key:intl.formatMessage({id: 'LandingPage.rentalsShadeAndRain',}),value:"Rental shade and rain equipment"},
+        //                         {key:intl.formatMessage({id: 'LandingPage.rentalSpace',}),value:"Rental Space"},
+        //                         {key:intl.formatMessage({id: 'LandingPage.rentalBouncer',}),icon:icon6,value:"Rental Bouncer"},
+        //                     ],css:css.menu7,icon:icon7},
        ];
 
     const handleCreateDraftOrUpdateExisting = e =>{
