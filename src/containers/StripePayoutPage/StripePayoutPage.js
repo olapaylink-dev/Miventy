@@ -2452,6 +2452,7 @@ export default StripePayoutPage;
 
 
 const UserTypeForm = props=>{
+  const intl = useIntl();
 const {moveNext,currentSelectedUserType ,setCurrentSelectedUserType,handleHideForm,onUpdateProfile,userTypeSaved} = props;
 
 const [userType, setUserType] = React.useState(currentSelectedUserType);
@@ -2553,6 +2554,7 @@ useEffect(()=>{
 
 
 const PersonalProfileForm = props=>{
+  const intl = useIntl();
   const {onSetSelectedFile,handleMoveBack,handleHideForm,moveNext,onUpdateProfile,image,onImageUpload,publicData,profileImage,setCurrentPage} = props;
   const profileImageSrc = profileImage?.attributes?.variants["square-small"]?.url;
   const [fullName, setFullName] = React.useState(publicData.fullName);
@@ -2991,6 +2993,7 @@ const handleSubmit = e=>{
 }
 
 const BusinessProfileForm = props=>{
+  const intl = useIntl();
   const {onSetSelectedFile,handleMoveBack,handleHideForm,moveNext,onUpdateProfile,image,onImageUpload,publicData,profileImage,setCurrentPage} = props;
   const profileImageSrc = profileImage?.attributes?.variants["square-small"]?.url;
   const [businessName, setBusinesName] = useState(publicData?.businessName);
@@ -3352,6 +3355,7 @@ function onChange(timestamp) {
 
 
 const SaveProfileForm = props=>{
+  const intl = useIntl();
   const {
     onSetSelectedFile,
     handleMoveBack,
@@ -3559,6 +3563,7 @@ const handleSubmit = async e=>{
 }
 
 const ProfileCompleteForm = props=>{
+  const intl = useIntl();
   const {onSetSelectedFile,handleMoveBack,handleHideForm,userType,currentSelectedUserType,serviceAreas,setServiceAreas,handleRemove} = props;
   const [name, setName] = React.useState('Mark');
   const [startDate, setStartDate] = useState(new Date());
@@ -3603,6 +3608,7 @@ if(currentSelectedUserType === "businessOwner"){
 
 
 const AddApplePayForm = props => {
+  const intl = useIntl();
   const{handleClose,handleContinue} = props;
 
   return(
@@ -3637,6 +3643,7 @@ const AddApplePayForm = props => {
 };
 
 const VerificationCodeApplePayForm = props => {
+  const intl = useIntl();
   const{handleClose,handleContinue,handleSubmitVerification} = props;
   return(
     <>
@@ -3669,6 +3676,7 @@ const VerificationCodeApplePayForm = props => {
 };
 
 const ApplePayCompleteForm = props=>{
+  const intl = useIntl();
   const {onSetSelectedFile,handleMoveBack,handleHideForm,userType,currentSelectedUserType,serviceAreas,setServiceAreas,handleRemove,handleCloseSuccessApplePay} = props;
   const [name, setName] = React.useState('Mark');
   const [startDate, setStartDate] = useState(new Date());

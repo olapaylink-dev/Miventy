@@ -4,8 +4,10 @@ import {
   NamedLink
 } from '../../components';
 import BookingsList from './BookingsList';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const BookingsPage = props =>{
+  const intl = useIntl();
   const {transactions,
     setShowCancelBooking,
     setShowMarkOrder,

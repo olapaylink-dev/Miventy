@@ -2,7 +2,11 @@
 import { useState } from 'react';
 import css from './SelectMultipleComponent.module.css';
 import classNames from 'classnames';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
+
+
 const SelectMultipleComponent = props=>{
+    const intl = useIntl();
     const {options,value=[],handleSelectChange,showOptions,setShowOptions} = props;
     const [optionss,setOptions] = useState(options);
 

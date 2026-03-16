@@ -552,6 +552,8 @@ export const DashboardPageComponent = props => {
   const [listingAvailable,setListingAvailable] = useState(false);
   const [selectedFolderName,setSelectedFolderName] = useState("");
   const [showSideNav,setshowSideNav] = useState(false);
+  const [showMenu,setShowMenu] = useState(false);
+  const [showPopups,seShowPopups] = useState(false);
 
   const fileInputProfile = useRef(null);
 
@@ -997,7 +999,12 @@ export const DashboardPageComponent = props => {
     >
     <LayoutSingleColumn
         mainColumnClassName={css.layoutWrapperMain}
-        topbar={<TopbarContainer />}
+        topbar={<TopbarContainer 
+                  setShowMenu={setShowMenu}
+                  showMenu={showMenu}
+                  seShowPopups={seShowPopups}
+                />
+              }
         footer={<FooterContainer />}
     >
 
@@ -1170,6 +1177,7 @@ export const DashboardPageComponent = props => {
                 setShowVerifyCodeSettings={setShowVerifyCodeSettings}
                                       onUpdateProfile={onUpdateProfile}
                                       currentUser={currentUser}
+                                      setshowSideNav={setshowSideNav}
               />
             :""}
 
@@ -1184,6 +1192,7 @@ export const DashboardPageComponent = props => {
                                     currentUser={currentUser}
                                     setShowNotificationUpdated={setShowNotificationUpdated}
                                     saveNotificationSettings={handleSaveNotificationSettings}
+                                    setshowSideNav={setshowSideNav}
                                   />
                                 :""}
 
@@ -1493,7 +1502,9 @@ export const DashboardPageComponent = props => {
     {showNotificationUpdated?
       <div  className={css.overlay}>
         <div className={css.formContent}>
-          <NotificationUpdate handleCloseNotificationUpdated={handleCloseNotificationUpdated}/>
+          <NotificationUpdate handleCloseNotificationUpdated={handleCloseNotificationUpdated}
+            setshowSideNav={setshowSideNav}
+          />
         </div>
       </div>
     :""}

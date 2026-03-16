@@ -1730,6 +1730,7 @@
   "Dashboard.paymentConfirmed":"Payment confirmed",
   "Dashboard.orderAccepted":"Order Accepted",
   "Dashboard.orderDeclined":"Order Declined",
+   "Dashboard.next":"Next",
   "Topbar.profileSettings":"Profile settings",
   "Topbar.myProfile":"My Profile",
   "Topbar.hireAService":"Hire A Service",

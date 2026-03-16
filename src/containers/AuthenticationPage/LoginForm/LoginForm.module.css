@@ -211,6 +211,7 @@ background: #CBD5E1;
   .main_con{
     width: fit-content;
     padding: 0px;
+    margin: 0 auto;
   }
     
   .show_labe{

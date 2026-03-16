@@ -325,6 +325,12 @@ export class SearchPageComponent extends Component {
     }
   }
 
+  setShowMenu(e){
+      this.setState(
+        {showMenu:true}
+      )
+    }
+
   render() {
     const {
       intl,
@@ -461,11 +467,7 @@ export class SearchPageComponent extends Component {
     
     console.log(listings);
 
-    const setShowMenu = e =>{
-      this.setState(
-        {showMenu:true}
-      )
-    }
+    
 
     const setShowExpandedSearchBar = e =>{
         this.setState(
@@ -505,7 +507,7 @@ export class SearchPageComponent extends Component {
             rootClassName={classNames(topbarClasses,css.topMargin)}
             currentSearchParams={validQueryParams}
             isSearchPage={true}
-            setShowMenu={setShowMenu}
+            setShowMenu={this.setShowMenu}
             showMenu={this.state.showMenu}
             showExpandedSearchBar={this.state.showExpandedSearchBar}
             setShowExpandedSearchBar={setShowExpandedSearchBar}

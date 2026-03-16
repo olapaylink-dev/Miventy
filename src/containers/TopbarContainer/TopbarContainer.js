@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import loadable from '@loadable/component';
-
-import { propTypes } from '../../util/types';
-
 import { sendVerificationEmail, hasCurrentUserErrors, fetchCurrentUserHasListings, fetchCurrentUserHasOrders } from '../../ducks/user.duck';
 import { logout, authenticationInProgress } from '../../ducks/auth.duck';
 import { manageDisableScrolling } from '../../ducks/ui.duck';
@@ -22,13 +19,21 @@ const Topbar = loadable(() => import(/* webpackChunkName: "Topbar" */ './Topbar/
  */
 export const TopbarContainerComponent = props => {
   const {onFetchCurrentTransaction, notificationCount = 0, ...rest } = props;
-  const {showPopups} = props;
+  //const {showPopups} = props;
+  const [showMenu,setShowMenu] = useState(false);
+  const [showPopups,seShowPopups] = useState(false);
   
   useEffect(()=>{
     onFetchCurrentTransaction();
   },[])
   
-  return <Topbar notificationCount={notificationCount} {...rest} />;
+  return <Topbar 
+            showPopups={showPopups}
+            seShowPopups={seShowPopups}
+            setShowMenu={setShowMenu}
+            showMenu={showMenu}
+            notificationCount={notificationCount} 
+            {...rest} />;
 };
 
 

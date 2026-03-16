@@ -1677,6 +1677,7 @@
   "Dashboard.paymentConfirmed":"Pago confirmado",
   "Dashboard.orderAccepted":"Pedido aceptado",
   "Dashboard.orderDeclined":"Pedido rechazado",
+  "Dashboard.next":"Próxima",
   "Topbar.profileSettings":"Configuración del perfil",
   "Topbar.myProfile":"Mi perfil",
   "Topbar.hireAService":"Contratar un servicio",

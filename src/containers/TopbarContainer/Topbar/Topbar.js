@@ -36,16 +36,7 @@ const SEARCH_DISPLAY_ALWAYS = 'always';
 const SEARCH_DISPLAY_NOT_LANDING_PAGE = 'notLandingPage';
 const SEARCH_DISPLAY_ONLY_SEARCH_PAGE = 'onlySearchPage';
 import logo from '../../../assets/logo.png';
-import translation from '../../../assets/icons/translation.png';
 import SearchPageBoxMenu from '../../../components/CustomComponent/SearchPageBoxMenu';
-import { updateProfile } from '../../ProfileSettingsPage/ProfileSettingsPage.duck';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-
-import i18n from "i18next";
-import { initReactI18next } from "react-i18next";
-import eng from "../../../translations/en.json";  // translation file containing json from above
-import ita from "../../../translations/es.json";
 import CustomDropdown from '../../../components/CustomComponent/CustomDropdown';
 import { changeLanguge, currentLang } from '../../..';
 
