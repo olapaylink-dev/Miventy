@@ -1693,7 +1693,14 @@
   "Topbar.logout":"Cerrar sesión",
   "Topbar.noMsg":"Aún no hay mensajes",
   "Topbar.viewAll":"Ver todo",
-  "InboxView.areYouSure":"¿Seguro que quieres eliminar este chat?"
+  "InboxView.areYouSure":"¿Seguro que quieres eliminar este chat?",
+
+
+  "ListingPageCarousel.serviceStandard":"Estándar de servicio",
+  "ListingPageCarousel.reviews":"Reseñas",
+  "ListingPageCarousel.catalog":"Catalogar",
+  "ListingPageCarousel.childrenAge":"Edad de los niños:",
+  "ListingPageCarousel.aboutMyService":"Acerca de mi servicio"
 
 
 

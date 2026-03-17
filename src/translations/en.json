@@ -1748,7 +1748,15 @@
   "Topbar.logout":"Logout",
   "Topbar.noMsg":"No messages yet",
   "Topbar.viewAll":"View all",
-  "InboxView.areYouSure":"Are you sure you want to delete this chat?"
+  "InboxView.areYouSure":"Are you sure you want to delete this chat?",
+
+
+
+  "ListingPageCarousel.serviceStandard":"Service standard",
+  "ListingPageCarousel.reviews":"Reviews",
+  "ListingPageCarousel.catalog":"Catalog",
+  "ListingPageCarousel.childrenAge":"Children age:",
+  "ListingPageCarousel.aboutMyService":"About my service"
 
 
   

@@ -164,6 +164,7 @@ const REQUEST_QUOTE_TABS = [
 const { UUID } = sdkTypes;
 
 export const ListingPageComponent = props => {
+
   const [inquiryModalOpen, setInquiryModalOpen] = useState(
     props.inquiryModalOpenForListingId === props.params.id
   );
@@ -1158,7 +1159,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                   
                   <div className={css.section}>
                     <h1 className={css.about_header}>
-                      About my service
+                      {intl.formatMessage({ id: 'ListingPageCarousel.aboutMyService' })}
                     </h1>
 
                     <p>
@@ -1228,7 +1229,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
 
                     {childrenAge && childrenAge.length > 0?
                       <div>
-                          <h1 className={css.header_2}>Children Age:</h1>
+                          <h1 className={css.header_2}>{intl.formatMessage({ id: 'ListingPageCarousel.childrenAge' })}</h1>
                             {childrenAge.map((itm,key)=>{
                               return(
                                 <>
@@ -1292,7 +1293,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                   </div>
                   <div className={classNames(css.section,css.flex_col)}>
                     <h1 className={css.header_2}>
-                      Catalog
+                      {intl.formatMessage({ id: 'ListingPageCarousel.catalog' })}
                     </h1>
                     <div className={css.category_item}>
 
@@ -1319,7 +1320,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                   {serviceStandards.length > 0?
                   <div className={css.section}>
                       <h1 className={css.header_2}>
-                        Service standard:
+                        {intl.formatMessage({ id: 'ListingPageCarousel.serviceStandard' })}
                       </h1>
                       {serviceStandards.map((itm,key)=>{
                           return (
@@ -1342,7 +1343,7 @@ const handleRemoveFavouriteUsers = (id,e) =>{
                   <div className={css.section}>
                     <div className={classNames(css.flex_row_btw,css.mag_top_sm)}>
                       <h1 className={css.header_2}>
-                        Reviews:
+                        {intl.formatMessage({ id: 'ListingPageCarousel.reviews' })}
                       </h1>
                       <div className={classNames(css.flex_row)}>
                         <span style={{marginTop:-5}}>({reviewsRatingsAverage})</span>
