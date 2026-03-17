@@ -1558,6 +1558,11 @@
   "StripePayoutPage.selectLanguages":"Select languages from the dropdown list",
   "StripePayoutPage.profileCompleted":"Profile Completed",
   "StripePayoutPage.enterEmail":"Enter your email address",
+  "StripePayoutPage.orders":"Orders",
+
+
+
+
   "EarningsPage.earnings":"Earnings",
   "EarningsPage.trackAndMange":"Track and manage your earnings easily.",
   "EarningsPage.availableBal":"Available balance",

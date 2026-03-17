@@ -1508,6 +1508,10 @@
   "StripePayoutPage.selectLanguages":"Selecciona idiomas de la lista desplegable",
   "StripePayoutPage.profileCompleted":"Perfil completado",
   "StripePayoutPage.enterEmail":"Introduce tu dirección de correo electrónico",
+  "StripePayoutPage.orders":"Órdenes",
+
+
+
   "EarningsPage.earnings":"Ingresos",
   "EarningsPage.trackAndMange":"Haz seguimiento y gestiona tus ingresos fácilmente.",
   "EarningsPage.availableBal":"Saldo disponible",

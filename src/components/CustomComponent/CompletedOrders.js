@@ -6,11 +6,13 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
 import NamedLink from "../NamedLink/NamedLink";
-
 import { types as sdkTypes } from '../../util/sdkLoader';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
+
 const { Money } = sdkTypes;
 
 const CompletedOrder = props =>{
+    const intl = useIntl();
     const {
         orders=[]
     }=props;

@@ -1,8 +1,10 @@
 import React from "react";
 import css from './CloseListingDialog.module.css';
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const CloseListingDialog = props =>{
+    const intl = useIntl();
     const {handleCloseListing,setShowCloseListingDialog} = props;
     return (
 

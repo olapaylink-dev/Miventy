@@ -6,65 +6,16 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import CatalogItems from "../CatalogItems";
 import NamedLink from "../NamedLink/NamedLink";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 import { types as sdkTypes } from '../../util/sdkLoader';
 const { Money } = sdkTypes;
 
 const OnGoingOrders = props =>{
+    const intl = useIntl();
     const {
         orders=[]
     }=props;
-
-    // const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
-    // const {provider,listing} = currentTransaction;
-    // const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
-    // const transactionState = itm?.attributes?.state;
-    // const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
-    // const {items=[]} = cartData  ||  {};
-    // const {ItemPrice} = items[0] || {};
-    // const isOwn = provider.id.uuid === currentUser.id.uuid;
-    // const listingType = listing?.attributes?.publicData?.listingType;
-    // const listingId = currentTransaction?.listing?.id?.uuid;
-    // const slug = currentTransaction?.listing?.attributes?.title;
-    // localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
-
-    // //Change the price of the listing
-    // useEffect(()=>{
-    //     ////console.log("changing price eeeeee  ",ItemPrice)
-    //     onChangeListingPrice(listingId, new Money(ItemPrice*100,"EUR"));
-    //     ////console.log("changing price")
-    // },[])
-
-    // useEffect(()=>{
-    //     if(acceptOfferSuccess){
-    //         ////console.log("Offer accepted")
-    //         ////console.log(currentTransaction)
-    //         setShowOrder(false);
-    //         setSuccessMessage("You have accepted this order!");
-    //         setShowSuccessView(true);
-    //     }
-    // },[acceptOfferSuccess])
-
-    // useEffect(()=>{
-    //     if(declineOfferSuccess){
-    //         //console.log("Offer declined  =====")
-    //         setShowOrder(false);
-    //         setSuccessMessage("You have declined this order!");
-    //         setShowSuccessView(true);
-    //     }
-    // },[declineOfferSuccess])
-
-    // const checkIfPaid = (trx)=>{
-    //     let paid = false;
-    //     trx.attributes.transitions.map((i,k)=>{
-    //         if(i.transition === "transition/confirm-payment"){
-    //             paid = true;
-    //         }
-    //     })
-    //     return paid;
-    // }
-
-    // const isPaid = checkIfPaid(currentTransaction);
 
     return (
             <>
