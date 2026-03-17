@@ -1756,7 +1756,10 @@
   "ListingPageCarousel.reviews":"Reviews",
   "ListingPageCarousel.catalog":"Catalog",
   "ListingPageCarousel.childrenAge":"Children age:",
-  "ListingPageCarousel.aboutMyService":"About my service"
+  "ListingPageCarousel.aboutMyService":"About my service",
+  "ListingPageCarousel.shareProfile":"Share profile",
+  "ListingPageCarousel.sendAMessage":"Send a message"
+
 
 
   
