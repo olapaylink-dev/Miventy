@@ -1,7 +1,10 @@
 import React from "react";
 import placeholder from '../../../assets/placeholder.png';
 import css from './SimpleFolderCard.module.css';
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
+
 const SimpleFormCard = props=>{
+    const intl = useIntl();
     const {numberOfItems,coverPhoto,folderName,handleEditCatalog,handleDeleteCatalog} = props;
    
     return (

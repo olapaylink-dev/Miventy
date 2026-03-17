@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import css from './ServiceDescription.module.css';
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 
 const ServiceDescription = props=>{
-
+     const intl = useIntl();
      const {
       handleMoveToAboutService,
       handleMoveToStart,

@@ -1242,6 +1242,9 @@
 
 
   
+  "CategoriesForm.save":"Save",
+  "CategoriesForm.importCatalog":"Import catalog",
+  "CategoriesForm.createNewFolder":"Create new folder",
   "CategoriesForm.singleTier":"Single-Tier Cake (One level only)",
   "CategoriesForm.multiTier":"Multi-Tier Cake (Two or more stacked layers)",
   "CategoriesForm.themedCakes":"Themed cakes (custom shapes: cars, animals, handbags, letters, numbers)",

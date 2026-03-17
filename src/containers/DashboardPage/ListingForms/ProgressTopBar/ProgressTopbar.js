@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import css from './ProgressTopbar.module.css';
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormattedMessage, useIntl } from '../../../../util/reactIntl';
 
 const ProgressTopbar = props=>{
-
+    const intl = useIntl();
     const {step,percentage} = props;
     return (
         <div className={css.container}>

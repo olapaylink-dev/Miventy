@@ -6,6 +6,7 @@ import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material"
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
 import SearchMapNew from "../../containers/DashboardPage/SearchMapNew";
 import MyDatePicker from "../MyDatePicker";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 
 const REQUEST_QUOTE_TABS = [
@@ -15,6 +16,7 @@ const REQUEST_QUOTE_TABS = [
 ]
 
 const RequestLocationTime = props =>{
+    const intl = useIntl();
 
     const {
         setShowRequestLocationTime,

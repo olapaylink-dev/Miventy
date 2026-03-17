@@ -1,7 +1,10 @@
 import React from "react";
 import listing1 from '../../../assets/images/listing1.png';
 import css from './SimpleCard_2.module.css';
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
+
 const SimpleCard_2 = props=>{
+    const intl = useIntl();
     const {description,folder,image="",catalog={},handleShowSelectedCatalog} = props;
 
     const getItemCount = (catalog)=>{

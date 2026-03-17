@@ -1,8 +1,10 @@
 import { useState } from "react";
 import css from './OwnListingMessage.module.css';
 import classNames from "classnames";
+import { FormattedMessage, useIntl } from '../util/reactIntl';
 
 const OwnListingMessage = props=>{
+  const intl = useIntl();
   const {setShowOwnListingMessage} = props;
 
   const handleClose = e=>{

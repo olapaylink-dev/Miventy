@@ -4,6 +4,7 @@ import itm_img from '../../assets/itm_img.jpg';
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const REQUEST_QUOTE_TABS = [
   "service_type",
@@ -12,6 +13,7 @@ const REQUEST_QUOTE_TABS = [
 ]
 
 const RequestQuoteForm = props =>{
+    const intl = useIntl();
 
     const {
         forceUpdate,

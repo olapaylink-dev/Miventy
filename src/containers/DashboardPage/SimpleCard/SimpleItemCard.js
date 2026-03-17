@@ -1,8 +1,10 @@
 import React from "react";
 import placeholder from '../../../assets/placeholder.png';
 import css from './SimpleItemCard.module.css';
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
 
 const SimpleItemCard = props=>{
+    const intl = useIntl();
     const {catalogDetails,handleEditCatalog,handleDeletePriceDuration,handleDeleteCatalogItem} = props;
     const {itemName,ItemPrice,description,durationPrice=[],catalogImages=[]} = catalogDetails;
 

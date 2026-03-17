@@ -7,9 +7,11 @@ import { types as sdkTypes } from '../../../util/sdkLoader';
 const { LatLng } = sdkTypes;
 import Button from '@mui/material/Button';
 import { CircularProgress } from "@mui/material";
+import { FormattedMessage, useIntl } from '../../../util/reactIntl';
+
 
 const Publish = props =>{
-
+  const intl = useIntl();
   const {
     handleMoveToDone,
     handleMoveToCatalog,
