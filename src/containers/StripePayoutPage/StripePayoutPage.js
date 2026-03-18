@@ -3308,8 +3308,9 @@ function onChange(timestamp) {
                       </div>
                       
                       
+
                       <div className={css.flex_col}>
-                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
+                        <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.dateOfBirth'})}</label>
                         <MyDatePicker currentDate={dateOfBirth} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
                         {dateOfBirth !== undefined && dateOfBirth !== null ?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.dateOfBirthRequired'})}</span>}
                       </div>

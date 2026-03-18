@@ -92,6 +92,7 @@ export class SearchPageComponent extends Component {
 
     // SortBy
     this.handleSortBy = this.handleSortBy.bind(this);
+    this.setShowMenu = this.setShowMenu.bind(this);
   }
 
   // Callback to determine if new search is needed
@@ -440,7 +441,7 @@ export class SearchPageComponent extends Component {
         title={title}
         schema={schema}
       >
-        <TopbarContainer rootClassName={topbarClasses} currentSearchParams={validQueryParams}  setShowMenu={setShowMenu}
+        <TopbarContainer rootClassName={topbarClasses} currentSearchParams={validQueryParams}  setShowMenu={this.setShowMenu}
         showMenu={this.state.showMenu} />
         <div className={css.container}>
           <div className={css.searchResultContainer}>

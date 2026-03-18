@@ -100,6 +100,7 @@ export class FavouritePageComponent extends Component {
     this.setShowLocationFilterList = this.setShowLocationFilterList.bind(this);
     this.setShowPriceFilterList = this.setShowPriceFilterList.bind(this);
     this.setParentClicked = this.setParentClicked.bind(this);
+    this.setShowMenu = this.setShowMenu.bind(this);
 
   }
 
@@ -276,7 +277,7 @@ export class FavouritePageComponent extends Component {
             rootClassName={classNames(topbarClasses,css.topMargin)}
             currentSearchParams={[]}
             isSearchPage={true}
-            setShowMenu={setShowMenu}
+            setShowMenu={this.setShowMenu}
             showMenu={this.state.showMenu}
             showExpandedSearchBar={this.state.showExpandedSearchBar}
             setShowExpandedSearchBar={setShowExpandedSearchBar}

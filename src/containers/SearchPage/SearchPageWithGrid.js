@@ -126,6 +126,7 @@ export class SearchPageComponent extends Component {
     this.setShowLocationFilterList = this.setShowLocationFilterList.bind(this);
     this.setShowPriceFilterList = this.setShowPriceFilterList.bind(this);
     this.setParentClicked = this.setParentClicked.bind(this);
+    this.setShowMenu = this.setShowMenu.bind(this);
 
     // Filter functions
     this.resetAll = this.resetAll.bind(this);
