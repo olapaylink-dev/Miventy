@@ -38,7 +38,7 @@ const SEARCH_DISPLAY_ONLY_SEARCH_PAGE = 'onlySearchPage';
 import logo from '../../../assets/logo.png';
 import SearchPageBoxMenu from '../../../components/CustomComponent/SearchPageBoxMenu';
 import CustomDropdown from '../../../components/CustomComponent/CustomDropdown';
-import { changeLanguge } from '../../..';
+import { changeLanguge, currentLang } from '../../..';
 
 
 const redirectToURLWithModalState = (history, location, modalStateParam) => {
@@ -206,7 +206,7 @@ const TopbarComponent = props => {
   const {notifications,unseenMsg} = protectedData || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
 
-  const currentLangSaved = localStorage.getItem("currentLanguage");
+  const currentLangSaved = currentLang;
   const [currentLanguage,setCurrentLanguage] = useState(currentLangSaved);
 
   const handleSubmit = values => {

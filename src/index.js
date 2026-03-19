@@ -51,10 +51,9 @@ import spanish from "./translations/es.json";
 
 const eng = english;
 const spa = spanish;
+let translated;
+let currentLang;
 
-const currentLanguage = localStorage.getItem("currentLanguage");
-let translated = currentLanguage === "EN"?eng:spa;
-//let currentLang = "EN";
 
 let store;
 
@@ -65,6 +64,11 @@ const render = (store, shouldHydrate) => {
   // If the server already loaded the auth information, render the app
   // immediately. Otherwise wait for the flag to be loaded and render
   // when auth information is present.
+
+  const currentLanguage = localStorage.getItem("currentLanguage");
+  translated = currentLanguage === "EN"?eng:spa;
+  currentLang = currentLanguage;
+
   const state = store.getState();
   const cdnAssetsVersion = state.hostedAssets.version;
   const authInfoLoaded = state.auth.authInfoLoaded;
@@ -182,12 +186,6 @@ if (typeof window !== 'undefined') {
   }
 }
 
-
-// useEffect(()=>{
-   
-//     console.log("Changing translation")
-//   },[translated])
-
 const changeLanguge = (currentLanguage)=>{
   if(currentLanguage === "en"){
     translated = eng;
@@ -230,5 +228,5 @@ export {
   mergeConfig,
   fetchAppAssets,
   changeLanguge,
-  //currentLang
+  currentLang
 };
