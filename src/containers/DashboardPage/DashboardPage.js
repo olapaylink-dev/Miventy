@@ -576,14 +576,20 @@ export const DashboardPageComponent = props => {
   const checkIfListingsAvailable = (data)=>{
     let result = false;
     if(JSON.stringify(data) !== "{}"){
-      if(data.ownListing.length === 0){
+      if((data.hasOwnProperty("ownListing") && data.ownListing.length === 0) || data.ownListing === undefined){
         result = false;
       }
-    Object.values(data.ownListing).map((listing,key)=>{
+
+    if(data.ownListing !== undefined){
+       Object.values(data.ownListing).map((listing,key)=>{
           if(listing.attributes.state === "published" || listing.state === "draft"){
             result = true;
           }
       })
+    }else{
+      return false;
+    }
+   
     }
     return result;
   }

@@ -51,8 +51,10 @@ import spanish from "./translations/es.json";
 
 const eng = english;
 const spa = spanish;
-let translated = eng;
-let currentLang = "EN";
+
+const currentLanguage = localStorage.getItem("currentLanguage");
+let translated = currentLanguage === "EN"?eng:spa;
+//let currentLang = "EN";
 
 let store;
 
@@ -187,13 +189,14 @@ if (typeof window !== 'undefined') {
 //   },[translated])
 
 const changeLanguge = (currentLanguage)=>{
-  console.log("curent language ", currentLanguage)
   if(currentLanguage === "en"){
     translated = eng;
-    currentLang = "EN";
+    //currentLang = "EN";
+    localStorage.setItem("currentLanguage","EN");
   }else{
     translated = spa;
-    currentLang = "ES";
+    //currentLang = "ES";
+    localStorage.setItem("currentLanguage","ES");
   }
   
    render(store, !!window.__PRELOADED_STATE__);
@@ -227,5 +230,5 @@ export {
   mergeConfig,
   fetchAppAssets,
   changeLanguge,
-  currentLang
+  //currentLang
 };

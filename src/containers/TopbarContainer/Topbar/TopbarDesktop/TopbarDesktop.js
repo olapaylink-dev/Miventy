@@ -30,7 +30,7 @@ import placeholder from '../../../../assets/placeholder.jpg';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import MessagesNote from '../../../../components/CustomComponent/MessagesNote';
 import NotificationNote from '../../../../components/CustomComponent/NotificationNote';
-import { changeLanguge,currentLang } from '../../../..';
+import { changeLanguge } from '../../../..';
 import CustomDropdown from '../../../../components/CustomComponent/CustomDropdown';
 
 const SignupLink = (props) => {
@@ -201,7 +201,7 @@ const TopbarDesktop = props => {
   const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
   const { businessName="",fullName="",language="",userType} = publicData || "";
 
-  const currentLangSaved = currentLang;
+  const currentLangSaved = localStorage.getItem("currentLanguage");
   const [currentLanguage,setCurrentLanguage] = useState(currentLangSaved);
 
   useEffect(() => {
