@@ -396,7 +396,7 @@ const handleSwitchToCustomer = e =>{
       <div className={css.mobile}>
         <div className={css.flex_row}>
           <div>
-            {userType === "customer"?
+            {userType !== "businessOwner"?
               <NamedLink name="LandingPage">
                 <img className={css.resize} src={logo} />
               </NamedLink>

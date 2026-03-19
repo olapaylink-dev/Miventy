@@ -365,7 +365,7 @@ const TopbarDesktop = props => {
 
           <div className={css.logo}>
            
-            {userType === "customer"?
+            {userType !== "businessOwner"?
               <NamedLink name="LandingPage">
                 <img className={css.resize} src={logo} />
               </NamedLink>
