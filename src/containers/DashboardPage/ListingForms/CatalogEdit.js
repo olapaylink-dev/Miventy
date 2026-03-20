@@ -451,7 +451,7 @@ const saveCatalogName = e =>{
                                             <h2 className={css.cover_header}>{intl.formatMessage({id: 'Dashboard.coverImage'})}</h2>
                                             <div >
                                                 {imageSrc==="" || folderNameToEdit === undefined || folderNameToEdit === null || folderNameToEdit === ""?
-                                                  <div onClick={handleFileClick} className={css.pic_item}>123
+                                                  <div onClick={handleFileClick} className={css.pic_item}>
 
                                                     <div className={css.upload_icon_con}>
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
