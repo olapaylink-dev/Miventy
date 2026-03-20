@@ -918,6 +918,21 @@
     display: none;
 }
 
+.spinner_con{
+    margin-top: 0px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 133px;
+    background-color: rgba(0, 0, 0, 0.61);
+}
+
+.spinner_con > div{
+    color: white;
+}
+
 @media only screen and (max-width: 1440px) {
    
 }

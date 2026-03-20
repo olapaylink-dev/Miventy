@@ -451,7 +451,8 @@ const saveCatalogName = e =>{
                                             <h2 className={css.cover_header}>{intl.formatMessage({id: 'Dashboard.coverImage'})}</h2>
                                             <div >
                                                 {imageSrc==="" || folderNameToEdit === undefined || folderNameToEdit === null || folderNameToEdit === ""?
-                                                  <div onClick={handleFileClick} className={css.pic_item}>
+                                                  <div onClick={handleFileClick} className={css.pic_item}>123
+
                                                     <div className={css.upload_icon_con}>
                                                       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
                                                         <path d="M6.1076 9.81082C6.1076 6.82772 8.52588 4.40945 11.509 4.40945C14.1514 4.40945 16.3525 6.30796 16.819 8.81567C16.8845 9.16732 17.1359 9.4556 17.4754 9.5682C19.4305 10.2166 20.8386 12.0602 20.8386 14.2301C20.8386 16.942 18.6402 19.1405 15.9283 19.1405C15.3859 19.1405 14.9462 19.5801 14.9462 20.1225C14.9462 20.6649 15.3859 21.1046 15.9283 21.1046C19.7249 21.1046 22.8028 18.0268 22.8028 14.2301C22.8028 11.3895 21.0804 8.95345 18.6253 7.90519C17.7852 4.76103 14.9185 2.44531 11.509 2.44531C7.44112 2.44531 4.14347 5.74296 4.14347 9.81082C4.14347 9.9093 4.14541 10.0074 4.14925 10.105C2.38604 11.1223 1.19727 13.0275 1.19727 15.2122C1.19727 18.4665 3.83539 21.1046 7.08967 21.1046C7.63205 21.1046 8.07174 20.6649 8.07174 20.1225C8.07174 19.5801 7.63205 19.1405 7.08967 19.1405C4.92015 19.1405 3.1614 17.3817 3.1614 15.2122C3.1614 13.5846 4.1515 12.1859 5.56614 11.59C5.9755 11.4176 6.21815 10.9918 6.15788 10.5517C6.12477 10.31 6.1076 10.0627 6.1076 9.81082Z" fill="#475367"/>
@@ -475,9 +476,19 @@ const saveCatalogName = e =>{
                                                       </svg>
                                                       <span className={css.remove}>{intl.formatMessage({id: 'Dashboard.removeImage'})}</span>
                                                     </div>
+
+                                                    {uploadInProgress?
+                                                      <div className={css.spinner_con}>
+                                                        <div class="spinner-border" role="status">
+                                                          <span class="sr-only"></span>
+                                                        </div>
+                                                      </div>
+                                                    :""}
                                                   </div>
                                                 }
                                             </div>
+
+
 
                                             <p className={css.cover_desc}>{intl.formatMessage({id: 'Dashboard.addCoverImage'})}</p>
                                             <input 
