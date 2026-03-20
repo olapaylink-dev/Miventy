@@ -286,7 +286,6 @@ export function uploadImage(actionPayload) {
 export const updateProfile = actionPayload => {
   return (dispatch, getState, sdk) => {
     dispatch(updateProfileRequest());
-    console.log("=====================================");
     const queryParams = {
       expand: true,
       include: ['profileImage'],
@@ -297,7 +296,6 @@ export const updateProfile = actionPayload => {
       .then(response => {
         dispatch(fetchCurrentUser({}));
         dispatch(updateProfileSuccess(response));
-        console.log("================11111111111111111111111=====================");
         const entities = denormalisedResponseEntities(response);
         if(actionPayload.hasOwnProperty("declinedTransaction")){
           dispatch()

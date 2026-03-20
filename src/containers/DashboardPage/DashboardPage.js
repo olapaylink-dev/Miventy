@@ -488,7 +488,7 @@ export const DashboardPageComponent = props => {
     ...rest
   } = props;
   const{match}=props;
-  //console.log("oooppppllll")
+  console.log("oooppppllll",updateInProgress)
   const isVariant = pathParams.variant?.length > 0;
   const isPreview = isVariant && pathParams.variant === PROFILE_PAGE_PENDING_APPROVAL_VARIANT;
 
@@ -563,6 +563,7 @@ export const DashboardPageComponent = props => {
   const [showMap,setShowMap] = useState(false);
   const [showOptions,setShowOptions] = useState(false);
   const [languages, setLanguages] = useState(publicData?.language);
+  const [started, setStarted] = useState(false);
 
   const fileInputProfile = useRef(null);
 
@@ -650,16 +651,6 @@ export const DashboardPageComponent = props => {
     ////console.log(serviceAreasSave);
   },[currentUser])
 
-
-useEffect(()=>{
-    
-    console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",serviceAreas);
-    ////console.log(serviceAreasSave);
-  },[serviceAreas])
-
-
-
-
   useEffect(()=>{
     if(closeListingSuccess && currentUser){
       window.location.reload();
@@ -677,6 +668,13 @@ useEffect(()=>{
       setCurrentListing({});
      }
   },[showCreateListing]);
+
+  // useEffect(()=>{
+  //   console.log("updatedddddddd");
+  //    if(started){
+  //     setStarted(false);
+  //    }
+  // },[updateInProgress]);
 
   const handleProfileClick = ()=>{
     fileInputProfile.current.click();
@@ -779,18 +777,6 @@ useEffect(()=>{
     setCurrentPage("businessProfile");
   }
 
-  const handleShowCreateListing = e =>{
-    //Clear current listing
-    setIsDraft(false);
-    setCurrentListing({});
-    setSelectedCategory("");
-    forceUpdate();
-    //console.log("vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
-    //console.log(selectedCategory);
-    //console.log(currentListing);
-    setShowCreateListing(true);
-  }
-
   const handleHideForm = e =>{
     setCurrentPage("");
     e.preventDefault();
@@ -798,17 +784,12 @@ useEffect(()=>{
 
   const handleRemove = id =>{
     const rem = serviceAreas !== undefined && serviceAreas.hasOwnProperty("length") && serviceAreas.length > 0? serviceAreas.filter(itm=>itm?.result?.id !== id):[];
-    //setServiceAreas(rem);
-
-    //console.log("zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz");
-
+    
     const data = 
     {publicData: {
           serviceAreas:rem
         }}
     onUpdateProfile(data);
-
-    /////console.log(id);
     forceUpdate();
   }
 
@@ -946,6 +927,7 @@ useEffect(()=>{
 
 
   const handleSubmit = () => {
+      setStarted(true);
       const data = 
       {publicData: {
             businessName:currBusinessName,
@@ -1183,7 +1165,15 @@ useEffect(()=>{
 
                      <div className={classNames(css2.base_btns,css.btn_right)}>
                         <div className={css.btn_con}>
-                          <button onClick={handleSubmit} className={css2.btn_next} disabled={false}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
+                          <button onClick={handleSubmit} className={css2.btn_next} disabled={false}>
+                            {intl.formatMessage({id: 'CategoriesForm.save'})}
+                            {updateInProgress?
+                              <div class="spinner-border" role="status">
+                                <span class="sr-only"></span>
+                              </div>
+                            :""}
+                            
+                          </button>
                         </div>
                       </div>
     
@@ -1689,12 +1679,17 @@ const {
     lastAction,
     isUpdateItem,
     updatedListing,
-    updateInProgress,
     updateListingSuccess,
     closeListingInProgress,
     closeListingSuccess,
     updateListingInProgress,
   } = state.EditListingPage;
+
+   const {
+   
+    updateInProgress,
+   
+  } = state.ProfileSettingsPage;
 
 
   const userMatches = getMarketplaceEntities(state, [{ type: 'user', id: userId }]);

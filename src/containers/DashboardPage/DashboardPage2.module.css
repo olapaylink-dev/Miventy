@@ -600,7 +600,6 @@ text-transform: uppercase;
 .btn_next{
     display: flex;
     padding: 12px 24px;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     border-style: none;
