@@ -49,6 +49,7 @@
 
 .bottomWrapper {
   composes: marketplaceModalBottomWrapper from global;
+  margin-bottom: 20px;
 }
 .form_header{
   

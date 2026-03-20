@@ -517,7 +517,6 @@ const SignupFormComponent = props => (
                   {termsAndConditions}
                 </div>
                 <div className={css.bottomWrapper}>
-                  
                   <PrimaryButton type="submit" inProgress={submitInProgress} disabled={submitDisabled}>
                     <FormattedMessage id="SignupForm.signUp" />
                   </PrimaryButton>
@@ -525,8 +524,8 @@ const SignupFormComponent = props => (
 
                 <div className={css.flex_row}>
                   <p>
-                    <FormattedMessage id="ConfirmSignupForm.alreadyHaveAccount" /> 
-                    <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>
+                    
+                  <FormattedMessage id="ConfirmSignupForm.alreadyHaveAccount" />   <NamedLink name="LoginPage" className={css.login_here} style={{textDecoration:"underline"}}>
                       <FormattedMessage id="ConfirmSignupForm.loginHere" /> 
                     </NamedLink>
                   </p>

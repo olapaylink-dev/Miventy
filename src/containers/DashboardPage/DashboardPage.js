@@ -82,6 +82,7 @@ import { ensureOwnListing } from '../../util/data';
 import CloseListingDialog from './CloseListingDialog';
 import { fetchCurrentUser, fetchCurrentUserHasListings } from '../../ducks/user.duck';
 import SelectMultipleComponent from '../../components/CustomComponent/SelectMultipleComponent';
+import css2 from './DashboardPage2.module.css';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -507,12 +508,16 @@ export const DashboardPageComponent = props => {
   const currentListingMainCategory = currentListing?.attributes?.publicData?.listingType;
   
   const serviceAreasSave = currentUser?.attributes?.profile?.publicData?.serviceAreas;
+  const locationSave = currentUser?.attributes?.profile?.publicData?.location;
   const availabilitySave = currentUser?.attributes?.profile?.publicData?.availability;
   const isCurrentUser = currentUser?.id && currentUser?.id?.uuid === pathParams.id;
   const profileUser = currentUser;
   const {attributes={}} = profileUser;
   const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
-  const { businessName="",fullName="",language=""} = publicData || "";
+  const { businessName="",fullName="",language=[]} = publicData || "";
+  const [currBusinessName,setCurrBusinessName] = useState(businessName);
+  const [currLanguageSpoken,setCurrLanguageSpoken] = useState(language);
+  const [currLocation,setCurrentLocation] = useState(locationSave);
   const { userFields } = config.user;
   const userTypeSaved = publicData?.userType;
   const [isProfileInfoComplete, setIsProfileInfoComplete] = useState(false);
@@ -526,6 +531,7 @@ export const DashboardPageComponent = props => {
   const hasNoViewingRightsOnPrivateMarketplace = isPrivateMarketplace && hasNoViewingRightsUser;
   const [currentSelectedUserType,setCurrentSelectedUserType] = useState(userTypeSaved);
   const [serviceAreas,setServiceAreas] = useState(serviceAreasSave);
+  const [location,setLocation] = useState(locationSave);
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const [currentTab,setCurrentTab] = useState("dashboard");
   const [showManagePayoutOptions, setShowManagePayoutOptions ] = useState(false);
@@ -554,6 +560,9 @@ export const DashboardPageComponent = props => {
   const [showSideNav,setshowSideNav] = useState(false);
   const [showMenu,setShowMenu] = useState(false);
   const [showPopups,seShowPopups] = useState(false);
+  const [showMap,setShowMap] = useState(false);
+  const [showOptions,setShowOptions] = useState(false);
+  const [languages, setLanguages] = useState(publicData?.language);
 
   const fileInputProfile = useRef(null);
 
@@ -640,6 +649,16 @@ export const DashboardPageComponent = props => {
     ////console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
     ////console.log(serviceAreasSave);
   },[currentUser])
+
+
+useEffect(()=>{
+    
+    console.log("Responseeeeeeeeeeeeeeeeeemmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm",serviceAreas);
+    ////console.log(serviceAreasSave);
+  },[serviceAreas])
+
+
+
 
   useEffect(()=>{
     if(closeListingSuccess && currentUser){
@@ -926,43 +945,18 @@ export const DashboardPageComponent = props => {
   }
 
 
-  const handleSubmit = (values, userType) => {
-      const { firstName, lastName, displayName, bio: rawBio, ...rest } = values;
-  
-      const displayNameMaybe = displayName
-        ? { displayName: displayName.trim() }
-        : { displayName: null };
-  
-      // Ensure that the optional bio is a string
-      const bio = rawBio || '';
-  
-      // const profile = {
-      //   firstName: firstName.trim(),
-      //   lastName: lastName.trim(),
-      //   ...displayNameMaybe,
-      //   bio,
-      //   publicData: {
-      //     ...pickUserFieldsData(rest, 'public', userType, userFields),
-      //   },
-      //   protectedData: {
-      //     ...pickUserFieldsData(rest, 'protected', userType, userFields),
-      //   },
-      //   privateData: {
-      //     ...pickUserFieldsData(rest, 'private', userType, userFields),
-      //   },
-      // };
-      // const uploadedImage = props.image;
-  
-      // // Update profileImage only if file system has been accessed
-      // const updatedValues =
-      //   uploadedImage && uploadedImage.imageId && uploadedImage.file
-      //     ? { ...profile, profileImageId: uploadedImage.imageId }
-      //     : profile;
-  
-      onUpdateProfile(updatedValues);
+  const handleSubmit = () => {
+      const data = 
+      {publicData: {
+            businessName:currBusinessName,
+            location,
+            languages
+          }}
+      console.log("Saved")
+      onUpdateProfile(data);
     };
 
-    const handleCloseListing = (e,id,state)=>{
+  const handleCloseListing = (e,id,state)=>{
       onFetctCurrentUser();
       onCloseListing(listingIdToClose.uuid,listingStateToClose);
       setShowCloseListingDialog(false);
@@ -990,6 +984,8 @@ export const DashboardPageComponent = props => {
     await onUpdateProfile(updatedValues);
     
   }
+
+  console.log("============")
  
   // This is rendering normal profile page (not preview for pending-approval)
   return (
@@ -1136,25 +1132,98 @@ export const DashboardPageComponent = props => {
                         id="outlined-controlled"
                         name='businessName'
                         onChange={(event) => {
-                          // setBusinesName(event.target.value);
+                          setCurrBusinessName(event.target.value);
                         }}
-                        // value={"businessName"}
+                        value={currBusinessName}
                         placeholder={"businessName"}
                       />
-                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.locationCity' })}</label>
-                      <input
-                        id="outlined-controlled"
-                        name='location'
-                        // value={}
-                        onChange={(event) => {
-                          // setYearsOfExperience(event.target.value);
-                        }}
-                        placeholder={intl.formatMessage({id:'StripePayoutPage.writeOutYourExperience'})}
-                      />
+                     
+
+                         <div>
+                            <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'Dashboard.locationCity'})}</label>
+                            <div className={css2.area_con} onClick={e=>setShowMap(true)}>
+                              <div className={css2.flex_row_area}>
+                                
+                                {location !== undefined?
+                                  <div className={css2.location_selected_2}>
+                                  
+                                          <div className={css2.loca_con}>
+                                            <span>{location?.result?.place_name}</span>
+                                            <svg onClick={e=>{handleRemove(location.result.id)}} className={css2.remove} xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                              <path d="M7.05684 6.61503C6.79649 6.35468 6.37438 6.35468 6.11403 6.61503C5.85368 6.87538 5.85368 7.29749 6.11403 7.55784L7.05684 8.50065L6.11403 9.44346C5.85368 9.70381 5.85368 10.1259 6.11403 10.3863C6.37438 10.6466 6.79649 10.6466 7.05684 10.3863L7.99965 9.44346L8.94246 10.3863C9.20281 10.6466 9.62492 10.6466 9.88527 10.3863C10.1456 10.1259 10.1456 9.70381 9.88527 9.44346L8.94246 8.50065L9.88527 7.55784C10.1456 7.29749 10.1456 6.87538 9.88527 6.61503C9.62492 6.35468 9.20281 6.35468 8.94246 6.61503L7.99965 7.55784L7.05684 6.61503Z" fill="#475367"/>
+                                              <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99967 1.83398C4.31778 1.83398 1.33301 4.81875 1.33301 8.50065C1.33301 12.1825 4.31778 15.1673 7.99967 15.1673C11.6816 15.1673 14.6663 12.1825 14.6663 8.50065C14.6663 4.81875 11.6816 1.83398 7.99967 1.83398ZM2.66634 8.50065C2.66634 5.55513 5.05416 3.16732 7.99967 3.16732C10.9452 3.16732 13.333 5.55513 13.333 8.50065C13.333 11.4462 10.9452 13.834 7.99967 13.834C5.05416 13.834 2.66634 11.4462 2.66634 8.50065Z" fill="#475367"/>
+                                            </svg>
+                                          </div>
+                                       
+                                </div>
+                                :
+                                <>
+                                  <span>{intl.formatMessage({id:'StripePayoutPage.selectYourService'})}</span>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 5.49914C9.51487 5.49914 7.50015 7.51385 7.50015 9.99914C7.50015 12.4844 9.51487 14.4991 12.0002 14.4991C14.4854 14.4991 16.5002 12.4844 16.5002 9.99914C16.5002 7.51385 14.4854 5.49914 12.0002 5.49914ZM9.50015 9.99914C9.50015 8.61842 10.6194 7.49914 12.0002 7.49914C13.3809 7.49914 14.5002 8.61842 14.5002 9.99914C14.5002 11.3798 13.3809 12.4991 12.0002 12.4991C10.6194 12.4991 9.50015 11.3798 9.50015 9.99914Z" fill="#475367"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.80939 3.59112C10.3471 1.89931 13.6532 1.89931 16.1909 3.59112C19.6218 5.87839 20.585 10.4941 18.3553 13.9627L14.5237 19.9229C13.3428 21.7599 10.6575 21.7599 9.47662 19.9229L5.64505 13.9627C3.41528 10.4941 4.3785 5.87839 7.80939 3.59112ZM8.9188 5.25523C10.7847 4.01128 13.2156 4.01128 15.0815 5.25523C17.6042 6.93699 18.3124 10.3308 16.6729 12.8812L12.8413 18.8414C12.4477 19.4537 11.5526 19.4537 11.159 18.8414L7.32741 12.8812C5.68792 10.3308 6.39615 6.93699 8.9188 5.25523Z" fill="#475367"/>
+                                  </svg>
+                                </>
+                                }
+                                
+                              </div>
+                              {/* <span className={css2.your_serv}>{intl.formatMessage({id:'StripePayoutPage.yourServiceWillBe'})}</span> */}
+                            </div>
+                            {/* {location !== undefined && location !== null?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.serviceAreaRequired'})}</span>} */}
+                          </div>
 
                       <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.languageSpoken'})}</label>
+                      <SelectMultipleComponent 
+                        options={Object.values(countryLanguages)}
+                        value={languages}
+                        handleSelectChange={e=>setLanguages(e)}
+                        showOptions = {showOptions}
+                        setShowOptions = {setShowOptions}
+                      />
 
-                      <SelectMultipleComponent options={Object.values(countryLanguages)} value={"languages"} handleSelectChange={e=>setLanguages(e)}/>
+                     <div className={classNames(css2.base_btns,css.btn_right)}>
+                        <div className={css.btn_con}>
+                          <button onClick={handleSubmit} className={css2.btn_next} disabled={false}>{intl.formatMessage({id: 'CategoriesForm.save'})}</button>
+                        </div>
+                      </div>
+    
+                      {showMap?
+                        <div className={css2.map_overlay}>
+                          <div className={css2.map_con} >
+                              <SearchMapNew serviceAreas={location} setServiceAreas={setLocation} />
+                              <div className={css2.close_con} onClick={e=>setShowMap(false)}>
+                                <div className={css2.close_map}>
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                    <path d="M2.05086 0.636643C1.66033 0.246119 1.02717 0.246119 0.636643 0.636643C0.246119 1.02717 0.246119 1.66033 0.636643 2.05086L5.58639 7.0006L0.636643 11.9504C0.246119 12.3409 0.246119 12.974 0.636643 13.3646C1.02717 13.7551 1.66033 13.7551 2.05086 13.3646L7.0006 8.41482L11.9504 13.3646C12.3409 13.7551 12.974 13.7551 13.3646 13.3646C13.7551 12.974 13.7551 12.3409 13.3646 11.9504L8.41482 7.0006L13.3646 2.05086C13.7551 1.66033 13.7551 1.02717 13.3646 0.636643C12.974 0.246119 12.3409 0.246119 11.9504 0.636643L7.0006 5.58639L2.05086 0.636643Z" fill="black"/>
+                                  </svg>
+                                </div>
+                              </div>
+                          </div>
+    
+                          <div className={css2.location_selected}>
+                              <div className={css2.loca_con}>
+                                <span>{location?.result?.place_name}</span>
+                                <svg onClick={e=>{handleRemove(location.result.id)}} className={css2.remove} xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none">
+                                  <path d="M7.05684 6.61503C6.79649 6.35468 6.37438 6.35468 6.11403 6.61503C5.85368 6.87538 5.85368 7.29749 6.11403 7.55784L7.05684 8.50065L6.11403 9.44346C5.85368 9.70381 5.85368 10.1259 6.11403 10.3863C6.37438 10.6466 6.79649 10.6466 7.05684 10.3863L7.99965 9.44346L8.94246 10.3863C9.20281 10.6466 9.62492 10.6466 9.88527 10.3863C10.1456 10.1259 10.1456 9.70381 9.88527 9.44346L8.94246 8.50065L9.88527 7.55784C10.1456 7.29749 10.1456 6.87538 9.88527 6.61503C9.62492 6.35468 9.20281 6.35468 8.94246 6.61503L7.99965 7.55784L7.05684 6.61503Z" fill="#475367"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.99967 1.83398C4.31778 1.83398 1.33301 4.81875 1.33301 8.50065C1.33301 12.1825 4.31778 15.1673 7.99967 15.1673C11.6816 15.1673 14.6663 12.1825 14.6663 8.50065C14.6663 4.81875 11.6816 1.83398 7.99967 1.83398ZM2.66634 8.50065C2.66634 5.55513 5.05416 3.16732 7.99967 3.16732C10.9452 3.16732 13.333 5.55513 13.333 8.50065C13.333 11.4462 10.9452 13.834 7.99967 13.834C5.05416 13.834 2.66634 11.4462 2.66634 8.50065Z" fill="#475367"/>
+                                </svg>
+                              </div>
+                          </div>
+                        </div>
+                      :""}
+
+
+
+
+
+
+
+
+
+
+
+
+
                       
 
                       <div className={css.flex_col_4}>
