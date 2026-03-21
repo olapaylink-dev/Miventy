@@ -1665,6 +1665,8 @@
   "Dashboard.bookings":"Reservas",
   "Dashboard.myBookings":"Mis reservas",
   "Dashboard.price":"Precio",
+  "Dashboard.firstName":"Nombre de pila",
+  "Dashboard.lastName":"Apellido",
   "Dashboard.reset":"Restablecer",
   "Dashboard.requestAQuote":"Solicitar un presupuesto",
   "Dashboard.orderSent":"Pedido enviado",

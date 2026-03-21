@@ -1716,8 +1716,8 @@
   "Dashboard.bookings":"Bookings",
   "Dashboard.myBookings":"My Bookings",
   "Dashboard.price":"Price",
-
-
+  "Dashboard.firstName":"Firstname",
+  "Dashboard.lastName":"Lastname",
 
 
   "Dashboard.reset":"Reset",

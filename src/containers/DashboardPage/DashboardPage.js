@@ -514,8 +514,10 @@ export const DashboardPageComponent = props => {
   const profileUser = currentUser;
   const {attributes={}} = profileUser;
   const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
-  const { businessName="",fullName="",language=[]} = publicData || "";
+  const { businessName="",fullName="",language=[],firstname,lastname} = publicData || "";
   const [currBusinessName,setCurrBusinessName] = useState(businessName);
+  const [firstName,setFirstName] = useState(firstname);
+  const [lastName,setLastName] = useState(lastname);
   const [currLanguageSpoken,setCurrLanguageSpoken] = useState(language);
   const [currLocation,setCurrentLocation] = useState(locationSave);
   const { userFields } = config.user;
@@ -929,8 +931,10 @@ export const DashboardPageComponent = props => {
   const handleSubmit = () => {
       setStarted(true);
       const data = 
-      {publicData: {
-            businessName:currBusinessName,
+      {
+        firstName,
+        lastName,
+        publicData: {
             location,
             languages
           }}
@@ -1109,18 +1113,28 @@ export const DashboardPageComponent = props => {
                       </div>
 
                     <FormControl className={classNames(css.full_w,css.form_input)}>
-                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.name' })}</label>
+                      <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.firstName' })}</label>
                       <input
                         id="outlined-controlled"
-                        name='businessName'
+                        name='firstName'
                         onChange={(event) => {
-                          setCurrBusinessName(event.target.value);
+                          setFirstName(event.target.value);
                         }}
-                        value={currBusinessName}
-                        placeholder={"businessName"}
+                        value={firstName}
+                        placeholder={intl.formatMessage({ id: 'Dashboard.firstName' })}
+                      />
+
+                       <label className={css.labels} for={"outlined-controlled"}>{intl.formatMessage({ id: 'Dashboard.lastName' })}</label>
+                      <input
+                        id="outlined-controlled"
+                        name='lastName'
+                        onChange={(event) => {
+                          setLastName(event.target.value);
+                        }}
+                        value={lastName}
+                        placeholder={intl.formatMessage({ id: 'Dashboard.lastName' })}
                       />
                      
-
                          <div>
                             <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'Dashboard.locationCity'})}</label>
                             <div className={css2.area_con} onClick={e=>setShowMap(true)}>
