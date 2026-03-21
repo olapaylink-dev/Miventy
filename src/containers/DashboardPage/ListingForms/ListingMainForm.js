@@ -210,17 +210,18 @@ const handleChangeTab = (e,tab)=>{
        ];
 
     const handleCreateDraftOrUpdateExisting = e =>{
+      let data;
       if(lastAction === "updateDraft"){
             handleMoveToAboutService();
       }
-
+      
       const processingFee =  { amount: 10, currency: "EUR" };
 
       setIsDraft(true);
       if(JSON.stringify(currentListing) !== "{}"){
         handleMoveToAboutService();
       }else{
-        const data = {
+         data = {
           title:"Not yet set",
           publicData:{
             category:currRadioBtnCategory,
@@ -232,6 +233,8 @@ const handleChangeTab = (e,tab)=>{
         }
         onCreateListingDraft(data, "createDraft")
       }
+
+      console.log(data,"  xxxxxxxxxxxxxxxxxxxxxxxx   ",currentListing)
     }
 
 
@@ -272,7 +275,6 @@ const handleChangeTab = (e,tab)=>{
                                             >
 
                                             {itmm.item.map((category,key)=>{
-                                                console.log(category,"   bbbbbbbb")
                                                 return(
                                                 <FormControlLabel key={`radio ${category.value} ${key}`} className={css2.no_spacing} value={category.value} control={
                                                     <Radio

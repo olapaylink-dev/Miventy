@@ -50,7 +50,7 @@ import CompletedOrders from '../DashboardPage/CompletedOrders';
 import CloseListingDialog from '../DashboardPage/CloseListingDialog';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { updateProfile, uploadImage } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
-import { closeListing, getCurrentListing, requestCreateListingDraft, requestPublishListingDraft, requestUpdateListing } from '../EditListingPage/EditListingPage.duck';
+import { clearOldUpdatedListing, closeListing, getCurrentListing, requestCreateListingDraft, requestPublishListingDraft, requestUpdateListing } from '../EditListingPage/EditListingPage.duck';
 import { fetchCurrentUserHasListings } from '../../ducks/user.duck';
 import { getMarketplaceEntities } from '../../ducks/marketplaceData.duck';
 import SearchMapNew from '../DashboardPage/SearchMapNew';
@@ -212,7 +212,8 @@ export const StripePayoutPageComponent = props => {
     onStripeTransferToConnectedAccountBalance,
     instantPayoutSuccess,
     instantPayoutInProgress,
-    onReset
+    onReset,
+    onClearOldUpdatedListing
   } = props;
    const{match}=props;
 
@@ -655,6 +656,9 @@ const [currentListing,setCurrentListing] = useState({});
 
   const handleShowCreateListing = e =>{
     //Clear current listing
+    localStorage.removeItem("currentListing");
+    localStorage.removeItem("currentListingId");
+    localStorage.removeItem("CurrentTransaction");
     setIsDraft(false);
     setCurrentListing({});
     setSelectedCategory("");
@@ -663,6 +667,7 @@ const [currentListing,setCurrentListing] = useState({});
     //console.log(selectedCategory);
     //console.log(currentListing);
     setShowCreateListing(true);
+    onClearOldUpdatedListing();
   }
 
   const handleHideForm = e =>{
@@ -2430,6 +2435,8 @@ onUpdateProfile: data => dispatch(updateProfile(data)),
   onStripeInstantPayout: data => dispatch(stripeInstantPayout(data)),
   onStripeTransferToConnectedAccountBalance: data => dispatch(stripeTransferToConnectedAccountBalance(data)),
   onReset: () => dispatch(reset()),
+  onClearOldUpdatedListing: () => dispatch(clearOldUpdatedListing()),
+  
 });
 
 const StripePayoutPage = compose(

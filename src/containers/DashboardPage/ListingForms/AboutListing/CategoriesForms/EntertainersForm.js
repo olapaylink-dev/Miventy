@@ -26,8 +26,8 @@ const EntertainersForm = props =>{
       handleHideForm
     } = props;
     const {data} = updatedListing;
-    const {attributes} = data || currentListing;
-    const {publicData={},price={}}= attributes;
+    const {attributes} = data || currentListing || {};
+    const {publicData={},price={}}= attributes || {};
 
     const [childrenAge,setChildrenAge] = useState(publicData.hasOwnProperty("childrenAge")?publicData?.childrenAge:[]);
     const [serviceStandards,setServiceStandards] = useState(publicData.hasOwnProperty("serviceStandards")?publicData.serviceStandards:[]);

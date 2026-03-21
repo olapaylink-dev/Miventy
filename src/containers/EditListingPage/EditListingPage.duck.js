@@ -174,6 +174,9 @@ export const SAVE_PAYOUT_DETAILS_REQUEST = 'app/EditListingPage/SAVE_PAYOUT_DETA
 export const SAVE_PAYOUT_DETAILS_SUCCESS = 'app/EditListingPage/SAVE_PAYOUT_DETAILS_SUCCESS';
 export const SAVE_PAYOUT_DETAILS_ERROR = 'app/EditListingPage/SAVE_PAYOUT_DETAILS_ERROR';
 
+export const CLEAR_OLD_UPDATED_LISTING_REQUEST = 'app/EditListingPage/CLEAR_OLD_UPDATED_LISTING_REQUEST';
+
+
 // ================ Reducer ================ //
 
 const initialState = {
@@ -480,6 +483,9 @@ export default function reducer(state = initialState, action = {}) {
     case CLOSE_LISTING_ERROR:
       return { ...state, closeListingInProgress: false, closeListingError: payload ,closeListingSuccess:false};
 
+    case CLEAR_OLD_UPDATED_LISTING_REQUEST:
+      return { ...state, updatedListing: {} };
+
     default:
       return state;
   }
@@ -526,6 +532,8 @@ export const closeListingRequest = () => ({
   type: CLOSE_LISTING_REQUEST,
 
 });
+
+export const clearOldUpdatedListingRequest = requestAction(CLEAR_OLD_UPDATED_LISTING_REQUEST);
 
 // SDK method: ownListings.create
 export const createListingDraftRequest = requestAction(CREATE_LISTING_DRAFT_REQUEST);
@@ -771,6 +779,11 @@ export function requestCreateListingDraft(data,action, config) {
 // display the state.
 // NOTE: what comes to stock management, this follows the same pattern used in create listing call
 
+
+export const clearOldUpdatedListing = () => (dispatch, getState, sdk) => {
+  console.log("Remove ================")
+  dispatch(clearOldUpdatedListingRequest());
+};
 
 export function requestUpdateListing(data,action) {
   return (dispatch, getState, sdk) => {
