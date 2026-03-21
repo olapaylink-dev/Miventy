@@ -164,6 +164,9 @@ a{
     gap:100px;
     
   }
+  .flex_row_3{
+    gap: 20px;
+  }
  
 }
 

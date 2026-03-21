@@ -1027,7 +1027,7 @@ vertical-align: middle;
 
   /* Paragraph/Small/Semibold */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 145%; /* 20.3px */
@@ -1049,7 +1049,7 @@ vertical-align: middle;
 
   /* Paragraph/Small/Semibold */
   font-family: Inter;
-  font-size: 14px;
+  font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: 145%; /* 20.3px */
@@ -1592,22 +1592,47 @@ padding: 0px;
 }
 
 .flex_row_2{
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .send{
   font-size: 12px;
 }
 
+.share{
+    font-size: 12px;
+  }
+
+.flex_row_header{
+  gap: 16px;
+}
+
 }
 
 @media only screen and (max-width: 412px) {
-  
+  .share{
+    font-size: 12px;
+    padding: 0px 5px;
+  }
+  .send{
+    font-size: 12px;
+    padding: 0px 5px;
+  }
+  .flex_row_header{
+    gap: 16px;
+  }
 }
 
 @media only screen and (max-width: 360px) {
-   
-}
+  .share{
+    font-size: 12px;
+    padding: 0px 5px;
+  }
+  .send{
+  font-size: 12px;
+    padding: 0px 5px;
+  }
+} 
     
       
       
