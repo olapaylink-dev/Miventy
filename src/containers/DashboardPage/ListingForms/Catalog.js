@@ -1048,6 +1048,7 @@ const hamdleReset = e =>{
           instruction={instruction}
           handleChangeTab={handleChangeTab}
           showItemDetailsForm={showItemDetailsForm}
+          setShowItemDetailsForm={setShowItemDetailsForm}
           selectedFolderName={folderName}
           setSelectedFolderName={setSelectedFolderName}
           setItemName={setItemName}
@@ -1200,6 +1201,7 @@ const hamdleReset = e =>{
               </div>:""}
                <CatalogEdit
                 showEditCat={showCreateCat}
+                setShowEditCat={setShowEditCat}
                 css={css}
                 subHeader={subHeader}
                 instruction={instruction}

@@ -19,10 +19,12 @@ const CatalogEdit = props=>{
   ];
     const {
         showEditCat,
+        setShowEditCat,
         subHeader,
         instruction,
         handleChangeTab,
         showItemDetailsForm,
+        setShowItemDetailsForm,
         selectedFolderName,
         setItemName,
         itemName,
@@ -108,6 +110,16 @@ const saveCatalogName = e =>{
   localStorage.setItem("folderName",e.target.value);
 }
 
+const moveToAboutService = e=>{
+  if(showItemDetailsForm){
+    setShowItemDetailsForm(false)
+  }else{
+    handleMoveToAboutService();
+  }
+  
+  
+}
+
 
     return (
         <>
@@ -122,7 +134,6 @@ const saveCatalogName = e =>{
                     <TopTab activeTab={"catalog"} subHeader={subHeader} instruction={instruction} handleChangeTab={handleChangeTab}/>
                    
                     <div className={css.flex_col_main}>
-                        
                               {showItemDetailsForm?
                                 <>
                                   <div className={css.header_con_2}>
@@ -194,7 +205,7 @@ const saveCatalogName = e =>{
                                                 </div>
                                         )
                                       })}
-
+                                      
                                       <div className={css.add_duration_con}>
                                           <div className={css.plus_con} onClick={handleCreateNewInput}>
                                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -360,7 +371,6 @@ const saveCatalogName = e =>{
                                     </div>
                                   </div>
 
-
                                   <div className={css.reset_con} >
                                     <button className={css.reset_btn} onClick={hamdleReset}>{intl.formatMessage({id: 'Dashboard.reset'})}</button>
                                     <button className={css.add_item_btn} onClick={e=>{handleAddListing(e,"add")}} disabled={uploadInProgress}> 
@@ -376,15 +386,14 @@ const saveCatalogName = e =>{
                                   <div className={classNames(css.base_btns,css.desktop)}>
                                       <button onClick={handleHideForm} className={css.btn_1}>{intl.formatMessage({id: 'CategoriesForm.close'})}</button>
                                       <div>
-                                          <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                          <button onClick={moveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                                           <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                       </div>
                                   </div>
                                   <div className={classNames(css.base_btns,css.mobile)}>
-                                        <button onClick={handleMoveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
+                                        <button onClick={moveToAboutService} className={css.btn_prev} >{intl.formatMessage({id: 'CategoriesForm.previous'})}</button>
                                         <button onClick={handleSubmit} className={css.btn_next}>{intl.formatMessage({id: 'CategoriesForm.saveAndContinue'})}</button>
                                   </div>
-                                 
 
                                   <input 
                                     id='file1' 
@@ -518,7 +527,6 @@ const saveCatalogName = e =>{
 
                                                 <>
                                                   {data !== undefined && data.map((itm,key)=>{
-                                                    console.log(itm,"   oooooooooooooooooooooooo")
                                                     if(itm.folder === selectedFolderName){
                                                       return (
                                                         <SimpleItemCard key={`catalog_item_card_${key+1}`} 
