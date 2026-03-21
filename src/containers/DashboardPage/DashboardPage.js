@@ -513,11 +513,11 @@ export const DashboardPageComponent = props => {
   const isCurrentUser = currentUser?.id && currentUser?.id?.uuid === pathParams.id;
   const profileUser = currentUser;
   const {attributes={}} = profileUser;
-  const { bio, displayName, publicData, metadata } = profileUser?.attributes?.profile || {};
-  const { businessName="",fullName="",language=[],firstname,lastname} = publicData || "";
+  const { bio, displayName, publicData, metadata ,firstName,lastName} = profileUser?.attributes?.profile || {};
+  const { businessName="",fullName="",language=[]} = publicData || "";
   const [currBusinessName,setCurrBusinessName] = useState(businessName);
-  const [firstName,setFirstName] = useState(firstname);
-  const [lastName,setLastName] = useState(lastname);
+  const [firstname,setFirstName] = useState(firstName);
+  const [lastname,setLastName] = useState(lastName);
   const [currLanguageSpoken,setCurrLanguageSpoken] = useState(language);
   const [currLocation,setCurrentLocation] = useState(locationSave);
   const { userFields } = config.user;
@@ -932,8 +932,8 @@ export const DashboardPageComponent = props => {
       setStarted(true);
       const data = 
       {
-        firstName,
-        lastName,
+        firstName:firstname,
+        lastName:lastname,
         publicData: {
             location,
             languages
@@ -1120,7 +1120,7 @@ export const DashboardPageComponent = props => {
                         onChange={(event) => {
                           setFirstName(event.target.value);
                         }}
-                        value={firstName}
+                        value={firstname}
                         placeholder={intl.formatMessage({ id: 'Dashboard.firstName' })}
                       />
 
@@ -1131,7 +1131,7 @@ export const DashboardPageComponent = props => {
                         onChange={(event) => {
                           setLastName(event.target.value);
                         }}
-                        value={lastName}
+                        value={lastname}
                         placeholder={intl.formatMessage({ id: 'Dashboard.lastName' })}
                       />
                      
