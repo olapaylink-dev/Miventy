@@ -1664,6 +1664,7 @@
   "Dashboard.didntrecive":"¿No has recibido ningún código? Reenviar",
   "Dashboard.bookings":"Reservas",
   "Dashboard.myBookings":"Mis reservas",
+  "Dashboard.price":"Precio",
   "Dashboard.reset":"Restablecer",
   "Dashboard.requestAQuote":"Solicitar un presupuesto",
   "Dashboard.orderSent":"Pedido enviado",

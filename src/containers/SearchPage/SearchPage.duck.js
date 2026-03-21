@@ -311,6 +311,25 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
     perPage,
   };
 
+  const getAvailableAuthorListings = resp =>{
+    const list = [];
+    resp.data.data.map((itm,key)=>{
+      const authorId = itm.relationships.author.data.id.uuid;
+      resp.data.included.map((i,k)=>{
+        if(i.type === "user" && i.id.uuid === authorId){
+          if(i.attributes.profile.publicData.availability === true){
+            if(!list.includes(itm)){
+              list.push(itm);
+            }
+            
+          }
+        }
+      })
+
+    });
+    return list;
+  }
+
   return sdk.listings
     .query(params)
     .then(response => {
@@ -318,7 +337,14 @@ export const searchListings = (searchParams, config) => (dispatch, getState, sdk
       const sanitizeConfig = { listingFields };
 
       dispatch(addMarketplaceEntities(response, sanitizeConfig));
-      dispatch(searchListingsSuccess(response));
+      const dat = response.data.data;
+      let completeData = response;
+      const remaining = getAvailableAuthorListings(response);
+      completeData.data.data = remaining;
+
+      console.log(remaining,"   aaaaaaaannnnnnnnnn")
+
+      dispatch(searchListingsSuccess(completeData));
       return response;
     })
     .catch(e => {

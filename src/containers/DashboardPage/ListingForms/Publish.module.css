@@ -130,6 +130,9 @@
     background:  #EB5017;
     color: white;
 }
+.btn_next_publish:disabled{
+    background: var(--Grey-500, #667185);
+}
 
 .btn_next:disabled{
     border-radius: 8px;

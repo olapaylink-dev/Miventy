@@ -9,7 +9,7 @@ const SimpleItemCard = props=>{
     const {itemName,ItemPrice,description,durationPrice=[],catalogImages=[]} = catalogDetails;
 
     const imgUrl = catalogImages.length > 0 && catalogImages[0]?.imgUrl !== undefined?catalogImages[0]?.imgUrl:"";
-    const isDurationPrice = durationPrice !== undefined && durationPrice.length > 0 && durationPrice[0].price != 0;
+    const isDurationPrice = JSON.stringify(durationPrice[0]) !== "{}" && durationPrice !== undefined && durationPrice.length > 0 && durationPrice[0].price != 0;
     let price = 0;
     let format = "";
     let duration = "";
@@ -37,7 +37,7 @@ const SimpleItemCard = props=>{
                 <p>{description}</p>
             </div>
             <div className={css.flex_row}>
-                <span className={css.price}>€{ItemPrice} - {duration} {format}</span><div className={css.view_all}>{intl.formatMessage({ id: 'Catalog.viewAll' })}</div>
+                <span className={css.price}> From €{price} {duration!==""?`- ${duration} ${format}`:""}</span><div className={css.view_all}>{intl.formatMessage({ id: 'Catalog.viewAll' })}</div>
             </div>
 
             {durationPrice !== undefined && durationPrice.length > 0 && durationPrice[0].price !== undefined && durationPrice[0].price !== undefined && durationPrice.map((itm,key)=>{

@@ -295,7 +295,6 @@
 .add_item_btn_colored{
     display: flex;
     padding: 8px 16px;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -314,6 +313,10 @@
     font-weight: 600;
     line-height: 145%; /* 20.3px */
     background-color: #EB5017;
+}
+
+.add_item_btn_colored:disabled{
+    background: var(--Grey-500, #a7a7a7);
 }
 
 .add_item_btn:disabled{
@@ -932,6 +935,8 @@
 .spinner_con > div{
     color: white;
 }
+
+
 
 @media only screen and (max-width: 1440px) {
    

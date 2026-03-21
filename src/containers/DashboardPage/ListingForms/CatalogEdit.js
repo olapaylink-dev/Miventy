@@ -518,6 +518,7 @@ const saveCatalogName = e =>{
 
                                                 <>
                                                   {data !== undefined && data.map((itm,key)=>{
+                                                    console.log(itm,"   oooooooooooooooooooooooo")
                                                     if(itm.folder === selectedFolderName){
                                                       return (
                                                         <SimpleItemCard key={`catalog_item_card_${key+1}`} 
@@ -551,7 +552,6 @@ const saveCatalogName = e =>{
                                                 {uploadInProgress?
                                                   <CircularProgress size={20} sx={{ color: 'white'}}/>
                                                 :""}
-                                                
                                                 {intl.formatMessage({id: 'Dashboard.saveCatalog'})}
                                             </button>
                                           </div>
