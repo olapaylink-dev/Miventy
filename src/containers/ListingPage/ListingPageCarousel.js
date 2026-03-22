@@ -1680,8 +1680,6 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
         </div>
         }
         
-       
-
       </LayoutSingleColumn>
     </Page>
     </div>
