@@ -316,7 +316,7 @@
 
     .modal{
         width: 100%;
-        padding: 0px;
+        padding: 20px 0px;
         margin: 20px;
         margin-top: 200%;
     }
@@ -324,7 +324,7 @@
     .container{
         flex-direction: column;
         width: 100%;
-        padding: 20px;
+        padding: 0px 20px;
         margin: 0px;
     }
 
@@ -342,6 +342,19 @@
         padding: 0px 20px;
     }
    
+    .flex_ful{
+        height: 0px;
+    }
+
+    .flex_row_btw_sm{
+        margin-top: 0px;
+    }
+
+    .header_2{
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
 
 }
 

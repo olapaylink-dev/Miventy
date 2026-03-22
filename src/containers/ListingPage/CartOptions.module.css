@@ -311,9 +311,10 @@
 
 @media only screen and (max-width: 768px) {
     .modal{
-        width: 80%;
+        width: 95%;
         display: flex;
         flex-direction: column;
+        padding: 20px;
     }
     .flex_grid{
         grid-template-columns: 1fr;

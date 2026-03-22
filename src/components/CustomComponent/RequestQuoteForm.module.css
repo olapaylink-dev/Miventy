@@ -384,8 +384,12 @@
         width: 90%;
         padding: 20px;
         margin: 20px;
+        min-width: 400px;
     }
    
+    .calendar{
+        margin-bottom: 10px;
+    }
 
 }
 

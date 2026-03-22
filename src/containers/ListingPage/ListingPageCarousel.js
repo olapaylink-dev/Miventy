@@ -1614,6 +1614,55 @@ const handleRemoveFavouriteUsers = (id,e) =>{
           </div>
         :""}
 
+        <div className={css.cart_modal}>
+           <div>
+                  <div className={css.aside}>
+                    <div className={css.flex_row_3}><span>{intl.formatMessage({ id: 'Dashboard.startingFrom' })}</span><span className={css.amount}>€{originalPrice !== undefined?(originalPrice.amount/100).toFixed(2):(price.amount/100).toFixed(2)}</span></div>
+                    <p>Items in cart</p>
+                    {currentUser?
+                      <CartItems currentUser={currentUser} 
+                        listingId={listingId}
+                        onUpdateProfile={onUpdateProfile}
+                        setSuccessMessage={setSuccessMessage}
+                        setShowSuccessView={setShowSuccessView}
+                      />
+                    :""}
+                    <div className={css.flex_col}>
+                      {/* <button className={css.btn_outline} onClick={handleConfirmOrder}>
+                        Place an order
+                      </button> */}
+                      <button className={css.send} onClick={handleShowRequestQuoteView}>
+                        {intl.formatMessage({ id: 'Dashboard.requestAQuote' })}
+                      </button>
+                    </div>
+                    
+                  </div>
+
+                  {showSuccessBadge?
+                    <div className={css.success_display}>
+                      <div className={css.success_icon_con}>
+                      <img src={mark}/>
+
+                      </div>
+                      <div>
+                        <h3 className={css.header_5}>
+                          {intl.formatMessage({ id: 'Dashboard.orderSent' })}
+                        </h3>
+                        <p className={css.description}>
+                          {intl.formatMessage({ id: 'Dashboard.yourOrderHasBeenSent' })}
+                        </p>
+                      </div>
+                      <div onClick={e=>setShowSuccessBadge(false)}>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                          <path d="M5.87571 4.69681C5.55028 4.37137 5.02264 4.37137 4.6972 4.69681C4.37177 5.02224 4.37177 5.54988 4.6972 5.87532L8.82199 10.0001L4.6972 14.1249C4.37177 14.4503 4.37177 14.978 4.6972 15.3034C5.02264 15.6288 5.55028 15.6288 5.87571 15.3034L10.0005 11.1786L14.1253 15.3034C14.4507 15.6288 14.9784 15.6288 15.3038 15.3034C15.6292 14.978 15.6292 14.4503 15.3038 14.1249L11.179 10.0001L15.3038 5.87532C15.6292 5.54988 15.6292 5.02224 15.3038 4.69681C14.9784 4.37137 14.4507 4.37137 14.1253 4.69681L10.0005 8.8216L5.87571 4.69681Z" fill="black"/>
+                        </svg>
+                      </div>
+                    </div>
+                  :""}
+                  
+                </div>
+        </div>
+
       </LayoutSingleColumn>
     </Page>
     </div>

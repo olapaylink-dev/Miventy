@@ -887,7 +887,7 @@ vertical-align: middle;
 }
 
 .aside{
-  width: 70%;
+  width: fit-content;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -1523,6 +1523,10 @@ padding: 0px;
   fill: red;
 }
 
+.cart_modal{
+  display: none;
+}
+
 @media only screen and (max-width: 1440px) {
    
 }
@@ -1605,6 +1609,24 @@ padding: 0px;
 
 .flex_row_header{
   gap: 16px;
+}
+
+.cart_modal{
+  display: block;
+  position: fixed;
+  bottom: 0px;
+  z-index: 9999;
+  padding: 10px;
+  background-color: rgb(239 239 239 / 92%);;
+  width: 100%;
+}
+
+.cart_modal > div{
+  width: 100%;
+}
+
+.cart_modal > div > div{
+  width: 100%;
 }
 
 }
