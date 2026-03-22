@@ -1653,6 +1653,8 @@ padding: 0px;
   .share{
     font-size: 12px;
     padding: 0px 5px;
+    word-wrap: nowrap;
+    word-spacing: nowrap;
   }
   .send{
   font-size: 12px;
