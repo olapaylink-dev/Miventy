@@ -1633,6 +1633,23 @@ padding: 0px;
   padding: 0px;
 }
 
+.flex_row_9{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.flex_row_9 > svg{
+  color: white;
+}
+
+.flex_row_3{
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0px;
+}
+
 }
 
 @media only screen and (max-width: 412px) {

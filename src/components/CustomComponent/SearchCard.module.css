@@ -181,6 +181,9 @@ svg {
 
 @media only screen and (max-width: 412px) {
   
+    .card_img{
+        height: 200px;
+    }
    
 }
 
