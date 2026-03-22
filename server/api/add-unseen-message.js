@@ -17,6 +17,7 @@ const integrationSdk = sharetribeIntegrationSdk.createInstance({
 
 module.exports = (req, res) => {
     const trxId  = req.body.trxId;
+    const senderId = req.body.senderId
     console.log(req.body,"   mmmmmmmmmmmmmmmmmmmmm");
    
    integrationSdk.transactions.show(
@@ -49,7 +50,11 @@ module.exports = (req, res) => {
     .then(resp => {
         // res.data contains the response data
         const unseenMsg = resp?.data?.data?.attributes?.profile?.protectedData?.unseenMsg || [];
-        unseenMsg.push(trxId);
+        const data = {
+          id:trxId,
+          senderId
+        }
+        unseenMsg.push(data);
         
       return  integrationSdk.users.updateProfile({
             id: provider.data.id.uuid,
@@ -67,7 +72,12 @@ module.exports = (req, res) => {
     .then(resp => {
         // res.data contains the response data
         const unseenMsg = resp?.data?.data?.attributes?.profile?.protectedData?.unseenMsg || [];
-        unseenMsg.push(trxId);
+        const data = {
+          id:trxId,
+          senderId
+        }
+        unseenMsg.push(data);
+        //unseenMsg.push(trxId);
 
       return  integrationSdk.users.updateProfile({
             id: customer?.data?.id?.uuid,

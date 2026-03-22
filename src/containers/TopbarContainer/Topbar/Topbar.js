@@ -333,9 +333,31 @@ const TopbarComponent = props => {
   );
 
 
-const getNewMsg = (trxs,unseenMsgId=[])=>{
-  const msg = trxs !== null && trxs?.data.filter(itm=>unseenMsgId.includes(itm.id.uuid)) || [];
-  return msg;
+const getNewMsg = (trxs,unseenMsgs)=>{
+  let msg = [];
+
+  trxs?.data.map((cur,key)=>{
+    unseenMsgs.map((it,k)=>{
+      if(it.id === cur.id.uuid){
+        msg.push(cur);
+      }
+    })
+  })
+
+  let list = [];
+  msg.map((itm,key)=>{
+    unseenMsg.map((i,k)=>{
+      if(i.senderId !== currentUser.id.uuid){
+        if(!list.includes(itm)){
+          const dat = itm;
+          dat.senderId = i.senderId;
+          list.push(dat);
+        }
+      }
+    })
+  });
+  console.log(msg,"    pppppppppppppppppppp    ",list);
+  return list;
 }
 
 const newMsg = getNewMsg(transactions,unseenMsg);
@@ -587,6 +609,7 @@ const handleSwitchToCustomer = e =>{
           userType={userType}
           newMsg={newMsg}
           newMsgCount={newMsgCount}
+          unseenMsg={unseenMsg}
         />
       </div>
       <Modal

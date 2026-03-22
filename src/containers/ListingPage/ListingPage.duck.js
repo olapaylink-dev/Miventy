@@ -432,16 +432,19 @@ console.log("++++++++++++++++++++2222222222+++++++++++++++++++++")
   return sdk.transactions
     .initiate(bodyParams)
     .then(response => {
-      console.log("++++++++++++++++++++33333333333+++++++++++++++++++++")
       const transactionId = response.data.data.id;
-      console.log("Transaction created, message sent");
+      const state = getState();
+      const currentUser = state.user?.currentUser;
 
       // Send the message to the created transaction
       if(JSON.stringify(orderData?.message) !== "{}"  && orderData?.message !== undefined){
         return sdk.messages.send({ transactionId, content: orderData.message }).then(() => {
 
           //send the trx Id to server to add the unseen trx for both users
-          addUnseenMsg({trxId:transactionId.uuid});
+          addUnseenMsg({
+            trxId:transactionId.uuid,
+            senderId:currentUser.id.uuid
+          });
 
           dispatch(sendInquirySuccess(isInquiry));
           dispatch(fetchCurrentUserHasOrdersSuccess(true));
@@ -452,7 +455,10 @@ console.log("++++++++++++++++++++2222222222+++++++++++++++++++++")
         dispatch(sendInquirySuccess(isInquiry));
         dispatch(fetchCurrentUserHasOrdersSuccess(true));
         //send the trx Id to server to add the unseen trx for both users
-        addUnseenMsg({trxId:transactionId.uuid});
+        addUnseenMsg({
+            trxId:transactionId.uuid,
+            senderId:currentUser.id.uuid
+          });
         return transactionId;
       }
       

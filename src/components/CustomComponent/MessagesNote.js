@@ -29,15 +29,11 @@ const MessagesNote = props =>{
         return result;
     }
 
-    const handleClick = e=>{
-
-    }
-
     return (
         <div className={css.container_main}>
             {data.map((itm,key)=>{
                 if(key > 3){return ""}
-                const providerId = itm.relationships.provider.data.id.uuid;
+                const providerId = itm.senderId;
                 const isOwnListing = currentUser.id.uuid === providerId;
                 const message = itm?.attributes?.protectedData?.cartData?.message;
                 const {name,image} = getProviderData(included,providerId);
