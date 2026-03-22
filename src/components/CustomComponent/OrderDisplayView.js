@@ -208,12 +208,15 @@ const OrderDisplayView = props =>{
                                         <p>{guestCount}</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className={css.flex_row_2}>
-                                        Menu type
+                                {selectedServiceType !== undefined?
+                                    <div>
+                                        <div className={css.flex_row_2}>
+                                            Menu type
+                                        </div>
+                                        <p>{"selectedServiceType"}</p>
                                     </div>
-                                    <p>{selectedServiceType}</p>
-                                </div>
+                                :""}
+                                
                             </div>
                             
                             {isProvider && isOwn?
