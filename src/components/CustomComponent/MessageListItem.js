@@ -1,8 +1,9 @@
 import css from './MessageListItemComponent.module.css';
 import { useState } from "react";
-
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const MessageListItem = props =>{
+    const intl = useIntl();
     const {
         itm,
         currentUserId,
@@ -129,8 +130,6 @@ const MessageListItem = props =>{
                                 </button>
                                 :""
                             }
-                            
-                            
                         </div>
                     </div>
                 )
