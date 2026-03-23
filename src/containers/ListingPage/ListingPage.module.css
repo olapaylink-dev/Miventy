@@ -896,7 +896,7 @@ vertical-align: middle;
   border-radius: 8px;
   border: 1px solid #EDEDED;
   background: #FFF;
-  
+  width: 300px;
 }
 .success_display{
   width: 100%;
