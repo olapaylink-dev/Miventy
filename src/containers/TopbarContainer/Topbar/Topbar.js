@@ -499,6 +499,16 @@ const handleSwitchToCustomer = e =>{
                           
                           {userType === "customer"?
                           <>
+                              <NamedLink className={css.mobile} name="InboxPage" params={{tab:"orders"}}> 
+                                <div className={css.flex_row_menu}>
+                                  {intl.formatMessage({ id: 'Topbar.notifications' })}
+                                </div>
+                              </NamedLink>
+                              <NamedLink className={css.mobile} name="InboxPage" params={{tab:"orders"}} > 
+                                <div className={css.flex_row_menu}>
+                                  {intl.formatMessage({ id: 'Topbar.messages' })}
+                                </div>
+                              </NamedLink>
                               <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
                                 <div className={css.flex_row_menu}>
                                  {intl.formatMessage({ id: 'Topbar.myBookings' })}

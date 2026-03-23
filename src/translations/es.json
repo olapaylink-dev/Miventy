@@ -1696,6 +1696,8 @@
   "Topbar.logout":"Cerrar sesión",
   "Topbar.noMsg":"Aún no hay mensajes",
   "Topbar.viewAll":"Ver todo",
+  "Topbar.notifications":"Notificaciones",
+  "Topbar.messages":"Mensajes",
   "InboxView.areYouSure":"¿Seguro que quieres eliminar este chat?",
 
 

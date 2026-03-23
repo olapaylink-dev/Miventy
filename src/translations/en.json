@@ -1749,6 +1749,9 @@
   "Topbar.logout":"Logout",
   "Topbar.noMsg":"No messages yet",
   "Topbar.viewAll":"View all",
+  "Topbar.notifications":"Notifications",
+  "Topbar.messages":"Messages",
+  
   "InboxView.areYouSure":"Are you sure you want to delete this chat?",
 
 
