@@ -1615,7 +1615,7 @@ padding: 0px;
   display: block;
   position: fixed;
   bottom: 0px;
-  z-index: 9999999;
+  z-index: 9999;
   padding: 10px;
   background-color: rgb(239 239 239 / 92%);;
   width: 100%;

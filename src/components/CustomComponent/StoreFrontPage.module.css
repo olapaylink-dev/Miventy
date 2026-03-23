@@ -1004,9 +1004,9 @@ vertical-align: middle;
 }
 
 .details{
-    min-width: 400px;
+    min-width: 350px;
     width: fit-content;
-    min-width: 400px;
+    min-width: 350px;
     width: -moz-fit-content;
     width: fit-content;
     height: fit-content;

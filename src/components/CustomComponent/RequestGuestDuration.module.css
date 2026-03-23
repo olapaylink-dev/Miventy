@@ -388,7 +388,17 @@
         width: 90%;
         padding: 20px;
         margin: 20px;
-        min-width: 400px;
+        min-width: 350px;
+    }
+
+    .form_header{
+        font-size: 16px;
+    }
+
+        
+    .no_spacing{
+        padding: 0px 5px;
+        margin:0px 0px;
     }
    
 

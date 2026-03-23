@@ -280,3 +280,50 @@
     border: 1.5px solid #f1a138;
     background: #ffe4d2;
 }
+
+
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+
+   
+    
+.mdp-container {
+    
+    width: 300px;
+    
+}
+   
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   
+}
+
+  
+
