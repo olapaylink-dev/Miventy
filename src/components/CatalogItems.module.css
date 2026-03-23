@@ -33,3 +33,52 @@
     font-weight: 500;
     line-height: 145%; /* 23.2px */
 }
+
+
+
+
+@media only screen and (max-width: 1440px) {
+
+
+
+}
+
+
+@media only screen and (max-width: 1074px) {
+  
+    
+}
+
+@media only screen and (max-width: 1024px) {
+   
+   
+   
+}
+
+  
+@media only screen and (max-width: 768px) {
+.container{
+   
+    grid-template-columns: 1fr 1fr;
+}
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+    .container{
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+
+@media only screen and (max-width: 360px) {
+   .container{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+  
+
+
