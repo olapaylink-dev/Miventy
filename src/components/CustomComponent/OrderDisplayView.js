@@ -67,7 +67,7 @@ const OrderDisplayView = props =>{
     const providerDeclinedTrx = provider?.attributes?.profile?.publicData?.declinedTransaction || [];
     const isOrderDeclined = declinedTrx.includes(cartItemId) || providerDeclinedTrx.includes(cartItemId);
     localStorage.setItem("Transaction",JSON.stringify(currentTransaction));
-    //console.log("eventLocation  =======PPPPPPPPPPPPP==========",eventLocation);
+    console.log("eventLocation  =======PPPPPPPPPPPPP==========",selectedServiceType);
 
     const total = parseFloat(listingPrice/100).toFixed(2);
 
@@ -208,12 +208,12 @@ const OrderDisplayView = props =>{
                                         <p>{guestCount}</p>
                                     </div>
                                 </div>
-                                {selectedServiceType !== undefined?
+                                {selectedServiceType !== undefined && selectedServiceType !== null && selectedServiceType !== ""?
                                     <div>
                                         <div className={css.flex_row_2}>
                                             Menu type
                                         </div>
-                                        <p>{"selectedServiceType"}</p>
+                                        <p>{selectedServiceType}</p>
                                     </div>
                                 :""}
                                 
