@@ -1304,8 +1304,6 @@ vertical-align: middle;
     background: rgba(0, 0, 0, 0.2);
     z-index: 999999;
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
     padding-top: 50px;

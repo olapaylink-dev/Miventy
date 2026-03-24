@@ -6,8 +6,10 @@ import { types as sdkTypes } from '../../util/sdkLoader';
 import { v4 as uuidv4 } from 'uuid';
 import Carousel from "../../components/Carousel/Carousel";
 import Incrementer from "../../components/CustomComponent/Incrementer";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const CatalogItemOrderDetails = props =>{
+    const intl = useIntl();
     const {currentCartItmToEdit,
         images,
         setCurrentCartItmToEdit,
@@ -223,7 +225,7 @@ const CatalogItemOrderDetails = props =>{
                         <div className={css.control_con}>
                             <Incrementer setQuantity={setCurrrentCount}/>
                             <button onClick={handleAddItemToCart} className={css.btn_fill}>
-                                Add to cart
+                                {intl.formatMessage({ id: 'ListingPage.addToCart' })}
                             </button>
                         </div>
                     </div>

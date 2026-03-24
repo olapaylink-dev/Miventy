@@ -509,6 +509,7 @@ const handleSwitchToCustomer = e =>{
                                   {intl.formatMessage({ id: 'Topbar.messages' })}
                                 </div>
                               </NamedLink>
+                              
                               <NamedLink name="InboxOrderViewPage" params={{tab:"orders"}}> 
                                 <div className={css.flex_row_menu}>
                                  {intl.formatMessage({ id: 'Topbar.myBookings' })}
