@@ -10,6 +10,8 @@ const CardForm = props =>{
     const [selectedValue, setSelectedValue] = useState("");
     const isSelected = selectedValue !== "";
 
+    console.log(itm, "    mmmmmmmmmmmmmmmmmmmmmmmmm")
+
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
     };
@@ -55,7 +57,7 @@ const CardForm = props =>{
                     
                 </form>
                 <button onClick={e=>handleAddDurationPriceToCart(e,selectedValue,itm,imageUrl)} className={css.btn_fill_full} disabled={!isSelected}>
-                    {intl.formatMessage({ id: 'ListingPage.addToCart' })}
+                    {intl.formatMessage({ id:'ListingPage.addToCart'})}
                 </button>
             </>
     )

@@ -19,6 +19,7 @@ import {
 import { getProcess, isBookingProcessAlias } from '../../transactions/transaction';
 import { fetchCurrentUser, fetchCurrentUserHasOrdersSuccess } from '../../ducks/user.duck';
 import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
+import { removeCartData } from '../PaymentMethodResponse/PaymentMethodResponsePage.duck';
 
 const { UUID } = sdkTypes;
 
@@ -448,7 +449,8 @@ console.log("++++++++++++++++++++2222222222+++++++++++++++++++++")
 
           dispatch(sendInquirySuccess(isInquiry));
           dispatch(fetchCurrentUserHasOrdersSuccess(true));
-
+          //Clear the cart
+          dispatch(removeCartData(currentUser,listingId.uuid));
           return transactionId;
         });
       }else{

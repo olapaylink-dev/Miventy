@@ -1549,7 +1549,10 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
         {showSuccessView?
         <div className={css.overlay}>
           <SuccessView
-            setShowSuccessView={setShowSuccessView} message={successMessage}
+            setShowSuccessView={setShowSuccessView} 
+            message={successMessage}
+            setShowFull={setShowFull}
+            showFull={showFull}
            />
         </div>
           

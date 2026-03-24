@@ -2240,6 +2240,8 @@ const [currentListing,setCurrentListing] = useState({});
           <SuccessView
             setShowSuccessView={setShowSuccessView}
             message={intl.formatMessage({id:'StripePayoutPage.yourWithdrawalAmountHas'})}
+            setShowFull={null}
+            showFull={true}
           />
       </div>
     :""}

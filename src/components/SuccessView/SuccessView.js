@@ -3,11 +3,20 @@ import css from './SuccessView.module.css';
 import classNames from "classnames";
 
 const SuccessView = props=>{
-  const {setShowSuccessView,message} = props;
+  const {
+    setShowSuccessView,
+    message,
+    setShowFull,
+    showFull
+  } = props;
 
   const handleBackToDashboard = e=>{
-    console.log("closing")
+    console.log("closing");
+
     setShowSuccessView(false);
+    if(setShowFull){
+      setShowFull(!showFull);
+    }
   }
 
   return (

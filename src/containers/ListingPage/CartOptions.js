@@ -139,6 +139,8 @@ const CartOptions = props =>{
                     const imageUrl = itm.hasOwnProperty("catalogImages") && itm.catalogImages.length > 0 && itm.catalogImages[0]?.imgUrl;
                     if(itm.folder !== selectedCatalogFolderName){return ""};
 
+                    
+
                     if(itm.folder === selectedCatalogFolderName && itm.hasOwnProperty("durationPrice") && itm.durationPrice.length > 0 && itm.durationPrice[0].price !== undefined && itm.durationPrice[0].price != 0){
                             return(
                             

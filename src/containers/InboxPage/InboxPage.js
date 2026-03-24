@@ -568,6 +568,8 @@ const onSubmitReview = values => {
                 <div className={css.overlay}>
                   <SuccessView
                     setShowSuccessView={setShowSuccessView} message={successMessage}
+                    setShowFull={null}
+                    showFull={true}
                    />
                 </div>
                   

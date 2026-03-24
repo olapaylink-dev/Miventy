@@ -72,13 +72,10 @@ const PaymentMethodResponsePageCom = (props) => {
     
     if (transactionRes.hasOwnProperty("data")) {
       console.log(JSON.stringify(transactionRes));
-      //history.push("/inbox/"+transactionRes.data.id.uuid);
     }
   },[transactionRes]);
 
-
     return (
-      
           <Page title={"Success"}>
                 <TopbarContainer
                   mobileRootClassName={css.mobileTopbar}
@@ -90,46 +87,8 @@ const PaymentMethodResponsePageCom = (props) => {
                        message={"Your Payment was successful!"}
                     />
                 </div>
-              
                 <FooterComponent/>
           </Page>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
 }
 

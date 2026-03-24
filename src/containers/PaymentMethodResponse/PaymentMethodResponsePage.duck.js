@@ -105,7 +105,7 @@ export const confirmPaymentError = (error)=>({
   error:true,
 });
 
-const removeCartData = (currentUser,cartId,dispatch)=>{
+export const removeCartData = (currentUser,cartId)=>(dispatch, getState, sdk) =>{
   const {attributes={}} = currentUser;
   const {profile={}} = attributes;
   const {publicData={}} = profile;
@@ -119,7 +119,7 @@ const removeCartData = (currentUser,cartId,dispatch)=>{
 
               //Remove cartData
               dispatch(updateProfile(data))
-              //console.log("Remove cart data +++++++++++++++++++++++++++++++++++++++")
+              console.log(cartData,"  Remove cart data +++++++++++++++++++++++++++++++++++++++", remainingCart)
 
 }
 
@@ -219,7 +219,7 @@ export const confirmPaymment = (speculatedTx,listing,currentUser)=>async(dispatc
                 dispatch(confirmPaymentSuccess(order.id));
                 localStorage.removeItem("Transaction");
 
-                removeCartData(currentUser,listingId,dispatch);
+                //removeCartData(currentUser,listingId,dispatch);
 
                 //Reset listing price back to original price
                 dispatch(changeListingPrice(listingId,originalPrice));
