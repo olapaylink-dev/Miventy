@@ -188,12 +188,17 @@
               document.activeElement.blur();
           }
       });
+      function myFunction(){
+        document.body.style.zoom = "100%";
+        console.log("Executing")
+      }
+      
     </script>
 
 
 
   </head>
-  <body>
+  <body onload="myFunction()">
     <div id="root"><!--!body--></div>
     <div id="portal-root"></div>
 
