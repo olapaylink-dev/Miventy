@@ -815,6 +815,7 @@ const handleSendEnquiry = ()=>{
           //message:"New enquiry",
       }
       localStorage.setItem("isEnquiry",true);
+      localStorage.setItem("referer","ListingDetailsPage");
       onSendOrderMessage(currentListing,orderData,{isInquiry:true});
     }
     
@@ -1002,7 +1003,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                               <span>{userLocation?.result?.place_name}</span>
                             </div>
                             :""}
-                            <span>Languages:   {language.hasOwnProperty("length")?language.map((itm,key)=>{
+                            <span>Languages:   {typeof(language) === "object" && language.hasOwnProperty("length")?language.map((itm,key)=>{
                               if(key < language.length-1){
                                 return `${itm}, `
                               }else{

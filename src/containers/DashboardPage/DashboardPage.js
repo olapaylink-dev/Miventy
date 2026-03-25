@@ -567,6 +567,9 @@ export const DashboardPageComponent = props => {
   const [languages, setLanguages] = useState(publicData?.language);
   const [started, setStarted] = useState(false);
 
+  //Clear the referer for inbox page
+  localStorage.removeItem("referer");
+  
   const fileInputProfile = useRef(null);
 
   const catalogName = pathParams.id;

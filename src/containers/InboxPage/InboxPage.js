@@ -272,7 +272,8 @@ export const InboxPageComponent = props => {
     return <NotFoundPage staticContext={props.staticContext} />;
   }
 
-  //console.log(transactions);
+  console.log(location,"    rrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+  
 
   const path = location.pathname;
   const isShowBookings = path.includes("bookings");
@@ -300,6 +301,9 @@ export const InboxPageComponent = props => {
   const [currentDisplayName,setCurrentDisplayName] = useState("");
   const [currentImgUrl,setCurrentImgUrl] = useState("");
   const {customer,provider} = currentTransaction || {};
+
+  const referer = localStorage.getItem("referer");
+  console.log(referer,"    zzzzzzzzaaaaaa")
 
   
   const deletedMsg = currentUser?.attributes?.profile?.protectedData?.deletedMsg || [];
@@ -347,7 +351,6 @@ export const InboxPageComponent = props => {
     return res;
   }
   
-     
   useEffect(()=>{
       console.log("Transaction ===")
       const updatedCurrentTrx = getUpdatedCurrentTransaction(transactions);
@@ -436,6 +439,7 @@ const onSubmitReview = values => {
           updateInProgress={updateInProgress}
           updateSuccess={updateSuccess}
           onReset={onReset}
+          referer={referer}
         />
         }
         

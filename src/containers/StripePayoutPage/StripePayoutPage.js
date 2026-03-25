@@ -346,7 +346,8 @@ const [currentListing,setCurrentListing] = useState({});
     history.push("/")
   }
 
-  
+  //Clear the referer for inbox page
+  localStorage.removeItem("referer");
   
     useEffect(
       ()=>{

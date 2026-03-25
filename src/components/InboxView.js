@@ -39,7 +39,8 @@ export default function InboxView(props){
         onUpdateProfileDeleteChat,
         updateInProgress,
         updateSuccess,
-        onReset
+        onReset,
+        referer
     } = props;
 
     const [showDeletePopup,setShowDeletePopup] = useState(false);
@@ -50,7 +51,7 @@ export default function InboxView(props){
      const inputRef = useRef(null);
     
      const [message,setMessage] = useState("");
-     const [showAside,setShowAside] = useState(true);
+     const [showAside,setShowAside] = useState(referer === "ListingDetailsPage"?false:true);
 
      useEffect(()=>{
         if(updateSuccess){
