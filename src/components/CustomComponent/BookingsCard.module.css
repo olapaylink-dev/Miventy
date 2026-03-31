@@ -103,3 +103,33 @@
     font-weight: 600;
     line-height: 145%; /* 26.1px */
 }
+
+
+@media only screen and (max-width: 1440px) {
+   
+}
+    
+@media only screen and (max-width: 1074px) {
+ 
+}
+
+@media only screen and (max-width: 1024px) {
+ 
+}
+
+@media only screen and (max-width: 768px) {
+ 
+}
+
+@media only screen and (max-width: 412px) {
+  .flex_btw{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+   
+}
+    
+      
+      

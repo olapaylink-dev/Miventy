@@ -177,6 +177,22 @@ a{
   .mobile{
       display: block;
   }
+
+  .flex_row_2{
+    padding-top: 20px;
+  }
+
+  .flex_row_2 > div{
+    padding: 0px;
+  }
+
+  .flex_row_3 > div{
+    padding: 0px;
+  }
+
+  .content{
+    padding: 50px 20px;
+  }
  
 }
 
