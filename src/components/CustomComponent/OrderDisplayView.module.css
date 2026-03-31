@@ -490,6 +490,7 @@
         min-width: 350px;
         margin-top: 150px;
         gap: 10px;
+        align-self: flex-start;
     }
 
     .btn_fill{
@@ -498,6 +499,12 @@
 
     .container_header{
         font-size: 20px;
+    }
+
+    .grid_con{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
 }

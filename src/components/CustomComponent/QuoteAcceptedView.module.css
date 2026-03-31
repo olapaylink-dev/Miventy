@@ -533,7 +533,18 @@
 }
 
 @media only screen and (max-width: 412px) {
-   
+   .modal{
+       min-width: 350px;
+       align-self: flex-start;
+    }
+
+    .btn_outline{
+        font-size: 14px;
+    }
+
+    .btn_fill{
+        font-size: 14px;
+    }
 
 }
 

@@ -534,7 +534,10 @@
 
 @media only screen and (max-width: 412px) {
    
-
+    .modal{
+       min-width: 350px;
+       align-self: flex-start;
+    }
 }
 
 
