@@ -1520,6 +1520,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                 setShowSuccessView={setShowSuccessView}
                 setSuccessMessage={setSuccessMessage}
                 setShowSuccessBadge={setShowSuccessBadge}
+                currentListing={currentListing}
                />
             </div>
           :""

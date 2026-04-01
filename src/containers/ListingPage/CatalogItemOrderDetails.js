@@ -21,19 +21,21 @@ const CatalogItemOrderDetails = props =>{
         setCartData,
         setShowSuccessView,
         setSuccessMessage,
-        setShowSuccessBadge
+        setShowSuccessBadge,
+        currentListing
     } = props;
 
     const {catalogImages=[]} = currentCartItmToEdit;
 
-    console.log(currentCartItmToEdit);
+    
     const {minQuantity=1} = currentCartItmToEdit;
     const [currentCount,setCurrrentCount] = useState(parseInt(minQuantity===""?1:minQuantity));
     //const [currentTotal,setCurrentTotal] = useState(0);
     const [defaultTotal, setDefaultTotal] = useState(0); 
     const price = parseInt(currentCartItmToEdit?.ItemPrice);
     const currentTotal = currentCount * price;
-
+    const {category} = currentListing?.attributes?.publicData;
+    console.log(currentCartItmToEdit,"      ooooooooo222222222222   ",category);
     
   const imageBtns = [imgUrl, imgUrl, imgUrl];
   const slideImages = [imgUrl, imgUrl, imgUrl];
@@ -223,7 +225,10 @@ const CatalogItemOrderDetails = props =>{
                         
 
                         <div className={css.control_con}>
-                            <Incrementer setQuantity={setCurrrentCount}/>
+                            {category === "BD Cake" || category === "Sweets"?
+                                <Incrementer setQuantity={setCurrrentCount}/>
+                            :""}
+                            
                             <button onClick={handleAddItemToCart} className={css.btn_fill}>
                                 {intl.formatMessage({ id: 'ListingPage.addToCart' })}
                             </button>
