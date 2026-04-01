@@ -40,7 +40,6 @@ const BookingsPage = props =>{
               setShowRatingForm={setShowRatingForm}
              />
         </div>
-         
     )
 }
 

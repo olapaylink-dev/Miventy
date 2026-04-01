@@ -50,7 +50,7 @@ import css from './InboxPage.module.css';
 import InboxView from '../../components/InboxView';
 import CreateQuoteForm from '../../components/CustomComponent/CreateQuoteForm';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
-import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendReview, sendReviewByProvider, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
+import { acceptOfferFromCustomer, changeListingPrice, createProposal, declineOfferFromCustomer, fetchTrxMessages, sendOfferTxMessage, sendReview, sendReviewByProvider, sendTxMessage, setOrderDelivered, setOrderReceived } from '../TransactionPage/TransactionPage.duck';
 import OrderView from '../../components/CustomComponent/OrderView';
 import OrderDisplayView from '../../components/CustomComponent/OrderDisplayView';
 import OfferDisplayView from '../../components/CustomComponent/OfferDisplayView';
@@ -241,6 +241,7 @@ export const InboxPageComponent = props => {
     transactions,
     history,
     onSendMessage,
+    onSendOfferMessage,
     messages,
     totalMessages,
     onfetchMessage,
@@ -446,10 +447,11 @@ const onSubmitReview = values => {
         {showQuotationForm?
           <div  className={css.overlay}>
               <CreateQuoteForm 
+                currentUser={currentUser} 
                 setShowQuotationForm={setShowQuotationForm}
                 onCreateProposal={onCreateProposal}
                 currentTransaction={currentTransaction}
-                onSendMessage={onSendMessage}
+                onSendMessage={onSendOfferMessage}
                 showDatePicker={showDatePicker}
                 setShowDatePicker={setShowDatePicker}
               />
@@ -623,6 +625,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   onSendMessage:(txId,msg) => dispatch(sendTxMessage(txId,msg)),
+  onSendOfferMessage:(tx,msg,title,senderId) => dispatch(sendOfferTxMessage(tx,msg,title,senderId)),
   onfetchMessage:(txId) => dispatch(fetchTrxMessages(txId,1)),
   onCreateProposal:(txId,offer) =>dispatch(createProposal(txId,offer)),
   onChangeListingPrice:(listingId,price) =>dispatch(changeListingPrice(listingId,price)),

@@ -783,11 +783,12 @@ export const sendMessage = (txId, message, config) => (dispatch, getState, sdk) 
 
 export const sendTxMessage = (txId, message) => (dispatch, getState, sdk) => {
   dispatch(sendMessageRequest());
-  //console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng")
+  console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng")
   return sdk.messages
     .send({ transactionId: txId, content: message })
     .then(response => {
       const messageId = response.data.data.id;
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
       // We fetch the first page again to add sent message to the page data
       // and update possible incoming messages too.
@@ -795,9 +796,39 @@ export const sendTxMessage = (txId, message) => (dispatch, getState, sdk) => {
       // this should loop through most recent pages instead of fetching just the first one.
       return dispatch(fetchTxMessages(txId, 1))
         .then((res) => {
-          //console.log(res);
+          console.log(res,"    ccccccccccccccccccccccccccc");
           dispatch(sendMessageSuccess());
           dispatch(acceptOfferFromCustomer(txId))
+          return messageId;
+        })
+        .catch(() => dispatch(sendMessageSuccess()));
+    })
+    .catch(e => {
+      dispatch(sendMessageError(storableError(e)));
+      // Rethrow so the page can track whether the sending failed, and
+      // keep the message in the form for a retry.
+      throw e;
+    });
+};
+
+export const sendOfferTxMessage = (tx, message,title,senderId) => (dispatch, getState, sdk) => {
+  dispatch(sendMessageRequest());
+  console.log("sendinnnnnnnnnnnnnnnnnnnnnnnng")
+  return sdk.messages
+    .send({ transactionId: tx.id.uuid, content: message })
+    .then(response => {
+      const messageId = response.data.data.id;
+      console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+
+      // We fetch the first page again to add sent message to the page data
+      // and update possible incoming messages too.
+      // TODO if there're more than 100 incoming messages,
+      // this should loop through most recent pages instead of fetching just the first one.
+      return dispatch(fetchTxMessages(tx.id.uuid, 1))
+        .then((res) => {
+          console.log(res,"    ccccccccccccccccccccccccccc");
+          dispatch(sendMessageSuccess());
+          dispatch(acceptOfferFromCustomer(tx,title,senderId))
           return messageId;
         })
         .catch(() => dispatch(sendMessageSuccess()));
@@ -839,10 +870,10 @@ export const changeListingPrice = (listingId,price) => (dispatch, getState, sdk)
 };
 
 export const acceptOfferFromCustomer = (trx,title,senderId) => (dispatch, getState, sdk) => {
- 
+  console.log(trx,"   sendinnnnnnnnnnnn11111111111nnnnnnnnnnnng")
   dispatch(acceptOfferRequest());
   sdk.transactions.transition({
-    id: trx.id,
+    id: trx.id.uuid,
     transition: "transition/provider-accept",
     params: {
       protectedData:{transactionState:"accepted"}
@@ -851,6 +882,7 @@ export const acceptOfferFromCustomer = (trx,title,senderId) => (dispatch, getSta
     expand: true
   }).then(res => {
     // res.data contains the response data
+    console.log("sendinnnnnnnnnn22222222222222222222nnnnnnnnnnnnnng")
 
       const {
         attributes,

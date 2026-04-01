@@ -48,7 +48,7 @@ const handleSendOrderMessage = ()=>{
     //console.log(offer,"   ============1111111111111111111==============")
     
     //onCreateProposal(currentTransaction.id.uuid,offer);
-    onSendMessage(currentTransaction.id.uuid,JSON.stringify(offer))
+    onSendMessage(currentTransaction,JSON.stringify(offer),"Title",currentUser.id.uuid)
     // setShowConfirmOrderForm(false);
     // setSuccessMessage("Your message was sent successfully!");
     // setShowSuccessView(true);
@@ -144,7 +144,7 @@ const listingCart = getListingCart(cartData);
                     </div>
                     <div>
                         <button className={css.btn_fill} onClick={handleSendOrderMessage}>
-                            Send quote
+                            Send quote 123
                         </button>
                     </div>
                     
