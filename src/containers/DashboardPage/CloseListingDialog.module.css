@@ -300,3 +300,59 @@ td{
     align-self: stretch;
     margin-top: 40px;
 }
+
+
+
+@media only screen and (max-width: 1440px) {
+    
+}
+    
+@media only screen and (max-width: 1074px) {
+   
+}
+
+@media only screen and (max-width: 1024px) {
+    
+}
+
+@media only screen and (max-width: 768px) {
+
+       .container{
+        min-width: 350px;
+    }
+
+     .btn_con{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn_con button{
+        width:100%;
+    }
+
+}
+
+@media only screen and (max-width: 412px) {
+   
+    .container{
+        min-width: 350px;
+    }
+
+    .btn_con{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn_con button{
+        width:100%;
+    }
+   
+}
+
+@media only screen and (max-width: 360px) {
+   
+   
+}
+    
+      
+      

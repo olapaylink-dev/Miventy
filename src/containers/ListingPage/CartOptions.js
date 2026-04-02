@@ -56,6 +56,21 @@ const CartOptions = props =>{
         let existingCart = getCartWithListingId(currentUser,listingId);
         const priceData = JSON.parse(selectedDurationPrice);
         const selectedPrice = priceData.price;
+
+        let selectedDurationPriceObj = JSON.parse(selectedDurationPrice);
+        selectedDurationPriceObj.selected = true;
+
+        const currentDurationPrices = currentSeletedCatalog.durationPrice;
+        let remainingCurrentDurationPrice = [];
+        let notSelectedItems = currentDurationPrices.filter(itm=>itm.id !== selectedDurationPriceObj.id);
+        
+        notSelectedItems.map((itm,key)=>{
+            itm.selected = false;
+            remainingCurrentDurationPrice.push(itm);
+        })
+
+        console.log("oooooooooooooooooooooooooooooo")
+
         if(existingCart !== undefined && JSON.stringify(existingCart) !== "{}"){
             //Cart exist
             //Insert this catalog details into the existing cart
@@ -63,8 +78,8 @@ const CartOptions = props =>{
             let currentCatalog = currentSeletedCatalog;
             currentCatalog.cartItemId = uuidv4();
             currentCatalog.ItemPrice = selectedPrice;
-            currentCatalog.durationPrice = [JSON.parse(selectedDurationPrice)];
-            currentCatalog.total = (JSON.parse(selectedDurationPrice)).price;
+            currentCatalog.durationPrice = [...remainingCurrentDurationPrice,selectedDurationPriceObj];
+            currentCatalog.total = selectedDurationPriceObj.price;
             currentCatalog.quantity = 1;
 
             //Remove existing current catalog
@@ -98,8 +113,8 @@ const CartOptions = props =>{
             let currentCatalog = currentSeletedCatalog;
             currentCatalog.cartItemId = uuidv4();
             currentCatalog.ItemPrice = selectedPrice;
-            currentCatalog.durationPrice = [JSON.parse(selectedDurationPrice)];
-            currentCatalog.total = (JSON.parse(selectedDurationPrice)).price;
+            currentCatalog.durationPrice = [...remainingCurrentDurationPrice,selectedDurationPriceObj];
+            currentCatalog.total = selectedDurationPriceObj.price;
             currentCatalog.quantity = 1;
             cart.items = [];
             
