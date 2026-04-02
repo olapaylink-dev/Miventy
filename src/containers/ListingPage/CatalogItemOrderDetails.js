@@ -204,28 +204,50 @@ const CatalogItemOrderDetails = props =>{
                         </div>
                     </div>
                     <div className={css.flex_2}>
-                        <div className={css.flex_ful}>
-                            <div className={css.flex_row_btw}>
-                                <span className={css.label_1} >Min quantity</span>
-                                <span className={css.label_2} id="minQuantity">{currentCount}</span>
-                            </div>
-                            <div className={css.flex_row_btw}>
-                                <span className={css.label_1}>Unit quantity</span>
-                                <span className={css.label_2}>1 plate</span>
-                            </div>
-                            <div className={css.flex_row_btw}>
-                                <span className={css.label_1}>Price/item</span>
-                                <span className={css.label_2}>€{currentCartItmToEdit.ItemPrice}</span>
-                            </div>
-                            <div className={css.flex_row_btw_sm}>
-                                <span className={css.total_label}>Total</span>
-                                <span className={css.total}>€{currentTotal === 0?defaultTotal:currentTotal}</span>
-                            </div>
-                        </div>
+                        {category === "BD Cake" || category === "Sweets" || category === "catering"?
+                                 <div className={css.flex_ful}>
+                                    <div className={css.flex_row_btw}>
+                                        <span className={css.label_1} >Min quantity</span>
+                                        <span className={css.label_2} id="minQuantity">{currentCount}</span>
+                                    </div>
+                                    <div className={css.flex_row_btw}>
+                                        <span className={css.label_1}>Unit quantity</span>
+                                        <span className={css.label_2}>1 plate</span>
+                                    </div>
+                                    <div className={css.flex_row_btw}>
+                                        <span className={css.label_1}>Price/item</span>
+                                        <span className={css.label_2}>€{currentCartItmToEdit.ItemPrice}</span>
+                                    </div>
+                                    <div className={css.flex_row_btw_sm}>
+                                        <span className={css.total_label}>Total</span>
+                                        <span className={css.total}>€{currentTotal === 0?defaultTotal:currentTotal}</span>
+                                    </div>
+                                </div>
+                            :
+                                <div className={css.flex_ful}>
+                                    {/* <div className={css.flex_row_btw}>
+                                        <span className={css.label_1} >Min quantity</span>
+                                        <span className={css.label_2} id="minQuantity">{currentCount}</span>
+                                    </div>
+                                    <div className={css.flex_row_btw}>
+                                        <span className={css.label_1}>Unit quantity</span>
+                                        <span className={css.label_2}>1 plate</span>
+                                    </div> */}
+                                    <div className={css.flex_row_btw}>
+                                        <span className={css.label_1}>Price</span>
+                                        <span className={css.label_2}>€{currentCartItmToEdit.ItemPrice}</span>
+                                    </div>
+                                    <div className={css.flex_row_btw_sm}>
+                                        <span className={css.total_label}>Total</span>
+                                        <span className={css.total}>€{currentTotal === 0?defaultTotal:currentTotal}</span>
+                                    </div>
+                                </div>
+                        }
+                       
                         
 
                         <div className={css.control_con}>
-                            {category === "BD Cake" || category === "Sweets"?
+                            {category === "BD Cake" || category === "Sweets" || category === "catering"?
                                 <Incrementer setQuantity={setCurrrentCount}/>
                             :""}
                             

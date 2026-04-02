@@ -71,6 +71,7 @@
     background: #FFF;
     width: 50%;
     gap: 12px;
+    height: fit-content;
 }
 .flex_ful{
     display: flex;
