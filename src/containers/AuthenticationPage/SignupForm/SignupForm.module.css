@@ -316,11 +316,26 @@ select option:hover {
   .social_btn{
     width: 100%;
   }
+  .flex_center{
+    width: 100%;
+  }
    
 }
 
 @media only screen and (max-width: 412px) {
-   
+   .flex_row_btn{
+    flex-direction: column;
+  }
+  .flex_row_btn div{
+    width: 100%;
+  }
+  .flex_center{
+    width: 100%;
+  }
+
+  .social_btn{
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 360px) {

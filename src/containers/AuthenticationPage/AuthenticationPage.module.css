@@ -339,6 +339,10 @@
   .loginForm {
     padding: 20px;
   }
+
+  .social_btn{
+    width: 100%;
+  }
    
 }
 
