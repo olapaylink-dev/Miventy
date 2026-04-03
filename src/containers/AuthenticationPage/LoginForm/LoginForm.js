@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form as FinalForm } from 'react-final-form';
 import classNames from 'classnames';
 
@@ -68,6 +68,9 @@ const LoginFormComponent = props => (
         </NamedLink>
       );
 
+      useEffect(()=>{
+        window.document.body.style.zoom = "100%";
+      },[])
       
 
       return (

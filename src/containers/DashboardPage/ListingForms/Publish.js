@@ -58,9 +58,11 @@ const [imageSrc,setImageSrc] = useState(img);
 
 useEffect(()=>{
   //console.log(lastAction+"  ============== " + updatedListing);
-  if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" && lastAction === "done"){
+  if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" && lastAction === "done" && updatedListing?.data?.attributes?.state === "published"){
    // handleMoveToDone();
-    window.location.reload();
+   alert(JSON.stringify(updatedListing.data.attributes.state," ===="));
+   //window.location.reload();
+   window.document.body.style.zoom = "100%";
   }else if(lastAction === "remove_image"){
     //Image was remove
     //Clear the image src to reflectt changes
@@ -78,7 +80,8 @@ const handleHideForm = e=>{
 
 const handlePublish = async e=> {
   const {attributes={}} = currentUser;
-  const {profile={},state=""} = attributes;
+  const {profile={}} = attributes;
+  const state = currentListing?.attributes?.state;
   if(image !== undefined){
     const {publicData={}} = profile;
     const {serviceAreas=[]} = publicData;
@@ -116,9 +119,11 @@ const handlePublish = async e=> {
     
   }
 
-  // if(state && state !== undefined && state !== "published"){
+  console.log(state,"   state---------------------------")
+
+  //if(state && state !== undefined && state !== "published"){
    await onPublishListingDraft(currentListing.id);
-  // }
+  //}
 }
 
 const handleFileClick = (e)=>{
