@@ -138,7 +138,7 @@
   align-items: center;
 }
 .hr{
-width: 242.5px;
+width: 100%;
 height: 1px;
 background: #CBD5E1;
 }
@@ -199,6 +199,8 @@ background: #CBD5E1;
   .main_con{
     width: fit-content;
     padding: 0px;
+    margin: 0 auto;
+    zoom: 100%;
   }
     
   .show_labe{
@@ -212,6 +214,7 @@ background: #CBD5E1;
     width: fit-content;
     padding: 0px;
     margin: 0 auto;
+    zoom: 100%;
   }
     
   .show_labe{
@@ -234,7 +237,12 @@ background: #CBD5E1;
 }
 
 @media only screen and (max-width: 412px) {
-   
+   .main_con{
+    width: fit-content;
+    padding: 0px;
+    margin: 0 auto;
+    zoom: 100%;
+  }
 }
 
 @media only screen and (max-width: 360px) {
