@@ -72,6 +72,7 @@ import RemoveAccountDialogue from '../DashboardPage/RemoveAccountDialogue';
 import WithdrawalForm from '../WithdrawalForm';
 import SuccessViewPayment from '../../components/SuccessView/SuccessViewPayment';
 import SuccessView from '../../components/SuccessView/SuccessView';
+import PublishSuccessView from '../../components/SuccessView/PublishSuccessView';
 
 const MAX_MOBILE_SCREEN_WIDTH = 768;
 const MIN_LENGTH_FOR_LONG_WORDS = 20;
@@ -337,6 +338,7 @@ const [currentListing,setCurrentListing] = useState({});
   const stripeAccountId = stripeAccount?.attributes?.stripeAccountId;
   const publicStripeAccountId = publicData?.stripeAccountId;
   const [showSuccessView,setShowSuccessView] = useState(false);
+  const [showPublishSuccess,setShowPublishSuccess] = useState(false);
 
   const catalogName = pathParams.id;
   const path = match.path;
@@ -2201,6 +2203,7 @@ const [currentListing,setCurrentListing] = useState({});
             setSelectedFolderName={setSelectedFolderName}
             path={path}
             catalogName={catalogName}
+            setShowPublishSuccess={setShowPublishSuccess}
           />
       </div>
     :""}
@@ -2256,35 +2259,11 @@ const [currentListing,setCurrentListing] = useState({});
     :""}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+{showPublishSuccess?
+      <div  className={css2.overlay} onClick={e=>{setShowSuccessView(false); e.preventDefault(); e.stopPropagation();}}>
+          <PublishSuccessView/>
+      </div>
+    :""}
 
 
     </Page>

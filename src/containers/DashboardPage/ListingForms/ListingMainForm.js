@@ -56,6 +56,7 @@ const ListingMainForm = props =>{
         setSelectedFolderName,
         path,
         catalogName,
+        setShowPublishSuccess
       } = props;
 
     const [currentTab,setCurrentTab] = useState("start");
@@ -384,6 +385,7 @@ const handleChangeTab = (e,tab)=>{
                 lastAction={lastAction}
                 isUpdateItem={isUpdateItem}
                 handleChangeTab={handleChangeTab}
+                setShowPublishSuccess={setShowPublishSuccess}
             />
         :
         ""

@@ -33,7 +33,8 @@ const Publish = props =>{
     updateInProgress,
     lastAction,
     isUpdateItem,
-    handleChangeTab
+    handleChangeTab,
+    setShowPublishSuccess
   } = props;
 
   //console.log(uploadInProgress,"    oooooo");
@@ -60,9 +61,8 @@ useEffect(()=>{
   //console.log(lastAction+"  ============== " + updatedListing);
   if(updatedListing !== undefined && JSON.stringify(updatedListing) !== "{}" && lastAction === "done" && updatedListing?.data?.attributes?.state === "published"){
    // handleMoveToDone();
-   alert(JSON.stringify(updatedListing.data.attributes.state," ===="));
-   //window.location.reload();
-   window.document.body.style.zoom = "100%";
+   setShowPublishSuccess(true);
+  //  window.document.body.style.zoom = "100%";
   }else if(lastAction === "remove_image"){
     //Image was remove
     //Clear the image src to reflectt changes

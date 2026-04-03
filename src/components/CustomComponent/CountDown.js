@@ -21,7 +21,7 @@ const CountDown = props =>{
                 }else{
                     remainingTime = 0;
                     clearInterval(countdownInterval);
-                    alert("Countdown complete!");
+                    // alert("Countdown complete!");
                 }
             }, 1000);
     
