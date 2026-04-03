@@ -116,9 +116,9 @@ const handlePublish = async e=> {
     
   }
 
-  if(state && state !== undefined && state !== "published"){
+  // if(state && state !== undefined && state !== "published"){
    await onPublishListingDraft(currentListing.id);
-  }
+  // }
 }
 
 const handleFileClick = (e)=>{
@@ -247,7 +247,6 @@ const instruction = intl.formatMessage({ id: 'Dashboard.createACatalog' });
                               :""}
                                 {intl.formatMessage({id: 'Dashboard.publish'})}
                               </button>
-                              
                         </div>
                     </div>
                 </div>
