@@ -121,10 +121,20 @@
     flex-direction: column;
     font-size: 10px;
 }
+
 .form_check{
     margin: 0px;
     padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
 }
+
+.space_btm{
+    margin-bottom: 10px;
+}
+
 .flex_row{
     display: flex;
     justify-content: space-between;
@@ -157,6 +167,7 @@ label{
     padding: 0px;
     margin: 0px;
 }
+
 .label_header{
     color: var(--Grey-900, #101928);
 

@@ -1171,9 +1171,18 @@ text-transform: uppercase;
     margin: 0px;
     padding: 0px;
 }
+
 .form_check{
     margin: 0px;
     padding: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.space_btm{
+    margin-bottom: 10px;
 }
 
 .no_padding{

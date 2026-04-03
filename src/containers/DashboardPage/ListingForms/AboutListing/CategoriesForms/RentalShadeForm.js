@@ -141,9 +141,23 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />} 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                               )
                       })}
@@ -212,9 +226,23 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />} 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                               )
                       })}

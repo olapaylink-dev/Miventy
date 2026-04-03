@@ -168,9 +168,23 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />} 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 /><br/>
                                 <p className={css.padding_left}>{serviceMenuTypeDescription[key]}</p>
                             </>
@@ -232,6 +246,15 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />
                             } 
@@ -299,9 +322,23 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />} 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                               )
                       })}
@@ -363,7 +400,12 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                             }}
                                         />
                                   } 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                                 <input 
                                   className={classNames(css.textInput,css.margin_left,"my-1")} 

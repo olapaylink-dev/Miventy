@@ -136,26 +136,34 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                       {ServiceTypes.map((itm,key)=>{
                         return (
                                 <FormControlLabel className={css.form_check} control={
-                                  <Checkbox 
-                                    className={css.no_padding}
-                                    onChange={e=>{
-                                        if(e.target.checked){
-                                          setServiceType([...serviceType,itm]);
-                                        }else{
-                                          const remaining = serviceType.filter((i)=>i!==itm);
-                                          setServiceType([...remaining]);
-                                        }
-                                    }}
-                                    checked={serviceType?.includes(itm)}
-                                    sx={{
-                                      color: "#e7e7e7",
-                                      '&.Mui-checked': {
-                                        color: "#F56630",
-                                      },
-                                      '& .MuiSvgIcon-root': { fontSize: 24 },
-                                    }}
-                                />} 
-                                label={itm}
+                                  
+                                    <Checkbox 
+                                        className={css.no_padding}
+                                        onChange={e=>{
+                                            if(e.target.checked){
+                                              setServiceType([...serviceType,itm]);
+                                            }else{
+                                              const remaining = serviceType.filter((i)=>i!==itm);
+                                              setServiceType([...remaining]);
+                                            }
+                                        }}
+                                        checked={serviceType?.includes(itm)}
+                                        sx={{
+                                          color: "#e7e7e7",
+                                          '&.Mui-checked': {
+                                            color: "#F56630",
+                                          },
+                                          '& .MuiSvgIcon-root': { fontSize: 24 },
+                                        }}
+                                    />
+                                  
+                              } 
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                               )
                       })}
@@ -231,9 +239,23 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                         color: "#F56630",
                                       },
                                       '& .MuiSvgIcon-root': { fontSize: 24 },
+                                      display:"flex",
+                                      flexDirection:"column",
+                                      justifyContent:"flex-start",
+                                      alignItems:"flex-start",
+                                      alignSelf:"flex-start",
+                                      padding:0,
+                                      paddingLeft:1,
+                                      gap:20
+
                                     }}
                                 />} 
-                                label={itm}
+                                label={
+                                  <div className={css.space_btm}>
+                                    {itm}
+                                  </div>
+                                 
+                                }
                                 />
                               )
                       })}
