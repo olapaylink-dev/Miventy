@@ -1709,7 +1709,9 @@
   "ListingPageCarousel.aboutMyService":"Acerca de mi servicio",
   "ListingPageCarousel.shareProfile":"Compartir perfil",
   "ListingPageCarousel.sendAMessage":"enviar un mensaje",
-  "ListingPage.addToCart":"Añadir a la cesta"
+  "ListingPage.addToCart":"Añadir a la cesta",
+  "CreateQuoteForm.sendQuote":"Enviar cotización",
+  "CreateQuoteForm.previous":"Previa"
 
 
 

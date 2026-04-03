@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import css from './CreateQuoteForm.module.css';
 import MyDatePicker from "../MyDatePicker";
 import { v4 as uuidv4 } from 'uuid';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const CreateQuoteForm = props =>{
-
+    const intl = useIntl();
     const {
         forceUpdate,
         onUpdateProfile,
@@ -144,7 +145,7 @@ const listingCart = getListingCart(cartData);
                     </div>
                     <div>
                         <button className={css.btn_fill} onClick={handleSendOrderMessage}>
-                            Send quote 123
+                            {intl.formatMessage({id:'CreateQuoteForm.sendQuote'})}
                         </button>
                     </div>
                     

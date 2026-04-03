@@ -1764,7 +1764,9 @@
   "ListingPageCarousel.aboutMyService":"About my service",
   "ListingPageCarousel.shareProfile":"Share profile",
   "ListingPageCarousel.sendAMessage":"Send a message",
-  "ListingPage.addToCart":"Add to cart"
+  "ListingPage.addToCart":"Add to cart",
+  "CreateQuoteForm.sendQuote":"Send quote",
+  "CreateQuoteForm.previous":"Previous"
 
 
 

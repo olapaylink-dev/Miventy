@@ -117,10 +117,10 @@ const handleDateChange = value=>{
                     
                     <div className={css.flex_row}>
                         <button className={css.btn_outline} onClick={handleBack}>
-                            Previous
+                             {intl.formatMessage({id:'CreateQuoteForm.previous'})}
                         </button>
                         <button className={css.btn_fill} onClick={handleSendQuote}>
-                            Send quote
+                            {intl.formatMessage({id:'CreateQuoteForm.sendQuote'})}
                         </button>
                     </div>
 
