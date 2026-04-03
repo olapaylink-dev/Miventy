@@ -168,7 +168,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -263,7 +263,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -286,7 +286,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -308,7 +308,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -398,7 +398,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -421,7 +421,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -468,7 +468,7 @@
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -489,7 +489,7 @@
 
     /* Paragraph/Small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -596,7 +596,7 @@
     color: var(--Grey-900, #101928);
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height:100%; /* 20.3px */
@@ -621,7 +621,7 @@
 .remove{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -693,7 +693,7 @@
     font-family: Inter;
     font-weight: 400;
     font-style: Regular;
-    font-size: 14px;
+    font-size: 16px;
     leading-trim: NONE;
     line-height: 145%;
     letter-spacing: 0%;
@@ -744,7 +744,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -758,7 +758,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -779,7 +779,7 @@
 .remove{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -810,7 +810,7 @@
     font-family: Inter;
     font-weight: 500;
     font-style: Medium;
-    font-size: 14px;
+    font-size: 16px;
     leading-trim: NONE;
     line-height: 145%;
     letter-spacing: 0%;
@@ -823,7 +823,7 @@
     font-family: Inter;
     font-weight: 400;
     font-style: Regular;
-    font-size: 14px;
+    font-size: 16px;
     leading-trim: NONE;
     line-height: 145%;
     letter-spacing: 0%;
@@ -847,7 +847,7 @@
     background: #FFF;
     color: #1E1E1E;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */

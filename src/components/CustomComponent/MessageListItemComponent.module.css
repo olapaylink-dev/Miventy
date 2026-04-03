@@ -44,7 +44,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -96,7 +96,7 @@
     font-family: Inter;
     font-weight: 400;
     font-style: Regular;
-    font-size: 14px;
+    font-size: 16px;
     leading-trim: NONE;
     line-height: 145%;
     letter-spacing: 0%;
@@ -109,7 +109,7 @@
     padding: 10px;
     border-radius: 10px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     border: none;
     display: flex;
@@ -123,7 +123,7 @@
     padding: 10px;
     border-radius: 10px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     border: none;
     display: flex;
@@ -136,7 +136,7 @@
     padding: 10px;
     border-radius: 10px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
     border: none;
     display: flex;

@@ -339,7 +339,7 @@
 .item_list{
 font-family: Inter;
 font-weight: 500;
-font-size: 14px;
+font-size: 16px;
 line-height: 145%;
 letter-spacing: 0%;
 vertical-align: middle;
@@ -348,7 +348,7 @@ color: #EB5017;
 .catering{
 font-family: Inter;
 font-weight: 500;
-font-size: 14px;
+font-size: 16px;
 line-height: 145%;
 letter-spacing: 0%;
 vertical-align: middle;
@@ -387,7 +387,7 @@ vertical-align: middle;
   gap: 10px;
   font-family: Inter;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 145%;
   letter-spacing: 0%;
   color: #475367;

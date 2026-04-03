@@ -331,7 +331,7 @@ h4 {
 
 h5 {
   font-weight: var(--fontWeightMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   /* x * 6px */
   padding: 3px 0 3px 0;
@@ -374,7 +374,7 @@ pre {
   font-weight: var(--fontWeightMedium);
 
   /* No margins for default font */
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   padding: 0;
 
@@ -416,7 +416,7 @@ legend {
   display: block;
 
   font-weight: var(--fontWeightSemiBold);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
 
   margin-top: 0;
@@ -693,7 +693,7 @@ textarea {
 .h5 {
   font-family: Inter;
   font-weight: var(--fontWeightMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   /* x * 6px */
   padding: 3px 0 3px 0;
@@ -762,7 +762,7 @@ textarea {
   font-weight: var(--fontWeightMedium);
 
   /* No margins for default font */
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   padding: 0;
 
@@ -797,7 +797,7 @@ textarea {
 }
 
 .textSmall {
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   font-weight: var(--fontWeightMedium);
   letter-spacing: -0.1px;
@@ -821,7 +821,7 @@ textarea {
 
 .marketplaceSmallFontStyles {
   font-weight: var(--fontWeightMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
 }
 
@@ -941,7 +941,7 @@ textarea {
 
 .marketplaceTabNavHorizontalFontStyles {
   font-weight: var(--fontWeightMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
 }
 
@@ -1207,7 +1207,7 @@ textarea {
    * Font
    */
   font-weight: var(--fontWeightMedium);
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
   letter-spacing: 0;
 
@@ -1250,7 +1250,7 @@ textarea {
   font-family: var(--fontFamily);
   font-weight: var(--fontWeightMedium);
 
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   padding: 6px 16px;
 

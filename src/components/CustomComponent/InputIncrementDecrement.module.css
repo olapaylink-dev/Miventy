@@ -45,7 +45,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -150,7 +150,7 @@ label{
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -164,7 +164,7 @@ label{
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */
@@ -237,7 +237,7 @@ label{
     background: #FFF;
     color: #3a3a3a;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -256,7 +256,7 @@ label{
     background: #FFF;
     color: #3a3a3a;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -272,7 +272,7 @@ label{
     border-radius: 4px;
     color: #3a3a3a;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -295,7 +295,7 @@ label{
     background: #FFF;
     color: #1E1E1E;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -319,7 +319,7 @@ label{
 .flex_row_btw_con input{
     border-style: none;
     padding-left: 0px;
-    font-size: 14px;
+    font-size: 16px;
     background-color: transparent;
 }
 

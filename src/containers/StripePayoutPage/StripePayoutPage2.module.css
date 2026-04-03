@@ -111,7 +111,7 @@ text-transform: uppercase;
     gap: 10px;
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -121,7 +121,7 @@ text-transform: uppercase;
 .lang{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -180,7 +180,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -254,7 +254,7 @@ text-transform: uppercase;
     padding: 0;
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -290,7 +290,7 @@ text-transform: uppercase;
 .your_listing_con .sub_header_2{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -393,7 +393,7 @@ text-transform: uppercase;
 .rate_header{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -409,7 +409,7 @@ text-transform: uppercase;
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -455,7 +455,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -659,7 +659,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */
@@ -684,7 +684,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */
@@ -716,7 +716,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -767,7 +767,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -799,7 +799,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1010,7 +1010,7 @@ text-transform: uppercase;
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1061,7 +1061,7 @@ text-transform: uppercase;
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1114,7 +1114,7 @@ text-transform: uppercase;
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */
@@ -1141,7 +1141,7 @@ text-transform: uppercase;
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1206,7 +1206,7 @@ text-transform: uppercase;
     background: #FAFAFA;
     color: #000;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1215,7 +1215,7 @@ text-transform: uppercase;
 .remove{
     color: #475367;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -1351,7 +1351,7 @@ text-transform: uppercase;
 
 .error_msg{
     color: red;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .order_tab{
@@ -1575,7 +1575,7 @@ svg:disabled{
 .date{
     color: #6B7280;
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px; /* 142.857% */
@@ -1626,7 +1626,7 @@ svg:disabled{
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */

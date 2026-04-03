@@ -103,7 +103,7 @@
 
     /* Paragraph/Small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -117,7 +117,7 @@
 
     /* Paragraph/Small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     margin: 0px;
@@ -136,7 +136,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -149,7 +149,7 @@
 
     /* Body small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -182,7 +182,7 @@
 
     /* Body small/Regular */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 145%; /* 20.3px */
@@ -203,7 +203,7 @@
 
     /* Body small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */
@@ -212,7 +212,7 @@
 
     /* Body small/Medium */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 145%; /* 20.3px */

@@ -123,7 +123,7 @@
     font-feature-settings: 'cv01' on, 'cv03' on, 'cv04' on;
     /* Paragraph/Small/Semibold */
     font-family: Inter;
-    font-size: 14px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 600;
     line-height: 145%; /* 20.3px */
@@ -202,7 +202,7 @@
       }
 
       .items p{
-        font-size: 14px;
+        font-size: 16px;
       }
    
 }
