@@ -892,17 +892,19 @@ export function requestUpdateListing(data,action) {
 
 export const requestPublishListingDraft = listingId => (dispatch, getState, sdk) => {
   dispatch(publishListingRequest(listingId));
-
+  console.log("Publishing ------------------------------   ", listingId)
   return sdk.ownListings
     .publishDraft({ id: new UUID(listingId.uuid) }, { expand: true })
     .then(response => {
       // Add the created listing to the marketplace data
       dispatch(addMarketplaceEntities(response));
       dispatch(publishListingSuccess(response));
+      console.log(response,"   Published ------------------------------   ", listingId)
       return response;
     })
     .catch(e => {
       dispatch(publishListingError(storableError(e)));
+      console.log("Publishing Error ------------------------------   ", e)
     });
 };
 
