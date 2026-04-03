@@ -394,7 +394,6 @@ textarea:focus{
 @media only screen and (max-width: 1024px) {
    
    
-   
 }
 
   
@@ -404,11 +403,14 @@ textarea:focus{
         width: 90%;
         padding: 20px;
         margin: 20px;
+        min-width: 400px;
     }
 
     .flex_row_btw{
         flex-direction: column;
     }
+
+
    
 
 }
@@ -416,13 +418,17 @@ textarea:focus{
 @media only screen and (max-width: 412px) {
    
     .modal{
-        min-width: 350px;
+        min-width: 320px;
     }
 
 }
 
 
 @media only screen and (max-width: 360px) {
+
+    .modal{
+        min-width: 320px;
+    }
    
 }
 
