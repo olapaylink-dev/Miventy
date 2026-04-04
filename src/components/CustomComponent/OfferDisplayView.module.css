@@ -527,6 +527,7 @@
         width: 90%;
         padding: 20px;
         margin: 20px;
+        min-width: 350px;
     }
    
 
@@ -537,6 +538,7 @@
     .modal{
        min-width: 350px;
        align-self: flex-start;
+       min-width: 320px;
     }
 }
 
