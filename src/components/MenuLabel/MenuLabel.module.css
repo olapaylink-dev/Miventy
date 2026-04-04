@@ -13,7 +13,7 @@
 
 .clicked {
   &:focus {
-    outline: none;
+    /* outline: none; */
   }
 }
 

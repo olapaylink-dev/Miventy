@@ -90,7 +90,7 @@
 
   &:hover,
   &:focus {
-    outline: none;
+    /* outline: none; */
     color: var(--colorBlack);
   }
 }

@@ -32,7 +32,7 @@
   &:hover,
   &:focus {
     border: 0;
-    outline: none;
+    /* outline: none; */
     box-shadow: unset;
   }
 
@@ -82,7 +82,7 @@
 
   &:hover,
   &:focus {
-    outline: none;
+    /* outline: none; */
     border: 0;
     box-shadow: none;
   }
@@ -95,7 +95,7 @@
 
   &:hover,
   &:focus {
-    outline: none;
+    /* outline: none; */
 
     & .iconSvgGroup {
       stroke: var(--colorGrey700);

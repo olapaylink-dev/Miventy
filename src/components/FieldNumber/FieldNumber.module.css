@@ -40,7 +40,7 @@
 }
 
 .numberButton:focus {
-  outline: none;
+  /* outline: none; */
 
   .iconContainer {
     stroke: #b8bfd1;

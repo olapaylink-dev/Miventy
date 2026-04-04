@@ -81,3 +81,7 @@
     font-weight: 600;
     line-height: 145%; /* 23.2px */
 }
+p{
+    line-height: 150%;
+    text-align: justify;
+}

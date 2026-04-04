@@ -122,6 +122,6 @@
 
 .focusedDiv {
   &:focus {
-    outline: none;
+    /* outline: none; */
   }
 }

@@ -186,7 +186,6 @@
   
   .input:focus{
     outline-style: solid;
-    outline-color: transparent;
     border-radius: 10px;
   }
 

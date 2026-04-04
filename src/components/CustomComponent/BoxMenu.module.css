@@ -204,6 +204,7 @@
     .flex_row_hidden{
         max-width: 100vw;
         overflow: hidden;
+        margin: 0 auto;
     }
 
     .flex_col {

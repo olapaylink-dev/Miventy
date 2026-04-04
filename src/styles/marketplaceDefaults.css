@@ -377,11 +377,13 @@ pre {
   font-size: 16px;
   line-height: 24px;
   padding: 0;
+   line-height: 150%;
 
   @media (--viewportMedium) {
     font-size: 16px;
     line-height: 24px;
     padding: 5px 0 3px 0;
+    line-height: 150%;
   }
 }
 
@@ -476,7 +478,7 @@ select {
   /* Borders */
   border-radius: 6px;
   border: 1px solid #d8dce6;
-  outline: none;
+  
 
   /* Transition */
   transition: all ease-in-out 100ms;
@@ -535,7 +537,7 @@ textarea {
   /* Borders */
   border-radius: 6px;
   border: 1px solid #d8dce6;
-  outline: none;
+  /*  */
 
   /* Transition */
   transition: all ease-in-out 100ms;
@@ -553,13 +555,13 @@ textarea {
 /* Effects */
 input:hover,
 textarea:hover {
-  border: 1px solid #b8bfd1;
+  /* border: 1px solid #b8bfd1; */
   transition: all ease-in-out 100ms;
 }
 input:focus,
 textarea:focus {
   background-color: #ffffff;
-  border-color: #cacaca;
+  /* border-color: #cacaca; */
   box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
   transition: all ease-in-out 100ms;
 }
@@ -891,7 +893,7 @@ textarea {
   /* Borders */
   border-radius: 6px;
   border: 1px solid #d8dce6;
-  outline: none;
+  
 
   /* Transition */
   transition: all ease-in-out 100ms;
@@ -1011,7 +1013,7 @@ textarea {
 }
 .buttonDefault:focus,
 .buttonDefault:hover {
-  outline: none;
+  
   box-shadow: var(--boxShadowButton);
   background-color: var(--marketplaceColorDark);
 }
@@ -1066,7 +1068,7 @@ textarea {
 }
 .buttonPrimary:focus,
 .buttonPrimary:hover {
-  outline: none;
+  
   box-shadow: var(--boxShadowButton);
   background-color: #EB5017;
 }
@@ -1113,7 +1115,7 @@ textarea {
 }
 .buttonPrimaryInline:focus,
 .buttonPrimaryInline:hover {
-  outline: none;
+  
   box-shadow: var(--boxShadowButton);
   text-decoration: none;
   background-color: var(--colorPrimaryButtonDark);
@@ -1169,7 +1171,7 @@ textarea {
 }
 .buttonSecondary:focus,
 .buttonSecondary:hover {
-  outline: none;
+  
   box-shadow: var(--boxShadowButton);
   border-color: var(--colorGrey300);
   background-color: var(--colorSecondaryButton);
@@ -1232,7 +1234,7 @@ textarea {
 }
 .buttonSecondaryInline:focus,
 .buttonSecondaryInline:hover {
-  outline: none;
+  
   box-shadow: var(--boxShadowButton);
   border-color: var(--colorGrey300);
   background-color: var(--colorSecondaryButton);
