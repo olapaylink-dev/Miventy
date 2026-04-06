@@ -125,6 +125,13 @@ const Earnings = props=>{
                                     <span>{intl.formatMessage({id:'EarningsPage.amount'})}</span>
                                     <span>{intl.formatMessage({id:'EarningsPage.status'})}</span>
                                     <span>{intl.formatMessage({id:'EarningsPage.date'})}</span>
+
+                                    {/* <td>{intl.formatMessage({id:'EarningsPage.sn'})}</td>
+                                    <td>{intl.formatMessage({id:'EarningsPage.clientName'})}</td>
+                                    <td>{intl.formatMessage({id:'EarningsPage.serviceDesc'})}</td>
+                                    <td>{intl.formatMessage({id:'EarningsPage.amount'})}</td>
+                                    <td>{intl.formatMessage({id:'EarningsPage.status'})}</td>
+                                    <td>{intl.formatMessage({id:'EarningsPage.date'})}000</td> */}
                                 </div>
                                 <div>
                                     <div colSpan={6} className={css.tx_content_default}>
@@ -201,12 +208,12 @@ const Earnings = props=>{
                 <div className={css.tb_con}>
                     <table className={classNames(css.trx_table,css.desktop)}>
                         <tr className={css.trx_header}>
-                            <span>{intl.formatMessage({id:'EarningsPage.sn'})}</span>
-                            <span>{intl.formatMessage({id:'EarningsPage.clientName'})}</span>
-                            <span>{intl.formatMessage({id:'EarningsPage.serviceDesc'})}</span>
-                            <span>{intl.formatMessage({id:'EarningsPage.amount'})}</span>
-                            <span>{intl.formatMessage({id:'EarningsPage.status'})}</span>
-                            <span>{intl.formatMessage({id:'EarningsPage.date'})}</span>
+                            <td>{intl.formatMessage({id:'EarningsPage.sn'})}</td>
+                            <td>{intl.formatMessage({id:'EarningsPage.clientName'})}</td>
+                            <td>{intl.formatMessage({id:'EarningsPage.serviceDesc'})}</td>
+                            <td>{intl.formatMessage({id:'EarningsPage.amount'})}</td>
+                            <td>{intl.formatMessage({id:'EarningsPage.status'})}</td>
+                            <td>{intl.formatMessage({id:'EarningsPage.date'})}</td>
                         </tr>
                         {transactions.map((itm,key)=>{
                             const {customer,attributes,listing} = itm;

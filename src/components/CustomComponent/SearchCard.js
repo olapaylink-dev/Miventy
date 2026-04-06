@@ -22,6 +22,8 @@ const SearchCard = props =>{
         return result;
     }
     const reviewsRatingsAverage = getRatingsAverage(reviews);
+
+    console.log("888888888888888888888888888888888")
     return (
         <div className={css.flex_grid}>
             {listings.map((itm,key)=>{

@@ -1175,14 +1175,22 @@ const [currentListing,setCurrentListing] = useState({});
                                   <span>{businessName || fullName}</span>
                               </div>
                               <span className={css2.lang}>
-                                Languages:  {language !== "" && typeof(language) === "array"?language.map((itm,key)=>{
+                                Languages: {language !== "" && typeof(language) === "array"?language.map((itm,key)=>{
                                   if(key < language.length-1){
                                     return `${itm}, `
                                   }else{
-                                    return `${itm}`
+                                    return `${itm}, `
                                   }
                                   
-                                  }):language}
+                                  }):
+                                   typeof(language) === "object" && Object.values(language).map((itm,key)=>{
+                                      if(key < language.length-1){
+                                        return `${itm}, `
+                                      }else{
+                                        return `${itm}`
+                                      }
+                                    })
+                                  }
                               </span>
                               <div className={css2.flex_row_btw}>
                                   <div className={css2.flex_row_itm}>
@@ -3314,7 +3322,7 @@ function onChange(timestamp) {
 
                        <div>
                         <label className={css2.labels} for={"outlined-controlled"}>{intl.formatMessage({id:'StripePayoutPage.bio'})}</label>
-                        <input
+                        <textarea
                           id="outlined-controlled"
                           name='bio'
                           onChange={(event) => {
@@ -3322,6 +3330,7 @@ function onChange(timestamp) {
                           }}
                           value={bio}
                           placeholder={bio}
+                          rows={4}
                         />
                         {bio !== undefined && bio !== ""?"":<span className={css2.error_msg}>{intl.formatMessage({id:'StripePayoutPage.bioIsRequired'})}</span>}
                       </div>

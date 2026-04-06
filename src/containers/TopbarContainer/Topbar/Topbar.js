@@ -337,7 +337,7 @@ const getNewMsg = (trxs,unseenMsgs)=>{
   let msg = [];
 
   trxs?.data.map((cur,key)=>{
-    unseenMsgs.map((it,k)=>{
+    unseenMsgs !== undefined && unseenMsgs.map((it,k)=>{
       if(it.id === cur.id.uuid){
         msg.push(cur);
       }
@@ -346,7 +346,7 @@ const getNewMsg = (trxs,unseenMsgs)=>{
 
   let list = [];
   msg.map((itm,key)=>{
-    unseenMsg.map((i,k)=>{
+   unseenMsgs !== undefined && unseenMsg.map((i,k)=>{
       if(i.senderId !== currentUser.id.uuid){
         if(!list.includes(itm)){
           const dat = itm;

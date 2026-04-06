@@ -829,6 +829,7 @@ vertical-align: middle;
 }
 .flex_row_2{
   display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 10px;
   color: #475367;
@@ -1203,7 +1204,6 @@ vertical-align: middle;
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
-  font-weight: 600;
   line-height: 145%; /* 26.1px */ 
   margin: 0px;
   padding: 0px;
@@ -1231,11 +1231,11 @@ vertical-align: middle;
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
   line-height: 145%; /* 23.2px */
   margin: 0px;
   padding: 0px;
   margin-top: 20px;
+  font-weight: normal;
 }
 .d_grid{
   display: grid;
@@ -1246,7 +1246,7 @@ vertical-align: middle;
 .list{
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
 }
 .list_content{
