@@ -983,7 +983,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                               <span>{businessName}</span> <img src={badge}/> 
                             </div>
                             <div className={css.flex_row_4}>
-                              <span>(0 reviews)</span> 
+                              <span>({reviews.length} reviews)</span> 
                               <div className={css.count_con}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19" fill="none">
                                   <path d="M10.5549 1.79976L12.1387 4.99359C12.3547 5.43818 12.9306 5.86463 13.4166 5.94629L16.2872 6.42718C18.123 6.73567 18.555 8.07853 17.2321 9.40325L15.0004 11.6534C14.6224 12.0345 14.4154 12.7695 14.5324 13.2957L15.1714 16.0812C15.6753 18.2861 14.5144 19.139 12.5796 17.9867L9.88895 16.3807C9.403 16.0903 8.60209 16.0903 8.10714 16.3807L5.41644 17.9867C3.49065 19.139 2.32078 18.277 2.82473 16.0812L3.46366 13.2957C3.58064 12.7695 3.37367 12.0345 2.99571 11.6534L0.763955 9.40325C-0.5499 8.07853 -0.126947 6.73567 1.70885 6.42718L4.57953 5.94629C5.05648 5.86463 5.63242 5.43818 5.84839 4.99359L7.43222 1.79976C8.29612 0.0667465 9.69997 0.0667465 10.5549 1.79976Z" fill="#FFFF4D"/>
@@ -1379,7 +1379,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                       const {attributes,author} = itm;
                       const {content,rating} = attributes;
                       const displayName = author?.attributes?.profile?.displayName;
-                      const profileImage = author?.profileImage;
+                      const profileImage = author?.profileImage?.attributes?.variants["square-small"]?.url;
                       const createdAt = author?.attributes?.createdAt?.toDateString();
 
                       return (
@@ -1387,7 +1387,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                               <div className={classNames(css.flex_row_btw_2,css.mag_top_sm)}>
                                 <div className={classNames(css.flex_row_8)}>
                                   {profileImage !== undefined && profileImage !== null?
-                                  <img src={profileImage} />
+                                  <img className={css.resize_img} src={profileImage} />
                                   :
                                   <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" fill="none">
                                     <circle cx="22" cy="22.5" r="22" fill="#D9D9D9"/>

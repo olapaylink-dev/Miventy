@@ -334,7 +334,7 @@ const StyledRating = styled(Rating)({
                   const {attributes,author} = itm;
                   const {content,rating} = attributes;
                   const displayName = author?.attributes?.profile?.displayName;
-                  const profileImage = author?.profileImage;
+                  const profileImage = author?.profileImage?.attributes?.variants["square-small"]?.url;
                   const createdAt = author.attributes.createdAt.toDateString();
 
                   return (
@@ -342,7 +342,7 @@ const StyledRating = styled(Rating)({
                           <div className={classNames(css.flex_row_btw_2,css.mag_top_sm)}>
                             <div className={classNames(css.flex_row_8)}>
                               {profileImage !== undefined && profileImage !== null?
-                              <img src={profileImage} />
+                              <img className={css.resize_img} src={profileImage} />
                               :
                               <svg xmlns="http://www.w3.org/2000/svg" width="44" height="45" viewBox="0 0 44 45" fill="none">
                                 <circle cx="22" cy="22.5" r="22" fill="#D9D9D9"/>

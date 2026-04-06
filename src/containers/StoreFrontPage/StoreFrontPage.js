@@ -278,11 +278,11 @@ const StyledRating = styled(Rating)({
                 </div>
                 
                 {reviews.length > 0 && reviews.map((itm,key)=>{
-                  //console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                  console.log(itm,"   vvvvvvvvvvvvvvvvc5555555555555555555555555555555555555555555cccccccccccccc")
                   const {attributes,author} = itm;
                   const {content,rating} = attributes;
                   const displayName = author?.attributes?.profile?.displayName;
-                  const profileImage = author?.profileImage;
+                  const profileImage = author?.profileImage?.attributes?.variants["square-small"]?.url;
                   const createdAt = author.attributes.createdAt.toDateString();
 
                   return (
@@ -299,7 +299,7 @@ const StyledRating = styled(Rating)({
                               
                               <div>
                                 <h3 className={css.header_4}>{displayName}</h3>
-                                <p>{createdAt}</p>
+                                <p>{createdAt}</p>ooooooooooo
                               </div>
                             </div>
                           
