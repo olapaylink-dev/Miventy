@@ -1,9 +1,10 @@
 import css from './BookingsCard.module.css';
 import icon1 from '../../assets/images/AlexJohnson.png';
 import { useEffect } from 'react';
-
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const BookingsCard = props=>{
+    const intl = useIntl();
     const {data,setShowCancelBooking,setShowMarkOrder,setCurrentTransaction,currentUser,setShowRatingForm} = props;
     const {provider,listing,attributes,customer} = data;
     const displayName = provider?.attributes?.profile?.displayName;
