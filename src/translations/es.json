@@ -1711,7 +1711,10 @@
   "ListingPageCarousel.sendAMessage":"enviar un mensaje",
   "ListingPage.addToCart":"Añadir a la cesta",
   "CreateQuoteForm.sendQuote":"Enviar cotización",
-  "CreateQuoteForm.previous":"Previa"
+  "CreateQuoteForm.previous":"Previa",
+
+
+  "StoreFrontPage.completeService":"Servicios completados:"
 
 
 

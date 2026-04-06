@@ -328,7 +328,7 @@ const Settings = props=>{
                         </p>
                     </div>
                     {!showSecretForm?
-                            <button className={css.edit_btn} onClick={e=>setShowSecretForm(true)}>{intl.formatMessage({ id: 'Dashboard.edit' })}Edit</button>
+                            <button className={css.edit_btn} onClick={e=>setShowSecretForm(true)}>{intl.formatMessage({ id: 'Dashboard.edit' })}</button>
                     :""}
                    
                 </div>

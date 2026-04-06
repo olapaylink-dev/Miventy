@@ -273,7 +273,7 @@ const StyledRating = styled(Rating)({
               <div className={css.section}>
                 <div className={classNames(css.flex_row_btw,css.mag_top_sm)}>
                   <h1 className={css.about_header}>
-                    Completed services:
+                    {intl.formatMessage({id:'StoreFrontPage.completeService'})}
                   </h1>
                 </div>
                 

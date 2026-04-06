@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { Box, Rating, styled } from '@mui/material';
 import classNames from 'classnames';
 import badges from '../../assets/badges.png';
-
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 import {
   EmailShareButton,
@@ -63,6 +63,7 @@ import {
 import SearchCard2 from './SearchCard2';
 
 const StoreFrontPage = props => {
+  const intl = useIntl();
 const {
         authorDisplayName,
         userLocation,
@@ -324,7 +325,7 @@ const StyledRating = styled(Rating)({
               <div className={css.section}>
                 <div className={classNames(css.flex_row_btw,css.mag_top_sm)}>
                   <h1 className={css.about_header}>
-                    Completed services:
+                    {intl.formatMessage({id:'StoreFrontPage.completeService'})}
                   </h1>
                 </div>
                 

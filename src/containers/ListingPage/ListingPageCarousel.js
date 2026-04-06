@@ -68,6 +68,7 @@ import {
   fetchUserListings,
   fetchReviews,
   reset,
+  fetchUserReviews,
 } from './ListingPage.duck';
 
 import {
@@ -598,10 +599,11 @@ const serviceTypesRentalSpace = [
       onFetchUserListings(authorId);
       onFetchReviews(authorId);
     }
-  }, [isUserDetails]);
+    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo")
+  }, []);
 
   useEffect(() => {
-    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo")
+    
      const updated = currentUser?.attributes?.profile?.publicData?.cartData;
      const isEqual = _.isEqual(updated,cartData);
      if(!isEqual){
@@ -1856,7 +1858,7 @@ const mapDispatchToProps = dispatch => ({
   onSendOrderMessage:(listing,orderData,isInquiry) => dispatch(sendInquiry(listing,orderData,isInquiry)),
   onSaveLikes:(listingId,userId) => dispatch(saveLike(listingId,userId)),
   onFetchUserListings:(userId)=> dispatch(fetchUserListings(userId)),
-  onFetchReviews:(authorId)=> dispatch(fetchReviews()),
+  onFetchReviews:(authorId)=> dispatch(fetchUserReviews(authorId)),
   onReset:()=>dispatch(reset())
 });
 

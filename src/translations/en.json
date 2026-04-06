@@ -1766,7 +1766,9 @@
   "ListingPageCarousel.sendAMessage":"Send a message",
   "ListingPage.addToCart":"Add to cart",
   "CreateQuoteForm.sendQuote":"Send quote",
-  "CreateQuoteForm.previous":"Previous"
+  "CreateQuoteForm.previous":"Previous",
+
+  "StoreFrontPage.completeService":"Completed services:"
 
 
 

@@ -356,7 +356,7 @@ export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
     })
     .then(response => {
       const reviews = denormalisedResponseEntities(response);
-      //console.log(reviews,"   reviewsssssssssssssss")
+      console.log(reviews,"   reviewsssssssssssssss")
       dispatch(fetchReviewsSuccess(reviews));
 
     })
