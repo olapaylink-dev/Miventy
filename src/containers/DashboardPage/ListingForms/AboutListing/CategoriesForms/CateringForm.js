@@ -76,10 +76,10 @@ const CateringForm = props =>{
     ];
 
     const ServiceStandards = [
-      intl.formatMessage({id: 'CategoriesForm.willProvide',}),
-      intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
-      intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
-      intl.formatMessage({id: 'CategoriesForm.willBackup',}),
+      'willProvide',
+      'willOrganize',
+      'willBeOnTime',
+      'willBackup'
     ];
 
 const handleChangePrice = e =>{
@@ -335,7 +335,7 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                 />} 
                                 label={
                                   <div className={css.space_btm}>
-                                    {itm}
+                                    {intl.formatMessage({ id: `CategoriesForm.${itm}` })}
                                   </div>
                                  
                                 }

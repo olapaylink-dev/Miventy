@@ -1712,9 +1712,9 @@
   "ListingPage.addToCart":"Añadir a la cesta",
   "CreateQuoteForm.sendQuote":"Enviar cotización",
   "CreateQuoteForm.previous":"Previa",
+  "StoreFrontPage.completeService":"Servicios completados:",
 
-
-  "StoreFrontPage.completeService":"Servicios completados:"
+  "Dashboard.itemsInCart":"Artículos en el carrito"
 
 
 

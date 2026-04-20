@@ -330,7 +330,7 @@ const StyledRating = styled(Rating)({
                 </div>
                 
                 {reviews.length > 0 && reviews.map((itm,key)=>{
-                  //console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
+                  console.log(itm,"   vvvvvvvvvvvvvvvvccccccccccccccc")
                   const {attributes,author} = itm;
                   const {content,rating} = attributes;
                   const displayName = author?.attributes?.profile?.displayName;

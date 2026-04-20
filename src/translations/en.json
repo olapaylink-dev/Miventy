@@ -1767,8 +1767,10 @@
   "ListingPage.addToCart":"Add to cart",
   "CreateQuoteForm.sendQuote":"Send quote",
   "CreateQuoteForm.previous":"Previous",
+  "StoreFrontPage.completeService":"Completed services:",
 
-  "StoreFrontPage.completeService":"Completed services:"
+
+  "Dashboard.itemsInCart":"Items in cart"
 
 
 

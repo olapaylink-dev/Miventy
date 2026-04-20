@@ -126,7 +126,7 @@ const VerificationCodeForm = props=>{
                 
                 <div className={css.container}>
                     <div>
-                        <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.verificationCode' })}Verification code</h1>
+                        <h1 className={css.header}>{intl.formatMessage({ id: 'Dashboard.verificationCode' })}</h1>
                         <p>
                             {intl.formatMessage({ id: 'Dashboard.confirmTheOTP' })}
                             <CountDown/>

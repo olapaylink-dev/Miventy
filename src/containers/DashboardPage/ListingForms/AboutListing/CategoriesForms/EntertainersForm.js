@@ -51,19 +51,33 @@ const EntertainersForm = props =>{
       }
     },[updatedListing]);
     
-    const ChildrenAge = [
-      intl.formatMessage({id: 'CategoriesForm.year1',}),
-     intl.formatMessage({id: 'CategoriesForm.year2',}),
-     intl.formatMessage({id: 'CategoriesForm.year3',}),
-     intl.formatMessage({id: 'CategoriesForm.year4',}),
-     intl.formatMessage({id: 'CategoriesForm.year5',}),
-    ];
+    // const ChildrenAge = [
+    //   intl.formatMessage({id: 'CategoriesForm.year1',}),
+    //  intl.formatMessage({id: 'CategoriesForm.year2',}),
+    //  intl.formatMessage({id: 'CategoriesForm.year3',}),
+    //  intl.formatMessage({id: 'CategoriesForm.year4',}),
+    //  intl.formatMessage({id: 'CategoriesForm.year5',}),
+    // ];
 
+    const ChildrenAge = [
+      'year1',
+      'year2',
+      'year3',
+      'year4',
+      'year5',
+    ]
+
+    // const ServiceStandards = [
+    //   intl.formatMessage({id: 'CategoriesForm.willProvide',}),
+    //   intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
+    //   intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
+    //   intl.formatMessage({id: 'CategoriesForm.willBackup',}),
+    // ];
     const ServiceStandards = [
-      intl.formatMessage({id: 'CategoriesForm.willProvide',}),
-      intl.formatMessage({id: 'CategoriesForm.willOrganize',}),
-      intl.formatMessage({id: 'CategoriesForm.willBeOnTime',}),
-      intl.formatMessage({id: 'CategoriesForm.willBackup',}),
+      'willProvide',
+      'willOrganize',
+      'willBeOnTime',
+      'willBackup'
     ];
 
 const handleChangePrice = e =>{
@@ -163,7 +177,7 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                 />} 
                                 label={
                                   <div className={css.space_btm}>
-                                    {itm}
+                                    {intl.formatMessage({id: `CategoriesForm.${itm}`,})}
                                   </div>
                                  
                                 }
@@ -246,7 +260,7 @@ const instruction = intl.formatMessage({id: 'CategoriesForm.qaSection',});
                                 />} 
                                 label={
                                   <div className={css.space_btm}>
-                                    {itm}
+                                    {intl.formatMessage({ id: `CategoriesForm.${itm}` })}
                                   </div>
                                  
                                 }
