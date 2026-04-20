@@ -829,6 +829,10 @@ const handleLike = e=>{
 }
 
 const handleShowRequestQuoteView = e =>{
+  if(!isAuthenticated){
+    history.push("/login")
+  }
+  
   if(isOwnListing){
       setShowOwnListingMessage(true);
     }else{
