@@ -75,8 +75,6 @@ const handleBack = e =>{
     setCurrentRequestQuoteTab(REQUEST_QUOTE_TABS[0]);
 }
 
-console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
-
     return (
             <div className={css.modal}>
                 <div className={css.container_header}>

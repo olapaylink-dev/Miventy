@@ -113,6 +113,7 @@ const listingCart = getListingCart(cartData);
 const handleSendOrderMessage = ()=>{
     //{/* Create a new transaction and add order details to it, them send the order message to provider */}
     //console.log("==========++++++=============")
+    
     const orderData = {
         cartData,
         message,
@@ -121,7 +122,7 @@ const handleSendOrderMessage = ()=>{
     }
     onSendOrderMessage(currentListing,orderData);
     setShowConfirmOrderForm(false);
-    setSuccessMessage("Your message was sent successfully!");
+    setSuccessMessage(intl.formatMessage({ id: 'ConfirmOrderForm.yourMessageWas' }));
     setShowSuccessView(true);
     setShowSuccessBadge(true);
 }

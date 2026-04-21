@@ -172,9 +172,9 @@ const handleChangeTab = (e,tab)=>{
  const categories = [
         {key: intl.formatMessage({id: 'LandingPage.entertaining',}),
             item:[
-                {key:intl.formatMessage({id: 'LandingPage.animation',}),value:"Animation"},
-                {key:intl.formatMessage({id: 'LandingPage.magic',}),value:"Magic"},
-                {key:intl.formatMessage({id: 'LandingPage.facePaint',}),value:"Face Paint"}
+                {key:'animation',value:"Animation"},
+                {key:'magic',value:"Magic"},
+                {key:'facePaint',value:"Face Paint"}
             ],css:css.menu1,icon:icon1},
         // {key:intl.formatMessage({id: 'LandingPage.catering',}),
         //         item:[
@@ -285,7 +285,10 @@ const handleChangeTab = (e,tab)=>{
                                                             color: "#F56630",
                                                         },
                                                         }}
-                                                    className={classNames(css2.no_spacing,css2.radio)}/>} label={category.key} />
+                                                    className={classNames(css2.no_spacing,css2.radio)}/>} 
+                                                    label={
+                                                        intl.formatMessage({ id: `LandingPage.${category.key}` })
+                                                    } />
                                                 )
 
                                             })}

@@ -46,7 +46,31 @@ const NotificationNote = props =>{
                 // const providerId = itm.relationships.provider.data.id.uuid;
                 // const isOwnListing = currentUser.id.uuid === providerId;
                 // const message = itm?.attributes?.protectedData?.cartData?.message;
-                const {title,pageToGo,id} = itm;
+                const {title,pageToGo,id,createdAt} = itm || {};
+
+                 // set the time
+                let past = new Date(createdAt);  //YYYY-MM-DD
+
+                // assigning present time to now variable
+                let now = new Date();
+
+                let elapsed = (now - past);
+
+                // by dividing by 1000 we will get 
+                // the time in seconds
+                const daysElapsed = Math.floor(elapsed/(1000*60*60*24));
+                const hoursElapsed = Math.floor(elapsed/(1000*60*60));
+                const minElapsed = Math.floor(elapsed/(1000*60));
+
+                let elapsedDisplay ;
+                if(daysElapsed > 0){
+                    elapsedDisplay = `${daysElapsed} days`;
+                }else if(hoursElapsed > 0){
+                    elapsedDisplay = `${hoursElapsed} hours`;
+                }else if(minElapsed > 0){
+                    elapsedDisplay = `${minElapsed} min`;
+                }
+                
                 return(
                     <div key={`MessageNote_${key}`} className={css.container} onClick={e=>handleDeleteNoti(id,pageToGo)} >
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 8 11" fill="none">
@@ -55,8 +79,14 @@ const NotificationNote = props =>{
                         </svg>
                         <div>
                             <p className={css.p}>{title}</p>
-                            <span>5 min</span>
+                            {createdAt?
+                                <span>{elapsedDisplay}</span>
+                                :""
+                            }
+                            
                         </div>
+                        
+                        
                     </div>
                 )
             })}

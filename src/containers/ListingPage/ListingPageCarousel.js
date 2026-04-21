@@ -784,7 +784,7 @@ const handleSendOrderMessage = ()=>{
       }
       onSendOrderMessage(currentListing,orderData);
       setShowConfirmOrderForm(false);
-      setSuccessMessage("Your message was sent successfully!");
+      setSuccessMessage(intl.formatMessage({ id: 'ListingPage.yourMessageWas' }));
       setShowSuccessView(true);
       setShowSuccessBadge(true);
     }
@@ -801,7 +801,7 @@ const handleSendOrderMessage = ()=>{
       }
       onSendOrderMessage(currentListing,orderData);
       setShowConfirmOrderForm(false);
-      setSuccessMessage("Your message was sent successfully!");
+      setSuccessMessage(intl.formatMessage({ id: 'ListingPage.yourMessageWas' }));
       setShowSuccessView(true);
       setShowSuccessBadge(true);
     }
@@ -1033,10 +1033,10 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                             <div className={css.send_con}>
                               <div className={css.send} onClick={e=>{handleSendEnquiry()}}>
                                 {intl.formatMessage({ id: 'ListingPageCarousel.sendAMessage' })}
-                                {showProgress?
+                                {/* {showProgress?
                                   <div class="spinner-border" role="status">
                                   </div>
-                                :""}
+                                :""} */}
                               </div>
                               <div className={css.icon_con}>
                                     {isFavourite?
@@ -1143,10 +1143,10 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                         <div className={css.send_con}>
                           <button className={css.send} onClick={e=>{handleSendEnquiry()}}>
                              {intl.formatMessage({ id: 'ListingPageCarousel.sendAMessage' })}
-                            {showProgress?
+                            {/* {showProgress?
                               <div class="spinner-border" role="status">
                               </div>
-                            :""}
+                            :""} */}
                             
                           </button>
                           <div className={css.icon_con}>

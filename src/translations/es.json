@@ -1754,12 +1754,32 @@
   "ListingPage.guestCount3": "30 - 40",
   "ListingPage.guestCount4": "40 - 50",
   "ListingPage.guestCount5": "Más de 100",
-
   "CreateQuoteForm.whereIsTheLocation": "¿Dónde es la ubicación de tu evento?",
   "CreateQuoteForm.selectLocation": "Selecciona la ubicación del evento",
   "CreateQuoteForm.whenIsYourEvent": "¿Cuándo es tu evento?",
   "CreateQuoteForm.selectDateOfYour": "Selecciona la fecha de tu evento",
+  "Dashboard.yourPaymentWas":"¡Tu pago se realizó correctamente!",
+  "SearchPage.sortByBestRated": "Ordenar por: Mejor valorados",
+  "SearchPage.recommend": "Recomendado",
+  "SearchPage.bestRated": "Mejor valorados",
+  "SearchPage.mostPopular": "Más populares",
+  "SearchPage.meter1": "A 5 metros",
+  "SearchPage.meter2": "A 10 metros",
+  "SearchPage.meter3": "A 20 metros",
+  "SearchPage.location": "Ubicación",
+  "SearchPage.price1": "€0 - €300",
+  "SearchPage.price2": "€300 - €600",
+  "SearchPage.price3": "€600+",
+  "LandingPage.from": "Desde",
+  "SearchPage.priceRange":"Gama de precios",
 
-  "Dashboard.yourPaymentWas":"¡Tu pago se realizó correctamente!"
+  "Dashboard.yourListingWas": "Tu anuncio se publicó correctamente",
+  "Dashboard.close": "Cerrar",
+  "InboxPage.yourReviewWas": "Tu reseña se añadió correctamente",
+  "CartItem.itemWasSuccessful": "El artículo se eliminó correctamente del carrito.",
+  "CartOption.itemWasSuccessful": "El artículo se añadió correctamente al carrito.",
+  "ListingPage.yourMessageWas": "¡Tu mensaje se envió correctamente!",
+  "ConfirmOrderForm.yourMessageWas": "¡Tu mensaje se envió correctamente!",
 
+  "TopTab.about":"Acerca del servicio"
 }

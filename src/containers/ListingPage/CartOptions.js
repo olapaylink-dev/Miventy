@@ -98,7 +98,6 @@ const CartOptions = props =>{
                     cartData:[...remainingCarts,existingCart]
                 }};
             onUpdateProfile(data);
-            console.log("Item added to existing cart")
         }else{
             //Cart does not exist
             //Create a new cart with the listingId
@@ -128,9 +127,8 @@ const CartOptions = props =>{
                 cartData:[...cartData,cart]
                 }}
             onUpdateProfile(data);
-            console.log("New Item added to new cart")
         }
-        setSuccessMessage("Item was successfully added to cart.");
+        setSuccessMessage(intl.formatMessage({ id: 'CartOption.itemWasSuccessful' }));
         setShowSuccessView(true);
         //setShowSuccessBadge(true);
     }

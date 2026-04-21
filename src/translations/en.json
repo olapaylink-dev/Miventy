@@ -1810,16 +1810,38 @@
   "ListingPage.guestCount3":"30 - 40",
   "ListingPage.guestCount4":"40 - 50",
   "ListingPage.guestCount5":"More than 100",
-
-
-
   "CreateQuoteForm.whereIsTheLocation":"Where is the location of your event.",
   "CreateQuoteForm.selectLocation":"Select location of the event",
   "CreateQuoteForm.whenIsYourEvent":"When is your event",
   "CreateQuoteForm.selectDateOfYour":"Select date of your event",
+  "Dashboard.yourPaymentWas":"Your Payment was successful!",
+  "SearchPage.sortByBestRated":"Sort by: Best rated",
+  "SearchPage.recommend":"Recommend",
+  "SearchPage.bestRated":"Best rated",
+  "SearchPage.mostPopular":"Most popular",
+  "SearchPage.meter1":"5 Meter away",
+  "SearchPage.meter2":"10 Meter away",
+  "SearchPage.meter3":"20 Meter away",
+  "SearchPage.location":"Location",
+  "SearchPage.price1":"€0 - €300",
+  "SearchPage.price2":"€300 - €600",
+  "SearchPage.price3":"€600+",
+  "LandingPage.from":"From",
+  "SearchPage.priceRange":"Price Range",
 
-  "Dashboard.yourPaymentWas":"Your Payment was successful!"
+
+  "Dashboard.yourListingWas":" Your listing was successfully published",
+  "Dashboard.close":"Close",
+  "InboxPage.yourReviewWas":"Your review was successfully added",
+  "CartItem.itemWasSuccessful":"Item was successfully removed from cart.",
+  "CartOption.itemWasSuccessful":"Item was successfully added to cart.",
+  "ListingPage.yourMessageWas":"Your message was sent successfully!",
+  "ConfirmOrderForm.yourMessageWas":"Your message was sent successfully!",
 
   
+  "TopTab.about":"About service"
+ 
+
+
 
 }

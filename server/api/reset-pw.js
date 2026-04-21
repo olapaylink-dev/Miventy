@@ -29,7 +29,7 @@ const sdk = getSdk(req, res);
         newPassword: pw
       },{expand:true}).then(res => {
         // res.data
-        console.log("Passwprd was reset successfully")
+        
         dispatch(passwordRecoverySuccess());
 
       });

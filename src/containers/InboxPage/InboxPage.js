@@ -298,7 +298,7 @@ export const InboxPageComponent = props => {
   const [showDatePicker,setShowDatePicker] = useState();
   const [total,setTotal] = useState("");
   const [showSuccessView,setShowSuccessView] = useState(false);
-  const [successMessage,setSuccessMessage] = useState("Your review was successfully added");
+  const [successMessage,setSuccessMessage] = useState(intl.formatMessage({ id: 'InboxPage.yourReviewWas' }));
   const [currentDisplayName,setCurrentDisplayName] = useState("");
   const [currentImgUrl,setCurrentImgUrl] = useState("");
   const {customer,provider} = currentTransaction || {};

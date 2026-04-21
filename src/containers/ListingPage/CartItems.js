@@ -4,9 +4,10 @@ import cart from '../../assets/cart1.png';
 import search_icon1 from '../../assets/Search/search_icon1.png';
 import search_star from '../../assets/Search/search_star1.png';
 import classNames from "classnames";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const CartItems = props =>{
-
+    const intl = useIntl();
     const {currentUser={},listingId={},onUpdateProfile,setSuccessMessage,setShowSuccessView} = props;
     const {attributes={}} = currentUser;
     const {profile={}} = attributes;
@@ -81,8 +82,7 @@ const CartItems = props =>{
                     cartData:[...remainingListingCart,currentListingCartToEdit]
                 }};
             onUpdateProfile(data);
-            console.log("Item removed from cart")
-            setSuccessMessage("Item was successfully removed from cart.");
+            setSuccessMessage(intl.formatMessage({ id: 'CartItem.itemWasSuccessful' }));
             setShowSuccessView(true);
         }
 

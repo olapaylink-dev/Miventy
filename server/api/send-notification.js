@@ -24,12 +24,14 @@ module.exports = (req, res) => {
     .then(res => {
         // res.data contains the response data
         const notifications = res?.data?.data?.attributes?.profile?.protectedData?.notifications || [];
+        const createdAt = new Date();
         const data = {
             id:v4(),
             trxId,
             title,
             pageToGo,
-            customerId
+            customerId,
+            createdAt
         }
         notifications.push(data);
         
@@ -49,12 +51,14 @@ module.exports = (req, res) => {
     .then(res => {
         // res.data contains the response data
         const notifications = res?.data?.data?.attributes?.profile?.protectedData?.notifications || [];
+        const createdAt = new Date();
         const data = {
             id:v4(),
             trxId,
             title,
             pageToGo,
-            customerId
+            customerId,
+            createdAt
         }
         notifications.push(data);
 
