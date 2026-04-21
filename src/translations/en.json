@@ -1770,9 +1770,55 @@
   "StoreFrontPage.completeService":"Completed services:",
 
 
-  "Dashboard.itemsInCart":"Items in cart"
+  "Dashboard.itemsInCart":"Items in cart",
+
+  "ListingPageCarousel.experience":"Experience",
+  "ListingPageCarousel.years":"years",
+  "ListingPageCarousel.total":"Total",
+  "Dashboard.continueToPayment":"Continue to payment",
+  "Dashboard.continue":"Continue",
+  "Dashboard.previous":"Previous",
+  "Dashboard.howLongIsThe":"How long is the service required",
+  "Dashboard.howManyGuestAre":"How many guests are you expecting?",
+  "Dashboard.selectTheServiceType":"Select the service type you need",
+  "Dashboard.addNotesOr":"Add notes or description",
+  "Dashboard.optionalIfYou":"Optional if you want to include special requests.",
+  "Dashboard.egFillingOfYour":"e.g. Filling of your choice:raspberry,cherry. Sponge cake of your choice:vanilla, crema",
+  "Dashboard.quoteAcceptedReady":"Quote accepted, ready to secure your booking.",
+  "Dashboard.youHaveAcceptedThe":"You’ve accepted the service provider’s quote. To confirm your booking, please proceed to make payment. Your payment will be held securely in escrow and released only when the service is successfully completed.",
+  "Dashboard.cancel":"Cancel",
+  "Dashboard.continueToInbox":"Continue to inbox",
+  "Dashboard.share":"Share",
+
+  "ListingPage.itemDetails":"Item details",
+  "ListingPage.price":"Price",
+  "ListingPage.priceItem":"Price/item",
+  "ListingPage.plate":"plate",
+  "ListingPage.unitQuantity":"Unit quantity",
+  "ListingPage.minQuantity":"Min quantity",
+  "ListingPage.inCludeSpecialRequest":"Include special request to be added to your order. ",
+  "ListingPage.egFillingOfYourChoice":"e.g. Filling of your choice:raspberry,cherry. Sponge cake of your choice:vanilla, crema",
+  "ListingPage.addNotesAndRequest":"Add notes and requests",
+  "ListingPage.itemWasSuccessfull":"Item was successfully added to cart.",
+  "ListingPage.duration1":"Up to 1 hour",
+  "ListingPage.duration2":"Up to 2 hour",
+  "ListingPage.duration3":"Up to 3 hour",
+  "ListingPage.duration4":"Up to 4 hour",
+  "ListingPage.duration5":"5 hours or more",
+  "ListingPage.guestCount1":"Less than 10",
+  "ListingPage.guestCount2":"20 - 30",
+  "ListingPage.guestCount3":"30 - 40",
+  "ListingPage.guestCount4":"40 - 50",
+  "ListingPage.guestCount5":"More than 100",
 
 
+
+  "CreateQuoteForm.whereIsTheLocation":"Where is the location of your event.",
+  "CreateQuoteForm.selectLocation":"Select location of the event",
+  "CreateQuoteForm.whenIsYourEvent":"When is your event",
+  "CreateQuoteForm.selectDateOfYour":"Select date of your event",
+
+  "Dashboard.yourPaymentWas":"Your Payment was successful!"
 
   
 

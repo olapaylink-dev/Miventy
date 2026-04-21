@@ -172,7 +172,7 @@ const CatalogItemOrderDetails = props =>{
 
         }
 
-        setSuccessMessage("Item was successfully added to cart.");
+        setSuccessMessage(intl.formatMessage({ id: 'ListingPage.itemWasSuccessfull' }));
         setShowSuccessView(true);
         //setShowSuccessBadge(true);
     }
@@ -180,7 +180,7 @@ const CatalogItemOrderDetails = props =>{
     return (
             <div className={css.modal}>
                 <div className={css.container_header}>
-                    <h3 className={css.header}>Item details</h3>
+                    <h3 className={css.header}>{intl.formatMessage({ id: 'ListingPage.itemDetails' })}</h3>
                     <svg onClick={e=>setShowCartCatalogOrderDetails(false)} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M7.05086 5.63616C6.66033 5.24563 6.02717 5.24563 5.63664 5.63616C5.24612 6.02668 5.24612 6.65984 5.63664 7.05037L10.5864 12.0001L5.63664 16.9499C5.24612 17.3404 5.24612 17.9736 5.63664 18.3641C6.02717 18.7546 6.66033 18.7546 7.05086 18.3641L12.0006 13.4143L16.9504 18.3641C17.3409 18.7546 17.974 18.7546 18.3646 18.3641C18.7551 17.9736 18.7551 17.3404 18.3646 16.9499L13.4148 12.0001L18.3646 7.05037C18.7551 6.65984 18.7551 6.02668 18.3646 5.63616C17.974 5.24563 17.3409 5.24563 16.9504 5.63616L12.0006 10.5859L7.05086 5.63616Z" fill="black"/>
                     </svg>
@@ -198,24 +198,24 @@ const CatalogItemOrderDetails = props =>{
                             </p>
                         </div>
                         <div className={css.input_con}>
-                            <h4 className={css.text_label}>Add notes and requests</h4>
-                            <textarea onChange={e=>handleSetMessage(e.target.value)} className={css.textarea} placeholder="e.g. Filling of your choice:raspberry,cherry. Sponge cake of your choice:vanilla, crema}"/>
-                            <p className="mt-1">Include special request to be added to your order. </p>
+                            <h4 className={css.text_label}>{intl.formatMessage({ id: 'ListingPage.addNotesAndRequest' })}</h4>
+                            <textarea onChange={e=>handleSetMessage(e.target.value)} className={css.textarea} placeholder={intl.formatMessage({ id: 'ListingPage.egFillingOfYourChoice' })}/>
+                            <p className="mt-1">{intl.formatMessage({ id: 'ListingPage.inCludeSpecialRequest' })}</p>
                         </div>
                     </div>
                     <div className={css.flex_2}>
                         {category === "BD Cake" || category === "Sweets" || category === "catering"?
                                  <div className={css.flex_ful}>
                                     <div className={css.flex_row_btw}>
-                                        <span className={css.label_1} >Min quantity</span>
+                                        <span className={css.label_1} >{intl.formatMessage({ id: 'ListingPage.minQuantity' })}</span>
                                         <span className={css.label_2} id="minQuantity">{currentCount}</span>
                                     </div>
                                     <div className={css.flex_row_btw}>
-                                        <span className={css.label_1}>Unit quantity</span>
-                                        <span className={css.label_2}>1 plate</span>
+                                        <span className={css.label_1}>{intl.formatMessage({ id: 'ListingPage.unitQuantity' })}</span>
+                                        <span className={css.label_2}>1 {intl.formatMessage({ id: 'ListingPage.plate' })}</span>
                                     </div>
                                     <div className={css.flex_row_btw}>
-                                        <span className={css.label_1}>Price/item</span>
+                                        <span className={css.label_1}>{intl.formatMessage({ id: 'ListingPage.priceItem' })}</span>
                                         <span className={css.label_2}>€{currentCartItmToEdit.ItemPrice}</span>
                                     </div>
                                     <div className={css.flex_row_btw_sm}>
@@ -234,7 +234,7 @@ const CatalogItemOrderDetails = props =>{
                                         <span className={css.label_2}>1 plate</span>
                                     </div> */}
                                     <div className={css.flex_row_btw}>
-                                        <span className={css.label_1}>Price</span>
+                                        <span className={css.label_1}>{intl.formatMessage({ id: 'ListingPage.price' })}</span>
                                         <span className={css.label_2}>€{currentCartItmToEdit.ItemPrice}</span>
                                     </div>
                                     <div className={css.flex_row_btw_sm}>

@@ -809,6 +809,10 @@ const handleSendOrderMessage = ()=>{
 }
 
 const handleSendEnquiry = ()=>{
+    if(!isAuthenticated){
+      history.push("/login");
+    }
+    
     if(isOwnListing){
       setShowOwnListingMessage(true);
     }else{
@@ -1169,7 +1173,7 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                       {description}
                     </p>
                     
-                    <p>Experience: {workExperience} years</p>
+                    <p>{intl.formatMessage({ id: 'ListingPageCarousel.experience' })}: {workExperience} {intl.formatMessage({ id: 'ListingPageCarousel.years' })}</p>
 
                     
                       {serviceMenuType.length > 0? 

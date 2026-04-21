@@ -89,7 +89,6 @@ const CartItems = props =>{
         
     }
     
-
     return (
         <div className={css.flex_full}>
             {JSON.stringify(cartItems) !== "{}" && cartItems.length > 0 && cartItems.map((itm,key)=>{

@@ -76,9 +76,9 @@ const handleDateChange = value=>{
                 
                 <div className={css.container}>
                     <div className={css.flex_col}>
-                        <h2 className={css.form_header}>Where is the location of your event.</h2>
+                        <h2 className={css.form_header}>{intl.formatMessage({id:'CreateQuoteForm.whereIsTheLocation'})}</h2>
                         <div className={css.area_con} onClick={e=>setShowMap(true)}>
-                            <label>Select location of the event</label>
+                            <label>{intl.formatMessage({id:'CreateQuoteForm.selectLocation'})}</label>
                             <div className={css.flex_row_area}>
                             
                                 {eventLocation !== undefined && eventLocation.length > 0?
@@ -107,9 +107,9 @@ const handleDateChange = value=>{
                     </div>
                     
                     <div className={css.flex_col}>
-                        <h2 className={css.form_header}>When is your event</h2>
+                        <h2 className={css.form_header}>{intl.formatMessage({id:'CreateQuoteForm.whenIsYourEvent'})}</h2>
                         <div className={css.area_con}>
-                            <label>Select date of your event</label>
+                            <label>{intl.formatMessage({id:'CreateQuoteForm.selectDateOfYour'})}</label>
                             <MyDatePicker currentDate={eventDate} onChange={handleDateChange} showDatePicker={showDatePicker} setShowDatePicker={setShowDatePicker}/>
                         </div>
                     </div>

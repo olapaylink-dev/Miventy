@@ -1714,9 +1714,52 @@
   "CreateQuoteForm.previous":"Previa",
   "StoreFrontPage.completeService":"Servicios completados:",
 
-  "Dashboard.itemsInCart":"Artículos en el carrito"
+  "Dashboard.itemsInCart":"Artículos en el carrito",
 
+  "ListingPageCarousel.experience":"Experiencia",
+  "ListingPageCarousel.years":"años",
+  "ListingPageCarousel.total":"Total",
+  "Dashboard.continueToPayment":"Continuar con el pago",
+  "Dashboard.continue":"Continuar",
 
+  "Dashboard.previous":"Anterior",
+  "Dashboard.howLongIsThe":"¿Cuánto tiempo se requiere el servicio?",
+  "Dashboard.howManyGuestAre":"¿Cuántos invitados esperas?",
+  "Dashboard.selectTheServiceType":"Selecciona el tipo de servicio que necesitas",
+  "Dashboard.addNotesOr":"Añade notas o descripción",
+  "Dashboard.optionalIfYou":"Opcional si deseas incluir solicitudes especiales.",
+  "Dashboard.egFillingOfYour":"p. ej., relleno a tu elección: frambuesa, cereza. Bizcocho a tu elección: vainilla, crema",
+  "Dashboard.quoteAcceptedReady":"Presupuesto aceptado, listo para asegurar tu reserva.",
+  "Dashboard.youHaveAcceptedThe":"Has aceptado el presupuesto del proveedor del servicio. Para confirmar tu reserva, procede a realizar el pago. Tu pago se mantendrá de forma segura en depósito (escrow) y se liberará únicamente cuando el servicio se complete con éxito.",
+  "Dashboard.cancel":"Cancelar",
+  "Dashboard.continueToInbox":"Continuar a la bandeja de entrada",
+  "Dashboard.share":"Compartir",
+  "ListingPage.itemDetails": "Detalles del artículo",
+  "ListingPage.price": "Precio",
+  "ListingPage.priceItem": "Precio por artículo",
+  "ListingPage.plate": "plato",
+  "ListingPage.unitQuantity": "Cantidad por unidad",
+  "ListingPage.minQuantity": "Cantidad mínima",
+  "ListingPage.inCludeSpecialRequest": "Incluye una solicitud especial para añadir a tu pedido.",
+  "ListingPage.egFillingOfYourChoice": "p. ej., relleno a tu elección: frambuesa, cereza. Bizcocho a tu elección: vainilla, crema",
+  "ListingPage.addNotesAndRequest": "Añade notas y solicitudes",
+  "ListingPage.itemWasSuccessfull": "El artículo se añadió correctamente al carrito.",
+  "ListingPage.duration1": "Hasta 1 hora",
+  "ListingPage.duration2": "Hasta 2 horas",
+  "ListingPage.duration3": "Hasta 3 horas",
+  "ListingPage.duration4": "Hasta 4 horas",
+  "ListingPage.duration5": "5 horas o más",
+  "ListingPage.guestCount1": "Menos de 10",
+  "ListingPage.guestCount2": "20 - 30",
+  "ListingPage.guestCount3": "30 - 40",
+  "ListingPage.guestCount4": "40 - 50",
+  "ListingPage.guestCount5": "Más de 100",
 
+  "CreateQuoteForm.whereIsTheLocation": "¿Dónde es la ubicación de tu evento?",
+  "CreateQuoteForm.selectLocation": "Selecciona la ubicación del evento",
+  "CreateQuoteForm.whenIsYourEvent": "¿Cuándo es tu evento?",
+  "CreateQuoteForm.selectDateOfYour": "Selecciona la fecha de tu evento",
+
+  "Dashboard.yourPaymentWas":"¡Tu pago se realizó correctamente!"
 
 }

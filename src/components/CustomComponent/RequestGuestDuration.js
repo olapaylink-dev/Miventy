@@ -4,7 +4,7 @@ import itm_img from '../../assets/itm_img.jpg';
 import classNames from "classnames";
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import CartOptions_2 from "../../containers/ListingPage/CartOptions_2";
-
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const REQUEST_QUOTE_TABS = [
   "service_type",
@@ -13,7 +13,7 @@ const REQUEST_QUOTE_TABS = [
 ]
 
 const RequestGuestDuration = props =>{
-
+const intl = useIntl();
     const {
         forceUpdate,
         onUpdateProfile,
@@ -40,19 +40,19 @@ const RequestGuestDuration = props =>{
     }
 
     const guestCount = [
-        "Less than 10",
-        "20 - 30",
-        "30 - 40",
-        "40 - 50",
-        "More than 100"
+       'guestCount1',
+       'guestCount2',
+       'guestCount3',
+       'guestCount4',
+       'guestCount5'
     ];
 
     const duration = [
-        "Up to 1 hour",
-        "Up to 2 hour",
-        "Up to 3 hour",
-        "Up to 4 hour",
-        "5 hours or more"
+       'duration1',
+       'duration2',
+       'duration3',
+       'duration4',
+       'duration5'
     ];
 
 const handleSaveMessage = ()=>{
@@ -86,7 +86,7 @@ console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
                 </div>
                 
                 <div className={css.container}>
-                    <h2 className={css.form_header}>How many guests are you expecting?</h2>
+                    <h2 className={css.form_header}>{intl.formatMessage({id: 'Dashboard.howManyGuestAre',})}</h2>
                     <div className={css.flex_row_btw}>
                         <div>
                             {guestCount !== undefined && guestCount.length > 0?
@@ -112,7 +112,9 @@ console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
                                                 className={classNames(css.no_spacing,css.radio)}/>} 
                                                 label={
                                                     <div className={css.flex_col}>
-                                                        <span className={css.label_txt}>{category}</span> 
+                                                        <span className={css.label_txt}>
+                                                            {intl.formatMessage({id: `ListingPage.${category}`,})}
+                                                        </span> 
                                                        
                                                     </div>
                                                     
@@ -137,7 +139,7 @@ console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
                     </div>
                     {listingType !== "BD Cake and Sweets"?
                         <>
-                            <h2 className={css.form_header}>How long is the service required</h2>
+                            <h2 className={css.form_header}>{intl.formatMessage({id: 'Dashboard.howLongIsThe',})}</h2>
                             <div className={css.flex_row_btw}>
                                 <div>
                                     {duration !== undefined && duration.length > 0?
@@ -163,7 +165,9 @@ console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
                                                         className={classNames(css.no_spacing,css.radio)}/>} 
                                                         label={
                                                             <div className={css.flex_col}>
-                                                                <span className={css.label_txt}>{category}</span> 
+                                                                <span className={css.label_txt}>
+                                                                     {intl.formatMessage({id: `ListingPage.${category}`,})}
+                                                                </span> 
                                                                 
                                                             </div>
                                                             
@@ -185,10 +189,10 @@ console.log(" ccccccccccccccccoooooooooooooooooooooooooooo")
                     
                     <div className={css.flex_row}>
                         <button className={css.btn_outline} onClick={handleBack}>
-                            Previous
+                           {intl.formatMessage({id: 'Dashboard.previous',})}
                         </button>
                         <button className={css.btn_fill} onClick={handleSaveMessage}>
-                            Continue
+                           {intl.formatMessage({id: 'Dashboard.continue',})}
                         </button>
                     </div>
                     

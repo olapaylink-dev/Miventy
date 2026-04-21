@@ -2752,7 +2752,7 @@ const AddApplePayForm = props => {
           <form className={css.form} onSubmit={handleSubmit}>
               <label labelfor="email">{intl.formatMessage({id:'StripePayoutPage.emailAddress'})}</label>
               <input type='email' placeholder={intl.formatMessage({id:'StripePayoutPage.enterEmail'})}/>
-              <button onClick={e=>{handleContinue(e,"VerificationCodeApplePay")}} className={css.continue} type="submit">Continue</button>
+              <button onClick={e=>{handleContinue(e,"VerificationCodeApplePay")}} className={css.continue} type="submit">{intl.formatMessage({id: 'Dashboard.continue',})}</button>
           </form>
     
     </>

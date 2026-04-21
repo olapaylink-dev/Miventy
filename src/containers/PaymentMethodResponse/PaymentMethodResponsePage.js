@@ -30,7 +30,6 @@ import SuccessView from '../../components/SuccessView/SuccessView.js';
 import css from './PaymentMethodResponsePage.module.css';
 import SuccessViewPayment from '../../components/SuccessView/SuccessViewPayment.js';
 
-
 const sharetribeSdk = require('sharetribe-flex-sdk');
 // To obtain a client ID, see Applications in Flex Console
 const sdk = sharetribeSdk.createInstance({
@@ -38,7 +37,6 @@ const sdk = sharetribeSdk.createInstance({
 });
 
 const PaymentMethodResponsePageCom = (props) => {
-    
     //const [pageData, setPageData] = useState({});
     const [isDataLoaded, setIsDataLoaded] = useState(false);
     const config = useConfiguration();
@@ -84,7 +82,7 @@ const PaymentMethodResponsePageCom = (props) => {
               
                 <div className={css.container}>
                    <SuccessViewPayment
-                       message={"Your Payment was successful!"}
+                       message={intl.formatMessage({id: 'Dashboard.yourPaymentWas',})}
                     />
                 </div>
                 <FooterComponent/>
