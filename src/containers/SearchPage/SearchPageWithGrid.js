@@ -550,7 +550,6 @@ export class SearchPageComponent extends Component {
                 <img className={css.locatn} src={locatn}/>
                 <span><FormattedMessage id="SearchPage.locationPending" /></span>
               </div>
-
               <div className={css.drd_con}>
                 <RadioSelect
                   parentClicked={this.state.parentClicked}
