@@ -214,8 +214,10 @@ const SignupFormComponent = props => (
                           <div className={css.field_con}>
                             
                             {reveal?
+                              
+
                               <input 
-                                type="password"
+                                type="text"
                                 id={formId ? `${formId}.password` : 'password'}
                                 name="password"
                                 autoComplete="current-password"
@@ -227,7 +229,7 @@ const SignupFormComponent = props => (
                               />
                               :
                               <input 
-                                type="text"
+                                type="password"
                                 id={formId ? `${formId}.password` : 'password'}
                                 name="password"
                                 autoComplete="current-password"

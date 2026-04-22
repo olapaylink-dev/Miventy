@@ -11,6 +11,7 @@
     border: 1px solid #CBCFD4;
     padding: 10px;
     min-width: 320px;
+    z-index: 999999;
 }
 .full_w{
     background-color: white;
