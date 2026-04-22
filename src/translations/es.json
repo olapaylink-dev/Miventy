@@ -1781,5 +1781,13 @@
   "ListingPage.yourMessageWas": "¡Tu mensaje se envió correctamente!",
   "ConfirmOrderForm.yourMessageWas": "¡Tu mensaje se envió correctamente!",
 
-  "TopTab.about":"Acerca del servicio"
+  "TopTab.about":"Acerca del servicio",
+
+  "OfferView.serviceQuote":"Cotización de servicio",
+  "OfferView.paymentComplete":"Pago completado",
+  "OfferView.youHaveSentAnOffer":"Has enviado una oferta.",
+  "OfferView.viewOffer":"Ver oferta",
+  "OrderView.bookingRequest":"Solicitud de reserva",
+  "OrderView.aBookingRequest":"Se le ha enviado una solicitud de reserva con un pedido. Consulte los detalles y elija entre aceptar, cancelar o modificar.",
+  "OrderView.viewOrder":"Ver pedido"
 }

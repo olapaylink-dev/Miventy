@@ -43,7 +43,6 @@ export default function PriceSelect(props){
 
         const price = [];
        
-        console.log("aaaaaaaaaaaaaaaaaa")
         if(val === "price1"){
             history.push(`/s?price=${0}%2C${300}`);
         }else if(val === "price2"){
