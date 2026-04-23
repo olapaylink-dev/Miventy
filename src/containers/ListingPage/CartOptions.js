@@ -168,7 +168,7 @@ const CartOptions = props =>{
                                             </div>
                                             
                                             <div>
-                                                <p>{itm.description}</p>
+                                                <p className={css.itm_desc}>{itm.description}</p>
                                             </div>
                                             
                                             <CardForm itm={itm} imageUrl={imageUrl} handleAddDurationPriceToCart={handleAddDurationPriceToCart} />
@@ -187,7 +187,7 @@ const CartOptions = props =>{
                                             <div className={css.flex_col}>
                                                 <h4 className={css.short_txt}>{itm.itemName}</h4>
                                                 <p>€ {itm.ItemPrice}</p>
-                                                <p> {itm.description}</p>
+                                                <p className={css.itm_desc}> {itm.description}</p>
                                             </div>
                                         </div>
                                     </div>

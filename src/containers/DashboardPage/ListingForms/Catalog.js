@@ -1035,7 +1035,12 @@ const hamdleReset = e =>{
   setItemName("");
   setDescription("");
   setPrice("");
-  setDurationPrice([]);
+  setDurationPrice([{}]);
+  setImageSrc1("");
+  setImageSrc2("");
+  setImageSrc3("");
+  setImageSrc4("");
+  setImageSrc5("");
 }
 
     return (
