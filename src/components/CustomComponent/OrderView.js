@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import css from './OrderView.module.css';
+import { useIntl, FormattedMessage } from '../../util/reactIntl';
+
 
 // File updated
 const OrderView = (props)=>{
+    const intl = useIntl();
     const {trx,isProvider,setShowQuotationForm,currentImgUrl,setShowOrder} = props;
     const {listing} = trx;
     //const title = listing?.attributes?.publicData?.title;
