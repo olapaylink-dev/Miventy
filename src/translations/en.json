@@ -872,10 +872,9 @@
   "SearchPage.serviceNearYou": "services near you",
   "SearchPage.locationPending": "Location pending...",
   "SearchPage.itemList": "Item List",
+  "ListingPageCarousel.itemList":"Item List",
+  "ListingPageCarousel.categories":"Categories",
   
-
-
-
   "SelectMultipleFilter.labelSelected": "{labelText} • {count}",
   "SelectMultipleFilterPlainForm.labelSelected": "• {count}",
   "SendMessageForm.sendFailed": "Failed to send. Please try again.",

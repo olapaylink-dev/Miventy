@@ -35,7 +35,7 @@ const CatalogItemOrderDetails = props =>{
     const price = parseInt(currentCartItmToEdit?.ItemPrice);
     const currentTotal = currentCount * price;
     const {category} = currentListing?.attributes?.publicData;
-    console.log(currentCartItmToEdit,"      ooooooooo222222222222   ",category);
+    const [readMore,setReadMore] = useState(false);
     
   const imageBtns = [imgUrl, imgUrl, imgUrl];
   const slideImages = [imgUrl, imgUrl, imgUrl];
@@ -193,9 +193,10 @@ const CatalogItemOrderDetails = props =>{
                         
                         <div className={css.header_con}>
                             <h3 className={css.header_2}>{currentCartItmToEdit.itemName}</h3>
-                            <p>
+                            <p className={readMore?css.desc_con_ful:css.desc_con}>
                                 {currentCartItmToEdit.description}
                             </p>
+                            <button className={css.read_more} onClick={e=>setReadMore(!readMore)} >{readMore?"Hide":"Read more"}</button>
                         </div>
                         <div className={css.input_con}>
                             <h4 className={css.text_label}>{intl.formatMessage({ id: 'ListingPage.addNotesAndRequest' })}</h4>

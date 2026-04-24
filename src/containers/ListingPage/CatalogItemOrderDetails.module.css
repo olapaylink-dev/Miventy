@@ -274,6 +274,20 @@
     width: 100%;
 }
 
+.desc_con{
+    height: 100px;
+    overflow: hidden;
+}
+
+.read_more{
+    border: none;margin-left: auto;
+}
+
+.desc_con_ful{
+    height: fit-content;
+    overflow: hidden;
+}
+
 .slide_con{
     display: flex;
     justify-content: center;

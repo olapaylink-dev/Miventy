@@ -924,6 +924,8 @@
 "SearchPage.serviceNearYou": "servicios cerca de ti",
 "SearchPage.locationPending": "Ubicación pendiente...",
 "SearchPage.itemList": "Lista de artículos",
+"ListingPageCarousel.itemList":"Lista de artículos",
+"ListingPageCarousel.categories":"Categorías",
 
 
 "SelectMultipleFilter.labelSelected": "{labelText} • {count}",

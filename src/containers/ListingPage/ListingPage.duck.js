@@ -56,6 +56,10 @@ export const FETCH_USER_LISTINGS_ERROR = 'app/ListingPage/FETCH_USER_LISTINGS_ER
 
 export const RESET_REQUEST = 'app/ListingPage/RESET_REQUEST';
 
+export const FETCH_TRX_REQUEST = 'app/ListingPage/FETCH_TRX_REQUEST';
+export const FETCH_TRX_SUCCESS = 'app/ListingPage/FETCH_TRX_SUCCESS';
+export const FETCH_TRX_ERROR = 'app/ListingPage/FETCH_TRX_ERROR';
+
 
 
 // ================ Reducer ================ //
@@ -84,7 +88,10 @@ const initialState = {
   saveLikesSuccess:false,
   userListings:[],
   fetchUserListingsInProgress:false,
-  fetchUserListingsError:null
+  fetchUserListingsError:null,
+  fetchTrxInProgress:false,
+  fetchTrxError:null,
+  transactions:[]
 };
 
 const listingPageReducer = (state = initialState, action = {}) => {
@@ -170,6 +177,14 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case FETCH_USER_LISTINGS_ERROR:
       return { ...state, fetchUserListingsInProgress: false, fetchUserListingsError: payload };
 
+    case FETCH_TRX_REQUEST:
+      return { ...state, fetchTrxInProgress: true, fetchTrxError: null };
+    case FETCH_TRX_SUCCESS:
+      //console.log(payload,"  aaabbbccc")
+      return { ...state, fetchTrxInProgress: false, fetchTrxError: null, transactions:payload };
+    case FETCH_TRX_ERROR:
+      return { ...state, fetchTrxInProgress: false, fetchTrxError: payload };
+
     case RESET_REQUEST:
       return { ...state, isInquiry:false };
 
@@ -206,6 +221,13 @@ export const fetchReviewsError = error => ({
   payload: error,
 });
 
+export const fetchTrxRequest = () => ({ type: FETCH_TRX_REQUEST });
+export const fetchTrxSuccess = trxs => ({ type: FETCH_TRX_SUCCESS, payload: trxs });
+export const fetchTrxError = error => ({
+  type: FETCH_TRX_ERROR,
+  error: true,
+  payload: error,
+});
 
 export const saveLikesRequest = () => ({ type: SAVE_LIKES_REQUEST });
 export const saveLikesSuccess = data => ({ type: SAVE_LIKES_SUCCESS, payload: data });
@@ -363,6 +385,21 @@ export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
     .catch(e => {
       dispatch(fetchReviewsError(storableError(e)));
     });
+};
+
+export const fetchUserTransactions = (id,listingId) => (dispatch, getState, sdk) => {
+  dispatch(fetchTrxRequest());
+  console.log("transactions    wwwwwwwwwwwwwwwwww")
+  return sdk.transactions.query({
+          userId: id,
+          listingId:listingId
+          }).then(res => {
+            // res.data contains the response data
+            console.log("transactions",res.data.data)
+            dispatch(fetchTrxSuccess(res.data.data));
+          }).catch(e => {
+                dispatch(fetchTrxError(storableError(e)));
+          });
 };
 
 export const fetchUserListings = userId => (dispatch, getState, sdk) => {

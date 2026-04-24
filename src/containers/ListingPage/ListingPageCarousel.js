@@ -69,6 +69,7 @@ import {
   fetchReviews,
   reset,
   fetchUserReviews,
+  fetchUserTransactions,
 } from './ListingPage.duck';
 
 import {
@@ -209,7 +210,11 @@ export const ListingPageComponent = props => {
     userListings,
     onFetchUserListings,
     onFetchReviews,
-    onReset
+    onReset,
+    fetchTrxInProgress,
+    fetchTrxError,
+    transactions,
+    onFetchUserTransactions
   } = props;
 
   const savedCartData = currentUser?.attributes?.profile?.publicData?.cartData;
@@ -599,7 +604,9 @@ const serviceTypesRentalSpace = [
       onFetchUserListings(authorId);
       onFetchReviews(authorId);
     }
-    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo")
+    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo",currentUser.id,currentListing.id)
+    onFetchUserTransactions(currentUser.id,currentListing.id);
+
   }, []);
 
   useEffect(() => {
@@ -812,17 +819,31 @@ const handleSendEnquiry = ()=>{
     if(!isAuthenticated){
       history.push("/login");
     }
+
+    //Get existing transactions of this user
+    //Check if this listing is already in any transactions
+    //If listing already exist, just open the existing message
+    //Else create a new transaction
+
+   
     
     if(isOwnListing){
       setShowOwnListingMessage(true);
     }else{
-      setShowProgress(true);
-      const orderData = {
-          //message:"New enquiry",
+        console.log(transactions)
+      if(transactions.length > 0){
+        console.log("message Exist")
+        history.push("/inbox/sales");
+      }else{
+        setShowProgress(true);
+        const orderData = {
+            //message:"New enquiry",
+        }
+        localStorage.setItem("isEnquiry",true);
+        localStorage.setItem("referer","ListingDetailsPage");
+        onSendOrderMessage(currentListing,orderData,{isInquiry:true});
       }
-      localStorage.setItem("isEnquiry",true);
-      localStorage.setItem("referer","ListingDetailsPage");
-      onSendOrderMessage(currentListing,orderData,{isInquiry:true});
+      
     }
     
 }
@@ -963,9 +984,9 @@ console.log(userLocation,"   vvvvvvvvvvvvvvvvc77777777777777cccccccccccccc")
                 
                 <span className={css.catering}>
                   <NamedLink name="SearchPage">
-                    <span className={css.item_list}>Item List</span>
+                    <span className={css.item_list}>{intl.formatMessage({ id: 'ListingPageCarousel.itemList' })}</span>
                   </NamedLink>
-                  / <span className={css.item_list}>Categories</span> / </span>
+                  / <span className={css.item_list}>{intl.formatMessage({ id: 'ListingPageCarousel.categories' })}</span> / </span>
               </div>
             </div>
             <div className={css.content_con}>
@@ -1812,7 +1833,10 @@ const mapStateToProps = state => {
     saveLikesInProgress,
     saveLikesError,
     saveLikesSuccess,
-    userListings
+    userListings,
+    fetchTrxInProgress,
+    fetchTrxError,
+    transactions
   } = state.ListingPage;
   const { currentUser } = state.user;
 
@@ -1850,7 +1874,10 @@ const mapStateToProps = state => {
     saveLikesInProgress,
     saveLikesError,
     saveLikesSuccess,
-    userListings
+    userListings,
+    fetchTrxInProgress,
+    fetchTrxError,
+    transactions
   };
 };
 
@@ -1869,7 +1896,9 @@ const mapDispatchToProps = dispatch => ({
   onSaveLikes:(listingId,userId) => dispatch(saveLike(listingId,userId)),
   onFetchUserListings:(userId)=> dispatch(fetchUserListings(userId)),
   onFetchReviews:(authorId)=> dispatch(fetchUserReviews(authorId)),
-  onReset:()=>dispatch(reset())
+  onReset:()=>dispatch(reset()),
+  onFetchUserTransactions:(id,listingId)=>dispatch(fetchUserTransactions(id,listingId))
+
 });
 
 
