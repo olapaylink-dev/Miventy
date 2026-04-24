@@ -7,8 +7,6 @@ import classNames from 'classnames';
 
 import { useConfiguration } from '../../context/configurationContext';
 import { useRouteConfiguration } from '../../context/routeConfigurationContext';
-
-import { useIntl, FormattedMessage } from '../../util/reactIntl';
 import {
   isAnyFilterActive,
   isMainSearchTypeKeywords,
@@ -56,6 +54,7 @@ import LocationSelect from '../../components/CustomComponent/LocationSelect';
 import { withRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import { updateProfile } from '../ProfileSettingsPage/ProfileSettingsPage.duck';
 import CustomSelect from '../../components/CustomComponent/CustomSelect';
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 const MODAL_BREAKPOINT = 768; // Search is in modal on mobile layout
 
@@ -100,7 +99,7 @@ export class FavouritePageComponent extends Component {
     this.setShowLocationFilterList = this.setShowLocationFilterList.bind(this);
     this.setShowPriceFilterList = this.setShowPriceFilterList.bind(this);
     this.setParentClicked = this.setParentClicked.bind(this);
-    this.setShowMenu = this.setShowMenu.bind(this);
+    //this.setShowMenu = this.setShowMenu.bind(this);
 
   }
 
@@ -226,7 +225,7 @@ export class FavouritePageComponent extends Component {
       // setParentClicked
     } = this.props;
 
-    
+
     // N.B. openMobileMap button is sticky.
     // For some reason, stickyness doesn't work on Safari, if the element is <button>
 

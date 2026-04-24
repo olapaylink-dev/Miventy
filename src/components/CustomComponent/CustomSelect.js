@@ -2,9 +2,11 @@ import { useEffect, useState } from "react"
 import css from './CustomSelect.module.css';
 import { FormControl, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import classNames from "classnames";
+import { FormattedMessage, useIntl } from '../../util/reactIntl';
 
 
 export default function CustomSelect(props){
+    const intl = useIntl();
     const {
         history,
         selectedPrice,
