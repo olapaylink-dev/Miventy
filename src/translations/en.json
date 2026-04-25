@@ -1845,9 +1845,12 @@
   "OfferView.viewOffer":"View offer",
   "OrderView.bookingRequest":"Booking Request",
   "OrderView.aBookingRequest":"A booking request with order was sent to you. view details, and choose to accept, deckine or adjust.",
-  "OrderView.viewOrder":"View order"
+  "OrderView.viewOrder":"View order",
+
+
+  "CustomSelect.recentlyAdded":"Recently added",
+  "CustomSelect.old":"Old",
+  "CustomSelect.sortBy":"Sort by"
  
-
-
 
 }

@@ -264,6 +264,8 @@ export class FavouritePageComponent extends Component {
         onUpdateProfile(data);
     }
 
+    const sortOptions = ["recentlyAdded","old"]
+
     return (
       <div onClick={this.setParentClicked}>
           <Page
@@ -304,7 +306,7 @@ export class FavouritePageComponent extends Component {
                   setParentClicked={this.setParentClicked}
                   show={ this.state.showBestRatedFilterList}
                   setShow={this.setShowBestRatedFilterList}
-                  sortOptions={["Recently added","Old"]}
+                  sortOptions={sortOptions}
                 />
               </div>
               <div className={css.search_header}>

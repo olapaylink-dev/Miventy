@@ -1791,5 +1791,9 @@
   "OfferView.viewOffer":"Ver oferta",
   "OrderView.bookingRequest":"Solicitud de reserva",
   "OrderView.aBookingRequest":"Se le ha enviado una solicitud de reserva con un pedido. Consulte los detalles y elija entre aceptar, cancelar o modificar.",
-  "OrderView.viewOrder":"Ver pedido"
+  "OrderView.viewOrder":"Ver pedido",
+
+  "CustomSelect.recentlyAdded":"Agregado recientemente",
+  "CustomSelect.old":"Antiguo",
+  "CustomSelect.sortBy":"Ordenar por"
 }
