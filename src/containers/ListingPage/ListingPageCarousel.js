@@ -604,7 +604,7 @@ const serviceTypesRentalSpace = [
       onFetchUserListings(authorId);
       onFetchReviews(authorId);
     }
-    console.log("Updatiiiiiiiiiiiiiiiiiiiiiiig    ooooooo",currentUser.id,currentListing.id)
+    
     if(currentUser != null){
       onFetchUserTransactions(currentUser.id,currentListing.id);
     }
