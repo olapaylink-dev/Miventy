@@ -39,8 +39,8 @@ module.exports = async (req, res)  =>  {
           transfer_group: 'ORDER100',
         },
       mode: 'payment',
-       success_url: `https://miventy.onrender.com/${txId}/${"successful"}/success`,
-       cancel_url: 'https://miventy.onrender.com/cancel',
+       success_url: `https://miventy.com/${txId}/${"successful"}/success`,
+       cancel_url: 'https://miventy.com/cancel',
       // success_url: `http://localhost:4000/${txId}/${"successful"}/success`,
       // cancel_url: 'http://localhost:4000/cancel',
     });
