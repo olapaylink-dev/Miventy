@@ -23,6 +23,16 @@ import ReviewSlide from '../../../components/CustomComponent/ReviewSlide';
 import Become from '../../../components/CustomComponent/Become';
 import WithUs from '../../../components/CustomComponent/WithUs';
 import ReviewSlider from '../../../components/CustomComponent/ReviewSlide2';
+import Gallery from '../../../components/CustomComponent/Galery';
+
+import slide1 from '../../../assets/images/slides/slide1.jpg';
+import slide2 from '../../../assets/images/slides/slide2.jpg';
+import slide3 from '../../../assets/images/slides/slide3.jpg';
+import slide4 from '../../../assets/images/slides/slide4.jpg';
+import slide5 from '../../../assets/images/slides/slide5.jpg';
+import slide6 from '../../../assets/images/slides/slide6.jpg';
+import slide7 from '../../../assets/images/slides/slide7.jpg';
+import slide8 from '../../../assets/images/slides/slide8.jpg';
 
 // These are shared classes.
 // Use these to have consistent styles between different section components
@@ -129,6 +139,16 @@ const SectionBuilder = props => {
     }
   };
 
+  const testimony = [
+        {desc:"Test1",name:"Cart Mark",category:"Animator",img:slide1},
+        {desc:"Test2",name:"Bob Ruff",category:"Caterer",img:slide2},
+        {desc:"Test3",name:"Fred Mathew",category:"Magician",img:slide3},
+        {desc:"Test4",name:"Judge Willis",category:"Caterer",img:slide4},
+        {desc:"Test5",name:"Marry Moose",category:"Face painter",img:slide5},
+        {desc:"Test6",name:"Mickel Moris",category:"Animator",img:slide6},
+        {desc:"Test7",name:"Babara Almond",category:"Caterer",img:slide7}
+    ]
+
   return (
     <>
       {sections.map((section, index) => {
@@ -168,7 +188,8 @@ const SectionBuilder = props => {
                       <Popular history={history}/>
                       <Why/>
                       <ReviewSlide/>
-                      <ReviewSlider/>
+                      <ReviewSlider testimony={testimony} />
+                      {/* <Gallery/> */}
                       <Become/>
                       <WithUs history={history}/>
                     </>

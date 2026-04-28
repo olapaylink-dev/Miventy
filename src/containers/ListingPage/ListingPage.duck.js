@@ -68,6 +68,7 @@ const initialState = {
   id: null,
   showListingError: null,
   reviews: [],
+  included:[],
   fetchReviewsError: null,
   monthlyTimeSlots: {
     // '2022-03': {
@@ -108,7 +109,7 @@ const listingPageReducer = (state = initialState, action = {}) => {
     case FETCH_REVIEWS_REQUEST:
       return { ...state, fetchReviewsError: null };
     case FETCH_REVIEWS_SUCCESS:
-      return { ...state, reviews: payload };
+      return { ...state, reviews:[...initialState.reviews,...payload.data],included:[...initialState.included,...payload.included] };
     case FETCH_REVIEWS_ERROR:
       return { ...state, fetchReviewsError: payload };
 
@@ -386,6 +387,85 @@ export const fetchUserReviews = authorId => (dispatch, getState, sdk) => {
       dispatch(fetchReviewsError(storableError(e)));
     });
 };
+
+
+export const fetchAnyReviews = () => (dispatch, getState, sdk) => {
+  dispatch(fetchReviewsRequest());
+  console.log("ReviewwwwwwwwwwAUthor  222222222222222222222  wwwwwwwwwwwwwwwwww")
+  // return sdk.reviews
+  //   .query({})
+  //   .then(response => {
+  //     const reviews = denormalisedResponseEntities(response);
+  //     console.log(reviews,"   reviewsssssssssssssss")
+  //     dispatch(fetchReviewsSuccess(reviews));
+  //   })
+  //   .catch(e => {
+  //     console.log(e)
+  //     dispatch(fetchReviewsError(storableError(e)));
+  //   });
+
+
+sdk.listings.query({
+  price: "100,1000000",
+  include: ['author','reviews'],
+}).then (async res =>  {
+  // res.data contains the response data
+  console.log(res,"   reviewsssssssssssssss")
+  const included = res.data.included;
+  let users = [];
+  included.map((itm,key)=>{
+    users.push(itm.id);
+  })
+  console.log(users,"   ccxxzz")
+
+const getReviews = async () =>{
+
+   let reviews = [];
+
+  users.map((i,k)=>{
+
+   const res = sdk.reviews
+    .query({
+      subjectId:i,
+      state: 'public',
+      include: ['author', 'author.profileImage'],
+      'fields.image': ['variants.square-small', 'variants.square-small2x'],
+    })
+    .then( response => {
+      console.log(response,"   aaaa");
+      if(response.data.data.length > 0){
+        // reviews.push(response.data.data);
+        reviews.push(response.data.data);
+        dispatch(fetchReviewsSuccess(response.data));
+        if(users.length === k){
+          return reviews;
+        }
+      }
+    })
+  })
+
+  return reviews;
+}
+ 
+
+const reviews = await getReviews();
+
+  // if(reviews.length > 0){
+  //   denormalisedResponseEntities(reviews);
+  //   dispatch(fetchReviewsSuccess(reviews));
+  // }
+
+
+
+
+});
+
+
+
+};
+
+
+
 
 export const fetchUserTransactions = (id,listingId) => (dispatch, getState, sdk) => {
   dispatch(fetchTrxRequest());
