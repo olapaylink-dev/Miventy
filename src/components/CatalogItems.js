@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import css from './CatalogItems.module.css';
+import { useIntl, FormattedMessage } from '../util/reactIntl';
 
 const CatalogItems = props =>{
+    const intl = useIntl();
     const {cartData} = props;
     const {items=[]} = cartData;
     
@@ -14,7 +16,7 @@ const CatalogItems = props =>{
                         <div className={css.items}>
                             <img  src={imgUrl} className={css.card_img}/>
                             <p>{message}</p>
-                            <p>Quantity: {quantity}</p>
+                            <p>{intl.formatMessage({ id: `OrderDisplayView.quantity` })}: {quantity}</p>
                             <p className={css.price}>€{total}</p>
                         </div>
                     )

@@ -1935,7 +1935,7 @@ const [currentListing,setCurrentListing] = useState({});
                           <div className={css2.content_detail}>
                             <div className={css2.order_tab}>
                               <button onClick={e=>{setOrderTab("allOrders")}} className={orderTab === "allOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                {intl.formatMessage({id:'StripePayoutPage.allOrders'})} <span>(10)</span>
+                                {intl.formatMessage({id:'StripePayoutPage.allOrders'})} <span>({transactions.length})</span>
                               </button>
                               <button onClick={e=>{setOrderTab("onGoingOrders")}} className={orderTab === "onGoingOrders"?css2.tab_btn:css2.tab_btn_active}>
                                  {intl.formatMessage({id:'StripePayoutPage.onGoingOrdrs'})} <span>(4)</span>

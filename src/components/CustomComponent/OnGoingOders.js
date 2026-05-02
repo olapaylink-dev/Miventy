@@ -11,6 +11,7 @@ import { FormattedMessage, useIntl } from '../../util/reactIntl';
 import { types as sdkTypes } from '../../util/sdkLoader';
 const { Money } = sdkTypes;
 
+
 const OnGoingOrders = props =>{
     const intl = useIntl();
     const {

@@ -157,6 +157,18 @@ export const loadTransactions = (params, search) => (dispatch, getState, sdk) =>
   return sdk.transactions
     .query(apiQueryParams)
     .then(response => {
+      console.log(response,"   zzzzzzzzzzzzzzzzzzzzz")
+
+      let res = [];
+      if(response.data){
+        response.data.data.map((itm,key)=>{
+          if(itm.attributes.payinTotal !== null){
+            res.push(itm);
+          }
+        })
+        response.data.data = res;
+      }
+      
       dispatch(addMarketplaceEntities(response));
       dispatch(fetchOrdersOrSalesSuccess(response));
       //console.log(response,"     kkkkkkkkkkkkkkkkkkkkkkkkk");

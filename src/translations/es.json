@@ -1795,5 +1795,27 @@
 
   "CustomSelect.recentlyAdded":"Agregado recientemente",
   "CustomSelect.old":"Antiguo",
-  "CustomSelect.sortBy":"Ordenar por"
+  "CustomSelect.sortBy":"Ordenar por",
+
+  "OrderDisplayView.orderDetails":"Detalles del pedido",
+  "OrderDisplayView.service":"servicio",
+  "OrderDisplayView.catalogOrder":"Pedido de catálogo",
+  "OrderDisplayView.theOrderDoesNotHaveItems":"Este pedido no tiene artículos en el carrito. Necesitas crear una oferta para esto.",
+  "OrderDisplayView.youDidNotAddAnyItem":"No agregaste ningún artículo al carrito para este pedido. El proveedor del servicio te enviará una oferta para esto.",
+  "OrderDisplayView.date":"Fecha",
+  "OrderDisplayView.time":"Hora",
+  "OrderDisplayView.location":"Ubicación",
+  "OrderDisplayView.guests":"Invitados",
+  "OrderDisplayView.menuType":"Tipo de menú",
+  "OrderDisplayView.paymentCompleted":"Pago completado",
+  "OrderDisplayView.youHaveAcceptedThisOffer":"Has aceptado esta oferta",
+  "OrderDisplayView.youHaveDeclinedThisOffer":"Has rechazado este pedido",
+  "OrderDisplayView.decline":"Rechazar",
+  "OrderDisplayView.accept":"Aceptar",
+  "OrderDisplayView.createAQuote":"Crear una cotización",
+  "OrderDisplayView.proceedToPayment":"Proceder al pago",
+  "OrderDisplayView.orderWasDeclined":"El pedido fue rechazado",
+  "OrderDisplayView.waitingForProviderToAccept":"Esperando que el proveedor acepte tu pedido antes de que puedas proceder al pago.",
+  "OrderDisplayView.offerWasAccepted":"La oferta fue aceptada",
+  "OrderDisplayView.quantity":"Cantidad"
 }

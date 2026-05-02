@@ -1850,7 +1850,32 @@
 
   "CustomSelect.recentlyAdded":"Recently added",
   "CustomSelect.old":"Old",
-  "CustomSelect.sortBy":"Sort by"
+  "CustomSelect.sortBy":"Sort by",
+
+
+
+
+  "OrderDisplayView.orderDetails":"Order details",
+  "OrderDisplayView.service":"service",
+  "OrderDisplayView.catalogOrder":"Catalog order",
+  "OrderDisplayView.theOrderDoesNotHaveItems":"This order does not have items in Cart. You need to create a Offer for this.",
+  "OrderDisplayView.youDidNotAddAnyItem":"You did not add any item to cart for this order. The service provider will send you an offer for this.",
+  "OrderDisplayView.date":"Date",
+  "OrderDisplayView.time":"Time",
+  "OrderDisplayView.location":"Location",
+  "OrderDisplayView.guests":"Guests",
+  "OrderDisplayView.menuType":"Menu type",
+  "OrderDisplayView.paymentCompleted":"Payment Completed",
+  "OrderDisplayView.youHaveAcceptedThisOffer":"You have accepted this offer",
+  "OrderDisplayView.youHaveDeclinedThisOffer":"You have declined this order",
+  "OrderDisplayView.decline":"Decline",
+  "OrderDisplayView.accept":"Accept",
+  "OrderDisplayView.createAQuote":"Create a quote",
+  "OrderDisplayView.proceedToPayment":"Proceed to payment",
+  "OrderDisplayView.orderWasDeclined":"Order was declined",
+  "OrderDisplayView.waitingForProviderToAccept":"Waiting for Provider to accept your Order, before you can proceed to payment.",
+  "OrderDisplayView.offerWasAccepted":"Offer was Accepted",
+  "OrderDisplayView.quantity":"Quantity"
  
 
 }
