@@ -82,6 +82,16 @@ export default function InboxView(props){
         return res;
     }
 
+    const checkIfIsUnseen = (data,id) =>{
+        let res = false;
+        data.map((itm,key)=>{
+            if(itm.id === id){
+                res = true;
+            }
+        })
+        return res;
+    }
+
     
     
      const handleShowTransactionDetails = (itm,displayName,imgUrl,isProvider) =>{
@@ -109,8 +119,9 @@ export default function InboxView(props){
             onUpdateProfile(dat);
         }
 
-         if(unseenMsgData.includes(itm.id.uuid)){
-            const unseenMsg = unseenMsgData.filter(i=>i !== itm.id.uuid);
+         if(checkIfIsUnseen(unseenMsgData,itm.id.uuid)){
+            console.log("ooooooooooooooooo")
+            const unseenMsg = unseenMsgData.filter(i=>i.id !== itm.id.uuid);
             const dat = 
                 {protectedData: {
                         unseenMsg

@@ -6,8 +6,6 @@ import { useEffect } from "react";
 const NotificationNote = props =>{
     const {data=[],history,onUpdateProfile,currentUser} = props;
 
-    console.log(props,"  aaaadddggg")
-
     useEffect(()=>{
         // const lastAction = localStorage.getItem("lastAction");
         // if(lastAction === "show_notification"){
@@ -18,7 +16,6 @@ const NotificationNote = props =>{
         // }
     },[currentUser])
     
-
     const handleDeleteNoti = (id,pageToGo) =>{
         // const notifications = data.filter(itm=>itm.id !== id);
         // const dat = 
@@ -35,8 +32,6 @@ const NotificationNote = props =>{
         }else{
             history.push("inbox/orders/bookings");
         }
-
-         
     }
 
     return (
