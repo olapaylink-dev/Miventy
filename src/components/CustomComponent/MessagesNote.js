@@ -5,8 +5,11 @@ import NamedLink from "../NamedLink/NamedLink";
 const MessagesNote = props =>{
     const {data=[],currentUser,included} = props;
 
+    console.log("urllllllll222222222222222llllllllll")
+
     const getImageUrl = (data,imgId)=>{
         let url = "";
+        console.log("urllllllllllllllllll")
         data.map((itm,key)=>{
             if(itm.type === "image" && itm.id.uuid === imgId){
                 url = itm.attributes.variants["square-small"].url;
@@ -33,7 +36,8 @@ const MessagesNote = props =>{
         <div className={css.container_main}>
             {data.map((itm,key)=>{
                 if(key > 3){return ""}
-                const providerId = itm.senderId;
+                // const providerId = itm.senderId;
+                const providerId = itm.relationships.provider.data.id.uuid
                 const isOwnListing = currentUser.id.uuid === providerId;
                 const message = itm?.attributes?.protectedData?.cartData?.message;
                 const {name,image} = getProviderData(included,providerId);
