@@ -1938,10 +1938,10 @@ const [currentListing,setCurrentListing] = useState({});
                                 {intl.formatMessage({id:'StripePayoutPage.allOrders'})} <span>({transactions.length})</span>
                               </button>
                               <button onClick={e=>{setOrderTab("onGoingOrders")}} className={orderTab === "onGoingOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                 {intl.formatMessage({id:'StripePayoutPage.onGoingOrdrs'})} <span>(4)</span>
+                                 {intl.formatMessage({id:'StripePayoutPage.onGoingOrdrs'})} <span>({(getOngoingTransactions(transactions)).length})</span>
                               </button>
                               <button onClick={e=>{setOrderTab("completedOrders")}} className={orderTab === "completedOrders"?css2.tab_btn:css2.tab_btn_active}>
-                                {intl.formatMessage({id:'StripePayoutPage.completedOrders'})}<span>(6)</span>
+                                {intl.formatMessage({id:'StripePayoutPage.completedOrders'})}<span>({(getCompletedTransactions(transactions)).length})</span>
                               </button>
                             </div>
 

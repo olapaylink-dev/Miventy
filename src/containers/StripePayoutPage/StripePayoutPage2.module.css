@@ -1368,6 +1368,8 @@ text-transform: uppercase;
     background: #F1F5F9;
     border-radius: 6px;
     padding: 2px;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .tab_btn{
@@ -1389,6 +1391,7 @@ text-transform: uppercase;
     padding: 6px 24px;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .tab_btn_active{
@@ -1407,6 +1410,7 @@ text-transform: uppercase;
     font-style: normal;
     font-weight: 400;
     line-height: 24px; /* 150% */
+    width: 100%;
 }
 
 .review_sumary{
