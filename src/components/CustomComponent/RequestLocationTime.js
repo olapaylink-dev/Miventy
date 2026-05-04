@@ -81,9 +81,9 @@ const handleDateChange = value=>{
                             <label>{intl.formatMessage({id:'CreateQuoteForm.selectLocation'})}</label>
                             <div className={css.flex_row_area}>
                             
-                                {eventLocation !== undefined && eventLocation.length > 0?
+                                {eventLocation != null && eventLocation.length > 0?
                                     <div className={css.location_selected_2}>
-                                    {eventLocation !== undefined && eventLocation.map((itm,k)=>{
+                                    {eventLocation != null && eventLocation.map((itm,k)=>{
                                         return (
                                             <div className={css.loca_con}>
                                                 <span>{itm?.result?.place_name}</span>
@@ -140,7 +140,7 @@ const handleDateChange = value=>{
 
                         
                             <div className={css.location_selected}>
-                            {eventLocation !== undefined && eventLocation.map((itm,k)=>{
+                            {eventLocation != null && eventLocation.map((itm,k)=>{
                                     return (
                                     <div className={css.loca_con}>
                                         <span>{itm?.result?.place_name}</span>
