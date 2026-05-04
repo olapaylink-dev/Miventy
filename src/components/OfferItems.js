@@ -12,7 +12,7 @@ const OfferItems = props =>{
                         <div className={css.items}>
                             <img  src={imgUrl} className={css.card_img}/>
                             <p>{message}</p>
-                            <p>{intl.formatMessage({ id: `OrderDisplayView.quantity` })}: {quantity}</p>
+                            {/* <p>{intl.formatMessage({ id: `OrderDisplayView.quantity` })}: {quantity}</p> */}
                             <p className={css.price}>€{total}</p>
                         </div>
                    
