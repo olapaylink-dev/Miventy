@@ -6,6 +6,8 @@ import OfferView from './OfferView';
 import OfferViewOther from './OfferViewOther';
 import OrderView from './OrderView';
 import no_msg from '../../assets/no_msg.png';
+import QuoteRequestView from './QuoteRequestView';
+import QuoteRequestViewOthers from './QuoteRequestViewOthers';
 
 // File updated
 const MessageGen =(props)=>{
@@ -26,18 +28,19 @@ const MessageGen =(props)=>{
     handleDeleteMsg,
     deletedMsg,
     deletedChat,
-    filteredTrx
+    filteredTrx,
+    setOfferAvailable
   } = props;
 
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
-    const {provider={},listing={}} = currentTransaction;
+    const {provider={},listing={},customer={}} = currentTransaction;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const {cartData,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
     const isOwn = provider?.id?.uuid === currentUser?.id?.uuid;
     const listingType = listing?.attributes?.publicData?.listingType;
 
-    //console.log(cartDat,"   cccccssssss222222")
+    console.log(cartDat,"   cccccsss555555555555555555sss222222")
 
     if(filteredTrx.length === 0){
       return (
@@ -56,6 +59,11 @@ const MessageGen =(props)=>{
             const {content,createdAt} = itm?.attributes;
             const {description="",price=0} = content.includes("offerTitle")? JSON.parse(content):{};
             const isOffer = description !== "";
+            if(isOffer){
+              setOfferAvailable(true);
+            }else{
+              setOfferAvailable(false);
+            }
             const msgId = itm.id.uuid;
             const isDelete = deletedMsg.includes(msgId);
             
@@ -128,6 +136,7 @@ const MessageGen =(props)=>{
              
             }
           })}
+
           
           {currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}" && cartData !== undefined?
             <OrderView 
@@ -137,7 +146,31 @@ const MessageGen =(props)=>{
               currentImgUrl={currentImgUrl}
               setShowOrder={setShowOrder}
             />
-          :""}
+          :currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}" && cartDat !== undefined?
+
+          <>
+           {isOwn?
+              <QuoteRequestViewOthers
+                trx={currentTransaction} 
+                isProvider={isProvider} 
+                setShowQuotationForm={setShowQuotationForm} 
+                currentImgUrl={currentImgUrl}
+                setShowOrder={setShowOrder}
+              />
+              :
+              <QuoteRequestView
+                trx={currentTransaction} 
+                isProvider={isProvider} 
+                setShowQuotationForm={setShowQuotationForm} 
+                currentImgUrl={currentImgUrl}
+                setShowOrder={setShowOrder}
+              />
+            }
+          </>
+           
+            
+          :
+          ""}
         </div>
     )
 }

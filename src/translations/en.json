@@ -1875,7 +1875,8 @@
   "OrderDisplayView.orderWasDeclined":"Order was declined",
   "OrderDisplayView.waitingForProviderToAccept":"Waiting for Provider to accept your Order, before you can proceed to payment.",
   "OrderDisplayView.offerWasAccepted":"Offer was Accepted",
-  "OrderDisplayView.quantity":"Quantity"
+  "OrderDisplayView.quantity":"Quantity",
+  "OrderDisplayView.waitForProviderToSendAQuote":"Waiting for Provider to send a quote."
  
 
 }

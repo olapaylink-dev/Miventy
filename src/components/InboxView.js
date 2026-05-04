@@ -9,7 +9,6 @@ import { FormattedMessage, useIntl } from '../util/reactIntl';
 
 export default function InboxView(props){
     const intl = useIntl();
-
      const {
         listingId,
         currentUser,
@@ -40,7 +39,8 @@ export default function InboxView(props){
         updateInProgress,
         updateSuccess,
         onReset,
-        referer
+        referer,
+        setOfferAvailable
     } = props;
 
     const [showDeletePopup,setShowDeletePopup] = useState(false);
@@ -157,6 +157,7 @@ export default function InboxView(props){
         const trxId = trxToDelete.id.uuid;
         onUpdateProfileDeleteChat(customerId,providerId,trxId);
     }
+
 
     return (
             <>
@@ -374,6 +375,7 @@ export default function InboxView(props){
                                         deletedMsg={deletedMsg}
                                         deletedChat={deletedChat}
                                         filteredTrx={filteredTrx}
+                                        setOfferAvailable={setOfferAvailable}
                                     />
                                 </div>
 

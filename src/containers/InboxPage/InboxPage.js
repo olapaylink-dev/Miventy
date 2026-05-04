@@ -302,6 +302,7 @@ export const InboxPageComponent = props => {
   const [currentDisplayName,setCurrentDisplayName] = useState("");
   const [currentImgUrl,setCurrentImgUrl] = useState("");
   const {customer,provider} = currentTransaction || {};
+  const [offerAvailable,setOfferAvailable] = useState(false);
 
   const referer = localStorage.getItem("referer");
   console.log(referer,"    zzzzzzzzaaaaaa")
@@ -441,6 +442,7 @@ const onSubmitReview = values => {
           updateSuccess={updateSuccess}
           onReset={onReset}
           referer={referer}
+          setOfferAvailable={setOfferAvailable}
         />
         }
         
@@ -482,6 +484,7 @@ const onSubmitReview = values => {
                 setShowSuccessView={setShowSuccessView}
                 setSuccessMessage={setSuccessMessage}
                 onUpdateProfile={onUpdateProfile}
+                offerAvailable={offerAvailable}
               />
           </div>
         :""}

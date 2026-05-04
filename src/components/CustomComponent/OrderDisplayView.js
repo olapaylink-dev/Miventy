@@ -44,7 +44,8 @@ const OrderDisplayView = props =>{
         onChangeListingPrice,
         setShowSuccessView,
         setSuccessMessage,
-        onUpdateProfile
+        onUpdateProfile,
+        offerAvailable
     }=props;
 
     const {protectedData={}} = currentTransaction !== undefined && JSON.stringify(currentTransaction) !== "{}"?currentTransaction?.attributes:{};
@@ -54,7 +55,7 @@ const OrderDisplayView = props =>{
     const offerQuantity = 1;
     const cartDat = protectedData?.cartData !== undefined?protectedData?.cartData:{};
     const transactionState = currentTransaction?.attributes?.state;
-    const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime} = cartDat !== undefined?cartDat:{};
+    const {cartData,duration,eventDate,eventLocation,guestCount,message,selectedServiceType,eventTime,isRequestQuote} = cartDat !== undefined?cartDat:{};
     //console.log("cartData  =======PPPPPPPPPPPPP==========",cartData);
     const {items=[],id} = cartData  ||  {};
     const cartItemId = items.length > 0? items[0].cartItemId :undefined;
@@ -266,14 +267,18 @@ const OrderDisplayView = props =>{
                                         <div className={css.flex_row}>
                                           {intl.formatMessage({ id: `OrderDisplayView.paymentCompleted` })}
                                         </div>
+                                    :isOrderDeclined?
+                                        <span className={css.declined_txt}>{intl.formatMessage({ id: `OrderDisplayView.orderWasDeclined` })}</span>
+                                    :isRequestQuote && offerAvailable?
+                                        <span></span>
+                                    :isRequestQuote && !offerAvailable?
+                                        <span>{intl.formatMessage({ id: `OrderDisplayView.waitForProviderToSendAQuote` })}</span>
                                     :transactionState === "state/accepted" || transactionState === "state/accept"?
                                     <div className={css.flex_row}>
                                         <NamedLink className={css.btn_fill} onClick={e=>{setShowQuoteAccepted(false)}} name="CheckoutPage" params={{id:listingId,slug:slug}}>
                                          {intl.formatMessage({ id: `OrderDisplayView.proceedToPayment` })}   
                                         </NamedLink>
                                     </div>
-                                    :isOrderDeclined?
-                                        <span className={css.declined_txt}>{intl.formatMessage({ id: `OrderDisplayView.orderWasDeclined` })}</span>
                                     :
                                     <p>{intl.formatMessage({ id: `OrderDisplayView.waitingForProviderToAccept` })}</p>
                                 )

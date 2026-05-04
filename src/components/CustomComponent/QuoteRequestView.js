@@ -1,20 +1,11 @@
 import { useEffect, useState } from 'react';
-import css from './OfferView.module.css';
+import css from './QuoteRequestView.module.css';
 import { useIntl, FormattedMessage } from '../../util/reactIntl';
 
 // File updated
-const OfferView = (props)=>{
+const QuoteRequestView = (props)=>{
     const intl = useIntl();
-    const {
-        trx,
-        isProvider,
-        setShowQuoteAccepted,
-        currentImgUrl,
-        setShowOffer,
-        content,
-        currentOfferInView,
-        setCurrentOfferInView
-    } = props;
+    const {trx,isProvider,setShowQuotationForm,currentImgUrl,setShowOrder} = props;
     const {listing} = trx;
     //const title = listing?.attributes?.publicData?.title;
     const [title,setTitle] = useState("");
@@ -22,44 +13,31 @@ const OfferView = (props)=>{
         setTitle(listing?.attributes?.title);
         //console.log("Changingggggggg11111111111111111111111gggggggggggggg")
     },[listing])
-    
-    const checkIfPaid = (trx)=>{
-        let paid = false;
-        trx.attributes.transitions.map((i,k)=>{
-            if(i.transition === "transition/confirm-payment"){
-                paid = true;
-            }
-        })
-        return paid;
-    }
 
-    const isPaid = checkIfPaid(trx);
-
-    const getTimeFromTransaction = trx=>{
+     const getTimeFromTransaction = trx=>{
         const createdAt = trx.attributes.createdAt;
         const dateAndTime = new Date(createdAt).toDateString();
         return dateAndTime;
     }
 
     const time = getTimeFromTransaction(trx);
-
+    
     return(
         <div className={css.main_com}>
             <div className={css.container}>
-                {isPaid?
+                <img
+                    className={css.profile_img}
+                    width={40}
+                    height={40}
+                    alt='Profile image'
+                    src={currentImgUrl}
+                />
+                <div>
                     <div className={css.message}>
-                        <span className={css.title}>{intl.formatMessage({ id: `OfferView.serviceQuote` })}</span>
+                        <span className={css.title}>{intl.formatMessage({ id: `OrderView.bookingRequest` })} </span>
                         <p className={css.desc}>{title}</p>
-                        <p>{intl.formatMessage({ id: `OfferView.paymentComplete` })}</p>
-                    </div>
-                :
-                
-                <div className={css.msg_time_con}>
-                    <div className={css.message}>
-                        <span className={css.title}>{intl.formatMessage({ id: `OfferView.serviceQuote` })}</span>
-                        <p className={css.desc}>{title}</p>
-                        <p>{intl.formatMessage({ id: `OfferView.youHaveSentAnOffer` })}</p>
-                        <button className={css.view_btn} onClick={e=>{setShowOffer(true);setCurrentOfferInView(content)}}>
+                        <p>{intl.formatMessage({ id: `OrderView.aBookingRequest` })} </p>
+                        <button className={css.view_btn} onClick={e=>setShowOrder(true)}>
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M8 6C7.44772 6 7 6.44772 7 7C7 7.55228 7.44772 8 8 8H16C16.5523 8 17 7.55228 17 7C17 6.44772 16.5523 6 16 6H8Z" fill="#475367"/>
                                 <path d="M7 12C7 11.4477 7.44772 11 8 11H16C16.5523 11 17 11.4477 17 12C17 12.5523 16.5523 13 16 13H8C7.44772 13 7 12.5523 7 12Z" fill="#475367"/>
@@ -67,20 +45,12 @@ const OfferView = (props)=>{
                                 <path d="M13.3333 16C12.781 16 12.3333 16.4477 12.3333 17C12.3333 17.5523 12.781 18 13.3333 18H16C16.5523 18 17 17.5523 17 17C17 16.4477 16.5523 16 16 16H13.3333Z" fill="#475367"/>
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4818 21.9012C15.5942 21.9293 15.7033 21.9697 15.8069 22.0215C18.1928 23.2144 21 21.4795 21 18.812V5C21 2.79086 19.2091 1 17 1H7C4.79086 1 3 2.79086 3 5V18.812C3 21.4795 5.8072 23.2144 8.19308 22.0215C8.29674 21.9697 8.40575 21.9293 8.51818 21.9012L11.5149 21.152C11.8334 21.0724 12.1666 21.0724 12.4851 21.152L15.4818 21.9012ZM5 5C5 3.89543 5.89543 3 7 3H17C18.1046 3 19 3.89543 19 5V18.812C19 19.9927 17.7574 20.7607 16.7013 20.2326C16.4672 20.1156 16.2209 20.0244 15.9669 19.9609L12.9701 19.2118C12.3332 19.0525 11.6668 19.0525 11.0299 19.2118L8.03311 19.9609C7.77911 20.0244 7.53283 20.1156 7.29866 20.2326C6.24257 20.7607 5 19.9927 5 18.812V5Z" fill="#475367"/>
                             </svg>
-                           {intl.formatMessage({ id: `OfferView.viewOffer` })} 
+                        {intl.formatMessage({ id: `OrderView.viewOrder` })}  
                         </button>
                     </div>
                     <div className={css.time}>{time}</div>
                 </div>
-                }
-               
-                 <img
-                    className={css.profile_img}
-                    width={40}
-                    height={40}
-                    alt='Profile image'
-                    src={currentImgUrl}
-                />
+                
             </div>
             {/* {isProvider?
                 <div className={css.action_con}>
@@ -106,4 +76,4 @@ const OfferView = (props)=>{
     )
 }
 
-export default OfferView;
+export default QuoteRequestView;

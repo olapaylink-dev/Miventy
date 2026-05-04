@@ -25,6 +25,14 @@ const OfferViewOther = (props)=>{
     }
 
     const isPaid = checkIfPaid(trx);
+
+    const getTimeFromTransaction = trx=>{
+        const createdAt = trx.attributes.createdAt;
+        const dateAndTime = new Date(createdAt).toDateString();
+        return dateAndTime;
+    }
+
+    const time = getTimeFromTransaction(trx);
     
     const [title,setTitle] = useState("");
     useEffect(()=>{
@@ -49,7 +57,7 @@ const OfferViewOther = (props)=>{
                             <p>Payment Completed</p>
                         </div>
                 :
-                    <>
+                    <div>
                         <div className={css.message}>
                             <span className={css.title}>Service quote</span>
                             <p className={css.desc}>{title}</p>
@@ -65,8 +73,8 @@ const OfferViewOther = (props)=>{
                                 View quote
                             </button>
                         </div>
-                        <div className={css.time}>12:15 AM</div>
-                    </>
+                        <div className={css.time}>{time}</div>
+                    </div>
                 
                 }
                 
